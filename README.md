@@ -33,6 +33,7 @@ tools/synthesise-audio.sh        # regenera os 26 sons
 tools/build-webgl.sh             # build WebGL, em Build/WebGL/
 tools/serve.sh                   # serve a build em http://localhost:8080
 tools/open-editor.sh             # abre o editor sem o Hub, checando a memória
+tools/clean.sh                   # quebra o loop de crash e limpa 1,5 GB de cache
 ```
 
 ## Como está organizado

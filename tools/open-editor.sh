@@ -48,4 +48,8 @@ if (( avail_mb < 3500 )); then
 fi
 
 echo "Abrindo $root ..."
-exec "$editor" -projectPath "$root"
+
+# Burst entra de carona na URP, pesa 748 MB de pacote, carrega o próprio gerador de código
+# no editor — e este projeto não tem um único [BurstCompile] nem um IJob. Desligar a
+# compilação não muda nada do que roda e tira do editor o processo que mais aloca.
+exec "$editor" -projectPath "$root" --burst-disable-compilation
