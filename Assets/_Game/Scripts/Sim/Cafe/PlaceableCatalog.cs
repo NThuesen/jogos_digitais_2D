@@ -47,6 +47,10 @@ namespace Neko.Sim.Cafe
                 "#BFA27E", 260, 3, ambience: 8f),
             new PlaceableDef("stage", "Palco", PlaceableKind.Decor, 2, 2, "RoundedRect", "#8E6FA8",
                 800, 5, ambience: 12f),
+            new PlaceableDef("chandelier", "Lustre de cristal", PlaceableKind.Decor, 1, 1, "Star",
+                "#E8DCA8", 620, 7, ambience: 11f),
+            new PlaceableDef("koi_pond", "Lago de carpas", PlaceableKind.Decor, 2, 2, "Circle",
+                "#6FA8C9", 900, 9, ambience: 14f),
 
             // Décor — Sakura
             new PlaceableDef("lantern_sakura", "Lanterna de sakura", PlaceableKind.Decor, 1, 1,

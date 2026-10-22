@@ -20,6 +20,8 @@ namespace Neko.Sim.Service
             new Recipe("omurice", "Omurice", 8f, 55, StationKind.Stove, 1, "Teardrop", "#F2C14E"),
             new Recipe("curry", "Curry da casa", 11f, 82, StationKind.Stove, 2, "Capsule", "#B5651D"),
             new Recipe("ramen", "Lámen do chef", 14f, 112, StationKind.Stove, 6, "Ring", "#C9893F"),
+            new Recipe("omurice_deluxe", "Omurice imperial", 16f, 140, StationKind.Stove, 9,
+                "Teardrop", "#E8A33C"),
 
             // Tea bar
             new Recipe("matcha", "Matcha", 5f, 38, StationKind.TeaBar, 2, "Capsule", "#7FA86A"),
@@ -33,6 +35,8 @@ namespace Neko.Sim.Service
             new Recipe("parfait", "Parfait", 9f, 72, StationKind.Dessert, 3, "Triangle", "#F2A6C0"),
             new Recipe("sundae", "Sundae estelar", 12f, 98, StationKind.Dessert, 8, "Star",
                 "#B98FD1"),
+            new Recipe("parfait_royal", "Parfait real", 15f, 135, StationKind.Dessert, 10,
+                "Triangle", "#D98FC0"),
 
             // Bakery
             new Recipe("catbun", "Pãozinho de gato", 7f, 55, StationKind.Bakery, 5, "CatEar",
