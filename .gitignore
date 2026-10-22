@@ -66,3 +66,7 @@ Desktop.ini
 
 # WebGL build output
 /Build/
+
+# Unity's crash-recovery scene dump, written by batch-mode runs
+/Assets/_Recovery/
+/Assets/_Recovery.meta

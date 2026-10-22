@@ -30,7 +30,8 @@ tools/simtest.sh                 # 257 testes da simulação, fora do editor, < 
 tools/run-tests.sh EditMode      # os mesmos, dentro do Unity
 tools/run-tests.sh PlayMode      # 17 testes que carregam a cena de verdade
 tools/synthesise-audio.sh        # regenera os 26 sons
-tools/build-webgl.sh             # build para o itch.io
+tools/build-webgl.sh             # build WebGL, em Build/WebGL/
+tools/serve.sh                   # serve a build em http://localhost:8080
 ```
 
 ## Como está organizado
