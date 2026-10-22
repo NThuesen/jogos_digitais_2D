@@ -1,0 +1,68 @@
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# Builds
+[Bb]uild/
+[Bb]uilds/
+*.apk
+*.aab
+*.ipa
+*.app
+
+# IDE / editor files
+.vscode/
+.idea/
+.vs/
+*.csproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Unity / platform generated files
+ExportedObj/
+.gradle/
+.consulo/
+sysinfo.txt
+crashlytics-build.properties
+*.unitypackage
+
+# Signing / local credentials
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.mobileprovision
+.env
+.env.*
+local.properties
+GoogleService-Info.plist
+google-services.json
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Fast sim-test loop (tools/simtest.sh)
+/tools/.simtest-bin/
+/tools/simtest/bin/
+/tools/simtest/obj/
+/tools/simtest/TestResult.xml
+
+# WebGL build output
+/Build/
