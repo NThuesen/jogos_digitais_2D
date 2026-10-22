@@ -128,6 +128,24 @@ namespace Neko.Game.Feel
         public void Money(Vector3 at, int amount) =>
             Number(at, "+" + amount, Palette.Focus);
 
+        /// <summary>
+        /// Stops everything in flight.
+        /// </summary>
+        /// <remarks>
+        /// Called when the day ends. Money popups live on the interface canvas and have
+        /// their own lifetime, so without this the last few of them were still rising up
+        /// the dashboard a second after the café had closed.
+        /// </remarks>
+        public void Clear()
+        {
+            for (var i = 0; i < _pool.Count; i++) _pool[i]?.Stop();
+
+            for (var i = 0; i < _labels.Count; i++)
+            {
+                if (_labels[i] != null) _labels[i].gameObject.SetActive(false);
+            }
+        }
+
         private Puff Take()
         {
             for (var i = 0; i < _pool.Count; i++)

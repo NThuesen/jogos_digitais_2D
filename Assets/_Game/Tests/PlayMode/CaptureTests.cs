@@ -49,56 +49,71 @@ namespace Neko.Tests.PlayMode
             var root = GameRoot.Instance;
             Assert.IsNotNull(root);
 
+            // From a clean business. PlayerPrefs survives between editor runs, so without
+            // this the frames show whatever the last capture left behind — which is how one
+            // run came out with fifteen maids and four of them called Aoi.
+            root.Ui.Get<MenuScreen>().OnNewGame.Invoke();
+            yield return null;
+
             // Give the player enough to look at: a few levels of café, some money, and
             // furniture in stock, so the screens are not all empty states.
-            root.Session.Profile.Wallet.Earn(4000);
-            root.Session.Profile.Wallet.AddReputation(CafeLevelTable.ReputationForLevel(4));
-            root.Session.Profile.OwnedPlaceables.Add("table_4");
-            root.Session.Profile.OwnedPlaceables.Add("lantern_sakura");
-            root.Session.Profile.OwnedEquipment.Add("head_sakura");
-            root.Session.Profile.ApplyUnlocks();
+            var profile = root.Session.Profile;
+            profile.Wallet.Earn(4000);
+            profile.Wallet.AddPoints(900);
+            profile.Wallet.AddReputation(CafeLevelTable.ReputationForLevel(5));
+            profile.OwnedPlaceables.Add("table_4");
+            profile.OwnedPlaceables.Add("lantern_sakura");
+            profile.OwnedEquipment.Add("head_sakura");
+            profile.ApplyUnlocks();
+
+            // A few cards out of a box, so the roster and the lineup are not three commons.
+            var rng = new Neko.Sim.Core.Rng(21u);
+            profile.Add(Neko.Sim.Economy.Lootbox.Mint(profile, Neko.Sim.Team.Rarity.Legendary, rng));
+            profile.Add(Neko.Sim.Economy.Lootbox.Mint(profile, Neko.Sim.Team.Rarity.Epic, rng));
+            profile.Add(Neko.Sim.Economy.Lootbox.Mint(profile, Neko.Sim.Team.Rarity.Rare, rng));
+            profile.Lineup.AutoFill(profile.Maids);
 
             yield return Shot("01_menu");
 
             root.Ui.Get<MenuScreen>().OnPlay.Invoke();
-            yield return Shot("02_cafe");
+            yield return Shot("02_hub");
+
+            root.Ui.Show<LineupScreen>();
+            yield return Shot("03_lineup");
 
             root.Ui.Show<RosterScreen>();
-            yield return Shot("03_roster");
+            yield return Shot("04_roster");
+
+            root.Ui.Show<BoxScreen>();
+            yield return Shot("05_boxes");
 
             root.Ui.Show<ShopScreen>();
-            yield return Shot("04_shop");
+            yield return Shot("06_shop");
 
-            root.Ui.Show<EditorScreen>();
-            yield return Shot("05_editor");
+            root.Ui.Show<HallScreen>();
+            yield return Shot("07_hall");
 
-            root.Ui.Show<CafeScreen>();
-            root.Ui.Get<CafeScreen>().OnOpenDay.Invoke();
+            root.Ui.Show<HubScreen>();
+            root.Ui.Get<HubScreen>().OnOpenDay.Invoke();
             yield return Wait(6f);
-            yield return Shot("06_shift_early");
+            yield return Shot("08_day_early");
 
             yield return Wait(26f);
-            yield return Shot("07_shift_busy");
+            yield return Shot("09_day_busy");
 
             yield return Wait(40f);
-            yield return Shot("08_shift_late");
+            yield return Shot("10_day_late");
 
-            // Run the day out so the results screen has something real on it. Counted in
-            // seconds rather than frames: a frame budget that looked generous ran out part way
-            // through the closing grace period and captured the shift again.
-            var waited = 0f;
-            while (!root.Presenter.Shift.Finished && waited < 90f)
-            {
-                waited += Time.unscaledDeltaTime;
-                yield return null;
-            }
-
+            // Run the day out with the skip button, which is what a player in a hurry
+            // presses and which therefore has to work.
+            root.Ui.Get<DayHud>().OnSkip.Invoke();
             yield return null;
             yield return null;
+
             Assert.AreEqual(AppState.Results, root.State.Current,
-                "the day never finished, so there is no results screen to capture");
+                "the day never finished, so there is no books screen to capture");
 
-            yield return Shot("09_results");
+            yield return Shot("11_books");
 
             Assert.Greater(Directory.GetFiles(_directory).Length, 0);
         }

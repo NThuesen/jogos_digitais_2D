@@ -166,6 +166,37 @@ namespace Neko.Sim.Economy
             return result;
         }
 
+        /// <summary>
+        /// A name nobody on the books already has, where one is available.
+        /// </summary>
+        /// <remarks>
+        /// Picking with replacement filled a roster with four maids called Aoi, which looks
+        /// like a bug long before it looks like a coincidence. Falls back to a numbered name
+        /// once the pool is exhausted rather than looping forever.
+        /// </remarks>
+        private static string PickName(Profile profile, Rng rng)
+        {
+            if (profile == null) return rng.Pick(Names);
+
+            var free = new List<string>();
+            for (var i = 0; i < Names.Length; i++)
+            {
+                var taken = false;
+                for (var m = 0; m < profile.Maids.Count; m++)
+                {
+                    if (profile.Maids[m].Name != Names[i]) continue;
+                    taken = true;
+                    break;
+                }
+
+                if (!taken) free.Add(Names[i]);
+            }
+
+            return free.Count > 0
+                ? rng.Pick(free)
+                : rng.Pick(Names) + " " + (profile.Maids.Count + 1);
+        }
+
         public static Rarity RollRarity(BoxDef box, Rng rng)
         {
             var kinds = new List<Rarity>();
@@ -188,7 +219,7 @@ namespace Neko.Sim.Economy
             var id = profile?.NextMaidId ?? 1;
             if (profile != null) profile.NextMaidId++;
 
-            var maid = Maid.Create(id, rng.Pick(Names), archetype);
+            var maid = Maid.Create(id, PickName(profile, rng), archetype);
             maid.Rarity = rarity;
             maid.Base = RarityTable.RollStats(rarity, archetype, rng);
             maid.House = ChemistryTags.RollHouse(rng);

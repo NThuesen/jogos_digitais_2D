@@ -34,6 +34,9 @@ namespace Neko.Game.View
         private CameraRig _camera;
         private bool _rushMusic;
 
+        /// <summary>The finish has been announced. Set once per day, cleared on the next.</summary>
+        private bool _reported;
+
         public Sim.Shift.Shift Shift { get; private set; }
 
         public event Action<ShiftResult> Finished;
@@ -54,6 +57,7 @@ namespace Neko.Game.View
             ClearViews();
             Shift = shift;
             _rushMusic = false;
+            _reported = false;
 
             _room.Build(shift.Grid);
             _room.SetFlowOverlay(false);
@@ -66,23 +70,40 @@ namespace Neko.Game.View
 
             // A shift that could not start at all still has to report, or the player is left
             // staring at an empty room with no explanation.
-            if (shift.Finished) Finished?.Invoke(shift.Finish());
+            if (!shift.Finished) return;
+
+            _reported = true;
+            Finished?.Invoke(shift.Finish());
         }
 
+        /// <summary>
+        /// Advances the day and reports it when it ends.
+        /// </summary>
+        /// <remarks>
+        /// The end is reported from a flag rather than from "the tick that finished it",
+        /// because the skip button ticks the shift to its end outside this method — and with
+        /// the old shape the next call returned at the first line, the event never fired and
+        /// the game sat on a finished day forever. A hang with no error in it.
+        /// </remarks>
         public void Tick()
         {
-            if (Shift == null || Shift.Finished) return;
+            if (Shift == null) return;
 
-            Shift.Tick(Clocks.Game);
+            if (!Shift.Finished)
+            {
+                Shift.Tick(Clocks.Game);
+                SyncCustomers();
+                SyncWorkers();
+                SyncMusic();
+            }
 
-            SyncCustomers();
-            SyncWorkers();
             DrainEvents();
-            SyncMusic();
 
-            if (!Shift.Finished) return;
+            if (!Shift.Finished || _reported) return;
 
+            _reported = true;
             _music.Play(MusicBed.Menu);
+            _effects.Clear();
             Finished?.Invoke(Shift.Finish());
         }
 
@@ -178,6 +199,16 @@ namespace Neko.Game.View
             _music.Play(busy ? MusicBed.ShiftRush : MusicBed.ShiftCalm);
         }
 
+        /// <summary>
+        /// Plays every event the simulation has queued up.
+        /// </summary>
+        /// <remarks>
+        /// Public because skipping a day ticks the whole thing through in one frame and then
+        /// needs the sound and the money popups to land, rather than leaving several hundred
+        /// events in a queue that the next day would play.
+        /// </remarks>
+        public void Drain() => DrainEvents();
+
         private void DrainEvents()
         {
             while (Shift.Events.Count > 0)
@@ -230,6 +261,14 @@ namespace Neko.Game.View
                     _camera.Shake(0.09f, 0.22f);
                     break;
 
+                case ShiftEventKind.WrongOrder:
+                    // The loudest thing on the floor, because it is the loudest line on the
+                    // dashboard and the player should connect the two.
+                    _effects.Anger(at);
+                    _effects.Number(at, Ui.Strings.Get("day.wrong"), Palette.Alarm);
+                    _camera.Shake(0.11f, 0.26f);
+                    break;
+
                 case ShiftEventKind.Served:
                     _effects.Hearts(at, 2);
                     break;
@@ -259,10 +298,6 @@ namespace Neko.Game.View
                 case ShiftEventKind.SecondWind:
                 case ShiftEventKind.BackFromBreak:
                     _effects.Sparkles(at, 6);
-                    break;
-
-                case ShiftEventKind.Rushed:
-                    _effects.Sparkles(at, 4);
                     break;
 
                 case ShiftEventKind.EncoreUsed:

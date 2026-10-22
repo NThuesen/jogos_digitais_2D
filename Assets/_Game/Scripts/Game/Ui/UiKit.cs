@@ -147,6 +147,55 @@ namespace Neko.Game.Ui
             rect.sizeDelta = new Vector2(Mathf.Clamp01(fraction) * width, rect.sizeDelta.y);
         }
 
+        /// <summary>
+        /// A line of text with real letter spacing.
+        /// </summary>
+        /// <remarks>
+        /// One Text per character in a row. uGUI has no tracking, and tracking is most of the
+        /// difference between a wordmark and a label — a title set at default spacing reads as
+        /// a programmer's placeholder however good the rest of the screen is.
+        ///
+        /// Only for short display strings. A paragraph laid out this way would be a hundred
+        /// draw calls for no benefit.
+        /// </remarks>
+        public static RectTransform TrackedLabel(Transform parent, string text, int size,
+            Color colour, float tracking = 6f, bool shadow = true)
+        {
+            var row = Row(parent, tracking);
+            row.gameObject.name = "Tracked";
+
+            // Without this the row keeps whatever width it was born with and the letters sit
+            // off to one side of it — which is exactly how the first wordmark rendered.
+            var fitter = row.gameObject.AddComponent<ContentSizeFitter>();
+            fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+            fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+            for (var i = 0; i < text.Length; i++)
+            {
+                var glyph = text[i];
+
+                if (glyph == ' ')
+                {
+                    var gap = new GameObject("Space", typeof(RectTransform));
+                    gap.transform.SetParent(row, false);
+                    gap.GetComponent<RectTransform>().sizeDelta = new Vector2(size * 0.42f, size);
+                    continue;
+                }
+
+                var label = Label(row, glyph.ToString(), size, colour, bold: true);
+                label.rectTransform.sizeDelta = new Vector2(size * 0.78f, size * 1.25f);
+                label.horizontalOverflow = HorizontalWrapMode.Overflow;
+
+                if (!shadow) continue;
+
+                var drop = label.gameObject.AddComponent<Shadow>();
+                drop.effectColor = new Color(0f, 0f, 0f, 0.35f);
+                drop.effectDistance = new Vector2(2f, -3f);
+            }
+
+            return row;
+        }
+
         public static RectTransform Column(Transform parent, float spacing, float padding = 16f)
         {
             var go = new GameObject("Column", typeof(RectTransform));

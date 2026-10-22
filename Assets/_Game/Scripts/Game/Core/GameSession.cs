@@ -1,20 +1,19 @@
 using System;
 using Neko.Sim.Core;
 using Neko.Sim.Economy;
-using Neko.Sim.Progress;
 using Neko.Sim.Save;
 using Neko.Sim.Shift;
 
 namespace Neko.Game.Core
 {
     /// <summary>
-    /// One player's run: the profile, the applicants, and the day turning over.
+    /// One business: the profile, the day about to run, and the books that closed the last one.
     /// </summary>
     /// <remarks>
     /// Sits between the screens and the simulation so that no screen ever mutates a profile
     /// directly. The rule that pays for itself is <see cref="Touch"/>: anything that changes
-    /// the profile saves it, so a browser tab closed mid-shop does not cost the player the
-    /// thing they just bought.
+    /// the business saves it, so a browser tab closed mid-shop does not cost the player the
+    /// card they just pulled.
     /// </remarks>
     public sealed class GameSession
     {
@@ -24,89 +23,53 @@ namespace Neko.Game.Core
         {
             Profile = profile ?? Profile.NewGame(1u);
             _rng = new Rng(Profile.Seed == 0 ? 1u : Profile.Seed);
-            Applicants = new ApplicantBoard();
-            RefreshApplicants();
         }
 
         public Profile Profile { get; }
 
-        public ApplicantBoard Applicants { get; }
-
-        public ShiftResult LastResult { get; private set; }
-
-        /// <summary>Levels gained by each maid on the last day, for the results screen.</summary>
-        public System.Collections.Generic.Dictionary<int, int> LastLevelUps { get; } =
-            new System.Collections.Generic.Dictionary<int, int>();
-
-        public int LastCafeLevel { get; private set; }
-
-        public bool CafeLevelledUp { get; private set; }
+        /// <summary>The books of the last day that closed. What the dashboard shows.</summary>
+        public DayLedger LastLedger { get; private set; }
 
         public event Action Changed;
 
-        public static GameSession Load()
+        public static GameSession Load() => new GameSession(SaveBridge.Load().Profile);
+
+        public bool Bankrupt => Profile.Bankrupt;
+
+        /// <summary>What it costs to open tomorrow, whatever today does.</summary>
+        public int FixedCosts => Books.FixedCostsFor(Profile);
+
+        /// <summary>The balance is thin enough that the player should be told.</summary>
+        public bool InDanger => !Bankrupt &&
+                                Profile.Wallet.Money < FixedCosts * Books.WarningDays;
+
+        /// <summary>Why today cannot open, or null. Checked before the button is offered.</summary>
+        public string WhyNotReady()
         {
-            var result = SaveBridge.Load();
-            return new GameSession(result.Profile);
-        }
+            var lineup = Profile.Lineup;
 
-        public Sim.Shift.Shift StartDay()
-        {
-            LastCafeLevel = Profile.CafeLevel;
-            var setup = DayPlan.Build(Profile, _rng.NextUInt());
-            return new Sim.Shift.Shift(setup);
-        }
-
-        /// <summary>
-        /// Folds a finished day into the profile and saves.
-        /// </summary>
-        /// <remarks>
-        /// Level-ups are recorded before the result is folded in, because the results screen
-        /// wants to say which maid levelled and the profile no longer knows once it has.
-        /// </remarks>
-        public void FinishDay(ShiftResult result)
-        {
-            LastResult = result;
-            LastLevelUps.Clear();
-
-            if (result == null) return;
-
-            foreach (var pair in result.XpByMaid)
+            if (lineup.MaidIdsIn(Neko.Sim.Team.Role.Reception).Count == 0 ||
+                lineup.MaidIdsIn(Neko.Sim.Team.Role.Floor).Count == 0 ||
+                lineup.MaidIdsIn(Neko.Sim.Team.Role.Kitchen).Count == 0)
             {
-                var maid = Profile.MaidById(pair.Key);
-                if (maid == null) continue;
-
-                var before = maid.Level;
-                MaidProgression.GrantXp(maid, pair.Value, out _);
-                var gained = maid.Level - before;
-                if (gained > 0) LastLevelUps[maid.Id] = gained;
+                return Ui.Strings.Get("lineup.needall");
             }
 
-            // Settle hands out XP as well; the grant above already did it for this result, so
-            // the copy it is given has none left to award.
-            var settled = new ShiftResult
-            {
-                Day = result.Day,
-                Earned = result.Earned,
-                Quota = result.Quota,
-                QuotaMet = result.QuotaMet,
-                Served = result.Served,
-                Angry = result.Angry,
-                TurnedAway = result.TurnedAway,
-                ReputationDelta = result.ReputationDelta,
-                SlowDay = result.SlowDay,
-                FailureReason = result.FailureReason,
-            };
-
-            DayPlan.Settle(Profile, settled);
-
-            CafeLevelledUp = Profile.CafeLevel > LastCafeLevel;
-            RefreshApplicants();
-            Touch();
+            return null;
         }
 
-        public void RefreshApplicants() =>
-            Applicants.Refresh(_rng.Fork(), Profile.CafeLevel, Profile.NextMaidId);
+        public Sim.Shift.Shift StartDay() =>
+            new Sim.Shift.Shift(DayPlan.Build(Profile, _rng.NextUInt()));
+
+        /// <summary>Closes the books on a finished day and saves.</summary>
+        public DayLedger FinishDay(ShiftResult result)
+        {
+            LastLedger = Books.Close(Profile, result);
+            Touch();
+            return LastLedger;
+        }
+
+        public Rng Rng => _rng;
 
         /// <summary>Something changed. Save it and tell the screens.</summary>
         public void Touch()

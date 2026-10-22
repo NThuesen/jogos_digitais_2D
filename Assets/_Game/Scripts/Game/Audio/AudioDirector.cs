@@ -169,8 +169,9 @@ namespace Neko.Game.Audio
                     Play(SoundId.LevelUp, 0.4f);
                     break;
 
-                case ShiftEventKind.Rushed:
-                    Play(SoundId.UiConfirm, 0.5f);
+                case ShiftEventKind.WrongOrder:
+                    Play(SoundId.AngryPuff, 0.7f);
+                    Play(SoundId.Drop, 0.4f);
                     break;
 
                 case ShiftEventKind.EncoreUsed:

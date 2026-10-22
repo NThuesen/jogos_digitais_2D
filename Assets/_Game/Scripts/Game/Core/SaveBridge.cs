@@ -14,7 +14,7 @@ namespace Neko.Game.Core
     /// </remarks>
     public static class SaveBridge
     {
-        public const string Key = "nekomata.profile.v1";
+        public const string Key = "nekomaidinc.profile";
 
         public static void Save(Profile profile)
         {

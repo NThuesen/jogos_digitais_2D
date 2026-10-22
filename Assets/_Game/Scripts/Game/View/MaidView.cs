@@ -27,6 +27,18 @@ namespace Neko.Game.View
         private float _bob;
         private Vector3 _lastPosition;
 
+        /// <summary>
+        /// Her own small offset from wherever the simulation says she is.
+        /// </summary>
+        /// <remarks>
+        /// Two maids legitimately end up on the same tile — the greeter walks a party to a
+        /// table and the waitress brings the plate to it — and drawn at exactly the same
+        /// point they read as one person. Spread in the view rather than in the shift, so
+        /// the simulation stays exact and only the picture is nudged. Angles step by the
+        /// golden angle, which keeps any two of them a quarter of a tile apart.
+        /// </remarks>
+        private Vector3 _offset;
+
         public Worker Worker { get; private set; }
 
         public static MaidView Create(Transform parent, SpriteFactory sprites, Worker worker)
@@ -37,7 +49,13 @@ namespace Neko.Game.View
             var view = go.AddComponent<MaidView>();
             view._sprites = sprites;
 
-            view._body = go.AddComponent<SpriteRenderer>();
+            // The sprite lives on a child, not on the root. The walk bob writes
+            // localPosition on the body every frame, and with the renderer on the root
+            // that overwrote the maid's own position with (0, lift, 0) — every maid in the
+            // café was drawn standing in the bottom-left corner of the room.
+            var body = new GameObject("Body");
+            body.transform.SetParent(go.transform, false);
+            view._body = body.AddComponent<SpriteRenderer>();
 
             var carried = new GameObject("Carried");
             carried.transform.SetParent(go.transform, false);
@@ -61,9 +79,15 @@ namespace Neko.Game.View
         {
             Worker = worker;
             _maid = worker.Maid;
+
+            const float radius = 0.5f;
+            var angle = worker.Id * 137.5f * Mathf.Deg2Rad;
+            _offset = new Vector3(Mathf.Cos(angle) * radius,
+                Mathf.Sin(angle) * radius * 0.7f, 0f);
+
             Redraw();
 
-            transform.position = new Vector3(worker.X, worker.Y, 0f);
+            transform.position = new Vector3(worker.X, worker.Y, 0f) + _offset;
             _lastPosition = transform.position;
 
             // Pops in rather than appearing. Nothing in this café simply exists.
@@ -75,7 +99,7 @@ namespace Neko.Game.View
         {
             if (Worker == null) return;
 
-            var target = new Vector3(Worker.X, Worker.Y, 0f);
+            var target = new Vector3(Worker.X, Worker.Y, 0f) + _offset;
             var moving = (target - _lastPosition).sqrMagnitude > 1e-5f;
 
             // Smoothed rather than snapped: the simulation ticks in whole frames and a worker
@@ -119,7 +143,7 @@ namespace Neko.Game.View
 
         private void SyncMood()
         {
-            if (Worker.IsManager || _maid == null)
+            if (_maid == null)
             {
                 _mood.enabled = false;
                 return;
@@ -148,12 +172,6 @@ namespace Neko.Game.View
 
         private void Redraw()
         {
-            if (Worker.IsManager)
-            {
-                _body.sprite = ManagerSpriteBuilder.Sprite(_sprites, _pose);
-                return;
-            }
-
             _body.sprite = _sprites.Layered(MaidSpriteBuilder.Layers(_maid, _pose),
                 MaidSpriteBuilder.CacheKey(_maid, _pose), 128);
         }

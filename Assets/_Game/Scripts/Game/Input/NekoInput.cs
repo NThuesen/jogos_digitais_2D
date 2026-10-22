@@ -47,6 +47,16 @@ namespace Neko.Game.Input
             if (mouse.rightButton.wasPressedThisFrame) RightClick?.Invoke(Pointer);
         }
 
+        /// <summary>
+        /// Fires a click as though the mouse had done it.
+        /// </summary>
+        /// <remarks>
+        /// For the PlayMode test that proves a pointer cannot reach a running day. Driving a
+        /// real device through the Input System in batch mode is a great deal of machinery to
+        /// assert one thing about routing.
+        /// </remarks>
+        public void SendClickForTest(Vector2 at) => Click?.Invoke(at);
+
         private static bool OverInterface() =>
             EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
     }

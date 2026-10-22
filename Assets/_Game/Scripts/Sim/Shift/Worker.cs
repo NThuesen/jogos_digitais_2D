@@ -34,6 +34,18 @@ namespace Neko.Sim.Shift
 
         public bool InPosition;
 
+        /// <summary>
+        /// Where she stands when there is nothing to do.
+        /// </summary>
+        /// <remarks>
+        /// Her own spot, not her position's. Sending every cook to the same tile drew a
+        /// six-strong squad as a café with two people in it — the views were all there,
+        /// stacked exactly on top of one another.
+        /// </remarks>
+        public float StationX;
+
+        public float StationY;
+
         public float X;
         public float Y;
 

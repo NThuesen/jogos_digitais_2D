@@ -17,6 +17,10 @@ namespace Neko.Game.Core
     /// The Boot scene holds one empty object with this on it. Everything else — the camera,
     /// the room, the interface, the audio — is created here in code. No prefabs, no scene
     /// hierarchy to merge, and a layout that can be read in a diff.
+    ///
+    /// Note what is missing: there is no input path from the player into a running day. The
+    /// pointer only reaches the game at all on the hall screen, where the player is arranging
+    /// furniture between days.
     /// </remarks>
     public sealed class GameRoot : MonoBehaviour
     {
@@ -44,15 +48,13 @@ namespace Neko.Game.Core
 
         public GameSession Session { get; private set; }
 
-        private bool _paused;
-
         private void Awake()
         {
             Instance = this;
             Application.targetFrameRate = 60;
 
             // The skill table installs itself into the maid maths. A shift does this too, but
-            // the roster screen derives stats before any shift has run.
+            // the roster screen derives stats before any day has run.
             SkillTable.Install();
 
             Sprites = new SpriteFactory();
@@ -96,7 +98,7 @@ namespace Neko.Game.Core
             Room = room.AddComponent<RoomView>();
             Room.Bind(Sprites);
 
-            var presenter = new GameObject("Shift");
+            var presenter = new GameObject("Day");
             presenter.transform.SetParent(transform, false);
             Presenter = presenter.AddComponent<ShiftPresenter>();
 
@@ -127,7 +129,7 @@ namespace Neko.Game.Core
 
             Effects.Bind(Sprites, Ui.OverlayLayer);
             Presenter.Bind(Sprites, Room, Effects, Audio, Music, Camera);
-            Presenter.Finished += OnShiftFinished;
+            Presenter.Finished += OnDayFinished;
 
             BuildScreens();
         }
@@ -135,38 +137,44 @@ namespace Neko.Game.Core
         private void BuildScreens()
         {
             var menu = Ui.Add<MenuScreen>();
-            menu.OnPlay = () => ErrorBoundary.Guard("abrir o café", EnterCafe);
-            menu.OnNewGame = () => ErrorBoundary.Guard("novo jogo", NewGame);
+            menu.OnPlay = () => ErrorBoundary.Guard("abrir a empresa", EnterHub);
+            menu.OnNewGame = () => ErrorBoundary.Guard("nova empresa", NewGame);
 
-            var cafe = Ui.Add<CafeScreen>();
-            cafe.OnOpenDay = () => ErrorBoundary.Guard("abrir o dia", StartShift);
-            cafe.OnRoster = () => Ui.Show<RosterScreen>();
-            cafe.OnShop = () => Ui.Show<ShopScreen>();
-            cafe.OnEditor = () => Ui.Show<EditorScreen>();
-            cafe.OnMenu = () => ErrorBoundary.Guard("voltar ao menu", BackToMenu);
+            var hub = Ui.Add<HubScreen>();
+            hub.OnOpenDay = () => ErrorBoundary.Guard("abrir o dia", StartDay);
+            hub.OnLineup = () => Ui.Show<LineupScreen>();
+            hub.OnRoster = () => Ui.Show<RosterScreen>();
+            hub.OnShop = () => Ui.Show<ShopScreen>();
+            hub.OnBoxes = () => Ui.Show<BoxScreen>();
+            hub.OnHall = () => Ui.Show<HallScreen>();
+            hub.OnMenu = () => ErrorBoundary.Guard("voltar ao menu", BackToMenu);
 
-            var hud = Ui.Add<ShiftHud>();
-            hud.OnPause = TogglePause;
-
-            var results = Ui.Add<ResultsScreen>();
-            results.OnContinue = () => ErrorBoundary.Guard("voltar ao café", BackToCafe);
+            var lineup = Ui.Add<LineupScreen>();
+            lineup.OnBack = () => Ui.Show<HubScreen>();
 
             var roster = Ui.Add<RosterScreen>();
-            roster.OnBack = () => Ui.Show<CafeScreen>();
+            roster.OnBack = () => Ui.Show<HubScreen>();
 
             var shop = Ui.Add<ShopScreen>();
-            shop.OnBack = () => Ui.Show<CafeScreen>();
+            shop.OnBack = () => Ui.Show<HubScreen>();
 
-            var editor = Ui.Add<EditorScreen>();
-            editor.Room = Room;
-            editor.Camera = Camera;
-            editor.OnBack = () => Ui.Show<CafeScreen>();
+            var boxes = Ui.Add<BoxScreen>();
+            boxes.OnBack = () => Ui.Show<HubScreen>();
 
-            var pause = Ui.Add<PauseScreen>();
-            pause.OnResume = TogglePause;
-            pause.OnQuit = () => ErrorBoundary.Guard("sair", BackToMenu);
-            pause.OnMusic = on => Music.Muted = !on;
-            pause.OnSfx = on => Audio.Muted = !on;
+            var hall = Ui.Add<HallScreen>();
+            hall.Room = Room;
+            hall.Camera = Camera;
+            hall.OnBack = () => ErrorBoundary.Guard("voltar", LeaveHall);
+
+            var day = Ui.Add<DayHud>();
+            day.OnSpeed = speed => Clocks.Scale = speed;
+            day.OnSkip = () => ErrorBoundary.Guard("pular o dia", SkipDay);
+
+            var books = Ui.Add<BooksScreen>();
+            books.OnContinue = () => ErrorBoundary.Guard("voltar à empresa", AfterBooks);
+
+            var bust = Ui.Add<BustScreen>();
+            bust.OnRestart = () => ErrorBoundary.Guard("recomeçar", NewGame);
         }
 
         private void BuildInput()
@@ -174,9 +182,8 @@ namespace Neko.Game.Core
             Input = gameObject.AddComponent<NekoInput>();
             Input.Click += OnClick;
             Input.RightClick += OnRightClick;
-            Input.Pause += OnPauseKey;
-            Input.Rotate += () => Ui.Get<EditorScreen>()?.Rotate();
-            Input.ToggleFlow += () => Room.SetFlowOverlay(true);
+            Input.Rotate += () => Ui.Get<HallScreen>()?.Rotate();
+            Input.Pause += OnEscape;
         }
 
         // -------------------------------------------------------------------------------
@@ -197,115 +204,161 @@ namespace Neko.Game.Core
 
         private void NewGame()
         {
+            // The records survive the business, which is what makes a bankruptcy a run rather
+            // than a wipe.
+            var records = Session?.Profile.Records;
+
             SaveBridge.Wipe();
-            Session = new GameSession(Profile.NewGame((uint)System.DateTime.Now.Ticks));
+            var profile = Profile.NewGame((uint)System.DateTime.Now.Ticks);
+
+            if (records != null)
+            {
+                profile.Records.BestDay = records.BestDay;
+                profile.Records.BestRevenue = records.BestRevenue;
+                profile.Records.TotalCustomersServed = records.TotalCustomersServed;
+                profile.Records.TotalDaysPlayed = records.TotalDaysPlayed;
+                profile.Records.LegendariesFound = records.LegendariesFound;
+                profile.Records.BusinessesLost = records.BusinessesLost +
+                                                 (Session.Bankrupt ? 1 : 0);
+            }
+
+            Session = new GameSession(profile);
             Bind(Session);
             Session.Touch();
-            EnterCafe();
+            EnterHub();
         }
 
         private void Bind(GameSession session)
         {
             Ui.Get<MenuScreen>()?.SetSession(session);
 
-            var cafe = Ui.Get<CafeScreen>();
-            if (cafe != null) cafe.Session = session;
-
-            var roster = Ui.Get<RosterScreen>();
-            if (roster != null) roster.Session = session;
-
-            var shop = Ui.Get<ShopScreen>();
-            if (shop != null) shop.Session = session;
-
-            var editor = Ui.Get<EditorScreen>();
-            if (editor != null) editor.Session = session;
-
-            var results = Ui.Get<ResultsScreen>();
-            if (results != null) results.Session = session;
+            Set(Ui.Get<HubScreen>(), s => s.Session = session);
+            Set(Ui.Get<LineupScreen>(), s => s.Session = session);
+            Set(Ui.Get<RosterScreen>(), s => s.Session = session);
+            Set(Ui.Get<ShopScreen>(), s => s.Session = session);
+            Set(Ui.Get<BoxScreen>(), s => s.Session = session);
+            Set(Ui.Get<HallScreen>(), s => s.Session = session);
+            Set(Ui.Get<BooksScreen>(), s => s.Session = session);
 
             session.Changed += () => Ui.RefreshCurrent();
         }
 
-        private void EnterCafe()
+        private static void Set<T>(T screen, System.Action<T> apply) where T : class
         {
-            if (!State.Go(AppState.Cafe)) return;
+            if (screen != null) apply(screen);
+        }
+
+        private void EnterHub()
+        {
+            if (Session.Bankrupt)
+            {
+                Ui.Show<BustScreen>();
+                return;
+            }
+
+            if (State.Current != AppState.Cafe) State.Go(AppState.Cafe);
 
             Clocks.Reset();
-            _paused = false;
             Room.Build(Session.Profile.Grid);
             Room.SetFlowOverlay(false);
             Camera.FrameRoom(Session.Profile.Grid.Width, Session.Profile.Grid.Height);
             Music.Play(MusicBed.Menu);
-            Ui.Show<CafeScreen>();
+            Ui.Show<HubScreen>();
         }
 
-        private void BackToCafe()
+        private void LeaveHall()
         {
-            if (State.Current == AppState.Results || State.Current == AppState.Shift)
-            {
-                State.Go(AppState.Cafe);
-            }
-
-            Clocks.Reset();
-            _paused = false;
-            Room.Build(Session.Profile.Grid);
-            Camera.FrameRoom(Session.Profile.Grid.Width, Session.Profile.Grid.Height);
-            Music.Play(MusicBed.Menu);
-            Ui.Show<CafeScreen>();
+            Room.SetFlowOverlay(false);
+            Ui.Show<HubScreen>();
         }
 
         private void BackToMenu()
         {
             State.Go(AppState.Menu);
             Clocks.Reset();
-            _paused = false;
             Session.Touch();
             Ui.Get<MenuScreen>()?.SetSession(Session);
             Music.Play(MusicBed.Menu);
             Ui.Show<MenuScreen>();
         }
 
-        private void StartShift()
+        private void StartDay()
         {
+            var why = Session.WhyNotReady();
+            if (why != null)
+            {
+                Ui.Dialog(Strings.Get("lineup.title"), why);
+                return;
+            }
+
             if (!State.Go(AppState.Shift)) return;
 
             Clocks.Reset();
-            _paused = false;
 
             var shift = Session.StartDay();
             Camera.FrameRoom(shift.Grid.Width, shift.Grid.Height);
             Presenter.Begin(shift);
 
-            var hud = Ui.Get<ShiftHud>();
-            hud.BuildChips(shift);
-            Ui.Show<ShiftHud>();
+            // Shown first, then filled. A screen builds its widgets on its first show,
+            // so putting the chips in beforehand built them onto a row that Build then
+            // replaced — and the strip came up empty every single day.
+            Ui.Show<DayHud>();
+            Ui.Get<DayHud>().BuildChips(shift);
         }
 
-        private void OnShiftFinished(Sim.Shift.ShiftResult result)
+        /// <summary>
+        /// Runs the rest of the day out in one go.
+        /// </summary>
+        /// <remarks>
+        /// Exactly the same simulation, ticked as fast as it will go. Skipping cannot change
+        /// the outcome, because there is nothing the player could have done differently once
+        /// the doors opened — which is the whole reason skipping is allowed at all.
+        /// </remarks>
+        private void SkipDay()
         {
-            Session.FinishDay(result);
+            var shift = Presenter.Shift;
+            if (shift == null) return;
+
+            var guard = 0;
+            while (!shift.Finished && guard < 40000)
+            {
+                shift.Tick(0.05f);
+                guard++;
+            }
+
+            Presenter.Drain();
+        }
+
+        private void OnDayFinished(Sim.Shift.ShiftResult result)
+        {
+            var ledger = Session.FinishDay(result);
+            Clocks.Reset();
 
             if (!State.Go(AppState.Results)) return;
 
-            Clocks.Reset();
-            _paused = false;
-            Ui.Show<ResultsScreen>();
+            if (ledger.Bankrupt)
+            {
+                Music.Play(MusicBed.Menu);
+                Ui.Show<BustScreen>();
+                return;
+            }
+
+            Ui.Show<BooksScreen>();
         }
 
-        private void TogglePause()
+        private void AfterBooks()
         {
-            if (State.Current != AppState.Shift) return;
+            if (Session.Bankrupt)
+            {
+                Ui.Show<BustScreen>();
+                return;
+            }
 
-            _paused = !_paused;
-            Clocks.Pause(_paused);
-            Music.Duck(_paused);
-            Input.Enabled = !_paused;
-
-            if (_paused) Ui.Show<PauseScreen>();
-            else Ui.Show<ShiftHud>();
+            State.Go(AppState.Cafe);
+            EnterHub();
         }
 
-        private void OnPauseKey()
+        private void OnEscape()
         {
             if (Ui.DialogOpen)
             {
@@ -313,7 +366,7 @@ namespace Neko.Game.Core
                 return;
             }
 
-            if (State.Current == AppState.Shift) TogglePause();
+            if (State.Current == AppState.Cafe && !(Ui.Current is HubScreen)) Ui.Show<HubScreen>();
         }
 
         // -------------------------------------------------------------------------------
@@ -322,66 +375,40 @@ namespace Neko.Game.Core
 
         private void OnClick(Vector2 screen)
         {
+            if (!(Ui.Current is HallScreen hall)) return;
+
             var world = Camera.ScreenToWorld(screen);
-
-            if (State.Current == AppState.Cafe && Ui.Current is EditorScreen editor)
-            {
-                editor.PlaceAt(Mathf.RoundToInt(world.x), Mathf.RoundToInt(world.y));
-                return;
-            }
-
-            if (State.Current != AppState.Shift || _paused) return;
-
-            if (!ClickTargeting.Resolve(Presenter.Shift, world, out var kind, out var id)) return;
-
-            Presenter.Shift.CommandManager(kind, id);
-            Audio.Play(SoundId.UiTick, 0.4f);
+            hall.PlaceAt(Mathf.RoundToInt(world.x), Mathf.RoundToInt(world.y));
         }
 
         private void OnRightClick(Vector2 screen)
         {
+            if (!(Ui.Current is HallScreen hall)) return;
+
             var world = Camera.ScreenToWorld(screen);
-
-            if (State.Current == AppState.Cafe && Ui.Current is EditorScreen editor)
-            {
-                editor.RemoveAt(Mathf.RoundToInt(world.x), Mathf.RoundToInt(world.y));
-                return;
-            }
-
-            if (State.Current != AppState.Shift || _paused) return;
-
-            var worker = ClickTargeting.WorkerAt(Presenter.Shift, world);
-            if (worker == null) return;
-
-            if (Presenter.Shift.Rush(worker.Id)) Audio.Nya(worker.Maid.Archetype);
+            hall.RemoveAt(Mathf.RoundToInt(world.x), Mathf.RoundToInt(world.y));
         }
-
-        // -------------------------------------------------------------------------------
 
         private void Update()
         {
             Tween.TickAll();
 
-            if (State.Current != AppState.Shift || _paused) return;
+            if (State.Current != AppState.Shift) return;
 
-            ErrorBoundary.Guard("o turno", () => Presenter.Tick());
-            Ui.Get<ShiftHud>()?.Sync();
+            ErrorBoundary.Guard("o dia", () => Presenter.Tick());
+            Ui.Get<DayHud>()?.Sync();
         }
 
-        /// <summary>
-        /// Something threw. End the day cleanly rather than leave a café that no longer moves.
-        /// </summary>
+        /// <summary>Something threw. End the day cleanly rather than leave a café frozen.</summary>
         private void OnFailure(string what, System.Exception error)
         {
             if (State.Current != AppState.Shift) return;
 
             var result = Presenter.Shift?.Finish();
-            if (result != null) result.FailureReason = Strings.Get("error.shift");
+            if (result != null) result.FailureReason = Strings.Get("error.day");
 
-            Session.FinishDay(result);
-            State.Go(AppState.Results);
-            Ui.Show<ResultsScreen>();
-            Ui.Dialog(Strings.Get("error.title"), Strings.Get("error.shift"));
+            OnDayFinished(result);
+            Ui.Dialog(Strings.Get("error.title"), Strings.Get("error.day"));
         }
     }
 }

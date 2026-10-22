@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Neko.Game.Art;
 using Neko.Game.Core;
@@ -7,7 +8,12 @@ using UnityEngine.UI;
 
 namespace Neko.Game.Ui
 {
-    /// <summary>Where the day's takings turn into furniture, clothes and goodwill.</summary>
+    /// <summary>Furniture and clothes, bought with money. Cards are not sold here.</summary>
+    /// <remarks>
+    /// Kept strictly apart from the boxes. Money pays the rent and can end the business;
+    /// fichas buy cards and cannot. Mixing the two tills would let a player gamble the wage
+    /// bill, which is the one thing the design does not allow.
+    /// </remarks>
     public sealed class ShopScreen : Screen
     {
         private readonly List<GameObject> _rows = new List<GameObject>();
@@ -17,46 +23,43 @@ namespace Neko.Game.Ui
         private ShopItemKind _tab = ShopItemKind.Placeable;
 
         public GameSession Session;
-        public System.Action OnBack;
+        public Action OnBack;
 
         protected override void Build()
         {
-            Backdrop(Palette.Cream);
+            Scenery.Build(transform, withFloor: false);
 
-            var title = UiKit.Label(transform, Strings.Get("shop.title"), Typeface.Heading,
-                Palette.Text, TextAnchor.MiddleLeft, bold: true);
-            UiKit.Anchor(title.rectTransform, new Vector2(0f, 1f), new Vector2(24f, -16f));
-            title.rectTransform.sizeDelta = new Vector2(300f, 44f);
+            var title = UiKit.TrackedLabel(transform, "LOJA", Typeface.Heading, Palette.Cream, 6f);
+            UiKit.Anchor(title, new Vector2(0f, 1f), new Vector2(26f, -18f));
 
-            _money = UiKit.Label(transform, "", Typeface.Heading, Palette.Focus,
+            _money = UiKit.Label(transform, "", Typeface.Heading, Logo.Brass,
                 TextAnchor.MiddleRight, bold: true);
-            UiKit.Anchor(_money.rectTransform, new Vector2(1f, 1f), new Vector2(-90f, -16f));
-            _money.rectTransform.sizeDelta = new Vector2(300f, 44f);
+            UiKit.Anchor(_money.rectTransform, new Vector2(1f, 1f), new Vector2(-170f, -26f));
+            _money.rectTransform.sizeDelta = new Vector2(260f, 40f);
 
-            var back = UiKit.Button(transform, "<", new Vector2(56f, 48f), Palette.Wall,
-                () => OnBack?.Invoke());
-            UiKit.Anchor(back.GetComponent<RectTransform>(), new Vector2(1f, 1f),
-                new Vector2(-16f, -16f));
+            Scenery.PlankAt(transform, Strings.Get("dialog.back"), new Vector2(120f, 44f),
+                new Vector2(1f, 1f), new Vector2(-26f, -18f), () => OnBack?.Invoke(),
+                Typeface.Small);
 
             var tabs = UiKit.Row(transform, 10f);
-            UiKit.Anchor(tabs, new Vector2(0.5f, 1f), new Vector2(0f, -76f));
+            UiKit.Anchor(tabs, new Vector2(0.5f, 1f), new Vector2(0f, -82f));
             tabs.sizeDelta = new Vector2(700f, 48f);
 
             Tab(tabs, "shop.furniture", ShopItemKind.Placeable);
             Tab(tabs, "shop.clothes", ShopItemKind.Equipment);
             Tab(tabs, "shop.gifts", ShopItemKind.Gift);
 
-            _list = UiKit.ScrollList(transform, new Vector2(820f, 480f));
-            UiKit.Anchor((RectTransform)_list.parent, new Vector2(0.5f, 0f), new Vector2(0f, 20f));
+            _list = UiKit.ScrollList(transform, new Vector2(880f, 460f));
+            UiKit.Anchor((RectTransform)_list.parent, new Vector2(0.5f, 0f), new Vector2(0f, 24f));
         }
 
         private void Tab(Transform parent, string key, ShopItemKind kind)
         {
-            UiKit.Button(parent, Strings.Get(key), new Vector2(210f, 44f), Palette.Wall, () =>
+            Scenery.Plank(parent, Strings.Get(key), new Vector2(210f, 44f), () =>
             {
                 _tab = kind;
                 Refresh();
-            });
+            }, Typeface.Small);
         }
 
         public override void Refresh()
@@ -69,8 +72,7 @@ namespace Neko.Game.Ui
             }
 
             _rows.Clear();
-            _money.text = Session.Profile.Wallet.Money + " " +
-                          Strings.Get("cafe.money").ToLowerInvariant();
+            _money.text = Strings.Money(Session.Profile.Wallet.Money);
 
             foreach (var item in Shop.StockFor(Session.Profile.CafeLevel))
             {
@@ -82,36 +84,36 @@ namespace Neko.Game.Ui
         private void BuildRow(ShopItem item)
         {
             var affordable = Session.Profile.Wallet.CanAfford(item.Price);
-            var row = UiKit.Panel(_list, new Vector2(790f, 62f),
-                affordable ? Palette.Panel : Palette.WithAlpha(Palette.Wall, 0.5f));
+            var row = UiKit.Panel(_list, new Vector2(850f, 62f),
+                Palette.WithAlpha(affordable ? Palette.Panel : Palette.Wall, 0.92f), 0.2f);
+            _rows.Add(row.gameObject);
 
             var name = UiKit.Label(row, item.DisplayName, Typeface.Body, Palette.Text,
                 TextAnchor.MiddleLeft, bold: true);
-            name.rectTransform.sizeDelta = new Vector2(300f, 26f);
-            name.rectTransform.anchoredPosition = new Vector2(-220f, 12f);
+            name.rectTransform.sizeDelta = new Vector2(320f, 26f);
+            name.rectTransform.anchoredPosition = new Vector2(-240f, 12f);
 
             var description = UiKit.Label(row, item.Description, Typeface.Tiny, Palette.TextDim,
                 TextAnchor.MiddleLeft);
-            description.rectTransform.sizeDelta = new Vector2(440f, 22f);
-            description.rectTransform.anchoredPosition = new Vector2(-150f, -12f);
+            description.rectTransform.sizeDelta = new Vector2(470f, 22f);
+            description.rectTransform.anchoredPosition = new Vector2(-165f, -12f);
 
             var owned = Owned(item);
             if (owned > 0)
             {
                 var stock = UiKit.Label(row, Strings.Get("shop.owned") + ": " + owned,
-                    Typeface.Tiny, Palette.Focus, TextAnchor.MiddleRight, bold: true);
-                stock.rectTransform.sizeDelta = new Vector2(160f, 22f);
-                stock.rectTransform.anchoredPosition = new Vector2(190f, 12f);
+                    Typeface.Tiny, Logo.Brass, TextAnchor.MiddleRight, bold: true);
+                stock.rectTransform.sizeDelta = new Vector2(170f, 22f);
+                stock.rectTransform.anchoredPosition = new Vector2(215f, 14f);
             }
 
-            var buy = UiKit.Button(row, item.Price + "", new Vector2(150f, 44f),
-                affordable ? Palette.Focus : Palette.Wall, () => Buy(item));
+            var buy = Scenery.Plank(row, Strings.Money(item.Price), new Vector2(150f, 44f),
+                () => Buy(item), Typeface.Small, affordable ? Logo.Brass : Logo.Board);
 
             UiKit.Anchor(buy.GetComponent<RectTransform>(), new Vector2(1f, 0.5f),
                 new Vector2(-10f, 0f));
             buy.interactable = affordable;
-
-            _rows.Add(row.gameObject);
+            if (affordable) buy.GetComponentInChildren<Text>().color = Palette.Hex("#3A2A1A");
         }
 
         private int Owned(ShopItem item)
@@ -133,14 +135,6 @@ namespace Neko.Game.Ui
             return count;
         }
 
-        /// <summary>
-        /// Buys, or says why not.
-        /// </summary>
-        /// <remarks>
-        /// A gift needs somebody to give it to, so it asks. Everything else goes straight into
-        /// the inventory, and placing or wearing it is a separate decision taken on a screen
-        /// built for it.
-        /// </remarks>
         private void Buy(ShopItem item)
         {
             if (item.Kind != ShopItemKind.Gift)
@@ -155,8 +149,6 @@ namespace Neko.Game.Ui
                 return;
             }
 
-            // One maid per press, cycling: a picker here would be a third screen for a
-            // decision the player makes by looking at the roster anyway.
             var maid = Session.Profile.Maids[_giftTarget % Session.Profile.Maids.Count];
             _giftTarget++;
 

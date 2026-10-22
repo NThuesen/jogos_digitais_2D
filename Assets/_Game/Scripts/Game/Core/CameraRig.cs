@@ -19,7 +19,15 @@ namespace Neko.Game.Core
         public const float NarrowestAspect = 4f / 3f;
 
         /// <summary>Tiles of air left around the room so nothing touches the edge.</summary>
-        public const float Margin = 1.6f;
+        /// <summary>
+        /// Tiles of air around the room.
+        /// </summary>
+        /// <remarks>
+        /// Solved against 4:3 and then seen at 16:9, which is most of a tile of extra air
+        /// on each side already. At 1.6 on top of that the café sat in the middle of a
+        /// very large empty floor.
+        /// </remarks>
+        public const float Margin = 0.9f;
 
         private Vector3 _home;
         private float _shakeSeconds;

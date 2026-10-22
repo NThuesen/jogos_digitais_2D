@@ -8,84 +8,135 @@ namespace Neko.Game.Ui
     /// <remarks>
     /// Portuguese, in one table, because the course is Brazilian and the graders read the
     /// screen before they read the code. A test asserts that every key a screen asks for
-    /// exists and that nothing in here is still in English, which is what stops a hurried
-    /// "TODO" shipping as a label.
+    /// exists, which is what stops a hurried placeholder shipping as a label.
     /// </remarks>
     public static class Strings
     {
         private static readonly Dictionary<string, string> Table =
             new Dictionary<string, string>
             {
-                // Title
-                { "game.title", "Nekomata Café" },
-                { "game.subtitle", "um café de maids-gato" },
-                { "menu.play", "Abrir o café" },
+                // Identity
+                { "game.title", "Neko Maid Inc." },
+                { "game.subtitle", "escale suas maids. o dia corre sozinho." },
+
+                // Menu
+                { "menu.play", "Abrir a empresa" },
                 { "menu.continue", "Continuar" },
-                { "menu.newgame", "Começar de novo" },
-                { "menu.endless", "Modo sem fim" },
-                { "menu.settings", "Opções" },
-                { "menu.credits", "Créditos" },
+                { "menu.newgame", "Nova empresa" },
+                { "menu.newgameask", "Começar uma empresa nova? A atual se perde." },
                 { "menu.records", "Recordes" },
+                { "menu.bestday", "Melhor dia" },
+                { "menu.bestrevenue", "Melhor faturamento" },
+                { "menu.servedtotal", "Clientes atendidos" },
+                { "menu.lost", "Empresas falidas" },
+                { "menu.legendaries", "Lendárias encontradas" },
 
-                // Café
-                { "cafe.title", "O café" },
-                { "cafe.openday", "Abrir o dia" },
-                { "cafe.roster", "Maids" },
-                { "cafe.shop", "Loja" },
-                { "cafe.editor", "Salão" },
-                { "cafe.hire", "Contratar" },
-                { "cafe.day", "Dia" },
-                { "cafe.quota", "Meta de hoje" },
-                { "cafe.money", "Moedas" },
-                { "cafe.reputation", "Reputação" },
-                { "cafe.level", "Nível do café" },
-                { "cafe.tonext", "para o próximo nível" },
+                // The hub
+                { "hub.title", "A empresa" },
+                { "hub.open", "Abrir o dia" },
+                { "hub.lineup", "Escalação" },
+                { "hub.roster", "Elenco" },
+                { "hub.shop", "Loja" },
+                { "hub.boxes", "Caixas" },
+                { "hub.hall", "Salão" },
+                { "hub.day", "Dia" },
+                { "hub.money", "Caixa" },
+                { "hub.points", "Fichas" },
+                { "hub.level", "Nível" },
+                { "hub.fixedcosts", "Custo fixo por dia" },
+                { "hub.danger", "O caixa não cobre dois dias de custo. Corte despesa ou lucre hoje." },
+                { "hub.tonext", "para o próximo nível" },
 
-                // Shift
-                { "shift.time", "Tempo" },
-                { "shift.earned", "Caixa" },
-                { "shift.quota", "Meta" },
-                { "shift.served", "Atendidos" },
-                { "shift.angry", "Foram embora" },
-                { "shift.closing", "Fechando!" },
-                { "shift.rush", "Apressar" },
-                { "shift.encore", "Encore" },
-                { "shift.full", "Lotado!" },
-                { "shift.hint", "Clique em quem precisa de você. Botão direito apressa uma maid." },
+                // Lineup
+                { "lineup.title", "Escalação de hoje" },
+                { "lineup.chemistry", "Química" },
+                { "lineup.bench", "Banco" },
+                { "lineup.empty", "vazio" },
+                { "lineup.auto", "Escalar sozinho" },
+                { "lineup.clear", "Limpar" },
+                { "lineup.pick", "Escolha quem fica aqui" },
+                { "lineup.remove", "Tirar" },
+                { "lineup.inposition", "Em posição" },
+                { "lineup.outofposition", "Fora de posição" },
+                { "lineup.natural", "Posição natural" },
+                { "lineup.links", "Entrosamento" },
+                { "lineup.theme", "Combina com o salão" },
+                { "lineup.needall", "Recepção, salão e cozinha precisam de alguém." },
+                { "lineup.ready", "Pronto para abrir" },
 
-                // Results
-                { "results.title", "Fim do dia" },
-                { "results.met", "Meta batida!" },
-                { "results.missed", "Dia fraco" },
-                { "results.missedhint",
-                    "A meta de amanhã continua a mesma. Dá para tentar de novo." },
-                { "results.earned", "Faturamento" },
-                { "results.served", "Clientes atendidos" },
-                { "results.angry", "Clientes perdidos" },
-                { "results.turned", "Não couberam" },
-                { "results.reputation", "Reputação ganha" },
-                { "results.levelup", "Subiu de nível!" },
-                { "results.continue", "Voltar ao café" },
+                // Positions
+                { "role.reception", "Recepção" },
+                { "role.floor", "Salão" },
+                { "role.kitchen", "Cozinha" },
+                { "role.stage", "Palco" },
+                { "role.management", "Gerência" },
+
+                // Watching the day
+                { "day.title", "O dia" },
+                { "day.clock", "Relógio" },
+                { "day.till", "Caixa do dia" },
+                { "day.served", "Atendidos" },
+                { "day.wrong", "Pedidos errados" },
+                { "day.angry", "Foram embora" },
+                { "day.closing", "Fechando!" },
+                { "day.speed", "Velocidade" },
+                { "day.skip", "Pular para o fim" },
+                { "day.watching", "Você não pode interferir. O dia é da escalação." },
+
+                // Dashboard
+                { "books.title", "Balanço do dia" },
+                { "books.in", "Entrou" },
+                { "books.out", "Saiu" },
+                { "books.dishes", "Pratos servidos" },
+                { "books.tips", "Gorjetas" },
+                { "books.wages", "Salários" },
+                { "books.rent", "Aluguel" },
+                { "books.ingredients", "Ingredientes" },
+                { "books.revenue", "Receita" },
+                { "books.costs", "Despesa" },
+                { "books.profit", "Lucro" },
+                { "books.loss", "Prejuízo" },
+                { "books.balance", "Caixa depois" },
+                { "books.points", "Fichas ganhas" },
+                { "books.wrong", "Pedidos errados" },
+                { "books.burnt", "Pratos queimados" },
+                { "books.angry", "Clientes perdidos" },
+                { "books.turned", "Não couberam" },
+                { "books.satisfaction", "Satisfação" },
+                { "books.chemistry", "Química do time" },
+                { "books.levelup", "Subiu de nível!" },
+                { "books.continue", "Voltar à empresa" },
+                { "books.warning", "Atenção: o caixa está apertado." },
+
+                // Bankruptcy
+                { "bust.title", "Falência" },
+                { "bust.body",
+                    "O caixa zerou e a Neko Maid Inc. fechou as portas. Seus recordes ficam; " +
+                    "a empresa, não." },
+                { "bust.restart", "Abrir outra empresa" },
 
                 // Roster
-                { "roster.title", "As maids" },
-                { "roster.onshift", "De plantão" },
-                { "roster.bench", "Descansando" },
+                { "roster.title", "Elenco" },
                 { "roster.level", "Nível" },
-                { "roster.bond", "Afinidade" },
-                { "roster.mood", "Ânimo" },
+                { "roster.salary", "Salário" },
+                { "roster.rarity", "Raridade" },
+                { "roster.traits", "Traços" },
+                { "roster.notraits", "Nenhum traço" },
+                { "roster.tags", "Etiquetas" },
                 { "roster.serve", "Salão" },
                 { "roster.cook", "Cozinha" },
                 { "roster.charm", "Charme" },
                 { "roster.stamina", "Fôlego" },
-                { "roster.skills", "Habilidades" },
+                { "roster.mood", "Ânimo" },
+                { "roster.bond", "Afinidade" },
+                { "roster.dismiss", "Dispensar" },
+                { "roster.dismissask", "Dispensar e receber fichas de volta?" },
                 { "roster.gear", "Vestuário" },
                 { "roster.empty", "Nada equipado" },
                 { "roster.setbonus", "Conjunto completo" },
                 { "roster.signature", "Marca registrada" },
-                { "roster.rosterfull", "O plantão de hoje já está cheio." },
-                { "roster.put", "Pôr de plantão" },
-                { "roster.remove", "Tirar do plantão" },
+                { "roster.skills", "Habilidades" },
+                { "roster.full", "O elenco está no limite deste nível." },
 
                 // Shop
                 { "shop.title", "Loja" },
@@ -95,55 +146,45 @@ namespace Neko.Game.Ui
                 { "shop.clothes", "Roupas" },
                 { "shop.gifts", "Presentes" },
                 { "shop.forwho", "Para quem?" },
-                { "shop.bought", "Comprado!" },
 
-                // Hiring
-                { "hire.title", "Candidatas" },
-                { "hire.cost", "Contratar por" },
-                { "hire.refresh", "Novas candidatas amanhã" },
-                { "hire.hired", "Contratada!" },
+                // Boxes
+                { "box.title", "Caixas" },
+                { "box.open", "Abrir" },
+                { "box.odds", "Chances" },
+                { "box.got", "Veio na caixa" },
+                { "box.duplicate", "Elenco cheio — virou ficha" },
+                { "box.again", "Abrir outra" },
+                { "box.done", "Guardar" },
+                { "box.nopoints", "Fichas insuficientes." },
 
-                // Editor
-                { "editor.title", "Arrumar o salão" },
-                { "editor.ambience", "Ambiente" },
-                { "editor.flow", "Caminhada" },
-                { "editor.seats", "Lugares" },
-                { "editor.theme", "Tema" },
-                { "editor.notheme", "sem tema" },
-                { "editor.stock", "No estoque" },
-                { "editor.place", "Clique no salão para colocar" },
-                { "editor.remove", "Clique com o direito para guardar" },
-                { "editor.rotate", "R gira" },
-                { "editor.blocked", "Não cabe aí." },
-                { "editor.flowhint", "Quanto menor, menos as maids andam." },
+                // Hall
+                { "hall.title", "Arrumar o salão" },
+                { "hall.ambience", "Ambiente" },
+                { "hall.flow", "Caminhada" },
+                { "hall.seats", "Lugares" },
+                { "hall.theme", "Tema" },
+                { "hall.notheme", "sem tema" },
+                { "hall.stock", "No estoque" },
+                { "hall.place", "Clique no salão para colocar" },
+                { "hall.rotate", "R gira" },
+                { "hall.blocked", "Não cabe aí." },
 
-                // Pause and settings
-                { "pause.title", "Pausa" },
-                { "pause.resume", "Voltar" },
-                { "pause.quit", "Sair para o menu" },
-                { "settings.title", "Opções" },
-                { "settings.music", "Música" },
-                { "settings.sfx", "Efeitos" },
-                { "settings.back", "Voltar" },
-                { "settings.wipe", "Apagar o save" },
-                { "settings.wipeconfirm", "Apagar tudo e começar de novo?" },
-
-                // Dialogs and errors
+                // Shared
                 { "dialog.ok", "Entendi" },
                 { "dialog.cancel", "Cancelar" },
                 { "dialog.yes", "Sim" },
                 { "dialog.no", "Não" },
+                { "dialog.back", "Voltar" },
                 { "error.title", "Algo deu errado" },
-                { "error.shift",
-                    "O dia terminou mais cedo por um problema interno. Nada foi perdido." },
+                { "error.day", "O dia terminou mais cedo por um problema interno." },
+                { "settings.music", "Música" },
+                { "settings.sfx", "Efeitos" },
 
-                // Credits
-                { "credits.title", "Créditos" },
                 { "credits.body",
-                    "Nekomata Café. Nenhuma imagem e nenhum som foram importados: " +
-                    "todos os sprites são gerados em tempo de execução a partir de campos " +
-                    "de distância, e todos os sons são sintetizados. Não há assets de " +
-                    "terceiros neste projeto." },
+                    "Neko Maid Inc. Nenhuma imagem e nenhum som foram importados: todos os " +
+                    "sprites são gerados em tempo de execução a partir de campos de " +
+                    "distância, e todos os sons são sintetizados. Não há assets de terceiros " +
+                    "neste projeto." },
             };
 
         public static IReadOnlyDictionary<string, string> All => Table;
@@ -159,5 +200,14 @@ namespace Neko.Game.Ui
             key != null && Table.TryGetValue(key, out var text) ? text : "[" + key + "]";
 
         public static bool Has(string key) => key != null && Table.ContainsKey(key);
+
+        /// <summary>Money, the way every screen writes it.</summary>
+        public static string Money(int amount) => amount.ToString("N0", Culture) + " ¥";
+
+        public static string Signed(int amount) =>
+            (amount >= 0 ? "+" : "−") + System.Math.Abs(amount).ToString("N0", Culture) + " ¥";
+
+        private static readonly System.Globalization.CultureInfo Culture =
+            new System.Globalization.CultureInfo("pt-BR");
     }
 }

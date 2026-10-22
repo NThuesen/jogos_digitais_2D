@@ -24,6 +24,19 @@ namespace Neko.Tests.PlayMode
     {
         private const string ScenePath = "Assets/_Game/Scenes/Boot.unity";
 
+        /// <summary>Every screen in the game, as something that can be shown.</summary>
+        private static System.Action[] Screens(GameRoot root) => new System.Action[]
+        {
+            () => root.Ui.Show<LineupScreen>(),
+            () => root.Ui.Show<RosterScreen>(),
+            () => root.Ui.Show<ShopScreen>(),
+            () => root.Ui.Show<BoxScreen>(),
+            () => root.Ui.Show<HallScreen>(),
+            () => root.Ui.Show<HubScreen>(),
+            () => root.Ui.Show<BooksScreen>(),
+            () => root.Ui.Show<BustScreen>(),
+        };
+
         [UnitySetUp]
         public IEnumerator Load()
         {
@@ -97,13 +110,13 @@ namespace Neko.Tests.PlayMode
             root.Ui.Get<MenuScreen>().OnPlay.Invoke();
             yield return null;
             Assert.AreEqual(AppState.Cafe, root.State.Current);
-            Assert.IsTrue(root.Ui.Get<CafeScreen>().Visible);
+            Assert.IsTrue(root.Ui.Get<HubScreen>().Visible);
 
-            root.Ui.Get<CafeScreen>().OnOpenDay.Invoke();
+            root.Ui.Get<HubScreen>().OnOpenDay.Invoke();
             yield return null;
             Assert.AreEqual(AppState.Shift, root.State.Current);
             Assert.IsNotNull(root.Presenter.Shift);
-            Assert.IsTrue(root.Ui.Get<ShiftHud>().Visible);
+            Assert.IsTrue(root.Ui.Get<DayHud>().Visible);
 
             LogAssert.NoUnexpectedReceived();
         }
@@ -145,20 +158,49 @@ namespace Neko.Tests.PlayMode
             root.Ui.Get<MenuScreen>().OnPlay.Invoke();
             yield return null;
 
-            root.Ui.Show<RosterScreen>();
-            yield return null;
-            root.Ui.Show<ShopScreen>();
-            yield return null;
-            root.Ui.Show<EditorScreen>();
-            yield return null;
-            root.Ui.Show<CafeScreen>();
-            yield return null;
-            root.Ui.Show<ResultsScreen>();
-            yield return null;
-            root.Ui.Show<PauseScreen>();
-            yield return null;
+            foreach (var show in Screens(root))
+            {
+                show();
+                yield return null;
+            }
 
             LogAssert.NoUnexpectedReceived();
+        }
+
+        [UnityTest]
+        public IEnumerator ThereIsNoWayToTouchTheCafeWhileADayIsRunning()
+        {
+            // The pivot, as a test. If a pointer ever reaches the simulation again, the
+            // lineup stops being the whole of the player's turn.
+            var root = GameRoot.Instance;
+            root.Ui.Get<MenuScreen>().OnPlay.Invoke();
+            yield return null;
+
+            root.Ui.Get<HubScreen>().OnOpenDay.Invoke();
+            yield return null;
+
+            var before = root.Presenter.Shift.Earned;
+            for (var i = 0; i < 20; i++)
+            {
+                root.Input.SendClickForTest(new Vector2(640f, 360f));
+                yield return null;
+            }
+
+            Assert.AreEqual(AppState.Shift, root.State.Current);
+            Assert.GreaterOrEqual(root.Presenter.Shift.Earned, before);
+            LogAssert.NoUnexpectedReceived();
+        }
+
+        [UnityTest]
+        public IEnumerator ANewBusinessOpensWithAPlayableLineup()
+        {
+            var root = GameRoot.Instance;
+            root.Ui.Get<MenuScreen>().OnNewGame.Invoke();
+            yield return null;
+
+            Assert.IsNull(root.Session.WhyNotReady(),
+                "a brand new business has to be able to open its doors");
+            Assert.AreEqual(3, root.Session.Profile.Maids.Count);
         }
 
         [UnityTest]
@@ -169,12 +211,7 @@ namespace Neko.Tests.PlayMode
             root.Ui.Get<MenuScreen>().OnPlay.Invoke();
             yield return null;
 
-            foreach (var screen in new System.Action[]
-                     {
-                         () => root.Ui.Show<RosterScreen>(), () => root.Ui.Show<ShopScreen>(),
-                         () => root.Ui.Show<EditorScreen>(), () => root.Ui.Show<CafeScreen>(),
-                         () => root.Ui.Show<ResultsScreen>(), () => root.Ui.Show<PauseScreen>(),
-                     })
+            foreach (var screen in Screens(root))
             {
                 screen();
                 yield return null;

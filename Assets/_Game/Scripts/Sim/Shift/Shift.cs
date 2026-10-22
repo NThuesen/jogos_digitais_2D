@@ -640,6 +640,18 @@ namespace Neko.Sim.Shift
             var chemistry = _setup.Chemistry.For(maid.Id);
             var home = HomeOf(role, door);
 
+            // Spread along the row by how many of this position came before her, so two
+            // cooks do not stand in exactly the same spot and read as one.
+            var sameRole = 0;
+            for (var i = 0; i < _workers.Count; i++)
+            {
+                if (_workers[i].Role == role) sameRole++;
+            }
+
+            var stationX = Curves.Clamp(home.X + sameRole * 1.15f, 0f, Grid.Width - 1f);
+            var stationY = Curves.Clamp(home.Y - 0.45f + (index % 2) * 0.9f, 0f,
+                Grid.Height - 1f);
+
             return new Worker
             {
                 Id = id,
@@ -647,8 +659,10 @@ namespace Neko.Sim.Shift
                 Role = role,
                 Chemistry = chemistry?.Score ?? 0,
                 InPosition = chemistry?.InPosition ?? maid.NaturalRole == role,
-                X = home.X,
-                Y = Curves.Clamp(home.Y + (index % 3) * 0.6f - 0.6f, 0f, Grid.Height - 1f),
+                StationX = stationX,
+                StationY = stationY,
+                X = stationX,
+                Y = stationY,
             };
         }
 
@@ -747,7 +761,8 @@ namespace Neko.Sim.Shift
 
         private void Idle(Worker worker, float dt)
         {
-            StepToward(worker, HomeOf(worker.Role, Grid.Door), MaidMath.BaseWalkSpeed * 0.5f * dt);
+            StepToward(worker, worker.StationX, worker.StationY,
+                MaidMath.BaseWalkSpeed * 0.5f * dt);
 
             worker.Maid.Mood += IdleMoodRecoveryPerSecond * dt;
             if (worker.Maid.Mood <= 0f) SendOnBreak(worker);
@@ -835,10 +850,14 @@ namespace Neko.Sim.Shift
             CompleteTask(worker, task, derived);
         }
 
-        private static void StepToward(Worker worker, Cell target, float distance)
+        private static void StepToward(Worker worker, Cell target, float distance) =>
+            StepToward(worker, target.X, target.Y, distance);
+
+        private static void StepToward(Worker worker, float targetX, float targetY,
+            float distance)
         {
-            var dx = target.X - worker.X;
-            var dy = target.Y - worker.Y;
+            var dx = targetX - worker.X;
+            var dy = targetY - worker.Y;
             var length = (float)Math.Sqrt(dx * dx + dy * dy);
             if (length <= 1e-4f) return;
 

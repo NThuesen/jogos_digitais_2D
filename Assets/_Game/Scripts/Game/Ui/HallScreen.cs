@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Neko.Game.Art;
 using Neko.Game.Core;
@@ -12,12 +13,11 @@ namespace Neko.Game.Ui
     /// Arranging the room, with the four numbers it is worth shown live.
     /// </summary>
     /// <remarks>
-    /// The design calls decoration without consequence an anti-goal. What makes this a layout
-    /// puzzle rather than a dress-up screen is that Ambience, Flow and Seats all move while
-    /// the player drags, and the floor turns into a heat map of how far anybody has to walk —
-    /// so a bad layout is visible before the day that proves it.
+    /// Decoration with consequences. Ambience and Flow feed the day directly, and the room's
+    /// dominant theme feeds the lineup's chemistry — so a player who commits the whole room
+    /// to one style and then hires maids from it is making a real, compounding decision.
     /// </remarks>
-    public sealed class EditorScreen : Screen
+    public sealed class HallScreen : Screen
     {
         private readonly List<GameObject> _stock = new List<GameObject>();
 
@@ -30,36 +30,28 @@ namespace Neko.Game.Ui
         public GameSession Session;
         public RoomView Room;
         public CameraRig Camera;
-        public System.Action OnBack;
-
-        public string Holding => _holding;
+        public Action OnBack;
 
         protected override void Build()
         {
-            var header = UiKit.Panel(transform, new Vector2(1240f, 64f),
-                Palette.WithAlpha(Palette.Panel, 0.95f));
-            UiKit.Anchor(header, new Vector2(0.5f, 1f), new Vector2(0f, -10f));
+            var bar = Scenery.Plaque(transform, new Vector2(1240f, 58f));
+            UiKit.Anchor((RectTransform)bar.parent, new Vector2(0.5f, 1f), new Vector2(0f, -8f));
 
-            var title = UiKit.Label(header, Strings.Get("editor.title"), Typeface.Body,
-                Palette.Text, TextAnchor.MiddleLeft, bold: true);
-            title.rectTransform.sizeDelta = new Vector2(300f, 30f);
+            var title = UiKit.Label(bar, Strings.Get("hall.title"), Typeface.Body, Palette.Text,
+                TextAnchor.MiddleLeft, bold: true);
+            title.rectTransform.sizeDelta = new Vector2(300f, 28f);
             title.rectTransform.anchoredPosition = new Vector2(-440f, 0f);
 
-            _metrics = UiKit.Label(header, "", Typeface.Small, Palette.Text,
-                TextAnchor.MiddleRight);
-            _metrics.rectTransform.sizeDelta = new Vector2(820f, 30f);
-            _metrics.rectTransform.anchoredPosition = new Vector2(150f, 0f);
+            _metrics = UiKit.Label(bar, "", Typeface.Small, Palette.Text, TextAnchor.MiddleRight);
+            _metrics.rectTransform.sizeDelta = new Vector2(820f, 28f);
+            _metrics.rectTransform.anchoredPosition = new Vector2(140f, 0f);
 
-            var back = UiKit.Button(transform, "<", new Vector2(56f, 48f), Palette.Wall, () =>
-            {
-                _holding = null;
-                OnBack?.Invoke();
-            });
-            UiKit.Anchor(back.GetComponent<RectTransform>(), new Vector2(1f, 1f),
-                new Vector2(-16f, -84f));
+            Scenery.PlankAt(transform, Strings.Get("dialog.back"), new Vector2(120f, 44f),
+                new Vector2(1f, 1f), new Vector2(-26f, -78f), () => OnBack?.Invoke(),
+                Typeface.Small);
 
-            _picked = UiKit.Label(transform, Strings.Get("editor.place"), Typeface.Small,
-                Palette.TextDim);
+            _picked = UiKit.Label(transform, Strings.Get("hall.place"), Typeface.Small,
+                Palette.WithAlpha(Palette.Cream, 0.85f));
             UiKit.Anchor(_picked.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 150f));
             _picked.rectTransform.sizeDelta = new Vector2(900f, 26f);
 
@@ -85,13 +77,13 @@ namespace Neko.Game.Ui
             var metrics = Session.Profile.Grid.Metrics();
             var theme = metrics.ThemeBonusActive
                 ? metrics.DominantTheme.ToString()
-                : Strings.Get("editor.notheme");
+                : Strings.Get("hall.notheme");
 
             _metrics.text =
-                Strings.Get("editor.seats") + " " + metrics.Seats + "    " +
-                Strings.Get("editor.ambience") + " " + metrics.Ambience.ToString("0.0") + "    " +
-                Strings.Get("editor.flow") + " " + metrics.Flow.ToString("0.0") + "    " +
-                Strings.Get("editor.theme") + " " + theme;
+                Strings.Get("hall.seats") + " " + metrics.Seats + "    " +
+                Strings.Get("hall.ambience") + " " + metrics.Ambience.ToString("0.0") + "    " +
+                Strings.Get("hall.flow") + " " + metrics.Flow.ToString("0.0") + "    " +
+                Strings.Get("hall.theme") + " " + theme;
         }
 
         private void BuildStock()
@@ -113,7 +105,7 @@ namespace Neko.Game.Ui
             foreach (var pair in counts)
             {
                 var def = PlaceableCatalog.ById(pair.Key);
-                var card = UiKit.Panel(_stockList, new Vector2(112f, 100f), Palette.Panel);
+                var card = UiKit.Panel(_stockList, new Vector2(112f, 100f), Palette.Panel, 0.2f);
                 card.GetComponent<Image>().raycastTarget = true;
 
                 var icon = new GameObject("Icon", typeof(RectTransform)).AddComponent<Image>();
@@ -137,8 +129,8 @@ namespace Neko.Game.Ui
                 {
                     _holding = id;
                     _rotated = false;
-                    _picked.text = def.DisplayName + " — " + Strings.Get("editor.place") +
-                                   " · " + Strings.Get("editor.rotate");
+                    _picked.text = def.DisplayName + " — " + Strings.Get("hall.place") +
+                                   " · " + Strings.Get("hall.rotate");
                 });
 
                 _stock.Add(card.gameObject);
@@ -146,9 +138,9 @@ namespace Neko.Game.Ui
 
             if (counts.Count != 0) return;
 
-            var empty = UiKit.Label(_stockList, Strings.Get("editor.stock") + ": 0 — " +
-                                                Strings.Get("shop.title"), Typeface.Small,
-                Palette.TextDim);
+            var empty = UiKit.Label(_stockList,
+                Strings.Get("hall.stock") + ": 0 — " + Strings.Get("shop.title"),
+                Typeface.Small, Palette.TextDim);
             empty.rectTransform.sizeDelta = new Vector2(600f, 40f);
             _stock.Add(empty.gameObject);
         }
@@ -156,7 +148,7 @@ namespace Neko.Game.Ui
         public void Rotate()
         {
             _rotated = !_rotated;
-            _picked.text = Strings.Get("editor.rotate") + ": " +
+            _picked.text = Strings.Get("hall.rotate") + ": " +
                            Strings.Get(_rotated ? "dialog.yes" : "dialog.no");
         }
 
@@ -168,7 +160,7 @@ namespace Neko.Game.Ui
             var def = PlaceableCatalog.ById(_holding);
             if (!Session.Profile.Grid.Place(def, x, y, _rotated))
             {
-                _picked.text = Strings.Get("editor.blocked");
+                _picked.text = Strings.Get("hall.blocked");
                 return false;
             }
 
