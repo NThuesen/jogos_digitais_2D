@@ -10,8 +10,10 @@ namespace Neko.Sim.Maids
     /// The rules are deliberately uneven. Ojou-sama's refusal to bus tables is a real cost
     /// and Dojikko is high variance on purpose, because a roster that is only ever "take the
     /// highest numbers" is not a composition problem and the personalities would be paint.
-    /// Accents are nine hues spread roughly evenly around the wheel so that no two maids read
-    /// as the same person at the size the player actually sees them.
+    /// Accents sit on a ladder of lightness four points apart, not just on a spread of hues:
+    /// nine colours at the same value differ only in a cue a small sprite barely carries, and
+    /// palette_check reported eleven collisions for the first attempt. Neko.Game.Art.Palette
+    /// has the measurements.
     /// </remarks>
     public static class ArchetypeTable
     {
@@ -26,7 +28,7 @@ namespace Neko.Sim.Maids
                 MoveMultiplier = 1.35f,
                 MoodDrainMultiplier = 1.6f,
                 BaseFumbleChance = 0.10f,
-                AccentHex = "#E8913C",
+                AccentHex = "#D68946",
                 SilhouetteTell = "twin tails, high",
                 Flavour = "Corre o salão inteiro em dez segundos. E cansa em cinco minutos.",
             },
@@ -38,7 +40,7 @@ namespace Neko.Sim.Maids
                 GrowthWeights = new Stats(2, 5, 1, 2),
                 MoveMultiplier = 0.8f,
                 NeverFumbles = true,
-                AccentHex = "#5BA8D6",
+                AccentHex = "#6BAED0",
                 SilhouetteTell = "straight bob, half-lidded eyes",
                 Flavour = "Nunca derruba nada. Nunca tem pressa. Nunca comenta.",
             },
@@ -52,7 +54,7 @@ namespace Neko.Sim.Maids
                 CrowdedThreshold = 0.60f,
                 CrowdedSpeedBonus = 0.30f,
                 IdleTipPenalty = 0.15f,
-                AccentHex = "#E05A5A",
+                AccentHex = "#D34F4F",
                 SilhouetteTell = "side ponytail, large ribbon",
                 Flavour = "Só trabalha direito quando o salão enche. Não é por você, é pelo café.",
             },
@@ -64,7 +66,7 @@ namespace Neko.Sim.Maids
                 GrowthWeights = new Stats(3, 2, 4, 1),
                 BaseFumbleChance = 0.08f,
                 ClumsyDropChance = 0.12f,
-                AccentHex = "#7FBF6A",
+                AccentHex = "#4DA33F",
                 SilhouetteTell = "oversized apron bow, ahoge",
                 Flavour = "Derruba um prato a cada oito. A mesa inteira acha adorável.",
             },
@@ -77,7 +79,7 @@ namespace Neko.Sim.Maids
                 BaseFumbleChance = 0.06f,
                 WillBusTables = false,
                 VipWeightMultiplier = 2f,
-                AccentHex = "#D96BB8",
+                AccentHex = "#A42F79",
                 SilhouetteTell = "drill curls, tiara",
                 Flavour = "Atrai a clientela importante. Limpar mesa, jamais.",
             },
@@ -90,7 +92,7 @@ namespace Neko.Sim.Maids
                 BaseFumbleChance = 0.07f,
                 NeighbourSpeedAura = 0.15f,
                 XpShareFraction = 0.25f,
-                AccentHex = "#7B86D1",
+                AccentHex = "#636AC5",
                 SilhouetteTell = "long hair, shawl",
                 Flavour = "Quem trabalha perto dela rende mais. E aprende mais rápido.",
             },
@@ -104,7 +106,7 @@ namespace Neko.Sim.Maids
                 HasEncore = true,
                 EncoreCooldownSeconds = 90f,
                 EncorePatienceRestored = 0.70f,
-                AccentHex = "#B578D1",
+                AccentHex = "#9940B5",
                 SilhouetteTell = "star hairpin, cape",
                 Flavour = "Sobe no palco e o salão inteiro esquece que estava esperando.",
             },
@@ -117,7 +119,7 @@ namespace Neko.Sim.Maids
                 CookMultiplier = 1.8f,
                 BaseFumbleChance = 0.05f,
                 EatChance = 0.2f,
-                AccentHex = "#D9BE4A",
+                AccentHex = "#C9B04A",
                 SilhouetteTell = "round face, chef scarf",
                 Flavour = "Cozinha quase no dobro da velocidade. Come um prato a cada cinco.",
             },
@@ -131,7 +133,7 @@ namespace Neko.Sim.Maids
                 CookMultiplier = 1.5f,
                 BaseFumbleChance = 0.05f,
                 CharmDoublesAtStation = true,
-                AccentHex = "#4FB89B",
+                AccentHex = "#32957D",
                 SilhouetteTell = "hair over one eye, mask down",
                 Flavour = "Péssima na porta, excelente no fogão. O prato dela sai bonito.",
             },
