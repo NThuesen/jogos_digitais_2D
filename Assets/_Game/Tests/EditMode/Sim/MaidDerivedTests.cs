@@ -8,10 +8,10 @@ namespace Neko.Tests.Sim
         private static Maid Fresh(Archetype kind, int level = 1) => Maid.Create(1, "Teste", kind, level);
 
         private static ShiftSnapshot Floor(float occupancy = 0f, bool idle = false) =>
-            new ShiftSnapshot(occupancy, false, idle, 0f, false);
+            new ShiftSnapshot(occupancy, idle ? WorkKind.None : WorkKind.Deliver);
 
         private static ShiftSnapshot AtStation(float occupancy = 0f) =>
-            new ShiftSnapshot(occupancy, true, false, 0f, false);
+            new ShiftSnapshot(occupancy, WorkKind.Cook);
 
         [Test]
         public void GenkiMovesThirtyFivePercentFasterThanABaselineOfTheSameStats()
@@ -142,8 +142,8 @@ namespace Neko.Tests.Sim
         {
             var maid = Fresh(Archetype.Idol);
 
-            var alone = MaidMath.Derive(maid, new ShiftSnapshot(0f, false, false, 0f, false));
-            var beside = MaidMath.Derive(maid, new ShiftSnapshot(0f, false, false, 0.30f, false));
+            var alone = MaidMath.Derive(maid, new ShiftSnapshot(0f, WorkKind.Deliver));
+            var beside = MaidMath.Derive(maid, new ShiftSnapshot(0f, WorkKind.Deliver, 0.30f));
 
             Assert.That(beside.MoveSpeed / alone.MoveSpeed, Is.EqualTo(1.30f).Within(1e-4f));
             Assert.That(beside.ServeSpeed / alone.ServeSpeed, Is.EqualTo(1.30f).Within(1e-4f));
@@ -154,8 +154,8 @@ namespace Neko.Tests.Sim
         {
             var maid = Fresh(Archetype.Idol);
 
-            var calm = MaidMath.Derive(maid, new ShiftSnapshot(0f, false, false, 0f, false));
-            var rushed = MaidMath.Derive(maid, new ShiftSnapshot(0f, false, false, 0f, true));
+            var calm = MaidMath.Derive(maid, new ShiftSnapshot(0f, WorkKind.Deliver));
+            var rushed = MaidMath.Derive(maid, new ShiftSnapshot(0f, WorkKind.Deliver, 0f, true));
 
             Assert.That(rushed.ServeSpeed / calm.ServeSpeed, Is.EqualTo(1.6f).Within(1e-4f));
         }

@@ -1,39 +1,62 @@
 namespace Neko.Sim.Maids
 {
     /// <summary>
+    /// What a worker is doing, in terms the maid rules can read.
+    /// </summary>
+    /// <remarks>
+    /// A plain mirror of the shift's own task kinds, declared here so that archetype and skill
+    /// rules can depend on the work without <c>Maids</c> depending on <c>Shift</c>. The
+    /// simulation's dependencies run one way on purpose.
+    /// </remarks>
+    public enum WorkKind
+    {
+        None = 0,
+        Greet,
+        TakeOrder,
+        Cook,
+        Deliver,
+        Bus,
+    }
+
+    /// <summary>
     /// What the room looks like from one maid's position, right now.
     /// </summary>
     /// <remarks>
-    /// The archetype rules are situational — Tsundere only works when it is busy, Mukuchi
-    /// only plates well at a station — so deriving a speed needs the moment as well as the
-    /// maid. Passing a snapshot rather than the whole shift keeps <see cref="MaidMath"/>
-    /// testable with four numbers.
+    /// The archetype and skill rules are situational — Tsundere only works when it is busy,
+    /// Mukuchi only plates well at a station, Clean Sweep only helps with tables — so deriving
+    /// a speed needs the moment as well as the maid. Passing a snapshot rather than the whole
+    /// shift keeps <see cref="MaidMath"/> testable with five numbers.
     /// </remarks>
     public readonly struct ShiftSnapshot
     {
         /// <summary>Fraction of seats taken, 0..1.</summary>
         public readonly float TableOccupancy;
 
-        public readonly bool AtStation;
-
-        public readonly bool Idle;
+        public readonly WorkKind Work;
 
         /// <summary>Summed speed aura of the maids working near her. Usually zero.</summary>
         public readonly float NeighbourAura;
 
         public readonly bool Rushing;
 
-        public ShiftSnapshot(float tableOccupancy, bool atStation, bool idle, float neighbourAura,
-            bool rushing)
+        /// <summary>Tickets on the rail. Batch Cooking pays off exactly when this is high.</summary>
+        public readonly int QueuedTickets;
+
+        public ShiftSnapshot(float tableOccupancy, WorkKind work, float neighbourAura = 0f,
+            bool rushing = false, int queuedTickets = 0)
         {
             TableOccupancy = tableOccupancy;
-            AtStation = atStation;
-            Idle = idle;
+            Work = work;
             NeighbourAura = neighbourAura;
             Rushing = rushing;
+            QueuedTickets = queuedTickets;
         }
 
-        public static ShiftSnapshot Still => new ShiftSnapshot(0f, false, true, 0f, false);
+        public bool AtStation => Work == WorkKind.Cook;
+
+        public bool Idle => Work == WorkKind.None;
+
+        public static ShiftSnapshot Still => new ShiftSnapshot(0f, WorkKind.None);
     }
 
     /// <summary>
@@ -69,14 +92,11 @@ namespace Neko.Sim.Maids
             MoodDrainPerSecond = moodDrainPerSecond;
         }
 
-        public MaidDerived WithSpeeds(float moveSpeed, float greetSpeed, float serveSpeed,
-            float cookSpeed) =>
-            new MaidDerived(moveSpeed, greetSpeed, serveSpeed, cookSpeed, TipMultiplier,
-                FumbleChance, DropChance, MoodDrainPerSecond);
-
-        public MaidDerived WithTip(float tipMultiplier) =>
-            new MaidDerived(MoveSpeed, GreetSpeed, ServeSpeed, CookSpeed, tipMultiplier,
-                FumbleChance, DropChance, MoodDrainPerSecond);
+        public MaidDerived Scaled(float move = 1f, float greet = 1f, float serve = 1f,
+            float cook = 1f, float tip = 1f) =>
+            new MaidDerived(MoveSpeed * move, GreetSpeed * greet, ServeSpeed * serve,
+                CookSpeed * cook, TipMultiplier * tip, FumbleChance, DropChance,
+                MoodDrainPerSecond);
 
         public MaidDerived WithFumble(float fumbleChance, float dropChance) =>
             new MaidDerived(MoveSpeed, GreetSpeed, ServeSpeed, CookSpeed, TipMultiplier,

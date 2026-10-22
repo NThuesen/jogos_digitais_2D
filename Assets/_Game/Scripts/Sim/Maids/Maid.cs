@@ -30,6 +30,9 @@ namespace Neko.Sim.Maids
         public int Xp;
         public int Bond;
 
+        /// <summary>Gift points earned. Bond level is a function of this, never set directly.</summary>
+        public int BondPoints;
+
         /// <summary>Stats before gear, bond and set bonuses.</summary>
         public Stats Base;
 

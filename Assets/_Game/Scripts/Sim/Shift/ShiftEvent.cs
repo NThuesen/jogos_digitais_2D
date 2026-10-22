@@ -26,6 +26,7 @@ namespace Neko.Sim.Shift
         LeftHappy,
         Bussed,
         MoodEmpty,
+        SecondWind,
         BackFromBreak,
         Rushed,
         EncoreUsed,

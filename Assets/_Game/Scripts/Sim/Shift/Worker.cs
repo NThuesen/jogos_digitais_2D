@@ -62,6 +62,11 @@ namespace Neko.Sim.Shift
         public float RushRemaining;
         public float EncoreCooldown;
 
+        /// <summary>Mise en Place and Second Wind each fire once a day, and this is how.</summary>
+        public bool UsedMiseEnPlace;
+
+        public bool UsedSecondWind;
+
         public string Name => Kind == WorkerKind.Manager ? "Gerente" : Maid.Name;
 
         public bool IsManager => Kind == WorkerKind.Manager;

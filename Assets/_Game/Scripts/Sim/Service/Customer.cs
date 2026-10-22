@@ -64,6 +64,9 @@ namespace Neko.Sim.Service
         /// </remarks>
         public float ServeTipMultiplier = 1f;
 
+        /// <summary>Set by whoever seated them. The Regulars skill is the only thing that moves it.</summary>
+        public float SpendBonus = 1f;
+
         public CustomerProfile Profile => CustomerTable.For(Kind);
 
         public bool DrainsPatience =>

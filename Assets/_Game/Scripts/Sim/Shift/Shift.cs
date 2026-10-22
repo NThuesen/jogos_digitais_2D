@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Neko.Sim.Cafe;
 using Neko.Sim.Core;
 using Neko.Sim.Maids;
+using Neko.Sim.Progress;
 using Neko.Sim.Service;
 
 namespace Neko.Sim.Shift
@@ -32,6 +33,12 @@ namespace Neko.Sim.Shift
         public const float NeighbourRadius = 2f;
 
         public const float IdleMoodRecoveryPerSecond = 0.02f;
+
+        /// <summary>What the Presença skill gives back per second, to everyone nearby.</summary>
+        public const float PatienceRegenPerSecond = 0.03f;
+
+        /// <summary>How far Presença reaches. Wider than the Onee-san aura: it is the skill.</summary>
+        public const float PresenceRadius = 3.5f;
 
         /// <summary>Dojikko's apology: every dropped plate buys the room a little goodwill.</summary>
         public const float DropPatienceGift = 0.08f;
@@ -75,6 +82,7 @@ namespace Neko.Sim.Shift
         public Shift(ShiftSetup setup)
         {
             _setup = setup ?? throw new ArgumentNullException(nameof(setup));
+            SkillTable.Install();
             _rng = new Rng(setup.Seed);
             Grid = setup.Grid ?? new CafeGrid(7, 5);
             TimeRemaining = setup.DurationSeconds;
@@ -275,6 +283,9 @@ namespace Neko.Sim.Shift
                 if (customer.DrainsPatience)
                 {
                     customer.DrainPatience(dt, Metrics.PatienceMultiplier + SeatedCatAmbience());
+                    customer.Patience = Curves.Clamp01(
+                        customer.Patience + PatienceRegenNear(customer) * dt);
+
                     if (customer.Patience <= 0f && !customer.Profile.NeverImpatient)
                     {
                         LeaveAngry(customer);
@@ -328,6 +339,7 @@ namespace Neko.Sim.Shift
 
             var amount = customer.Order.BasePrice
                          * profile.SpendMultiplier
+                         * customer.SpendBonus
                          * Metrics.TipMultiplier
                          * customer.ServeTipMultiplier
                          * (0.5f + 0.5f * customer.Patience);
@@ -336,6 +348,7 @@ namespace Neko.Sim.Shift
                 RosterHas(customer.WantedArchetype.Value))
             {
                 amount *= profile.WantedArchetypeTipBonus;
+                if (RosterHasSkill(customer.WantedArchetype.Value, SkillId.Photogenic)) amount *= 2f;
             }
 
             var paid = (int)Math.Round(amount);
@@ -669,8 +682,17 @@ namespace Neko.Sim.Shift
                 worker.Maid.Mood -= derived.MoodDrainPerSecond * dt;
                 if (worker.Maid.Mood <= 0f && !worker.NeedsBreak)
                 {
-                    worker.NeedsBreak = true;
-                    Emit(ShiftEventKind.MoodEmpty, worker.Id, worker.Cell);
+                    if (!worker.UsedSecondWind && SkillTable.Has(worker.Maid, SkillId.SecondWind))
+                    {
+                        worker.UsedSecondWind = true;
+                        worker.Maid.Mood = 0.5f;
+                        Emit(ShiftEventKind.SecondWind, worker.Id, worker.Cell);
+                    }
+                    else
+                    {
+                        worker.NeedsBreak = true;
+                        Emit(ShiftEventKind.MoodEmpty, worker.Id, worker.Cell);
+                    }
                 }
             }
 
@@ -720,7 +742,16 @@ namespace Neko.Sim.Shift
                 case TaskKind.Cook:
                 {
                     var ticket = TicketById(task.TargetId);
-                    return ticket == null ? 0f : ticket.Recipe.Seconds / derived.CookSpeed;
+                    if (ticket == null) return 0f;
+
+                    if (!worker.IsManager && !worker.UsedMiseEnPlace &&
+                        SkillTable.Has(worker.Maid, SkillId.MiseEnPlace))
+                    {
+                        worker.UsedMiseEnPlace = true;
+                        return 0f;
+                    }
+
+                    return ticket.Recipe.Seconds / derived.CookSpeed;
                 }
 
                 case TaskKind.Deliver:
@@ -783,6 +814,16 @@ namespace Neko.Sim.Shift
             // The party walks with her, so the maid ends up at the table.
             worker.X = seat.Cell.X;
             worker.Y = seat.Cell.Y;
+
+            if (!worker.IsManager)
+            {
+                if (SkillTable.Has(worker.Maid, SkillId.WarmWelcome))
+                {
+                    customer.Patience = Curves.Clamp01(customer.Patience + 0.15f);
+                }
+
+                if (SkillTable.Has(worker.Maid, SkillId.Regulars)) customer.SpendBonus *= 1.2f;
+            }
 
             Emit(ShiftEventKind.Seated, customer.Id, seat.Cell);
         }
@@ -854,10 +895,71 @@ namespace Neko.Sim.Shift
             customer.Order.Serve();
             Emit(ShiftEventKind.Served, customer.Id, SeatCellOf(customer));
 
+            if (!worker.IsManager && SkillTable.Has(worker.Maid, SkillId.DoubleTray))
+            {
+                DeliverSecondPlate(customer);
+            }
+
             if (!customer.Order.Complete) return;
 
             customer.State = CustomerState.Eating;
             customer.StateTimer = EatSecondsPerDish * customer.Order.Dishes.Count;
+        }
+
+        /// <summary>
+        /// Double Tray: she had a second plate for the same table in her other hand.
+        /// </summary>
+        /// <remarks>
+        /// Scoped to the one customer rather than to any ready plate, because the skill reads
+        /// as "she carried both of your dishes at once" — which is a thing the player can see
+        /// happen at their own table, not a hidden throughput number.
+        /// </remarks>
+        private void DeliverSecondPlate(Customer customer)
+        {
+            for (var i = 0; i < _tickets.Count; i++)
+            {
+                var other = _tickets[i];
+                if (other.CustomerId != customer.Id || other.State != TicketState.Ready) continue;
+
+                FreeStationOf(other);
+                other.State = TicketState.Delivered;
+                other.StationIndex = -1;
+                customer.Order.Serve();
+                Emit(ShiftEventKind.Served, customer.Id, SeatCellOf(customer));
+                return;
+            }
+        }
+
+        /// <summary>Presença: a maid standing nearby gives people back a little goodwill.</summary>
+        private float PatienceRegenNear(Customer customer)
+        {
+            if (customer.SeatIndex < 0) return 0f;
+
+            var seat = _seats[customer.SeatIndex].Cell;
+            var regen = 0f;
+
+            for (var i = 0; i < _workers.Count; i++)
+            {
+                var worker = _workers[i];
+                if (worker.IsManager || worker.OnBreak) continue;
+                if (!SkillTable.Has(worker.Maid, SkillId.Patience)) continue;
+                if (worker.DistanceTo(seat) > PresenceRadius) continue;
+
+                regen += PatienceRegenPerSecond;
+            }
+
+            return regen;
+        }
+
+        private bool RosterHasSkill(Archetype archetype, SkillId skill)
+        {
+            for (var i = 0; i < _setup.Roster.Count; i++)
+            {
+                var maid = _setup.Roster[i];
+                if (maid.Archetype == archetype && SkillTable.Has(maid, skill)) return true;
+            }
+
+            return false;
         }
 
         private void CompleteBus(ShiftTask task)
@@ -1040,10 +1142,10 @@ namespace Neko.Sim.Shift
 
             return MaidMath.Derive(worker.Maid, new ShiftSnapshot(
                 Occupancy,
-                worker.Claimed != null && worker.Claimed.Kind == TaskKind.Cook,
-                worker.Claimed == null,
+                WorkOf(worker),
                 NeighbourAuraAt(worker),
-                worker.RushRemaining > 0f));
+                worker.RushRemaining > 0f,
+                QueuedTicketCount));
         }
 
         /// <summary>
@@ -1058,6 +1160,36 @@ namespace Neko.Sim.Shift
         {
             var rush = worker.RushRemaining > 0f ? 1f + MaidMath.RushBonus : 1f;
             return new MaidDerived(MaidMath.BaseWalkSpeed * rush, rush, rush, rush, 1f, 0f, 0f, 0f);
+        }
+
+        /// <summary>The shift's task kinds, in the vocabulary the maid rules speak.</summary>
+        private static WorkKind WorkOf(Worker worker)
+        {
+            if (worker.Claimed == null) return WorkKind.None;
+
+            switch (worker.Claimed.Kind)
+            {
+                case TaskKind.Greet: return WorkKind.Greet;
+                case TaskKind.TakeOrder: return WorkKind.TakeOrder;
+                case TaskKind.Cook: return WorkKind.Cook;
+                case TaskKind.Deliver: return WorkKind.Deliver;
+                case TaskKind.Bus: return WorkKind.Bus;
+                default: return WorkKind.None;
+            }
+        }
+
+        public int QueuedTicketCount
+        {
+            get
+            {
+                var count = 0;
+                for (var i = 0; i < _tickets.Count; i++)
+                {
+                    if (_tickets[i].State == TicketState.Queued) count++;
+                }
+
+                return count;
+            }
         }
 
         private float NeighbourAuraAt(Worker worker)
