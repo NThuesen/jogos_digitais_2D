@@ -13,9 +13,11 @@ FILTER="${2:-}"
 PROJECT="$(cd "$(dirname "$0")/.." && pwd)"
 CALL="$PROJECT/../agent_creater/tools/mcp/scripts/call.mjs"
 
-if pgrep -fa Unity | grep -v pgrep | grep -q .; then
-  echo "A Unity process is already running; this machine runs one at a time." >&2
-  pgrep -fa Unity | grep -v pgrep >&2
+# Matched on the process name alone. A -f pattern also matches the Roslyn compiler
+# server the editor ships, and — found the hard way — this script's own command line.
+if pgrep -x Unity > /dev/null; then
+  echo "A Unity editor is already running; this machine runs one at a time." >&2
+  pgrep -ax Unity >&2
   exit 1
 fi
 
