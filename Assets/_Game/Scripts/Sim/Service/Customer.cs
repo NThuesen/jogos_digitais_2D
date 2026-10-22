@@ -55,6 +55,15 @@ namespace Neko.Sim.Service
         /// <summary>Set when they pay, so the result can report what the day actually earned.</summary>
         public int Paid;
 
+        /// <summary>
+        /// The tip multiplier of whoever put the last plate down.
+        /// </summary>
+        /// <remarks>
+        /// Charm pays at the table, not in the kitchen, so it is the delivering maid who sets
+        /// it — which is why sending the Ojou-sama out with the plates is worth doing.
+        /// </remarks>
+        public float ServeTipMultiplier = 1f;
+
         public CustomerProfile Profile => CustomerTable.For(Kind);
 
         public bool DrainsPatience =>
@@ -62,8 +71,20 @@ namespace Neko.Sim.Service
             State == CustomerState.Ordering ||
             State == CustomerState.Waiting;
 
+        /// <summary>
+        /// Brings one party through the door.
+        /// </summary>
+        /// <param name="menu">
+        /// What this café can actually cook today. Null means the whole unlocked menu.
+        /// </param>
+        /// <remarks>
+        /// The menu is passed in rather than looked up because a café that has unlocked
+        /// parfaits but owns no dessert bench must not be asked for one: that ticket could
+        /// never be cooked, the customer would wait out their whole patience and leave angry,
+        /// and the player would have no move that fixed it. A dead end, in other words.
+        /// </remarks>
         public static Customer Spawn(int id, CustomerType kind, Rng rng, int cafeLevel,
-            float patienceMultiplier)
+            float patienceMultiplier, IReadOnlyList<Recipe> menu = null)
         {
             var profile = CustomerTable.For(kind);
 
@@ -78,7 +99,7 @@ namespace Neko.Sim.Service
                     : (Archetype?)null,
             };
 
-            customer.Order = RollOrder(profile, rng, cafeLevel);
+            customer.Order = RollOrder(profile, rng, menu ?? RecipeBook.UnlockedAt(cafeLevel));
             return customer;
         }
 
@@ -98,22 +119,37 @@ namespace Neko.Sim.Service
             Patience = Curves.Clamp01(Patience - seconds / effective);
         }
 
-        private static Order RollOrder(CustomerProfile profile, Rng rng, int cafeLevel)
+        private static Order RollOrder(CustomerProfile profile, Rng rng, IReadOnlyList<Recipe> menu)
         {
             var dishes = new List<Recipe>();
 
             if (!string.IsNullOrEmpty(profile.OnlyOrders))
             {
-                dishes.Add(RecipeBook.ById(profile.OnlyOrders));
-                return new Order(dishes);
+                var usual = Find(menu, profile.OnlyOrders);
+                if (usual != null)
+                {
+                    dishes.Add(usual);
+                    return new Order(dishes);
+                }
+
+                // Their usual is off today. Even a cat orders something rather than nothing,
+                // because a party with an empty order can never be completed or paid for.
             }
 
-            var menu = RecipeBook.UnlockedAt(cafeLevel);
             var count = rng.RangeInt(profile.DishesMin, profile.DishesMax + 1);
-
             for (var i = 0; i < count; i++) dishes.Add(rng.Pick(menu));
 
             return new Order(dishes);
+        }
+
+        private static Recipe Find(IReadOnlyList<Recipe> menu, string id)
+        {
+            for (var i = 0; i < menu.Count; i++)
+            {
+                if (menu[i].Id == id) return menu[i];
+            }
+
+            return null;
         }
     }
 }
