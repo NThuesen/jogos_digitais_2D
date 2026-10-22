@@ -20,6 +20,7 @@ namespace Neko.Sim.Shift
         Fumbled,
         PlateReady,
         PlateDropped,
+        WrongOrder,
         Served,
         Paid,
         LeftAngry,

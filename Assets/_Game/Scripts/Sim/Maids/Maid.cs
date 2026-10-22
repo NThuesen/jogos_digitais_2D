@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Neko.Sim.Core;
 using Neko.Sim.Progress;
+using Neko.Sim.Team;
 
 namespace Neko.Sim.Maids
 {
@@ -33,6 +35,19 @@ namespace Neko.Sim.Maids
         /// <summary>Gift points earned. Bond level is a function of this, never set directly.</summary>
         public int BondPoints;
 
+        /// <summary>What came out of the box. Sets her stat band, her traits and her wage.</summary>
+        public Rarity Rarity = Rarity.Common;
+
+        /// <summary>Where she belongs. Playing her anywhere else costs a third of her.</summary>
+        public Role NaturalRole = Role.Floor;
+
+        /// <summary>Rolled when the card was opened, and never changes.</summary>
+        public House House;
+
+        public ThemeTag Origin = ThemeTag.Sakura;
+
+        public readonly List<TraitId> Traits = new List<TraitId>();
+
         /// <summary>Stats before gear, bond and set bonuses.</summary>
         public Stats Base;
 
@@ -50,6 +65,36 @@ namespace Neko.Sim.Maids
         }
 
         public ArchetypeProfile Profile => ArchetypeTable.For(Archetype);
+
+        /// <summary>Follows the personality; never stored, so it can never disagree with it.</summary>
+        public Temperament Temperament => ChemistryTags.TemperamentFor(Archetype);
+
+        public RarityProfile Card => RarityTable.For(Rarity);
+
+        /// <summary>
+        /// What she costs every day, whether or not she is in the lineup.
+        /// </summary>
+        /// <remarks>
+        /// Paid for the bench as well as the floor. A squad of legendaries nobody can afford
+        /// to field is how a player goes bankrupt holding the best cards in the game, and
+        /// that outcome is the point of the wage bill existing at all.
+        /// </remarks>
+        public int Salary
+        {
+            get
+            {
+                var discount = 0f;
+                for (var i = 0; i < Traits.Count; i++)
+                {
+                    discount += TraitTable.ById(Traits[i]).SalaryDiscount;
+                }
+
+                var wage = Card.Salary * (1f + 0.04f * (Level - 1)) * (1f - Curves.Clamp01(discount));
+                return Math.Max(1, (int)Math.Round(wage));
+            }
+        }
+
+        public int Severance => Card.SeverancePoints;
 
         public Stats GearBonus
         {
@@ -79,6 +124,7 @@ namespace Neko.Sim.Maids
                 Archetype = archetype,
                 Level = Curves.ClampInt(level, 1, MaxLevel),
                 Base = profile.StartingStats,
+                NaturalRole = RoleTable.NaturalFor(archetype),
             };
 
             // A maid created at level 10 has to already carry nine levels of growth, or the

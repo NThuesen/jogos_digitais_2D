@@ -1,21 +1,17 @@
 using Neko.Sim.Cafe;
 using Neko.Sim.Maids;
+using Neko.Sim.Team;
 
 namespace Neko.Sim.Shift
 {
-    public enum WorkerKind
-    {
-        Maid = 0,
-
-        /// <summary>The player. One of him, competent at everything, never tires.</summary>
-        Manager,
-    }
-
-    /// <summary>Somebody who can carry out a task. A maid, or the player's own avatar.</summary>
+    /// <summary>
+    /// One maid, at one position, for one day.
+    /// </summary>
     /// <remarks>
-    /// The manager is modelled as a worker rather than as a special case so that a shift with
-    /// an empty roster is still a playable shift. That is not a hypothetical: it is where
-    /// every new game starts.
+    /// There is no player avatar any more. Every worker on the floor is a card the player put
+    /// in a slot before the doors opened, and nothing they do during the day can be
+    /// countermanded — which is what makes the lineup screen the whole game rather than a
+    /// menu attached to one.
     /// </remarks>
     public sealed class Worker
     {
@@ -27,20 +23,23 @@ namespace Neko.Sim.Shift
         /// <summary>What a maid comes back from the break room with.</summary>
         public const float MoodAfterBreak = 0.4f;
 
-        public const float RushSeconds = 6f;
-
-        public const float RushMoodCost = 0.15f;
-
         public int Id;
-        public WorkerKind Kind;
         public Maid Maid;
+
+        /// <summary>The slot she was put in. Not necessarily where she belongs.</summary>
+        public Role Role;
+
+        /// <summary>Her chemistry in this lineup, nought to ten.</summary>
+        public int Chemistry;
+
+        public bool InPosition;
 
         public float X;
         public float Y;
 
         public ShiftTask Claimed;
 
-        /// <summary>0..1 through the current task, once the worker has actually arrived.</summary>
+        /// <summary>0..1 through the current task, once she has actually arrived.</summary>
         public float Progress;
 
         /// <summary>Deliver runs in two legs: fetch the plate, then carry it to the table.</summary>
@@ -59,22 +58,25 @@ namespace Neko.Sim.Shift
         public bool NeedsBreak;
 
         public float BreakRemaining;
-        public float RushRemaining;
-        public float EncoreCooldown;
 
         /// <summary>Mise en Place and Second Wind each fire once a day, and this is how.</summary>
         public bool UsedMiseEnPlace;
 
         public bool UsedSecondWind;
 
-        public string Name => Kind == WorkerKind.Manager ? "Gerente" : Maid.Name;
+        public float EncoreCooldown;
 
-        public bool IsManager => Kind == WorkerKind.Manager;
+        public string Name => Maid != null ? Maid.Name : "?";
 
-        /// <summary>Ojou-sama will not, and that is a real cost of rostering her.</summary>
-        public bool WillBusTables => IsManager || Maid.Profile.WillBusTables;
+        public RoleProfile Position => RoleTable.For(Role);
 
-        public bool HasEncore => !IsManager && Maid.Profile.HasEncore;
+        /// <summary>Stage and Management shape the day without touching a single task.</summary>
+        public bool TakesTasks => Position.TakesTasks;
+
+        /// <summary>Ojou-sama will not, and that is a real cost of fielding her.</summary>
+        public bool WillBusTables => Maid == null || Maid.Profile.WillBusTables;
+
+        public bool HasEncore => Maid != null && Maid.Profile.HasEncore;
 
         public bool Available => !OnBreak;
 
@@ -92,6 +94,35 @@ namespace Neko.Sim.Shift
             Claimed = null;
             Progress = 0f;
             Carrying = false;
+        }
+
+        /// <summary>
+        /// Whether this position is allowed to do this kind of work.
+        /// </summary>
+        /// <remarks>
+        /// Hard boundaries, not preferences. A cook who wandered out to clear tables when the
+        /// floor got busy would quietly undo the one decision the player made, and the lineup
+        /// would stop mattering the moment the café did.
+        /// </remarks>
+        public bool Allows(TaskKind kind)
+        {
+            if (!TakesTasks) return false;
+
+            switch (Role)
+            {
+                case Role.Reception:
+                    return kind == TaskKind.Greet;
+
+                case Role.Floor:
+                    return kind == TaskKind.TakeOrder || kind == TaskKind.Deliver ||
+                           (kind == TaskKind.Bus && WillBusTables);
+
+                case Role.Kitchen:
+                    return kind == TaskKind.Cook;
+
+                default:
+                    return false;
+            }
         }
     }
 }

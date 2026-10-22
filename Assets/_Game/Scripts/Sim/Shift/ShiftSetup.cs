@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using Neko.Sim.Cafe;
+using Neko.Sim.Core;
 using Neko.Sim.Maids;
 using Neko.Sim.Service;
+using Neko.Sim.Team;
 
 namespace Neko.Sim.Shift
 {
@@ -23,15 +25,29 @@ namespace Neko.Sim.Shift
         }
     }
 
+    /// <summary>
+    /// Everything the day needs, fixed before the doors open.
+    /// </summary>
+    /// <remarks>
+    /// Nothing in here changes once a <see cref="Shift"/> has been built from it. That is the
+    /// pivot in one sentence: the player's whole turn happens before this object exists.
+    /// </remarks>
     public sealed class ShiftSetup
     {
         public int Day = 1;
         public int CafeLevel = 1;
         public CafeGrid Grid;
+
+        /// <summary>Who is on the card today. Only maids standing in a slot appear here.</summary>
         public IReadOnlyList<Maid> Roster = new Maid[0];
+
+        public Lineup Lineup;
+
+        /// <summary>Worked out from the lineup before the day starts, and then held.</summary>
+        public TeamChemistry Chemistry;
+
         public float DurationSeconds = 90f;
         public float ArrivalsPerSecond = 0.25f;
-        public int Quota = 120;
         public uint Seed = 1u;
 
         /// <summary>How many parties will wait at the door before the rest are turned away.</summary>
@@ -45,5 +61,7 @@ namespace Neko.Sim.Shift
 
         /// <summary>Seconds after closing before the shift gives up on its last customers.</summary>
         public float ClosingGraceSeconds = 45f;
+
+        public ThemeTag CafeTheme = ThemeTag.None;
     }
 }

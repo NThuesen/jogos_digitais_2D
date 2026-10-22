@@ -67,6 +67,9 @@ namespace Neko.Sim.Service
         /// <summary>Set by whoever seated them. The Regulars skill is the only thing that moves it.</summary>
         public float SpendBonus = 1f;
 
+        /// <summary>Somebody put the wrong plate in front of them. They remember.</summary>
+        public bool GotTheWrongPlate;
+
         public CustomerProfile Profile => CustomerTable.For(Kind);
 
         public bool DrainsPatience =>

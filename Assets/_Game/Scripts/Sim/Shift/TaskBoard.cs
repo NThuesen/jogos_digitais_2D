@@ -152,25 +152,5 @@ namespace Neko.Sim.Shift
             return best;
         }
 
-        /// <summary>
-        /// Forces a task onto a worker, which is what a click from the player means.
-        /// </summary>
-        public bool Assign(Worker worker, ShiftTask task, ITaskContext context)
-        {
-            if (task == null || !context.CanDo(worker, task)) return false;
-
-            if (task.Claimed && task.ClaimedBy != worker.Id)
-            {
-                // Taking it off whoever had it is the point: the player is overriding.
-                task.ClaimedBy = -1;
-            }
-
-            ReleaseAllClaimedBy(worker.Id);
-            worker.Drop();
-
-            task.ClaimedBy = worker.Id;
-            worker.Claimed = task;
-            return true;
-        }
     }
 }

@@ -2,32 +2,58 @@ using System.Collections.Generic;
 
 namespace Neko.Sim.Shift
 {
-    /// <summary>What a day came to.</summary>
+    /// <summary>
+    /// What happened on the floor today, before any money is counted.
+    /// </summary>
+    /// <remarks>
+    /// Operational numbers only. Wages, rent and whether the business survived are the books'
+    /// business, not the shift's — keeping them apart is what lets two hundred seeded days be
+    /// run against one lineup without touching a save.
+    /// </remarks>
     public sealed class ShiftResult
     {
         public int Day;
-        public int Earned;
-        public int Quota;
-        public bool QuotaMet;
-        public int Served;
-        public int Angry;
-        public int TurnedAway;
-        public int ReputationDelta;
 
-        /// <summary>XP earned, by maid id. The manager earns none; he is already the ceiling.</summary>
-        public readonly Dictionary<int, int> XpByMaid = new Dictionary<int, int>();
+        /// <summary>Money taken at the table, before costs.</summary>
+        public int DishRevenue;
+
+        public int Tips;
+
+        public int Revenue => DishRevenue + Tips;
+
+        public int Served;
+
+        /// <summary>Parties who got the wrong plate at least once.</summary>
+        public int WrongOrders;
+
+        /// <summary>Dishes spoiled at the station.</summary>
+        public int Burnt;
+
+        /// <summary>Everything the kitchen put on a plate, including what never got eaten.</summary>
+        public int DishesCooked;
+
+        public int LeftAngry;
+        public int TurnedAway;
+
+        /// <summary>The lineup's chemistry on the day, nought to a hundred.</summary>
+        public int ChemistryScore;
 
         /// <summary>
-        /// A day that could not be won, as opposed to one that was lost.
+        /// How well the room was treated, nought to one.
         /// </summary>
         /// <remarks>
-        /// Missing a quota is a slow day, not a game over: the bonus is lost and the curve
-        /// does not advance, so a player who is behind can always grind their way forward.
-        /// The design calls a dead end an anti-goal, and this flag is how that promise is kept.
+        /// Quality rather than volume, and it is what fichas are paid on. A day that takes a
+        /// fortune by hustling everybody out of the door should buy fewer boxes than a quiet
+        /// one served properly — the two currencies are supposed to pull apart.
         /// </remarks>
-        public bool SlowDay;
+        public float Satisfaction;
+
+        /// <summary>XP earned, by maid id.</summary>
+        public readonly Dictionary<int, int> XpByMaid = new Dictionary<int, int>();
 
         /// <summary>Set when the café could not possibly serve anyone. Shown to the player.</summary>
         public string FailureReason;
+
+        public bool Impossible => !string.IsNullOrEmpty(FailureReason);
     }
 }

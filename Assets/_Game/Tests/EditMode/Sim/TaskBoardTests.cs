@@ -20,19 +20,26 @@ namespace Neko.Tests.Sim
             public float UrgencyOf(ShiftTask task) =>
                 Urgency.TryGetValue(task.Id, out var value) ? value : 0f;
 
-            public bool CanDo(Worker worker, ShiftTask task) =>
-                task.Kind != TaskKind.Bus || worker.WillBusTables;
+            public bool CanDo(Worker worker, ShiftTask task) => worker.Allows(task.Kind);
         }
 
         private static Worker MaidWorker(Archetype archetype = Archetype.Genki, float x = 0f,
-            float y = 0f) =>
+            float y = 0f, Neko.Sim.Team.Role role = Neko.Sim.Team.Role.Floor) =>
             new Worker
             {
                 Id = 1,
-                Kind = WorkerKind.Maid,
                 Maid = Maid.Create(1, "Teste", archetype),
+                Role = role,
                 X = x,
                 Y = y,
+            };
+
+        private static Worker Second(Neko.Sim.Team.Role role = Neko.Sim.Team.Role.Floor) =>
+            new Worker
+            {
+                Id = 2,
+                Maid = Maid.Create(2, "Outra", Archetype.Kuudere),
+                Role = role,
             };
 
         [Test]
@@ -69,11 +76,8 @@ namespace Neko.Tests.Sim
             var context = new FakeContext();
             board.Add(TaskKind.TakeOrder, 1);
 
-            var first = MaidWorker();
-            var second = new Worker { Id = 2, Kind = WorkerKind.Manager };
-
-            Assert.IsNotNull(board.ClaimBest(first, context));
-            Assert.IsNull(board.ClaimBest(second, context), "the only task was already taken");
+            Assert.IsNotNull(board.ClaimBest(MaidWorker(), context));
+            Assert.IsNull(board.ClaimBest(Second(), context), "the only task was already taken");
         }
 
         [Test]
@@ -82,7 +86,8 @@ namespace Neko.Tests.Sim
             var board = new TaskBoard();
             board.Add(TaskKind.Bus, 0);
 
-            Assert.IsNull(board.ClaimBest(MaidWorker(Archetype.Ojousama), new FakeContext()));
+            Assert.IsNull(board.ClaimBest(
+                MaidWorker(Archetype.Ojousama), new FakeContext()));
             Assert.IsNotNull(board.ClaimBest(MaidWorker(), new FakeContext()));
         }
 
@@ -97,7 +102,7 @@ namespace Neko.Tests.Sim
             board.Release(task);
 
             Assert.IsFalse(task.Claimed);
-            Assert.IsNotNull(board.ClaimBest(new Worker { Id = 9, Kind = WorkerKind.Manager }, context));
+            Assert.IsNotNull(board.ClaimBest(Second(Neko.Sim.Team.Role.Kitchen), context));
         }
 
         [Test]
@@ -168,35 +173,5 @@ namespace Neko.Tests.Sim
             Assert.AreEqual(0, board.Open[0].TargetId);
         }
 
-        [Test]
-        public void AssignTakesATaskOffWhoeverHadIt()
-        {
-            var board = new TaskBoard();
-            var context = new FakeContext();
-            var task = board.Add(TaskKind.Cook, 1);
-            var maid = MaidWorker();
-            board.ClaimBest(maid, context);
-
-            var manager = new Worker { Id = 0, Kind = WorkerKind.Manager };
-
-            Assert.IsTrue(board.Assign(manager, task, context));
-            Assert.AreEqual(manager.Id, task.ClaimedBy);
-            Assert.AreSame(task, manager.Claimed);
-        }
-
-        [Test]
-        public void AssignRefusesWhatTheWorkerCannotDo()
-        {
-            var board = new TaskBoard();
-            var task = board.Add(TaskKind.Bus, 0);
-
-            Assert.IsFalse(board.Assign(MaidWorker(Archetype.Ojousama), task, new FakeContext()));
-        }
-
-        [Test]
-        public void AssignOfANullTaskIsRefusedRatherThanThrown()
-        {
-            Assert.IsFalse(new TaskBoard().Assign(MaidWorker(), null, new FakeContext()));
-        }
     }
 }

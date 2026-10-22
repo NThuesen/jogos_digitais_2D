@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Neko.Sim.Cafe;
+using Neko.Sim.Core;
 using Neko.Sim.Maids;
 using Neko.Sim.Progress;
+using Neko.Sim.Team;
 
 namespace Neko.Sim.Save
 {
@@ -15,7 +17,7 @@ namespace Neko.Sim.Save
         /// <summary>Read from an older schema and brought forward.</summary>
         Migrated,
 
-        /// <summary>Unreadable. The player gets a fresh profile and is told why.</summary>
+        /// <summary>Unreadable. The player gets a fresh business and is told why.</summary>
         Corrupt,
 
         /// <summary>Nothing saved yet. Not a problem.</summary>
@@ -39,11 +41,10 @@ namespace Neko.Sim.Save
     }
 
     /// <summary>
-    /// Turns a profile into one string and back, with a version and a checksum.
+    /// Turns a business into one string and back, with a version and a checksum.
     /// </summary>
     /// <remarks>
-    /// Rubric 11 asks what happens when things go wrong, and this is most of the answer. No
-    /// path through <see cref="Decode"/> throws: every failure returns a
+    /// No path through <see cref="Decode"/> throws: every failure returns a
     /// <see cref="LoadResult"/> with a reason the player can read, and a playable profile.
     /// Losing a save is bad; losing it to a stack trace on the title screen is worse.
     ///
@@ -56,7 +57,7 @@ namespace Neko.Sim.Save
     /// </remarks>
     public static class SaveCodec
     {
-        public const int CurrentVersion = 1;
+        public const int CurrentVersion = 2;
 
         private const string Prefix = "NEKO";
         private const char Separator = ':';
@@ -130,7 +131,7 @@ namespace Neko.Sim.Save
 
         private static LoadResult Corrupt(string message) =>
             new LoadResult(LoadStatus.Corrupt, Profile.NewGame(1u),
-                message + " Começamos um café novo.");
+                message + " Começamos uma empresa nova.");
 
         // -------------------------------------------------------------------------------
         // Writing
@@ -142,10 +143,10 @@ namespace Neko.Sim.Save
 
             text.Append("seed=").Append(profile.Seed.ToString(Invariant)).Append('\n');
             text.Append("day=").Append(profile.Day.ToString(Invariant)).Append('\n');
-            text.Append("step=").Append(profile.QuotaStep.ToString(Invariant)).Append('\n');
             text.Append("money=").Append(profile.Wallet.Money.ToString(Invariant)).Append('\n');
             text.Append("rep=").Append(profile.Wallet.Reputation.ToString(Invariant)).Append('\n');
-            text.Append("endless=").Append(profile.EndlessUnlocked ? '1' : '0').Append('\n');
+            text.Append("points=").Append(profile.Wallet.Points.ToString(Invariant)).Append('\n');
+            text.Append("bankrupt=").Append(profile.Bankrupt ? '1' : '0').Append('\n');
             text.Append("nextmaid=").Append(profile.NextMaidId.ToString(Invariant)).Append('\n');
 
             text.Append("grid=").Append(profile.Grid.Width.ToString(Invariant)).Append('x')
@@ -161,17 +162,25 @@ namespace Neko.Sim.Save
 
             foreach (var maid in profile.Maids) text.Append("maid=").Append(WriteMaid(maid)).Append('\n');
 
-            text.Append("roster=").Append(string.Join(",", profile.ShiftRoster)).Append('\n');
+            foreach (var slot in profile.Lineup.All)
+            {
+                if (slot.Empty) continue;
+                text.Append("slot=").Append((int)slot.Role).Append(',')
+                    .Append(slot.Index.ToString(Invariant)).Append(',')
+                    .Append(slot.MaidId.ToString(Invariant)).Append('\n');
+            }
+
             text.Append("place=").Append(string.Join(",", profile.OwnedPlaceables)).Append('\n');
             text.Append("gear=").Append(string.Join(",", profile.OwnedEquipment)).Append('\n');
 
             var records = profile.Records;
             text.Append("records=")
                 .Append(records.BestDay.ToString(Invariant)).Append(',')
-                .Append(records.BestEarnings.ToString(Invariant)).Append(',')
-                .Append(records.BestEndlessDay.ToString(Invariant)).Append(',')
+                .Append(records.BestRevenue.ToString(Invariant)).Append(',')
                 .Append(records.TotalCustomersServed.ToString(Invariant)).Append(',')
-                .Append(records.TotalDaysPlayed.ToString(Invariant)).Append('\n');
+                .Append(records.TotalDaysPlayed.ToString(Invariant)).Append(',')
+                .Append(records.BusinessesLost.ToString(Invariant)).Append(',')
+                .Append(records.LegendariesFound.ToString(Invariant)).Append('\n');
 
             return text.ToString();
         }
@@ -180,6 +189,9 @@ namespace Neko.Sim.Save
         {
             var gear = new string[maid.Gear.Length];
             for (var i = 0; i < gear.Length; i++) gear[i] = maid.Gear[i]?.Id ?? "";
+
+            var traits = new string[maid.Traits.Count];
+            for (var i = 0; i < traits.Length; i++) traits[i] = ((int)maid.Traits[i]).ToString(Invariant);
 
             return string.Join("|", new[]
             {
@@ -195,6 +207,11 @@ namespace Neko.Sim.Save
                 string.Join(",", gear),
                 string.Join(",", maid.Skills),
                 maid.Mood.ToString("0.###", Invariant),
+                ((int)maid.Rarity).ToString(Invariant),
+                ((int)maid.NaturalRole).ToString(Invariant),
+                ((int)maid.House).ToString(Invariant),
+                ((int)maid.Origin).ToString(Invariant),
+                string.Join(",", traits),
             });
         }
 
@@ -219,13 +236,15 @@ namespace Neko.Sim.Save
         {
             var profile = new Profile();
             profile.Maids.Clear();
-            profile.ShiftRoster.Clear();
+            profile.Lineup.Clear();
 
             var width = 7;
             var height = 5;
             var items = new List<string[]>();
+            var slots = new List<int[]>();
             var money = 0;
             var reputation = 0;
+            var points = 0;
             var sawGrid = false;
 
             foreach (var raw in body.Split('\n'))
@@ -249,10 +268,6 @@ namespace Neko.Sim.Save
                         profile.Day = Math.Max(1, int.Parse(value, Invariant));
                         break;
 
-                    case "step":
-                        profile.QuotaStep = Math.Max(1, int.Parse(value, Invariant));
-                        break;
-
                     case "money":
                         money = int.Parse(value, Invariant);
                         break;
@@ -261,8 +276,12 @@ namespace Neko.Sim.Save
                         reputation = int.Parse(value, Invariant);
                         break;
 
-                    case "endless":
-                        profile.EndlessUnlocked = value == "1";
+                    case "points":
+                        points = int.Parse(value, Invariant);
+                        break;
+
+                    case "bankrupt":
+                        profile.Bankrupt = value == "1";
                         break;
 
                     case "nextmaid":
@@ -291,9 +310,17 @@ namespace Neko.Sim.Save
                         break;
                     }
 
-                    case "roster":
-                        foreach (var id in Split(value)) profile.ShiftRoster.Add(int.Parse(id, Invariant));
+                    case "slot":
+                    {
+                        var parts = value.Split(',');
+                        if (parts.Length != 3) return null;
+                        slots.Add(new[]
+                        {
+                            int.Parse(parts[0], Invariant), int.Parse(parts[1], Invariant),
+                            int.Parse(parts[2], Invariant),
+                        });
                         break;
+                    }
 
                     case "place":
                         profile.OwnedPlaceables.AddRange(Split(value));
@@ -306,12 +333,14 @@ namespace Neko.Sim.Save
                     case "records":
                     {
                         var parts = value.Split(',');
-                        if (parts.Length != 5) return null;
+                        if (parts.Length < 4) return null;
+
                         profile.Records.BestDay = int.Parse(parts[0], Invariant);
-                        profile.Records.BestEarnings = int.Parse(parts[1], Invariant);
-                        profile.Records.BestEndlessDay = int.Parse(parts[2], Invariant);
-                        profile.Records.TotalCustomersServed = int.Parse(parts[3], Invariant);
-                        profile.Records.TotalDaysPlayed = int.Parse(parts[4], Invariant);
+                        profile.Records.BestRevenue = int.Parse(parts[1], Invariant);
+                        profile.Records.TotalCustomersServed = int.Parse(parts[2], Invariant);
+                        profile.Records.TotalDaysPlayed = int.Parse(parts[3], Invariant);
+                        if (parts.Length > 4) profile.Records.BusinessesLost = int.Parse(parts[4], Invariant);
+                        if (parts.Length > 5) profile.Records.LegendariesFound = int.Parse(parts[5], Invariant);
                         break;
                     }
 
@@ -334,12 +363,14 @@ namespace Neko.Sim.Save
                     parts[3] == "1");
             }
 
-            profile.Wallet.Restore(money, reputation);
+            profile.Wallet.Restore(money, reputation, points);
 
-            // Rostered ids that no longer name a maid are dropped rather than trusted.
-            for (var i = profile.ShiftRoster.Count - 1; i >= 0; i--)
+            profile.Lineup.Rebuild(Lineup.SlotsFor(profile.CafeLevel));
+            foreach (var slot in slots)
             {
-                if (profile.MaidById(profile.ShiftRoster[i]) == null) profile.ShiftRoster.RemoveAt(i);
+                // Only ids that still name a maid, and only slots this café level still has.
+                if (profile.MaidById(slot[2]) == null) continue;
+                profile.Lineup.Assign((Role)slot[0], slot[1], slot[2]);
             }
 
             return profile;
@@ -348,7 +379,7 @@ namespace Neko.Sim.Save
         private static Maid ReadMaid(string value)
         {
             var parts = value.Split('|');
-            if (parts.Length != 11) return null;
+            if (parts.Length < 11) return null;
 
             if (!Enum.TryParse(parts[2], out Archetype archetype)) return null;
 
@@ -357,10 +388,11 @@ namespace Neko.Sim.Save
                 Id = int.Parse(parts[0], Invariant),
                 Name = parts[1],
                 Archetype = archetype,
-                Level = Core.Curves.ClampInt(int.Parse(parts[3], Invariant), 1, Maid.MaxLevel),
+                Level = Curves.ClampInt(int.Parse(parts[3], Invariant), 1, Maid.MaxLevel),
                 Xp = int.Parse(parts[4], Invariant),
-                Bond = Core.Curves.ClampInt(int.Parse(parts[5], Invariant), 0, BondTable.MaxLevel),
+                Bond = Curves.ClampInt(int.Parse(parts[5], Invariant), 0, BondTable.MaxLevel),
                 BondPoints = int.Parse(parts[6], Invariant),
+                NaturalRole = RoleTable.NaturalFor(archetype),
             };
 
             var stats = parts[7].Split(',');
@@ -382,6 +414,21 @@ namespace Neko.Sim.Save
             }
 
             maid.Mood = float.Parse(parts[10], NumberStyles.Float, Invariant);
+
+            // The card fields. Absent in a version-1 save, where every maid was a Common with
+            // no traits — which is exactly what the defaults already say.
+            if (parts.Length > 11) maid.Rarity = (Rarity)int.Parse(parts[11], Invariant);
+            if (parts.Length > 12) maid.NaturalRole = (Role)int.Parse(parts[12], Invariant);
+            if (parts.Length > 13) maid.House = (House)int.Parse(parts[13], Invariant);
+            if (parts.Length > 14) maid.Origin = (ThemeTag)int.Parse(parts[14], Invariant);
+
+            if (parts.Length > 15)
+            {
+                foreach (var trait in Split(parts[15]))
+                {
+                    maid.Traits.Add((TraitId)int.Parse(trait, Invariant));
+                }
+            }
 
             // Derived, never stored: a set bonus saved out of step with the gear that earns it
             // is a stat nobody can explain.

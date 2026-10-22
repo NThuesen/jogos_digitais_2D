@@ -5,17 +5,21 @@ using Neko.Sim.Core;
 using Neko.Sim.Maids;
 using Neko.Sim.Progress;
 using Neko.Sim.Service;
+using Neko.Sim.Team;
 
 namespace Neko.Sim.Shift
 {
     /// <summary>
-    /// One day of the café, as a deterministic tick.
+    /// One day of the café, running on its own.
     /// </summary>
     /// <remarks>
-    /// No <c>UnityEngine</c> anywhere in here: a shift is a function of its setup and its
-    /// seed, which is what lets the balance tests run two hundred of them in a unit test and
-    /// compare the outcomes. Everything random goes through <see cref="Rng"/> for the same
-    /// reason.
+    /// There is no input. The player's entire turn happened before this object was built, in
+    /// the lineup, and from here the day is a pure function of the setup and the seed. That is
+    /// what lets two hundred seeded days be run against one squad in a unit test, which is the
+    /// only honest way to say whether one lineup is better than another.
+    ///
+    /// No UnityEngine anywhere in here, and everything random goes through <see cref="Rng"/>,
+    /// for the same reason.
     /// </remarks>
     public sealed class Shift : ITaskContext
     {
@@ -43,6 +47,25 @@ namespace Neko.Sim.Shift
         /// <summary>Dojikko's apology: every dropped plate buys the room a little goodwill.</summary>
         public const float DropPatienceGift = 0.08f;
 
+        /// <summary>
+        /// Chance a Floor maid hands over the wrong plate, before anything reduces it.
+        /// </summary>
+        /// <remarks>
+        /// Unlike a burnt dish, which costs the kitchen time, a wrong order costs the party's
+        /// goodwill — so it is what a low-Serve maid standing in the wrong position does to a
+        /// room, and the clearest argument on the dashboard for fixing the lineup.
+        /// </remarks>
+        public const float BaseMistakeChance = 0.20f;
+
+        /// <summary>What a wrong plate takes off a party's patience, all at once.</summary>
+        public const float MistakePatienceCost = 0.35f;
+
+        /// <summary>What a Stage maid gives the whole room, per point of her Charm.</summary>
+        public const float StagePatiencePerCharm = 0.0045f;
+
+        /// <summary>What a Management maid adds to every tip, per point of her Charm.</summary>
+        public const float ManagementTipPerCharm = 0.004f;
+
         private static readonly Dictionary<TaskKind, int> XpForTask = new Dictionary<TaskKind, int>
         {
             { TaskKind.Greet, 3 },
@@ -69,6 +92,7 @@ namespace Neko.Sim.Shift
         private readonly int[] _stationTicket;
 
         private readonly Queue<ShiftEvent> _events = new Queue<ShiftEvent>();
+        private readonly Dictionary<int, int> _pendingXp = new Dictionary<int, int>();
 
         private float _elapsed;
         private float _arrivalAccumulator;
@@ -76,13 +100,15 @@ namespace Neko.Sim.Shift
         private int _nextCustomerId = 1;
         private int _nextTicketId = 1;
         private float _graceRemaining;
-        private int _reputation;
+        private int _happyParties;
+        private int _unhappyParties;
         private ShiftResult _result;
 
         public Shift(ShiftSetup setup)
         {
             _setup = setup ?? throw new ArgumentNullException(nameof(setup));
             SkillTable.Install();
+
             _rng = new Rng(setup.Seed);
             Grid = setup.Grid ?? new CafeGrid(7, 5);
             TimeRemaining = setup.DurationSeconds;
@@ -103,27 +129,6 @@ namespace Neko.Sim.Shift
             if (impossible != null) Finish(impossible);
         }
 
-        /// <summary>
-        /// The unlocked dishes this room can actually produce, given the stations standing in it.
-        /// </summary>
-        private IReadOnlyList<Recipe> BuildServableMenu()
-        {
-            var menu = new List<Recipe>();
-            var unlocked = RecipeBook.UnlockedAt(_setup.CafeLevel);
-
-            for (var r = 0; r < unlocked.Count; r++)
-            {
-                for (var s = 0; s < _stations.Count; s++)
-                {
-                    if (_stations[s].Kind != unlocked[r].Station) continue;
-                    menu.Add(unlocked[r]);
-                    break;
-                }
-            }
-
-            return menu;
-        }
-
         public CafeGrid Grid { get; }
 
         public CafeMetrics Metrics { get; private set; }
@@ -136,17 +141,27 @@ namespace Neko.Sim.Shift
 
         public float Elapsed => _elapsed;
 
-        public int Earned { get; private set; }
+        public int DishRevenue { get; private set; }
+
+        public int Tips { get; private set; }
+
+        public int Earned => DishRevenue + Tips;
 
         public int Served { get; private set; }
 
-        public int Angry { get; private set; }
+        public int WrongOrders { get; private set; }
+
+        public int Burnt { get; private set; }
+
+        public int DishesCooked { get; private set; }
+
+        public int LeftAngry { get; private set; }
 
         public int TurnedAway { get; private set; }
 
-        public int Quota => _setup.Quota;
-
         public int Day => _setup.Day;
+
+        public TeamChemistry Chemistry => _setup.Chemistry;
 
         public IReadOnlyList<Customer> Customers => _customers;
 
@@ -161,8 +176,6 @@ namespace Neko.Sim.Shift
         public IReadOnlyList<ShiftTask> OpenTasks => _board.Open;
 
         public Queue<ShiftEvent> Events => _events;
-
-        public Worker Manager { get; private set; }
 
         public float Occupancy
         {
@@ -191,6 +204,30 @@ namespace Neko.Sim.Shift
                 }
 
                 return count;
+            }
+        }
+
+        public int QueuedTicketCount
+        {
+            get
+            {
+                var count = 0;
+                for (var i = 0; i < _tickets.Count; i++)
+                {
+                    if (_tickets[i].State == TicketState.Queued) count++;
+                }
+
+                return count;
+            }
+        }
+
+        /// <summary>Nought to one. What the fichas are paid on at the end of the day.</summary>
+        public float Satisfaction
+        {
+            get
+            {
+                var parties = _happyParties + _unhappyParties;
+                return parties == 0 ? 1f : _happyParties / (float)parties;
             }
         }
 
@@ -276,13 +313,16 @@ namespace Neko.Sim.Shift
 
         private void AdvanceCustomers(float dt)
         {
+            var stage = StagePatienceBonus();
+
             for (var i = 0; i < _customers.Count; i++)
             {
                 var customer = _customers[i];
 
                 if (customer.DrainsPatience)
                 {
-                    customer.DrainPatience(dt, Metrics.PatienceMultiplier + SeatedCatAmbience());
+                    customer.DrainPatience(dt,
+                        Metrics.PatienceMultiplier + SeatedCatAmbience() + stage);
                     customer.Patience = Curves.Clamp01(
                         customer.Patience + PatienceRegenNear(customer) * dt);
 
@@ -336,30 +376,33 @@ namespace Neko.Sim.Shift
         private void Pay(Customer customer)
         {
             var profile = customer.Profile;
-
-            var amount = customer.Order.BasePrice
-                         * profile.SpendMultiplier
-                         * customer.SpendBonus
-                         * Metrics.TipMultiplier
-                         * customer.ServeTipMultiplier
-                         * (0.5f + 0.5f * customer.Patience);
+            var dishes = customer.Order.BasePrice * profile.SpendMultiplier * customer.SpendBonus;
 
             if (profile.WantsAnArchetype && customer.WantedArchetype.HasValue &&
                 RosterHas(customer.WantedArchetype.Value))
             {
-                amount *= profile.WantedArchetypeTipBonus;
-                if (RosterHasSkill(customer.WantedArchetype.Value, SkillId.Photogenic)) amount *= 2f;
+                dishes *= profile.WantedArchetypeTipBonus;
+                if (RosterHasSkill(customer.WantedArchetype.Value, SkillId.Photogenic)) dishes *= 2f;
             }
 
-            var paid = (int)Math.Round(amount);
-            customer.Paid = paid;
-            Earned += paid;
+            var tipRate = Metrics.TipMultiplier * customer.ServeTipMultiplier - 1f +
+                          ManagementTipBonus();
+
+            // A party who waited to the end of their patience pays for the food and almost
+            // nothing on top; one who was looked after tips properly.
+            var mood = 0.5f + 0.5f * customer.Patience;
+            var paidForFood = (int)Math.Round(dishes * mood);
+            var tip = (int)Math.Round(dishes * mood * Math.Max(0f, tipRate));
+
+            customer.Paid = paidForFood + tip;
+            DishRevenue += paidForFood;
+            Tips += tip;
             Served++;
-            _reputation += 2;
 
-            if (profile.Judges) _reputation += customer.Patience >= 0.6f ? 15 : -15;
+            if (customer.Patience >= 0.45f && !customer.GotTheWrongPlate) _happyParties++;
+            else _unhappyParties++;
 
-            Emit(ShiftEventKind.Paid, customer.Id, SeatCellOf(customer), paid);
+            Emit(ShiftEventKind.Paid, customer.Id, SeatCellOf(customer), customer.Paid);
 
             customer.State = CustomerState.Leaving;
             customer.StateTimer = LeavingSeconds;
@@ -369,8 +412,8 @@ namespace Neko.Sim.Shift
 
         private void LeaveAngry(Customer customer)
         {
-            Angry++;
-            _reputation -= 3;
+            LeftAngry++;
+            _unhappyParties++;
             Emit(ShiftEventKind.LeftAngry, customer.Id, SeatCellOf(customer));
 
             VoidTicketsOf(customer.Id);
@@ -382,9 +425,6 @@ namespace Neko.Sim.Shift
 
         private void TurnAway(Customer customer)
         {
-            // No reputation penalty. Somebody who never got through the door costs the
-            // money they would have spent, and that is enough: charging for it as well made
-            // a busy day worth less than a quiet one, which is the wrong lesson entirely.
             TurnedAway++;
             Emit(ShiftEventKind.TurnedAway, customer.Id, Grid.Door);
             customer.State = CustomerState.Angry;
@@ -396,7 +436,8 @@ namespace Neko.Sim.Shift
             for (var i = _customers.Count - 1; i >= 0; i--)
             {
                 var customer = _customers[i];
-                var done = customer.State == CustomerState.Leaving || customer.State == CustomerState.Angry;
+                var done = customer.State == CustomerState.Leaving ||
+                           customer.State == CustomerState.Angry;
                 if (done && customer.StateTimer <= 0f) _customers.RemoveAt(i);
             }
         }
@@ -540,13 +581,10 @@ namespace Neko.Sim.Shift
 
         public bool CanDo(Worker worker, ShiftTask task)
         {
-            if (!worker.Available) return false;
+            if (!worker.Available || !worker.Allows(task.Kind)) return false;
 
             switch (task.Kind)
             {
-                case TaskKind.Bus:
-                    return worker.WillBusTables;
-
                 case TaskKind.Cook:
                 {
                     var ticket = TicketById(task.TargetId);
@@ -570,26 +608,78 @@ namespace Neko.Sim.Shift
         private void BuildWorkers()
         {
             var door = Grid.Door;
+            var lineup = _setup.Lineup;
+            var id = 1;
 
-            Manager = new Worker
+            if (lineup == null)
             {
-                Id = 0,
-                Kind = WorkerKind.Manager,
-                X = door.X + 1,
-                Y = door.Y,
-            };
-            _workers.Add(Manager);
-
-            for (var i = 0; i < _setup.Roster.Count; i++)
-            {
-                _workers.Add(new Worker
+                // No lineup given: everybody works the floor. Only tests do this, and it is
+                // better than a café that silently refuses to open.
+                for (var i = 0; i < _setup.Roster.Count; i++)
                 {
-                    Id = i + 1,
-                    Kind = WorkerKind.Maid,
-                    Maid = _setup.Roster[i],
-                    X = door.X + 1,
-                    Y = Curves.Clamp(door.Y + i - _setup.Roster.Count * 0.5f, 0, Grid.Height - 1),
-                });
+                    _workers.Add(Place(id++, _setup.Roster[i], Role.Floor, door, i));
+                }
+
+                return;
+            }
+
+            var index = 0;
+            foreach (var slot in lineup.All)
+            {
+                if (slot.Empty) continue;
+
+                var maid = FindInRoster(slot.MaidId);
+                if (maid == null) continue;
+
+                _workers.Add(Place(id++, maid, slot.Role, door, index++));
+            }
+        }
+
+        private Worker Place(int id, Maid maid, Role role, Cell door, int index)
+        {
+            var chemistry = _setup.Chemistry.For(maid.Id);
+            var home = HomeOf(role, door);
+
+            return new Worker
+            {
+                Id = id,
+                Maid = maid,
+                Role = role,
+                Chemistry = chemistry?.Score ?? 0,
+                InPosition = chemistry?.InPosition ?? maid.NaturalRole == role,
+                X = home.X,
+                Y = Curves.Clamp(home.Y + (index % 3) * 0.6f - 0.6f, 0f, Grid.Height - 1f),
+            };
+        }
+
+        /// <summary>
+        /// Where a position stands when there is nothing to do.
+        /// </summary>
+        /// <remarks>
+        /// Reception by the door, kitchen by the stoves, stage and management out of the way.
+        /// A café where everybody idles in the same corner reads as broken even when it is
+        /// working perfectly.
+        /// </remarks>
+        public Cell HomeOf(Role role, Cell door)
+        {
+            switch (role)
+            {
+                case Role.Reception:
+                    return new Cell(Math.Min(door.X + 1, Grid.Width - 1), door.Y);
+
+                case Role.Kitchen:
+                    return _stations.Count > 0
+                        ? new Cell(Math.Max(0, _stations[0].Cell.X - 1), _stations[0].Cell.Y)
+                        : new Cell(Grid.Width - 2, Grid.Height / 2);
+
+                case Role.Stage:
+                    return new Cell(Grid.Width / 2, Grid.Height - 1);
+
+                case Role.Management:
+                    return new Cell(Grid.Width - 1, 0);
+
+                default:
+                    return new Cell(Grid.Width / 2, Math.Max(0, Grid.Height / 2 - 1));
             }
         }
 
@@ -610,28 +700,57 @@ namespace Neko.Sim.Shift
                     continue;
                 }
 
-                if (worker.RushRemaining > 0f) worker.RushRemaining -= dt;
                 if (worker.EncoreCooldown > 0f) worker.EncoreCooldown -= dt;
 
-                // The manager never picks up work on his own. He is the player's hands, and a
-                // manager who helped out by himself would quietly do the maids' jobs — and
-                // take their XP with it, which is the opposite of what the game is about.
-                if (worker.Claimed == null && !worker.IsManager) TryClaim(worker);
+                // The Idol fires her own Encore now. There is nobody to press the button.
+                if (worker.HasEncore && worker.EncoreCooldown <= 0f && WorthAnEncore()) Encore(worker);
+
+                if (!worker.TakesTasks)
+                {
+                    PassivePosition(worker, dt);
+                    continue;
+                }
+
+                if (worker.Claimed == null) TryClaim(worker);
 
                 if (worker.Claimed == null)
                 {
-                    // Idle. A maid with nothing to do gets a little of herself back.
-                    if (!worker.IsManager)
-                    {
-                        worker.Maid.Mood += IdleMoodRecoveryPerSecond * dt;
-                        if (worker.Maid.Mood <= 0f) SendOnBreak(worker);
-                    }
-
+                    Idle(worker, dt);
                     continue;
                 }
 
                 Work(worker, dt);
             }
+        }
+
+        /// <summary>
+        /// Stage and Management, who shape the day without touching a task.
+        /// </summary>
+        /// <remarks>
+        /// They still tire, at half rate. A Stage maid who could hold the room's patience up
+        /// all day for free would be a strictly correct pick every time, and a position with
+        /// no cost is not a decision.
+        /// </remarks>
+        private void PassivePosition(Worker worker, float dt)
+        {
+            StepToward(worker, HomeOf(worker.Role, Grid.Door), MaidMath.BaseWalkSpeed * 0.6f * dt);
+
+            var derived = Derive(worker);
+            worker.Maid.Mood -= derived.MoodDrainPerSecond * 0.5f * dt;
+
+            if (worker.Maid.Mood > 0f || worker.NeedsBreak) return;
+
+            worker.NeedsBreak = true;
+            Emit(ShiftEventKind.MoodEmpty, worker.Id, worker.Cell);
+            SendOnBreak(worker);
+        }
+
+        private void Idle(Worker worker, float dt)
+        {
+            StepToward(worker, HomeOf(worker.Role, Grid.Door), MaidMath.BaseWalkSpeed * 0.5f * dt);
+
+            worker.Maid.Mood += IdleMoodRecoveryPerSecond * dt;
+            if (worker.Maid.Mood <= 0f) SendOnBreak(worker);
         }
 
         private void TryClaim(Worker worker)
@@ -679,22 +798,19 @@ namespace Neko.Sim.Shift
             var derived = Derive(worker);
             var target = TargetCellFor(worker, task);
 
-            if (!worker.IsManager)
+            worker.Maid.Mood -= derived.MoodDrainPerSecond * dt;
+            if (worker.Maid.Mood <= 0f && !worker.NeedsBreak)
             {
-                worker.Maid.Mood -= derived.MoodDrainPerSecond * dt;
-                if (worker.Maid.Mood <= 0f && !worker.NeedsBreak)
+                if (!worker.UsedSecondWind && SkillTable.Has(worker.Maid, SkillId.SecondWind))
                 {
-                    if (!worker.UsedSecondWind && SkillTable.Has(worker.Maid, SkillId.SecondWind))
-                    {
-                        worker.UsedSecondWind = true;
-                        worker.Maid.Mood = 0.5f;
-                        Emit(ShiftEventKind.SecondWind, worker.Id, worker.Cell);
-                    }
-                    else
-                    {
-                        worker.NeedsBreak = true;
-                        Emit(ShiftEventKind.MoodEmpty, worker.Id, worker.Cell);
-                    }
+                    worker.UsedSecondWind = true;
+                    worker.Maid.Mood = 0.5f;
+                    Emit(ShiftEventKind.SecondWind, worker.Id, worker.Cell);
+                }
+                else
+                {
+                    worker.NeedsBreak = true;
+                    Emit(ShiftEventKind.MoodEmpty, worker.Id, worker.Cell);
                 }
             }
 
@@ -746,8 +862,7 @@ namespace Neko.Sim.Shift
                     var ticket = TicketById(task.TargetId);
                     if (ticket == null) return 0f;
 
-                    if (!worker.IsManager && !worker.UsedMiseEnPlace &&
-                        SkillTable.Has(worker.Maid, SkillId.MiseEnPlace))
+                    if (!worker.UsedMiseEnPlace && SkillTable.Has(worker.Maid, SkillId.MiseEnPlace))
                     {
                         worker.UsedMiseEnPlace = true;
                         return 0f;
@@ -796,7 +911,7 @@ namespace Neko.Sim.Shift
             _board.Complete(task);
             worker.Drop();
 
-            if (!worker.IsManager && worker.NeedsBreak) SendOnBreak(worker);
+            if (worker.NeedsBreak) SendOnBreak(worker);
         }
 
         private void CompleteGreet(Worker worker, ShiftTask task)
@@ -817,15 +932,12 @@ namespace Neko.Sim.Shift
             worker.X = seat.Cell.X;
             worker.Y = seat.Cell.Y;
 
-            if (!worker.IsManager)
+            if (SkillTable.Has(worker.Maid, SkillId.WarmWelcome))
             {
-                if (SkillTable.Has(worker.Maid, SkillId.WarmWelcome))
-                {
-                    customer.Patience = Curves.Clamp01(customer.Patience + 0.15f);
-                }
-
-                if (SkillTable.Has(worker.Maid, SkillId.Regulars)) customer.SpendBonus *= 1.2f;
+                customer.Patience = Curves.Clamp01(customer.Patience + 0.15f);
             }
+
+            if (SkillTable.Has(worker.Maid, SkillId.Regulars)) customer.SpendBonus *= 1.2f;
 
             Emit(ShiftEventKind.Seated, customer.Id, seat.Cell);
         }
@@ -852,17 +964,12 @@ namespace Neko.Sim.Shift
             if (ticket == null) return;
 
             var station = ticket.StationIndex >= 0 ? _stations[ticket.StationIndex].Cell : Grid.Door;
+            DishesCooked++;
 
-            if (_rng.Chance(derived.FumbleChance))
+            if (_rng.Chance(derived.FumbleChance) ||
+                _rng.Chance(worker.Maid.Profile.EatChance))
             {
-                Requeue(ticket);
-                Emit(ShiftEventKind.Fumbled, ticket.Id, station);
-                return;
-            }
-
-            // The Gourmand's rule: the dish is excellent and it never leaves the kitchen.
-            if (!worker.IsManager && _rng.Chance(worker.Maid.Profile.EatChance))
-            {
+                Burnt++;
                 Requeue(ticket);
                 Emit(ShiftEventKind.Fumbled, ticket.Id, station);
                 return;
@@ -887,6 +994,18 @@ namespace Neko.Sim.Shift
                 return;
             }
 
+            // The wrong plate. Costs the party's goodwill rather than the kitchen's time.
+            if (customer != null && _rng.Chance(MistakeChance(worker)))
+            {
+                WrongOrders++;
+                customer.GotTheWrongPlate = true;
+                customer.Patience = Curves.Clamp01(customer.Patience - MistakePatienceCost);
+
+                Requeue(ticket);
+                Emit(ShiftEventKind.WrongOrder, customer.Id, SeatCellOf(customer));
+                return;
+            }
+
             FreeStationOf(ticket);
             ticket.State = TicketState.Delivered;
             ticket.StationIndex = -1;
@@ -897,10 +1016,7 @@ namespace Neko.Sim.Shift
             customer.Order.Serve();
             Emit(ShiftEventKind.Served, customer.Id, SeatCellOf(customer));
 
-            if (!worker.IsManager && SkillTable.Has(worker.Maid, SkillId.DoubleTray))
-            {
-                DeliverSecondPlate(customer);
-            }
+            if (SkillTable.Has(worker.Maid, SkillId.DoubleTray)) DeliverSecondPlate(customer);
 
             if (!customer.Order.Complete) return;
 
@@ -909,13 +1025,35 @@ namespace Neko.Sim.Shift
         }
 
         /// <summary>
-        /// Double Tray: she had a second plate for the same table in her other hand.
+        /// How likely she is to put the wrong plate down.
         /// </summary>
         /// <remarks>
-        /// Scoped to the one customer rather than to any ready plate, because the skill reads
-        /// as "she carried both of your dishes at once" — which is a thing the player can see
-        /// happen at their own table, not a hidden throughput number.
+        /// Falls hard with the Serve stat and with chemistry, which is the point: a maid
+        /// standing somewhere she does not belong, in a squad that does not fit together,
+        /// visibly makes mistakes — and the player reads that straight off the dashboard
+        /// without being told what went wrong.
         /// </remarks>
+        public float MistakeChance(Worker worker)
+        {
+            if (worker?.Maid == null) return 0f;
+
+            var serve = worker.Maid.Total.Normalised(StatKind.Serve);
+            var chance = BaseMistakeChance * (1f - 0.9f * serve);
+
+            if (!worker.InPosition) chance *= 1.8f;
+            chance *= 2f - _setup.Chemistry.Multiplier;
+
+            for (var i = 0; i < worker.Maid.Traits.Count; i++)
+            {
+                chance *= TraitTable.ById(worker.Maid.Traits[i]).MistakeMultiplier;
+            }
+
+            if (SkillTable.Has(worker.Maid, SkillId.SteadyHands)) chance *= 0.6f;
+
+            return Curves.Clamp01(chance);
+        }
+
+        /// <summary>Double Tray: she had a second plate for the same table in her other hand.</summary>
         private void DeliverSecondPlate(Customer customer)
         {
             for (var i = 0; i < _tickets.Count; i++)
@@ -932,38 +1070,6 @@ namespace Neko.Sim.Shift
             }
         }
 
-        /// <summary>Presença: a maid standing nearby gives people back a little goodwill.</summary>
-        private float PatienceRegenNear(Customer customer)
-        {
-            if (customer.SeatIndex < 0) return 0f;
-
-            var seat = _seats[customer.SeatIndex].Cell;
-            var regen = 0f;
-
-            for (var i = 0; i < _workers.Count; i++)
-            {
-                var worker = _workers[i];
-                if (worker.IsManager || worker.OnBreak) continue;
-                if (!SkillTable.Has(worker.Maid, SkillId.Patience)) continue;
-                if (worker.DistanceTo(seat) > PresenceRadius) continue;
-
-                regen += PatienceRegenPerSecond;
-            }
-
-            return regen;
-        }
-
-        private bool RosterHasSkill(Archetype archetype, SkillId skill)
-        {
-            for (var i = 0; i < _setup.Roster.Count; i++)
-            {
-                var maid = _setup.Roster[i];
-                if (maid.Archetype == archetype && SkillTable.Has(maid, skill)) return true;
-            }
-
-            return false;
-        }
-
         private void CompleteBus(ShiftTask task)
         {
             if (task.TargetId >= _seats.Count) return;
@@ -974,7 +1080,6 @@ namespace Neko.Sim.Shift
 
         private void AwardXp(Worker worker, TaskKind kind)
         {
-            if (worker.IsManager) return;
             if (!XpForTask.TryGetValue(kind, out var xp)) return;
 
             var profile = worker.Maid.Profile;
@@ -1002,41 +1107,32 @@ namespace Neko.Sim.Shift
             worker.Drop();
         }
 
-        // -------------------------------------------------------------------------------
-        // Player commands
-        // -------------------------------------------------------------------------------
-
-        /// <summary>Sends the manager to do one specific thing. This is what a click means.</summary>
-        public bool CommandManager(TaskKind kind, int targetId)
+        /// <summary>
+        /// The Idol decides for herself now.
+        /// </summary>
+        /// <remarks>
+        /// Fires when enough of the room is far enough through its patience to be worth it. A
+        /// player who had to press this would be a player with a control during the day, and
+        /// the whole pivot was away from exactly that.
+        /// </remarks>
+        private bool WorthAnEncore()
         {
-            if (Finished) return false;
+            var waiting = 0;
+            var hurting = 0;
 
-            var task = _board.Find(kind, targetId);
-            if (task == null || !_board.Assign(Manager, task, this)) return false;
+            for (var i = 0; i < _customers.Count; i++)
+            {
+                if (_customers[i].SeatIndex < 0) continue;
 
-            PrepareTask(Manager, task);
-            return Manager.Claimed == task;
+                waiting++;
+                if (_customers[i].Patience < 0.45f) hurting++;
+            }
+
+            return waiting >= 2 && hurting >= 2;
         }
 
-        /// <summary>Shouts at a maid. Faster for six seconds, and it costs her.</summary>
-        public bool Rush(int workerId)
+        private void Encore(Worker worker)
         {
-            var worker = WorkerById(workerId);
-            if (Finished || worker == null || worker.IsManager || !worker.Available) return false;
-
-            worker.RushRemaining = Worker.RushSeconds;
-            worker.Maid.Mood -= Worker.RushMoodCost;
-            Emit(ShiftEventKind.Rushed, worker.Id, worker.Cell);
-            return true;
-        }
-
-        /// <summary>The Idol's active: the room forgets it was waiting.</summary>
-        public bool UseEncore(int workerId)
-        {
-            var worker = WorkerById(workerId);
-            if (Finished || worker == null || !worker.HasEncore || !worker.Available) return false;
-            if (worker.EncoreCooldown > 0f) return false;
-
             var profile = worker.Maid.Profile;
             worker.EncoreCooldown = profile.EncoreCooldownSeconds;
 
@@ -1048,7 +1144,6 @@ namespace Neko.Sim.Shift
             }
 
             Emit(ShiftEventKind.EncoreUsed, worker.Id, worker.Cell);
-            return true;
         }
 
         // -------------------------------------------------------------------------------
@@ -1069,19 +1164,19 @@ namespace Neko.Sim.Shift
             Finished = true;
             TimeRemaining = 0f;
 
-            var quotaMet = failureReason == null && Earned >= _setup.Quota;
-
             _result = new ShiftResult
             {
                 Day = _setup.Day,
-                Earned = Earned,
-                Quota = _setup.Quota,
-                QuotaMet = quotaMet,
+                DishRevenue = DishRevenue,
+                Tips = Tips,
                 Served = Served,
-                Angry = Angry,
+                WrongOrders = WrongOrders,
+                Burnt = Burnt,
+                DishesCooked = DishesCooked,
+                LeftAngry = LeftAngry,
                 TurnedAway = TurnedAway,
-                ReputationDelta = failureReason == null ? _reputation : 0,
-                SlowDay = !quotaMet,
+                ChemistryScore = _setup.Chemistry.Score,
+                Satisfaction = Satisfaction,
                 FailureReason = failureReason,
             };
 
@@ -1095,27 +1190,69 @@ namespace Neko.Sim.Shift
         /// Why this café could not serve anybody, or null if it can.
         /// </summary>
         /// <remarks>
-        /// Checked once, up front. A shift that cannot possibly produce a plate would
-        /// otherwise sit there generating unclaimable tasks until the clock ran out, which is
-        /// a dead end wearing a timer.
+        /// Checked once, up front, and every message names the screen that fixes it. A shift
+        /// that cannot possibly produce a plate would otherwise sit there generating
+        /// unclaimable tasks until the clock ran out, which is a dead end wearing a timer.
         /// </remarks>
         private string WhyThisCafeCannotServe()
         {
             if (_seats.Count == 0)
             {
-                return "O café não tem nenhum lugar para sentar. Coloque uma mesa no editor.";
+                return "O café não tem nenhum lugar para sentar. Compre uma mesa na loja.";
             }
 
-            if (_servableMenu.Count > 0) return null;
+            if (_servableMenu.Count == 0)
+            {
+                return "A cozinha não tem nenhuma estação que saiba fazer o cardápio de hoje.";
+            }
 
-            return "A cozinha não tem nenhuma estação que saiba fazer o cardápio de hoje.";
+            if (_workers.Count == 0)
+            {
+                return "Ninguém foi escalado hoje. Monte a escalação antes de abrir.";
+            }
+
+            var reception = 0;
+            var floor = 0;
+            var cooks = 0;
+            for (var i = 0; i < _workers.Count; i++)
+            {
+                if (_workers[i].Role == Role.Reception) reception++;
+                if (_workers[i].Role == Role.Floor) floor++;
+                if (_workers[i].Role == Role.Kitchen) cooks++;
+            }
+
+            // All three are load-bearing. Without a greeter nobody is ever seated and the
+            // whole day is a queue at the door, which looks like a bug rather than a lineup
+            // mistake — found by a test that left the position empty by accident.
+            if (reception == 0) return "Não há ninguém na recepção. Escale ao menos uma maid lá.";
+            if (floor == 0) return "Não há ninguém no salão. Escale ao menos uma maid lá.";
+            if (cooks == 0) return "Não há ninguém na cozinha. Escale ao menos uma maid lá.";
+
+            return null;
+        }
+
+        /// <summary>The unlocked dishes this room can actually produce, given its stations.</summary>
+        private IReadOnlyList<Recipe> BuildServableMenu()
+        {
+            var menu = new List<Recipe>();
+            var unlocked = RecipeBook.UnlockedAt(_setup.CafeLevel);
+
+            for (var r = 0; r < unlocked.Count; r++)
+            {
+                for (var s = 0; s < _stations.Count; s++)
+                {
+                    if (_stations[s].Kind != unlocked[r].Station) continue;
+                    menu.Add(unlocked[r]);
+                    break;
+                }
+            }
+
+            return menu;
         }
 
         // -------------------------------------------------------------------------------
         // Helpers
         // -------------------------------------------------------------------------------
-
-        private readonly Dictionary<int, int> _pendingXp = new Dictionary<int, int>();
 
         private void PendingXp(int maidId, int xp)
         {
@@ -1123,6 +1260,16 @@ namespace Neko.Sim.Shift
 
             _pendingXp.TryGetValue(maidId, out var current);
             _pendingXp[maidId] = current + xp;
+        }
+
+        private Maid FindInRoster(int maidId)
+        {
+            for (var i = 0; i < _setup.Roster.Count; i++)
+            {
+                if (_setup.Roster[i].Id == maidId) return _setup.Roster[i];
+            }
+
+            return null;
         }
 
         private Maid LowestLevelMaidOtherThan(int maidId)
@@ -1138,30 +1285,41 @@ namespace Neko.Sim.Shift
             return lowest;
         }
 
-        private MaidDerived Derive(Worker worker)
-        {
-            if (worker.IsManager) return ManagerDerived(worker);
-
-            return MaidMath.Derive(worker.Maid, new ShiftSnapshot(
-                Occupancy,
-                WorkOf(worker),
-                NeighbourAuraAt(worker),
-                worker.RushRemaining > 0f,
-                QueuedTicketCount));
-        }
-
         /// <summary>
-        /// The manager is a flat 1.0 at everything and never tires.
+        /// Her numbers for this moment, with the lineup folded in.
         /// </summary>
         /// <remarks>
-        /// Deliberately a constant. He is the baseline the maids are measured against, and
-        /// the whole arc of the game is the roster growing past him — which only reads if he
-        /// does not grow too.
+        /// Three things that are not her own stats reach in here: the team's chemistry,
+        /// whether she is standing where she belongs, and her traits. Together they are the
+        /// entire reason the lineup screen exists.
         /// </remarks>
-        private MaidDerived ManagerDerived(Worker worker)
+        public MaidDerived Derive(Worker worker)
         {
-            var rush = worker.RushRemaining > 0f ? 1f + MaidMath.RushBonus : 1f;
-            return new MaidDerived(MaidMath.BaseWalkSpeed * rush, rush, rush, rush, 1f, 0f, 0f, 0f);
+            var moment = new ShiftSnapshot(
+                Occupancy, WorkOf(worker), NeighbourAuraAt(worker), false, QueuedTicketCount);
+
+            var derived = MaidMath.Derive(worker.Maid, moment);
+
+            var scale = _setup.Chemistry.Multiplier;
+            if (!worker.InPosition) scale *= 1f - RoleTable.OutOfPositionPenalty;
+
+            var speed = scale;
+            var tip = scale;
+            var drain = 1f;
+
+            for (var i = 0; i < worker.Maid.Traits.Count; i++)
+            {
+                var trait = TraitTable.ById(worker.Maid.Traits[i]);
+                speed *= trait.SpeedMultiplier;
+                tip *= trait.TipMultiplier;
+                drain *= trait.MoodDrainMultiplier;
+            }
+
+            var scaled = derived.Scaled(speed, speed, speed, speed, tip);
+
+            return new MaidDerived(scaled.MoveSpeed, scaled.GreetSpeed, scaled.ServeSpeed,
+                scaled.CookSpeed, scaled.TipMultiplier, derived.FumbleChance, derived.DropChance,
+                derived.MoodDrainPerSecond * drain);
         }
 
         /// <summary>The shift's task kinds, in the vocabulary the maid rules speak.</summary>
@@ -1180,27 +1338,13 @@ namespace Neko.Sim.Shift
             }
         }
 
-        public int QueuedTicketCount
-        {
-            get
-            {
-                var count = 0;
-                for (var i = 0; i < _tickets.Count; i++)
-                {
-                    if (_tickets[i].State == TicketState.Queued) count++;
-                }
-
-                return count;
-            }
-        }
-
         private float NeighbourAuraAt(Worker worker)
         {
             var aura = 0f;
             for (var i = 0; i < _workers.Count; i++)
             {
                 var other = _workers[i];
-                if (other.Id == worker.Id || other.IsManager || other.OnBreak) continue;
+                if (other.Id == worker.Id || other.OnBreak) continue;
 
                 var dx = other.X - worker.X;
                 var dy = other.Y - worker.Y;
@@ -1210,6 +1354,38 @@ namespace Neko.Sim.Shift
             }
 
             return aura;
+        }
+
+        /// <summary>What the stage is worth to the whole room, as extra patience.</summary>
+        private float StagePatienceBonus()
+        {
+            var bonus = 0f;
+            for (var i = 0; i < _workers.Count; i++)
+            {
+                var worker = _workers[i];
+                if (worker.Role != Role.Stage || worker.OnBreak) continue;
+
+                bonus += worker.Maid.Total.Charm * StagePatiencePerCharm *
+                         _setup.Chemistry.Multiplier;
+            }
+
+            return bonus;
+        }
+
+        /// <summary>What the till is worth, as a fraction added to every tip.</summary>
+        public float ManagementTipBonus()
+        {
+            var bonus = 0f;
+            for (var i = 0; i < _workers.Count; i++)
+            {
+                var worker = _workers[i];
+                if (worker.Role != Role.Management || worker.OnBreak) continue;
+
+                bonus += worker.Maid.Total.Charm * ManagementTipPerCharm *
+                         _setup.Chemistry.Multiplier;
+            }
+
+            return bonus;
         }
 
         private float VipWeightMultiplier()
@@ -1234,6 +1410,17 @@ namespace Neko.Sim.Shift
             return false;
         }
 
+        private bool RosterHasSkill(Archetype archetype, SkillId skill)
+        {
+            for (var i = 0; i < _setup.Roster.Count; i++)
+            {
+                var maid = _setup.Roster[i];
+                if (maid.Archetype == archetype && SkillTable.Has(maid, skill)) return true;
+            }
+
+            return false;
+        }
+
         /// <summary>A cat in the room is worth real patience to everybody else.</summary>
         private float SeatedCatAmbience()
         {
@@ -1245,6 +1432,27 @@ namespace Neko.Sim.Shift
             }
 
             return bonus;
+        }
+
+        /// <summary>Presença: a maid standing nearby gives people back a little goodwill.</summary>
+        private float PatienceRegenNear(Customer customer)
+        {
+            if (customer.SeatIndex < 0) return 0f;
+
+            var seat = _seats[customer.SeatIndex].Cell;
+            var regen = 0f;
+
+            for (var i = 0; i < _workers.Count; i++)
+            {
+                var worker = _workers[i];
+                if (worker.OnBreak) continue;
+                if (!SkillTable.Has(worker.Maid, SkillId.Patience)) continue;
+                if (worker.DistanceTo(seat) > PresenceRadius) continue;
+
+                regen += PatienceRegenPerSecond;
+            }
+
+            return regen;
         }
 
         private void GiftPatienceToTheRoom()
@@ -1280,7 +1488,10 @@ namespace Neko.Sim.Shift
         private void FreeStationOf(Ticket ticket)
         {
             if (ticket.StationIndex < 0 || ticket.StationIndex >= _stationTicket.Length) return;
-            if (_stationTicket[ticket.StationIndex] == ticket.Id) _stationTicket[ticket.StationIndex] = -1;
+            if (_stationTicket[ticket.StationIndex] == ticket.Id)
+            {
+                _stationTicket[ticket.StationIndex] = -1;
+            }
         }
 
         private void FreeSeat(Customer customer)
