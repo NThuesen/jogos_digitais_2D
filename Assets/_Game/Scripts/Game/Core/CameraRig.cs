@@ -38,7 +38,9 @@ namespace Neko.Game.Core
 
             Camera.orthographic = true;
             Camera.clearFlags = CameraClearFlags.SolidColor;
-            Camera.backgroundColor = Palette.Wall;
+            // Darker than the floor, so the room reads as a room inside a space
+            // rather than as furniture floating on a sheet of the same colour.
+            Camera.backgroundColor = Palette.Darken(Palette.Wall, 0.45f);
             Camera.transform.position = new Vector3(0f, 0f, -10f);
             Camera.nearClipPlane = -20f;
             Camera.farClipPlane = 50f;

@@ -107,8 +107,8 @@ namespace Neko.Game.Ui
 
             var value = UiKit.Label(row, right, Typeface.Body, colour, TextAnchor.MiddleRight,
                 bold: true);
-            value.rectTransform.sizeDelta = new Vector2(200f, 32f);
-            value.rectTransform.anchoredPosition = new Vector2(190f, 0f);
+            value.rectTransform.sizeDelta = new Vector2(190f, 32f);
+            value.rectTransform.anchoredPosition = new Vector2(150f, 0f);
 
             _rows.Add(row.gameObject);
         }

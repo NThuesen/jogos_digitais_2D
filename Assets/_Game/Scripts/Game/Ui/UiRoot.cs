@@ -16,6 +16,8 @@ namespace Neko.Game.Ui
     /// </remarks>
     public sealed class UiRoot : MonoBehaviour
     {
+        public Camera Camera { get; private set; }
+
         public const float ReferenceWidth = 1280f;
         public const float ReferenceHeight = 720f;
 
@@ -30,15 +32,23 @@ namespace Neko.Game.Ui
 
         public Screen Current { get; private set; }
 
-        public void Build(SpriteFactory sprites, AudioDirector audio)
+        public void Build(SpriteFactory sprites, AudioDirector audio, Camera camera)
         {
             UiKit.Sprites = sprites;
             _audio = audio;
+            Camera = camera;
             UiKit.EnsureEventSystem();
 
             _canvas = gameObject.AddComponent<Canvas>();
-            _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            _canvas.sortingOrder = 100;
+
+            // Through the camera rather than as an overlay. An overlay canvas is composited
+            // after everything, including after a camera renders to a texture — so the
+            // capture test would have produced a game with no interface in it, and the
+            // frames in visual_assets would have been quietly wrong.
+            _canvas.renderMode = RenderMode.ScreenSpaceCamera;
+            _canvas.worldCamera = camera;
+            _canvas.planeDistance = 5f;
+            _canvas.sortingOrder = Core.Layers.InterfaceOrder;
 
             var scaler = gameObject.AddComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;

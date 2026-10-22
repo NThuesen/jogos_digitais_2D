@@ -48,15 +48,21 @@ namespace Neko.Game.View
 
         private void BuildFloor(CafeGrid grid)
         {
-            var plain = _sprites.Solid(Palette.Wood);
-            var alternate = _sprites.Solid(Palette.Darken(Palette.Wood, 0.06f));
+            var plain = _sprites.Solid(Palette.Lighten(Palette.Wood, 0.18f));
+            var alternate = _sprites.Solid(Palette.Wood);
+
+            // A skirting line around the floor. One rectangle, and the room has walls.
+            var surround = Make("Walls", new Vector3((grid.Width - 1) * 0.5f,
+                    (grid.Height - 1) * 0.5f, 0f), _sprites.Solid(Palette.Shadow),
+                Layers.Floor, grid.Height + 2f);
+            surround.transform.localScale = new Vector3(grid.Width + 0.5f, grid.Height + 0.5f, 1f);
 
             for (var x = 0; x < grid.Width; x++)
             {
                 for (var y = 0; y < grid.Height; y++)
                 {
-                    // A checker, one shade apart. Enough to read as a floor, not enough to
-                    // compete with anything standing on it.
+                    // A checker. Enough to read as a floor and to count tiles by eye, not
+                    // enough to compete with anything standing on it.
                     var tile = Make("Tile", new Vector3(x, y, 0f),
                         (x + y) % 2 == 0 ? plain : alternate, Layers.Floor, y);
                     tile.transform.localScale = Vector3.one;

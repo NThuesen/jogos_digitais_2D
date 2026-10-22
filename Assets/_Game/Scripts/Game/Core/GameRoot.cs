@@ -123,7 +123,7 @@ namespace Neko.Game.Core
             go.transform.SetParent(transform, false);
 
             Ui = go.AddComponent<UiRoot>();
-            Ui.Build(Sprites, Audio);
+            Ui.Build(Sprites, Audio, Camera.Camera);
 
             Effects.Bind(Sprites, Ui.OverlayLayer);
             Presenter.Bind(Sprites, Room, Effects, Audio, Music, Camera);

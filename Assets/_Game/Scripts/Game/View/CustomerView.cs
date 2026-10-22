@@ -18,6 +18,15 @@ namespace Neko.Game.View
     /// </remarks>
     public sealed class CustomerView : MonoBehaviour
     {
+        /// <summary>
+        /// Customers are drawn smaller than the staff.
+        /// </summary>
+        /// <remarks>
+        /// Not decoration: at the same size a player glancing at the room cannot tell who
+        /// works there, and the whole game is about watching the staff get better at it.
+        /// </remarks>
+        public const float CustomerScale = 0.72f;
+
         private SpriteFactory _sprites;
         private SpriteRenderer _body;
         private SpriteRenderer _bubble;
@@ -37,15 +46,21 @@ namespace Neko.Game.View
             view._sprites = sprites;
             view._body = go.AddComponent<SpriteRenderer>();
 
+            // Small. The first version drew a bubble as wide as the customer's head, and a
+            // room of six waiting parties turned into a field of white circles with the
+            // café somewhere behind it.
             var bubble = new GameObject("Bubble");
             bubble.transform.SetParent(go.transform, false);
-            bubble.transform.localPosition = new Vector3(0.34f, 0.62f, 0f);
-            bubble.transform.localScale = Vector3.one * 0.62f;
+            bubble.transform.localPosition = new Vector3(0.30f, 0.56f, 0f);
+            bubble.transform.localScale = Vector3.one * 0.38f;
             view._bubble = bubble.AddComponent<SpriteRenderer>();
 
             var icon = new GameObject("Icon");
             icon.transform.SetParent(bubble.transform, false);
-            icon.transform.localScale = Vector3.one * 0.5f;
+
+            // Two thirds of the bubble, not half: what the icon says is the whole point of
+            // drawing the bubble at all.
+            icon.transform.localScale = Vector3.one * 0.66f;
             view._bubbleIcon = icon.AddComponent<SpriteRenderer>();
 
             var patience = new GameObject("Patience");
@@ -64,7 +79,7 @@ namespace Neko.Game.View
             _body.sprite = _sprites.Layered(Layers(customer), "customer:" + customer.Kind, 128);
 
             transform.localScale = Vector3.zero;
-            Tween.Scale(transform, Vector3.zero, Vector3.one * 0.82f, 0.32f, Ease.OutBack);
+            Tween.Scale(transform, Vector3.zero, Vector3.one * CustomerScale, 0.32f, Ease.OutBack);
         }
 
         public void Place(Vector3 position) => transform.position = position;
@@ -89,7 +104,11 @@ namespace Neko.Game.View
 
             Core.Layers.Apply(_body, Core.Layers.Characters, transform.position.y);
             Core.Layers.Apply(_bubble, Core.Layers.Fx, transform.position.y);
-            Core.Layers.Apply(_bubbleIcon, Core.Layers.Fx, transform.position.y - 0.01f);
+
+            // Explicitly one in front of its own bubble. Nudging the y by a hundredth rounded
+            // to the same order, the two renderers tied, and the icon lost — so every bubble
+            // in the café drew as a blank white circle.
+            _bubbleIcon.sortingOrder = _bubble.sortingOrder + 1;
             Core.Layers.Apply(_patience, Core.Layers.Fx, transform.position.y);
 
             SyncBubble();
@@ -103,16 +122,19 @@ namespace Neko.Game.View
 
         private void SyncBubble()
         {
+            // Not while queueing: a party standing at the door is already saying what it
+            // wants, and six bubbles by the entrance is a wall of white circles.
             var wants = Customer.State == CustomerState.Ordering ||
-                        Customer.State == CustomerState.Waiting ||
-                        Customer.State == CustomerState.Queueing;
+                        Customer.State == CustomerState.Waiting;
 
             _bubble.enabled = wants;
             _bubbleIcon.enabled = wants;
             if (!wants) return;
 
+            // Wall rather than panel: the palest dish on the menu is warm milk, and on a
+            // near-white bubble it drew as nothing at all.
             _bubble.sprite = _sprites.Get(
-                new ShapeSpec(ShapeId.Circle, Palette.Panel, Palette.Ink, 0.07f));
+                new ShapeSpec(ShapeId.Circle, Palette.Wall, Palette.Ink, 0.1f));
 
             var icon = IconFor();
             _bubbleIcon.sprite = icon.sprite;
@@ -128,10 +150,10 @@ namespace Neko.Game.View
             switch (Customer.State)
             {
                 case CustomerState.Queueing:
-                    return (_sprites.Get(new ShapeSpec(ShapeId.Door, Palette.Shadow)), Color.white);
+                    return (_sprites.Get(new ShapeSpec(ShapeId.Door, Palette.Ink)), Color.white);
 
                 case CustomerState.Ordering:
-                    return (_sprites.Get(new ShapeSpec(ShapeId.Note, Palette.Shadow)), Color.white);
+                    return (_sprites.Get(new ShapeSpec(ShapeId.Note, Palette.Ink)), Color.white);
 
                 default:
                 {
@@ -143,7 +165,7 @@ namespace Neko.Game.View
                     }
 
                     return (_sprites.Get(new ShapeSpec(Shapes.Parse(dish.ShapeId),
-                        Palette.Hex(dish.TintHex), Palette.Ink, 0.06f)), Color.white);
+                        Palette.Hex(dish.TintHex), Palette.Ink, 0.13f)), Color.white);
                 }
             }
         }

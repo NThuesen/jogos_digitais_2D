@@ -68,7 +68,9 @@ namespace Neko.Game.Art
             var pixels = new Color32[4];
             for (var i = 0; i < pixels.Length; i++) pixels[i] = colour;
 
-            var sprite = Build(pixels, 2, key);
+            // Two pixels, but one world unit: at the shared pixels-per-unit this came out a
+            // fiftieth of a tile, and the café floor rendered as a field of faint dots.
+            var sprite = Build(pixels, 2, key, 2f);
             _cache[key] = sprite;
             return sprite;
         }
@@ -100,7 +102,8 @@ namespace Neko.Game.Art
             else Object.DestroyImmediate(target);
         }
 
-        private static Sprite Build(Color32[] pixels, int size, string name)
+        private static Sprite Build(Color32[] pixels, int size, string name,
+            float pixelsPerUnit = PixelsPerUnit)
         {
             var texture = new Texture2D(size, size, TextureFormat.RGBA32, false)
             {
@@ -117,7 +120,7 @@ namespace Neko.Game.Art
             texture.Apply(false, false);
 
             var sprite = Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f),
-                PixelsPerUnit, 0, SpriteMeshType.FullRect);
+                pixelsPerUnit, 0, SpriteMeshType.FullRect);
             sprite.name = name;
             sprite.hideFlags = HideFlags.HideAndDontSave;
             return sprite;

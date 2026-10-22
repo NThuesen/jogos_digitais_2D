@@ -20,9 +20,18 @@ namespace Neko.Game.Core
         public const int Fx = 5;
         public const int Overlay = 6;
 
-        /// <summary>Within a layer, whatever is lower on screen draws in front.</summary>
+        /// <summary>
+        /// Within a layer, whatever is lower on screen draws in front.
+        /// </summary>
+        /// <remarks>
+        /// Kept well under the interface's own sorting order. The first version multiplied the
+        /// layer by ten thousand, which put the café somewhere above fifty thousand and the
+        /// canvas at a hundred — so the room rendered straight through every menu in the game.
+        /// </remarks>
+        public const int InterfaceOrder = 10000;
+
         public static int Order(int layer, float y) =>
-            layer * 10000 - Mathf.RoundToInt(Mathf.Clamp(y, -40f, 40f) * 100f);
+            layer * 1000 - Mathf.RoundToInt(Mathf.Clamp(y, -40f, 40f) * 10f);
 
         public static void Apply(SpriteRenderer renderer, int layer, float y)
         {

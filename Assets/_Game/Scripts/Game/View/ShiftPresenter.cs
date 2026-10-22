@@ -124,6 +124,15 @@ namespace Neko.Game.View
             }
         }
 
+        /// <summary>
+        /// Where a party stands: at their seat, or in the queue just inside the door.
+        /// </summary>
+        /// <remarks>
+        /// The queue runs down the wall beside the door in columns of four. The first version
+        /// walked straight out to the left with less than half a tile between parties, which
+        /// at a door capacity of five drew five customers on top of each other and off the
+        /// edge of the floor — the capture made it obvious and nothing else would have.
+        /// </remarks>
         private Vector3 PositionOf(Customer customer)
         {
             if (customer.SeatIndex >= 0 && customer.SeatIndex < Shift.Seats.Count)
@@ -132,8 +141,6 @@ namespace Neko.Game.View
                 return new Vector3(cell.X, cell.Y + 0.42f, 0f);
             }
 
-            // Queued parties line up outwards from the door, which is what makes a full door
-            // look full.
             var place = 0;
             foreach (var other in Shift.Customers)
             {
@@ -142,8 +149,17 @@ namespace Neko.Game.View
             }
 
             var door = Shift.Grid.Door;
-            return new Vector3(door.X - 0.55f - place * 0.42f, door.Y + 0.3f, 0f);
+            var column = place / QueueColumnLength;
+            var row = place % QueueColumnLength;
+
+            return new Vector3(
+                door.X + 0.2f + column * 0.72f,
+                Mathf.Clamp(door.Y + 1.3f - row * 0.85f, 0.2f, Shift.Grid.Height - 0.8f),
+                0f);
         }
+
+        /// <summary>How many wait in one line before the queue starts a second.</summary>
+        private const int QueueColumnLength = 4;
 
         private void SyncWorkers()
         {

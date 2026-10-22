@@ -92,8 +92,14 @@ namespace Neko.Game.Feel
             var canvas = _rect.parent as RectTransform;
             if (canvas == null) return;
 
+            var canvasComponent = _rect.GetComponentInParent<Canvas>();
+            var uiCamera = canvasComponent != null &&
+                           canvasComponent.renderMode != RenderMode.ScreenSpaceOverlay
+                ? canvasComponent.worldCamera
+                : null;
+
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                canvas, screen, null, out var local);
+                canvas, screen, uiCamera, out var local);
 
             _rect.anchoredPosition = local + new Vector2(0f, _age / Life * Rise);
         }
