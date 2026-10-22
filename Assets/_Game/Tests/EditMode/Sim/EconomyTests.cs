@@ -152,43 +152,56 @@ namespace Neko.Tests.Sim
     public sealed class DayPlanTests
     {
         [Test]
-        public void QuotaFollowsTheCurve()
+        public void TheQuotaIsKeyedOnTheCafeLevel()
         {
-            Assert.AreEqual(120, DayPlan.QuotaFor(1));
-            Assert.AreEqual((int)System.Math.Round(120 * System.Math.Pow(10, 1.35)),
-                DayPlan.QuotaFor(10));
+            Assert.AreEqual(95, DayPlan.QuotaFor(1, 1));
+            Assert.AreEqual((int)System.Math.Round(95 * System.Math.Pow(5, DayPlan.QuotaExponent)),
+                DayPlan.QuotaFor(1, 5));
         }
 
         [Test]
-        public void TheQuotaAlwaysRises()
+        public void TheQuotaRisesWithTheLevelAndNudgesWithTheStep()
         {
             var previous = 0;
-            for (var step = 1; step <= 40; step++)
+            for (var level = 1; level <= CafeLevelTable.MaxLevel; level++)
             {
-                var quota = DayPlan.QuotaFor(step);
-                Assert.Greater(quota, previous, "step " + step);
+                var quota = DayPlan.QuotaFor(1, level);
+                Assert.Greater(quota, previous, "level " + level);
                 previous = quota;
             }
+
+            Assert.Greater(DayPlan.QuotaFor(10, 3), DayPlan.QuotaFor(1, 3));
+        }
+
+        [Test]
+        public void ARepeatedDayGetsOnlyALittleHarder()
+        {
+            // The step climb is a nudge, not a curve. A player parked at one café level
+            // should be able to keep earning, not be squeezed out of their own save.
+            Assert.Less(DayPlan.QuotaFor(10, 2) / (float)DayPlan.QuotaFor(1, 2), 1.25f);
         }
 
         [Test]
         public void ArrivalsAndPatienceGetHarderEachDay()
         {
-            Assert.Greater(DayPlan.ArrivalsPerSecondFor(20, 1), DayPlan.ArrivalsPerSecondFor(1, 1));
+            Assert.Greater(DayPlan.ArrivalsPerSecondFor(20, 1, 4),
+                DayPlan.ArrivalsPerSecondFor(1, 1, 4));
             Assert.Less(DayPlan.PatienceScaleFor(20), DayPlan.PatienceScaleFor(1));
         }
 
         [Test]
         public void ABiggerCafeIsBusierAndOpenLonger()
         {
-            Assert.Greater(DayPlan.ArrivalsPerSecondFor(1, 8), DayPlan.ArrivalsPerSecondFor(1, 1));
+            Assert.Greater(DayPlan.ArrivalsPerSecondFor(1, 8, 14),
+                DayPlan.ArrivalsPerSecondFor(1, 1, 4),
+                "a room with more seats has to fill them");
             Assert.Greater(DayPlan.DurationFor(8), DayPlan.DurationFor(1));
         }
 
         [Test]
         public void TheCurvesAreClampedSoDayAThousandIsStillAGame()
         {
-            Assert.LessOrEqual(DayPlan.ArrivalsPerSecondFor(1000, 10), 1.1f);
+            Assert.LessOrEqual(DayPlan.ArrivalsPerSecondFor(1000, 10, 40), 1.1f);
             Assert.GreaterOrEqual(DayPlan.PatienceScaleFor(1000), 0.6f);
             Assert.LessOrEqual(DayPlan.DurationFor(100), 180f);
         }
@@ -231,7 +244,7 @@ namespace Neko.Tests.Sim
 
             Assert.AreEqual(2, met.QuotaStep);
             Assert.AreEqual(1, missed.QuotaStep, "a slow day must not make tomorrow harder");
-            Assert.AreEqual(DayPlan.QuotaFor(1), DayPlan.QuotaFor(missed.QuotaStep));
+            Assert.AreEqual(DayPlan.QuotaFor(1, 1), DayPlan.QuotaFor(missed.QuotaStep, 1));
         }
 
         [Test]

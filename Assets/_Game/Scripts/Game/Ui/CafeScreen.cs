@@ -88,7 +88,7 @@ namespace Neko.Game.Ui
                 : CafeLevelTable.ToNextLevel(profile.Wallet.Reputation) + " " +
                   Strings.Get("cafe.tonext");
 
-            _quota.text = Strings.Get("cafe.quota") + ": " + DayPlan.QuotaFor(profile.QuotaStep);
+            _quota.text = Strings.Get("cafe.quota") + ": " + DayPlan.QuotaFor(profile.QuotaStep, profile.CafeLevel);
         }
     }
 }

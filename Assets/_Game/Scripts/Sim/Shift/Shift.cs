@@ -370,7 +370,7 @@ namespace Neko.Sim.Shift
         private void LeaveAngry(Customer customer)
         {
             Angry++;
-            _reputation -= 4;
+            _reputation -= 3;
             Emit(ShiftEventKind.LeftAngry, customer.Id, SeatCellOf(customer));
 
             VoidTicketsOf(customer.Id);
@@ -382,8 +382,10 @@ namespace Neko.Sim.Shift
 
         private void TurnAway(Customer customer)
         {
+            // No reputation penalty. Somebody who never got through the door costs the
+            // money they would have spent, and that is enough: charging for it as well made
+            // a busy day worth less than a quiet one, which is the wrong lesson entirely.
             TurnedAway++;
-            _reputation -= 1;
             Emit(ShiftEventKind.TurnedAway, customer.Id, Grid.Door);
             customer.State = CustomerState.Angry;
             customer.StateTimer = 0f;

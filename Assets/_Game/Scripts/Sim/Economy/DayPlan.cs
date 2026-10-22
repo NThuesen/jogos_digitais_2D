@@ -16,22 +16,53 @@ namespace Neko.Sim.Economy
     /// </remarks>
     public static class DayPlan
     {
-        public const float QuotaScale = 120f;
-        public const float QuotaExponent = 1.35f;
-
-        public static int QuotaFor(int step) =>
-            (int)Math.Round(Curves.Power(QuotaScale, QuotaExponent, Math.Max(1, step)));
+        /// <summary>Quota at café level one, before any step climb.</summary>
+        public const float QuotaScale = 95f;
 
         /// <summary>
-        /// Parties per second. Rises with the day and with the room's capacity, because a
-        /// bigger café that never got busier would get easier every time it grew.
+        /// Measured, not chosen. At 1.25 the quota passed what a well-built café earns
+        /// somewhere around level seven and never came back.
         /// </summary>
-        public static float ArrivalsPerSecondFor(int day, int cafeLevel) =>
-            Curves.Clamp(0.16f + 0.015f * (day - 1) + 0.035f * (cafeLevel - 1), 0.16f, 1.1f);
+        public const float QuotaExponent = 1.12f;
 
-        /// <summary>Everybody gets a little more impatient, down to a floor of 60%.</summary>
+        /// <summary>How much harder each repeated day at the same café level gets.</summary>
+        public const float QuotaStepClimb = 0.02f;
+
+        /// <summary>
+        /// What today has to earn.
+        /// </summary>
+        /// <remarks>
+        /// Keyed on the café level rather than on the day, and that was measured rather than
+        /// guessed. A café's takings barely move from one day to the next — they move when it
+        /// grows — so a quota that climbed with the day outran the café immediately: the first
+        /// curve multiplied the target by two and a half between day one and day two, and
+        /// every seeded run of day two lost. The step still adds a couple of per cent, so a
+        /// player sitting at one café level is nudged rather than parked.
+        /// </remarks>
+        public static int QuotaFor(int step, int cafeLevel)
+        {
+            var level = Curves.ClampInt(cafeLevel, 1, CafeLevelTable.MaxLevel);
+            var baseline = Curves.Power(QuotaScale, QuotaExponent, level);
+            var climb = 1f + QuotaStepClimb * Math.Max(0, step - 1);
+
+            return (int)Math.Round(baseline * climb);
+        }
+
+        /// <summary>
+        /// How fast people come in.
+        /// </summary>
+        /// <remarks>
+        /// Driven by how many seats there are, not by the day. Arrivals beyond what a room can
+        /// hold are pure downside — they earn nothing and cost goodwill — so a curve that
+        /// raised them while the room stayed the same size made every later day strictly
+        /// worse with nothing to show for it.
+        /// </remarks>
+        public static float ArrivalsPerSecondFor(int day, int cafeLevel, int seats) =>
+            Curves.Clamp(0.055f * Math.Max(1, seats) + 0.008f * (day - 1), 0.12f, 1.1f);
+
+        /// <summary>Everybody gets a little more impatient, down to a floor of 75%.</summary>
         public static float PatienceScaleFor(int day) =>
-            Curves.Clamp(1f - 0.012f * (day - 1), 0.6f, 1f);
+            Curves.Clamp(1f - 0.006f * (day - 1), 0.75f, 1f);
 
         public static float DurationFor(int cafeLevel) =>
             Curves.Clamp(75f + 11f * (cafeLevel - 1), 75f, 180f);
@@ -44,6 +75,7 @@ namespace Neko.Sim.Economy
             if (profile == null) throw new ArgumentNullException(nameof(profile));
 
             var level = profile.CafeLevel;
+            var seats = profile.Grid.Metrics().Seats;
 
             return new ShiftSetup
             {
@@ -52,8 +84,8 @@ namespace Neko.Sim.Economy
                 Grid = profile.Grid,
                 Roster = profile.RosteredMaids(),
                 DurationSeconds = DurationFor(level),
-                ArrivalsPerSecond = ArrivalsPerSecondFor(profile.Day, level),
-                Quota = QuotaFor(profile.QuotaStep),
+                ArrivalsPerSecond = ArrivalsPerSecondFor(profile.Day, level, seats),
+                Quota = QuotaFor(profile.QuotaStep, level),
                 Seed = seed,
                 DoorCapacity = DoorCapacityFor(level),
                 PatienceScale = PatienceScaleFor(profile.Day),
