@@ -99,6 +99,79 @@ sozinhas, por urgência e depois por distância, mas **só dentro da própria po
 O pedido errado é a linha mais barulhenta do balanço de propósito: é o que uma maid no lugar
 errado faz com uma mesa.
 
+### 2.6 As nove personalidades, escritas como regras
+
+A diversidade de maids é o apelo do jogo, então nenhum arquétipo é só um retrato: cada um é
+uma alteração mensurável na simulação. Atributos iniciais na ordem **Salão · Cozinha ·
+Charme · Fôlego**.
+
+| Arquétipo | Início | O que a regra faz | Posição natural |
+| --- | --- | --- | --- |
+| **Genki** | 32·14·24·18 | anda 35% mais rápido e gasta ânimo 60% mais rápido | Salão |
+| **Kuudere** | 18·32·14·26 | **nunca erra um pedido**, anda 20% mais devagar | Cozinha |
+| **Tsundere** | 28·20·22·20 | +30% de velocidade com o salão acima de 60% cheio; −15% de gorjeta com ele vazio | Salão |
+| **Dojikko** | 24·18·30·16 | derruba 12% dos pratos, e a mesa acha graça | Recepção |
+| **Ojou-sama** | 16·12·38·18 | dobra a chance de VIP aparecer; **não limpa mesa** | Recepção |
+| **Onee-san** | 24·24·24·22 | +15% de velocidade para quem divide a posição e passa 25% do XP dela | Gerência |
+| **Idol** | 20·12·36·20 | sobe no palco sozinha a cada 90 s e devolve 70% da paciência do salão | Palco |
+| **Gourmand** | 14·36·18·22 | cozinha a 1,8× e **come 20% dos pratos** | Cozinha |
+| **Mukuchi** | 12·34·20·24 | recebe a 0,6×, cozinha a 1,5×, e o Charme dela **dobra na estação** | Cozinha |
+
+Cada um tem cor de destaque e silhueta próprias — maria-chiquinha alta na Genki, tiara na
+Ojou-sama, presilha de estrela na Idol — porque com seis maids no salão o jogador precisa
+saber quem fez o quê sem ler nome nenhum.
+
+A regra lida com a escalação: a Gourmand come, então ela compensa num café com cozinha
+sobrando e não num apertado. A Ojou-sama atrai VIP, e VIP só espera 22 segundos — convidar
+VIP sem salão para atendê-lo é um prejuízo que o jogador mesmo contratou.
+
+### 2.7 Os sete tipos de cliente
+
+| Cliente | Paciência | Gasta | Peso | Nível | A regra |
+| --- | --- | --- | --- | --- | --- |
+| **Cliente** | 45 s | 1,0× | 10 | 1 | o caso base |
+| **Estudante** | 62 s | 0,7× | 6 | 1 | fica, gasta pouco, não reclama |
+| **Assalariado** | 30 s | 1,4× | 5 | 2 | tem vinte minutos de almoço |
+| **Gato** | 60 s | 0,4× | 3 | 2 | **nunca fica impaciente**, pede só leite e melhora o ambiente enquanto está sentado |
+| **Fã** | 50 s | 1,0× | 4 | 3 | quer **um arquétipo específico**; paga 1,8× de gorjeta se ela estiver escalada |
+| **Crítico** | 35 s | 1,2× | 2 | 4 | **julga**: a reputação do dia depende dele |
+| **VIP** | 22 s | 3,0× | 2 | 6 | uma fortuna, e nenhuma espera |
+
+O Fã é a peça que fecha o laço: ele transforma a escalação de hoje em receita de hoje por um
+caminho que não passa por atributo nenhum. Escalar a maid da moda é uma decisão de negócio.
+
+### 2.8 Raridade, salário e as caixas
+
+Quatro raridades. O que elas mudam é o teto dos atributos sorteados **e o salário diário**,
+e é o salário que faz da escalação uma decisão de orçamento em vez de uma lista das melhores
+cartas.
+
+| Raridade | Salário/dia | Rescisão | Cor da moldura |
+| --- | --- | --- | --- |
+| **Comum** | 18 | 5 fichas | bege |
+| **Rara** | 44 | 20 fichas | azul |
+| **Épica** | 95 | 70 fichas | violeta |
+| **Lendária** | 210 | 220 fichas | dourado |
+
+Uma lendária custa doze comuns por dia. Tirá-la de uma caixa é o começo do problema: ou o
+café cresce para sustentá-la, ou ela afunda o caixa enquanto a química fica igual.
+
+Três caixas, compradas só com fichas, com as chances **impressas na tela de compra**:
+
+| Caixa | Pontos | Cartas | Piso | Chances |
+| --- | --- | --- | --- | --- |
+| **Simples** | 40 | 1 | comum | 78% · 18% · 3,6% · 0,4% |
+| **Prata** | 180 | 3 | rara | — · 62% · 32% · 6% |
+| **Dourada** | 520 | 3 | épica | — · — · 78% · 22% |
+
+Cada caixa tem um **piso de raridade**: a pior carta da Dourada é épica. Carta repetida com
+o elenco cheio volta como fichas, então uma caixa nunca é prejuízo total. Os pisos são
+monotônicos — a caixa mais cara é sempre a melhor — e isso é um teste, não uma intenção.
+
+Não existe comprar fichas, e não existe converter ficha em dinheiro. As duas moedas não se
+tocam, o que mantém a única pressão de verdade — o fluxo de caixa — fora do alcance da
+sorte.
+
 ## 3. Feedback e clareza de interação
 
 O estado é dito pelo mundo antes de ser dito pela interface:
@@ -234,7 +307,9 @@ Escrito junto com o jogo e atualizado quando o jogo muda. O core descrito aqui s
 anterior, de gerenciamento em tempo real, e a troca está registrada em
 `docs/superpowers/specs/` com o que entrou, o que saiu e por quê.
 
-**Verificação:** 257 testes de simulação (`tools/simtest.sh`, menos de um segundo) e 17 de
-PlayMode dentro do editor. Onze quadros do jogo rodando ficam em
+**Verificação:** 257 testes de simulação (`tools/simtest.sh`, menos de um segundo), 292 de
+EditMode e 17 de PlayMode dentro do editor. Sete deles leem este documento: se um arquétipo,
+um tipo de cliente, uma posição, uma raridade ou uma caixa entrar no jogo e não entrar aqui,
+a suíte falha com o nome que está faltando. Onze quadros do jogo rodando ficam em
 `../visual_assets/frames/2026-10-22_neko_maid_inc/`, com o registro dos oito erros visuais
 que as capturas encontraram.
