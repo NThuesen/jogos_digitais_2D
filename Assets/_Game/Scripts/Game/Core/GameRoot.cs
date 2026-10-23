@@ -326,7 +326,7 @@ namespace Neko.Game.Core
                 guard++;
             }
 
-            Presenter.Drain();
+            Presenter.Discard();
         }
 
         private void OnDayFinished(Sim.Shift.ShiftResult result)

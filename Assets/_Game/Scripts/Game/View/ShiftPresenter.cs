@@ -209,6 +209,22 @@ namespace Neko.Game.View
         /// </remarks>
         public void Drain() => DrainEvents();
 
+        /// <summary>
+        /// Throws the queue away without playing it.
+        /// </summary>
+        /// <remarks>
+        /// For a skipped day. Handle and the audio director only make flourish — no event
+        /// carries bookkeeping — so a day nobody watched loses nothing by not being heard.
+        /// Playing it was actively wrong: a whole day's payouts land in one frame, where no
+        /// popup can age out of the way of the next, and the frame that would have shown
+        /// them is the frame the dashboard replaces anyway.
+        /// </remarks>
+        public void Discard()
+        {
+            Shift.Events.Clear();
+            _effects.Clear();
+        }
+
         private void DrainEvents()
         {
             while (Shift.Events.Count > 0)

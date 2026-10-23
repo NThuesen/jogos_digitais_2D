@@ -17,7 +17,23 @@ namespace Neko.Game.Feel
     /// </remarks>
     public sealed class Effects : MonoBehaviour
     {
-        private const int PoolSize = 72;
+        public const int PuffPoolSize = 72;
+
+        /// <summary>
+        /// How many number popups may exist at once.
+        /// </summary>
+        /// <remarks>
+        /// There was no cap here, and that is what killed the editor. A label is reusable
+        /// once it has aged past its lifetime, and nothing ages inside a single frame —
+        /// so a skipped day, which ticks the whole simulation through in one frame and then
+        /// plays every event it queued, asked for a fresh object per payout. Each one is a
+        /// GameObject with a RectTransform, a uGUI Text and an Outline, which is a mesh
+        /// effect that doubles the vertex count. Measured: 1.0 GB to 8.1 GB in fourteen
+        /// seconds, then the kernel's OOM killer.
+        ///
+        /// Forty-eight is well past what is legible at once — a busy café shows five or six.
+        /// </remarks>
+        public const int LabelPoolSize = 48;
 
         private readonly List<Puff> _pool = new List<Puff>();
         private readonly List<FloatingLabel> _labels = new List<FloatingLabel>();
@@ -25,8 +41,24 @@ namespace Neko.Game.Feel
         private SpriteFactory _sprites;
         private Transform _labelRoot;
         private int _next;
+        private int _nextLabel;
 
         public static Effects Instance { get; private set; }
+
+        public int PuffCount => _pool.Count;
+
+        public int LabelCount => _labels.Count;
+
+        /// <summary>What each label currently reads. For the tests that pin the cap.</summary>
+        public string[] LabelTexts
+        {
+            get
+            {
+                var texts = new string[_labels.Count];
+                for (var i = 0; i < _labels.Count; i++) texts[i] = _labels[i].Text;
+                return texts;
+            }
+        }
 
         public void Bind(SpriteFactory sprites, Transform labelRoot)
         {
@@ -34,7 +66,7 @@ namespace Neko.Game.Feel
             _sprites = sprites;
             _labelRoot = labelRoot;
 
-            for (var i = 0; i < PoolSize; i++) _pool.Add(Puff.Create(transform));
+            for (var i = 0; i < PuffPoolSize; i++) _pool.Add(Puff.Create(transform));
         }
 
         public void Hearts(Vector3 at, int count = 3)
@@ -116,10 +148,19 @@ namespace Neko.Game.Feel
                 break;
             }
 
-            if (label == null)
+            if (label == null && _labels.Count < LabelPoolSize)
             {
                 label = FloatingLabel.Create(_labelRoot);
                 _labels.Add(label);
+            }
+
+            // Everything in the pool is still in flight. Recycle instead of allocating: the
+            // pointer walks in the order the labels were fired, so it lands on the one
+            // closest to expiring.
+            if (label == null)
+            {
+                label = _labels[_nextLabel];
+                _nextLabel = (_nextLabel + 1) % _labels.Count;
             }
 
             label.Fire(text, at, colour);

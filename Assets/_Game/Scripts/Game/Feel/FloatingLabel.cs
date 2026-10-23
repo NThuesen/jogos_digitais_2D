@@ -25,6 +25,9 @@ namespace Neko.Game.Feel
 
         public bool Alive => _age < Life;
 
+        /// <summary>What it reads now. For the tests that pin the pool's cap.</summary>
+        public string Text => _text != null ? _text.text : null;
+
         public static FloatingLabel Create(Transform parent)
         {
             var go = new GameObject("FloatingLabel", typeof(RectTransform));
