@@ -26,9 +26,9 @@ em cada posição.
 ## Rodando
 
 ```sh
-tools/simtest.sh                 # 257 testes da simulação, fora do editor, < 1 s
-tools/run-tests.sh EditMode      # os mesmos, dentro do Unity
-tools/run-tests.sh PlayMode      # 17 testes que carregam a cena de verdade
+tools/simtest.sh                 # testes da simulação fora do editor (.NET SDK 8+)
+tools/run-tests.sh EditMode      # testes EditMode dentro do Unity
+tools/run-tests.sh PlayMode      # testes PlayMode, incluindo cena real
 tools/synthesise-audio.sh        # regenera os 26 sons
 tools/build-webgl.sh             # build WebGL, em Build/WebGL/
 tools/serve.sh                   # serve a build em http://localhost:8080
@@ -51,20 +51,26 @@ tools/clean.sh                   # quebra o loop de crash e limpa 1,5 GB de cach
 
 ## Documentação e colaboração
 
-Este repositório pertence a um time de **quatro desenvolvedores**. Para que o trabalho
-continue rastreável e integrado:
+Este projeto tem quatro colaboradores usando Codex, Claude Code e Kiro. O trabalho de
+programação e revisão é conduzido por agentes, sem aprovação humana rotineira de código.
 
-- **Uma branch por tarefa**, Pull Request para a `main` e pelo menos **uma revisão de
-  outro integrante** antes do merge. Evitem commits diretos na `main`.
-- No PR, expliquem o objetivo, os arquivos/sistemas afetados, a validação executada e
-  eventuais verificações pendentes.
-- `docs/GDD.md` é a fonte de verdade para gameplay, mecânicas e balanceamento;
-  `docs/ARCHITECTURE.md` documenta as fronteiras de implementação. Atualizem o arquivo
-  correspondente **no mesmo PR** quando o comportamento mudar.
-- `README.md` serve como entrada para o projeto; `docs/ITCH_PAGE.md` deve refletir o jogo
-  que será entregue. Não usem planos históricos como especificação atual.
+- Uma Issue define o contrato: objetivo, aceitação, escopo e evidências esperadas.
+- Uma tarefa corresponde a uma branch e um Pull Request; não fazer push na main.
+- O agente implementador reporta testes realmente executados e pontos ainda não verificados.
+- Um segundo agente, em sessão independente, analisa o diff real; o implementador corrige
+  findings importantes ou bloqueantes e solicita nova revisão do código atualizado.
+- A revisão independente documentada não equivale a um gate técnico automatizado.
+  Não ativar merge autônomo antes de CI e revisão automatizada confiáveis (Fase 2).
+- AGENTS.md contém as instruções compartilhadas pelas três ferramentas.
+- docs/GDD.md define gameplay; docs/ARCHITECTURE.md define os limites técnicos.
+  Atualize o documento correspondente no mesmo PR quando o comportamento mudar.
 
-Instruções detalhadas para agentes e automações de integração serão tratadas separadamente.
+Templates: .github/ISSUE_TEMPLATE/task.yml e .github/PULL_REQUEST_TEMPLATE.md.
+
+Para os testes rápidos, instale .NET SDK 8+ e execute tools/simtest.sh.
+Para os testes Unity, configure UNITY_EDITOR com o editor Unity 6000.5.9f1
+(no Windows, utilize Git Bash ou shell equivalente). Se faltarem ferramentas,
+registre 'não executado', nunca 'aprovado'.
 
 `Neko.Sim` não referenciar o UnityEngine é a decisão que sustenta o resto: um dia inteiro de
 café roda em milissegundos num teste comum, o que é o único jeito honesto de afirmar que uma
