@@ -20,6 +20,8 @@
 .idea/
 .vs/
 *.csproj
+# Keep the standalone simulation test project in version control.
+!/tools/simtest/SimTest.csproj
 *.sln
 *.suo
 *.tmp
