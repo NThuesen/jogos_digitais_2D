@@ -3,9 +3,9 @@
 **Jogos Digitais 2026.1 · Insper · Projeto 2D**
 Unity 6000.5.9f1 · 2D URP · build WebGL · entrega no itch.io
 
-> Documento vivo. A versão em Milanote espelha este arquivo; este é a fonte.
-> O documento de design de engenharia fica em
-> `docs/superpowers/specs/2026-10-22-neko-maid-inc-core.md`.
+> Documento vivo e fonte de verdade para a versão atual do jogo: regras, economia,
+> progressão e experiência do jogador. A versão no Milanote deve refletir este arquivo.
+> Para a organização técnica, consulte `docs/ARCHITECTURE.md`.
 
 ---
 
@@ -303,9 +303,9 @@ inteiro roda em milissegundos num teste e 200 dias semeados cabem numa asserçã
 
 ## 12. Este documento
 
-Escrito junto com o jogo e atualizado quando o jogo muda. O core descrito aqui substituiu um
-anterior, de gerenciamento em tempo real, e a troca está registrada em
-`docs/superpowers/specs/` com o que entrou, o que saiu e por quê.
+Este GDD descreve exclusivamente a versão vigente. Mudanças de mecânicas, economia,
+progressão ou UX devem ser documentadas aqui no mesmo Pull Request da implementação.
+As fronteiras técnicas estão em `docs/ARCHITECTURE.md`.
 
 **Verificação:** 257 testes de simulação (`tools/simtest.sh`, menos de um segundo), 292 de
 EditMode e 17 de PlayMode dentro do editor. Sete deles leem este documento: se um arquétipo,
