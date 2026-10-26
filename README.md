@@ -72,6 +72,24 @@ Para os testes Unity, configure UNITY_EDITOR com o editor Unity 6000.5.9f1
 (no Windows, utilize Git Bash ou shell equivalente). Se faltarem ferramentas,
 registre 'não executado', nunca 'aprovado'.
 
+### Validação contínua: GitHub Actions (Fase 2)
+
+O workflow `.github/workflows/simulation-ci.yml` executa uma única suíte rápida de
+simulação mais verificações de fronteira C# e de resultados NUnit. Ele é disparado
+**somente por eventos de Pull Request e push na `main`**, sem timers, polling ou
+chamadas a modelos de IA. Runs anteriores do mesmo PR são cancelados ao receber novo commit.
+
+Um check verde significa **apenas** que as regras da simulação e os guardas executados
+passaram; não significa Unity/PlayMode, visual ou build WebGL validados. Mudanças
+relacionadas a gameplay Unity continuam exigindo validação no Editor e relato
+explícito no PR. A qualidade dos testes é medida por sua capacidade de detectar
+regressões de comportamento, **nunca por aumentar a quantidade de casos**.
+
+Após o primeiro check `simulation-and-boundaries` funcionar num PR, o proprietário
+pode configurá-lo como obrigatório em Settings → Rulesets, sem aprovações humanas
+de código. A CI não substitui a revisão pontual independente por outra IA;
+e **merge totalmente automático permanece desabilitado** até que o gate de revisão
+e o branch ruleset sejam realmente verificados.
 `Neko.Sim` não referenciar o UnityEngine é a decisão que sustenta o resto: um dia inteiro de
 café roda em milissegundos num teste comum, o que é o único jeito honesto de afirmar que uma
 escalação é melhor que outra.
