@@ -14,9 +14,10 @@ Closes #
 - **Documentos atualizados:** sim / não necessário (motivo)
 
 ## Revisão independente por IA
-- **Agente/revisor (ferramenta e sessão):**
-- **Link para revisão do diff no HEAD atual:**
-- **Blocking / important:** nenhum ou links das correções.
+- **Conta GitHub revisora (diferente do autor):**
+- **Ferramenta (Codex / Claude Code / Kiro):**
+- **Link da revisão GitHub no HEAD atual:**
+- **Blocking / important:** listar os findings e correções, ou declarar nenhum com evidência.
 - **Limitações / verificações pendentes:**
 
-> Este template **não é uma aprovação automática**. Uma segunda IA precisa realmente analisar o diff. Não há exigência de revisão humana de código. Até a implantação da CI e do gate de revisão na Fase 2, não habilitar auto-merge sem verificações técnicas confiáveis.
+> Não confundir checkbox ou comentário com aprovação: outro agente precisa analisar o diff e registrar uma revisão real via GitHub. Se aprovar, deve usar **APPROVE** na conta do colaborador revisor. Exigir no ruleset 1 aprovação e descartar aprovações antigas após novos commits; não habilitar auto-merge sem confirmar esses gates. Não há leitura humana obrigatória do código. GitHub Actions não executa IA nem acompanha logs periodicamente.
