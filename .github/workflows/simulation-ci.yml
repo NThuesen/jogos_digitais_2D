@@ -1,0 +1,42 @@
+name: Simulation CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main]
+
+# PR code is untrusted; no write token and no secrets are needed.
+permissions:
+  contents: read
+
+# Pushes replace stale runs on the same PR; no agent polling or schedules.
+concurrency:
+  group: sim-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  simulation:
+    name: simulation-and-boundaries
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout PR merge commit
+        uses: actions/checkout@v4
+
+      - name: Set up .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Check simulation and harness boundaries
+        run: python3 tools/ci/verify.py boundaries
+
+      - name: Run independent simulation NUnit tests
+        run: |
+          mkdir -p "$RUNNER_TEMP/neko-ci"
+          dotnet run --project tools/simtest/SimTest.csproj --configuration Release -- "--result=$RUNNER_TEMP/neko-ci/sim-results.xml"
+
+      - name: Verify NUnit actually executed tests
+        if: success()
+        run: python3 tools/ci/verify.py results "$RUNNER_TEMP/neko-ci/sim-results.xml"
