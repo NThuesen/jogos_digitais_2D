@@ -45,8 +45,26 @@ tools/clean.sh                   # quebra o loop de crash e limpa 1,5 GB de cach
 | `Assets/_Game/Tests` | EditMode e PlayMode |
 | `Assets/_Game/Resources/Audio` | os 26 `.wav` sintetizados |
 | `docs/GDD.md` | o documento de design, por rubrica |
-| `docs/superpowers/specs` | as decisões de core, com o que mudou e por quê |
+| `docs/ARCHITECTURE.md` | os limites técnicos e a organização real do jogo |
+| `docs/ITCH_PAGE.md` | texto e instruções para publicar a build |
 | `tools/` | os scripts acima |
+
+## Documentação e colaboração
+
+Este repositório pertence a um time de **quatro desenvolvedores**. Para que o trabalho
+continue rastreável e integrado:
+
+- **Uma branch por tarefa**, Pull Request para a `main` e pelo menos **uma revisão de
+  outro integrante** antes do merge. Evitem commits diretos na `main`.
+- No PR, expliquem o objetivo, os arquivos/sistemas afetados, a validação executada e
+  eventuais verificações pendentes.
+- `docs/GDD.md` é a fonte de verdade para gameplay, mecânicas e balanceamento;
+  `docs/ARCHITECTURE.md` documenta as fronteiras de implementação. Atualizem o arquivo
+  correspondente **no mesmo PR** quando o comportamento mudar.
+- `README.md` serve como entrada para o projeto; `docs/ITCH_PAGE.md` deve refletir o jogo
+  que será entregue. Não usem planos históricos como especificação atual.
+
+Instruções detalhadas para agentes e automações de integração serão tratadas separadamente.
 
 `Neko.Sim` não referenciar o UnityEngine é a decisão que sustenta o resto: um dia inteiro de
 café roda em milissegundos num teste comum, o que é o único jeito honesto de afirmar que uma

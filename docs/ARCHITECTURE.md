@@ -1,109 +1,70 @@
-# Architecture
+# Arquitetura — Neko Maid Inc.
 
-## Purpose
+Este documento descreve a **implementação atual** do Neko Maid Inc., não o template Unity de origem. As regras do jogo, os números de balanceamento e a experiência desejada pertencem a [`GDD.md`](GDD.md). Este arquivo documenta os limites técnicos que permitem implementar e verificar essas regras.
 
-The starter defines architectural defaults, not a prebuilt gameplay framework. Each generated game should begin with as little runtime structure as possible and grow only in response to actual requirements.
+## Plataforma e estrutura
 
-## Baseline philosophy
+- **Engine:** Unity 6000.5.9f1; projeto 2D com URP.
+- **Entrega:** WebGL para navegador desktop, com interface em português e entrada por mouse.
+- **Cena:** `Assets/_Game/Scenes/Boot.unity`, com `GameRoot`. Câmera, salão, áudio, efeitos e telas são construídos em código durante o boot.
+- **Assets atuais:** sprites gerados proceduralmente em tempo de execução e áudio sintetizado pelo próprio projeto. Não há prefabs nem texturas de terceiros no fluxo descrito pelo README.
 
-The default architecture is intentionally shallow:
+| Área | Responsabilidade |
+| --- | --- |
+| `Assets/_Game/Scripts/Sim` (`Neko.Sim`) | Regras de domínio: maids, escalação, química, café, atendimento, economia, progressão e formato do save. C# independente do Unity. |
+| `Assets/_Game/Scripts/Game` (`Neko.Game`) | Integração Unity, ciclo de vida, cena, visualização, interfaces, áudio, entrada e ponte com a simulação. |
+| `Assets/_Game/Tests` | Testes EditMode e PlayMode, incluindo verificações de documentação e da cena. |
+| `Assets/_Game/Resources/Audio` | Arquivos de áudio gerados pelo script de síntese. |
+| `tools/` | Execução dos testes, construção WebGL, áudio e rotinas locais de desenvolvimento. |
 
-```text
-scene objects
-  -> small MonoBehaviours
-  -> plain data/config where useful
-  -> Unity/platform APIs
+## Fluxo da aplicação
+
+`GameRoot` inicializa os sistemas Unity e a sessão. `AppStateMachine` controla as transições entre **Boot → Menu → Café → Turno → Resultado → Café**, incluindo as transições permitidas de retorno.
+
+`GameSession` reúne o perfil da empresa, a criação do turno e o balanço. O jogador altera escalação, elenco, loja e decoração **entre os dias**. Durante o turno, o atendimento é autônomo; os controles de velocidade e de pular mudam a apresentação/tempo de espera, não as decisões da simulação.
+
+A camada visual deve **observar e representar** o estado da simulação, sem reproduzir regras de negócio em componentes de UI. Mudanças persistentes na empresa passam pela sessão e devem acionar o salvamento.
+
+## Limites que devem continuar válidos
+
+1. **`Neko.Sim` não referencia `UnityEngine`.** Não colocar ali `MonoBehaviour`, cena, sprites, UI, `PlayerPrefs` ou aleatoriedade do Unity.
+2. **Simulação verificável:** regras e sorteios passam pelos componentes determinísticos da simulação (incluindo `Rng`). Comparações de balanceamento devem usar sementes controladas.
+3. **Regras no domínio:** cálculo de química, salário, satisfação, resultados e progressão pertencem à simulação, não às telas.
+4. **Salvamento com fronteira explícita:** `SaveCodec` define o formato, a versão e o checksum; `SaveBridge` integra a persistência via `PlayerPrefs` do Unity/WebGL. `GameSession.Touch()` registra alterações persistentes.
+5. **Estados inválidos não viram travamentos silenciosos:** a máquina de estados recusa transições ilegais; a barreira de erros e as validações de pré-condição protegem a execução do dia.
+6. **Unity é parte da entrega:** testes de lógica não substituem validação de cena, entradas, áudio, interface, renderização e build WebGL.
+
+Esses limites documentam o projeto existente. **Não são autorização** para adicionar infraestrutura genérica, novas assemblies, gerenciadores ou frameworks sem necessidade demonstrada.
+
+## Trabalho em quatro contas GitHub
+
+- Cada tarefa deve ser desenvolvida numa **branch própria** e integrada à `main` por **Pull Request**. Evitar commits diretos na `main`.
+- O PR deve informar **o que mudou, por quê, como foi validado** e quais verificações ficaram pendentes.
+- Mudanças de regras, economia, personagens e UX exigem atualização de `docs/GDD.md` no mesmo PR; mudanças dos limites técnicos exigem atualização deste arquivo.
+- Pelo menos **outro integrante** deve revisar o PR antes do merge. Alterações conflitantes de cena, `.meta`, GUID, pacotes ou configurações do projeto exigem atenção explícita na revisão.
+- Não considerar uma mudança concluída só porque o código compilou: verificar também o comportamento correspondente no Unity quando aplicável.
+
+Esta é uma convenção inicial de colaboração; regras detalhadas para agentes, divisão de responsabilidade e automações de CI poderão ser definidas separadamente, sem duplicar o GDD.
+
+## Verificação
+
+Com o ambiente Unity configurado, o README lista os comandos de execução. O fluxo esperado para mudanças relevantes é:
+
+```sh
+tools/simtest.sh
+tools/run-tests.sh EditMode
+tools/run-tests.sh PlayMode
 ```
 
-Additional layers must earn their existence.
+Para alterações que afetem a entrega ou a experiência no navegador, executar também `tools/build-webgl.sh`, abrir a build e verificar o fluxo real. Relatar explicitamente o que foi **executado**, **não executado** e **falhou**; não inferir sucesso a partir da existência de scripts ou testes.
 
-## Folder ownership
+## Documentos vigentes
 
-### `Assets/_Game/Art`
+| Documento | Uso |
+| --- | --- |
+| [`README.md`](../README.md) | Visão geral, comandos e porta de entrada para a equipe. |
+| [`GDD.md`](GDD.md) | Fonte de verdade do produto e das mecânicas atuais. |
+| `ARCHITECTURE.md` | Arquitetura implementada, fronteiras técnicas e prática inicial de integração. |
+| [`ITCH_PAGE.md`](ITCH_PAGE.md) | Texto de publicação; deve acompanhar as mudanças do produto. |
 
-Game-owned visual assets and materials. Third-party packages should not be mixed into `_Game` when they can remain under their vendor/package location.
-
-### `Assets/_Game/Audio`
-
-Game-owned music and sound effects.
-
-### `Assets/_Game/Data`
-
-Serializable configuration that benefits from being separated from behavior. ScriptableObjects are appropriate when shared editable data is genuinely useful; they are not mandatory for every value.
-
-### `Assets/_Game/Prefabs`
-
-Game-owned reusable scene objects.
-
-### `Assets/_Game/Scenes`
-
-Scenes belonging to the game. The starter does not prescribe a boot/menu/gameplay scene hierarchy before a title needs one.
-
-### `Assets/_Game/Scripts/Core`
-
-Game flow and cross-feature runtime code that truly forms the core of that title. Avoid turning `Core` into a dumping ground.
-
-### `Assets/_Game/Scripts/Input`
-
-Touch/input behavior owned by the game. Prefer the simplest input approach that satisfies the title.
-
-### `Assets/_Game/Scripts/Mobile`
-
-Platform-facing behavior such as haptics, safe-area handling, lifecycle concerns, or integrations when required.
-
-### `Assets/_Game/Scripts/Save`
-
-Persistence code. For very small games, a few `PlayerPrefs` values can be acceptable. Introduce a larger save model only when the data warrants it.
-
-### `Assets/_Game/Scripts/UI`
-
-Presentation and UI interaction code. Gameplay domain rules should not live here merely because a button triggers them.
-
-## Dependency rules
-
-- UI may call small public game-facing APIs; it should not own gameplay rules.
-- Platform/mobile integrations should be isolated from gameplay when practical.
-- Data containers should not become service locators.
-- Avoid circular feature dependencies.
-- Prefer direct references for small local relationships over global lookup.
-
-## Managers and singletons
-
-A class named `GameManager` is not forbidden, but it is not a default requirement. Create a coordinator only when there is actual coordination to perform.
-
-Persistent singletons should be rare. If a system only exists in one gameplay scene, let the scene own it.
-
-## Events
-
-Use direct calls for simple relationships. Use C# events or UnityEvents when decoupling has a concrete benefit. Do not introduce a project-wide event bus by default.
-
-## Object pooling
-
-Pooling is not part of the starter. Add it when a title repeatedly creates/destroys enough objects for pooling to materially simplify behavior or improve runtime performance.
-
-## Rendering
-
-The starter does not force URP, URP 2D, or a specific renderer in v0.2. A generated game chooses the lightest rendering setup that matches its art direction. Once chosen, keep that choice stable unless a migration has a concrete benefit.
-
-## Input
-
-The package baseline is **Unity Input System 1.20.0**, with the new Input System selected as the active input backend. This standardizes the supported API without forcing a universal gameplay-input abstraction.
-
-A one-finger tap, drag, swipe, or hold can still be implemented locally and directly. Create shared input wrappers only when a real title benefits from them; do not add an input framework merely because the package exists.
-
-## Performance baseline
-
-For these small mobile games:
-
-- avoid per-frame managed allocations in hot paths;
-- avoid expensive scene-wide searches inside `Update`;
-- cache references used repeatedly;
-- keep physics use proportional to the mechanic;
-- profile before performing non-obvious optimization;
-- test on a real mobile device before calling performance finished.
-
-Dynamic Batching is disabled in the template because Unity has deprecated that path. Do not replace it with speculative optimization; use the rendering approach appropriate to the selected pipeline and profile the actual game.
-
-## Architecture change rule
-
-When a game needs more structure, add the smallest structure that resolves the current pressure. Do not redesign the project around hypothetical future titles.
+Em caso de divergência entre documentação e comportamento observado, registrar o conflito e corrigi-lo no PR apropriado — **não inventar uma regra de precedência para mascarar a diferença**.
