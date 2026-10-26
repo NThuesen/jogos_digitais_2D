@@ -57,10 +57,14 @@ programação e revisão é conduzido por agentes, sem aprovação humana rotine
 - Uma Issue define o contrato: objetivo, aceitação, escopo e evidências esperadas.
 - Uma tarefa corresponde a uma branch e um Pull Request; não fazer push na main.
 - O agente implementador reporta testes realmente executados e pontos ainda não verificados.
-- Um segundo agente, em sessão independente, analisa o diff real; o implementador corrige
-  findings importantes ou bloqueantes e solicita nova revisão do código atualizado.
-- A revisão independente documentada não equivale a um gate técnico automatizado.
-  Não ativar merge autônomo antes de CI e revisão automatizada confiáveis (Fase 2).
+- Um **agente de outra conta GitHub**, em sessão independente, revisa o diff real
+  (preferencialmente com ferramenta diferente). Só usa **APPROVE** quando não houver
+  findings blocking/important; se houver correção, revisa o HEAD atualizado.
+- O GitHub exige **uma aprovação de outro colaborador**, sem revisão humana do código.
+  O ruleset precisa descartar aprovações antigas quando houver novos commits.
+- Com CI verde, aprovação independente e Allow auto-merge habilitado nas Settings,
+  o agente pode acionar auto-merge **uma vez por PR**; o GitHub aguarda os gates sem IA
+  consultando status periodicamente.
 - AGENTS.md contém as instruções compartilhadas pelas três ferramentas.
 - docs/GDD.md define gameplay; docs/ARCHITECTURE.md define os limites técnicos.
   Atualize o documento correspondente no mesmo PR quando o comportamento mudar.
@@ -85,11 +89,16 @@ relacionadas a gameplay Unity continuam exigindo validação no Editor e relato
 explícito no PR. A qualidade dos testes é medida por sua capacidade de detectar
 regressões de comportamento, **nunca por aumentar a quantidade de casos**.
 
-Após o primeiro check `simulation-and-boundaries` funcionar num PR, o proprietário
-pode configurá-lo como obrigatório em Settings → Rulesets, sem aprovações humanas
-de código. A CI não substitui a revisão pontual independente por outra IA;
-e **merge totalmente automático permanece desabilitado** até que o gate de revisão
-e o branch ruleset sejam realmente verificados.
+Para integração automática sem revisão humana, configure no ruleset da `main`: exigir
+Pull Request; **1 aprovação de outra conta**, descartar aprovações antigas; exigir
+`simulation-and-boundaries`; bloquear force-push e exclusão. Em
+`Settings → General → Pull Requests`, habilite **Allow auto-merge**.
+Cada agente pode então solicitar `gh pr merge --auto --squash` para seu PR **após**
+confirmar essas proteções. Não criar robôs que fiquem esperando o resultado dos testes.
+Isso não torna a verificação Unity automática: a evidência continua dependente
+do ambiente que realmente a executou. As revisões por IA consomem cotas das
+ferramentas já utilizadas, mas a GitHub Actions não chama modelos.
+
 `Neko.Sim` não referenciar o UnityEngine é a decisão que sustenta o resto: um dia inteiro de
 café roda em milissegundos num teste comum, o que é o único jeito honesto de afirmar que uma
 escalação é melhor que outra.
