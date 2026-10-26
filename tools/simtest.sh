@@ -1,8 +1,20 @@
 #!/usr/bin/env bash
-# Runs the Neko.Sim tests outside Unity. See tools/simtest/README.md.
+# Portable fast harness for pure Neko.Sim (does not validate Unity rendering/lifecycle).
+# Requires .NET SDK 8+ and NuGet access for first restore.
 set -euo pipefail
-DOTNET="$HOME/Unity/Hub/Editor/6000.5.9f1/Editor/Data/DotNetSdk/dotnet"
+
 HERE="$(cd "$(dirname "$0")" && pwd)"
-cd "$HERE/simtest"
-"$DOTNET" build --nologo -v quiet -clp:ErrorsOnly -o "$HERE/.simtest-bin" SimTest.csproj
-exec "$DOTNET" "$HERE/.simtest-bin/SimTest.dll" "$@"
+PROJECT="$HERE/simtest/SimTest.csproj"
+OUT="$HERE/.simtest-bin"
+
+if [[ -n "${DOTNET:-}" ]]; then
+  DOTNET_BIN="$DOTNET"
+elif command -v dotnet >/dev/null 2>&1; then
+  DOTNET_BIN="$(command -v dotnet)"
+else
+  echo "ERROR: .NET SDK 8+ not found. Install dotnet or set DOTNET=/path/to/dotnet." >&2
+  exit 2
+fi
+
+"$DOTNET_BIN" build "$PROJECT" --nologo -v quiet -clp:ErrorsOnly -o "$OUT"
+exec "$DOTNET_BIN" "$OUT/SimTest.dll" "$@"
