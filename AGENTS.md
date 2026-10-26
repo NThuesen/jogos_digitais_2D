@@ -39,13 +39,15 @@ Avoid inventing missing requirements. A design change needs a clearly stated dec
 - Test boundary conditions: empty roles/roster, no valid stations, corrupt save, insufficient funds, bankrupt state, repeated opening/skipping of days. No claims of success based only on compilation.
 - Do not claim visual quality from source review; inspect rendered frames and animation where available.
 
-## Independent agent review, no human code-approval gate
-1. The implementation agent runs available checks and opens a PR.
-2. **A separate agent/session** that did not implement the change reviews the **actual PR diff**, relevant tests, Unity wiring, correctness and scope. Prefer a different tool/model (Codex ↔ Claude Code ↔ Kiro). Record findings with severity: blocking / important / optional, plus reproducible evidence.
-3. The implementing agent corrects blocking and important findings, reruns checks, and requests a fresh independent review of the new head commit.
-4. Do **not** mark an agent review complete by copying a checklist or reviewing one's own patch. The PR must link to the second review or state explicitly that it has not happened.
-5. No human line-by-line review or GitHub approval is required by this workflow. Human intervention is reserved for unresolved **product choices**, credentials or external publishing, not routine code approval.
-6. **Do not enable unattended merging until CI requirements and a reliable independent review gate have actually been implemented and verified.** The review protocol in this file is policy, not an automatic enforcement mechanism. The CI and automatic merge implementation is a separate phase.
+## Independent agent review and GitHub-native merge gate
+1. The implementation agent opens one PR and records actual verification, failures and missing Unity/visual evidence. No agent may claim CI success from a local test alone.
+2. A **different GitHub collaborator account**, operating an independent Codex, Claude Code or Kiro session, reads the **current PR diff**, task contract and relevant sources/tests. Prioritize correctness, save/economy invariants, scene wiring and test tampering, not style.
+3. The reviewing agent writes an actual GitHub PR review with reproducible **blocking / important / optional** findings. Only if no blocking or important problems remain may that agent submit GitHub **APPROVE** under the reviewing collaborator account. Do not rubber-stamp, impersonate reviewers or approve your own PR.
+4. The implementation agent fixes blocking/important findings and pushes changes; the reviewer must examine the **new HEAD** before approving. GitHub's **Dismiss stale approvals** protection should invalidate old approvals automatically.
+5. Humans choose tasks, resolve product decisions and own accounts; **no human line-by-line code review is required**. An approval is a real GitHub review event under another account, performed by that account's AI agent, **not a manually entered checklist field**. GitHub cannot attest which model wrote the review; authenticity of AI work remains a team practice.
+6. Required safeguards on `main`: PR-only, **one GitHub approval by a different account**, stale approvals dismissed, required `simulation-and-boundaries` check, force-push and deletion blocked. The previous zero-approval ruleset does **not** enforce independent review.
+7. After those safeguards are **confirmed active** and repository **Allow auto-merge** is enabled, the PR author's agent can request `gh pr merge --auto --squash` or GitHub's Auto-merge. GitHub then waits for checks and the independent approval; **no status polling or recurring AI calls**. Never request automatic merging when the ruleset lacks the independent approval gate.
+8. This is a GitHub-native approval gate, **not a guarantee of semantic correctness**; Unity PlayMode, rendered UI and WebGL still require the evidence explicitly relevant to the task.
 
 ## CI and test-quality discipline
 - GitHub Actions runs only on PR events and pushes to main. **Never create scheduled jobs, loops, agents or timers that poll CI results.** GitHub checks carry the result; look at it once when the event finishes or when next acting on that PR.
