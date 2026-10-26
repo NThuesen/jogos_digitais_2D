@@ -1,0 +1,41 @@
+name: Tarefa para agente de IA
+description: Contrato curto para Codex, Claude Code ou Kiro
+title: "[Task] "
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objetivo e motivo
+      description: Qual problema concreto precisamos resolver?
+      placeholder: Descreva o resultado esperado, não a implementação linha a linha.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Comportamento esperado e critérios de aceitação
+      description: Quais resultados verificáveis determinam que a tarefa está correta?
+      placeholder: "Dado X, quando Y, o jogo deve Z."
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Escopo e restrições
+      description: Cite sistemas afetados, documentos de referência e o que NÃO deve mudar.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Evidências de validação esperadas
+      description: Testes de simulação, Unity, build, gameplay e capturas conforme necessário.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Casos limite / riscos
+      description: Opcional, mas recomendado para saves, economia, estados e integrações Unity.
+    validations:
+      required: false
