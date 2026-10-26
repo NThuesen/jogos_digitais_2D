@@ -36,24 +36,28 @@ A camada visual deve **observar e representar** o estado da simulação, sem rep
 
 Esses limites documentam o projeto existente. **Não são autorização** para adicionar infraestrutura genérica, novas assemblies, gerenciadores ou frameworks sem necessidade demonstrada.
 
-## Trabalho em quatro contas GitHub
+## Integração AI-First entre quatro contas
 
-- Uma Issue por tarefa, uma branch por tarefa e integração via Pull Request.
-- Um agente implementa e reporta resultados reais; **outro agente independente** revisa
-  o diff atual do PR, anota findings verificáveis e solicita correções objetivas.
-- Findings bloqueantes/importantes exigem correção e nova revisão do HEAD alterado.
-- Não há exigência de revisão humana do código. Pessoas definem objetivos, prioridades
-  e resolvem decisões de produto, mas não precisam validar cada linha de implementação.
-- Revisão por IA escrita no PR **não é, por si só, um check obrigatório do GitHub**.
-  Merge automático permanece desabilitado até a Fase 2 estabelecer CI e o gate de revisão.
-- Mudanças nas regras exigem atualização de docs/GDD.md no mesmo PR; mudanças nos
-  limites técnicos exigem atualização deste documento.
-- Scripts e ferramentas precisam funcionar em clone novo ou informar dependências
-  ausentes. Preservar GUID, arquivos .meta, configuração do Unity e serialização.
-
-Recomendação de proteção da main (configuração do GitHub): exigir PR, zero aprovações
-humanas obrigatórias, bloquear force-push e exclusões. Adicionar checks obrigatórios e
-auto-merge **somente após** comprovar sua execução e a revisão independente.
+- Uma Issue por tarefa, uma branch e um PR. O agente autor realiza revisão local do
+  diff e inclui evidências de validação; **ninguém precisa acionar um segundo agente**.
+- CI roda por eventos de PR/push, sem polling de IA. `simulation-and-boundaries`
+  executa testes NUnit existentes, compilação da simulação e verificações de fronteira.
+  `protected-change-guard` consulta apenas metadados do PR a partir do workflow
+  confiável na main, sem checkout de código não confiável.
+- A proteção exige PR e **zero aprovações humanas ou de outra conta**. Os dois checks
+  acima devem ser exigidos no ruleset da main. O agente pode solicitar o auto-merge
+  nativo uma única vez; GitHub aguarda os checks.
+- A guarda bloqueia alterações a testes existentes, runners, workflows,
+  `Packages/`, `ProjectSettings/` e cenas Unity. Para mudar essas áreas legitimamente,
+  exigir uma exceção explícita de manutenção e restaurar a proteção após a mudança.
+  Não permitir que um PR enfraqueça sua própria CI.
+- A guarda emite aviso sobre alterações de apresentação Unity, mas não as valida.
+  Alterações de runtime, integração, UI, áudio e build precisam de teste real no
+  Editor/WebGL, com evidência ou limitação documentada no PR. Não interpretar CI
+  verde como verificação da aplicação no navegador.
+- Questões de produto ou mudanças de arquitetura continuam exigindo atualização
+  do GDD ou deste documento, respectivamente. Revisão adicional por IA é opcional,
+  não uma etapa obrigatória que depende de outro colaborador.
 
 ## Verificação
 
