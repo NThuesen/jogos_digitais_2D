@@ -47,6 +47,15 @@ Avoid inventing missing requirements. A design change needs a clearly stated dec
 5. No human line-by-line review or GitHub approval is required by this workflow. Human intervention is reserved for unresolved **product choices**, credentials or external publishing, not routine code approval.
 6. **Do not enable unattended merging until CI requirements and a reliable independent review gate have actually been implemented and verified.** The review protocol in this file is policy, not an automatic enforcement mechanism. The CI and automatic merge implementation is a separate phase.
 
+## CI and test-quality discipline
+- GitHub Actions runs only on PR events and pushes to main. **Never create scheduled jobs, loops, agents or timers that poll CI results.** GitHub checks carry the result; look at it once when the event finishes or when next acting on that PR.
+- CI uses one fast deterministic NUnit simulation suite plus an independent boundary/nonempty-results check. Keep the number of tests proportional to risks: no test-count targets, duplicated assertions, snapshots of incidental implementation details or tests that simply mirror production logic.
+- Write behavioral tests that would fail for a real regression (wrong lineup, bankrupt balance, invalid state, malformed save), include counterexamples/edge cases and stable seeds. Avoid brittle tests that only check method names, documentation keywords or internal class shapes unless the contract explicitly concerns those.
+- **Never change production logic, expected test results, skip flags, test runner, CI workflow or fixtures simply to make a red CI check turn green.** Diagnose the defect; legitimate test changes must explain why the expected behavior changed and demonstrate an assertion that fails on the broken case.
+- Changing tests or CI is higher risk than changing a regular component: independent reviewer must compare these files with the actual gameplay contract, not accept 'all green' as proof.
+- No AI model tokens for watching test logs. Run the command, wait for its process to exit, then read the final exit code and concise failure output once. Do not run a continuous GitHub status polling agent.
+- GitHub Actions does **not** run Unity PlayMode or browser/UI verification in this phase. The CI success badge means only the explicitly named simulation/boundary checks passed.
+- A green CI alone is not a product decision or an independent AI review. The one-shot PR review remains a separate task. Do not enable unattended merge without a verified review gate and working required checks.
 ## Code Review Rules
 Prioritize real regressions over style:
 - Wrong sim/UI authority, nondeterministic calculations and economy/save invariants.
