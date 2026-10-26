@@ -38,17 +38,26 @@ Esses limites documentam o projeto existente. **Não são autorização** para a
 
 ## Trabalho em quatro contas GitHub
 
-- Cada tarefa deve ser desenvolvida numa **branch própria** e integrada à `main` por **Pull Request**. Evitar commits diretos na `main`.
-- O PR deve informar **o que mudou, por quê, como foi validado** e quais verificações ficaram pendentes.
-- Mudanças de regras, economia, personagens e UX exigem atualização de `docs/GDD.md` no mesmo PR; mudanças dos limites técnicos exigem atualização deste arquivo.
-- Pelo menos **outro integrante** deve revisar o PR antes do merge. Alterações conflitantes de cena, `.meta`, GUID, pacotes ou configurações do projeto exigem atenção explícita na revisão.
-- Não considerar uma mudança concluída só porque o código compilou: verificar também o comportamento correspondente no Unity quando aplicável.
+- Uma Issue por tarefa, uma branch por tarefa e integração via Pull Request.
+- Um agente implementa e reporta resultados reais; **outro agente independente** revisa
+  o diff atual do PR, anota findings verificáveis e solicita correções objetivas.
+- Findings bloqueantes/importantes exigem correção e nova revisão do HEAD alterado.
+- Não há exigência de revisão humana do código. Pessoas definem objetivos, prioridades
+  e resolvem decisões de produto, mas não precisam validar cada linha de implementação.
+- Revisão por IA escrita no PR **não é, por si só, um check obrigatório do GitHub**.
+  Merge automático permanece desabilitado até a Fase 2 estabelecer CI e o gate de revisão.
+- Mudanças nas regras exigem atualização de docs/GDD.md no mesmo PR; mudanças nos
+  limites técnicos exigem atualização deste documento.
+- Scripts e ferramentas precisam funcionar em clone novo ou informar dependências
+  ausentes. Preservar GUID, arquivos .meta, configuração do Unity e serialização.
 
-Esta é uma convenção inicial de colaboração; regras detalhadas para agentes, divisão de responsabilidade e automações de CI poderão ser definidas separadamente, sem duplicar o GDD.
+Recomendação de proteção da main (configuração do GitHub): exigir PR, zero aprovações
+humanas obrigatórias, bloquear force-push e exclusões. Adicionar checks obrigatórios e
+auto-merge **somente após** comprovar sua execução e a revisão independente.
 
 ## Verificação
 
-Com o ambiente Unity configurado, o README lista os comandos de execução. O fluxo esperado para mudanças relevantes é:
+Com .NET SDK 8+ para os testes da simulação e Unity 6000.5.9f1 configurado em UNITY_EDITOR para os testes do Editor, o fluxo esperado para mudanças relevantes é:
 
 ```sh
 tools/simtest.sh
