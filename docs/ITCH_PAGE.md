@@ -62,8 +62,8 @@ Dojikko derruba pratos e os clientes acham graça; a Mukuchi não fala com clien
 
 ### Duas moedas, e só uma pode te quebrar
 
-- **Dinheiro** paga salário, aluguel e ingrediente. Pode ficar negativo. Se ficar, a empresa
-  vai à falência, e falência é fim de jogo: os recordes ficam, a empresa não.
+- **Dinheiro** paga salário, aluguel e ingrediente. Se o caixa ficar em zero ou negativo
+  após o balanço do dia, a empresa vai à falência: os recordes ficam, a empresa não.
 - **Fichas** só compram caixas, e são pagas por **qualidade de atendimento** — cliente
   satisfeito, pedido certo, mesa girada — nunca por faturamento. Não existe como comprar
   fichas, e não existe como transformá-las em dinheiro.
@@ -111,7 +111,7 @@ Mouse apenas.
 - **Durante o dia:** nada. `Pular` vai direto ao balanço.
 - **Loja e caixas:** móveis e roupas com dinheiro, caixas com fichas.
 
-O jogo salva sozinho ao fim de cada dia. Até a falência.
+O jogo salva automaticamente após as mudanças na empresa e ao concluir cada dia.
 
 ---
 
