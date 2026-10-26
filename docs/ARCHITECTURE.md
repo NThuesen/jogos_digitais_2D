@@ -39,21 +39,26 @@ Esses limites documentam o projeto existente. **Não são autorização** para a
 ## Trabalho em quatro contas GitHub
 
 - Uma Issue por tarefa, uma branch por tarefa e integração via Pull Request.
-- Um agente implementa e reporta resultados reais; **outro agente independente** revisa
-  o diff atual do PR, anota findings verificáveis e solicita correções objetivas.
-- Findings bloqueantes/importantes exigem correção e nova revisão do HEAD alterado.
-- Não há exigência de revisão humana do código. Pessoas definem objetivos, prioridades
-  e resolvem decisões de produto, mas não precisam validar cada linha de implementação.
-- Revisão por IA escrita no PR **não é, por si só, um check obrigatório do GitHub**.
-  Merge automático permanece desabilitado até a Fase 2 estabelecer CI e o gate de revisão.
-- Mudanças nas regras exigem atualização de docs/GDD.md no mesmo PR; mudanças nos
-  limites técnicos exigem atualização deste documento.
-- Scripts e ferramentas precisam funcionar em clone novo ou informar dependências
-  ausentes. Preservar GUID, arquivos .meta, configuração do Unity e serialização.
+- O agente implementador descreve testes executados e evidências reais.
+- Um agente operado sob **outra conta colaboradora** revisa o diff do HEAD atual,
+  priorizando bugs, regressões, lifecycle do Unity e adulteração/afrouxamento dos testes.
+- Se houver findings blocking/important, o implementador corrige e solicita revisão
+  da versão atualizada. Quando estiver conforme, o agente revisor envia um review GitHub
+  **APPROVE** pela própria conta, não pela conta autora.
+- A revisão não exige pessoa analisando código, mas o GitHub deve exigir **1 aprovação
+  de outra conta** e invalidar aprovações antigas após novos commits. O modelo que
+  produziu o review não é verificável pelo GitHub; não falsificar esse trabalho.
+- Os checks de GitHub Actions são acionados por evento, sem polling, e verificam
+  apenas simulação/boundaries. Não substituem testes Unity, WebGL ou avaliação visual.
+- Com **Allow auto-merge** ativado no repositório e o ruleset da `main` validado,
+  o agente autor pode solicitar auto-merge uma vez; o GitHub esperará pela aprovação
+  independente e pelo check `simulation-and-boundaries` antes de integrar.
+- Alterações no GDD, na arquitetura ou em configurações Unity devem ser verificadas
+  em conjunto com os arquivos correspondentes, sem scope creep.
 
-Recomendação de proteção da main (configuração do GitHub): exigir PR, zero aprovações
-humanas obrigatórias, bloquear force-push e exclusões. Adicionar checks obrigatórios e
-auto-merge **somente após** comprovar sua execução e a revisão independente.
+Configuração GitHub necessária: regras de `main` somente (PR, 1 aprovação,
+dismiss stale approvals, check obrigatório, bloqueio de force-push/deleções),
+sem bypass; habilitar auto-merge em Settings → General → Pull Requests.
 
 ## Verificação
 
