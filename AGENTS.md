@@ -39,23 +39,26 @@ Avoid inventing missing requirements. A design change needs a clearly stated dec
 - Test boundary conditions: empty roles/roster, no valid stations, corrupt save, insufficient funds, bankrupt state, repeated opening/skipping of days. No claims of success based only on compilation.
 - Do not claim visual quality from source review; inspect rendered frames and animation where available.
 
-## Independent agent review, no human code-approval gate
-1. The implementation agent runs available checks and opens a PR.
-2. **A separate agent/session** that did not implement the change reviews the **actual PR diff**, relevant tests, Unity wiring, correctness and scope. Prefer a different tool/model (Codex ↔ Claude Code ↔ Kiro). Record findings with severity: blocking / important / optional, plus reproducible evidence.
-3. The implementing agent corrects blocking and important findings, reruns checks, and requests a fresh independent review of the new head commit.
-4. Do **not** mark an agent review complete by copying a checklist or reviewing one's own patch. The PR must link to the second review or state explicitly that it has not happened.
-5. No human line-by-line review or GitHub approval is required by this workflow. Human intervention is reserved for unresolved **product choices**, credentials or external publishing, not routine code approval.
-6. **Do not enable unattended merging until CI requirements and a reliable independent review gate have actually been implemented and verified.** The review protocol in this file is policy, not an automatic enforcement mechanism. The CI and automatic merge implementation is a separate phase.
+## Autonomous PR delivery (no human or second-agent handoff)
+1. A task has one Issue or equivalent scoped contract, one implementation branch and one PR.
+2. The task's implementing agent inspects the actual diff, checks acceptance criteria, runs available tests and records executed/failed/not-run evidence in the PR. Never represent simulation CI as Unity verification.
+3. **Do not request another collaborator to activate a second AI or give GitHub approval.** GitHub branch rules require zero approvals; Github Actions checks, not review checklists, are the routine merge gate.
+4. The PR-author agent may request **GitHub-native auto-merge ONCE** (`gh pr merge --auto --squash --match-head-commit <SHA>`, or equivalent native GitHub action) when the branch protection and required checks are confirmed. Never write a polling bot or bypass branch protection.
+5. Required checks: `simulation-and-boundaries` (existing NUnit suite) and `protected-change-guard` (trusted, base-branch safety workflow). The second check protects existing tests, the CI itself, build/test runners and Unity configuration. It must be explicitly selected as **required** in the `main` ruleset after its first execution. Until then, do not use unattended merge.
+6. Existing test files, validation scripts, workflow files, package/project settings and Unity scenes **cannot auto-merge through their own new checks**. Changes there are exceptional: require explicit owner maintenance of the branch rules, independent verification and restoration of protection. This is not a request for human line-by-line code review.
+7. An agent may perform a focused self-review as part of its implementation task. Independent second-model review is optional when available within the task, never a dependency on a different human or a scheduled AI process.
+8. Unity-affecting code is not covered by the hosted simulation CI: run Editor/PlayMode and visual checks in a Unity-capable environment and report their outcome. No file-based policy can substitute for those checks; do not claim automatic Unity validation.
 
 ## CI and test-quality discipline
 - GitHub Actions runs only on PR events and pushes to main. **Never create scheduled jobs, loops, agents or timers that poll CI results.** GitHub checks carry the result; look at it once when the event finishes or when next acting on that PR.
 - CI uses one fast deterministic NUnit simulation suite plus an independent boundary/nonempty-results check. Keep the number of tests proportional to risks: no test-count targets, duplicated assertions, snapshots of incidental implementation details or tests that simply mirror production logic.
 - Write behavioral tests that would fail for a real regression (wrong lineup, bankrupt balance, invalid state, malformed save), include counterexamples/edge cases and stable seeds. Avoid brittle tests that only check method names, documentation keywords or internal class shapes unless the contract explicitly concerns those.
 - **Never change production logic, expected test results, skip flags, test runner, CI workflow or fixtures simply to make a red CI check turn green.** Diagnose the defect; legitimate test changes must explain why the expected behavior changed and demonstrate an assertion that fails on the broken case.
-- Changing tests or CI is higher risk than changing a regular component: independent reviewer must compare these files with the actual gameplay contract, not accept 'all green' as proof.
+- Changes to existing tests/CI are blocked by the trusted guard; do not bypass it merely to obtain a green check. Follow the explicit exceptional process in the autonomous PR workflow.
 - No AI model tokens for watching test logs. Run the command, wait for its process to exit, then read the final exit code and concise failure output once. Do not run a continuous GitHub status polling agent.
 - GitHub Actions does **not** run Unity PlayMode or browser/UI verification in this phase. The CI success badge means only the explicitly named simulation/boundary checks passed.
-- A green CI alone is not a product decision or an independent AI review. The one-shot PR review remains a separate task. Do not enable unattended merge without a verified review gate and working required checks.
+- A green CI validates the named checks only, not product correctness. The team intentionally does not require a separate reviewer; do not enable unattended merge without both required checks properly protected.
+
 ## Code Review Rules
 Prioritize real regressions over style:
 - Wrong sim/UI authority, nondeterministic calculations and economy/save invariants.
