@@ -39,11 +39,34 @@ namespace Neko.Game.Feel
         }
 
         /// <summary>Advances every live tween. Called once a frame by the game root.</summary>
-        public static void TickAll()
-        {
-            var dt = Clocks.Ui;
+        public static void TickAll() => TickAll(Clocks.Ui);
 
-            for (var i = 0; i < Live.Count; i++)
+        /// <summary>
+        /// Advances every live tween by one frame.
+        /// </summary>
+        /// <remarks>
+        /// The delta is a parameter so a test can pin what happens on a long frame, which is
+        /// the case that killed the editor and the one a normal frame never reaches.
+        /// </remarks>
+        public static void TickAll(float dt)
+        {
+            // A completion is allowed to start another tween — the menu's sign sways by
+            // reversing itself forever — and a new tween appends to this very list. Walking
+            // it to its live end therefore advanced the replacement inside the frame that
+            // created it, and on a frame longer than the sway the replacement finished too,
+            // and started another. The editor's first frame of play mode carries the domain
+            // reload, which this log times at 3.9 s, against a 2.6 s sway — so every link
+            // completed at once: ten thousand of them in a single pass, counted by
+            // TweenChainTests. The loop never returned, and the editor grew from 1.8 GB to
+            // 10.4 GB before the kernel killed it, with nothing in the log after "Loaded
+            // scene". A tween born this frame starts moving on the next one.
+            var countAtFrameStart = Live.Count;
+
+            // The second condition is for a list that shrinks under the loop: KillAll clears
+            // it, and a snapshot taken before that would index past the end. Nothing calls
+            // KillAll from inside a tween today — only GameRoot.OnDestroy does — so this
+            // costs a comparison to close a trap rather than to fix a crash.
+            for (var i = 0; i < countAtFrameStart && i < Live.Count; i++)
             {
                 var tween = Live[i];
                 if (tween._dead || (tween._transform == null && tween._apply == null))

@@ -14,13 +14,30 @@ namespace Neko.Game.Core
     {
         private static float _scale = 1f;
 
+        /// <summary>
+        /// The longest frame either clock will admit to.
+        /// </summary>
+        /// <remarks>
+        /// The editor hands the game its domain reload as the first frame's delta, and this
+        /// project's log times that reload at 3.9 s. Nothing here wants to advance by that:
+        /// the café would serve several seconds of customers between two drawn frames, and
+        /// every animation would snap to its end on the frame it started. Unity clamps its
+        /// own <c>Time.deltaTime</c> for the same reason, and this is the second lock on the
+        /// crash that <see cref="Feel.Tween"/> explains — a long frame can no longer reach
+        /// anything.
+        /// </remarks>
+        public const float LongestFrame = 0.1f;
+
         public static bool Paused { get; private set; }
 
         /// <summary>Seconds since the last frame for anything in the café.</summary>
-        public static float Game => Paused ? 0f : Time.unscaledDeltaTime * _scale;
+        public static float Game => Paused ? 0f : Trim(Time.unscaledDeltaTime) * _scale;
 
         /// <summary>Seconds since the last frame for menus, tweens and popups.</summary>
-        public static float Ui => Time.unscaledDeltaTime;
+        public static float Ui => Trim(Time.unscaledDeltaTime);
+
+        /// <summary>A frame length, with an outlier cut down to something playable.</summary>
+        public static float Trim(float seconds) => Mathf.Min(seconds, LongestFrame);
 
         /// <summary>Slow motion. 1 is normal; the level-up flourish dips to about 0.35.</summary>
         public static float Scale
