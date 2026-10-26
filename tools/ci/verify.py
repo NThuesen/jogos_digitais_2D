@@ -38,8 +38,11 @@ def boundaries() -> None:
     # This is a cheap guard against accidentally importing Unity APIs into pure sim.
     # The Unity compilation and existing boundary tests are still authoritative.
     forbidden = re.compile(r"\b(?:using\s+(?:static\s+)?(?:UnityEngine|UnityEditor)\b|(?:UnityEngine|UnityEditor)\s*\.)")
-    contaminated = [str(p.relative_to(ROOT)) for p in sources
-                    if forbidden.search(p.read_text(encoding="utf-8"))]
+    comments = re.compile(r"//[^\n]*|/\*.*?\*/", re.DOTALL)
+    contaminated = [
+        str(p.relative_to(ROOT)) for p in sources
+        if forbidden.search(comments.sub("", p.read_text(encoding="utf-8")))
+    ]
     if contaminated:
         fail("Unity-specific code entered pure simulation: " + ", ".join(contaminated))
 
