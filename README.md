@@ -49,47 +49,46 @@ tools/clean.sh                   # quebra o loop de crash e limpa 1,5 GB de cach
 | `docs/ITCH_PAGE.md` | texto e instruções para publicar a build |
 | `tools/` | os scripts acima |
 
-## Documentação e colaboração
+## Documentação e fluxo AI-First
 
-Este projeto tem quatro colaboradores usando Codex, Claude Code e Kiro. O trabalho de
-programação e revisão é conduzido por agentes, sem aprovação humana rotineira de código.
+Quatro colaboradores usam Codex, Claude Code e Kiro. **Nenhuma outra pessoa precisa
+iniciar uma revisão ou aprovar código** para concluir uma tarefa normal.
 
-- Uma Issue define o contrato: objetivo, aceitação, escopo e evidências esperadas.
-- Uma tarefa corresponde a uma branch e um Pull Request; não fazer push na main.
-- O agente implementador reporta testes realmente executados e pontos ainda não verificados.
-- Um segundo agente, em sessão independente, analisa o diff real; o implementador corrige
-  findings importantes ou bloqueantes e solicita nova revisão do código atualizado.
-- A revisão independente documentada não equivale a um gate técnico automatizado.
-  Não ativar merge autônomo antes de CI e revisão automatizada confiáveis (Fase 2).
-- AGENTS.md contém as instruções compartilhadas pelas três ferramentas.
-- docs/GDD.md define gameplay; docs/ARCHITECTURE.md define os limites técnicos.
-  Atualize o documento correspondente no mesmo PR quando o comportamento mudar.
+1. A tarefa nasce como uma GitHub Issue com escopo e critérios de aceitação.
+2. O agente implementador trabalha numa branch, abre um PR e registra testes realmente
+   executados, falhas e evidências Unity que puder obter. O PR deve ser autocontido.
+3. GitHub Actions executa checks por eventos, sem agentes consultando status em loop.
+4. O agente autor pode **armar o auto-merge uma vez** (`gh pr merge --auto --squash`).
+   O GitHub integra quando os checks obrigatórios estão verdes; não há aprovação humana
+   nem outra conta revisora como pré-requisito.
 
-Templates: .github/ISSUE_TEMPLATE/task.yml e .github/PULL_REQUEST_TEMPLATE.md.
+**Ruleset da main:** PR obrigatório, 0 aprovações, bloquear force-push e deleção;
+exigir `simulation-and-boundaries` e `protected-change-guard`. O segundo check
+precisa estar ativo na main e ser marcado como obrigatório **após sua primeira
+execução**. `Allow auto-merge` deve permanecer habilitado no repositório.
 
-Para os testes rápidos, instale .NET SDK 8+ e execute tools/simtest.sh.
-Para os testes Unity, configure UNITY_EDITOR com o editor Unity 6000.5.9f1
-(no Windows, utilize Git Bash ou shell equivalente). Se faltarem ferramentas,
-registre 'não executado', nunca 'aprovado'.
+O check `protected-change-guard` roda em `pull_request_target` a partir da versão
+confiável da main e **não executa código do PR**. Bloqueia modificações nos testes
+existentes, scripts/workflows de validação e configurações Unity sensíveis: não
+é seguro deixar um PR alterar seu próprio mecanismo de aprovação. Alterações
+legítimas nesses arquivos exigem manutenção excepcional do ruleset pelo
+responsável; não são tarefas com auto-merge normal.
 
-### Validação contínua: GitHub Actions (Fase 2)
+Os testes NUnit existentes são executados sem meta de quantidade; testes ignorados
+ou inconclusivos não são aceitos como êxito. **A CI ainda não compila nem testa
+Unity, PlayMode ou WebGL.** Mudanças nessas áreas precisam de validação real num
+ambiente Unity-capable, com evidência explícita; check verde da simulação não
+comprova o jogo visual.
 
-O workflow `.github/workflows/simulation-ci.yml` executa uma única suíte rápida de
-simulação mais verificações de fronteira C# e de resultados NUnit. Ele é disparado
-**somente por eventos de Pull Request e push na `main`**, sem timers, polling ou
-chamadas a modelos de IA. Runs anteriores do mesmo PR são cancelados ao receber novo commit.
+`AGENTS.md` é a política compartilhada; `docs/GDD.md` define o produto;
+`docs/ARCHITECTURE.md` define as fronteiras técnicas. Os templates de Issue e
+PR ficam em `.github/`. Revisão por segunda IA é opcional quando útil, não
+um bloqueio de entrega nem uma tarefa agendada consumindo tokens.
 
-Um check verde significa **apenas** que as regras da simulação e os guardas executados
-passaram; não significa Unity/PlayMode, visual ou build WebGL validados. Mudanças
-relacionadas a gameplay Unity continuam exigindo validação no Editor e relato
-explícito no PR. A qualidade dos testes é medida por sua capacidade de detectar
-regressões de comportamento, **nunca por aumentar a quantidade de casos**.
+Para testes rápidos, instale .NET SDK 8+ e execute `tools/simtest.sh`.
+Para testes Unity, configure `UNITY_EDITOR` com o Editor 6000.5.9f1.
+Falta de ambiente ou execução não é resultado aprovado.
 
-Após o primeiro check `simulation-and-boundaries` funcionar num PR, o proprietário
-pode configurá-lo como obrigatório em Settings → Rulesets, sem aprovações humanas
-de código. A CI não substitui a revisão pontual independente por outra IA;
-e **merge totalmente automático permanece desabilitado** até que o gate de revisão
-e o branch ruleset sejam realmente verificados.
 `Neko.Sim` não referenciar o UnityEngine é a decisão que sustenta o resto: um dia inteiro de
 café roda em milissegundos num teste comum, o que é o único jeito honesto de afirmar que uma
 escalação é melhor que outra.

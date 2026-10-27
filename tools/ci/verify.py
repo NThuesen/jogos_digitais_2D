@@ -67,10 +67,12 @@ def results(path: Path) -> None:
     if not cases:
         fail("NUnit completed without executing any test cases")
     passed = sum(1 for case in cases if case.get("result") == "Passed")
-    failed = sum(1 for case in cases if case.get("result") in ("Failed", "Error"))
-    if failed or passed == 0:
-        fail(f"Tests did not pass: passed={passed}, failed={failed}, total={len(cases)}")
-    print(f"NUnit result verified: {passed} passed, {len(cases) - passed} skipped/inconclusive.")
+    not_passed = [case.get("name", "<unnamed>") + ": " + str(case.get("result"))
+                  for case in cases if case.get("result") != "Passed"]
+    if not_passed or passed == 0:
+        fail(f"NUnit incomplete: {passed} passed; {len(not_passed)} not passed. "
+             + "; ".join(not_passed[:10]))
+    print(f"NUnit result verified: all {passed} executed tests passed (none skipped).")
     print("Passing tests do not validate Unity PlayMode, WebGL, visual feedback or product quality.")
 
 

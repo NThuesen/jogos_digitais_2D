@@ -1,22 +1,27 @@
 ## Tarefa
-Closes #
+Relacionado a: #
 
 ## Entrega
-- **O que mudou:**
-- **Por que resolve o problema:**
-- **Fora de escopo / mudanças de produto:** nenhuma ou link da decisão.
+- **O que mudou e por quê:**
+- **Critérios de aceitação satisfeitos:**
+- **Decisão nova de produto/arquitetura:** nenhuma / link do requisito.
 
-## Evidências (não marcar o que não foi executado)
-- **Simulação:** passou / falhou / não executado (motivo)
-- **Unity EditMode:** passou / falhou / não executado (motivo)
-- **Unity PlayMode / cena:** passou / falhou / não executado (motivo)
-- **WebGL / visual:** passou / falhou / não aplicável / não executado (motivo)
-- **Documentos atualizados:** sim / não necessário (motivo)
+## Evidências reais
+- **Neko.Sim:** executado e passou / falhou / não executado (motivo)
+- **Unity EditMode e PlayMode:** executado e passou / falhou / não executado (motivo)
+- **WebGL, jogo visual, cena e áudio:** validado / não se aplica / não validado (motivo)
+- **Casos limite e regressões verificados:**
+- **Documentos alterados se comportamento mudou:** sim / não se aplica
 
-## Revisão independente por IA
-- **Agente/revisor (ferramenta e sessão):**
-- **Link para revisão do diff no HEAD atual:**
-- **Blocking / important:** nenhum ou links das correções.
-- **Limitações / verificações pendentes:**
+## Riscos e integração
+- **Arquivos sensíveis (tests/CI/Unity config/scenes):** não / sim (não usar auto-merge normal)
+- **Dependências de outros PRs ou alterações concorrentes:**
+- **O que permanece sem validação:**
 
-> Este template **não é uma aprovação automática**. Uma segunda IA precisa realmente analisar o diff. Não há exigência de revisão humana de código. Até a implantação da CI e do gate de revisão na Fase 2, não habilitar auto-merge sem verificações técnicas confiáveis.
+## Integração autônoma
+O agente autor analisa o diff, garante que os campos acima correspondem a fatos e pode
+solicitar **uma vez** auto-merge nativo, **somente** quando o ruleset da main exigir
+`simulation-and-boundaries` e `protected-change-guard` e permitir 0 aprovações.
+O GitHub aguarda os checks. Nenhum agente acompanha logs por polling.
+**Um check verde da simulação não certifica Unity, PlayMode nem WebGL.**
+Não enfraquecer testes ou scripts de validação para obter aprovação artificial.
