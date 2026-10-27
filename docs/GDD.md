@@ -251,6 +251,14 @@ a mediana.
 tudo — maids, clientes, móveis, ícones, o letreiro. Uma maid é uma pilha de camadas tingidas,
 e é por isso que o vestuário é visível: equipar uma peça troca uma camada.
 
+**Direção visual aprovada (ainda não implementada):** cada identidade de maid deverá ter
+um **portrait expressivo para o card** e um **chibi legível para o restaurante**, com
+identidade e módulos visuais consistentes entre as duas apresentações. O card permanece
+composto pela UI. A decisão, os pontos em aberto e o contrato de spec por identidade
+estão em [docs/art/MAID_VISUAL_DECISION.md](art/MAID_VISUAL_DECISION.md); o texto acima
+descreve somente a implementação atual.
+
+
 A paleta foi fechada com `pixels palette_check`: os nove acentos de arquétipo ficam numa
 escada de L\* de 40 a 72, quatro pontos entre vizinhos, todos abaixo da faixa de valor da cor
 de atenção e todos menos saturados que ela.
