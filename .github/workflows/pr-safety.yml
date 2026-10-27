@@ -1,0 +1,74 @@
+name: PR Safety
+
+# Runs only from the trusted default branch. Never checks out PR code or runs it.
+# GitHub API reads metadata only; credentials have read-only permissions.
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: pr-safety-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  safety:
+    name: protected-change-guard
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Enforce immutable CI and existing test evidence
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {owner, repo} = context.repo;
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner, repo, pull_number: context.issue.number, per_page: 100
+            });
+
+            // Updates to verification infrastructure must not auto-merge using
+            // the very verification that the PR proposes to change.
+            const protectedPaths = [
+              '.github/workflows/',
+              'tools/ci/',
+              'tools/simtest.sh',
+              'tools/run-tests.sh',
+              'tools/build-webgl.sh',
+              'tools/simtest/SimTest.csproj',
+              'Packages/',
+              'ProjectSettings/',
+              'Assets/_Game/Scenes/'
+            ];
+            const existingTests = 'Assets/_Game/Tests/';
+            const unsafe = files.filter(file => {
+              const paths = [file.filename, file.previous_filename].filter(Boolean);
+              return paths.some(p =>
+                protectedPaths.some(base => base.endsWith('/') ? p.startsWith(base) : p === base)
+                || (p.startsWith(existingTests) && file.status !== 'added')
+              );
+            });
+
+            const unityPaths = [
+              'Assets/_Game/Scripts/Game/', 'Assets/_Game/Scripts/Editor/',
+              'Assets/_Game/Resources/'
+            ];
+            const unityFiles = files.filter(f => unityPaths.some(p => f.filename.startsWith(p)));
+            await core.summary
+              .addHeading('PR safety', 2)
+              .addRaw('Uses base-branch workflow and metadata only; no PR code executed.\n')
+              .addRaw('Changes to existing test files or validation infrastructure cannot auto-merge.\n')
+              .addRaw('New test files are allowed; test quantity is not a success criterion.\n')
+              .write();
+
+            if (unityFiles.length) {
+              core.warning('Unity-affecting files changed: simulation CI does NOT validate the Editor, scene runtime or WebGL. Record actual Unity evidence separately.');
+            }
+            if (unsafe.length) {
+              const list = unsafe.map(f => '- ' + f.filename + ' (' + f.status + ')').join('\n');
+              core.setFailed('Protected verification/Unity-config changes cannot auto-merge. An explicit maintainer exception and independent validation are needed:\n' + list);
+              return;
+            }
+            core.info('PR safety guard passed: no protected test/CI/config changes.');
