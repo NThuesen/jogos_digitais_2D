@@ -14,7 +14,7 @@ import sys
 
 def is_editor(executable: str) -> bool:
     name = executable.replace("\\", "/").rstrip("/").split("/")[-1].lower()
-    return name in {"unity", "unity.exe"}
+    return name in {"unity", "unity.exe", "unity-editor"}
 
 
 def editors_linux():
