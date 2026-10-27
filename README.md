@@ -58,6 +58,7 @@ consultadas sob demanda:
 - [Workflow de branches e PRs](docs/agent/WORKFLOW.md)
 - [Unity, arte e integração](docs/agent/UNITY.md)
 - [Testes e evidências](docs/agent/VALIDATION.md)
+- [Roadmap visual ativo](docs/ROADMAP.md) — ler apenas a tarefa atribuída, não todas as notas
 
 Mudanças nas regras do jogo consultam [GDD](docs/GDD.md); mudanças arquiteturais
 consultam [ARCHITECTURE](docs/ARCHITECTURE.md). Não é necessário ler ambos para
