@@ -29,6 +29,13 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
+      # Focused contract tests for the Unity wrapper, with a fake Editor.
+      # Does not claim actual EditMode/PlayMode execution.
+      - name: Check Unity test-runner failure paths (no Unity required)
+        run: |
+          bash -n tools/run-tests.sh tools/build-webgl.sh tools/open-editor.sh tools/clean.sh tools/unity-guard.sh
+          python3 tools/tests/test_unity_validation.py
+
       - name: Check simulation and harness boundaries
         run: python3 tools/ci/verify.py boundaries
 

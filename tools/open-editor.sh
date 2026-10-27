@@ -10,6 +10,8 @@
 set -euo pipefail
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PROJECT="$root"
+source "$root/tools/unity-guard.sh"
 editor="$HOME/Unity/Hub/Editor/6000.5.9f1/Editor/Unity"
 
 if [[ ! -x "$editor" ]]; then
@@ -17,17 +19,8 @@ if [[ ! -x "$editor" ]]; then
     exit 1
 fi
 
-if pgrep -x Unity >/dev/null; then
-    echo "Já tem um editor rodando. Esta máquina não aguenta dois." >&2
-    pgrep -ax Unity >&2
-    exit 1
-fi
-
-lock="$root/Temp/UnityLockfile"
-if [[ -f "$lock" ]]; then
-    echo "Removendo um Temp/UnityLockfile velho (nenhum editor vivo)."
-    rm -f "$lock"
-fi
+# Serialize editor operations and only remove stale Unity locks after checking processes.
+unity_guard_prepare
 
 # O editor deste projeto estabiliza perto de 3 GB. Abaixo disso o kernel começa a matar
 # processos em vez de avisar, e foi o que aconteceu com o Hub.
@@ -52,4 +45,5 @@ echo "Abrindo $root ..."
 # Burst entra de carona na URP, pesa 748 MB de pacote, carrega o próprio gerador de código
 # no editor — e este projeto não tem um único [BurstCompile] nem um IJob. Desligar a
 # compilação não muda nada do que roda e tira do editor o processo que mais aloca.
-exec "$editor" -projectPath "$root" --burst-disable-compilation
+# Keep this shell alive to hold the shared guard until Unity exits.
+"$editor" -projectPath "$root" --burst-disable-compilation

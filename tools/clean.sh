@@ -11,12 +11,12 @@
 set -euo pipefail
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PROJECT="$root"
+source "$root/tools/unity-guard.sh"
 cd "$root"
 
-if pgrep -x Unity >/dev/null; then
-    echo "Fecha o editor primeiro — ele está rodando." >&2
-    exit 1
-fi
+# Cleaning Temp/Library while an Editor or batch job is active can corrupt the project.
+unity_guard_prepare
 
 freed_before=$(df --output=avail -BM / | tail -1 | tr -dc '0-9')
 

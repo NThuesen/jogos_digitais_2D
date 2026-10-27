@@ -9,6 +9,7 @@
 set -euo pipefail
 
 PROJECT="$(cd "$(dirname "$0")/.." && pwd)"
+source "$PROJECT/tools/unity-guard.sh"
 if [[ -n "${UNITY_EDITOR:-}" ]]; then
   EDITOR="$UNITY_EDITOR"
 elif command -v Unity >/dev/null 2>&1; then
@@ -21,10 +22,8 @@ else
 fi
 LOG="$PROJECT/.build.log"
 
-if pgrep -x Unity > /dev/null; then
-  echo "A Unity editor is already running; this machine runs one at a time." >&2
-  exit 1
-fi
+# Reuse the exact same lock/process detection as EditMode and PlayMode.
+unity_guard_prepare
 
 rm -rf "$PROJECT/Build/WebGL"
 
