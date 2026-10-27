@@ -36,28 +36,13 @@ A camada visual deve **observar e representar** o estado da simulação, sem rep
 
 Esses limites documentam o projeto existente. **Não são autorização** para adicionar infraestrutura genérica, novas assemblies, gerenciadores ou frameworks sem necessidade demonstrada.
 
-## Integração AI-First entre quatro contas
+## Colaboração com agentes
 
-- Uma Issue por tarefa, uma branch e um PR. O agente autor realiza revisão local do
-  diff e inclui evidências de validação; **ninguém precisa acionar um segundo agente**.
-- CI roda por eventos de PR/push, sem polling de IA. `simulation-and-boundaries`
-  executa testes NUnit existentes, compilação da simulação e verificações de fronteira.
-  `protected-change-guard` consulta apenas metadados do PR a partir do workflow
-  confiável na main, sem checkout de código não confiável.
-- A proteção exige PR e **zero aprovações humanas ou de outra conta**. Os dois checks
-  acima devem ser exigidos no ruleset da main. O agente pode solicitar o auto-merge
-  nativo uma única vez; GitHub aguarda os checks.
-- A guarda bloqueia alterações a testes existentes, runners, workflows,
-  `Packages/`, `ProjectSettings/` e cenas Unity. Para mudar essas áreas legitimamente,
-  exigir uma exceção explícita de manutenção e restaurar a proteção após a mudança.
-  Não permitir que um PR enfraqueça sua própria CI.
-- A guarda emite aviso sobre alterações de apresentação Unity, mas não as valida.
-  Alterações de runtime, integração, UI, áudio e build precisam de teste real no
-  Editor/WebGL, com evidência ou limitação documentada no PR. Não interpretar CI
-  verde como verificação da aplicação no navegador.
-- Questões de produto ou mudanças de arquitetura continuam exigindo atualização
-  do GDD ou deste documento, respectivamente. Revisão adicional por IA é opcional,
-  não uma etapa obrigatória que depende de outro colaborador.
+O fluxo operacional (branch por tarefa, PR, auto-merge e exceções protegidas)
+está documentado em [AGENTS.md](../AGENTS.md) e na nota
+[Workflow](agent/WORKFLOW.md). Para validar mudanças consulte
+[Validation](agent/VALIDATION.md). Este documento permanece a fonte técnica de
+fronteiras e comportamento da implementação, sem duplicar regras de agentes.
 
 ## Verificação
 
