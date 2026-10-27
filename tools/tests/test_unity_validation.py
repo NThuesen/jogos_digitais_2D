@@ -103,8 +103,8 @@ class UnityValidationContract(unittest.TestCase):
     @unittest.skipUnless(sys.platform.startswith("linux"), "Linux /proc test")
     def test_detects_real_editor_argv_even_with_different_process_name(self):
         fake_unity = self.root / "Unity"
-        fake_unity.symlink_to(shutil.which("sleep"))
-        proc = subprocess.Popen([str(fake_unity), "10"])
+        fake_unity.symlink_to(sys.executable)
+        proc = subprocess.Popen([str(fake_unity), "-c", "import time; time.sleep(10)"])
         try:
             result = self.run_mock()
             self.assertNotEqual(result.returncode, 0)
