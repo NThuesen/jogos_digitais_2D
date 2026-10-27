@@ -8,7 +8,6 @@
 - Game rules: [GDD](docs/GDD.md); technical boundaries: [Architecture](docs/ARCHITECTURE.md); test evidence: [Validation](docs/agent/VALIDATION.md).
 - For a one-file edit, inspect that file and only immediately relevant references. **Do not preload all docs or files.**
 
-## When asked to review Codex work
-Review the **actual HEAD diff**, relevant sources and runtime/visual evidence; classify issues `blocking / important / optional` with reproducible reasons. Distinguish confirmed defects from design preferences, and do not invent bugs (a partially empty lineup is valid). Send findings; Codex fixes valid ones and revalidates. Avoid cosmetic refactors and do not claim test or visual success without execution.
-
-For ART-01, present alternative appearances and trade-offs for **owner approval**; do not implement the game, choose a final style, or start mass asset generation without authorization. Do not watch CI by polling.
+## Task-specific handoffs
+- **Reviewing Codex implementation:** read [Review & correction contract](docs/agent/REVIEW.md) and only the changed sources/evidence. No invented bugs, cosmetic refactors or continuous CI monitoring.
+- **ART-01 visual exploration:** read [ART-01](docs/roadmap/ART-01_STYLE.md); present alternatives for **owner approval**, do not choose the final style or implement mass asset generation.
