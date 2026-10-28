@@ -2,6 +2,7 @@
 
 **Estado:** ACCEPTED — direção visual de produto, **não implementada**.
 **Âmbito:** aparência de cada maid no Neko Maid Inc.; não altera regras de gameplay, raridade ou economia.
+**Estilo e apresentação agora aceitos:** [Cozy Pixel-Art Anime + Visual Novel](COZY_VISUAL_NOVEL_DIRECTION.md). O contrato portrait + chibi permanece; os assets e a pipeline continuam pendentes.
 **Contrato dos dados:** [MAID_VISUAL_SPEC.md](MAID_VISUAL_SPEC.md).
 **Ficha por identidade:** [maids/_TEMPLATE.md](maids/_TEMPLATE.md).
 **Para implementar:** ler [nota Unity](../agent/UNITY.md) e os arquivos de código indicados abaixo, sem carregar o GDD completo salvo mudança de produto.
@@ -23,7 +24,7 @@
 - O [GDD, §8](../GDD.md) descreve o **estado atual**, com formas geradas em runtime e nenhuma imagem importada. Esta decisão documenta uma **direção futura**; não declare PNGs, portrait separado, novos renderers ou assets já existentes.
 
 ## Ainda aberto — não decidir por inferência
-- Estilo final, paleta e proporções do portrait/chibi; exigir aprovação de referências visuais antes de produzir biblioteca grande.
+- **Linguagem geral aprovada:** cozy pixel-art anime café com apresentação de visual novel. **Ainda abertos:** paleta exata, proporções, acabamento, escala, personagens/cenários originais e aprovação dos assets; exigir prévias antes de produzir biblioteca grande.
 - Técnicas e formatos de produção (imagens IA transparentes, camadas vetoriais/SDF existentes ou combinação), resolução, slicing, atlases e animação. **Python/Pillow, ScriptableObjects, prefabs e Unity 2D Animation são alternativas, não requisitos aceitos.**
 - Quantidade de partes/variantes, gatilho de geração (editor/offline/runtime), regras de compatibilidade entre camadas e persistência de seeds/IDs. Resolver quando uma implementação real exigir.
 - Se haverá uma ficha por personagem nomeado, por família visual ou uma spec resolvida a partir de combinações. **Não criar um arquivo Markdown por carta aleatória do jogador.**
