@@ -258,6 +258,15 @@ composto pela UI. A decisão, os pontos em aberto e o contrato de spec por ident
 estão em [docs/art/MAID_VISUAL_DECISION.md](art/MAID_VISUAL_DECISION.md); o texto acima
 descreve somente a implementação atual.
 
+**Direção de apresentação aceita em 28/10/2026 (ainda não implementada):** combinar
+**cozy pixel-art anime café** com linguagem de **visual novel** nos menus, Elenco,
+Escalação e eventuais momentos entre dias: cenário detalhado, iluminação acolhedora,
+portraits expressivos e UI ornamental, mantendo o turno como simulação 2D com
+chibis legíveis. A direção, os limites e o gate para aprovar assets originais estão
+em [docs/art/COZY_VISUAL_NOVEL_DIRECTION.md](art/COZY_VISUAL_NOVEL_DIRECTION.md).
+A imagem de inspiração foi enviada na conversa e não está versionada no repo;
+não confundir aprovação da direção com arte final ou pipeline já escolhida.
+
 
 A paleta foi fechada com `pixels palette_check`: os nove acentos de arquétipo ficam numa
 escada de L\* de 40 a 72, quatro pontos entre vizinhos, todos abaixo da faixa de valor da cor
