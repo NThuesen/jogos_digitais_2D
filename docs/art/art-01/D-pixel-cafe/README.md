@@ -87,6 +87,9 @@ Hipótese por trás do menta: contrasta com o mundo quente (leitura em cenário 
 - **Tamanhos-alvo iniciais (apenas para testar):** portrait ~128×160 lógicos, chibi ~40–48 px de altura, café 3:2 com recorte 16:10 para o painel.
 - **Geração:** sempre em alta resolução (1536×1024 / 1024×1024). Se uma combinação de parâmetros não ficar próxima da referência, **ela é descartada** e isso é reportado.
 
+### Limitação observada (2026-10-28)
+Em **duas tentativas** de geração, o ChatGPT produziu **quadros conceituais** (pranchas compostas) em vez de **assets individuais**. Isso é **limitação observada, não entrega concluída**; nenhuma dessas imagens foi aceita como asset. Próxima rodada: **chat dedicado por prompt, um arquivo por vez**, começando pela identidade da Suzu (Prompt 0) e pelo café (Prompt 3). Gerações aprovadas para teste: Prompts 0–3. Prompts 4–5 aguardam. **Direção estética geral aprovada; imagens específicas e identidade definitiva da Suzu ainda não.**
+
 ### Limites previstos (declarados antes de testar)
 - **Consistência** portrait↔chibi↔sprites de várias poses é o ponto mais difícil; pode exigir várias tentativas.
 - **Spritesheet de animação** não será gerada de forma confiável; ver o plano mínimo em PROMPTS.md (poses estáticas).

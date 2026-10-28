@@ -4,15 +4,17 @@ Contexto: [README.md](README.md). Os prompts estão em inglês porque o modelo d
 
 ## Como usar (sem nenhum trabalho de edição)
 
-1. Abra **um chat novo** no ChatGPT. Anexe `reference/style_anchor_reference.png` (a imagem de referência) e escreva: *"Use the attached image only as a style reference. Do not copy its characters or layout."*
-2. Rode os prompts **na ordem**, **uma imagem por mensagem**, **no mesmo chat**, para o modelo manter a identidade. Do Prompt 1 em diante, anexe também o resultado do Prompt 0 (character sheet), se o chat não o tiver mais no contexto.
-3. Se o resultado não ficar bom, peça só o ajuste ("same image, but eyes bigger…"). Não precisa me avisar a cada tentativa.
+> **Limitação observada (não é entrega concluída):** nas duas primeiras tentativas, o ChatGPT devolveu **quadros conceituais** (várias peças compostas numa só prancha, com layout de apresentação) em vez de **assets individuais**. Tratamos isso como limitação da ferramenta a ser contornada, **não** como resultado aceito. Nenhuma imagem dessas tentativas foi avaliada como asset.
+
+1. **Um chat dedicado por prompt, um arquivo por vez.** Para evitar a tendência de gerar pranchas, abra um chat novo para cada imagem e comece pelo **Prompt 0 (identidade da Suzu)** e pelo **Prompt 3 (café)**. Anexe `reference/style_anchor_reference.png` e escreva: *"Use the attached image only as a style reference. Do not copy its characters or layout. Generate exactly ONE image: a single standalone asset, not a mockup, not a presentation board, not a collage."*
+2. Para os Prompts 1 e 2 (portrait e chibi), abra chat dedicado e anexe a referência **e a imagem aprovada do Prompt 0**. A identidade só é confiável depois que você aprovar o Prompt 0; do contrário, regeneramos.
+3. Se o resultado vier como prancha/quadro, peça uma vez: *"Regenerate as a single standalone image, no board, no panels, no labels."* Se persistir, salve assim mesmo e registre — é dado de avaliação. Ajustes finos ("same image, but eyes bigger…") ficam no mesmo chat.
 4. Salve **o arquivo original, sem recortar nem editar**, em `docs/art/art-01/D-pixel-cafe/incoming/` com o nome indicado (`D0_...png`). Pode salvar mais de uma tentativa: `D1_portrait_v2.png`, etc.
 5. Quando terminar (ou cansar), me diga "imagens em incoming". Eu processo, avalio e mostro o resultado.
 
 Se algum prompt falhar repetidamente, pare e me avise: isso já é dado de avaliação, não é culpa sua.
 
-Ordem recomendada e prioridade: **0 → 1 → 2 → 3 → 4** são essenciais; **5** é opcional (só mede a "sensação" final).
+**Aprovado para gerar agora:** Prompts **0–3**, começando por **0 (Suzu)** e **3 (café)**. Os Prompts **4 e 5** ficam para depois e dependem do resultado das primeiras gerações. A direção estética geral está aprovada; **as imagens específicas e a identidade definitiva da Suzu ainda precisam da sua aprovação.**
 
 ---
 
@@ -98,17 +100,19 @@ Include, laid out with clear spacing and NO readable text/letters/numbers:
 2) a cream parchment speech/dialogue balloon with an angular outline and a small down-arrow;
 3) a row of 6 small icon buttons in beveled boxes: a recipe book, a cat paw, a cup, a clock, a gear, a star (pixel-art icons);
 4) a long horizontal panel with two ON/OFF toggle switches (no text);
-5) a rarity-frame set of four small card-corner ornaments in escalating richness: plain brown, mint, gold, and a sparkly rainbow-tinted gold;
+5) a rarity-frame set of four small card frames/corner ornaments in escalating richness, with FIXED rarity colors from the game design: Common = BEIGE (plain, simple), Rare = BLUE, Epic = VIOLET (a blue-leaning purple, not magenta or pink), Legendary = GOLD (richest, with sparkle). Do not use any other color for the main frame of each rarity;
 6) two pill-shaped buttons: normal and pressed state.
 Chunky visible pixels, hard edges, no anti-aliasing, ~28 colors.
 [FUNDO]
 ```
 
-## Prompt 5 (opcional) — Conceito da tela de Escalação
-Arquivo: `D5_lineup_concept.png` · 16:10 horizontal · **só conceito emocional, será descartado como asset**
+## Prompt 5 (opcional, depois dos Prompts 0–3) — Conceito da tela de Escalação
+Arquivo: `D5_lineup_concept.png` · 16:10 horizontal · **só conceito emocional; uma prancha de conceito é aqui o objetivo, não um asset** · não altera nenhuma mecânica
+
+Estrutura real do jogo (GDD §2.2 e a descrição da tela Escalação): **cinco posições** — Recepção, Salão, Cozinha, Palco, Gerência — mais o **banco** (maids não escaladas). As vagas por posição variam com o nível; o mockup mostra uma representação, não uma regra.
 
 ```
-Using the attached Suzu sheet, the attached cafe interior and the attached UI kit as references, compose a full-screen concept of a "Lineup" management screen for a pixel-art cat-maid café game, 16:10: left, a tall ornate frame with the Suzu bust portrait; right, a grid of 4 empty ornate card slots labelled with small pixel icons (no readable text) and one slot showing her chibi; background, a softly darkened version of the cafe interior. Keep all pixel-art rules (chunky pixels, hard edges, no blur, ~32 colors). This is concept art only.
+Using the attached Suzu sheet, the attached cafe interior and the attached UI kit as references, compose a full-screen concept of a "Lineup" management screen for a pixel-art cat-maid café game, 16:10. Layout: FIVE distinct position panels in a row or arc, each with a small pixel icon (no readable text): Reception (a small bell/desk), Floor/Dining (a serving tray), Kitchen (a pot or whisk), Stage (a small microphone or spotlight), Management (a ledger or key). Each panel has one or two ornate empty card slots. Below, a separate BENCH strip with several small card slots for unassigned maids. One slot, in the Reception panel, shows the Suzu chibi; one larger card preview shows her bust portrait in an ornate frame with a rarity-frame color. Rarity frame colors are fixed: Common beige, Rare blue, Epic violet, Legendary gold. Background: a softly darkened version of the cafe interior. Keep all pixel-art rules (chunky pixels, hard edges, no blur, ~32 colors). No readable text or numbers. This is concept art only, not a real UI.
 ```
 
 ---
