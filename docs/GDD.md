@@ -60,6 +60,12 @@ Recepção, salão e cozinha são obrigatórias — sem qualquer uma delas o dia
 jogo diz qual falta. Vagas crescem com o nível: começa 1/1/1 e chega a 2/3/3 + palco +
 gerência.
 
+**Capacidade do elenco = total de vagas desbloqueadas + 1**, nos níveis 1–10:
+4, 5, 6, 7, 8, 9, 10, 11, 11 e 11 maids. O limite conta todas as maids contratadas,
+escaladas ou no banco. Vagas podem ficar vazias e mais de uma maid pode ficar no banco;
+a reserva adicional é capacidade disponível, sem obrigação de preencher a escalação.
+Cartas recebidas com o elenco cheio continuam convertidas em fichas; contratar exige vaga.
+
 **Fora de posição custa 35% da eficiência**, zera o bônus de química de posição e quase
 dobra a chance de erro. Uma cozinheira lendária no salão rende menos que uma garçonete
 comum.

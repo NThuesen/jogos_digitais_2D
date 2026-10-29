@@ -1,0 +1,104 @@
+{
+  "baseline_sha256": "66141d3b1f45f8645ee0e060ce4c4b2e5930b4714627bcd8cae1e3da46512985",
+  "current_sha256": "cc756449727ac3bb4ae403757dde7990e5e023f6ac9d34356ae512da3883cebf",
+  "scenarios": {
+    "passive": {
+      "identical_except_cap": true,
+      "before": {
+        "days": 258,
+        "day1_roster": [
+          3
+        ],
+        "day1_mean_wages": 54,
+        "median_bankruptcy_day": 4.0,
+        "survivors_day7": 0,
+        "boxes": 0,
+        "duplicates": 0
+      },
+      "after": {
+        "days": 258,
+        "day1_roster": [
+          3
+        ],
+        "day1_mean_wages": 54,
+        "median_bankruptcy_day": 4.0,
+        "survivors_day7": 0,
+        "boxes": 0,
+        "duplicates": 0
+      }
+    },
+    "mixed_passive": {
+      "identical_except_cap": true,
+      "before": {
+        "days": 258,
+        "day1_roster": [
+          3
+        ],
+        "day1_mean_wages": 54,
+        "median_bankruptcy_day": 4.0,
+        "survivors_day7": 0,
+        "boxes": 0,
+        "duplicates": 0
+      },
+      "after": {
+        "days": 258,
+        "day1_roster": [
+          3
+        ],
+        "day1_mean_wages": 54,
+        "median_bankruptcy_day": 4.0,
+        "survivors_day7": 0,
+        "boxes": 0,
+        "duplicates": 0
+      }
+    },
+    "box_addict": {
+      "before": {
+        "days": 263,
+        "day1_roster": [
+          3
+        ],
+        "day1_mean_wages": 54,
+        "median_bankruptcy_day": 4.0,
+        "survivors_day7": 0,
+        "boxes": 61,
+        "duplicates": 61
+      },
+      "after": {
+        "days": 242,
+        "day1_roster": [
+          4
+        ],
+        "day1_mean_wages": 72,
+        "median_bankruptcy_day": 4.0,
+        "survivors_day7": 0,
+        "boxes": 60,
+        "duplicates": 0
+      }
+    },
+    "mixed_box_addict": {
+      "before": {
+        "days": 258,
+        "day1_roster": [
+          3
+        ],
+        "day1_mean_wages": 54,
+        "median_bankruptcy_day": 4.0,
+        "survivors_day7": 0,
+        "boxes": 66,
+        "duplicates": 66
+      },
+      "after": {
+        "days": 231,
+        "day1_roster": [
+          4
+        ],
+        "day1_mean_wages": 77.46666666666667,
+        "median_bankruptcy_day": 4.0,
+        "survivors_day7": 0,
+        "boxes": 61,
+        "duplicates": 1
+      }
+    }
+  }
+}
