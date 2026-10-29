@@ -76,14 +76,14 @@ trabalho em grupo isso significa que ninguém resolve conflito de merge em YAML 
 
 ## Créditos de assets
 
-**Não há nenhum.**
+A ART-02 importa quatro PNGs experimentais da Suzu em `Assets/_Game/Resources/Suzu/`.
+São cópias dos recortes processados da ART-01D: arte gerada com ChatGPT Plus pelo responsável,
+processada na exploração artística; referências aprovadas, não assets finais.
+Originais, prompts e reprodução: [ART-01D](docs/art/art-01/D-pixel-cafe/README.md).
+Inventário e proposta de verificação estrita de procedência: [manutenção ART-02](docs/art/ART-02_VALIDATION.md).
 
-Nenhuma imagem e nenhum som foram importados neste projeto. Não existe um único arquivo de
-textura em `Assets/`.
-
-- **Toda a arte** é gerada em tempo de execução a partir de dezessete campos de distância em
-  `Assets/_Game/Scripts/Game/Art/ShapeRasteriser.cs`. Uma maid é uma pilha de camadas
-  tingidas; o letreiro do menu é um conjunto de retângulos arredondados e dois triângulos.
+- **Demais elementos visuais** usam o rasterizador procedural existente em
+  `Assets/_Game/Scripts/Game/Art/ShapeRasteriser.cs`.
 - **Todo o áudio** é sintetizado por `tools/synthesise-audio.sh`, que descreve cada som como
   uma pilha de vozes — forma de onda, varredura de altura, envelope, filtro, vibrato — e
   escreve o `.wav`. O mesmo comando sempre produz os mesmos bytes.

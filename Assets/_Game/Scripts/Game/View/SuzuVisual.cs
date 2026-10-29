@@ -37,6 +37,13 @@ namespace Neko.Game.View
                 Palette.Hex(gear.TintHex), Palette.Ink, 0.04f), 64);
         }
 
+        public static void Clear()
+        {
+            foreach (var sprite in Sprites.Values)
+                if (sprite != null) Object.Destroy(sprite);
+            Sprites.Clear();
+        }
+
         private static Sprite Load(string name)
         {
             if (Sprites.TryGetValue(name, out var sprite) && sprite != null) return sprite;
@@ -44,6 +51,7 @@ namespace Neko.Game.View
             if (texture == null) return null;
             sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
                 new Vector2(0.5f, 0.5f), texture.height / (128f / 96f));
+            sprite.name = "Suzu_" + name;
             Sprites[name] = sprite;
             return sprite;
         }

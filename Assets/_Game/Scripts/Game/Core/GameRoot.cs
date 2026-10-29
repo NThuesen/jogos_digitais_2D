@@ -76,6 +76,7 @@ namespace Neko.Game.Core
             ErrorBoundary.Failed -= OnFailure;
             Tween.KillAll();
             Sprites?.Clear();
+            SuzuVisual.Clear();
             if (Instance == this) Instance = null;
         }
 

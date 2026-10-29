@@ -16,21 +16,53 @@ namespace Neko.Game.Core
     {
         public const string Key = "nekomaidinc.profile";
 
+#if UNITY_EDITOR
+        // Batch tests and explicitly isolated captures never touch PlayerPrefs.
+        // In-memory state is disposable even if Unity crashes or is interrupted.
+        private static string _testSave = "";
+        public static bool Isolated => Application.isBatchMode ||
+            System.Environment.GetEnvironmentVariable("NEKO_ISOLATED_SAVE") == "1";
+#else
+        public static bool Isolated => false;
+#endif
+
+        private static string Read()
+        {
+#if UNITY_EDITOR
+            if (Isolated) return _testSave;
+#endif
+            return PlayerPrefs.GetString(Key, "");
+        }
+
         public static void Save(Profile profile)
         {
             if (profile == null) return;
 
+            #if UNITY_EDITOR
+            if (Isolated)
+            {
+                _testSave = SaveCodec.Encode(profile);
+                return;
+            }
+#endif
             PlayerPrefs.SetString(Key, SaveCodec.Encode(profile));
             PlayerPrefs.Save();
         }
 
         public static LoadResult Load() =>
-            SaveCodec.Decode(PlayerPrefs.GetString(Key, ""));
+            SaveCodec.Decode(Read());
 
-        public static bool HasSave() => !string.IsNullOrEmpty(PlayerPrefs.GetString(Key, ""));
+        public static bool HasSave() => !string.IsNullOrEmpty(Read());
 
         public static void Wipe()
         {
+            #if UNITY_EDITOR
+            if (Isolated)
+            {
+                _testSave = "";
+                return;
+            }
+#endif
             PlayerPrefs.DeleteKey(Key);
             PlayerPrefs.Save();
         }
