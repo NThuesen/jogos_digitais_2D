@@ -1,6 +1,10 @@
 # ANIM-01 / Gate A — kit modular lateral da Mina
 
-**Recomendação: precisa de correções; Gate A NÃO aprovado. Não avançar ao Gate B.**
+**Estado atual: Gate A encerrado sem aprovação após a intervenção excepcional A1/A2. Não avançar ao Gate B.**
+
+[Resultado atual, método, comparações e testes da intervenção excepcional](exception/README.md).
+O conteúdo abaixo preserva o relatório histórico da montagem `228f534`; suas capturas
+e resultados não devem ser confundidos com uma nova execução dos testes de simulação/PlayMode.
 
 O kit preserva a identidade na pose neutra e demonstra articulação independente no
 Unity, mas a reconstrução da saia e do sapato distante ainda falha quando as regiões
@@ -31,7 +35,7 @@ RenderTexture, não prévias produzidas pelo compositor Python. Ampliação: 440
 - Frames completos: sete poses × duas resoluções em `captures/`.
   A subpasta `initial/` preserva três frames válidos da primeira montagem.
 
-## Findings finais
+## Findings da montagem 228f534
 
 | ID | Classe | Evidência e efeito |
 | --- | --- | --- |

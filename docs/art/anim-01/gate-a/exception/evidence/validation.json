@@ -1,0 +1,228 @@
+{
+  "baseline_commit": "228f5349170925a4abc8ed9449d028a6f1dcb156",
+  "art_interventions_this_patch": 1,
+  "gate_status": "closed_without_approval",
+  "unity_capture": {
+    "exit_code": 0,
+    "frames": 40,
+    "resolutions": [
+      [
+        1280,
+        720
+      ],
+      [
+        960,
+        600
+      ]
+    ],
+    "inspection_heights_px": [
+      100,
+      200,
+      440
+    ],
+    "arm_angles": [
+      -35,
+      -25,
+      -15,
+      -5,
+      0,
+      5,
+      15,
+      25,
+      35
+    ],
+    "cases": [
+      "arm_hidden",
+      "far_shoe_only",
+      "near_foot_hidden",
+      "combined_extreme"
+    ]
+  },
+  "tests": {
+    "EditMode": {
+      "result": "Failed(Child)",
+      "total": 317,
+      "passed": 315,
+      "failed": 2,
+      "start": "2026-10-29 21:56:01Z",
+      "end": "2026-10-29 21:56:04Z",
+      "kit_tests": [
+        {
+          "name": "Neko.Tests.EditMode.Game.MinaModularKitTests.EveryPartHasOneRendererAndEveryJointUsesItsDeclaredParent",
+          "result": "Passed"
+        },
+        {
+          "name": "Neko.Tests.EditMode.Game.MinaModularKitTests.NeutralResetsAllJointsAndDefinitionRoundTripsWithoutSceneReferences",
+          "result": "Passed"
+        },
+        {
+          "name": "Neko.Tests.EditMode.Game.MinaModularKitTests.PosesMoveDistalLimbsWithoutChangingRootScaleOrSegmentLengths",
+          "result": "Passed"
+        },
+        {
+          "name": "Neko.Tests.EditMode.Game.MinaModularKitTests.RebuildingDoesNotDependOnPreviousPoseOrStaticInstance",
+          "result": "Passed"
+        }
+      ],
+      "failures": [
+        {
+          "name": "Neko.Tests.Game.DocsTests.NoTextureOrAudioFileWasEverImported",
+          "message": "  the README says nothing was imported, and these were: Assets\\_Game\\Resources\\Anim01GateA\\apron.png, Assets\\_Game\\Resources\\Anim01GateA\\back_bow.png, Assets\\_Game\\Resources\\Anim01GateA\\bodice.png, Assets\\_Game\\Resources\\Anim01GateA\\far_cuff.png, Assets\\_Game\\Resources\\Anim01GateA\\far_foot_skin.png, Assets\\_Game\\Resources\\Anim01GateA\\far_forearm.png, Assets\\_Game\\Resources\\Anim01GateA\\far_garter.png, Assets\\_Game\\Resources\\Anim01GateA\\far_hand.png, Assets\\_Game\\Resources\\Anim01GateA\\far_shin.png, Assets\\_Game\\Resources\\Anim01GateA\\far_shoe.png, Assets\\_Game\\Resources\\Anim01GateA\\far_sleeve.png, Assets\\_Game\\Resources\\Anim01GateA\\far_thigh.png, Assets\\_Game\\Resources\\Anim01GateA\\far_upper_arm.png, Assets\\_Game\\Resources\\Anim01GateA\\head.png, Assets\\_Game\\Resources\\Anim01GateA\\near_cuff.png, Assets\\_Game\\Resources\\Anim01GateA\\near_foot_skin.png, Assets\\_Game\\Resources\\Anim01GateA\\near_forearm.png, Assets\\_Game\\Resources\\Anim01GateA\\near_garter.png, Assets\\_Game\\Resources\\Anim01GateA\\near_hand.png, Assets\\_Game\\Resources\\Anim01GateA\\near_shin.png, Assets\\_Game\\Resources\\Anim01GateA\\near_shoe.png, Assets\\_Game\\Resources\\Anim01GateA\\near_sleeve.png, Assets\\_Game\\Resources\\Anim01GateA\\near_thigh.png, Assets\\_Game\\Resources\\Anim01GateA\\near_upper_arm.png, Assets\\_Game\\Resources\\Anim01GateA\\ponytail.png, Assets\\_Game\\Resources\\Anim01GateA\\reference.png, Assets\\_Game\\Resources\\Anim01GateA\\skirt.png, Assets\\_Game\\Resources\\Anim01GateA\\tail_base.png, Assets\\_Game\\Resources\\Anim01GateA\\tail_tip.png, Assets\\_Game\\Resources\\Anim01GateA\\torso_skin.png, Assets\\_Game\\Resources\\Mina\\back.png, Assets\\_Game\\Resources\\Mina\\carry.png, Assets\\_Game\\Resources\\Mina\\idle.png, Assets\\_Game\\Resources\\Mina\\side.png, Assets\\_Game\\Resources\\Mina\\walk.png, Assets\\_Game\\Resources\\Suzu\\carry.png, Assets\\_Game\\Resources\\Suzu\\idle.png, Assets\\_Game\\Resources\\Suzu\\portrait.png, Assets\\_Game\\Resources\\Suzu\\walk.png\n  Expected: <empty>\n  But was:  < \"Assets\\_Game\\Resources\\Anim01GateA\\apron.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\back_bow.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\bodice.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_cuff.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_foot_skin.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_forearm.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_garter.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_hand.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_shin.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_shoe.png\"... >\n"
+        },
+        {
+          "name": "Neko.Tests.Game.DocsTests.TheReadmeStatesThatNoAssetWasImported",
+          "message": "  the credits section no longer says there is nothing to credit\n  Expected: True\n  But was:  False\n"
+        }
+      ],
+      "xml_sha256": "c9916f5526597a87b34cd1b20de4d39cb6c3255cc334e1c13452341d7ba13c59"
+    },
+    "Neko.Sim": {
+      "result": "not_run_this_patch",
+      "previous_evidence": "../../evidence/validation.json",
+      "previous_result": "257/257 at 228f534"
+    },
+    "PlayMode_suite": {
+      "result": "not_run_this_patch",
+      "previous_evidence": "../../evidence/validation.json",
+      "previous_result": "20/20 at 228f534"
+    }
+  },
+  "integrity": {
+    "skirt": {
+      "changed_pixels": 23944,
+      "authorized_pixels": 47714,
+      "changed_outside_mask": 0
+    },
+    "near_shoe": {
+      "changed_pixels": 242,
+      "authorized_pixels": 2389,
+      "changed_outside_mask": 0
+    },
+    "far_shoe": {
+      "changed_pixels": 7594,
+      "authorized_pixels": 28640,
+      "changed_outside_mask": 0
+    }
+  },
+  "rebuild": {
+    "identical_outputs": 31,
+    "hashes": {
+      "apron.png": "048ff7d88bf0824ecbe27f3232d97414849f83cc59b9c04e4bdbb6c12b7d5f82",
+      "back_bow.png": "47b9e7223bd93bf8c5eb217ba7f50074f18acc2ec23e737e8b836fbc1ad09eac",
+      "bodice.png": "8e69e93f9de2bc3bfc385fe5890f72abab7c22a7297d5b7bb30df85949d161e0",
+      "far_cuff.png": "c9eb94cf2e4f87159bbf4ebd27815f78d521e2d2e85abd2d38bfe3934f05aec8",
+      "far_foot_skin.png": "67d80afe11812e067c14df7b26a8111042a421468709be5d5d4e6718a498a189",
+      "far_forearm.png": "ff64395e9909b3ca5f2038044f3a648f3abf3c30ad074f8459ae586945e2e459",
+      "far_garter.png": "663cfc8532e0c5a481f5c2fb78e4a71bd7cdfc9cf6961ecc760c19ab2f85d36b",
+      "far_hand.png": "fd13759f96acf7484479ad16f2cbde21db88abc04f7dddd6ffb73a947ab9954e",
+      "far_shin.png": "84e260eee223c682ef070183c383218bb70ca5bf1c96c36786282f43d319f77e",
+      "far_shoe.png": "39c6f8d8ffc27b797ff95b7a29cf49095c15f329c918e84608f628a7e92a3702",
+      "far_sleeve.png": "f2ec4a29d71666a7b9cd122db03f3a24897cb976ec3de92a5a935e01a39b5c63",
+      "far_thigh.png": "e03cdc3912f18f624e3a21123a21e8aa22195cb5524b9ed8751d88f9f56d1f7b",
+      "far_upper_arm.png": "3098ff0cc534c1ead6b03ac6ace7bb3592e69fd2ffdcdf5377f4378181e2359f",
+      "head.png": "d56d770868226fb34ec178d0e154497f631b212e1a87810e536d137ae613e0a2",
+      "near_cuff.png": "8f160be3858c922c226bf5039567c1dbd2b862523c7d7f1624f8fd9fb318cf46",
+      "near_foot_skin.png": "8133e4ef5b83b6e4e13277eb1cebd7149e0160f3535eb7878a357d5f99e82184",
+      "near_forearm.png": "5c57f05945323e9f3f6f36c987b67e9a00f620eee445a2a5e7adc8064dbe9fb7",
+      "near_garter.png": "efb0e24115bd939123f6203c6c61db2f09e9501d27f7d9ebd95af0d8b4556607",
+      "near_hand.png": "583e449fae06234f448e89dffb4252563288d467e028590f1fe5b6ec9e42eda2",
+      "near_shin.png": "003fd60cf5d6683e92486a573e880c7717b08c261c2a95e5f8a5f6ccb314f899",
+      "near_shoe.png": "194acf20667f4ad9bdbac5a570fd60b66c562f33f3d1955602710b00e5c73430",
+      "near_sleeve.png": "a865bb8db1dd3017a535cb436ba6f208ed25e96027109247f9af560ac4255a83",
+      "near_thigh.png": "b2f14351c696a1fed8187cf05890ac97127eb340c360f735d73a7801b233fee4",
+      "near_upper_arm.png": "f1acff4a8a19fa4fad2b2a59dd45d14674f0c1f9ff348064fbfc88095ddc5efc",
+      "ponytail.png": "2a4531252df8f16a0027346b00fb458f3017b938ed1fd579bbb3fc2585bd20b2",
+      "reference.png": "d9b6c232c7c356074f69ff090d15a2de45eb9b1b514e4bd70cecce22ca52585b",
+      "rig.json": "b7b4c6f0531c7fab6dbe55392da738c59c9646094e848069be268a810096db06",
+      "skirt.png": "ab9f80339e9279f8b30b84cc4c31e512a8fce4d5d8b1987d4bbe584ae7a7422f",
+      "tail_base.png": "d0f4207c991dd3a16842284f2eaa81db111cc98a79b099e10897f48eb5c76649",
+      "tail_tip.png": "f1802b3f9719d5f364ef0ca94719a326f0ffccf7208adf5d57ab8892005c0872",
+      "torso_skin.png": "e909a5f3e94d6b79602e9be9540fa823b7ffd46fdf89fc8e5ee6a17f319ecca9"
+    }
+  },
+  "rig_invariants": {
+    "nodes": 21,
+    "sprites": 29,
+    "pivots_parents_order_original_poses_unchanged": true,
+    "production_rig_code_unchanged": true
+  },
+  "captures_sha256": {
+    "a1_arm_-15_1280x720.png": "5a61aec18d99cdeae2418bcd645a301c6b4a5e49610ce3f9ec7068eda74c119b",
+    "a1_arm_-15_960x600.png": "b92dcd6e1ca064c289c992cf78ae6173967fcbd49d81fa06edfb3639e16022ac",
+    "a1_arm_-25_1280x720.png": "e1f8b436a6d04acc5d3b7f67bb356502020273dfd1a8c1336d0a262ec5527813",
+    "a1_arm_-25_960x600.png": "86c602b47f885b03dcad299e259c7d1e94407a61af3d34747f06072aaf459865",
+    "a1_arm_-35_1280x720.png": "a56a5bbfd2e03e1f20bd60afd7086d3d0290570bdcf732d0eaf7c93852aa9561",
+    "a1_arm_-35_960x600.png": "40dc6e68c65b5e951a9697be8157c28334ca71374d64bb718f4ef81435092751",
+    "a1_arm_-5_1280x720.png": "79565877a1659588cfd3d573976fefce58e09b8c897d64e77a8ec253eeba815c",
+    "a1_arm_-5_960x600.png": "812f452243681fecdad932bef605bfc62e265b086527599c51d6619f0acd838e",
+    "a1_arm_0_1280x720.png": "ffa87706c2cb49236ff1ec65534600ea1bc5d133defa00c913593a59067a3df8",
+    "a1_arm_0_960x600.png": "073567c46cafb74a7acbb6f3a33ca766d20c45e1b96c4631cc420a1d75e59541",
+    "a1_arm_15_1280x720.png": "eef4e6564e522e2c2d3afa524626f8a5773a8376464e23c6f8d8507e6304f397",
+    "a1_arm_15_960x600.png": "ebda45c70112e36eec64d6b986d7caa2b791eb729cc9e4d29bba333edc66c2e8",
+    "a1_arm_25_1280x720.png": "bd05a02453635a5227e83e6dc72a9c66dc2733063dde18511ee60c969ea9b0a2",
+    "a1_arm_25_960x600.png": "c419d6ef0fab36a762fbb994fe8cc260b167578ca1053f6ca343a7185a314b34",
+    "a1_arm_35_1280x720.png": "f8fabdfd391b9b284eb102c701f6bc529165bf2ee09c6411083ea507e71fcc8e",
+    "a1_arm_35_960x600.png": "e33e3ad9a4d4568caaea5da563c14ed2aec72f95198130321221c8e8dbce2cc8",
+    "a1_arm_5_1280x720.png": "a7a61b4503fe51ff8cca0fd30e691e2e8cec1f65b00f894e97ec27a22ae01d5c",
+    "a1_arm_5_960x600.png": "212c721aa98fcc457e00d75959a437706bc4b0651c99cdea3655655f89041258",
+    "arm_-15_100.png": "f53a5ebc565207cb864031d907e88914366299165fcd6f1cb4b414d0dfd41954",
+    "arm_-15_200.png": "8623e4ee225884ecf60f529dd1edbb5ede22ad999a0d4a1ef831a0d725bcd001",
+    "arm_-15_440.png": "9f44738cc69ee75997807aff6796371c99af0619aec37651e21a0e977f4ea35f",
+    "arm_-25_100.png": "57e6c99cceaa78eb645b22e22ccefb38f799bbac8b5b3dd27c01dfb9391bc27f",
+    "arm_-25_200.png": "ab6ca36de1308844b75ce435ceb3b62346926042835653ae36eca903a5f00411",
+    "arm_-25_440.png": "a3707791d79719bffa8dd6ef0bc90ea130871c14bef154eb88de0a4ee0f850df",
+    "arm_-35_100.png": "3cf920a2edab2fc7b9aa470b40101c9dae9ffb74e0b49f4be45fb1d0afcb9615",
+    "arm_-35_200.png": "ab15f1fd4b62aa4e1c6158fd9249495a32372b5a3e65c390db2ed70c4c6765e4",
+    "arm_-35_440.png": "7288ee7fc10b79cc46e5ebe26b576ae78bcd51150c6a5cded64bb868659ea92e",
+    "arm_-5_100.png": "187ca9b14aec04b4efd255e88f8361f0188271a6fd8a5b3f49a1fabe5a3f3c46",
+    "arm_-5_200.png": "d742dbdf2d1e2f3904011ff62134138e11177b739a899eb4e4c20ba5a08ca5bb",
+    "arm_-5_440.png": "24c76db392bdb802fcd4e2d19cf4579890fe6ee2871e5f222135e5f105e59203",
+    "arm_0_100.png": "fc237d5d16cbbea967ccadb1dd6d44e05180cf499f9359d010a718a6dfa9d6bd",
+    "arm_0_200.png": "a77ac365f41d83fed2f06c03990ac9c68a42d13c9e5328c4d1da0ccf8094d161",
+    "arm_0_440.png": "0bc3ca79d5358132e1997870753e3e3b477660f6eb32a82ac99c7b13ff627283",
+    "arm_15_100.png": "d0383b30525eb590a9db2a793e336ad8481076abccef3aceef5c94b1ff88f171",
+    "arm_15_200.png": "b40120c4cc3ece4892e47e57fd8e882eff02015668c1caf4235a0dc277bf1ef9",
+    "arm_15_440.png": "f4199bf3933d59bcd6330c78a24520152ba2c881b7a9a84377196f9340acc760",
+    "arm_25_100.png": "44c6253015446f0b3812d607e8ebf85b5b916ad7764e220e45ea1c5d45a2a45b",
+    "arm_25_200.png": "1c142a3b93176e672f3c81636f8cf43726f851cdd0025a86dcaf6e4f2c3935c0",
+    "arm_25_440.png": "9ca3af13f223d3356ed6f8200922d37440ef6748a6019ef44be39053a8be532f",
+    "arm_35_100.png": "6bdf9208c43b859e473599d1556242f751e17ae6a98096d0e495b9221de681d1",
+    "arm_35_200.png": "264ec3488af06babc24fa88918ac9adaebc9dcdaeb6c358e6b38d600ee22a184",
+    "arm_35_440.png": "cd26e49fc20ac70505793cedd9e88c47e00c6869f8536f0603dca6426261632a",
+    "arm_5_100.png": "4f48fff9f8824f551ec1e6f7e5652e2dfce094bc81defcad68e9219516ff649c",
+    "arm_5_200.png": "5c0a5d622fd89098b0037023a9859eb9ec6987304d9112cd36c5b4c3d86409c5",
+    "arm_5_440.png": "debc2cc2102fc144a3c7c2962ee782a5cfb3a0c34abbe0daff2b8b2e25528cab",
+    "arm_hidden_1280x720.png": "cc9ac2677e9e1d076378d2827a29c6606f8a1589fd1ff01f7b9b7fbcc883246c",
+    "arm_hidden_960x600.png": "fc226c9eea336c1f4dbc825b39b3dfaa27e8798d4fa47403ae0c51472a8ec934",
+    "arm_range_100.png": "a4a08560e234eeab9d8f7a416f5bbc395cadfa311499b2b2bf65a77eac54a145",
+    "arm_range_200.png": "8546a248dbc68060547f2275a3e4140973ad46b19895761e98ad6b7409d7f68a",
+    "arm_range_440.png": "ea43ce266f7177b617f406524d2fba9726e047c05cf5c0ac56401c12ebd0f232",
+    "before_after_far_leg_forward.png": "0ec2193381bdebc2f8f2236ab16b1da20aa875d7a786261f9f5d21b18dbccd91",
+    "before_after_opposite_arms.png": "ceadbe807c4d7bf1122b56f51d072154c71b1895db5f0d9e4c03dc432b4c3c0e",
+    "combined_extreme_1280x720.png": "98c09f036bb5e5942d0e77e87eeb46e1870180728db93d7f082ce9379c197952",
+    "combined_extreme_960x600.png": "7998b9b4a686b019c1b989b6ae6ef1759b25e66347df64b3cdf024a4d68ebd40",
+    "detail_before_after_far_leg_forward.png": "442d0d1778a18d66af5758effd6f705ae16e3aeca13d0dd73ab4dd28c4059bf5",
+    "detail_before_after_opposite_arms.png": "c896a1652de49df8d6024a5f4700ca973a425911bf7882d2614ca722f3f75c5e",
+    "detail_far_leg_forward.png": "dd05227f43f08d8540933e2f2fe144f3d29eef2b764e676fed430ec60fcd7094",
+    "detail_opposite_arms.png": "6fa334d46caa3188a26f8411020d12072c5dae201a62092b9632ecfe31f2226c",
+    "exception_cases_960x600.png": "ad449d038dd6907398a95bb7cc53bd2db314b17ee53c038e48ac18a96abfe1fc",
+    "far_leg_forward_1280x720.png": "ad9b51bf759dd47f636f0dbc2ee48d782ee3515644ccf7fb8b67f027b2d002fc",
+    "far_leg_forward_960x600.png": "6c9e8f7b7f351117aad7e3a6bfa31c49650bb9d3cc869bfca1109aaf98c147e3",
+    "far_shoe_only_1280x720.png": "c715bed90538d4eff8b4062b995bd9e2fdfc20b210a9f95fc1b5e12956418ec5",
+    "far_shoe_only_960x600.png": "fd8f556be1005595dbbf5a8d39a8ac1c4302b470578f2da6c1979e488dba7faf",
+    "head_rotation_1280x720.png": "cfb5dabaef958cc2313b19585a14818090bb1c476d331883cd95d5e5f0acf315",
+    "head_rotation_960x600.png": "3da7ddbffaee920f7a61c179d5a3600c0fac6369bd8e2b40e68f2a33d9843f8b",
+    "joint_flexion_1280x720.png": "ff15fc84eb799be743570797d9ed875c6526320a5eae309a36ecb487648764e4",
+    "joint_flexion_960x600.png": "1a0ba82b7ba7bd024fbd2ec2445c8e0229ecd6619a8c4bcaed744cd2ddfd7481",
+    "near_foot_hidden_1280x720.png": "efda4d208a2b9ea6ef35abb791a0e332c2216f68870b7df57c816b9b0b661ad7",
+    "near_foot_hidden_960x600.png": "2a11ad9da935c97331ac6f88e69af053ad200b076bad303df4133a539a5b409a",
+    "near_leg_forward_1280x720.png": "f008dc8452276c211e150072e4650e35b6f719294b5ff5f36c79571ba8b019dc",
+    "near_leg_forward_960x600.png": "68269dbae226fc0ec931ef30a710d1c41463426723fb9acc7f0a19f744aa5f4f",
+    "neutral_1280x720.png": "f8f17b7856c6f322858dc4e472c0144a65b93c2b2f8f9f879190446df770b52f",
+    "neutral_960x600.png": "a25eb5a40052bba0b61921960383bb0408196a3c4eb6fe6d27a6d030d0168a09",
+    "occlusion_1280x720.png": "1c6f454e7c9ef86b333c8b3626e2b4d65e72478a732ed68948b70b9fa64b6038",
+    "occlusion_960x600.png": "f5998754e4505d737a6a79b98a12f0792c5bef7fbbf63bd8cd2590ce265063da",
+    "opposite_arms_1280x720.png": "bde6517fdf07c7ff6db811ce0a972e90e93a9de0f59287b03f4311297b4f15cf",
+    "opposite_arms_960x600.png": "f50fe282ace9b801b6dbe58bbfe1401d99300b5dfb33413721179b4afc6bbb0f"
+  }
+}

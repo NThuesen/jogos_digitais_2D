@@ -194,12 +194,12 @@
       "id": "far_shoe",
       "node": "far_foot",
       "order": 5,
-      "x": 647,
+      "x": 612,
       "y": 1025,
-      "width": 125,
+      "width": 160,
       "height": 152,
       "reconstructedCaps": 0,
-      "sha256": "a32a8054b8c9fe022392c10b74de9b607e6125bbe0140c795d966c8cdd1f4694"
+      "sha256": "39c6f8d8ffc27b797ff95b7a29cf49095c15f329c918e84608f628a7e92a3702"
     },
     {
       "id": "far_sleeve",
@@ -309,7 +309,7 @@
       "width": 178,
       "height": 205,
       "reconstructedCaps": 0,
-      "sha256": "0c75c4adf322dd7ad905377f75baf450128e276db8ae4ccc1ffc5c2df51bce8f"
+      "sha256": "194acf20667f4ad9bdbac5a570fd60b66c562f33f3d1955602710b00e5c73430"
     },
     {
       "id": "torso_skin",
@@ -349,11 +349,11 @@
       "node": "pelvis",
       "order": 16,
       "x": 422,
-      "y": 616,
+      "y": 613,
       "width": 464,
-      "height": 261,
+      "height": 264,
       "reconstructedCaps": 0,
-      "sha256": "6e2ef31306d89bd2ac22b423e89f49b37ad541ae7d37a514c791d67eaf5abf54"
+      "sha256": "ab9f80339e9279f8b30b84cc4c31e512a8fce4d5d8b1987d4bbe584ae7a7422f"
     },
     {
       "id": "bodice",

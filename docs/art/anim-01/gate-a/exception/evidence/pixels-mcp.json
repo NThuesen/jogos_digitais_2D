@@ -1,0 +1,826 @@
+[
+  {
+    "tool": "image_compare",
+    "arguments": {
+      "before": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/Logs/anim01/offline/reference_matte.png",
+      "after": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/Logs/anim01/offline/neutral_matte.png"
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "0.69% of pixels changed by more than 2.0%.\nMean absolute difference: 0.32 of 255.\nChanges are bounded by x 337..909, y 191..1183."
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_compare",
+    "arguments": {
+      "before": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/neutral_1280x720.png",
+      "after": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/neutral_1280x720.png"
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "0.04% of pixels changed by more than 2.0%.\nMean absolute difference: 0.03 of 255.\nChanges are bounded by x 280..1091, y 400..613."
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_contact_sheet",
+    "arguments": {
+      "paths": [
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/opposite_arms_1280x720.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/opposite_arms_1280x720.png"
+      ],
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/before_after_opposite_arms.png",
+      "columns": 1,
+      "zoom": 1
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/before_after_opposite_arms.png (1296x1464)\n1. opposite_arms_1280x720.png\n2. opposite_arms_1280x720.png"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_contact_sheet",
+    "arguments": {
+      "paths": [
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/far_leg_forward_1280x720.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/far_leg_forward_1280x720.png"
+      ],
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/before_after_far_leg_forward.png",
+      "columns": 1,
+      "zoom": 1
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/before_after_far_leg_forward.png (1296x1464)\n1. far_leg_forward_1280x720.png\n2. far_leg_forward_1280x720.png"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/opposite_arms_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/detail_opposite_arms.png",
+      "crop": {
+        "x": 950,
+        "y": 355,
+        "width": 205,
+        "height": 155
+      },
+      "zoom": 3
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/detail_opposite_arms.png (615x465)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_contact_sheet",
+    "arguments": {
+      "paths": [
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/finding_opposite_arms.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/detail_opposite_arms.png"
+      ],
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/detail_before_after_opposite_arms.png",
+      "columns": 2,
+      "zoom": 1
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/detail_before_after_opposite_arms.png (1254x481)\n1. finding_opposite_arms.png\n2. detail_opposite_arms.png"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/far_leg_forward_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/detail_far_leg_forward.png",
+      "crop": {
+        "x": 980,
+        "y": 465,
+        "width": 160,
+        "height": 145
+      },
+      "zoom": 3
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/detail_far_leg_forward.png (480x435)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_contact_sheet",
+    "arguments": {
+      "paths": [
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/finding_far_leg_forward.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/detail_far_leg_forward.png"
+      ],
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/detail_before_after_far_leg_forward.png",
+      "columns": 2,
+      "zoom": 1
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/detail_before_after_far_leg_forward.png (984x451)\n1. finding_far_leg_forward.png\n2. detail_far_leg_forward.png"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_-35_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-35_100.png",
+      "crop": {
+        "x": 125,
+        "y": 495,
+        "width": 150,
+        "height": 140
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-35_100.png (150x140)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_-25_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-25_100.png",
+      "crop": {
+        "x": 125,
+        "y": 495,
+        "width": 150,
+        "height": 140
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-25_100.png (150x140)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_-15_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-15_100.png",
+      "crop": {
+        "x": 125,
+        "y": 495,
+        "width": 150,
+        "height": 140
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-15_100.png (150x140)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_-5_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-5_100.png",
+      "crop": {
+        "x": 125,
+        "y": 495,
+        "width": 150,
+        "height": 140
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-5_100.png (150x140)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_0_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_0_100.png",
+      "crop": {
+        "x": 125,
+        "y": 495,
+        "width": 150,
+        "height": 140
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_0_100.png (150x140)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_5_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_5_100.png",
+      "crop": {
+        "x": 125,
+        "y": 495,
+        "width": 150,
+        "height": 140
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_5_100.png (150x140)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_15_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_15_100.png",
+      "crop": {
+        "x": 125,
+        "y": 495,
+        "width": 150,
+        "height": 140
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_15_100.png (150x140)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_25_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_25_100.png",
+      "crop": {
+        "x": 125,
+        "y": 495,
+        "width": 150,
+        "height": 140
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_25_100.png (150x140)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_35_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_35_100.png",
+      "crop": {
+        "x": 125,
+        "y": 495,
+        "width": 150,
+        "height": 140
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_35_100.png (150x140)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_contact_sheet",
+    "arguments": {
+      "paths": [
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-35_100.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-25_100.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-15_100.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-5_100.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_0_100.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_5_100.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_15_100.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_25_100.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_35_100.png"
+      ],
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_range_100.png",
+      "columns": 3,
+      "zoom": 1
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_range_100.png (482x452)\n1. arm_-35_100.png\n2. arm_-25_100.png\n3. arm_-15_100.png\n4. arm_-5_100.png\n5. arm_0_100.png\n6. arm_5_100.png\n7. arm_15_100.png\n8. arm_25_100.png\n9. arm_35_100.png"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_-35_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-35_200.png",
+      "crop": {
+        "x": 385,
+        "y": 375,
+        "width": 245,
+        "height": 255
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-35_200.png (245x255)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_-25_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-25_200.png",
+      "crop": {
+        "x": 385,
+        "y": 375,
+        "width": 245,
+        "height": 255
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-25_200.png (245x255)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_-15_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-15_200.png",
+      "crop": {
+        "x": 385,
+        "y": 375,
+        "width": 245,
+        "height": 255
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-15_200.png (245x255)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_-5_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-5_200.png",
+      "crop": {
+        "x": 385,
+        "y": 375,
+        "width": 245,
+        "height": 255
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-5_200.png (245x255)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_0_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_0_200.png",
+      "crop": {
+        "x": 385,
+        "y": 375,
+        "width": 245,
+        "height": 255
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_0_200.png (245x255)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_5_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_5_200.png",
+      "crop": {
+        "x": 385,
+        "y": 375,
+        "width": 245,
+        "height": 255
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_5_200.png (245x255)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_15_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_15_200.png",
+      "crop": {
+        "x": 385,
+        "y": 375,
+        "width": 245,
+        "height": 255
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_15_200.png (245x255)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_25_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_25_200.png",
+      "crop": {
+        "x": 385,
+        "y": 375,
+        "width": 245,
+        "height": 255
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_25_200.png (245x255)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_35_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_35_200.png",
+      "crop": {
+        "x": 385,
+        "y": 375,
+        "width": 245,
+        "height": 255
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_35_200.png (245x255)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_contact_sheet",
+    "arguments": {
+      "paths": [
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-35_200.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-25_200.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-15_200.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-5_200.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_0_200.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_5_200.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_15_200.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_25_200.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_35_200.png"
+      ],
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_range_200.png",
+      "columns": 3,
+      "zoom": 1
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_range_200.png (767x797)\n1. arm_-35_200.png\n2. arm_-25_200.png\n3. arm_-15_200.png\n4. arm_-5_200.png\n5. arm_0_200.png\n6. arm_5_200.png\n7. arm_15_200.png\n8. arm_25_200.png\n9. arm_35_200.png"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_-35_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-35_440.png",
+      "crop": {
+        "x": 780,
+        "y": 170,
+        "width": 365,
+        "height": 455
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-35_440.png (365x455)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_-25_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-25_440.png",
+      "crop": {
+        "x": 780,
+        "y": 170,
+        "width": 365,
+        "height": 455
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-25_440.png (365x455)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_-15_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-15_440.png",
+      "crop": {
+        "x": 780,
+        "y": 170,
+        "width": 365,
+        "height": 455
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-15_440.png (365x455)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_-5_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-5_440.png",
+      "crop": {
+        "x": 780,
+        "y": 170,
+        "width": 365,
+        "height": 455
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-5_440.png (365x455)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_0_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_0_440.png",
+      "crop": {
+        "x": 780,
+        "y": 170,
+        "width": 365,
+        "height": 455
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_0_440.png (365x455)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_5_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_5_440.png",
+      "crop": {
+        "x": 780,
+        "y": 170,
+        "width": 365,
+        "height": 455
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_5_440.png (365x455)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_15_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_15_440.png",
+      "crop": {
+        "x": 780,
+        "y": 170,
+        "width": 365,
+        "height": 455
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_15_440.png (365x455)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_25_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_25_440.png",
+      "crop": {
+        "x": 780,
+        "y": 170,
+        "width": 365,
+        "height": 455
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_25_440.png (365x455)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/a1_arm_35_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_35_440.png",
+      "crop": {
+        "x": 780,
+        "y": 170,
+        "width": 365,
+        "height": 455
+      }
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_35_440.png (365x455)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_contact_sheet",
+    "arguments": {
+      "paths": [
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-35_440.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-25_440.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-15_440.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_-5_440.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_0_440.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_5_440.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_15_440.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_25_440.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_35_440.png"
+      ],
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_range_440.png",
+      "columns": 3,
+      "zoom": 1
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_range_440.png (1127x1397)\n1. arm_-35_440.png\n2. arm_-25_440.png\n3. arm_-15_440.png\n4. arm_-5_440.png\n5. arm_0_440.png\n6. arm_5_440.png\n7. arm_15_440.png\n8. arm_25_440.png\n9. arm_35_440.png"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_contact_sheet",
+    "arguments": {
+      "paths": [
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/arm_hidden_960x600.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/far_shoe_only_960x600.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/near_foot_hidden_960x600.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/combined_extreme_960x600.png"
+      ],
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/exception_cases_960x600.png",
+      "columns": 2,
+      "zoom": 1
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/exception/captures/exception_cases_960x600.png (1944x1224)\n1. arm_hidden_960x600.png\n2. far_shoe_only_960x600.png\n3. near_foot_hidden_960x600.png\n4. combined_extreme_960x600.png"
+        }
+      ]
+    }
+  }
+]

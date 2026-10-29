@@ -1,0 +1,17 @@
+{
+  "skirt": {
+    "changed_pixels": 23944,
+    "authorized_pixels": 47714,
+    "changed_outside_mask": 0
+  },
+  "near_shoe": {
+    "changed_pixels": 242,
+    "authorized_pixels": 2389,
+    "changed_outside_mask": 0
+  },
+  "far_shoe": {
+    "changed_pixels": 7594,
+    "authorized_pixels": 28640,
+    "changed_outside_mask": 0
+  }
+}

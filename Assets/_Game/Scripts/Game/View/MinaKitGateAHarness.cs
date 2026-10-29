@@ -17,6 +17,7 @@ namespace Neko.Game.View
         {
             public string name, parent;
             public Vector3 localPosition, localEulerAngles, worldPosition;
+            public bool active;
         }
         [Serializable] private sealed class SceneEvidence
         {
@@ -28,7 +29,7 @@ namespace Neko.Game.View
         private Camera _camera;
         private Canvas _canvas;
         private Font _font;
-        private MinaModularKit _small, _large;
+        private MinaModularKit _small, _large, _medium;
         private GameObject _board;
         private Sprite _reference;
         private float _deadline;
@@ -127,9 +128,10 @@ namespace Neko.Game.View
         private Vector3 Pixel(float x, float y, int width, int height) =>
             new Vector3(x - width * .5f, y - height * .5f, 0f);
 
-        private void Layout(int width, int height)
+        private void Layout(int width, int height, bool inspection = false)
         {
             if (_board != null) DestroyImmediate(_board);
+            _medium = null;
             _board = new GameObject("Gate A board — disposable");
             _camera.orthographicSize = height * .5f;
             _camera.aspect = (float)width / height;
@@ -155,15 +157,33 @@ namespace Neko.Game.View
             var sx2 = width * .23f;
             var lx1 = width * .53f;
             var lx2 = width * .82f;
-            ReferenceAt(sx1, 100f, 100f, width, height);
-            ReferenceAt(lx1, 100f, zoom, width, height);
-            _small = KitAt(sx2, 100f, 100f, width, height);
-            _large = KitAt(lx2, 100f, zoom, width, height);
+            if (inspection)
+            {
+                _small = KitAt(width * .15f, 100f, 100f, width, height);
+                _medium = KitAt(width * .39f, 100f, 200f, width, height);
+                _large = KitAt(width * .75f, 100f, 440f, width, height);
+            }
+            else
+            {
+                ReferenceAt(sx1, 100f, 100f, width, height);
+                ReferenceAt(lx1, 100f, zoom, width, height);
+                _small = KitAt(sx2, 100f, 100f, width, height);
+                _large = KitAt(lx2, 100f, zoom, width, height);
+            }
             Label("ANIM-01 / Gate A — poses estáticas no Unity", 16f, 12f, width - 32f, 28f, 20);
-            Label("Original · 100 px", sx1 - 65f, height - 230f, 140f, 30f, 14);
-            Label("Modular · 100 px", sx2 - 65f, height - 230f, 150f, 30f, 14);
-            Label("Original · ampliado", lx1 - 90f, 78f, 200f, 28f, 16);
-            Label("Modular · ampliado", lx2 - 90f, 78f, 200f, 28f, 16);
+            if (inspection)
+            {
+                Label("100 px", width * .15f - 25f, height - 230f, 100f, 28f, 14);
+                Label("200 px", width * .39f - 25f, height - 330f, 100f, 28f, 14);
+                Label("440 px", width * .75f - 25f, 82f, 100f, 28f, 14);
+            }
+            else
+            {
+                Label("Original · 100 px", sx1 - 65f, height - 230f, 140f, 30f, 14);
+                Label("Modular · 100 px", sx2 - 65f, height - 230f, 150f, 30f, 14);
+                Label("Original · ampliado", lx1 - 90f, 78f, 200f, 28f, 16);
+                Label("Modular · ampliado", lx2 - 90f, 78f, 200f, 28f, 16);
+            }
             Label("Referência de chão: mesma origem em todas as poses. Sem caminhada, bob ou squash.",
                 16f, height - 64f, width - 32f, 26f, 14);
         }
@@ -206,6 +226,7 @@ namespace Neko.Game.View
         {
             _small.ApplyPose(index);
             _large.ApplyPose(index);
+            if (_medium != null) _medium.ApplyPose(index);
             Debug.Log("GATE_A_POSE " + _small.Data.poses[index].id);
         }
 
@@ -229,12 +250,51 @@ namespace Neko.Game.View
                     Layout(size.x, size.y);
                 }
             }
+            if (Environment.GetEnvironmentVariable("NEKO_GATE_A_EXCEPTION") == "1")
+                yield return CaptureExceptional();
             File.WriteAllText(Path.Combine(_output, "definition.json"), JsonUtility.ToJson(_small.Data, true));
             File.WriteAllText(Path.Combine(_output, "result.txt"),
-                "PASS: 7 static articulated poses x 2 resolutions; independent temporary scene; no GameRoot or save calls.\n" +
+                (Environment.GetEnvironmentVariable("NEKO_GATE_A_EXCEPTION") == "1"
+                    ? "CAPTURE COMPLETE: 7 original poses + 13 exceptional inspection cases x 2 resolutions.\n"
+                    : "PASS: 7 static articulated poses x 2 resolutions; independent temporary scene; no GameRoot or save calls.\n") +
                 "Aesthetic approval pending. No walking or equipment integration.\n");
             Debug.Log("GATE_A_CAPTURE_COMPLETE");
             EditorApplication.Exit(0);
+        }
+
+        private IEnumerator CaptureExceptional()
+        {
+            foreach (var size in new[] { new Vector2Int(1280,720), new Vector2Int(960,600) })
+            {
+                foreach (var angle in new[] {-35,-25,-15,-5,0,5,15,25,35})
+                {
+                    Layout(size.x,size.y,true);
+                    SetPose(0);
+                    foreach (var kit in new[] {_small,_medium,_large})
+                        kit.Joint("near_upper_arm").localRotation = Quaternion.Euler(0f,0f,angle);
+                    Label("A1 · braço próximo " + angle + " graus",16f,44f,size.x-32f,26f,16);
+                    yield return Shot("a1_arm_"+angle+"_"+size.x+"x"+size.y,size.x,size.y);
+                }
+                foreach (var scenario in new[] {"arm_hidden","far_shoe_only","near_foot_hidden","combined_extreme"})
+                {
+                    Layout(size.x,size.y,true);
+                    SetPose(scenario == "far_shoe_only" || scenario == "near_foot_hidden" ? 2 :
+                        scenario == "combined_extreme" ? 4 : 0);
+                    foreach (var kit in new[] {_small,_medium,_large})
+                    {
+                        if (scenario == "arm_hidden") kit.Joint("near_upper_arm").gameObject.SetActive(false);
+                        if (scenario == "far_shoe_only") kit.Joint("near_thigh").gameObject.SetActive(false);
+                        if (scenario == "near_foot_hidden") kit.Joint("near_foot").gameObject.SetActive(false);
+                        if (scenario == "combined_extreme")
+                        {
+                            kit.Joint("near_upper_arm").localRotation = Quaternion.Euler(0f,0f,-35f);
+                            kit.Joint("far_upper_arm").localRotation = Quaternion.Euler(0f,0f,35f);
+                        }
+                    }
+                    Label("Patch excepcional · " + scenario,16f,44f,size.x-32f,26f,16);
+                    yield return Shot(scenario+"_"+size.x+"x"+size.y,size.x,size.y);
+                }
+            }
         }
 
         private IEnumerator Shot(string name, int width, int height)
@@ -270,7 +330,7 @@ namespace Neko.Game.View
                     {
                         name = joint.name, parent = joint.parent.name,
                         localPosition = joint.localPosition, localEulerAngles = joint.localEulerAngles,
-                        worldPosition = joint.position,
+                        worldPosition = joint.position, active = joint.gameObject.activeInHierarchy,
                     };
                 }
                 File.WriteAllText(Path.Combine(_output, name + ".json"), JsonUtility.ToJson(evidence, true));

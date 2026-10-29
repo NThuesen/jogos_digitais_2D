@@ -1,5 +1,7 @@
 # Inventário ANIM-01 / Gate A
 
+Estado atual: [intervenção excepcional encerrada sem aprovação](exception/README.md).
+
 Base: PR #18 `c550e66bb1ab58f59d7d4c766094581873905ba5`, dependente do PR #15 `747e677`.
 
 ## Fontes preservadas
@@ -22,7 +24,7 @@ Originais fornecidos pelo responsável, localizados em Downloads e copiados sem 
 
 Cabeça inclui rosto, orelhas, franja e presilha solar permanente. A massa de cabelo traseiro visível e a cauda têm articulação própria. Garters, mangas, punhos, laço traseiro, vestido e avental são módulos de roupa separados da anatomia. Sapatos são separados da pele visível dos pés.
 
-As reconstruções são aproximações locais: caps de sobreposição e dois patches de tecido. `torso_skin` é uma base oculta reconstruída; não é um torso extraído integralmente. Regiões ocultas ainda apresentam defeitos nas poses, conforme README.
+As reconstruções são aproximações locais: caps de sobreposição e reparos raster. Os dois patches de tecido da montagem anterior foram substituídos pela [intervenção excepcional](exception/README.md), que também fechou a geometria do sapato distante e limpou resíduos do próximo. `torso_skin` é uma base oculta reconstruída; não é um torso extraído integralmente. Regiões ocultas ainda apresentam defeitos nas poses, conforme relatório atual.
 
 | Peça | Nó / pivô | Ordem | Recorte x,y,w,h | Caps reconstruídos |
 | --- | --- | ---: | --- | ---: |
@@ -31,7 +33,7 @@ As reconstruções são aproximações locais: caps de sobreposição e dois pat
 | `far_thigh` | `far_thigh` | 2 | 656,768,150,181 | 2 |
 | `far_shin` | `far_shin` | 3 | 660,882,146,194 | 2 |
 | `far_foot_skin` | `far_foot` | 4 | 654,1026,110,102 | 1 |
-| `far_shoe` | `far_foot` | 5 | 647,1025,125,152 | 0 |
+| `far_shoe` | `far_foot` | 5 | 612,1025,160,152 | 0 |
 | `far_sleeve` | `far_upper_arm` | 6 | 815,592,41,42 | 0 |
 | `far_garter` | `far_thigh` | 6 | 691,823,115,94 | 0 |
 | `far_upper_arm` | `far_upper_arm` | 7 | 797,605,87,77 | 2 |
@@ -45,7 +47,7 @@ As reconstruções são aproximações locais: caps de sobreposição e dois pat
 | `torso_skin` | `torso` | 14 | 686,456,119,177 | 1 |
 | `near_garter` | `near_thigh` | 14 | 609,839,87,64 | 0 |
 | `back_bow` | `pelvis` | 15 | 451,570,152,112 | 0 |
-| `skirt` | `pelvis` | 16 | 422,616,464,261 | 0 |
+| `skirt` | `pelvis` | 16 | 422,613,464,264 | 0 |
 | `bodice` | `torso` | 17 | 615,428,248,229 | 0 |
 | `apron` | `pelvis` | 18 | 690,628,164,169 | 0 |
 | `near_upper_arm` | `near_upper_arm` | 19 | 573,498,135,161 | 2 |

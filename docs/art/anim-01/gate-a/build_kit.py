@@ -10,6 +10,7 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image, ImageDraw
+from exception.reconstruct import repair
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
@@ -102,19 +103,6 @@ SKIN_OVERRIDES = [
                     (774, 861), (711, 877), (685, 852), (662, 830)]),
     ('near_thigh', [(617, 820), (650, 824), (677, 850), (693, 872),
                      (677, 890), (622, 882), (603, 859)]),
-]
-
-# Two localized fabric reconstructions, sampled from unoccluded original fabric.
-# Their masks only fill pixels originally owned by the occluding near arm/hand.
-FABRIC_PATCHES = [
-    {'part': 'skirt', 'sample': [641, 672, 682, 764],
-     'target': [529, 615, 687, 807],
-     'polygon': [(601, 616), (679, 621), (686, 725), (620, 801),
-                 (534, 781), (546, 710), (573, 668)]},
-    {'part': 'skirt', 'sample': [806, 814, 866, 857],
-     'target': [462, 762, 612, 845],
-     'polygon': [(487, 763), (573, 788), (610, 808), (601, 839),
-                 (548, 837), (495, 818), (463, 794)]},
 ]
 
 # Bind positions, source pixels. Root is a stable ground reference, not sprite bounds.
@@ -273,19 +261,8 @@ def build():
     for name in CAPS:
         if name not in images:
             images[name] = cap_layer(name, original_alpha)
-    occluders = np.isin(owner, [ids[n] for n in ('near_upper_arm', 'near_forearm',
-                                               'near_hand', 'near_cuff')])
-    for patch in FABRIC_PATCHES:
-        x0, y0, x1, y1 = patch['target']
-        canvas = Image.new('RGBA', SIZE)
-        sample = original.crop(patch['sample']).resize((x1 - x0, y1 - y0), Image.Resampling.BICUBIC)
-        canvas.alpha_composite(sample, (x0, y0))
-        pixels = np.array(canvas)
-        allowed = polygon(patch['polygon']) & occluders
-        pixels[:, :, 3] = np.where(allowed, pixels[:, :, 3], 0)
-        canvas = Image.fromarray(pixels)
-        canvas.alpha_composite(images[patch['part']])
-        images[patch['part']] = canvas
+    # One exceptional, source-frame A1/A2 repair. All other layers remain untouched.
+    exception_recipe = repair(images, key_original(HERE / 'sources' / 'lado.png'), HERE, REVIEW)
     OUT.mkdir(parents=True, exist_ok=True)
     REVIEW.mkdir(parents=True, exist_ok=True)
     original.save(OUT / 'reference.png')
@@ -314,8 +291,8 @@ def build():
     recipe = {'coordinates': '1254x1254 top-left original pixels; no resizing',
               'regions': [{'part': n, 'polygon': p} for n, p in REGIONS],
               'caps': CAPS, 'skinOverrides': SKIN_OVERRIDES,
-              'fabricPatches': FABRIC_PATCHES,
-              'description': 'Source-palette hidden caps and two local fabric patches; retained source pixels overlaid unchanged.'}
+              'exceptionalRepair': exception_recipe,
+              'description': 'Original kit plus explicitly masked A1/A2 repair; no rectangular fabric rescaling.'}
     (HERE / 'recipe.json').write_text(json.dumps(recipe, indent=2) + '\n')
     neutral.save(REVIEW / 'neutral_offline.png')
     bg = Image.new('RGBA', (SIZE[0] * 2, SIZE[1]), '#b8a08c')
@@ -351,6 +328,22 @@ def check():
         file = OUT / (part['id'] + '.png')
         assert hashlib.sha256(file.read_bytes()).hexdigest() == part['sha256']
         assert Image.open(file).size == (part['width'], part['height'])
+    baseline = json.loads((HERE / 'exception/baseline.json').read_text())
+    affected = {'skirt', 'near_shoe', 'far_shoe'}
+    assert data['nodes'] == baseline['definition']['nodes'], 'Joint/pivot changes are outside this patch.'
+    assert data['poses'] == baseline['definition']['poses'], 'Original poses must remain unchanged.'
+    for name, digest in baseline['png_hashes'].items():
+        if Path(name).stem not in affected:
+            assert hashlib.sha256((OUT / name).read_bytes()).hexdigest() == digest, name
+    for name in affected:
+        old_part = next(p for p in baseline['definition']['parts'] if p['id'] == name)
+        new_part = next(p for p in data['parts'] if p['id'] == name)
+        old = Image.new('RGBA', SIZE); new = Image.new('RGBA', SIZE)
+        old.paste(Image.open(HERE / 'exception/baseline' / (name + '.png')), (old_part['x'],old_part['y']))
+        new.paste(Image.open(OUT / (name + '.png')), (new_part['x'],new_part['y']))
+        authorized = np.array(Image.open(HERE / 'exception/masks' / ('authorized_' + name + '.png'))) > 0
+        assert not np.any(np.any(np.array(old) != np.array(new),axis=2) & ~authorized), name
+    print('PASS: 27 unaffected PNGs byte-identical; original poses/pivots intact; zero changed RGBA pixels outside A1/A2 masks.')
     print(f'PASS: {len(manifest["sources"])} sources, {len(known)} nodes, {len(data["parts"])} parts; hashes, parent order and dimensions.')
 
 
