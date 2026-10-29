@@ -1,7 +1,8 @@
 # ECON-01A — checkpoint factual
 
-- Estado: critérios técnicos satisfeitos; revisão final/PR pendentes.
+- Estado: ECON-01A concluída e diff revisado; PR https://github.com/NThuesen/jogos_digitais_2D/pull/19 aberto.
 - Branch/worktree: `task/econ-01-baseline-20261029`, `neko-econ-01`. URP e ZIP da tarefa visual preservados no checkout original.
+- Implementação/evidências: `a12f284`; alteração final restrita a este checkpoint e ignore de cache Python.
 - Código de produção: `7d42ab1f7dd3981c56defdd0b3edaee08918749f`; fontes Sim/Game e regras intactas.
 - Runner: `tools/econ-baseline/` (projeto net8.0, sem pacotes; inclui fontes reais Sim); instruções no README local.
 - Evidência versionada: `docs/economy/econ-01a/` (relatório, agregados, 5028 dias CSV e metadados).
@@ -11,4 +12,4 @@
 - Resultados: 0/60 sobrevivem dia 7/20/50 em cada política e conjunto; medianas 4/3/4/4/3. Dia 1: perda 200/200, receita/custo medianos 119/254. Nenhum L2. Competente e Auto iguais neste elenco. Conversão de caixas sensível às seeds; valores e vieses documentados.
 - Validação: simtest existente PASS 257/257, boundaries PASS (49 fontes/13 testes), duas saídas/agregações idênticas. SDK Windows 10.0.400/runtime 8.0.14, target net8.0. SDK 8 específico/Unity/WebGL NOT RUN, com motivo nos READMEs.
 - Original `/tmp/neko-econ` indisponível; política reconstruída e discrepâncias documentadas. Nenhuma conclusão de Tier 1/2, raridade/ROI tardio ou playtest humano.
-- Próximos passos: (1) revisão final de diff; (2) abrir PR exclusivo ECON-01A e encerrar. ECON-01B/C/D exigem outra tarefa.
+- Encerramento: PR #19 entregue; sem polling de CI. ECON-01B/C/D exigem outra tarefa. Nenhuma pendência de implementação ECON-01A; limitações de ambiente/metodologia documentadas.
