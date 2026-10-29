@@ -1,6 +1,6 @@
 # ART-01 — Exploração artística do Neko Maid Inc.
 
-**Status:** PLANNED; **agente recomendado:** Claude/Claude Code (exploração e síntese visual).
+**Status:** **DIREÇÃO D APROVADA PROVISORIAMENTE PARA PROTOTIPAGEM** (2026-10-28); **ART-02 continua BLOCKED até o responsável liberar explicitamente**. `style_anchor`: [`docs/art/art-01/D-pixel-cafe/`](../art/art-01/D-pixel-cafe/README.md) — referência de estilo `reference/style_anchor_reference.png`; identidade Suzu `incoming/D0_suzu_sheet.png` + `D1_portrait.png` + `D2_chibi_poses.png`; café `D3_cafe_interior.png`; kit de UI `D4_ui_kit.png`; avaliação e pendências técnicas em `EVALUATION_FINAL.md`. As propostas A/B/C (branch `art/art-01-style-exploration`) ficam como estudos. Os PNGs gerados **não** são assets finais. **Agente recomendado (original):** Claude/Claude Code (exploração e síntese visual).
 **Resultado necessário:** escolher com o responsável uma direção visual **aprovada** antes de construir biblioteca de assets.
 **Leia apenas:** [baseline](VISUAL_BASELINE.md), [decisão maid portrait + chibi](../art/MAID_VISUAL_DECISION.md) e [spec conceitual](../art/MAID_VISUAL_SPEC.md). O GDD completo só se uma regra de jogo afetar a proposta. Não implementar Unity nesta tarefa.
 

@@ -1,12 +1,17 @@
 # ART-01D — Cozy Pixel-Art Anime Café
 
-**Status:** PROPOSTA em preparação — **nenhuma arte da direção D foi gerada ainda**. Nada aqui está implementado no Unity.
+**Status (2026-10-28):** direção D **APROVADA PROVISORIAMENTE PARA PROTOTIPAGEM** pelo responsável: identidade da Suzu, café D3 e linguagem ornamental D4 são as **referências oficiais** da primeira implementação. **Os PNGs gerados NÃO estão aprovados como assets finais.** Nada aqui está implementado no Unity; **ART-02 segue bloqueada até decisão explícita do responsável**.
+
+**Resultados:** [EVALUATION_D0-D2.md](EVALUATION_D0-D2.md) (Suzu, recorte, escala, identidade) · [EVALUATION_FINAL.md](EVALUATION_FINAL.md) (mockups de Escalação e restaurante, escala dos chibis, modularidade do kit, parecer) · imagens em [`review/`](review/) · componentes em [`processed/`](processed/) · reprodução em [`tools/`](tools/README.md).
+
+**Arquivos-fonte versionados** (todos necessários para reproduzir): `reference/style_anchor_reference.png`, `incoming/D0…D5` (originais gerados, não alterados; D5 é só referência de composição). Tentativas descartadas **não** foram versionadas. Lembrete: o texto abaixo, escrito antes das gerações, continua válido como método; onde diz "pendente", ver as avaliações.
 **Restrição definitiva:** orçamento adicional **R$ 0** (sem APIs, créditos ou assinaturas novas). Geração = ChatGPT Plus do responsável.
 **Decidido vs. proposto**
 
 | Decidido pelo responsável | Ainda **proposta / experimento** |
 | --- | --- |
-| Custo adicional R$ 0 (sem APIs/assinaturas); geração via ChatGPT Plus | Identidade da Suzu (cabelo menta, sininho etc.) |
+| Custo adicional R$ 0 (sem APIs/assinaturas); geração via ChatGPT Plus | Pixel density, contorno e iluminação do chibi vs. cenário; ciclo de caminhada; tamanho final do chibi (testar 96 px) |
+| Direção D aprovada **provisoriamente para prototipagem**: identidade da Suzu, café D3 e linguagem ornamental D4 = referências oficiais (**não** PNGs finais) | Identidade em detalhes (entalhe da orelha, laço da cauda, contorno do chibi) |
 | Referência = estilo aspiracional, não para copiar | Transparência: PNG alfa vs. chroma-key |
 | Workflow: Claude Code prepara/processa, ChatGPT gera, responsável aprova | Resolução, redução de escala, paleta, pixel grid |
 | Aprovação estética explícita antes de ART-02; sem Unity, sem gameplay, sem biblioteca | Modularização em camadas, geração local (ComfyUI) |
@@ -52,7 +57,7 @@ Rótulos obrigatórios em todo material: **ARTE GERADA** (saída bruta do ChatGP
 
 **Atenção honesta:** o nome do arquivo indica que a referência foi gerada pelo ChatGPT. Isso é favorável (a mesma ferramenta, em tese, chega perto), mas **modelos de imagem não produzem uma grade de pixels perfeita**: pixels de tamanhos mistos, anti-aliasing e texto inventado são comuns. Vou medir isso na referência durante o processamento e reportar, sem esconder.
 
-## 2. Identidade da Suzu — hipótese EXPERIMENTAL (não aprovada)
+## 2. Identidade da Suzu — hipótese inicial; **aprovada provisoriamente** como referência (ver avaliações)
 
 Suzu (鈴 = sino) é só um nome já usado em `ApplicantBoard.cs`/`Lootbox.cs`; **não existe ficha visual**. A tabela abaixo é **ponto de partida para teste**, **não** característica definitiva: o cabelo menta, o sininho e os demais campos só viram identidade após o responsável avaliar o resultado gerado. Ela é **original e diferente da maid da referência** (rosa/tranças/cardigan azul):
 

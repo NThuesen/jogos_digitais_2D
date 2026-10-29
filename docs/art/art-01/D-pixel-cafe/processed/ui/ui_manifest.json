@@ -1,0 +1,135 @@
+{
+ "frame_large": {
+  "size": [
+   411,
+   433
+  ],
+  "interior": [
+   30,
+   28,
+   381,
+   406
+  ],
+  "margins_ltrb": [
+   30,
+   28,
+   30,
+   27
+  ],
+  "interior_share": 0.72
+ },
+ "frame_wide": {
+  "size": [
+   1045,
+   275
+  ],
+  "interior": [
+   29,
+   29,
+   1016,
+   247
+  ],
+  "margins_ltrb": [
+   29,
+   29,
+   29,
+   28
+  ],
+  "interior_share": 0.73
+ },
+ "frame_label": {
+  "size": [
+   410,
+   133
+  ],
+  "interior": [
+   34,
+   22,
+   377,
+   106
+  ],
+  "margins_ltrb": [
+   34,
+   22,
+   33,
+   27
+  ],
+  "interior_share": 0.44
+ },
+ "rarity_common": {
+  "size": [
+   206,
+   209
+  ],
+  "interior": [
+   16,
+   15,
+   190,
+   190
+  ],
+  "margins_ltrb": [
+   16,
+   15,
+   16,
+   19
+  ],
+  "interior_share": 0.65
+ },
+ "rarity_rare": {
+  "size": [
+   221,
+   216
+  ],
+  "interior": [
+   16,
+   19,
+   206,
+   196
+  ],
+  "margins_ltrb": [
+   16,
+   19,
+   15,
+   20
+  ],
+  "interior_share": 0.65
+ },
+ "rarity_epic": {
+  "size": [
+   237,
+   216
+  ],
+  "interior": [
+   21,
+   20,
+   216,
+   193
+  ],
+  "margins_ltrb": [
+   21,
+   20,
+   21,
+   23
+  ],
+  "interior_share": 0.59
+ },
+ "rarity_legendary": {
+  "size": [
+   284,
+   247
+  ],
+  "interior": [
+   41,
+   39,
+   232,
+   209
+  ],
+  "margins_ltrb": [
+   41,
+   39,
+   52,
+   38
+  ],
+  "interior_share": 0.4
+ }
+}
