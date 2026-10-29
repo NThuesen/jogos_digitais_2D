@@ -1,10 +1,14 @@
 # ART-01D — Cozy Pixel-Art Anime Café
 
-**Status (2026-10-28):** direção D **APROVADA PROVISORIAMENTE PARA PROTOTIPAGEM** pelo responsável: identidade da Suzu, café D3 e linguagem ornamental D4 são as **referências oficiais** da primeira implementação. **Os PNGs gerados NÃO estão aprovados como assets finais.** Nada aqui está implementado no Unity; **ART-02 segue bloqueada até decisão explícita do responsável**.
+**Status (2026-10-28): ART-01D CONCLUÍDA COMO EXPLORAÇÃO.** O responsável aprovou direção D, identidade da Suzu, café D3 e linguagem ornamental D4 como referências da primeira implementação e **liberou explicitamente a ART-02 experimental para Codex**. Os PNGs não são assets finais. Exploração encerrada, sem novas imagens. Nada foi implementado ou validado no Unity.
+
+**Handoff:** [ART-02](../../../roadmap/ART-02_VERTICAL_SLICE.md). Começar com os assets existentes, portrait em card real e chibi no restaurante real; 96 px é hipótese inicial. Canvas de referência 1280×720, com validação adicional em 960×600, sem equivalência presumida. Movimento/idle, variação visual isolada e capturas reais nas duas resoluções dependem da integração. O responsável avaliará o Unity antes de qualquer merge da ART-02.
+
+**Resultados preservados:** kit D4 com 17 peças extraídas e 7 molduras com janela; contorno do chibi mais grosso/escuro e iluminação mais fria/plana que o café, além de densidade de pixels desigual. Há três poses estáticas, sem ciclo completo de animação. Originais, processados, mockups e ferramentas de reprodução permanecem preservados.
 
 **Resultados:** [EVALUATION_D0-D2.md](EVALUATION_D0-D2.md) (Suzu, recorte, escala, identidade) · [EVALUATION_FINAL.md](EVALUATION_FINAL.md) (mockups de Escalação e restaurante, escala dos chibis, modularidade do kit, parecer) · imagens em [`review/`](review/) · componentes em [`processed/`](processed/) · reprodução em [`tools/`](tools/README.md).
 
-**Arquivos-fonte versionados** (todos necessários para reproduzir): `reference/style_anchor_reference.png`, `incoming/D0…D5` (originais gerados, não alterados; D5 é só referência de composição). Tentativas descartadas **não** foram versionadas. Lembrete: o texto abaixo, escrito antes das gerações, continua válido como método; onde diz "pendente", ver as avaliações.
+**Arquivos-fonte versionados** (todos necessários para reproduzir): `reference/style_anchor_reference.png`, `incoming/D0…D5` (originais gerados, não alterados; D5 é só referência de composição). Tentativas descartadas **não** foram versionadas. O plano e as observações abaixo são histórico da exploração; não autorizam novas gerações. O fechamento acima e a nota ART-02 prevalecem sobre pendências históricas.
 **Restrição definitiva:** orçamento adicional **R$ 0** (sem APIs, créditos ou assinaturas novas). Geração = ChatGPT Plus do responsável.
 **Decidido vs. proposto**
 
@@ -26,9 +30,9 @@
 | Etapa | Responsável | Estado |
 | --- | --- | --- |
 | Análise da referência, specs, prompts | Claude Code | **feito (este documento)** |
-| Geração das imagens | Responsável, via ChatGPT Plus | pendente |
-| Organização, recorte, chroma-key, quantização, mockups, avaliação | Claude Code | pendente (depende das imagens) |
-| Aprovação estética | Responsável | pendente |
+| Geração das imagens | Responsável, via ChatGPT Plus | concluída para exploração (D0–D5) |
+| Organização, recorte, chroma-key, quantização, mockups, avaliação | Claude Code | concluída para exploração |
+| Aprovação estética | Responsável | concluída como referência; ART-02 liberada |
 
 Rótulos obrigatórios em todo material: **ARTE GERADA** (saída bruta do ChatGPT), **PROCESSADO** (após recorte/paleta/escala), **MOCKUP** (composição estática fora do Unity), **UNITY** (captura real — **nenhuma existe**).
 
@@ -85,7 +89,7 @@ Hipótese por trás do menta: contrasta com o mundo quente (leitura em cenário 
 
 ### Pixel art — parâmetros EXPERIMENTAIS (nada decidido)
 **Não presumimos que reduzir uma imagem grande produz boa pixel art.** Reduzir pode gerar ruído, bordas quebradas, detalhes perdidos e pixels de tamanhos inconsistentes. Variáveis a testar e comparar visualmente, sempre contra a referência:
-- **Resolução lógica:** ponto de partida apenas — tela do jogo 960×600; testar 480×300 a 2× e também 320×200 a 3×, preferindo escalas inteiras para evitar pixels de tamanho irregular.
+- **Resolução lógica:** ponto de partida apenas — mockup 960×600 (Canvas Unity de referência 1280×720); testar 480×300 a 2× e também 320×200 a 3×, preferindo escalas inteiras para evitar pixels de tamanho irregular.
 - **Método de redução:** nearest-neighbor, box/area, Lanczos seguido de quantização, detecção automática de pixel grid, ou **não reduzir** (usar a imagem gerada em escala, se parecer melhor).
 - **Paleta:** 16, 24, 32, 48 cores; global vs. por peça; com/sem dithering; paleta extraída vs. imposta.
 - **Pixel grid:** medir o tamanho real do "pixel" na imagem gerada (inclusive na referência); se não houver grade consistente, registrar isso como limitação em vez de forçar.

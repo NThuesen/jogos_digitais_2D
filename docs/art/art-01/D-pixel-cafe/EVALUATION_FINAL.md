@@ -1,6 +1,6 @@
 # ART-01D — Avaliação final: composição integrada (Escalação + restaurante + kit de UI)
 
-**Status:** direção D **aprovada provisoriamente para prototipagem** (identidade da Suzu, café D3 e linguagem ornamental D4 como referências oficiais da primeira implementação). **Os PNGs gerados continuam sem aprovação como assets finais.** Tudo abaixo é **MOCKUP** estático feito a partir de **ARTE GERADA** + recortes **PROCESSADOS**; **nada é captura Unity** e nada foi testado em runtime. Custo adicional **R$ 0**. **ART-02 só começa quando o responsável decidir.**
+**Status:** direção D **aprovada provisoriamente para prototipagem** (identidade da Suzu, café D3 e linguagem ornamental D4 como referências oficiais da primeira implementação). **Os PNGs gerados continuam sem aprovação como assets finais.** Tudo abaixo é **MOCKUP** estático feito a partir de **ARTE GERADA** + recortes **PROCESSADOS**; **nada é captura Unity** e nada foi testado em runtime. Custo adicional **R$ 0**. **Fechamento (2026-10-28): ART-01D concluída como exploração; responsável liberou explicitamente ART-02 experimental por Codex com assets existentes, sem novas imagens.**
 
 Parte 1 (Suzu D0–D2): [EVALUATION_D0-D2.md](EVALUATION_D0-D2.md).
 
@@ -84,7 +84,7 @@ Nenhum arquivo corrompido ou truncado. Originais **não alterados**.
 2. **Definir o tamanho real do chibi** em canvas 1280×720 (o do Unity), testando 96 px e escala por profundidade.
 3. **Integrar a luz do café ao chibi** (tom quente, sombra) — pode ser feito por shader/tint no Unity sem nova arte.
 4. **Identidade no chibi:** reintroduzir o entalhe da orelha esquerda e conferir cor do laço da cauda (ver parte 1).
-5. **Ciclo de caminhada real** (idle e walk reais, exigidos pela ART-02): hoje só há poses estáticas; exige novas gerações **com necessidade agora demonstrada**.
+5. **Ciclo de caminhada real** (idle e walk reais, exigidos pela ART-02): hoje só há poses estáticas. Verificar movimento/idle com os assets existentes e declarar lacunas; nenhuma nova geração está autorizada nesta etapa.
 
 **Pode esperar (limitação aceitável):** fonte definitiva (a do mockup é provisória), estado desabilitado/hover dos botões, toggles reais, painéis altos, barra de progresso, texturas dos painéis, café em camadas/oclusão (o D3 é uma imagem só: para gameplay, mesas e cadeiras do simulador precisam de arte própria ou posicionamento sobre o fundo), costas/perfil do chibi, outras maids.
 
@@ -92,4 +92,4 @@ Nenhum arquivo corrompido ou truncado. Originais **não alterados**.
 
 ## 6. Resultado
 
-Os dois mockups mostram que o **encanto visual existe** (personagens colecionáveis, café acolhedor, interface ornamental) e que a **estrutura real da Escalação cabe** no kit D4. O que **não** foi provado: runtime, animação, coerência final de pixel e uma biblioteca de maids. O parecer é **satisfatório com ressalvas**; a decisão de liberar a **ART-02** é do responsável.
+Os dois mockups mostram que o **encanto visual existe** (personagens colecionáveis, café acolhedor, interface ornamental) e que a **estrutura real da Escalação cabe** no kit D4. O que **não** foi provado: runtime, animação, coerência final de pixel e uma biblioteca de maids. O parecer é **satisfatório com ressalvas**; o responsável aprovou as referências e **liberou a ART-02 experimental**. A primeira integração no Unity precisa de avaliação do responsável antes de qualquer merge da ART-02.
