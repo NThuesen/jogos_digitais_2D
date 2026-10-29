@@ -3,6 +3,7 @@ using Neko.Sim.Cafe;
 using Neko.Sim.Core;
 using Neko.Sim.Progress;
 using Neko.Sim.Service;
+using Neko.Sim.Team;
 
 namespace Neko.Sim.Economy
 {
@@ -70,17 +71,20 @@ namespace Neko.Sim.Economy
         private static readonly CafeUnlocks[] Levels =
         {
             default,
-            new CafeUnlocks(1, 7, 5, 2, 2),
-            new CafeUnlocks(2, 8, 6, 3, 3),
-            new CafeUnlocks(3, 9, 6, 4, 3),
-            new CafeUnlocks(4, 10, 7, 5, 4),
-            new CafeUnlocks(5, 11, 7, 6, 4),
-            new CafeUnlocks(6, 11, 8, 6, 5),
-            new CafeUnlocks(7, 12, 8, 7, 5),
-            new CafeUnlocks(8, 12, 9, 7, 6),
-            new CafeUnlocks(9, 13, 9, 8, 6),
-            new CafeUnlocks(10, 13, 9, 8, 6),
+            CreateUnlocks(1, 7, 5, 2),
+            CreateUnlocks(2, 8, 6, 3),
+            CreateUnlocks(3, 9, 6, 3),
+            CreateUnlocks(4, 10, 7, 4),
+            CreateUnlocks(5, 11, 7, 4),
+            CreateUnlocks(6, 11, 8, 5),
+            CreateUnlocks(7, 12, 8, 5),
+            CreateUnlocks(8, 12, 9, 6),
+            CreateUnlocks(9, 13, 9, 6),
+            CreateUnlocks(10, 13, 9, 6),
         };
+
+        private static CafeUnlocks CreateUnlocks(int level, int width, int height, int shiftSlots) =>
+            new CafeUnlocks(level, width, height, Lineup.SlotsFor(level).Total + 1, shiftSlots);
 
         public static int LevelFor(int reputation)
         {

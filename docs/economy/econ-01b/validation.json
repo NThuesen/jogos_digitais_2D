@@ -1,0 +1,14 @@
+{
+  "production_base": "6187683fa018f00875705ff5c7c962058cd6f4ed",
+  "runtime": "8.0.14",
+  "sdk": "10.0.400",
+  "targeted_passed": 16,
+  "full_passed": 272,
+  "skipped": 0,
+  "failed": 0,
+  "nunit_xml_sha256": "69e31505c62d231f328f84144d3518cfc942e0005828fcba87268ee03b63b399",
+  "boundaries": "PASS: 49 Sim sources, 14 test files",
+  "unity": "NOT RUN: existing Windows Editor; additional guard refused launch",
+  "webgl": "NOT RUN: no Unity interface changes",
+  "save_fixture_sha256": "e69643ab4723b35db62b51324b24491e4ec39d4fec1a03594d1f82db49fc2779"
+}

@@ -740,8 +740,11 @@ namespace Neko.Tests.Sim
             var profile = Profile.NewGame(3u);
             profile.Wallet.AddPoints(100000);
 
-            // Café level one holds two maids and a new business already has three, so the
-            // very next card has nowhere to stand.
+            var rng = new Rng(3);
+            while (profile.Maids.Count < profile.Unlocks.RosterCap)
+                profile.Add(Lootbox.Mint(profile, Rarity.Common, rng));
+            Assert.AreEqual(profile.Unlocks.RosterCap, profile.Maids.Count);
+
             var before = profile.Wallet.Points;
             var result = Lootbox.Open(profile, "box_simple", new Rng(4));
 
