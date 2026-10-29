@@ -37,8 +37,10 @@
 
 **Evidência de partida:** [observações dos prints de 27/10/2026](roadmap/VISUAL_BASELINE.md). Esses prints foram fornecidos na conversa e **não são arquivos versionados**; o agente que trabalhar no Unity deve obter sua própria captura comparável.
 
-## Trilha paralela: ECON-01A — diagnóstico econômico (autorizado em 29/10/2026)
+## Trilha paralela: economia (independente de UI e arte)
 
-A preparação do baseline econômico foi autorizada como tarefa **independente** dos marcos de arte/UI acima. Consultar [ECON-01A](roadmap/ECON-01_BASELINE.md) para escopo, gates e validação; checkpoint operacional em [ECON-01_HANDOFF](../.agent/ECON-01_HANDOFF.md). O documento de origem [proposal.md](../proposal.md) é uma **proposta não aprovada de números**, não uma implementação.
+- **ECON-01A — DONE:** baseline reproduzível, dados e harness versionados; integrado na `main` pelo [PR #19](https://github.com/NThuesen/jogos_digitais_2D/pull/19). Evidência em [ECON-01A](economy/econ-01a/README.md). Os resultados relatam falência até o dia 7 nas políticas simuladas; não são playtest humano.
+- **ECON-01B — APPROVED / READY:** [corrigir a capacidade do elenco](roadmap/ECON-01B_ROSTER_CAP.md) para total de vagas desbloqueadas + 1 reserva, com exceção mínima autorizada para o teste existente. Checkpoint: [ECON-01B_HANDOFF](../.agent/ECON-01B_HANDOFF.md). Branch separada `task/econ-01b-roster-cap-20261029`. O teste protegido exige integração controlada pelo mantenedor; **não usar auto-merge**.
+- **ECON-01C/01D — NOT AUTHORIZED:** experimentos de balanceamento e playtests ficam para decisões/tarefas futuras. Os parâmetros de [proposal.md](../proposal.md) continuam sendo uma proposta, não regras aprovadas.
 
-**Estado: READY / execução não iniciada.** Esta autorização cobre reprodução do diagnóstico, instrumentação mínima e documentação, **não** mudanças de balanceamento, produto, cenas ou integração em main. As etapas seguintes exigem branches/PRs próprios e aprovação das decisões materiais. A restrição 7 do ciclo visual permanece em vigor para as tarefas visuais.
+Esta trilha não altera o estado ou as decisões da trilha visual. A restrição 7 permanece válida para as tarefas visuais; a autorização de ECON-01B é limitada ao contrato de capacidade e à manutenção específica de teste, **não** ao Tier 1/2.
