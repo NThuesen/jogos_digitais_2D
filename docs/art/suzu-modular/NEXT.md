@@ -1,6 +1,6 @@
 # SUZU — próxima tarefa (art probe, não animação)
 
-**Estado:** proposta para execução na branch experimental `experiment/suzu-modular-cutout-20261029`. O gate estático anterior **falhou**; nenhum asset final/pipeline foi aprovado.
+**Estado:** executada na branch experimental `experiment/suzu-modular-cutout-20261029`, com duas iterações raster e fonte OpenRaster de dois grupos. [Resultado/evidências](README.md#prova-raster--29102026-aguarda-aprovação-estética). Há melhoria material de desenho, mas acabamento pixel art final **FALHOU**; nova captura Unity **NÃO EXECUTADO** (ponte Windows indisponível, sem Coplay). **AGUARDA APROVAÇÃO ESTÉTICA**; nenhum asset final/pipeline foi aprovado. Execução encerrada no limite de duas iterações.
 
 ## Leia somente o necessário
 - `AGENTS.md` e `docs/agent/UNITY.md` (regras obrigatórias).

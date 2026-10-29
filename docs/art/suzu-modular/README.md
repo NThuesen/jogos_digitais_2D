@@ -2,6 +2,8 @@
 
 Branch: `experiment/suzu-modular-cutout-20261029`. Base remota conferida: `6d5767b8de3031423fabb22a506e49086dedad9a`.
 
+**Atualização — prova raster:** duas iterações executadas conforme [NEXT.md](NEXT.md); resultado e fonte editável ao final. Não substitui as peças anteriores nem aprova o gate artístico.
+
 ## Resultado e limite
 16 peças independentes, desenhadas originalmente com paths; nenhuma imagem antiga foi recortada ou reutilizada como peça. SVGs e gerador em `source/`, PNGs em `Assets/Experiments/SuzuModular/Parts`, harness Editor em `Assets/Experiments/SuzuModular/Editor/SuzuStudy.cs`. Não há alteração de gameplay, save, UI, cenas salvas ou Packages. Os três arquivos previamente modificados foram preservados e excluídos do commit.
 
@@ -34,3 +36,21 @@ No Editor existente via Coplay: `SuzuStudy.Capture("review",960,600);`, depois `
 - Falhou: gate artístico interno; abertura aditiva inicial com cena sem nome; screenshot de câmera de preview por nome.
 - Não executado: animação, juntas durante movimento, sprite swap, espelhamento, PlayMode/EditMode suites, simulação e WebGL. Etapas posteriores bloqueadas pelo gate estático; nenhum código de produção foi alterado.
 - Console consultado após compilação inicial: zero erros. Nenhuma API paga usada. Auto-merge proibido nesta entrega; aprovação estética permanece com o responsável.
+
+## Prova raster — 29/10/2026, AGUARDA APROVAÇÃO ESTÉTICA
+
+- Método disponível: ferramenta integrada `image_gen`, duas chamadas; sem CLI/API com chave, contratação de serviço ou instalação. Coplay não está exposto; executável Unity Windows presente, mas acesso falhou com `WSL UtilBindVsockAnyPort: socket failed 1`. Nenhum Editor foi lançado.
+- Iteração 01: rosto compacto, mechas com planos de luz/sombra e dobras alternadas na saia. Iteração 02: retirar gola/laço/sino duplicados do grupo cabeça; manter o laço do torso. [Comparação das duas hipóteses](evidence/raster-iterations-960x600.png).
+- [Referência D2 × captura 05 × proposta, 960×600](evidence/raster-comparison-960x600.png): montagem **offline**, recortes de referência/05 com braços/cauda originais; nova arte somente cabeça/cabelo + torso/saia. Alturas cabeça–barra 240/80/54 px com Point; 80 px é hipótese, não medição no restaurante. Anchor e D2 foram inspecionados; nenhum recorte de referência entra nas novas peças.
+- Fonte raster editável: [OpenRaster, dois grupos](source/raster/suzu-probe-02.ora), [cabeça/cabelo](source/raster/head-hair.png), [torso/saia](source/raster/torso-skirt.png), [montagem](source/raster/assembly.png). Sheets originais e prompts das duas chamadas estão em `source/raster/`; não são fontes vetoriais nem camadas semânticas internas de olhos/babados.
+- Reprodução: Python com Pillow, `python docs/art/suzu-modular/source/raster_probe.py`; apenas recorta, posiciona e monta fontes existentes, sem gerar/repintar arte. Canvas 920×1420, cabeça em (0,0), torso em (28,716), cabeça à frente. Regerar é determinístico a partir dos sheets salvos; chamadas generativas não são determinísticas.
+
+| Item | Estado observado, sem aprovação artística |
+|---|---|
+| RGBA, dois grupos, OpenRaster e evidências | **PASSOU TECNICAMENTE**: alpha presente, camadas extraídas dos sheets, recomposição do ORA idêntica ao PNG, quadros 960×600; alterações locais preservadas por SHA-256. |
+| Rosto/cabelo, roupa e paleta | Melhoria material observada frente à 05: rosto compacto e olhos expressivos, mechas com volume, saia com dobras; menta/âmbar/chocolate/creme/bordô preservados. **AGUARDA APROVAÇÃO ESTÉTICA**. |
+| Legibilidade e acabamento pixel art | **FALHOU** como sprite final: grade de pixels inconsistente, ruído com Point sobretudo a 54 px; cores/contorno sobrevivem a 80 px, detalhes faciais e babados perdem definição. Não é pixel art limpa na resolução-alvo. |
+| Costura estática | **PASSOU TECNICAMENTE** na [montagem ampliada do pescoço](evidence/raster-neck-seam.png): gola cobre a junção sem laço duplicado. Costuras em movimento **NÃO EXECUTADO**. |
+| Unity 960×600, runtime, testes Unity/WebGL | **NÃO EXECUTADO**: ponte Windows indisponível e sem Coplay. Não houve mudança em Assets, harness, packages, cenas, gameplay ou testes. |
+
+Encerrado após duas iterações. Não avançar para animação/rig/pipeline. Para resolver o acabamento é necessária uma entrada raster em camadas com clusters limpos na resolução-alvo (cabeça–barra ≈80 px nesta hipótese), incluindo alpha limpo e a mesma junção coberta pela gola; o responsável aprova a aparência, não precisa desenhar ou recortar. Nenhum asset final foi aprovado.
