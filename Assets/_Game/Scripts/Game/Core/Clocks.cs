@@ -31,10 +31,27 @@ namespace Neko.Game.Core
         public static bool Paused { get; private set; }
 
         /// <summary>Seconds since the last frame for anything in the café.</summary>
-        public static float Game => Paused ? 0f : Trim(Time.unscaledDeltaTime) * _scale;
+        public static float Game => Paused ? 0f : Trim(Measured) * _scale;
 
         /// <summary>Seconds since the last frame for menus, tweens and popups.</summary>
-        public static float Ui => Trim(Time.unscaledDeltaTime);
+        public static float Ui => Trim(Measured);
+
+#if UNITY_EDITOR
+        /// <summary>
+        /// Editor evidence runs only: a fixed frame length in place of the measured one.
+        /// </summary>
+        /// <remarks>
+        /// <c>Time.captureDeltaTime</c> does not reach <c>Time.unscaledDeltaTime</c> — measured
+        /// in a 6000.5.9f1 batch run, it stayed at the real 1/60 s — and both clocks read the
+        /// unscaled one. Saving a frame takes longer than a frame, so a recording without this
+        /// shows the café jumping forward between the frames it kept. Zero means measured.
+        /// </remarks>
+        internal static float FixedFrame;
+
+        private static float Measured => FixedFrame > 0f ? FixedFrame : Time.unscaledDeltaTime;
+#else
+        private static float Measured => Time.unscaledDeltaTime;
+#endif
 
         /// <summary>A frame length, with an outlier cut down to something playable.</summary>
         public static float Trim(float seconds) => Mathf.Min(seconds, LongestFrame);

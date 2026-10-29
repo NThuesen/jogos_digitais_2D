@@ -25,10 +25,14 @@ namespace Neko.Game.View
         private UnityEngine.Rendering.SortingGroup _bodyGroup;
         private bool _suzu;
         private bool _mina;
-        private MinaVisual.Facing _facing;
-        private bool _left;
-        private float _directionHold;
-        private float _movementHold;
+        private string _minaName;
+        private MinaFacing _heading = new MinaFacing();
+
+        /// <summary>V1 only: step phase in half-turns per stride, its fade, and the body lean.</summary>
+        private float _stride;
+        private float _motion;
+        private float _tilt;
+        private Vector2 _squash = Vector2.one;
         private SpriteRenderer _mood;
         private Maid _maid;
         private MaidPose _pose = MaidPose.Idle;
@@ -96,6 +100,10 @@ namespace Neko.Game.View
         {
             Worker = worker;
             _maid = worker.Maid;
+            _heading = new MinaFacing();
+            _minaName = null;
+            _stride = _motion = _tilt = _lift = 0f;
+            _squash = Vector2.one;
 
             const float radius = 0.5f;
             var angle = worker.Id * 137.5f * Mathf.Deg2Rad;
@@ -118,31 +126,13 @@ namespace Neko.Game.View
 
             var target = new Vector3(Worker.X, Worker.Y, 0f) + _offset;
             var delta = target - _lastPosition;
-            var moving = delta.sqrMagnitude > 1e-5f;
-            var directionChanged = false;
-            if (MinaVisual.Matches(_maid))
+            var stepped = delta.sqrMagnitude > MinaFacing.StillSquared;
+            var moving = stepped;
+            var mina = MinaVisual.Matches(_maid);
+            if (mina)
             {
-                _directionHold = Mathf.Max(0f, _directionHold - Clocks.Game);
-                if (moving)
-                {
-                    _movementHold = 0.12f;
-                    var horizontal = Mathf.Abs(delta.x);
-                    var vertical = Mathf.Abs(delta.y);
-                    // Hysteresis prevents near-diagonal movement from alternating axes.
-                    var side = _facing == MinaVisual.Facing.Side
-                        ? horizontal > vertical * 0.8f : horizontal > vertical * 1.25f;
-                    var facing = side ? MinaVisual.Facing.Side :
-                        delta.y > 0f ? MinaVisual.Facing.Back : MinaVisual.Facing.Front;
-                    if (_directionHold <= 0f && (facing != _facing || (side && _left != (delta.x < 0f))))
-                    {
-                        _facing = facing;
-                        _left = delta.x < 0f;
-                        _directionHold = 0.15f;
-                        directionChanged = true;
-                    }
-                }
-                else _movementHold = Mathf.Max(0f, _movementHold - Clocks.Game);
-                moving = moving || _movementHold > 0f;
+                _heading.Step(delta.x, delta.y, Clocks.Game);
+                moving = _heading.Moving;
             }
 
             // Smoothed rather than snapped: the simulation ticks in whole frames and a worker
@@ -151,20 +141,26 @@ namespace Neko.Game.View
             _lastPosition = target;
 
             var pose = PoseFor(moving);
-            if (pose != _pose || directionChanged)
+            // Redrawn only when the drawing itself changes, never every frame of a stable walk.
+            if (pose != _pose || (mina && MinaVisual.NameFor(pose, _heading.Facing, moving) != _minaName))
             {
                 _pose = pose;
                 Redraw();
             }
 
-            // A walk bob. Four lines, and the difference between a sprite sliding and a
-            // person walking.
-            _bob = moving ? _bob + Clocks.Game * 11f : 0f;
-            _lift = moving ? Mathf.Abs(Mathf.Sin(_bob)) * 0.07f : 0f;
+            if (_mina && MinaVisual.Motion == MinaVisual.Variant.V1) Step(delta, stepped);
+            else
+            {
+                // A walk bob. Four lines, and the difference between a sprite sliding and a
+                // person walking.
+                _bob = moving ? _bob + Clocks.Game * 11f : 0f;
+                _lift = moving ? Mathf.Abs(Mathf.Sin(_bob)) * 0.07f : 0f;
+                _tilt = 0f;
+                _squash = Vector2.one;
+            }
             _body.transform.localPosition = new Vector3(0f, _lift, 0f);
 
-            if (_mina) _body.flipX = _facing == MinaVisual.Facing.Side && _left &&
-                _pose != MaidPose.Carry && _pose != MaidPose.Cook && _pose != MaidPose.Tired;
+            if (_mina) _body.flipX = _heading.Left && MinaVisual.Mirrors(_minaName);
             else if (target.x - transform.position.x > 0.02f) _body.flipX = false;
             else if (target.x - transform.position.x < -0.02f) _body.flipX = true;
 
@@ -223,9 +219,43 @@ namespace Neko.Game.View
             return moving ? MaidPose.Walk : MaidPose.Idle;
         }
 
+        /// <summary>
+        /// V1: a step driven by the distance actually walked rather than by the clock.
+        /// </summary>
+        /// <remarks>
+        /// A stride of a little under half a tile is one half-turn of the phase, so the lift
+        /// peaks once per footfall and the body rocks to alternate sides. Faster maids step
+        /// faster instead of hopping on the spot. The amplitude fades in and out over the same
+        /// time as the movement hold, so the swap to the idle drawing lands with her at rest.
+        /// The pivot is at her feet: lean and squash never move where she stands.
+        /// </remarks>
+        private void Step(Vector3 delta, bool stepped)
+        {
+            const float strideLength = 0.45f;
+            _motion = Mathf.MoveTowards(_motion, stepped ? 1f : 0f, Clocks.Game / MinaFacing.MovementHold);
+            _stride += new Vector2(delta.x, delta.y).magnitude / strideLength * Mathf.PI;
+
+            var swing = Mathf.Sin(_stride);
+            var planted = 1f - Mathf.Abs(swing);
+            _lift = Mathf.Abs(swing) * 0.045f * _motion;
+
+            var lean = _heading.Facing == MinaVisual.Facing.Side ? (_heading.Left ? 2f : -2f) : 0f;
+            _tilt = (lean + swing * 1.5f) * _motion;
+
+            var squash = 0.025f * planted * _motion;
+            _squash = new Vector2(1f + squash, 1f - squash);
+        }
+
+        /// <summary>For the Editor evidence run only: what the view decided this frame.</summary>
+        public MaidPose Pose => _pose;
+
+        public MinaFacing Heading => _heading;
+
         private void Redraw()
         {
-            var mina = MinaVisual.Chibi(_maid, _pose, _facing);
+            _minaName = MinaVisual.Matches(_maid)
+                ? MinaVisual.NameFor(_pose, _heading.Facing, _heading.Moving) : null;
+            var mina = _minaName != null ? MinaVisual.Chibi(_maid, _minaName) : null;
             _mina = mina != null;
             var suzu = _mina ? null : SuzuVisual.Chibi(_maid, _pose);
             _suzu = suzu != null;
@@ -242,8 +272,16 @@ namespace Neko.Game.View
             var camera = Camera.main;
             var targetHeight = camera != null && camera.orthographic
                 ? 96f * 2f * camera.orthographicSize / 720f : 128f / 96f;
-            if (_mina) _body.transform.localPosition = new Vector3(0f, _lift - targetHeight * 0.5f, 0f);
-            _body.transform.localScale = (_suzu || _mina)
+            if (_mina)
+            {
+                var scale = targetHeight / _body.sprite.bounds.size.y;
+                _body.transform.localPosition = new Vector3(0f, _lift - targetHeight * 0.5f, 0f);
+                _body.transform.localRotation = Quaternion.Euler(0f, 0f, _tilt);
+                _body.transform.localScale = new Vector3(scale * _squash.x, scale * _squash.y, 1f);
+                return;
+            }
+            _body.transform.localRotation = Quaternion.identity;
+            _body.transform.localScale = _suzu
                 ? Vector3.one * (targetHeight / _body.sprite.bounds.size.y) : Vector3.one;
         }
     }

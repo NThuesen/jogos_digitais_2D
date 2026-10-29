@@ -230,6 +230,23 @@ namespace Neko.Game.Core
             EnterHub();
         }
 
+#if UNITY_EDITOR
+        /// <summary>
+        /// Editor evidence runs start from a fixed profile, so two captures play the same day.
+        /// </summary>
+        /// <remarks>
+        /// A new game is otherwise seeded from the clock. Refuses to run outside the isolated
+        /// save and never writes one: nothing here calls <see cref="GameSession.Touch"/>.
+        /// </remarks>
+        internal void StartIsolatedSession(Profile profile)
+        {
+            if (!SaveBridge.Isolated) throw new System.InvalidOperationException("Requires the isolated save.");
+            Session = new GameSession(profile);
+            Bind(Session);
+            EnterHub();
+        }
+#endif
+
         private void Bind(GameSession session)
         {
             Ui.Get<MenuScreen>()?.SetSession(session);
