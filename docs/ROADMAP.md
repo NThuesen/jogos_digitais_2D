@@ -36,3 +36,9 @@
 7. Manter tarefas pequenas, sem infra nova, testes artificiais, mudanças de balanceamento ou publicações sem autorização.
 
 **Evidência de partida:** [observações dos prints de 27/10/2026](roadmap/VISUAL_BASELINE.md). Esses prints foram fornecidos na conversa e **não são arquivos versionados**; o agente que trabalhar no Unity deve obter sua própria captura comparável.
+
+## Trilha paralela: ECON-01A — diagnóstico econômico (autorizado em 29/10/2026)
+
+A preparação do baseline econômico foi autorizada como tarefa **independente** dos marcos de arte/UI acima. Consultar [ECON-01A](roadmap/ECON-01_BASELINE.md) para escopo, gates e validação; checkpoint operacional em [ECON-01_HANDOFF](../.agent/ECON-01_HANDOFF.md). O documento de origem [proposal.md](../proposal.md) é uma **proposta não aprovada de números**, não uma implementação.
+
+**Estado: READY / execução não iniciada.** Esta autorização cobre reprodução do diagnóstico, instrumentação mínima e documentação, **não** mudanças de balanceamento, produto, cenas ou integração em main. As etapas seguintes exigem branches/PRs próprios e aprovação das decisões materiais. A restrição 7 do ciclo visual permanece em vigor para as tarefas visuais.

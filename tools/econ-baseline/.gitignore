@@ -1,0 +1,4 @@
+!EconBaseline.csproj
+bin/
+obj/
+__pycache__/
