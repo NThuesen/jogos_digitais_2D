@@ -68,8 +68,20 @@ namespace Neko.Game.Ui
             image.rectTransform.sizeDelta = new Vector2(size.y * 0.46f, size.y * 0.46f);
             image.preserveAspect = true;
             image.raycastTarget = false;
-            image.sprite = UiKit.Sprites.Layered(MaidSpriteBuilder.Layers(maid, MaidPose.Idle),
+            image.sprite = SuzuVisual.Portrait(maid) ?? UiKit.Sprites.Layered(
+                MaidSpriteBuilder.Layers(maid, MaidPose.Idle),
                 MaidSpriteBuilder.CacheKey(maid, MaidPose.Idle), 128);
+
+            var accessory = SuzuVisual.Matches(maid) ? SuzuVisual.Accessory(maid, UiKit.Sprites) : null;
+            if (accessory != null && SuzuVisual.Portrait(maid) != null)
+            {
+                var ornament = new GameObject("Accessory", typeof(RectTransform)).AddComponent<Image>();
+                ornament.transform.SetParent(image.transform, false);
+                ornament.sprite = accessory;
+                ornament.raycastTarget = false;
+                ornament.rectTransform.sizeDelta = new Vector2(16f * scale, 16f * scale);
+                UiKit.Anchor(ornament.rectTransform, new Vector2(0.5f, 0.18f), Vector2.zero);
+            }
 
             UiKit.Anchor(image.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -6f * scale));
         }

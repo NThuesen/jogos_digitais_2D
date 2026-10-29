@@ -21,6 +21,7 @@ namespace Neko.Game.View
         private SpriteFactory _sprites;
         private SpriteRenderer _body;
         private SpriteRenderer _carried;
+        private SpriteRenderer _accessory;
         private SpriteRenderer _mood;
         private Maid _maid;
         private MaidPose _pose = MaidPose.Idle;
@@ -56,6 +57,12 @@ namespace Neko.Game.View
             var body = new GameObject("Body");
             body.transform.SetParent(go.transform, false);
             view._body = body.AddComponent<SpriteRenderer>();
+
+            var accessory = new GameObject("Accessory");
+            accessory.transform.SetParent(body.transform, false);
+            accessory.transform.localPosition = new Vector3(0f, -0.20f, 0f);
+            accessory.transform.localScale = Vector3.one * 0.18f;
+            view._accessory = accessory.AddComponent<SpriteRenderer>();
 
             var carried = new GameObject("Carried");
             carried.transform.SetParent(go.transform, false);
@@ -124,6 +131,8 @@ namespace Neko.Game.View
             else if (target.x - transform.position.x < -0.02f) _body.flipX = true;
 
             Layers.Apply(_body, Layers.Characters, transform.position.y);
+            _accessory.sortingLayerID = _body.sortingLayerID;
+            _accessory.sortingOrder = _body.sortingOrder + 1;
             Layers.Apply(_carried, Layers.Items, transform.position.y - 0.01f);
             Layers.Apply(_mood, Layers.Fx, transform.position.y);
 
@@ -172,8 +181,16 @@ namespace Neko.Game.View
 
         private void Redraw()
         {
-            _body.sprite = _sprites.Layered(MaidSpriteBuilder.Layers(_maid, _pose),
-                MaidSpriteBuilder.CacheKey(_maid, _pose), 128);
+            var suzu = SuzuVisual.Chibi(_maid, _pose);
+            _body.sprite = suzu != null ? suzu : _sprites.Layered(
+                MaidSpriteBuilder.Layers(_maid, _pose), MaidSpriteBuilder.CacheKey(_maid, _pose), 128);
+            _accessory.sprite = suzu != null ? SuzuVisual.Accessory(_maid, _sprites) : null;
+            // 96 pixels at the 720-pixel reference height, before visual review.
+            var camera = Camera.main;
+            var targetHeight = camera != null && camera.orthographic
+                ? 96f * 2f * camera.orthographicSize / 720f : 128f / 96f;
+            _body.transform.localScale = suzu != null
+                ? Vector3.one * (targetHeight / suzu.bounds.size.y) : Vector3.one;
         }
     }
 }
