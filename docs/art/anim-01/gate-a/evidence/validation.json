@@ -1,0 +1,124 @@
+{
+  "base_commit": "c550e66bb1ab58f59d7d4c766094581873905ba5",
+  "gate_recommendation": "needs_corrections",
+  "aesthetic_approval": "pending_owner",
+  "art_iterations": {
+    "initial_assembly": 1,
+    "focused_correction_rounds": 1
+  },
+  "tests": {
+    "Neko.Sim": {
+      "result": "Passed",
+      "total": 257,
+      "passed": 257,
+      "failed": 0,
+      "start": "2026-10-29T16:58:56.4603402Z",
+      "end": "2026-10-29T16:58:57.0456343Z",
+      "failures": [],
+      "gate_a_tests": [],
+      "xml_sha256": "788e6338f1786d10854b6a3903308d55d60a9f9039a3794ca72ce2ed58b7154b"
+    },
+    "EditMode": {
+      "result": "Failed(Child)",
+      "total": 317,
+      "passed": 315,
+      "failed": 2,
+      "start": "2026-10-29 17:07:07Z",
+      "end": "2026-10-29 17:07:08Z",
+      "failures": [
+        {
+          "name": "Neko.Tests.Game.DocsTests.NoTextureOrAudioFileWasEverImported",
+          "message": "  the README says nothing was imported, and these were: Assets\\_Game\\Resources\\Anim01GateA\\apron.png, Assets\\_Game\\Resources\\Anim01GateA\\back_bow.png, Assets\\_Game\\Resources\\Anim01GateA\\bodice.png, Assets\\_Game\\Resources\\Anim01GateA\\far_cuff.png, Assets\\_Game\\Resources\\Anim01GateA\\far_foot_skin.png, Assets\\_Game\\Resources\\Anim01GateA\\far_forearm.png, Assets\\_Game\\Resources\\Anim01GateA\\far_garter.png, Assets\\_Game\\Resources\\Anim01GateA\\far_hand.png, Assets\\_Game\\Resources\\Anim01GateA\\far_shin.png, Assets\\_Game\\Resources\\Anim01GateA\\far_shoe.png, Assets\\_Game\\Resources\\Anim01GateA\\far_sleeve.png, Assets\\_Game\\Resources\\Anim01GateA\\far_thigh.png, Assets\\_Game\\Resources\\Anim01GateA\\far_upper_arm.png, Assets\\_Game\\Resources\\Anim01GateA\\head.png, Assets\\_Game\\Resources\\Anim01GateA\\near_cuff.png, Assets\\_Game\\Resources\\Anim01GateA\\near_foot_skin.png, Assets\\_Game\\Resources\\Anim01GateA\\near_forearm.png, Assets\\_Game\\Resources\\Anim01GateA\\near_garter.png, Assets\\_Game\\Resources\\Anim01GateA\\near_hand.png, Assets\\_Game\\Resources\\Anim01GateA\\near_shin.png, Assets\\_Game\\Resources\\Anim01GateA\\near_shoe.png, Assets\\_Game\\Resources\\Anim01GateA\\near_sleeve.png, Assets\\_Game\\Resources\\Anim01GateA\\near_thigh.png, Assets\\_Game\\Resources\\Anim01GateA\\near_upper_arm.png, Assets\\_Game\\Resources\\Anim01GateA\\ponytail.png, Assets\\_Game\\Resources\\Anim01GateA\\reference.png, Assets\\_Game\\Resources\\Anim01GateA\\skirt.png, Assets\\_Game\\Resources\\Anim01GateA\\tail_base.png, Assets\\_Game\\Resources\\Anim01GateA\\tail_tip.png, Assets\\_Game\\Resources\\Anim01GateA\\torso_skin.png, Assets\\_Game\\Resources\\Mina\\back.png, Assets\\_Game\\Resources\\Mina\\carry.png, Assets\\_Game\\Resources\\Mina\\idle.png, Assets\\_Game\\Resources\\Mina\\side.png, Assets\\_Game\\Resources\\Mina\\walk.png, Assets\\_Game\\Resources\\Suzu\\carry.png, Assets\\_Game\\Resources\\Suzu\\idle.png, Assets\\_Game\\Resources\\Suzu\\portrait.png, Assets\\_Game\\Resources\\Suzu\\walk.png\n  Expected: <empty>\n  But was:  < \"Assets\\_Game\\Resources\\Anim01GateA\\apron.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\back_bow.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\bodice.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_cuff.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_foot_skin.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_forearm.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_garter.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_hand.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_shin.png\", \"Assets\\_Game\\Resources\\Anim01GateA\\far_shoe.png\"... >\n"
+        },
+        {
+          "name": "Neko.Tests.Game.DocsTests.TheReadmeStatesThatNoAssetWasImported",
+          "message": "  the credits section no longer says there is nothing to credit\n  Expected: True\n  But was:  False\n"
+        }
+      ],
+      "gate_a_tests": [
+        {
+          "name": "Neko.Tests.EditMode.Game.MinaModularKitTests.EveryPartHasOneRendererAndEveryJointUsesItsDeclaredParent",
+          "result": "Passed"
+        },
+        {
+          "name": "Neko.Tests.EditMode.Game.MinaModularKitTests.NeutralResetsAllJointsAndDefinitionRoundTripsWithoutSceneReferences",
+          "result": "Passed"
+        },
+        {
+          "name": "Neko.Tests.EditMode.Game.MinaModularKitTests.PosesMoveDistalLimbsWithoutChangingRootScaleOrSegmentLengths",
+          "result": "Passed"
+        },
+        {
+          "name": "Neko.Tests.EditMode.Game.MinaModularKitTests.RebuildingDoesNotDependOnPreviousPoseOrStaticInstance",
+          "result": "Passed"
+        }
+      ],
+      "xml_sha256": "ac009cf58a07966218d1e863b5d904682ee214df2deed341edf1152cb4b282af"
+    },
+    "PlayMode": {
+      "result": "Passed",
+      "total": 20,
+      "passed": 20,
+      "failed": 0,
+      "start": "2026-10-29 17:09:18Z",
+      "end": "2026-10-29 17:09:32Z",
+      "failures": [],
+      "gate_a_tests": [],
+      "xml_sha256": "bbd9a38096aa6cd70fbc22264d5ead4d9a551e090623dbadaa6a1dd28c8fca51"
+    }
+  },
+  "rendering": {
+    "engine": "Unity 6000.5.9f1",
+    "device": "Intel Iris Xe / Direct3D 12",
+    "capture": "PlayMode Camera.Render to RenderTexture",
+    "resolutions": [
+      [
+        1280,
+        720
+      ],
+      [
+        960,
+        600
+      ]
+    ],
+    "nominal_gameplay_height_px": 100,
+    "enlarged_height_px": [
+      440,
+      350
+    ],
+    "final_capture_exit_code": 0,
+    "actual_target_renders_discarded_per_shot": 12,
+    "webgl": "not_run_gate_a_only",
+    "performance": "not_measured_static_poses_only"
+  },
+  "code_hashes": {
+    "Assets/_Game/Scripts/Game/View/MinaModularKit.cs": "03079cc5941a2c986259c77bb5335331da6e1853dd5596fc75cd49319a755919",
+    "Assets/_Game/Scripts/Game/View/MinaKitGateAHarness.cs": "10cebe711f52098ae2846e3723983e4f33c8c21fc7493504b823ccaad63da4ed",
+    "docs/art/anim-01/gate-a/build_kit.py": "9ba4e7a958768f0d42e7ab4c1644baf45c7b93121d9648efb0875cb352bd6bf8"
+  },
+  "captures": {
+    "correction_round.png": "097737ccb7bc354ffa403c9a3e9d87af4921706be3a3be716abd9384049bca41",
+    "far_leg_forward_1280x720.png": "bbb5b4cdc75f0b7b0235fd21dfd49be7a8a876e29cd8855409dcc242f6c05050",
+    "far_leg_forward_960x600.png": "45c873628be35f8ea5fb96d8a113c49db324840c303aee1d21db690b31f8ea90",
+    "finding_far_leg_forward.png": "8a82906519c19cdf1f650fce18a9cac09b80aae01755f2deab6740b0339eecc4",
+    "finding_opposite_arms.png": "cd3136949f41ab4ff6c16d1a7595775f0f257760b4510edd52b3c68da9d5b56a",
+    "head_rotation_1280x720.png": "852f7f2ec85aa1c30f408d2f6a4bf8be25df5fb40d0523a8152aeecc2005c50e",
+    "head_rotation_960x600.png": "67af5ea89628a09da907c5d4ca43aeab6c25a1db7d41dde79c075da3843eb53a",
+    "joint_flexion_1280x720.png": "fa40245d4e66efe4cb13d47b8bae8eb68b01685137292e49620fd9e99d61125b",
+    "joint_flexion_960x600.png": "9894997d3000bdbd8ceeea43cba704f3b9321f437d78f6914335390cef0ef3fb",
+    "near_leg_forward_1280x720.png": "df01c81ee42a5dc6033867decf31f45633c6fff872d60079b3206d7b2bbce219",
+    "near_leg_forward_960x600.png": "93a45150c2d1236bb6a687309133372b98108fc3a0d8eeb7252a1c2118cb1000",
+    "neutral_1280x720.png": "745fb9d72f8a889e10b8ef43bc564901de7d17a99a97fae611d1223a9461d2b6",
+    "neutral_960x600.png": "d73f4b1f93a505e8dd28fa22019ac3505bc2b9297631b5fe2335e4ebeaee9343",
+    "occlusion_1280x720.png": "3a3dd30393178dd48e8d36748d8095b9c2d19e34423d1e964bea59e2efd8dd8e",
+    "occlusion_960x600.png": "8abad383e063f3cbf18fad691cd825db0860c049a3d02b9a07aa795308462f52",
+    "opposite_arms_1280x720.png": "b211c0152373803a0c6db43349b8fddaae2f967bcd0f80016de61d69bd104f49",
+    "opposite_arms_960x600.png": "a7bdffed3966c815dc471351395b3b88454b822750703034c771611090a25209",
+    "poses_1280x720.png": "1dd5956d2f0c794ea739ec70b52f7c0c7c8f3f1c4e5bc27566e350ac87269f92",
+    "poses_960x600.png": "0d3e82b266b2133cd62c12136afdbb7b466dc755ad852a286c694d29eed3f281"
+  },
+  "reproduction": {
+    "full_rebuild": "byte_identical",
+    "files": 31
+  }
+}

@@ -1,0 +1,2 @@
+PASS: 7 static articulated poses x 2 resolutions; independent temporary scene; no GameRoot or save calls.
+Aesthetic approval pending. No walking or equipment integration.

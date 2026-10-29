@@ -1,0 +1,417 @@
+{
+    "pose": "opposite_arms_960x600",
+    "width": 960,
+    "height": 600,
+    "renderers": 29,
+    "rootPosition": {
+        "x": -259.20001220703127,
+        "y": -200.0,
+        "z": 0.0
+    },
+    "rootScale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+    },
+    "joints": [
+        {
+            "name": "root",
+            "parent": "Mina Gate A — modular side kit",
+            "localPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -259.20001220703127,
+                "y": -200.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "pelvis",
+            "parent": "root",
+            "localPosition": {
+                "x": 0.05446808412671089,
+                "y": 0.36000001430511477,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -253.75320434570313,
+                "y": -164.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "torso",
+            "parent": "pelvis",
+            "localPosition": {
+                "x": 0.012765957042574883,
+                "y": 0.15744680166244508,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -252.4766082763672,
+                "y": -148.25531005859376,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "head",
+            "parent": "torso",
+            "localPosition": {
+                "x": 0.01702127605676651,
+                "y": 0.13361702859401704,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -250.77447509765626,
+                "y": -134.89361572265626,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "ponytail",
+            "parent": "head",
+            "localPosition": {
+                "x": -0.11744681000709534,
+                "y": 0.1872340440750122,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -262.5191650390625,
+                "y": -116.17021179199219,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "headwear_socket",
+            "parent": "head",
+            "localPosition": {
+                "x": -0.009361702017486096,
+                "y": 0.26127660274505618,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -251.7106475830078,
+                "y": -108.76595306396485,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "tail_base",
+            "parent": "pelvis",
+            "localPosition": {
+                "x": -0.1863829791545868,
+                "y": 0.08595744520425797,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -272.3915100097656,
+                "y": -155.4042510986328,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "tail_tip",
+            "parent": "tail_base",
+            "localPosition": {
+                "x": -0.11063829809427262,
+                "y": 0.11148936301469803,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -283.455322265625,
+                "y": -144.25531005859376,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "near_upper_arm",
+            "parent": "torso",
+            "localPosition": {
+                "x": -0.04851063713431358,
+                "y": 0.07404255121946335,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 337.0
+            },
+            "worldPosition": {
+                "x": -257.3276672363281,
+                "y": -140.85105895996095,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "near_forearm",
+            "parent": "near_upper_arm",
+            "localPosition": {
+                "x": -0.051914893090724948,
+                "y": -0.0936170220375061,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 12.0
+            },
+            "worldPosition": {
+                "x": -265.7643737792969,
+                "y": -147.44007873535157,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "near_hand",
+            "parent": "near_forearm",
+            "localPosition": {
+                "x": -0.03234042599797249,
+                "y": -0.07234042882919312,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -270.3193054199219,
+                "y": -153.92413330078126,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "far_upper_arm",
+            "parent": "torso",
+            "localPosition": {
+                "x": 0.07319148629903794,
+                "y": 0.0034042552579194309,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 23.0
+            },
+            "worldPosition": {
+                "x": -245.15745544433595,
+                "y": -147.91488647460938,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "far_forearm",
+            "parent": "far_upper_arm",
+            "localPosition": {
+                "x": 0.03744680806994438,
+                "y": -0.04765957593917847,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 348.0
+            },
+            "worldPosition": {
+                "x": -239.84825134277345,
+                "y": -150.8388214111328,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "far_hand",
+            "parent": "far_forearm",
+            "localPosition": {
+                "x": 0.05531914904713631,
+                "y": -0.0331914909183979,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -233.78465270996095,
+                "y": -153.04144287109376,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "near_thigh",
+            "parent": "pelvis",
+            "localPosition": {
+                "x": -0.03914893791079521,
+                "y": -0.010212766006588936,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -257.6680908203125,
+                "y": -165.02127075195313,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "near_shin",
+            "parent": "near_thigh",
+            "localPosition": {
+                "x": -0.013617021031677723,
+                "y": -0.09617020934820175,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -259.02978515625,
+                "y": -174.63829040527345,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "near_foot",
+            "parent": "near_shin",
+            "localPosition": {
+                "x": -0.03404255211353302,
+                "y": -0.11999999731779099,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -262.4340515136719,
+                "y": -186.63829040527345,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "far_thigh",
+            "parent": "pelvis",
+            "localPosition": {
+                "x": 0.025531914085149766,
+                "y": -0.021276595070958139,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -251.20001220703126,
+                "y": -166.12765502929688,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "far_shin",
+            "parent": "far_thigh",
+            "localPosition": {
+                "x": 0.011063829995691777,
+                "y": -0.08340425789356232,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -250.0936279296875,
+                "y": -174.46807861328126,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "far_foot",
+            "parent": "far_shin",
+            "localPosition": {
+                "x": -0.061276596039533618,
+                "y": -0.11319149285554886,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -256.2212829589844,
+                "y": -185.7872314453125,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "accessory_socket",
+            "parent": "torso",
+            "localPosition": {
+                "x": 0.04340425506234169,
+                "y": 0.02042553201317787,
+                "z": 0.0
+            },
+            "localEulerAngles": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "worldPosition": {
+                "x": -248.1361846923828,
+                "y": -146.2127685546875,
+                "z": 0.0
+            }
+        }
+    ]
+}

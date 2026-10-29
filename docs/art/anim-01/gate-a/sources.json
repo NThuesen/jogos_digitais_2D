@@ -1,0 +1,55 @@
+{
+  "base_commit": "c550e66bb1ab58f59d7d4c766094581873905ba5",
+  "preferred": "v01_chibi_side_b_v2.png",
+  "sources": [
+    {
+      "file": "lado.png",
+      "origin": "Owner-supplied Downloads original",
+      "sha256": "76671b8ecee8ff393a42e79e864daa851d2b41d7b65d987d574c582cb795b8a7",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "costas.png",
+      "origin": "Owner-supplied Downloads original",
+      "sha256": "c172c802dc819aae7950e9732e6c0239a4b4d96f76114636945c270ee3398a79",
+      "width": 1216,
+      "height": 1294
+    },
+    {
+      "file": "v01_chibi_idle.png",
+      "origin": "Owner-supplied Downloads original",
+      "sha256": "17bbed23b01c29663e05118e6ff0d0ae855aa8ccc46a3aff6b8bb3daf32ed076",
+      "width": 1214,
+      "height": 1295
+    },
+    {
+      "file": "v01_chibi_walk.png",
+      "origin": "Owner-supplied Downloads original",
+      "sha256": "3550188df131198432bf6682dc9c84d4e42c6f16196225d2761c17a1e7d9633b",
+      "width": 1214,
+      "height": 1295
+    },
+    {
+      "file": "v01_chibi_carry.png",
+      "origin": "Owner-supplied Downloads original",
+      "sha256": "c36bc314a85175d695652c46840b995cf63ae56ccf5381fa29515490eb066877",
+      "width": 1225,
+      "height": 1284
+    },
+    {
+      "file": "v01_chibi_side_b_v2.png",
+      "origin": "Owner-supplied Downloads original",
+      "sha256": "a45719109af54742a95d14b8ef391bbf29e14f0d02b2222ae5c5c039ee6e411a",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "v01_chibi_back_b_v2.png",
+      "origin": "Owner-supplied Downloads original",
+      "sha256": "3bd84082edfb490e96ea8ed71e305615d647b1b844634895782c8c81a1d39426",
+      "width": 1216,
+      "height": 1293
+    }
+  ]
+}

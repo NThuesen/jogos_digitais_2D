@@ -1,0 +1,131 @@
+[
+  {
+    "tool": "image_compare",
+    "arguments": {
+      "before": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/Logs/anim01/offline/reference_matte.png",
+      "after": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/Logs/anim01/offline/neutral_matte.png"
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "0.58% of pixels changed by more than 2.0%.\nMean absolute difference: 0.22 of 255.\nChanges are bounded by x 337..909, y 191..1073."
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_contact_sheet",
+    "arguments": {
+      "paths": [
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/neutral_1280x720.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/near_leg_forward_1280x720.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/far_leg_forward_1280x720.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/opposite_arms_1280x720.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/joint_flexion_1280x720.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/head_rotation_1280x720.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/occlusion_1280x720.png"
+      ],
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/poses_1280x720.png",
+      "columns": 2,
+      "zoom": 0.75
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/poses_1280x720.png (1944x2200)\n1. neutral_1280x720.png\n2. near_leg_forward_1280x720.png\n3. far_leg_forward_1280x720.png\n4. opposite_arms_1280x720.png\n5. joint_flexion_1280x720.png\n6. head_rotation_1280x720.png\n7. occlusion_1280x720.png"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_contact_sheet",
+    "arguments": {
+      "paths": [
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/neutral_960x600.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/near_leg_forward_960x600.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/far_leg_forward_960x600.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/opposite_arms_960x600.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/joint_flexion_960x600.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/head_rotation_960x600.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/occlusion_960x600.png"
+      ],
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/poses_960x600.png",
+      "columns": 2,
+      "zoom": 0.75
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/poses_960x600.png (1464x1840)\n1. neutral_960x600.png\n2. near_leg_forward_960x600.png\n3. far_leg_forward_960x600.png\n4. opposite_arms_960x600.png\n5. joint_flexion_960x600.png\n6. head_rotation_960x600.png\n7. occlusion_960x600.png"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_contact_sheet",
+    "arguments": {
+      "paths": [
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/initial/opposite_arms_1280x720.png",
+        "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/opposite_arms_1280x720.png"
+      ],
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/correction_round.png",
+      "columns": 1,
+      "zoom": 1
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/correction_round.png (1296x1464)\n1. opposite_arms_1280x720.png\n2. opposite_arms_1280x720.png"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/opposite_arms_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/finding_opposite_arms.png",
+      "crop": {
+        "x": 950,
+        "y": 355,
+        "width": 205,
+        "height": 155
+      },
+      "zoom": 3
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/finding_opposite_arms.png (615x465)"
+        }
+      ]
+    }
+  },
+  {
+    "tool": "image_convert",
+    "arguments": {
+      "path": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/far_leg_forward_1280x720.png",
+      "output": "C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/finding_far_leg_forward.png",
+      "crop": {
+        "x": 980,
+        "y": 465,
+        "width": 160,
+        "height": 145
+      },
+      "zoom": 3
+    },
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Wrote C:/dev/PocketSlop-Games/neko-anim01-gate-a/docs/art/anim-01/gate-a/captures/finding_far_leg_forward.png (480x435)"
+        }
+      ]
+    }
+  }
+]

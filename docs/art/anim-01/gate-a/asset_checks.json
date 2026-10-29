@@ -1,0 +1,8 @@
+{
+  "foreground_pixels": 409973,
+  "boundary_pixels_assigned_to_nearest_region": 2302,
+  "unassigned_foreground": 0,
+  "parts": 29,
+  "different_matted_pixels_over_10": 8619,
+  "note": "Difference includes hidden overlap reconstruction; not aesthetic acceptance."
+}
