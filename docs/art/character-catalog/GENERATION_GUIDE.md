@@ -1,0 +1,9 @@
+# Sessão de geração no ChatGPT web
+
+1. Abra o [índice](INDEX.md). Comece por v01–v09 para comparar as nove pistas; depois v10–v18 para alternativas. Suzu já é a primeira referência artística: não a regenere como novo conceito.
+2. Baixe a [âncora geral de estilo](../art-01/D-pixel-cafe/reference/style_anchor_reference.png). Abra um chat por imagem. Na ficha escolhida, anexe a âncora, copie o D0 inteiro e gere uma única imagem. D0 aqui é um único corpo inteiro de referência, não uma prancha de múltiplas vistas. Salve o original com o nome indicado na ficha.
+3. Examine o D0 com o [checklist](REVIEW_CHECKLIST.md); só prossiga com uma versão que você queira usar como referência. Anexe âncora e D0 ao D1 e depois ao idle. Para walk e carry, anexe também o idle escolhido. Copie cada prompt integralmente; gere uma imagem por chat e salve cada original com o nome indicado.
+4. Compare portrait e chibis lado a lado. Se vier prancha, peça uma vez: “Regenerate as one standalone image, no panels, no labels.” Se persistir, registre a falha e passe ao próximo. Não há promessa de alfa real ou grade perfeita. Walk e carry são poses estáticas, não ciclos.
+5. Preserve os originais e informe quais versões quer revisar. Os nomes de saída são sugestões futuras; nenhum desses arquivos existe neste catálogo ainda. A geração depende dos limites disponíveis na conta web, sem solicitar pagamento adicional.
+
+A referência Suzu: [sheet](../art-01/D-pixel-cafe/incoming/D0_suzu_sheet.png), [portrait](../art-01/D-pixel-cafe/incoming/D1_portrait.png), [chibis](../art-01/D-pixel-cafe/incoming/D2_chibi_poses.png). Use a âncora geral como referência de estilo, sem copiar sua personagem ou composição.
