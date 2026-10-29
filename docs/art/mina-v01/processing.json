@@ -1,0 +1,52 @@
+{
+  "idle": {
+    "source": "v01_chibi_idle.png",
+    "sha256": "17bbed23b01c29663e05118e6ff0d0ae855aa8ccc46a3aff6b8bb3daf32ed076",
+    "crop": [
+      219,
+      46,
+      1026,
+      1274
+    ]
+  },
+  "walk": {
+    "source": "v01_chibi_walk.png",
+    "sha256": "3550188df131198432bf6682dc9c84d4e42c6f16196225d2761c17a1e7d9633b",
+    "crop": [
+      153,
+      38,
+      1037,
+      1267
+    ]
+  },
+  "carry": {
+    "source": "v01_chibi_carry.png",
+    "sha256": "c36bc314a85175d695652c46840b995cf63ae56ccf5381fa29515490eb066877",
+    "crop": [
+      194,
+      25,
+      1031,
+      1263
+    ]
+  },
+  "side": {
+    "source": "lado.png",
+    "sha256": "76671b8ecee8ff393a42e79e864daa851d2b41d7b65d987d574c582cb795b8a7",
+    "crop": [
+      178,
+      37,
+      1041,
+      1217
+    ]
+  },
+  "back": {
+    "source": "costas.png",
+    "sha256": "c172c802dc819aae7950e9732e6c0239a4b4d96f76114636945c270ee3398a79",
+    "crop": [
+      243,
+      29,
+      973,
+      1266
+    ]
+  }
+}

@@ -24,10 +24,16 @@ namespace Neko.Game.View
         private SpriteRenderer _accessory;
         private UnityEngine.Rendering.SortingGroup _bodyGroup;
         private bool _suzu;
+        private bool _mina;
+        private MinaVisual.Facing _facing;
+        private bool _left;
+        private float _directionHold;
+        private float _movementHold;
         private SpriteRenderer _mood;
         private Maid _maid;
         private MaidPose _pose = MaidPose.Idle;
         private float _bob;
+        private float _lift;
         private Vector3 _lastPosition;
 
         /// <summary>
@@ -111,7 +117,33 @@ namespace Neko.Game.View
             if (Worker == null) return;
 
             var target = new Vector3(Worker.X, Worker.Y, 0f) + _offset;
-            var moving = (target - _lastPosition).sqrMagnitude > 1e-5f;
+            var delta = target - _lastPosition;
+            var moving = delta.sqrMagnitude > 1e-5f;
+            var directionChanged = false;
+            if (MinaVisual.Matches(_maid))
+            {
+                _directionHold = Mathf.Max(0f, _directionHold - Clocks.Game);
+                if (moving)
+                {
+                    _movementHold = 0.12f;
+                    var horizontal = Mathf.Abs(delta.x);
+                    var vertical = Mathf.Abs(delta.y);
+                    // Hysteresis prevents near-diagonal movement from alternating axes.
+                    var side = _facing == MinaVisual.Facing.Side
+                        ? horizontal > vertical * 0.8f : horizontal > vertical * 1.25f;
+                    var facing = side ? MinaVisual.Facing.Side :
+                        delta.y > 0f ? MinaVisual.Facing.Back : MinaVisual.Facing.Front;
+                    if (_directionHold <= 0f && (facing != _facing || (side && _left != (delta.x < 0f))))
+                    {
+                        _facing = facing;
+                        _left = delta.x < 0f;
+                        _directionHold = 0.15f;
+                        directionChanged = true;
+                    }
+                }
+                else _movementHold = Mathf.Max(0f, _movementHold - Clocks.Game);
+                moving = moving || _movementHold > 0f;
+            }
 
             // Smoothed rather than snapped: the simulation ticks in whole frames and a worker
             // crossing a tile in two of them looks like a teleport otherwise.
@@ -119,7 +151,7 @@ namespace Neko.Game.View
             _lastPosition = target;
 
             var pose = PoseFor(moving);
-            if (pose != _pose)
+            if (pose != _pose || directionChanged)
             {
                 _pose = pose;
                 Redraw();
@@ -128,10 +160,12 @@ namespace Neko.Game.View
             // A walk bob. Four lines, and the difference between a sprite sliding and a
             // person walking.
             _bob = moving ? _bob + Clocks.Game * 11f : 0f;
-            var lift = moving ? Mathf.Abs(Mathf.Sin(_bob)) * 0.07f : 0f;
-            _body.transform.localPosition = new Vector3(0f, lift, 0f);
+            _lift = moving ? Mathf.Abs(Mathf.Sin(_bob)) * 0.07f : 0f;
+            _body.transform.localPosition = new Vector3(0f, _lift, 0f);
 
-            if (target.x - transform.position.x > 0.02f) _body.flipX = false;
+            if (_mina) _body.flipX = _facing == MinaVisual.Facing.Side && _left &&
+                _pose != MaidPose.Carry && _pose != MaidPose.Cook && _pose != MaidPose.Tired;
+            else if (target.x - transform.position.x > 0.02f) _body.flipX = false;
             else if (target.x - transform.position.x < -0.02f) _body.flipX = true;
 
             SyncScale();
@@ -146,14 +180,14 @@ namespace Neko.Game.View
             Layers.Apply(_carried, Layers.Items, transform.position.y - 0.01f);
             Layers.Apply(_mood, Layers.Fx, transform.position.y);
 
-            _carried.enabled = Worker.Carrying;
+            _carried.enabled = Worker.Carrying && !(_mina && _pose == MaidPose.Carry);
             SyncMood();
         }
 
         public void ShowCarried(Sprite sprite)
         {
             _carried.sprite = sprite;
-            _carried.enabled = sprite != null;
+            _carried.enabled = sprite != null && !(_mina && _pose == MaidPose.Carry);
             if (sprite != null) Tween.Punch(_carried.transform, 0.3f, 0.2f);
         }
 
@@ -191,10 +225,12 @@ namespace Neko.Game.View
 
         private void Redraw()
         {
-            var suzu = SuzuVisual.Chibi(_maid, _pose);
+            var mina = MinaVisual.Chibi(_maid, _pose, _facing);
+            _mina = mina != null;
+            var suzu = _mina ? null : SuzuVisual.Chibi(_maid, _pose);
             _suzu = suzu != null;
             _bodyGroup.enabled = _suzu;
-            _body.sprite = suzu != null ? suzu : _sprites.Layered(
+            _body.sprite = _mina ? mina : suzu != null ? suzu : _sprites.Layered(
                 MaidSpriteBuilder.Layers(_maid, _pose), MaidSpriteBuilder.CacheKey(_maid, _pose), 128);
             _accessory.sprite = suzu != null ? SuzuVisual.Accessory(_maid, _sprites) : null;
             SyncScale();
@@ -206,7 +242,8 @@ namespace Neko.Game.View
             var camera = Camera.main;
             var targetHeight = camera != null && camera.orthographic
                 ? 96f * 2f * camera.orthographicSize / 720f : 128f / 96f;
-            _body.transform.localScale = _suzu
+            if (_mina) _body.transform.localPosition = new Vector3(0f, _lift - targetHeight * 0.5f, 0f);
+            _body.transform.localScale = (_suzu || _mina)
                 ? Vector3.one * (targetHeight / _body.sprite.bounds.size.y) : Vector3.one;
         }
     }

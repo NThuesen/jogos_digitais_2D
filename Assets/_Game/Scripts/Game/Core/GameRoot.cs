@@ -77,6 +77,7 @@ namespace Neko.Game.Core
             Tween.KillAll();
             Sprites?.Clear();
             SuzuVisual.Clear();
+            MinaVisual.Clear();
             if (Instance == this) Instance = null;
         }
 
