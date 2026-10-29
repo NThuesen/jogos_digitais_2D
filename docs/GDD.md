@@ -248,8 +248,14 @@ a mediana.
 ## 8. Efeitos visuais e polimento gráfico
 
 **Nenhuma imagem é importada.** Dezessete formas geradas por campos de distância compõem
-tudo — maids, clientes, móveis, ícones, o letreiro. Uma maid é uma pilha de camadas tingidas,
-e é por isso que o vestuário é visível: equipar uma peça troca uma camada.
+maids, clientes, ícones e o letreiro. Uma maid é uma pilha de camadas tingidas, e é por isso
+que o vestuário é visível: equipar uma peça troca uma camada.
+
+Os **móveis** são pixel art pintada em código (`FurnitureArt`), na direção cozy aceita:
+vista de três quartos, 32 pixels por tile ampliados por um fator inteiro, sombras puxadas
+para o violeta e contorno escuro na cor de cada peça. O que é alto sobe além das próprias
+células e é ordenado pela fileira da frente; tapete e lago ficam por baixo de tudo. A cor de
+cada peça continua vindo do catálogo, e a Loja e o Salão mostram o mesmo desenho do café.
 
 **Direção visual aprovada (ainda não implementada):** cada identidade de maid deverá ter
 um **portrait expressivo para o card** e um **chibi legível para o restaurante**, com

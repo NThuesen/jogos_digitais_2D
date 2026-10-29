@@ -110,11 +110,14 @@ namespace Neko.Game.Ui
 
                 var icon = new GameObject("Icon", typeof(RectTransform)).AddComponent<Image>();
                 icon.transform.SetParent(card, false);
-                icon.rectTransform.sizeDelta = new Vector2(52f, 52f);
-                icon.rectTransform.anchoredPosition = new Vector2(0f, 16f);
+                icon.rectTransform.sizeDelta = new Vector2(64f, 58f);
+                icon.rectTransform.anchoredPosition = new Vector2(0f, 14f);
                 icon.raycastTarget = false;
-                icon.sprite = UiKit.Sprites.Get(new ShapeSpec(Shapes.Parse(def.ShapeId),
-                    Palette.Hex(def.TintHex), Palette.Ink, 0.05f));
+
+                // The same picture the room draws, not a stand-in shape, so what is picked up
+                // here is visibly what goes down on the floor.
+                icon.sprite = UiKit.Sprites.Furniture(def, def.Width, def.Height);
+                icon.preserveAspect = true;
 
                 var label = UiKit.Label(card, def.DisplayName + " ×" + pair.Value, Typeface.Tiny,
                     Palette.Text);

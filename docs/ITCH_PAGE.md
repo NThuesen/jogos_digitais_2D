@@ -88,9 +88,9 @@ E a conta é honesta nos dois sentidos: a lendária custa **210 por dia** de sal
 
 Não existe um único arquivo de imagem ou de som neste projeto.
 
-- **Toda a arte** é gerada em tempo de execução a partir de dezessete campos de distância.
-  Uma maid é uma pilha de camadas tingidas; o letreiro do menu são retângulos arredondados
-  e dois triângulos.
+- **Toda a arte** é gerada em tempo de execução. Personagens e ícones saem de dezessete
+  campos de distância: uma maid é uma pilha de camadas tingidas; o letreiro do menu são
+  retângulos arredondados e dois triângulos. Os móveis são pixel art pintada em código.
 - **Todo o áudio** — 26 sons — é sintetizado por um script do repositório, que descreve cada
   som como uma pilha de vozes e escreve o `.wav`. O mesmo comando produz sempre os mesmos
   bytes.
