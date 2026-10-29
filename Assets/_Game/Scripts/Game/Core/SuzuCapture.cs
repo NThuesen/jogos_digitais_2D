@@ -16,6 +16,22 @@ namespace Neko.Game.Core
     // Explicit, Editor-only evidence run. Never enabled in the player or ordinary boot.
     public sealed class SuzuCapture : MonoBehaviour
     {
+        private float _deadline;
+        private void Awake()
+        {
+            _deadline = Time.realtimeSinceStartup + 150f;
+            Application.logMessageReceived += OnLog;
+        }
+        private void OnDestroy() => Application.logMessageReceived -= OnLog;
+        private void Update()
+        {
+            if (Time.realtimeSinceStartup > _deadline) EditorApplication.Exit(1);
+        }
+        private void OnLog(string message, string stack, LogType type)
+        {
+            if (type == LogType.Exception || type == LogType.Error) EditorApplication.Exit(1);
+        }
+
         public static void Begin()
         {
             if (!Application.isBatchMode || !SaveBridge.Isolated)
@@ -75,12 +91,20 @@ namespace Neko.Game.Core
                 var texture = new Texture2D(size.x, size.y, TextureFormat.RGB24, false);
                 var previous = RenderTexture.active;
                 var previousTarget = camera.targetTexture;
-                var previousAspect = camera.aspect;
+
                 try
                 {
                     camera.targetTexture = target;
                     camera.aspect = (float)size.x / size.y;
                     for (var i = 0; i < 12; i++) yield return null;
+                    if (name.StartsWith("restaurant"))
+                    {
+                        var expected = name.Contains("movement") ? "Suzu_walk" : "Suzu_idle";
+                        var view = UnityEngine.Object.FindObjectsByType<MaidView>(FindObjectsInactive.Exclude)
+                            .First(v => v.Worker.Name == "Suzu");
+                        while (view.transform.Find("Body").GetComponent<SpriteRenderer>().sprite.name != expected)
+                            yield return null;
+                    }
                     Canvas.ForceUpdateCanvases();
                     camera.Render();
                     RenderTexture.active = target;
@@ -98,7 +122,7 @@ namespace Neko.Game.Core
                 finally
                 {
                     camera.targetTexture = previousTarget;
-                    camera.aspect = previousAspect;
+                    camera.ResetAspect();
                     RenderTexture.active = previous;
                     UnityEngine.Object.Destroy(texture);
                     UnityEngine.Object.Destroy(target);

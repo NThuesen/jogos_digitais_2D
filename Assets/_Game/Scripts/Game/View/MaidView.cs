@@ -22,6 +22,8 @@ namespace Neko.Game.View
         private SpriteRenderer _body;
         private SpriteRenderer _carried;
         private SpriteRenderer _accessory;
+        private UnityEngine.Rendering.SortingGroup _bodyGroup;
+        private bool _suzu;
         private SpriteRenderer _mood;
         private Maid _maid;
         private MaidPose _pose = MaidPose.Idle;
@@ -57,6 +59,8 @@ namespace Neko.Game.View
             var body = new GameObject("Body");
             body.transform.SetParent(go.transform, false);
             view._body = body.AddComponent<SpriteRenderer>();
+            view._bodyGroup = body.AddComponent<UnityEngine.Rendering.SortingGroup>();
+            view._bodyGroup.enabled = false;
 
             var accessory = new GameObject("Accessory");
             accessory.transform.SetParent(body.transform, false);
@@ -130,7 +134,13 @@ namespace Neko.Game.View
             if (target.x - transform.position.x > 0.02f) _body.flipX = false;
             else if (target.x - transform.position.x < -0.02f) _body.flipX = true;
 
+            SyncScale();
             Layers.Apply(_body, Layers.Characters, transform.position.y);
+            if (_suzu)
+            {
+                _bodyGroup.sortingOrder = _body.sortingOrder;
+                _body.sortingOrder = 0;
+            }
             _accessory.sortingLayerID = _body.sortingLayerID;
             _accessory.sortingOrder = _body.sortingOrder + 1;
             Layers.Apply(_carried, Layers.Items, transform.position.y - 0.01f);
@@ -182,15 +192,22 @@ namespace Neko.Game.View
         private void Redraw()
         {
             var suzu = SuzuVisual.Chibi(_maid, _pose);
+            _suzu = suzu != null;
+            _bodyGroup.enabled = _suzu;
             _body.sprite = suzu != null ? suzu : _sprites.Layered(
                 MaidSpriteBuilder.Layers(_maid, _pose), MaidSpriteBuilder.CacheKey(_maid, _pose), 128);
             _accessory.sprite = suzu != null ? SuzuVisual.Accessory(_maid, _sprites) : null;
+            SyncScale();
+        }
+
+        private void SyncScale()
+        {
             // 96 pixels at the 720-pixel reference height, before visual review.
             var camera = Camera.main;
             var targetHeight = camera != null && camera.orthographic
                 ? 96f * 2f * camera.orthographicSize / 720f : 128f / 96f;
-            _body.transform.localScale = suzu != null
-                ? Vector3.one * (targetHeight / suzu.bounds.size.y) : Vector3.one;
+            _body.transform.localScale = _suzu
+                ? Vector3.one * (targetHeight / _body.sprite.bounds.size.y) : Vector3.one;
         }
     }
 }

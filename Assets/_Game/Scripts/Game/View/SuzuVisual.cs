@@ -40,7 +40,11 @@ namespace Neko.Game.View
         public static void Clear()
         {
             foreach (var sprite in Sprites.Values)
-                if (sprite != null) Object.Destroy(sprite);
+                if (sprite != null)
+                {
+                    if (Application.isPlaying) Object.Destroy(sprite);
+                    else Object.DestroyImmediate(sprite);
+                }
             Sprites.Clear();
         }
 
