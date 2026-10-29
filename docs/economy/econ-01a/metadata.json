@@ -1,0 +1,10 @@
+{
+  "production_commit": "7d42ab1f7dd3981c56defdd0b3edaee08918749f",
+  "step_seconds": 0.05,
+  "max_days": 50,
+  "rows": 5028,
+  "days_sha256": "66141d3b1f45f8645ee0e060ce4c4b2e5930b4714627bcd8cae1e3da46512985",
+  "production_sources_sha256": "3667a2f538fe8d112be51c055bda2938461665543b3fe8de3e33deaf3dc49dd2",
+  "harness_sha256": "843c723d439959e8964bae94f9b6cf0418314d0179de7be9c22090c183243fe1",
+  "seed_checks": "PASS: expected seed sets, unique day-one shift seeds and opener fingerprints in each scenario"
+}
