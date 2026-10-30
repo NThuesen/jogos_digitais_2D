@@ -48,6 +48,7 @@ tools/clean.sh                   # quebra o loop de crash e limpa 1,5 GB de cach
 | `docs/ARCHITECTURE.md` | os limites técnicos e a organização real do jogo |
 | `docs/ITCH_PAGE.md` | texto e instruções para publicar a build |
 | `docs/art/prompt-pipeline/README.md` | prompts completos de 9 maids, tutoriais de anexos e pipeline ChatGPT → Tencent (candidatos) |
+| [`art_working/`](art_working/README.md) | destino dos frames PNG exportados pelo Blender, separado por maid e animação; arquivos brutos ignorados pelo Git |
 | `tools/` | os scripts acima |
 
 ## Trabalho com agentes
