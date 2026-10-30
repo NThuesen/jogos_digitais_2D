@@ -47,6 +47,7 @@ tools/clean.sh                   # quebra o loop de crash e limpa 1,5 GB de cach
 | `docs/GDD.md` | o documento de design, por rubrica |
 | `docs/ARCHITECTURE.md` | os limites técnicos e a organização real do jogo |
 | `docs/ITCH_PAGE.md` | texto e instruções para publicar a build |
+| `docs/art/prompt-pipeline/README.md` | prompts completos de 9 maids, tutoriais de anexos e pipeline ChatGPT → Tencent (candidatos) |
 | `tools/` | os scripts acima |
 
 ## Trabalho com agentes
