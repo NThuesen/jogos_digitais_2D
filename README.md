@@ -81,9 +81,11 @@ trabalho em grupo isso significa que ninguém resolve conflito de merge em YAML 
 Nenhuma imagem e nenhum som foram importados neste projeto. Não existe um único arquivo de
 textura em `Assets/`.
 
-- **Toda a arte** é gerada em tempo de execução a partir de dezessete campos de distância em
-  `Assets/_Game/Scripts/Game/Art/ShapeRasteriser.cs`. Uma maid é uma pilha de camadas
-  tingidas; o letreiro do menu é um conjunto de retângulos arredondados e dois triângulos.
+- **Toda a arte** é gerada em tempo de execução. Personagens, ícones e o letreiro saem de
+  dezessete campos de distância em `Assets/_Game/Scripts/Game/Art/ShapeRasteriser.cs`: uma
+  maid é uma pilha de camadas tingidas; o letreiro do menu é um conjunto de retângulos
+  arredondados e dois triângulos. Os móveis são pixel art pintada pixel a pixel em código, em
+  `Assets/_Game/Scripts/Game/Art/FurnitureArt.cs`.
 - **Todo o áudio** é sintetizado por `tools/synthesise-audio.sh`, que descreve cada som como
   uma pilha de vozes — forma de onda, varredura de altura, envelope, filtro, vibrato — e
   escreve o `.wav`. O mesmo comando sempre produz os mesmos bytes.

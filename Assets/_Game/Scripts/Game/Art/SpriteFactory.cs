@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Neko.Sim.Cafe;
 using UnityEngine;
 
 namespace Neko.Game.Art
@@ -59,6 +60,27 @@ namespace Neko.Game.Art
             return sprite;
         }
 
+        /// <summary>
+        /// A piece of furniture, painted for the footprint it is standing on.
+        /// </summary>
+        /// <remarks>
+        /// Keyed on the footprint as well as the piece, because a table turned on end is a
+        /// different drawing rather than the same one stretched. One tile is one world unit:
+        /// the painter works at <see cref="FurnitureArt.TilePixels"/> and scales by
+        /// <see cref="FurnitureArt.Scale"/>, which lands exactly on <see cref="PixelsPerUnit"/>.
+        /// </remarks>
+        public Sprite Furniture(PlaceableDef def, int widthTiles, int heightTiles)
+        {
+            var key = "furniture#" + (def?.Id ?? "-") + "#" + widthTiles + "x" + heightTiles;
+            if (_cache.TryGetValue(key, out var cached) && cached != null) return cached;
+
+            var picture = FurnitureArt.Paint(def, widthTiles, heightTiles);
+            var sprite = Build(picture.Pixels, picture.Width, picture.Height, picture.Pivot, key,
+                FurnitureArt.TilePixels * FurnitureArt.Scale);
+            _cache[key] = sprite;
+            return sprite;
+        }
+
         /// <summary>A flat rectangle. Panels, bars and the floor are all this.</summary>
         public Sprite Solid(Color colour)
         {
@@ -103,9 +125,13 @@ namespace Neko.Game.Art
         }
 
         private static Sprite Build(Color32[] pixels, int size, string name,
-            float pixelsPerUnit = PixelsPerUnit)
+            float pixelsPerUnit = PixelsPerUnit) =>
+            Build(pixels, size, size, new Vector2(0.5f, 0.5f), name, pixelsPerUnit);
+
+        private static Sprite Build(Color32[] pixels, int width, int height, Vector2 pivot,
+            string name, float pixelsPerUnit)
         {
-            var texture = new Texture2D(size, size, TextureFormat.RGBA32, false)
+            var texture = new Texture2D(width, height, TextureFormat.RGBA32, false)
             {
                 name = name,
                 filterMode = FilterMode.Bilinear,
@@ -119,7 +145,7 @@ namespace Neko.Game.Art
             texture.SetPixels32(pixels);
             texture.Apply(false, false);
 
-            var sprite = Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f),
+            var sprite = Sprite.Create(texture, new Rect(0, 0, width, height), pivot,
                 pixelsPerUnit, 0, SpriteMeshType.FullRect);
             sprite.name = name;
             sprite.hideFlags = HideFlags.HideAndDontSave;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Neko.Game.Art;
 using Neko.Game.Core;
+using Neko.Sim.Cafe;
 using Neko.Sim.Economy;
 using UnityEngine;
 using UnityEngine.UI;
@@ -88,15 +89,33 @@ namespace Neko.Game.Ui
                 Palette.WithAlpha(affordable ? Palette.Panel : Palette.Wall, 0.92f), 0.2f);
             _rows.Add(row.gameObject);
 
+            // Furniture shows the piece itself, inside the visible panel: the rounded panel
+            // sprite only fills 84% of its rect, so the row's drawn edge is at -357, not -425.
+            // The text moves right past the icon and keeps its right edge, so nothing on that
+            // side of the row moves.
+            var indent = 0f;
+            if (item.Kind == ShopItemKind.Placeable)
+            {
+                var def = PlaceableCatalog.ById(item.Id);
+                var icon = new GameObject("Icon", typeof(RectTransform)).AddComponent<Image>();
+                icon.transform.SetParent(row, false);
+                icon.rectTransform.sizeDelta = new Vector2(60f, 50f);
+                icon.rectTransform.anchoredPosition = new Vector2(-322f, 0f);
+                icon.raycastTarget = false;
+                icon.sprite = UiKit.Sprites.Furniture(def, def.Width, def.Height);
+                icon.preserveAspect = true;
+                indent = 118f;
+            }
+
             var name = UiKit.Label(row, item.DisplayName, Typeface.Body, Palette.Text,
                 TextAnchor.MiddleLeft, bold: true);
             name.rectTransform.sizeDelta = new Vector2(320f, 26f);
-            name.rectTransform.anchoredPosition = new Vector2(-240f, 12f);
+            name.rectTransform.anchoredPosition = new Vector2(-240f + indent, 12f);
 
             var description = UiKit.Label(row, item.Description, Typeface.Tiny, Palette.TextDim,
                 TextAnchor.MiddleLeft);
-            description.rectTransform.sizeDelta = new Vector2(470f, 22f);
-            description.rectTransform.anchoredPosition = new Vector2(-165f, -12f);
+            description.rectTransform.sizeDelta = new Vector2(470f - indent, 22f);
+            description.rectTransform.anchoredPosition = new Vector2(-165f + indent * 0.5f, -12f);
 
             var owned = Owned(item);
             if (owned > 0)

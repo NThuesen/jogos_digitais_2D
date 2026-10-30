@@ -95,30 +95,31 @@ namespace Neko.Game.View
 
         private void BuildDoor(CafeGrid grid)
         {
-            var def = PlaceableCatalog.ById("door");
-            var sprite = _sprites.Get(new ShapeSpec(Shapes.Parse(def.ShapeId),
-                Palette.Hex(def.TintHex), Palette.Ink, 0.04f));
+            var sprite = _sprites.Furniture(PlaceableCatalog.ById("door"), 1, 1);
 
             Make("Door", new Vector3(grid.Door.X, grid.Door.Y, 0f), sprite, Layers.Furniture,
                 grid.Door.Y);
         }
 
+        /// <summary>
+        /// One piece, painted for its footprint and pivoted on the footprint's centre.
+        /// </summary>
+        /// <remarks>
+        /// Anything tall rises above its own cells, so everything that stands goes on the
+        /// furniture layer and sorts by its front row: a fern in front of a table then covers
+        /// the table's legs instead of vanishing under them. Only what lies flat — rugs, the
+        /// pond — stays underneath. No scaling: the art is painted at one tile per unit.
+        /// </remarks>
         private void BuildItem(PlacedItem item)
         {
             var def = item.Def;
-            var tint = Palette.Hex(def.TintHex);
-
-            var sprite = _sprites.Get(new ShapeSpec(Shapes.Parse(def.ShapeId), tint, Palette.Ink,
-                0.035f, detail: def.Kind == PlaceableKind.Table ? 0.45f : 0.3f));
+            var sprite = _sprites.Furniture(def, item.Width, item.Height);
 
             var centre = new Vector3(item.X + (item.Width - 1) * 0.5f,
                 item.Y + (item.Height - 1) * 0.5f, 0f);
 
-            var go = Make(def.Id, centre, sprite,
-                def.Kind == PlaceableKind.Decor ? Layers.Rug : Layers.Furniture, item.Y);
-
-            // Shapes are authored square; the footprint decides the rest.
-            go.transform.localScale = new Vector3(item.Width * 0.94f, item.Height * 0.94f, 1f);
+            Make(def.Id, centre, sprite,
+                FurnitureArt.LiesFlat(def.Id) ? Layers.Rug : Layers.Furniture, item.Y);
 
             if (def.Kind != PlaceableKind.Station) return;
 
