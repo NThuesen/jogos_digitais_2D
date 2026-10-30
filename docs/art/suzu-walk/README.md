@@ -62,7 +62,7 @@ Reproduzir: `python tools/art/suzu_walk/process.py --height 120`.
 | `tools/tests/test_unity_validation.py` | **FAIL no Windows (3/7)** — caminhos temporários do bash; não toca em nada deste PR; não executado em Linux |
 | Suíte PlayMode completa | NOT RUN (só a classe da Suzu) |
 | `tools/simtest.sh` | NOT RUN (Neko.Sim intocado) |
-| WebGL | ver o corpo do PR |
+| Build WebGL e verificação no navegador | **NOT RUN** — a build foi interrompida pelo Claude Code por pouca memória do sistema e não foi repetida. Executar `tools/build-webgl.sh` com a máquina livre antes do merge. |
 
 ## Problemas conhecidos
 
