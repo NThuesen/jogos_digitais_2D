@@ -1,0 +1,21 @@
+{
+  "browser": "Chromium 153.0.8010.12, Linux, SwiftShader",
+  "origin": "http://127.0.0.1:8080",
+  "profile": "temporary isolated browser profile; valid SaveCodec fixture from Unity PlayMode",
+  "resolutions": [
+    [
+      960,
+      600
+    ],
+    [
+      1280,
+      720
+    ]
+  ],
+  "suzu_in_real_day": true,
+  "console_errors_or_exceptions": 0,
+  "build_bytes": 16496762,
+  "build_duration": "00:06:46.0597768",
+  "visual_approval": "pending",
+  "audio_listening": "not run"
+}

@@ -1,6 +1,6 @@
 # ART-02 — Suzu chibi in real gameplay (implementation handoff)
 
-**Status:** plan only; NOT implemented, tested or approved for merge. Branch starts at `main` SHA `6d5767b8`. Owner has provisionally approved the **small chibi** for gameplay distance, NOT close-ups or a final portrait.
+**Status:** partial chibi integration implemented; draft delivery with [runtime evidence and validation](../docs/art/suzu-gameplay/README.md). NOT approved for merge; owner visual gate remains open. Branch starts at `main` SHA `6d5767b8`. Owner has provisionally approved the **small chibi** for gameplay distance, NOT close-ups or a final portrait.
 
 ## Objective and scope
 Integrate Suzu's approved native pixel-art chibi into the EXISTING Neko Maid Inc. shift gameplay (the real Boot/GameRoot/ShiftPresenter/MaidView path), retaining the original simulation, camera framing, furniture, UI, other maids and save contract. This is a **chibi-only partial ART-02**, not the complete portrait + chibi gate. Obtain owner visual approval before merge.

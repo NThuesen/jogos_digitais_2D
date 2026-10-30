@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using Neko.Sim.Economy;
 using Neko.Sim.Maids;
 using Neko.Sim.Service;
@@ -101,42 +102,51 @@ namespace Neko.Tests.Game
         }
 
         [Test]
-        public void TheReadmeStatesThatNoAssetWasImported()
+        public void TheReadmeCreditsTheOriginalSuzuAssets()
         {
             var readme = Read("README.md");
-
-            Assert.IsTrue(readme.Contains("Créditos de assets"),
-                "the brief asks for an asset-credit section and the README has none");
-            Assert.IsTrue(readme.Contains("Não há nenhum"),
-                "the credits section no longer says there is nothing to credit");
+            Assert.IsTrue(readme.Contains("Créditos de assets"));
+            Assert.IsTrue(readme.Contains("Assets/_Game/Resources/Suzu"));
+            Assert.IsTrue(readme.Contains("docs/art/SUZU_ASSET_PROVENANCE.md"));
+            Assert.IsFalse(readme.Contains("Não há nenhum"));
         }
 
         [Test]
-        public void NoTextureOrAudioFileWasEverImported()
+        public void EveryImportedAssetHasVerifiedProvenance()
         {
-            // The README's credits claim is only true while this holds, so it is checked
-            // rather than trusted. Resources/Audio is excluded: those .wav files are written
-            // by tools/synthesise-audio.sh from this repository, not imported from anywhere.
+            var provenance = Read("docs/art/SUZU_ASSET_PROVENANCE.md");
+            var expected = provenance.Split('\n')
+                .Where(line => line.Length > 66 && line[64] == ' ' && line[65] == ' ')
+                .ToDictionary(line => line.Substring(66).Trim(), line => line.Substring(0, 64));
+            // A closed allowlist, not a blanket exemption for the Suzu directory.
+            CollectionAssert.AreEquivalent(new[]
+            {
+                "Assets/_Game/Resources/Suzu/suzu_idle_sheet.png",
+                "Assets/_Game/Resources/Suzu/suzu_walk_sheet.png",
+                "Assets/_Game/Resources/Suzu/walk_tray.png",
+                "Assets/_Game/Resources/Suzu/tray_idle.png",
+            }, expected.Keys);
+            Assert.IsTrue(provenance.Contains("670a594a31ff"));
+            Assert.IsTrue(provenance.Contains("suzu_pixel.py"));
             var synthesised = Path.Combine(Application.dataPath, "_Game", "Resources", "Audio")
-                .Replace('\\', '/');
-
-            var imported = Directory
-                .EnumerateFiles(Application.dataPath, "*", SearchOption.AllDirectories)
+                .Replace('\\', '/') + "/";
+            var imported = Directory.EnumerateFiles(Application.dataPath, "*", SearchOption.AllDirectories)
                 .Where(p => !p.Replace('\\', '/').StartsWith(synthesised))
-                .Where(p =>
+                .Where(p => new[] { ".png", ".jpg", ".jpeg", ".psd", ".tga", ".gif", ".bmp",
+                    ".wav", ".mp3", ".ogg", ".aiff", ".ttf", ".otf", ".fbx" }
+                    .Contains(Path.GetExtension(p).ToLowerInvariant()))
+                .Select(p => p.Substring(Root.Length + 1).Replace('\\', '/')).ToList();
+            CollectionAssert.AreEquivalent(expected.Keys, imported,
+                "Imported assets must match the credited, original asset allowlist exactly.");
+            using (var sha = SHA256.Create())
+            {
+                foreach (var entry in expected)
                 {
-                    var ext = Path.GetExtension(p).ToLowerInvariant();
-                    return ext == ".png" || ext == ".jpg" || ext == ".jpeg" || ext == ".psd" ||
-                           ext == ".tga" || ext == ".gif" || ext == ".bmp" || ext == ".wav" ||
-                           ext == ".mp3" || ext == ".ogg" || ext == ".aiff" || ext == ".ttf" ||
-                           ext == ".otf" || ext == ".fbx";
-                })
-                .Select(p => p.Substring(Root.Length + 1))
-                .ToList();
-
-            Assert.IsEmpty(imported,
-                "the README says nothing was imported, and these were: " +
-                string.Join(", ", imported));
+                    var hash = sha.ComputeHash(File.ReadAllBytes(Path.Combine(Root, entry.Key)));
+                    Assert.AreEqual(entry.Value, System.BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant(),
+                        entry.Key + " differs from the credited source");
+                }
+            }
         }
 
         [Test]

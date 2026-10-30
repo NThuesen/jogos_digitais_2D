@@ -26,6 +26,9 @@ namespace Neko.Game.View
         private MaidPose _pose = MaidPose.Idle;
         private float _bob;
         private Vector3 _lastPosition;
+        private readonly SuzuSprites _suzu = new SuzuSprites();
+        private bool _authored;
+        private string _proceduralKey;
 
         /// <summary>
         /// Her own small offset from wherever the simulation says she is.
@@ -79,13 +82,15 @@ namespace Neko.Game.View
         {
             Worker = worker;
             _maid = worker.Maid;
+            _pose = MaidPose.Idle;
+            _proceduralKey = null;
 
             const float radius = 0.5f;
             var angle = worker.Id * 137.5f * Mathf.Deg2Rad;
             _offset = new Vector3(Mathf.Cos(angle) * radius,
                 Mathf.Sin(angle) * radius * 0.7f, 0f);
 
-            Redraw();
+            Redraw(false);
 
             transform.position = new Vector3(worker.X, worker.Y, 0f) + _offset;
             _lastPosition = transform.position;
@@ -108,17 +113,14 @@ namespace Neko.Game.View
             _lastPosition = target;
 
             var pose = PoseFor(moving);
-            if (pose != _pose)
-            {
-                _pose = pose;
-                Redraw();
-            }
+            _pose = pose;
+            Redraw(moving);
 
             // A walk bob. Four lines, and the difference between a sprite sliding and a
             // person walking.
             _bob = moving ? _bob + Clocks.Game * 11f : 0f;
             var lift = moving ? Mathf.Abs(Mathf.Sin(_bob)) * 0.07f : 0f;
-            _body.transform.localPosition = new Vector3(0f, lift, 0f);
+            _body.transform.localPosition = _authored ? SuzuSprites.BodyOffset : new Vector3(0f, lift, 0f);
 
             if (target.x - transform.position.x > 0.02f) _body.flipX = false;
             else if (target.x - transform.position.x < -0.02f) _body.flipX = true;
@@ -127,14 +129,17 @@ namespace Neko.Game.View
             Layers.Apply(_carried, Layers.Items, transform.position.y - 0.01f);
             Layers.Apply(_mood, Layers.Fx, transform.position.y);
 
-            _carried.enabled = Worker.Carrying;
+            // Authored carry includes its tray and generic food. A specifically supplied item
+            // uses the procedural carry instead, preserving that item's existing presentation.
+            _carried.enabled = Worker.Carrying && !_authored && _carried.sprite != null;
             SyncMood();
         }
 
         public void ShowCarried(Sprite sprite)
         {
             _carried.sprite = sprite;
-            _carried.enabled = sprite != null;
+            Redraw(false);
+            _carried.enabled = Worker.Carrying && !_authored && sprite != null;
             if (sprite != null) Tween.Punch(_carried.transform, 0.3f, 0.2f);
         }
 
@@ -170,10 +175,27 @@ namespace Neko.Game.View
             return moving ? MaidPose.Walk : MaidPose.Idle;
         }
 
-        private void Redraw()
+        private void Redraw(bool moving)
         {
-            _body.sprite = _sprites.Layered(MaidSpriteBuilder.Layers(_maid, _pose),
-                MaidSpriteBuilder.CacheKey(_maid, _pose), 128);
+            var customItem = Worker.Carrying && _carried.sprite != null;
+            Sprite sprite = null;
+            _authored = !customItem && _suzu.TryFrame(_maid, _pose, moving, Clocks.Game, out sprite);
+            if (_authored)
+            {
+                _body.sprite = sprite;
+                _body.transform.localScale = Vector3.one * SuzuSprites.Scale;
+                _body.transform.localPosition = SuzuSprites.BodyOffset;
+                _proceduralKey = null;
+                return;
+            }
+
+            _body.transform.localScale = Vector3.one;
+            var key = MaidSpriteBuilder.CacheKey(_maid, _pose);
+            if (_proceduralKey == key) return;
+            _proceduralKey = key;
+            _body.sprite = _sprites.Layered(MaidSpriteBuilder.Layers(_maid, _pose), key, 128);
         }
+
+        private void OnDestroy() => _suzu.Dispose();
     }
 }

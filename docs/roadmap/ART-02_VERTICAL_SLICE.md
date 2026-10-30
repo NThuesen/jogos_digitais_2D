@@ -3,6 +3,10 @@
 **Status:** **LIBERADA para implementação experimental** pelo responsável em 2026-10-28, após conclusão da ART-01D como exploração. Aprovação restrita às referências, não aos assets finais. **Agente implementador recomendado:** Codex.
 **Leia:** [estilo aprovado/artwork ART-01](ART-01_STYLE.md), [decisão](../art/MAID_VISUAL_DECISION.md), [spec](../art/MAID_VISUAL_SPEC.md), [template da identidade](../art/maids/_TEMPLATE.md), [Unity](../agent/UNITY.md). Consultar GDD apenas para arquétipo/raridade quando necessário.
 
+## Recorte de gameplay — 2026-10-30
+
+Integração parcial do **chibi Suzu** no caminho real de gameplay: [implementação, smoke e evidências](../art/suzu-gameplay/README.md). O recorte usa o pixel art nativo do experimento `670a594a31ff`, conforme handoff ART-02. Portrait/card continuam procedurais; o gate completo portrait + chibi e a aprovação visual da integração permanecem pendentes. **Não fazer merge nem auto-merge.**
+
 ## Hipótese
 Uma única identidade visual pode sustentar **portrait atraente + chibi fofo animado**, ser reconhecida no card e restaurante e permitir troca pontual de componente sem regeneração completa. Validar isso **antes** de fixar pipeline e biblioteca.
 

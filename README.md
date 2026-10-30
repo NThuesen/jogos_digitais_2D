@@ -76,14 +76,12 @@ trabalho em grupo isso significa que ninguém resolve conflito de merge em YAML 
 
 ## Créditos de assets
 
-**Não há nenhum.**
-
-Nenhuma imagem e nenhum som foram importados neste projeto. Não existe um único arquivo de
-textura em `Assets/`.
-
-- **Toda a arte** é gerada em tempo de execução a partir de dezessete campos de distância em
-  `Assets/_Game/Scripts/Game/Art/ShapeRasteriser.cs`. Uma maid é uma pilha de camadas
-  tingidas; o letreiro do menu é um conjunto de retângulos arredondados e dois triângulos.
+- **Suzu:** quatro PNGs originais de pixel art em `Assets/_Game/Resources/Suzu`,
+  produzidos neste projeto com Claude Code (Opus) e geradores editáveis. Fontes, commit,
+  hashes e ajustes de importação: [proveniência Suzu](docs/art/SUZU_ASSET_PROVENANCE.md).
+  Integração parcial de chibi; portrait e aprovação visual final seguem pendentes.
+- **Demais gráficos:** gerados em runtime por `Assets/_Game/Scripts/Game/Art/ShapeRasteriser.cs`.
+  Maids sem arte compatível continuam usando as camadas procedurais, incluindo equipamento.
 - **Todo o áudio** é sintetizado por `tools/synthesise-audio.sh`, que descreve cada som como
   uma pilha de vozes — forma de onda, varredura de altura, envelope, filtro, vibrato — e
   escreve o `.wav`. O mesmo comando sempre produz os mesmos bytes.

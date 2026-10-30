@@ -4,13 +4,9 @@ using UnityEngine;
 namespace Neko.Game.Art
 {
     /// <summary>
-    /// Where every pixel in the game comes from.
+    /// Builds and caches procedural sprites. Authored Suzu sheets load separately.
     /// </summary>
     /// <remarks>
-    /// No texture file exists in this project. That is a deliberate constraint and it answers
-    /// a whole category of problem for a graded submission: there is no asset provenance to
-    /// defend and no third-party licence to track, because nothing was imported.
-    ///
     /// Everything is cached on the spec that produced it, so a hundred identical plates cost
     /// one texture. The cache is keyed on a string rather than on the struct because a
     /// <c>Color</c> compares by float equality and two colours that should be the same can
