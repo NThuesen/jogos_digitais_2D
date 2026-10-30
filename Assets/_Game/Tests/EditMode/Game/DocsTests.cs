@@ -101,24 +101,36 @@ namespace Neko.Tests.Game
         }
 
         [Test]
-        public void TheReadmeStatesThatNoAssetWasImported()
+        public void TheReadmeCreditsTheOneImportedSuzuSheet()
         {
             var readme = Read("README.md");
 
             Assert.IsTrue(readme.Contains("Créditos de assets"),
                 "the brief asks for an asset-credit section and the README has none");
-            Assert.IsTrue(readme.Contains("Não há nenhum"),
-                "the credits section no longer says there is nothing to credit");
+            Assert.IsTrue(readme.Contains("Assets/_Game/Resources/Suzu/suzu_walk_sheet.png"),
+                "the README no longer credits the imported Suzu sheet");
+            Assert.IsTrue(readme.Contains("docs/art/SUZU_ASSET_PROVENANCE.md"));
+            Assert.IsFalse(readme.Contains("Não há nenhum"),
+                "the credits section claims nothing was imported while a sheet is");
         }
 
         [Test]
-        public void NoTextureOrAudioFileWasEverImported()
+        public void EveryImportedAssetIsOnTheClosedProvenanceAllowlist()
         {
-            // The README's credits claim is only true while this holds, so it is checked
-            // rather than trusted. Resources/Audio is excluded: those .wav files are written
-            // by tools/synthesise-audio.sh from this repository, not imported from anywhere.
+            // The credits claim is only true while the list of imported files is exactly the one
+            // written down with its hash. Resources/Audio is excluded: those .wav files are
+            // written by tools/synthesise-audio.sh from this repository, not imported.
+            var provenance = Read("docs/art/SUZU_ASSET_PROVENANCE.md");
+            var expected = provenance.Split('\n')
+                .Select(line => line.TrimEnd('\r'))
+                .Where(line => line.Length > 66 && line[64] == ' ' && line[65] == ' ')
+                .ToDictionary(line => line.Substring(66).Trim(), line => line.Substring(0, 64));
+
+            CollectionAssert.AreEquivalent(new[] { "Assets/_Game/Resources/Suzu/suzu_walk_sheet.png" },
+                expected.Keys);
+
             var synthesised = Path.Combine(Application.dataPath, "_Game", "Resources", "Audio")
-                .Replace('\\', '/');
+                .Replace('\\', '/') + "/";
 
             var imported = Directory
                 .EnumerateFiles(Application.dataPath, "*", SearchOption.AllDirectories)
@@ -131,12 +143,22 @@ namespace Neko.Tests.Game
                            ext == ".mp3" || ext == ".ogg" || ext == ".aiff" || ext == ".ttf" ||
                            ext == ".otf" || ext == ".fbx";
                 })
-                .Select(p => p.Substring(Root.Length + 1))
+                .Select(p => p.Substring(Root.Length + 1).Replace('\\', '/'))
                 .ToList();
 
-            Assert.IsEmpty(imported,
-                "the README says nothing was imported, and these were: " +
-                string.Join(", ", imported));
+            CollectionAssert.AreEquivalent(expected.Keys, imported,
+                "imported files must match the credited allowlist exactly");
+
+            using (var sha = System.Security.Cryptography.SHA256.Create())
+            {
+                foreach (var entry in expected)
+                {
+                    var hash = sha.ComputeHash(File.ReadAllBytes(Path.Combine(Root, entry.Key)));
+                    Assert.AreEqual(entry.Value,
+                        System.BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant(),
+                        entry.Key + " differs from the credited source");
+                }
+            }
         }
 
         [Test]
