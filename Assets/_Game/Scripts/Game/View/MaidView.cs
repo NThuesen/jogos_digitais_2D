@@ -28,6 +28,15 @@ namespace Neko.Game.View
         private Vector3 _lastPosition;
 
         /// <summary>
+        /// The authored walk frames when this maid has them, otherwise null and the procedural
+        /// figure is drawn as it always was.
+        /// </summary>
+        private Sprite[] _authored;
+
+        private WalkCycle _cycle;
+        private bool _carriedIsPlate;
+
+        /// <summary>
         /// Her own small offset from wherever the simulation says she is.
         /// </summary>
         /// <remarks>
@@ -85,7 +94,8 @@ namespace Neko.Game.View
             _offset = new Vector3(Mathf.Cos(angle) * radius,
                 Mathf.Sin(angle) * radius * 0.7f, 0f);
 
-            Redraw();
+            BindAuthored();
+            if (_authored == null) Redraw();
 
             transform.position = new Vector3(worker.X, worker.Y, 0f) + _offset;
             _lastPosition = transform.position;
@@ -104,21 +114,30 @@ namespace Neko.Game.View
 
             // Smoothed rather than snapped: the simulation ticks in whole frames and a worker
             // crossing a tile in two of them looks like a teleport otherwise.
+            var before = transform.position;
             transform.position = Vector3.Lerp(transform.position, target, 1f - Mathf.Exp(-18f * Clocks.Ui));
             _lastPosition = target;
 
             var pose = PoseFor(moving);
-            if (pose != _pose)
+            if (_authored != null)
             {
                 _pose = pose;
-                Redraw();
+                SyncAuthored(pose, Vector3.Distance(before, transform.position));
             }
+            else
+            {
+                if (pose != _pose)
+                {
+                    _pose = pose;
+                    Redraw();
+                }
 
-            // A walk bob. Four lines, and the difference between a sprite sliding and a
-            // person walking.
-            _bob = moving ? _bob + Clocks.Game * 11f : 0f;
-            var lift = moving ? Mathf.Abs(Mathf.Sin(_bob)) * 0.07f : 0f;
-            _body.transform.localPosition = new Vector3(0f, lift, 0f);
+                // A walk bob. Four lines, and the difference between a sprite sliding and a
+                // person walking.
+                _bob = moving ? _bob + Clocks.Game * 11f : 0f;
+                var lift = moving ? Mathf.Abs(Mathf.Sin(_bob)) * 0.07f : 0f;
+                _body.transform.localPosition = new Vector3(0f, lift, 0f);
+            }
 
             if (target.x - transform.position.x > 0.02f) _body.flipX = false;
             else if (target.x - transform.position.x < -0.02f) _body.flipX = true;
@@ -140,6 +159,50 @@ namespace Neko.Game.View
 
         /// <summary>Squash on the spot. Used when she finishes something.</summary>
         public void Pop() => Tween.Punch(transform, 0.18f, 0.24f);
+
+        private void BindAuthored()
+        {
+            _authored = SuzuSprites.Applies(_maid) ? SuzuSprites.Load(_sprites) : null;
+            _cycle = null;
+            _body.color = Color.white;
+
+            if (_authored == null)
+            {
+                _carried.transform.localPosition = new Vector3(0f, 0.18f, 0f);
+                _body.transform.localScale = Vector3.one;
+                if (_carriedIsPlate) _carried.sprite = null;
+                _carriedIsPlate = false;
+                return;
+            }
+
+            // The sheet has no carrying drawing, so a plate at her hands is what says she is
+            // carrying. Nothing else in the game assigns a carried sprite today.
+            if (_carried.sprite == null)
+            {
+                _carried.sprite = _sprites.Get(new ShapeSpec(ShapeId.Plate, Palette.Panel, Palette.Ink,
+                    0.05f, scale: new Vector2(0.9f, 0.9f)), 64);
+                _carriedIsPlate = true;
+            }
+
+            _cycle = new WalkCycle(SuzuSprites.Frames, SuzuSprites.UnitsPerCycle,
+                SuzuSprites.RestFrames, SuzuSprites.IdleFrame);
+            _body.sprite = _authored[_cycle.Frame];
+            _body.transform.localPosition = SuzuSprites.BodyOffset;
+            _carried.transform.localPosition = SuzuSprites.CarriedOffset;
+        }
+
+        /// <summary>
+        /// Picks the frame for an authored maid. The pose only decides what is laid on top of the
+        /// walk: the sheet has no carry, cook or tired drawings, so those reuse the walk and the
+        /// standing frame, with the existing plate and mood bar saying the rest.
+        /// </summary>
+        private void SyncAuthored(MaidPose pose, float travelled)
+        {
+            _cycle.Step(travelled, Clocks.Game);
+            _body.sprite = _authored[_cycle.Frame];
+            _body.transform.localPosition = SuzuSprites.BodyOffset;
+            _body.color = pose == MaidPose.Tired ? new Color(0.8f, 0.8f, 0.88f) : Color.white;
+        }
 
         private void SyncMood()
         {
