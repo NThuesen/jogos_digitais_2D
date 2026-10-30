@@ -27,7 +27,7 @@ Cada ficha em [MAIDS_INDEX.md](MAIDS_INDEX.md) contém **dois prompts completos,
 ## Tutorial — Etapa 2: quadro inicial de caminhada
 
 1. Escolha **uma** versão aprovada ou candidata aceita para teste da Etapa 1. Abra uma conversa de geração de imagem (pode ser nova, para evitar deriva de contexto).
-2. **Anexe exatamente duas referências:** (A) o PNG `<id>_step1_fullbody_vXX.png` gerado na Etapa 1 — **fonte de verdade da identidade**; (B) a [imagem de direção artística](../art-01/D-pixel-cafe/reference/style_anchor_reference.png) — **fonte de verdade do estilo**. Para a Suzu, a D0 é **opcional** como terceira referência; não substitui o PNG do passo 1.
+2. **Anexe exatamente duas referências:** (A) o PNG `<id>_step1_fullbody_vXX.png` gerado na Etapa 1 — **fonte de verdade da identidade**; (B) a [imagem de direção artística](../art-01/D-pixel-cafe/reference/style_anchor_reference.png) — **fonte de verdade do estilo**. Para a Suzu, **use também apenas esses dois anexos** nesta etapa; a D0 é opcional somente na Etapa 1.
 3. Copie **inteiramente** o bloco `PROMPT 2` da **mesma maid**.
 4. O resultado deve ser **um único frame**, full-body, centralizado, personagem em meio passo, com o olhar orientado para o observador e corpo ligeiramente em 3/4 para o deslocamento horizontal em tela. **Não** pedir sequência de frames/sprite sheet.
 5. O fundo deve ser **chroma sólido uniforme**, com hex indicado na ficha; **se colidir** com olhos, cabelo, orelhas, uniforme, brilhos, ou a imagem tiver vazamento/variação de fundo, troque por outra cor visivelmente ausente na maid e registre a cor real. Um hex no prompt não garante precisão do modelo.
