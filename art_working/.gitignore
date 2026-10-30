@@ -1,0 +1,22 @@
+# Área de trabalho: apenas documentação e marcadores de diretório devem ir ao Git por padrão.
+# Os frames exportados pelo Blender e vídeos de IA ficam locais até aprovação de um PR curado.
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.tif
+*.tiff
+*.exr
+*.bmp
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.blend
+*.blend1
+*.blend2
+*.zip
+
+# Arquivos .gitkeep são versionados; não são frames de animação.

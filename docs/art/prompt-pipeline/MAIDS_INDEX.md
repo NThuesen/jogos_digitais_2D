@@ -17,3 +17,5 @@
 **O chroma é sugestão, não garantia.** Confirme contra os pixels da imagem real e mude se houver conflito. **Não** confunda estas fichas com personagens do jogo já implementados ou aprovados; o catálogo de cartas é gerado pela simulação, e o vínculo `visual_id` ↔ `Maid` permanece por decidir. Sem 18 personagens gerados automaticamente.
 
 **Como começar:** leia o [tutorial com anexos exatos](README.md); clique na maid; copie um bloco de prompt inteiro. Sem concatenar base + adendo. Para novas maids, use os dois [prompts-base](BASE_PROMPT_STEP1_CHARACTER.md) / [base da caminhada](BASE_PROMPT_STEP2_WALK_START.md) como contratos e crie uma ficha original de mesmo formato.
+
+**Exportação após Tencent:** as nove pastas de PNG do Blender estão prontas em [`art_working/`](../../../art_working/README.md). Exemplo: `art_working/01_suzu/step4_blender/walk_x/frames/`. Confira o tutorial antes de salvar a sequência.
