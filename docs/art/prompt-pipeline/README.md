@@ -57,15 +57,29 @@ Animate the attached single cat-maid into a short seamless walk-in-place cycle f
 - [ ] Aprovação visual do responsável registrada **antes** de considerar asset final
 - [ ] Quando houver integração: captura real Unity e testes apropriados; **mockup/vídeo não é validação no Unity**
 
-## Organização dos resultados
+## Organização dos resultados e Etapa 4 — Blender em PNG
 
-Prompts/versionamento ficam neste diretório. Resultados de IA são arquivos **externos/candidatos** até decisão de integração; não misturar `incoming`, `processed`, `review` ou `Assets/` com imagens ainda não revisadas. Padrão sugerido fora do código de produção:
+A área de trabalho **já existe** no repositório em [`art_working/`](../../../art_working/README.md). As nove maids possuem o diretório de **frames brutos** para a primeira caminhada horizontal, criado com `.gitkeep`; os arquivos gerados ficam **fora de `Assets/` e são ignorados pelo Git por padrão**. A alteração substitui a antiga sugestão informal de pastas: agora há um destino definido, não nove diretórios inventados para cada etapa.
 
 ```text
 art_working/
-  01_suzu/step1/        # originais gerados
-  01_suzu/step2/        # quadros chroma
-  01_suzu/step3/        # vídeos e avaliação
+  01_suzu/
+    step1/                                # opcional, original full-body local
+    step2/                                # opcional, chroma still local
+    step3/                                # opcional, vídeo Tencent local
+    step4_blender/
+      walk_x/
+        frames/                           # EXPORTAR AQUI OS PNGs DO BLENDER
+          frame_0001.png                  # exemplo local, não enviado ao Git
+          frame_0002.png
+  02_hina/step4_blender/walk_x/frames/     # diretório já preparado
+  ... 09_yoru/step4_blender/walk_x/frames/
 ```
 
-Não criar 9 folders vazios nem comprometer centenas de vídeos no Git. Para levar resultado ao repo, registrar origens/versões/licença aplicável, aprovar e preparar um PR independente. **Este diretório de prompts não altera a direção D aceita, o GDD, a economia, os sprites existentes, a UI, o save nem a pipeline do Unity.**
+**Tutorial completo do Blender:** [onde colocar os PNGs, como escolher Output → PNG → Render Animation, como preservar FPS e como validar chroma](../../../art_working/README.md#tutorial--vídeo-do-tencent--imagens-png-do-blender).
+
+**Não é obrigatório anexar novas imagens nesta etapa:** para extrair frames, o Blender recebe o **vídeo produzido no Tencent**. Antes de gerar o vídeo, o Tencent recebe o PNG chroma da Etapa 2, como descrito acima.
+
+**Os arquivos exportados não ficam visíveis no GitHub nem para agentes em outros checkouts** até você compartilhar os frames por caminho/ZIP ou aprovar um PR específico com arquivos curados. O `.gitignore` local preserva o repositório leve. Não enviar milhares de frames ou importá-los para Unity sem aprovação e processamento.
+
+**Este diretório de prompts não altera a direção D aceita, o GDD, a economia, os sprites existentes, a UI, o save nem a pipeline do Unity.**
