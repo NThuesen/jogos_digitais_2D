@@ -20,3 +20,6 @@
 *.zip
 
 # Arquivos .gitkeep são versionados; não são frames de animação.
+
+# Saída do tools/art/maid_walk (auditoria local)
+_maid_walk_out/

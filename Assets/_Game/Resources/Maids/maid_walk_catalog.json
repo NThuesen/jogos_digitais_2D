@@ -1,0 +1,215 @@
+{
+ "maids": [
+  {
+   "id": "suzu",
+   "name": "Suzu",
+   "archetype": "Genki",
+   "resource": "Suzu/suzu_walk_sheet",
+   "frames": 30,
+   "columns": 6,
+   "rows": 5,
+   "cell": [
+    92,
+    126
+   ],
+   "pixels_per_unit": 96,
+   "idle_frame": 10,
+   "rest_frames": [
+    0,
+    10,
+    11,
+    12,
+    13,
+    26
+   ],
+   "units_per_cycle": 2.0,
+   "body_offset_y": -0.58,
+   "carried_offset_y": -0.04,
+   "source": "docs/art/suzu-walk/manifest.json (PR #27, unchanged)"
+  },
+  {
+   "id": "hina",
+   "name": "Hina",
+   "archetype": "Kuudere",
+   "resource": "Maids/hina_walk",
+   "frames": 35,
+   "columns": 6,
+   "rows": 6,
+   "cell": [
+    74,
+    124
+   ],
+   "pixels_per_unit": 96,
+   "idle_frame": 30,
+   "rest_frames": [
+    16,
+    17,
+    18,
+    19,
+    30,
+    31,
+    32,
+    33
+   ],
+   "units_per_cycle": 2.57,
+   "body_offset_y": -0.58,
+   "carried_offset_y": -0.04,
+   "source": "docs/art/maid-walk/hina/manifest.json"
+  },
+  {
+   "id": "akari",
+   "name": "Akari",
+   "archetype": "Tsundere",
+   "resource": "Maids/akari_walk",
+   "frames": 24,
+   "columns": 6,
+   "rows": 4,
+   "cell": [
+    84,
+    124
+   ],
+   "pixels_per_unit": 96,
+   "idle_frame": 18,
+   "rest_frames": [
+    6,
+    7,
+    18,
+    19,
+    20
+   ],
+   "units_per_cycle": 1.76,
+   "body_offset_y": -0.58,
+   "carried_offset_y": -0.04,
+   "source": "docs/art/maid-walk/akari/manifest.json"
+  },
+  {
+   "id": "momo",
+   "name": "Momo",
+   "archetype": "Dojikko",
+   "resource": "Maids/momo_walk",
+   "frames": 20,
+   "columns": 6,
+   "rows": 4,
+   "cell": [
+    70,
+    124
+   ],
+   "pixels_per_unit": 96,
+   "idle_frame": 9,
+   "rest_frames": [
+    9,
+    10,
+    11
+   ],
+   "units_per_cycle": 1.47,
+   "body_offset_y": -0.58,
+   "carried_offset_y": -0.04,
+   "source": "docs/art/maid-walk/momo/manifest.json"
+  },
+  {
+   "id": "reina",
+   "name": "Reina",
+   "archetype": "Ojousama",
+   "resource": "Maids/reina_walk",
+   "frames": 33,
+   "columns": 6,
+   "rows": 6,
+   "cell": [
+    82,
+    124
+   ],
+   "pixels_per_unit": 96,
+   "idle_frame": 9,
+   "rest_frames": [
+    9,
+    10,
+    11,
+    24,
+    25,
+    26
+   ],
+   "units_per_cycle": 2.42,
+   "body_offset_y": -0.58,
+   "carried_offset_y": -0.04,
+   "source": "docs/art/maid-walk/reina/manifest.json"
+  },
+  {
+   "id": "kaede",
+   "name": "Kaede",
+   "archetype": "Oneesan",
+   "resource": "Maids/kaede_walk",
+   "frames": 17,
+   "columns": 6,
+   "rows": 3,
+   "cell": [
+    76,
+    124
+   ],
+   "pixels_per_unit": 96,
+   "idle_frame": 13,
+   "rest_frames": [
+    9,
+    10,
+    11,
+    12,
+    13
+   ],
+   "units_per_cycle": 1.25,
+   "body_offset_y": -0.58,
+   "carried_offset_y": -0.04,
+   "source": "docs/art/maid-walk/kaede/manifest.json"
+  },
+  {
+   "id": "nene",
+   "name": "Nene",
+   "archetype": "Idol",
+   "resource": "Maids/nene_walk",
+   "frames": 25,
+   "columns": 6,
+   "rows": 5,
+   "cell": [
+    72,
+    124
+   ],
+   "pixels_per_unit": 96,
+   "idle_frame": 14,
+   "rest_frames": [
+    2,
+    3,
+    4,
+    14,
+    15,
+    16
+   ],
+   "units_per_cycle": 1.83,
+   "body_offset_y": -0.58,
+   "carried_offset_y": -0.04,
+   "source": "docs/art/maid-walk/nene/manifest.json"
+  },
+  {
+   "id": "ichika",
+   "name": "Ichika",
+   "archetype": "Gourmand",
+   "resource": "Maids/ichika_walk",
+   "frames": 24,
+   "columns": 6,
+   "rows": 4,
+   "cell": [
+    74,
+    124
+   ],
+   "pixels_per_unit": 96,
+   "idle_frame": 11,
+   "rest_frames": [
+    11,
+    12,
+    13,
+    22
+   ],
+   "units_per_cycle": 1.76,
+   "body_offset_y": -0.58,
+   "carried_offset_y": -0.04,
+   "source": "docs/art/maid-walk/ichika/manifest.json"
+  }
+ ]
+}

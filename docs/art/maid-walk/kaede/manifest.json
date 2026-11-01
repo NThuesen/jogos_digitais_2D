@@ -1,0 +1,103 @@
+{
+ "id": "kaede",
+ "name": "Kaede",
+ "frames_found": 28,
+ "folder": "06_kaede/step4_blender/walk_x/frames",
+ "numbering": [
+  35,
+  62
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 216,
+ "specks": 93,
+ "matte_px": 865,
+ "chroma_px": 0,
+ "height_mean": 850.9,
+ "height_range": [
+  841,
+  860
+ ],
+ "cx_std": 6.5,
+ "drift_x": 18.0,
+ "drift_y": 8,
+ "step_diff_mean": 0.0605,
+ "wrap_diff": 0.2538,
+ "loop_ratio": 2.47,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.0936,
+ "loop_trim": [
+  7,
+  23
+ ],
+ "loop_ratio_before_trim": 4.19,
+ "source_frame_numbers": [
+  42,
+  58
+ ],
+ "units_per_cycle": 1.25,
+ "slide_factor": 3.8,
+ "cell": [
+  76,
+  124
+ ],
+ "scale": 0.14102,
+ "frames": 17,
+ "columns": 6,
+ "rows": 3,
+ "idle_frame": 13,
+ "rest_frames": [
+  9,
+  10,
+  11,
+  12,
+  13
+ ],
+ "foot_speed_px_per_frame": 1.85,
+ "max_foot_separation_px": 36.8,
+ "noslide_units_per_cycle": 0.328,
+ "status": "LIMITED",
+ "note": "loop does not close even after trimming (x2.5 a normal step); 93 specks removed; trimmed to source frames 42-58 to close the loop",
+ "resource": "Maids/kaede_walk",
+ "sheet_sha256": "fa83f45386f2fe18a3d21706e4dbf516faa80f415a86dd5df01c3136ee510398",
+ "source_sha256": {
+  "0035.png": "6a54d58f105aeb7b57e00540650f1d052bb64ca2806479891c329274bf0f2d12",
+  "0036.png": "5d7135a140abf90f890b39b0b50011711f393980cb6a1fa3c86265d02a33b2fa",
+  "0037.png": "f49b5562c73fd5da2b18e91232376efda27950ae624194ed61e56b40bbb18ffb",
+  "0038.png": "948d64baf317604791784e243c199ba9924a0a6a36a796e0f4d957f442c29115",
+  "0039.png": "f9404a8ac47a21f4150c800383fb0ba81bfacf47f2444ffc5ceadeb025c84489",
+  "0040.png": "ea346838b5e56dc4d19a0b224e2affa2c87640ecd0914d019b9ccc52c8d12961",
+  "0041.png": "204e05b0d3e933660b8cc07b379dddf0b0415a4a61a3fd25c8f45bcb95edd5dc",
+  "0042.png": "f91ec3fe710a9c79a06f45dc52d39339e93cb3e21822cb20e3fdcab355cdafe5",
+  "0043.png": "71c5398d8b432137db05a3a76c47c9d3e4e8f599ae3ea55a34e786552ad96799",
+  "0044.png": "79aedcca4c43e8ffe1c2f4a12a43c30d5d1032539c2960693a5325077159e210",
+  "0045.png": "6c62286c4e076cdba8d78c6041a311fc6646b65ec2e5db49f6f1a0df4263afd6",
+  "0046.png": "f5695d8f82f22827b32840f08ed15a1fd9118e0e50c3a8f4efb4a2775aa33de1",
+  "0047.png": "85060d74c3cd0d1850e9f204d4c5d06252dac77a0d89fd03dd17b07cd77f16d3",
+  "0048.png": "e4e291de0222430b13377570a660f2cab0041a8268fb82f6d96ec274299be4f1",
+  "0049.png": "8f2c1e5f455028de163c490abd93bff383c6bbc462bee46b8715ae7a71f479a6",
+  "0050.png": "52d5d03d755db8f0a062391f973cce014e253f2cfc3837bc36a789da0f3a1673",
+  "0051.png": "0e270942e6def4376f5cd3ddb3f3fc6ebfd7ca4b3a2499c5021bacbbb50a0e51",
+  "0052.png": "68b7afcebf81468daedcd790fd2753829bf0d6154c305a1d578135895c6e06a8",
+  "0053.png": "c772b62a6fe441e001a865b549103513c1aa076b2c27b03c542ace080fdfe282",
+  "0054.png": "e74033c0977d06c536b9d49703094ab307aec3045e4b07939542949671eae05e",
+  "0055.png": "b5410957312e1505a01c04e9c65e6b8aae25de43c379470fb5fea27f0670b4aa",
+  "0056.png": "4252bcb3a03d8c94d56a2a34cd2f94ccfb4bd939ed3f1427bab75f740001a8ef",
+  "0057.png": "f3dbc84f961a047bd092637323388ca1466180daf7a1e4c066d2d856fb2f796b",
+  "0058.png": "fd4a4e5fd9da60de4a67f534f37521cd8cb76300d02972af901edf5d3924267f",
+  "0059.png": "27cfac79b44a2974ff67b4b6c98f545aff40e8f4330fe8bffbbebb2bbe51bd2c",
+  "0060.png": "b49831649f7033d5232619aa0248109df1fdd6df81187133f31e67f6c4ed9656",
+  "0061.png": "38a57a4ff5e34f46388bcd73992c659b29a717f5d9ae09f58b88a5b549b44cf7",
+  "0062.png": "5d634936c1d804c6f100ce95955090d30b58c4c197901a4843d3b0405110297e"
+ },
+ "parameters": {
+  "height_px": 120,
+  "colors": 48,
+  "style": "pixel",
+  "pad_px": 3,
+  "pixels_per_unit": 96
+ }
+}
