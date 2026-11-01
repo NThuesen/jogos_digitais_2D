@@ -8,9 +8,9 @@ namespace Neko.Game.Art
     /// Where every pixel in the game comes from.
     /// </summary>
     /// <remarks>
-    /// No texture file exists in this project. That is a deliberate constraint and it answers
-    /// a whole category of problem for a graded submission: there is no asset provenance to
-    /// defend and no third-party licence to track, because nothing was imported.
+    /// Almost every pixel is drawn here. The one exception is the authored Suzu walk sheet,
+    /// cut by <see cref="Sheet"/>; its provenance is in <c>docs/art/SUZU_ASSET_PROVENANCE.md</c>
+    /// and a test holds the list of imported files closed.
     ///
     /// Everything is cached on the spec that produced it, so a hundred identical plates cost
     /// one texture. The cache is keyed on a string rather than on the struct because a
@@ -25,6 +25,8 @@ namespace Neko.Game.Art
         public const float PixelsPerUnit = 96f;
 
         private readonly Dictionary<string, Sprite> _cache = new Dictionary<string, Sprite>();
+
+        private readonly Dictionary<string, Sprite[]> _sheets = new Dictionary<string, Sprite[]>();
 
         public int CachedCount => _cache.Count;
 
@@ -81,6 +83,48 @@ namespace Neko.Game.Art
             return sprite;
         }
 
+        /// <summary>
+        /// The frames of an imported sprite sheet, cut once and kept until <see cref="Clear"/>.
+        /// </summary>
+        /// <remarks>
+        /// Rows count from the bottom, matching Unity's rectangles, and every cell has its pivot at
+        /// bottom centre: the sheet is authored so that is the sole of the planted foot. Returns
+        /// null when the file is missing or is not the size the caller expects, so a deleted or
+        /// swapped sheet quietly puts the procedural art back. The texture belongs to the
+        /// importer and is never destroyed here; only the sprites cut from it are.
+        /// </remarks>
+        public Sprite[] Sheet(string resource, int columns, int rows, int cellWidth, int cellHeight,
+            int count, float pixelsPerUnit)
+        {
+            if (_sheets.TryGetValue(resource, out var cached) && cached != null && cached.Length > 0 &&
+                cached[0] != null)
+            {
+                return cached;
+            }
+
+            var texture = Resources.Load<Texture2D>(resource);
+            if (texture == null || texture.width != columns * cellWidth ||
+                texture.height != rows * cellHeight)
+            {
+                _sheets[resource] = null;
+                return null;
+            }
+
+            var frames = new Sprite[count];
+            for (var i = 0; i < count; i++)
+            {
+                var rect = new Rect((i % columns) * cellWidth, (i / columns) * cellHeight,
+                    cellWidth, cellHeight);
+                frames[i] = Sprite.Create(texture, rect, new Vector2(0.5f, 0f), pixelsPerUnit, 0,
+                    SpriteMeshType.FullRect);
+                frames[i].name = resource + "#" + i;
+                frames[i].hideFlags = HideFlags.HideAndDontSave;
+            }
+
+            _sheets[resource] = frames;
+            return frames;
+        }
+
         /// <summary>A flat rectangle. Panels, bars and the floor are all this.</summary>
         public Sprite Solid(Color colour)
         {
@@ -107,6 +151,17 @@ namespace Neko.Game.Art
             }
 
             _cache.Clear();
+
+            foreach (var frames in _sheets.Values)
+            {
+                if (frames == null) continue;
+                for (var i = 0; i < frames.Length; i++)
+                {
+                    if (frames[i] != null) Release(frames[i]);
+                }
+            }
+
+            _sheets.Clear();
         }
 
         /// <summary>

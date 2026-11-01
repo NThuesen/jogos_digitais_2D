@@ -1,0 +1,289 @@
+{
+ "tool": "tools/art/suzu_walk/process.py",
+ "source_dir": "art_working/01_suzu/step4_blender/walk_x/frames",
+ "source_sha256": {
+  "0100.png": "747a077e3b90dfcb74f29794f25f2c329acc55548dbe09271174c35692e6588d",
+  "0101.png": "5c7f14d9efbd05ae42efc894d09695317442435c8bdd93b427d448f2a4c40606",
+  "0102.png": "d4bdd2843b379f8c9e97e06541b8017212e74f4a5e29aeb542f9e4e40a78e989",
+  "0103.png": "7da922b3d6ede11eadbe1b64ab455c75c429e5235b4c4d796057d1d7b0bc81de",
+  "0104.png": "daa940225700e425e1afddd336bee891a426aed36ee04610aad76d79557e0089",
+  "0105.png": "f42d0cc37b17497ff26e2833a632f02a1eda698959b6b3c8162d514dd65ee8a6",
+  "0106.png": "a0aaf7fc4a8a6eb87f4b32977cdfaccdbb39067b06af71b363b41b09fc4e7667",
+  "0107.png": "3ec0dea8256f85aa8cff3fd4528f3f11a63caf637213f155620b057d5cd00b4d",
+  "0108.png": "59c90305aa063f01940f7de60654792e307ba89218c468416d9ba6f877cd20cf",
+  "0109.png": "02352b523b61f293486e005d95cdfaa6f76d2042d69f3ea2cdf880b39f7c5b90",
+  "0110.png": "615640f74d2d428b5d62cb6c7f970ddee43ea0411907789606eb06e5b073f870",
+  "0111.png": "ad2399be9b1231d4120754d3edaa69921c8eacf0227f72783785306fd4680531",
+  "0112.png": "4a5433b3bff73400c4761a2b9dfdb5b0e9e2fed0389a0d577db04fe5d741420f",
+  "0113.png": "1e184dfe852974dd4613d545020ba00bd865c218a2241f03dd48d50276775525",
+  "0114.png": "c8603b1baad33e93c53775c6e75e51674e3e66da145a79ab77c1d1d44e429a2c",
+  "0115.png": "871f5acc4483fd38881e000b2613bed3b8c2bfdf8d5630882bb99a2f68a119f4",
+  "0116.png": "81a8e64a30df5c2201d89609c1c435c17c58e7e885f805fce8de5b38a2751944",
+  "0117.png": "dd110f49d973503f604569fca7bd89138770d0d16265bf600054d130c8259ac6",
+  "0118.png": "e4867012c364303435e3973215dbe202d3bb6a75d10e5d1ef4bd89f1a8098cfe",
+  "0119.png": "fdd4575af613efdaf4772d761225ba560f1d259446b106a3169a3a410a11523b",
+  "0120.png": "c7d3b107db280e57220cfd8cfae725b435957c820d2fc2c6f80063551419690c",
+  "0121.png": "be8e4105870bf5aa1ca32c86727ca3e4a6bf9553a87572136bb80a72d1ed7020",
+  "0122.png": "b7f9e00906306221a8f627f2495b41b2c3b45f9583c2efb4412b590742849d76",
+  "0123.png": "289ccffb6627945f15a6f46a4c751cd7dabc24c000924b66c79be70b21799ce1",
+  "0124.png": "4e15ff5119aea7131b34aec057be756f4568cec38bee1918ff4bcbd3c9433534",
+  "0125.png": "44fb2c9125fd8024b99ff544a421c6f87aa08dc652ed784716043e63fc11d4be",
+  "0126.png": "ae1e405e03147f93cdd20e392ed2e8378203b21caebb2fb35db78477e8175a7d",
+  "0127.png": "58ae1b5cf2cfef4ac17392e3f6623f856c441b6622d2e37488e05518955e4229",
+  "0128.png": "a482a83d1c6d3b02096ad399d78c82e97d7568a8b282369cebd71a4695835743",
+  "0129.png": "0c3769357847e70c6eb43dbb5f550021e72965d0641b85227c009a1d134f3dfe"
+ },
+ "frames": 30,
+ "cols": 6,
+ "rows": 5,
+ "cell": [
+  92,
+  126
+ ],
+ "pivot": "bottom-centre (planted foot on the last row, skirt axis on the centre column)",
+ "pixels_per_unit_hint": 96,
+ "character_height_px": 120,
+ "scale": 0.12792,
+ "style": "pixel",
+ "palette_colors": 48,
+ "streaks_removed": 230,
+ "blink_patched": [
+  {
+   "frame": 13,
+   "donor": 12,
+   "dy": 2,
+   "dx": 0
+  },
+  {
+   "frame": 14,
+   "donor": 12,
+   "dy": 4,
+   "dx": 2
+  },
+  {
+   "frame": 15,
+   "donor": 12,
+   "dy": 6,
+   "dx": 2
+  },
+  {
+   "frame": 16,
+   "donor": 12,
+   "dy": 6,
+   "dx": 2
+  },
+  {
+   "frame": 17,
+   "donor": 12,
+   "dy": 4,
+   "dx": 2
+  },
+  {
+   "frame": 18,
+   "donor": 12,
+   "dy": 0,
+   "dx": 2
+  },
+  {
+   "frame": 19,
+   "donor": 25,
+   "dy": 0,
+   "dx": 2
+  },
+  {
+   "frame": 20,
+   "donor": 25,
+   "dy": -2,
+   "dx": 2
+  },
+  {
+   "frame": 21,
+   "donor": 25,
+   "dy": -4,
+   "dx": 0
+  },
+  {
+   "frame": 22,
+   "donor": 25,
+   "dy": -4,
+   "dx": 0
+  },
+  {
+   "frame": 23,
+   "donor": 25,
+   "dy": -4,
+   "dx": 0
+  },
+  {
+   "frame": 24,
+   "donor": 25,
+   "dy": -2,
+   "dx": 0
+  }
+ ],
+ "amber_counts": [
+  217,
+  234,
+  208,
+  203,
+  215,
+  212,
+  205,
+  199,
+  202,
+  204,
+  207,
+  188,
+  170,
+  150,
+  115,
+  118,
+  115,
+  119,
+  118,
+  127,
+  119,
+  130,
+  123,
+  133,
+  144,
+  174,
+  182,
+  190,
+  180,
+  188
+ ],
+ "amber_open_reference": 204.0,
+ "idle_frame": 10,
+ "settle_frames": [
+  0,
+  10,
+  11,
+  12,
+  13,
+  26
+ ],
+ "foot_ydiff_xsep": [
+  [
+   2,
+   9.5
+  ],
+  [
+   4,
+   9.0
+  ],
+  [
+   5,
+   9.0
+  ],
+  [
+   5,
+   7.5
+  ],
+  [
+   7,
+   6.5
+  ],
+  [
+   9,
+   5.5
+  ],
+  [
+   7,
+   1.5
+  ],
+  [
+   7,
+   3.0
+  ],
+  [
+   5,
+   5.5
+  ],
+  [
+   3,
+   9.0
+  ],
+  [
+   1,
+   10.5
+  ],
+  [
+   1,
+   14.0
+  ],
+  [
+   2,
+   16.0
+  ],
+  [
+   2,
+   16.5
+  ],
+  [
+   5,
+   18.0
+  ],
+  [
+   7,
+   17.5
+  ],
+  [
+   9,
+   16.0
+  ],
+  [
+   11,
+   15.5
+  ],
+  [
+   13,
+   13.5
+  ],
+  [
+   13,
+   11.5
+  ],
+  [
+   11,
+   9.0
+  ],
+  [
+   10,
+   6.5
+  ],
+  [
+   7,
+   2.0
+  ],
+  [
+   11,
+   2.5
+  ],
+  [
+   7,
+   2.0
+  ],
+  [
+   7,
+   4.5
+  ],
+  [
+   2,
+   9.5
+  ],
+  [
+   3,
+   9.5
+  ],
+  [
+   3,
+   9.5
+  ],
+  [
+   4,
+   9.5
+  ]
+ ],
+ "sheet_sha256": "4b7b617482c6ee210a604cc27d65234748892418fc826a991b179336cbf059da"
+}
