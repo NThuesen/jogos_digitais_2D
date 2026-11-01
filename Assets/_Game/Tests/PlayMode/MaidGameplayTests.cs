@@ -25,7 +25,7 @@ namespace Neko.Tests.PlayMode
     public sealed class MaidGameplayTests
     {
         private static readonly string[] Ids =
-            { "suzu", "hina", "akari", "momo", "reina", "kaede", "nene", "ichika" };
+            { "suzu", "hina", "akari", "momo", "reina", "kaede", "nene", "ichika", "yoru" };
 
         private bool _hadSave;
         private string _save;
@@ -266,8 +266,8 @@ namespace Neko.Tests.PlayMode
             profile.ApplyUnlocks();
 
             // In memory only (the save is restored afterwards): enough extra maids to field all
-            // eight identities at once, because the opening roster is three.
-            var roles = new[] { Role.Reception, Role.Floor, Role.Kitchen, Role.Floor, Role.Kitchen, Role.Reception, Role.Floor, Role.Kitchen };
+            // nine identities at once, because the opening roster is three.
+            var roles = new[] { Role.Reception, Role.Floor, Role.Kitchen, Role.Floor, Role.Kitchen, Role.Reception, Role.Floor, Role.Kitchen, Role.Floor };
             for (var n = profile.Maids.Count; n < Ids.Length; n++)
             {
                 profile.Maids.Add(new Maid { Id = 900 + n, Name = "Fixture" + n, Archetype = Archetype.Genki,

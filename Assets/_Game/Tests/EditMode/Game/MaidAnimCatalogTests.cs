@@ -9,11 +9,11 @@ using UnityEngine;
 
 namespace Neko.Tests.EditMode.Game
 {
-    /// <summary>The shared catalog of authored walk sheets (Suzu legacy sheet plus the ART-03 maids).</summary>
+    /// <summary>The shared catalog of authored walk sheets (Suzu legacy sheet plus the ART-03 maids, nine in all).</summary>
     public sealed class MaidAnimCatalogTests
     {
         private static readonly string[] Expected =
-            { "suzu", "hina", "akari", "momo", "reina", "kaede", "nene", "ichika" };
+            { "suzu", "hina", "akari", "momo", "reina", "kaede", "nene", "ichika", "yoru" };
 
         private SpriteFactory _factory;
 
@@ -43,7 +43,6 @@ namespace Neko.Tests.EditMode.Game
             }
 
             Assert.IsNull(MaidAnimCatalog.Resolve(Maid("Mina", Archetype.Genki)));
-            Assert.IsNull(MaidAnimCatalog.Resolve(Maid("Yoru", Archetype.Mukuchi)), "no walk exists for Yoru yet");
             Assert.IsNull(MaidAnimCatalog.Resolve(null));
         }
 
@@ -94,7 +93,7 @@ namespace Neko.Tests.EditMode.Game
             long pixels = 0;
             foreach (var entry in MaidAnimCatalog.All)
                 pixels += Resources.Load<Texture2D>(entry.resource).width * Resources.Load<Texture2D>(entry.resource).height;
-            Assert.Less(pixels * 4, 10L * 1024 * 1024, "the walk sheets must stay under 10 MB uncompressed (8.2 MB measured for eight)");
+            Assert.Less(pixels * 4, 12L * 1024 * 1024, "the walk sheets must stay under 12 MB uncompressed (about 10.2 MB measured for nine)");
         }
 
         [Test]

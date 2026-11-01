@@ -136,6 +136,7 @@ namespace Neko.Tests.Game
                 "Assets/_Game/Resources/Maids/momo_walk.png",
                 "Assets/_Game/Resources/Maids/nene_walk.png",
                 "Assets/_Game/Resources/Maids/reina_walk.png",
+                "Assets/_Game/Resources/Maids/yoru_walk.png",
             },
                 expected.Keys);
 

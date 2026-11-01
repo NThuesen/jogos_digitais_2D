@@ -22,6 +22,7 @@ import glob
 import hashlib
 import json
 import os
+import re
 import sys
 
 import numpy as np
@@ -203,9 +204,15 @@ def status_for(report, m):
 
 # ------------------------------------------------------------------------------ main work
 def prepare(m):
+    # Not glob("*.png"): glob skips dot-files, and one export arrived as ".gitignore0057.png".
+    # Any "<prefix><digits>.png" counts; the files themselves are never renamed.
     path = os.path.join(ROOT, "art_working", m["folder"])
-    paths = sorted(glob.glob(os.path.join(path, "*.png")))
-    return paths
+    found = []
+    for name in os.listdir(path) if os.path.isdir(path) else []:
+        hit = re.search(r"(\d+)\.png$", name, re.I)
+        if hit:
+            found.append((int(hit.group(1)), os.path.join(path, name)))
+    return [p for _, p in sorted(found)]
 
 
 def run(m, write):
@@ -214,7 +221,7 @@ def run(m, write):
     if not paths:
         result.update(status="REJECTED", note=m.get("reject_reason", "no frames"))
         return result, None
-    nums = [int(os.path.splitext(os.path.basename(p))[0]) for p in paths]
+    nums = [int(re.search(r"(\d+)\.png$", os.path.basename(p), re.I).group(1)) for p in paths]
     result["numbering"] = [nums[0], nums[-1]]
     result["gaps"] = [b for a, b in zip(nums, nums[1:]) if b != a + 1]
     raw = [np.array(Image.open(p).convert("RGBA")) for p in paths]
@@ -412,24 +419,28 @@ def main():
                     json.dump(res, f, indent=1)
         results.append(res)
         print(json.dumps({k: res[k] for k in res if k not in ("source_sha256",)}), flush=True)
-    if write and not only:
-        catalog_entries = []
+    if write:
+        # Merge into the existing catalog: entries of maids not processed this run stay untouched.
+        cat_path = os.path.join(OUT_RES, "maid_walk_catalog.json")
+        existing = {}
+        if os.path.exists(cat_path):
+            existing = {e["id"]: e for e in json.load(open(cat_path, encoding="utf8"))["maids"]}
+        for leg in cfg["legacy"]:
+            existing.setdefault(leg["id"], leg)
         for r in results:
             if r.get("resource"):
                 m = next(x for x in maids if x["id"] == r["id"])
-                catalog_entries.append({
+                existing[r["id"]] = {
                     "id": r["id"], "name": r["name"], "archetype": m["archetype"], "resource": r["resource"],
                     "frames": r["frames"], "columns": r["columns"], "rows": r["rows"], "cell": r["cell"],
                     "pixels_per_unit": m["pixels_per_unit"], "idle_frame": r["idle_frame"], "rest_frames": r["rest_frames"],
-                    "units_per_cycle": r.get("units_per_cycle", r["noslide_units_per_cycle"]),
+                    "units_per_cycle": r["units_per_cycle"],
                     "body_offset_y": m["body_offset_y"], "carried_offset_y": m["carried_offset_y"],
-                    "source": "docs/art/maid-walk/%s/manifest.json" % r["id"]})
-        ids = {e["id"] for e in catalog_entries}
-        for leg in cfg["legacy"]:
-            if leg["id"] not in ids:
-                catalog_entries.insert(0, leg)
-        with open(os.path.join(OUT_RES, "maid_walk_catalog.json"), "w", encoding="utf8", newline="\n") as f:
-            json.dump({"maids": catalog_entries}, f, indent=1)
+                    "source": "docs/art/maid-walk/%s/manifest.json" % r["id"]}
+        order = [m["id"] for m in cfg["maids"]]
+        entries = sorted(existing.values(), key=lambda e: order.index(e["id"]) if e["id"] in order else 99)
+        with open(cat_path, "w", encoding="utf8", newline="\n") as f:
+            json.dump({"maids": entries}, f, indent=1)
             f.write("\n")
     if write:
         for f in glob.glob(os.path.join(OUT_RES, "*_walk.png")):

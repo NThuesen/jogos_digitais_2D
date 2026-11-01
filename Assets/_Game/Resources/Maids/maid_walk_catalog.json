@@ -210,6 +210,33 @@
    "body_offset_y": -0.58,
    "carried_offset_y": -0.04,
    "source": "docs/art/maid-walk/ichika/manifest.json"
+  },
+  {
+   "id": "yoru",
+   "name": "Yoru",
+   "archetype": "Mukuchi",
+   "resource": "Maids/yoru_walk",
+   "frames": 34,
+   "columns": 6,
+   "rows": 6,
+   "cell": [
+    90,
+    124
+   ],
+   "pixels_per_unit": 96,
+   "idle_frame": 19,
+   "rest_frames": [
+    4,
+    5,
+    6,
+    19,
+    20,
+    21
+   ],
+   "units_per_cycle": 2.49,
+   "body_offset_y": -0.58,
+   "carried_offset_y": -0.04,
+   "source": "docs/art/maid-walk/yoru/manifest.json"
   }
  ]
 }

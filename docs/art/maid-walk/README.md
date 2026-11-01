@@ -1,6 +1,6 @@
 # Maid walk cycles in the game (ART-03)
 
-Eight maids walk with authored sheets in the real shift: Suzu (legacy mint sheet), Hina, Akari, Momo, Reina, Kaede, Nene and Ichika. **Yoru has no frames** and the new `01_suzu` frames draw Hina, so neither is integrated. Details, per-maid QA and limits: [INVENTORY.md](INVENTORY.md).
+Nine maids walk with authored sheets in the real shift: Suzu (legacy mint sheet), Hina, Akari, Momo, Reina, Kaede, Nene, Ichika and Yoru. The `01_suzu/.../new_frames` PNGs draw Hina, so they are not integrated. Details, per-maid QA and limits: [INVENTORY.md](INVENTORY.md).
 
 ## Architecture
 - `tools/art/maid_walk/maids.json` — roster and per-maid parameters; `maid_walk.py audit|process` — reproducible pipeline (clean, chroma key, loop trim, foot/axis anchor, one resample, palette, pack, rest-frame and idle detection, manifest with source SHA-256).
@@ -11,7 +11,7 @@ Eight maids walk with authored sheets in the real shift: Suzu (legacy mint sheet
 ## See each maid in a real automatic shift
 Window > General > Test Runner > PlayMode, run `MaidGameplayTests`:
 - `EachAuthoredMaidWalksInARealShiftAndTheDayStillEnds` — one case per maid (renames a floor maid in memory only; your save is restored afterwards).
-- To watch rather than assert: set environment variable `NEKO_MAID_CAPTURE_DIR=<folder>` before opening Unity; `CaptureEachMaidWalking` writes 960x600 and 1280x720 stills per maid, `CaptureAllTogetherInTheBiggestRoom` fields all eight at once in the 13x9 room (extra maids added in memory only).
+- To watch rather than assert: set environment variable `NEKO_MAID_CAPTURE_DIR=<folder>` before opening Unity; `CaptureEachMaidWalking` writes 960x600 and 1280x720 stills per maid, `CaptureAllTogetherInTheBiggestRoom` fields all nine at once in the 13x9 room (extra maids added in memory only).
 - Regenerate sheets: `python tools/art/maid_walk/maid_walk.py process` (needs the local raw frames), then update the hashes in `docs/art/SUZU_ASSET_PROVENANCE.md`.
 
 ## Trade-offs
@@ -20,4 +20,4 @@ Window > General > Test Runner > PlayMode, run `MaidGameplayTests`:
 - **Loops**: Momo (27→20 frames), Reina (36→33) and Kaede (28→17) were trimmed to the stretch that loops; Kaede still jumps slightly at the wrap (LIMITED).
 - **Equipment**: gear removes the authored look (layers cannot be drawn over a flat sheet).
 - **Only walk exists**: Idle/Carry/Cook/Tired reuse walk frames, plate and dimming.
-- **Memory**: eight sheets, 8.2 MB uncompressed in total, shared per sheet through `SpriteFactory`; WebGL build not measured.
+- **Memory**: nine sheets, ~10.2 MB uncompressed in total, shared per sheet through `SpriteFactory`; WebGL build not measured.
