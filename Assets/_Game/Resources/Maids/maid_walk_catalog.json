@@ -4,28 +4,25 @@
    "id": "suzu",
    "name": "Suzu",
    "archetype": "Genki",
-   "resource": "Suzu/suzu_walk_sheet",
-   "frames": 30,
+   "resource": "Maids/suzu_walk",
+   "frames": 15,
    "columns": 6,
-   "rows": 5,
+   "rows": 3,
    "cell": [
-    92,
-    126
+    76,
+    124
    ],
    "pixels_per_unit": 96,
-   "idle_frame": 10,
+   "idle_frame": 6,
    "rest_frames": [
-    0,
-    10,
-    11,
-    12,
-    13,
-    26
+    6,
+    7,
+    8
    ],
-   "units_per_cycle": 2.0,
+   "units_per_cycle": 1.1,
    "body_offset_y": -0.58,
    "carried_offset_y": -0.04,
-   "source": "docs/art/suzu-walk/manifest.json (PR #27, unchanged)"
+   "source": "docs/art/maid-walk/suzu/manifest.json"
   },
   {
    "id": "hina",

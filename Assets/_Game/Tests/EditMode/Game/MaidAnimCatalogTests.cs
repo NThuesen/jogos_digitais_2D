@@ -99,7 +99,7 @@ namespace Neko.Tests.EditMode.Game
         [Test]
         public void TheCatalogMatchesWhatTheProcessingToolWroteForEachMaid()
         {
-            foreach (var entry in MaidAnimCatalog.All.Where(e => e.id != "suzu"))
+            foreach (var entry in MaidAnimCatalog.All)
             {
                 var path = Path.GetFullPath(Path.Combine(Application.dataPath, "..", "docs", "art", "maid-walk", entry.id,
                     "manifest.json"));
@@ -116,16 +116,11 @@ namespace Neko.Tests.EditMode.Game
         }
 
         [Test]
-        public void TheLegacySuzuEntryStillMatchesHerOwnManifest()
+        public void TheBackupSuzuSheetStillLoadsForRollback()
         {
-            var entry = MaidAnimCatalog.ById("suzu");
-            var path = Path.GetFullPath(Path.Combine(Application.dataPath, "..", "docs", "art", "suzu-walk", "manifest.json"));
-            var manifest = JsonUtility.FromJson<SuzuManifest>(File.ReadAllText(path));
-            Assert.AreEqual(entry.frames, manifest.frames);
-            Assert.AreEqual(entry.columns, manifest.cols);
-            Assert.AreEqual(entry.rows, manifest.rows);
-            Assert.AreEqual(entry.idle_frame, manifest.idle_frame);
-            CollectionAssert.AreEquivalent(entry.rest_frames, manifest.settle_frames);
+            var frames = _factory.Sheet("Suzu/suzu_walk_sheet", 6, 5, 92, 126, 30, 96f);
+            Assert.IsNotNull(frames, "the PR #27 sheet is kept as a backup");
+            Assert.AreNotEqual("Suzu/suzu_walk_sheet", MaidAnimCatalog.ById("suzu").resource, "the catalog uses the new sheet");
         }
 
         [System.Serializable]
@@ -134,13 +129,6 @@ namespace Neko.Tests.EditMode.Game
             public int frames, columns, rows, idle_frame;
             public int[] cell, rest_frames;
             public float units_per_cycle;
-        }
-
-        [System.Serializable]
-        private sealed class SuzuManifest
-        {
-            public int frames, cols, rows, idle_frame;
-            public int[] settle_frames;
         }
 
         [Test]
