@@ -126,7 +126,17 @@ namespace Neko.Tests.Game
                 .Where(line => line.Length > 66 && line[64] == ' ' && line[65] == ' ')
                 .ToDictionary(line => line.Substring(66).Trim(), line => line.Substring(0, 64));
 
-            CollectionAssert.AreEquivalent(new[] { "Assets/_Game/Resources/Suzu/suzu_walk_sheet.png" },
+            CollectionAssert.AreEquivalent(new[]
+            {
+                "Assets/_Game/Resources/Suzu/suzu_walk_sheet.png",
+                "Assets/_Game/Resources/Maids/akari_walk.png",
+                "Assets/_Game/Resources/Maids/hina_walk.png",
+                "Assets/_Game/Resources/Maids/ichika_walk.png",
+                "Assets/_Game/Resources/Maids/kaede_walk.png",
+                "Assets/_Game/Resources/Maids/momo_walk.png",
+                "Assets/_Game/Resources/Maids/nene_walk.png",
+                "Assets/_Game/Resources/Maids/reina_walk.png",
+            },
                 expected.Keys);
 
             var synthesised = Path.Combine(Application.dataPath, "_Game", "Resources", "Audio")

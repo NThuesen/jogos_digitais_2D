@@ -8,7 +8,7 @@ namespace Neko.Game.Art
     /// Where every pixel in the game comes from.
     /// </summary>
     /// <remarks>
-    /// Almost every pixel is drawn here. The one exception is the authored Suzu walk sheet,
+    /// Almost every pixel is drawn here. The one exception is the authored maid walk sheets (see MaidAnimCatalog),
     /// cut by <see cref="Sheet"/>; its provenance is in <c>docs/art/SUZU_ASSET_PROVENANCE.md</c>
     /// and a test holds the list of imported files closed.
     ///

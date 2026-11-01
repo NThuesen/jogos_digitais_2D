@@ -181,7 +181,7 @@ namespace Neko.Game.Ui
                 { "settings.sfx", "Efeitos" },
 
                 { "credits.body",
-                    "Neko Maid Inc. A caminhada da Suzu é pixel art original deste projeto. " +
+                    "Neko Maid Inc. As caminhadas das maids são pixel art original deste projeto. " +
                     "Os demais gráficos são gerados em tempo de execução e todos os sons " +
                     "são sintetizados. Não há assets de terceiros neste projeto." },
             };

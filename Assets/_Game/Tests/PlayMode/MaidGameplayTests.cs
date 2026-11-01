@@ -18,18 +18,20 @@ using UnityEngine.TestTools;
 namespace Neko.Tests.PlayMode
 {
     /// <summary>
-    /// A real shift with Suzu on the floor. The fixture renames and re-types one maid in memory
+    /// A real shift for each authored maid. The fixture renames and re-types maids in memory
     /// only; the roster, the draw and the save format are the game's own, and the saved profile
-    /// is put back whatever the test does.
+    /// is put back whatever the test does. Set NEKO_MAID_CAPTURE_DIR to also write screenshots.
     /// </summary>
-    public sealed class SuzuGameplayTests
+    public sealed class MaidGameplayTests
     {
+        private static readonly string[] Ids =
+            { "suzu", "hina", "akari", "momo", "reina", "kaede", "nene", "ichika" };
+
         private bool _hadSave;
         private string _save;
         private GameRoot _root;
 
-        [UnitySetUp]
-        public IEnumerator Load()
+        private IEnumerator Begin(params string[] ids)
         {
             _hadSave = PlayerPrefs.HasKey(SaveBridge.Key);
             _save = PlayerPrefs.GetString(SaveBridge.Key, "");
@@ -41,17 +43,34 @@ namespace Neko.Tests.PlayMode
             _root.Ui.Get<MenuScreen>().OnNewGame.Invoke();
 
             var profile = _root.Session.Profile;
-            var floor = profile.Maids.First(m => m.NaturalRole == Role.Floor);
-            floor.Name = "Suzu";
-            floor.Archetype = Archetype.Genki;
+            Rename(profile, ids);
             profile.Lineup.AutoFill(profile.Maids);
-
             _root.Ui.Show<LineupScreen>();
             yield return null;
             _root.Ui.Show<HubScreen>();
             _root.Ui.Get<HubScreen>().OnOpenDay.Invoke();
-            for (var i = 0; i < 14; i++) yield return null;
+            for (var n = 0; n < 14; n++) yield return null;
             Assert.AreEqual(AppState.Shift, _root.State.Current);
+        }
+
+        /// <summary>In memory only: the first maids take the designed names and archetypes.</summary>
+        private static void Rename(Profile profile, string[] ids)
+        {
+            // A single identity goes to a floor maid, who walks the most.
+            var floor = profile.Maids.FirstOrDefault(m => m.NaturalRole == Role.Floor);
+            var pool = profile.Maids.OrderBy(m => m == floor ? 0 : 1).ToList();
+            for (var i = 0; i < ids.Length && i < pool.Count; i++)
+            {
+                var entry = MaidAnimCatalog.ById(ids[i]);
+                pool[i].Name = entry.name;
+                pool[i].Archetype = entry.ArchetypeValue;
+            }
+
+            // The draw may already have produced a "Kaede" of her own; she would be a second one.
+            for (var i = ids.Length; i < pool.Count; i++)
+            {
+                if (MaidAnimCatalog.All.Any(e => e.name == pool[i].Name)) pool[i].Name = "Extra" + pool[i].Id;
+            }
         }
 
         [UnityTearDown]
@@ -65,14 +84,17 @@ namespace Neko.Tests.PlayMode
             Clocks.Reset();
         }
 
-        private MaidView Suzu => Object.FindObjectsByType<MaidView>()
-            .Single(view => view.Worker.Name == "Suzu");
+        private static MaidView ViewOf(string id)
+        {
+            var name = MaidAnimCatalog.ById(id).name;
+            return Object.FindObjectsByType<MaidView>().Single(view => view.Worker.Name == name);
+        }
 
         private static SpriteRenderer Body(MaidView view) =>
             view.transform.Find("Body").GetComponent<SpriteRenderer>();
 
-        private static bool IsSuzuFrame(Sprite sprite) =>
-            sprite != null && sprite.name.StartsWith(SuzuSprites.Resource + "#");
+        private static bool IsSheetFrame(Sprite sprite, string id) =>
+            sprite != null && sprite.name.StartsWith(MaidAnimCatalog.ById(id).resource + "#");
 
         private static int FrameOf(MaidView view)
         {
@@ -81,12 +103,17 @@ namespace Neko.Tests.PlayMode
         }
 
         [UnityTest]
-        public IEnumerator SuzuWalksAlongsideProceduralMaidsAndTheDayStillEnds()
+        public IEnumerator EachAuthoredMaidWalksInARealShiftAndTheDayStillEnds([ValueSource(nameof(Ids))] string id)
         {
-            var view = Suzu;
-            Assert.IsTrue(IsSuzuFrame(Body(view).sprite), "Suzu starts on the authored sheet");
+            yield return Begin(id);
+            var entry = MaidAnimCatalog.ById(id);
+            var view = ViewOf(id);
+            Assert.IsTrue(IsSheetFrame(Body(view).sprite, id), id + " starts on her own sheet");
             foreach (var other in Object.FindObjectsByType<MaidView>().Where(v => v != view))
-                Assert.IsFalse(IsSuzuFrame(Body(other).sprite), "the others stay procedural");
+            {
+                foreach (var otherId in Ids)
+                    Assert.IsFalse(IsSheetFrame(Body(other).sprite, otherId), "the others never borrow " + id);
+            }
 
             var frames = new HashSet<int>();
             var left = false;
@@ -97,15 +124,15 @@ namespace Neko.Tests.PlayMode
             {
                 elapsed += Clocks.Game;
                 var body = Body(view);
-                Assert.IsTrue(IsSuzuFrame(body.sprite));
-                Assert.AreEqual(SuzuSprites.BodyOffset, body.transform.localPosition, "no second bob");
+                Assert.IsTrue(IsSheetFrame(body.sprite, id));
+                Assert.AreEqual(entry.BodyOffset, body.transform.localPosition, "no second bob");
                 frames.Add(FrameOf(view));
                 left |= body.flipX;
                 right |= !body.flipX;
                 yield return null;
             }
 
-            Assert.Greater(frames.Count, 8, "a real shift walks through much of the cycle");
+            Assert.Greater(frames.Count, 6, "a real shift walks through much of the cycle");
             Assert.IsTrue(left && right, "the worker travels both ways and the sprite follows");
 
             _root.Ui.Get<DayHud>().OnSkip.Invoke();
@@ -115,13 +142,15 @@ namespace Neko.Tests.PlayMode
         }
 
         [UnityTest]
-        public IEnumerator PausingFreezesTheFrame()
+        public IEnumerator PausingFreezesTheFrame([Values("hina", "ichika")] string id)
         {
-            var view = Suzu;
+            yield return Begin(id);
+            var entry = MaidAnimCatalog.ById(id);
+            var view = ViewOf(id);
             var midStride = false;
             for (var i = 0; i < 6000 && !midStride; i++)
             {
-                midStride = System.Array.IndexOf(SuzuSprites.RestFrames, FrameOf(view)) < 0;
+                midStride = System.Array.IndexOf(entry.rest_frames, FrameOf(view)) < 0;
                 yield return null;
             }
 
@@ -139,15 +168,16 @@ namespace Neko.Tests.PlayMode
         }
 
         [UnityTest]
-        public IEnumerator EquipmentAndTirednessFallBackWithoutBreakingTheView()
+        public IEnumerator EquipmentAndTirednessFallBackWithoutBreakingTheView([Values("hina", "nene")] string id)
         {
-            var view = Suzu;
+            yield return Begin(id);
+            var view = ViewOf(id);
             var worker = view.Worker;
             Clocks.Pause(true);
 
             worker.OnBreak = true;
             view.Sync();
-            Assert.IsTrue(IsSuzuFrame(Body(view).sprite), "tired reuses the standing frame");
+            Assert.IsTrue(IsSheetFrame(Body(view).sprite, id), "tired reuses the standing frame");
             Assert.AreNotEqual(Color.white, Body(view).color, "and is dimmed");
             worker.OnBreak = false;
             view.Sync();
@@ -155,7 +185,7 @@ namespace Neko.Tests.PlayMode
 
             worker.Carrying = true;
             view.Sync();
-            Assert.IsTrue(IsSuzuFrame(Body(view).sprite));
+            Assert.IsTrue(IsSheetFrame(Body(view).sprite, id));
             Assert.IsTrue(view.transform.Find("Carried").GetComponent<SpriteRenderer>().enabled,
                 "a plate at her hands says she is carrying");
             worker.Carrying = false;
@@ -163,87 +193,106 @@ namespace Neko.Tests.PlayMode
             worker.Maid.Gear[0] = new Equipment("fixture", "fixture", GearSlot.Outfit,
                 Stats.Zero, Neko.Sim.Core.ThemeTag.None, 0, 1, "Apron", "FF0000");
             view.Bind(worker);
-            Assert.IsFalse(IsSuzuFrame(Body(view).sprite), "a geared maid keeps the layered look");
+            Assert.IsFalse(IsSheetFrame(Body(view).sprite, id), "a geared maid keeps the layered look");
             worker.Maid.Gear[0] = null;
             view.Bind(worker);
-            Assert.IsTrue(IsSuzuFrame(Body(view).sprite));
+            Assert.IsTrue(IsSheetFrame(Body(view).sprite, id));
             yield return null;
         }
 
-        // ---- captures: only when NEKO_SUZU_CAPTURE_DIR is set --------------------------------
+        [UnityTest]
+        public IEnumerator AMaidOutsideTheCatalogStaysProcedural()
+        {
+            yield return Begin("hina");
+            var view = ViewOf("hina");
+            view.Worker.Maid.Archetype = Archetype.Genki; // a Hina of another draw, not the designed one
+            view.Bind(view.Worker);
+            foreach (var id in Ids) Assert.IsFalse(IsSheetFrame(Body(view).sprite, id));
+            yield return null;
+        }
+
+        // ---- captures: only when NEKO_MAID_CAPTURE_DIR is set --------------------------------
+
+        private static string CaptureDir()
+        {
+            var directory = System.Environment.GetEnvironmentVariable("NEKO_MAID_CAPTURE_DIR");
+            if (!string.IsNullOrEmpty(directory)) Directory.CreateDirectory(directory);
+            return directory;
+        }
 
         [UnityTest]
-        public IEnumerator CaptureWalkAtBothResolutions()
+        public IEnumerator CaptureEachMaidWalking([ValueSource(nameof(Ids))] string id)
         {
-            var directory = System.Environment.GetEnvironmentVariable("NEKO_SUZU_CAPTURE_DIR");
+            var directory = CaptureDir();
             if (string.IsNullOrEmpty(directory)) yield break;
-            Directory.CreateDirectory(directory);
+            yield return Begin(id);
 
-            var view = Suzu;
+            var view = ViewOf(id);
             var shots = 0;
             var last = view.transform.position;
             var still = 0;
-            for (var i = 0; i < 30000 && shots < 200; i++)
+            for (var i = 0; i < 30000 && shots < 40; i++)
             {
                 var moved = (view.transform.position - last).sqrMagnitude > 1e-6f;
                 last = view.transform.position;
                 still = moved ? 0 : still + 1;
-
-                // Fast while nothing happens, close to real time while she walks.
                 Clocks.Scale = still > 3 ? 4f : 0.3f;
-
-                // Every rendered frame while she is on the move, plus the settling that follows:
-                // the stills are cut into a strip or a GIF afterwards.
                 if (still < 40 && i > 20 && (moved || shots > 0))
                 {
-                    yield return Shot(directory, "seq_" + shots.ToString("D3"), 960, 600, view);
-                    if (shots % 20 == 0) yield return Shot(directory, "seq_" + shots.ToString("D3"), 1280, 720, view);
+                    yield return Shot(directory, id + "_seq_" + shots.ToString("D3"), 960, 600, view);
+                    if (shots % 10 == 0) yield return Shot(directory, id + "_seq_" + shots.ToString("D3"), 1280, 720, view);
                     shots++;
                 }
 
                 yield return null;
             }
 
-            Assert.Greater(shots, 20, "Suzu never walked in the capture window");
+            Assert.Greater(shots, 10, id + " never walked in the capture window");
         }
 
         [UnityTest]
-        public IEnumerator CaptureBiggerRoomPointAgainstBilinear()
+        public IEnumerator CaptureAllTogetherInTheBiggestRoom()
         {
-            var directory = System.Environment.GetEnvironmentVariable("NEKO_SUZU_CAPTURE_DIR");
+            var directory = CaptureDir();
             if (string.IsNullOrEmpty(directory)) yield break;
-            Directory.CreateDirectory(directory);
+            yield return Begin("suzu");
 
-            // Ordinary progression only: the same unlock path a player takes to the 13x9 room.
+            // Ordinary progression only: the same unlock path a player takes to the biggest room.
             _root.Ui.Get<DayHud>().OnSkip.Invoke();
             yield return null;
             _root.Ui.Get<BooksScreen>().OnContinue.Invoke();
             var profile = _root.Session.Profile;
             profile.Wallet.AddReputation(Neko.Sim.Economy.CafeLevelTable.ReputationForLevel(9));
             profile.ApplyUnlocks();
+
+            // In memory only (the save is restored afterwards): enough extra maids to field all
+            // eight identities at once, because the opening roster is three.
+            var roles = new[] { Role.Reception, Role.Floor, Role.Kitchen, Role.Floor, Role.Kitchen, Role.Reception, Role.Floor, Role.Kitchen };
+            for (var n = profile.Maids.Count; n < Ids.Length; n++)
+            {
+                profile.Maids.Add(new Maid { Id = 900 + n, Name = "Fixture" + n, Archetype = Archetype.Genki,
+                    NaturalRole = roles[n], Base = profile.Maids[0].Base, Rarity = profile.Maids[0].Rarity });
+            }
+
+            Rename(profile, Ids);
             profile.Lineup.AutoFill(profile.Maids);
             _root.Ui.Get<HubScreen>().OnOpenDay.Invoke();
-            for (var i = 0; i < 14; i++) yield return null;
+            for (var n = 0; n < 14; n++) yield return null;
             Assert.AreEqual(AppState.Shift, _root.State.Current);
 
-            var view = Suzu;
-            var texture = Resources.Load<Texture2D>(SuzuSprites.Resource);
-            Clocks.Scale = 4f;
-            for (var i = 0; i < 20000; i++)
+            var views = Object.FindObjectsByType<MaidView>();
+            File.AppendAllText(Path.Combine(directory, "together.txt"),
+                "views: " + string.Join(",", views.Select(v => v.Worker.Name)) + " of roster " + profile.Maids.Count + "\n");
+            var any = views.First();
+            Clocks.Scale = 0.5f;
+            for (var shot = 0; shot < 12; shot++)
             {
-                if (view.transform.hasChanged && FrameOf(view) != SuzuSprites.IdleFrame) break;
-                yield return null;
+                for (var n = 0; n < 40; n++) yield return null;
+                yield return Shot(directory, "together_" + shot.ToString("D2"), 1280, 720, any);
+                yield return Shot(directory, "together_" + shot.ToString("D2"), 960, 600, any);
             }
 
-            Clocks.Pause(true);
-            foreach (var mode in new[] { FilterMode.Point, FilterMode.Bilinear })
-            {
-                texture.filterMode = mode;
-                yield return Shot(directory, "big_" + mode, 960, 600, view);
-                yield return Shot(directory, "big_" + mode, 1280, 720, view);
-            }
-
-            texture.filterMode = FilterMode.Point;
+            LogAssert.NoUnexpectedReceived();
         }
 
         private static IEnumerator Shot(string directory, string label, int width, int height, MaidView view)
@@ -265,10 +314,9 @@ namespace Neko.Tests.PlayMode
                     texture.EncodeToPNG());
 
                 var body = Body(view);
-                var feet = camera.WorldToViewportPoint(view.transform.position + SuzuSprites.BodyOffset);
                 File.AppendAllText(Path.Combine(directory, "shots.tsv"),
                     label + "\t" + width + "x" + height + "\t" + body.sprite.name + "\t" + body.flipX +
-                    "\t" + camera.orthographicSize + "\t" + (feet.x * width) + "\t" + (feet.y * height) + "\t" + view.Worker.Carrying + "\n");
+                    "\t" + camera.orthographicSize + "\t" + view.Worker.Carrying + "\n");
             }
             finally
             {

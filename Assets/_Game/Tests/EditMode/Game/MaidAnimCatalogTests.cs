@@ -9,8 +9,12 @@ using UnityEngine;
 
 namespace Neko.Tests.EditMode.Game
 {
-    public sealed class SuzuSpriteTests
+    /// <summary>The shared catalog of authored walk sheets (Suzu legacy sheet plus the ART-03 maids).</summary>
+    public sealed class MaidAnimCatalogTests
     {
+        private static readonly string[] Expected =
+            { "suzu", "hina", "akari", "momo", "reina", "kaede", "nene", "ichika" };
+
         private SpriteFactory _factory;
 
         [SetUp]
@@ -23,71 +27,127 @@ namespace Neko.Tests.EditMode.Game
             new Maid { Id = 1, Name = name, Archetype = archetype };
 
         [Test]
-        public void OnlySuzuTheGenkiGetsTheAuthoredFrames()
+        public void TheCatalogListsEveryIntegratedMaidAndNoOtherOne()
         {
-            Assert.IsTrue(SuzuSprites.Applies(Maid("Suzu", Archetype.Genki)));
-            Assert.IsFalse(SuzuSprites.Applies(Maid("Suzu", Archetype.Kuudere)), "another Suzu from the draw");
-            Assert.IsFalse(SuzuSprites.Applies(Maid("Mina", Archetype.Genki)));
-            Assert.IsFalse(SuzuSprites.Applies(null));
+            CollectionAssert.AreEquivalent(Expected, MaidAnimCatalog.All.Select(e => e.id).ToArray());
+        }
+
+        [Test]
+        public void ANameAndArchetypePairIsNeededAndIsNeverConfusedWithAnotherMaid()
+        {
+            foreach (var entry in MaidAnimCatalog.All)
+            {
+                Assert.AreSame(entry, MaidAnimCatalog.Resolve(Maid(entry.name, entry.ArchetypeValue)));
+                var other = entry.ArchetypeValue == Archetype.Genki ? Archetype.Kuudere : Archetype.Genki;
+                Assert.IsNull(MaidAnimCatalog.Resolve(Maid(entry.name, other)), entry.name + " from another draw");
+            }
+
+            Assert.IsNull(MaidAnimCatalog.Resolve(Maid("Mina", Archetype.Genki)));
+            Assert.IsNull(MaidAnimCatalog.Resolve(Maid("Yoru", Archetype.Mukuchi)), "no walk exists for Yoru yet");
+            Assert.IsNull(MaidAnimCatalog.Resolve(null));
         }
 
         [Test]
         public void AnyEquipmentKeepsTheLayeredLookSoGearStaysVisible()
         {
-            var maid = Maid("Suzu", Archetype.Genki);
-            maid.Gear[0] = new Equipment("x", "x", GearSlot.Outfit, Stats.Zero,
-                Neko.Sim.Core.ThemeTag.None, 0, 1, "Apron", "FF0000");
-            Assert.IsFalse(SuzuSprites.Applies(maid));
+            foreach (var entry in MaidAnimCatalog.All)
+            {
+                var maid = Maid(entry.name, entry.ArchetypeValue);
+                maid.Gear[0] = new Equipment("x", "x", GearSlot.Outfit, Stats.Zero,
+                    Neko.Sim.Core.ThemeTag.None, 0, 1, "Apron", "FF0000");
+                Assert.IsNull(MaidAnimCatalog.Resolve(maid), entry.name);
+            }
         }
 
         [Test]
-        public void TheSheetCutsIntoTheDeclaredFramesWithFeetAtTheBottomCentre()
+        public void EverySheetCutsIntoTheDeclaredFramesWithFeetAtTheBottomCentre()
         {
-            var frames = SuzuSprites.Load(_factory);
-            Assert.IsNotNull(frames, "Resources/Suzu/suzu_walk_sheet.png is missing or the wrong size");
-            Assert.AreEqual(SuzuSprites.Frames, frames.Length);
-            Assert.AreEqual(new Vector2(SuzuSprites.CellWidth, SuzuSprites.CellHeight), frames[0].rect.size);
-            Assert.AreEqual(new Vector2(0.5f, 0f), frames[0].pivot / frames[0].rect.size);
-            foreach (var index in SuzuSprites.RestFrames) Assert.Less(index, SuzuSprites.Frames);
-            Assert.Contains(SuzuSprites.IdleFrame, SuzuSprites.RestFrames);
+            foreach (var entry in MaidAnimCatalog.All)
+            {
+                var frames = MaidAnimCatalog.Load(_factory, entry);
+                Assert.IsNotNull(frames, entry.resource + " is missing or the wrong size");
+                Assert.AreEqual(entry.frames, frames.Length, entry.id);
+                Assert.AreEqual(new Vector2(entry.CellWidth, entry.CellHeight), frames[0].rect.size, entry.id);
+                Assert.AreEqual(new Vector2(0.5f, 0f), frames[0].pivot / frames[0].rect.size, entry.id);
+                foreach (var index in entry.rest_frames) Assert.Less(index, entry.frames, entry.id);
+                Assert.Contains(entry.idle_frame, entry.rest_frames, entry.id);
+                Assert.Greater(entry.units_per_cycle, 0.5f, entry.id);
+            }
         }
 
         [Test]
-        public void TheSheetIsImportedPointFilteredAndNonReadable()
+        public void EverySheetIsImportedPointFilteredAndNonReadable()
         {
-            var texture = Resources.Load<Texture2D>(SuzuSprites.Resource);
-            Assert.IsNotNull(texture);
-            Assert.IsFalse(texture.isReadable);
-            Assert.AreEqual(FilterMode.Point, texture.filterMode);
+            foreach (var entry in MaidAnimCatalog.All)
+            {
+                var texture = Resources.Load<Texture2D>(entry.resource);
+                Assert.IsNotNull(texture, entry.resource);
+                Assert.IsFalse(texture.isReadable, entry.id);
+                Assert.AreEqual(FilterMode.Point, texture.filterMode, entry.id);
+                Assert.LessOrEqual(texture.width * texture.height, 1024 * 1024, entry.id + " is bigger than it needs to be");
+            }
         }
 
         [Test]
-        public void TheConstantsMatchWhatTheProcessingToolWrote()
+        public void TheSharedTextureBudgetStaysSmall()
         {
-            var path = Path.GetFullPath(Path.Combine(Application.dataPath, "..", "docs", "art", "suzu-walk",
-                "manifest.json"));
-            var manifest = JsonUtility.FromJson<Manifest>(File.ReadAllText(path));
-            Assert.AreEqual(SuzuSprites.Frames, manifest.frames);
-            Assert.AreEqual(SuzuSprites.Columns, manifest.cols);
-            Assert.AreEqual(SuzuSprites.Rows, manifest.rows);
-            Assert.AreEqual(SuzuSprites.CellWidth, manifest.cell[0]);
-            Assert.AreEqual(SuzuSprites.CellHeight, manifest.cell[1]);
-            Assert.AreEqual(SuzuSprites.IdleFrame, manifest.idle_frame);
-            CollectionAssert.AreEqual(SuzuSprites.RestFrames.OrderBy(i => i).ToArray(),
-                manifest.settle_frames.OrderBy(i => i).ToArray());
+            long pixels = 0;
+            foreach (var entry in MaidAnimCatalog.All)
+                pixels += Resources.Load<Texture2D>(entry.resource).width * Resources.Load<Texture2D>(entry.resource).height;
+            Assert.Less(pixels * 4, 10L * 1024 * 1024, "the walk sheets must stay under 10 MB uncompressed (8.2 MB measured for eight)");
+        }
+
+        [Test]
+        public void TheCatalogMatchesWhatTheProcessingToolWroteForEachMaid()
+        {
+            foreach (var entry in MaidAnimCatalog.All.Where(e => e.id != "suzu"))
+            {
+                var path = Path.GetFullPath(Path.Combine(Application.dataPath, "..", "docs", "art", "maid-walk", entry.id,
+                    "manifest.json"));
+                var manifest = JsonUtility.FromJson<Manifest>(File.ReadAllText(path));
+                Assert.AreEqual(entry.frames, manifest.frames, entry.id);
+                Assert.AreEqual(entry.columns, manifest.columns, entry.id);
+                Assert.AreEqual(entry.rows, manifest.rows, entry.id);
+                Assert.AreEqual(entry.CellWidth, manifest.cell[0], entry.id);
+                Assert.AreEqual(entry.CellHeight, manifest.cell[1], entry.id);
+                Assert.AreEqual(entry.idle_frame, manifest.idle_frame, entry.id);
+                Assert.AreEqual(entry.units_per_cycle, manifest.units_per_cycle, 1e-4f, entry.id);
+                CollectionAssert.AreEqual(entry.rest_frames, manifest.rest_frames, entry.id);
+            }
+        }
+
+        [Test]
+        public void TheLegacySuzuEntryStillMatchesHerOwnManifest()
+        {
+            var entry = MaidAnimCatalog.ById("suzu");
+            var path = Path.GetFullPath(Path.Combine(Application.dataPath, "..", "docs", "art", "suzu-walk", "manifest.json"));
+            var manifest = JsonUtility.FromJson<SuzuManifest>(File.ReadAllText(path));
+            Assert.AreEqual(entry.frames, manifest.frames);
+            Assert.AreEqual(entry.columns, manifest.cols);
+            Assert.AreEqual(entry.rows, manifest.rows);
+            Assert.AreEqual(entry.idle_frame, manifest.idle_frame);
+            CollectionAssert.AreEquivalent(entry.rest_frames, manifest.settle_frames);
         }
 
         [System.Serializable]
         private sealed class Manifest
         {
+            public int frames, columns, rows, idle_frame;
+            public int[] cell, rest_frames;
+            public float units_per_cycle;
+        }
+
+        [System.Serializable]
+        private sealed class SuzuManifest
+        {
             public int frames, cols, rows, idle_frame;
-            public int[] cell, settle_frames;
+            public int[] settle_frames;
         }
 
         [Test]
         public void AMissingSheetIsNotAnError()
         {
-            Assert.IsNull(_factory.Sheet("Suzu/does_not_exist", 1, 1, 1, 1, 1, 96f));
+            Assert.IsNull(_factory.Sheet("Maids/does_not_exist", 1, 1, 1, 1, 1, 96f));
         }
     }
 
