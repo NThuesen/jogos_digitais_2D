@@ -1,67 +1,83 @@
 # 01 · SUZU — Suzu (Genki)
 
-**Estado:** Referência Suzu da direção D aceita para experimentação; este par de prompts é candidato, não asset final.
-**Marcadores de identidade:** Bob menta de franja reta; olhos âmbar; entalhe na ponta da orelha esquerda; sinos dourados; laço bordô.
-**Chroma inicial:** **azul puro `#0000FF`**, somente após inspeção da imagem real.
-**Regra:** propostas visuais não alteram as regras/atributos do arquétipo em `Neko.Sim`.
+**Pipeline v2 — HINA STYLE LOCK.** Esta identidade continua candidata até aprovação visual; a Hina governa o estilo chibi comum.
+**Marcadores exclusivos:** bob menta, olhos âmbar, orelha esquerda entalhada, sininhos, laço bordô.
+**Chroma inicial da caminhada:** `#0000FF`, a confirmar nos pixels reais. Nunca sacrificar cores da personagem ao aplicar chroma.
+**Não altera:** `Neko.Sim`, raridade, equipe sorteada, portrait separado ou sprites Unity já integrados.
 
-## Tutorial: o que anexar
+## Anexos e ordem (OBRIGATÓRIO)
 
-- **PROMPT 1 (ChatGPT):** anexe a **[referência de estilo do projeto](../../art-01/D-pixel-cafe/reference/style_anchor_reference.png)**. Opcionalmente anexe a [sheet de identidade D0 da Suzu](../../art-01/D-pixel-cafe/incoming/D0_suzu_sheet.png) para reforçar a referência já existente.
-- **PROMPT 2 (ChatGPT):** anexe **(1)** o PNG full-body da **Suzu gerado no PROMPT 1** e **(2)** a **[mesma referência de estilo](../../art-01/D-pixel-cafe/reference/style_anchor_reference.png)**. O PNG da Etapa 1 manda na identidade; a arte de referência manda apenas no estilo.
-- **Tencent AI Studio (etapa posterior, opcional):** anexe o **PNG do PROMPT 2** como frame inicial; siga o [guia de vídeo, QA e nomes](../README.md#tutorial--etapa-3-tencent-ai-studio-experimento-de-vídeo). Não pressupor que a ferramenta aceite mais de uma imagem.
+1. **PROMPT 1:** anexar **uma imagem**: o **full-body aprovado da Hina, fundo marfim**, disponível na Biblioteca/arquivos do responsável. Ela é referência de **estilo, anatomia chibi e acabamento pixel-art**, NÃO de identidade para as outras oito. **Não** anexar a antiga cena de café nem personagens adicionais. Para Hina, é também a referência de identidade.
+2. **PROMPT 2:** anexar **duas imagens nesta ordem**: (A) a imagem **aprovada do próprio Suzu** produzida pelo PROMPT 1 (para Hina, a aprovada original), (B) o **full-body aprovado da Hina** (âncora de estilo). Não anexar a cena do café.
+3. **Tencent (vídeo):** usar apenas o PNG chroma aprovado no PROMPT 2 como imagem inicial. O prompt de vídeo e o gate de caminhada estão no [tutorial](../README.md).
 
-**Atenção:** cole **somente um dos blocos completos abaixo** por geração. Não concatene os prompts-base novamente. O fundo do PROMPT 1 é neutro; o do PROMPT 2 é chroma. Se a cor colidir com alguma peça da personagem gerada, altere a cor na instrução de chroma e registre a escolha.
+**Atenção:** o PNG full-body mestre da Hina **ainda não está versionado no repositório**; deve ser anexado manualmente. Ver [HINA_STYLE_LOCK.md](../HINA_STYLE_LOCK.md). Não continuar se a imagem errada estiver anexada. Os prompts abaixo são **completos**; não colar os prompts-base junto.
 
-## PROMPT 1 — criar a personagem (copiar inteiro)
+## PROMPT 1 — gerar full-body no mesmo padrão artístico da Hina
 
 ```text
-You will receive one attached STYLE REFERENCE IMAGE from our cozy pixel-art anime / visual-novel cat-maid café game. Treat it as a reference for artistic language only: warm, richly crafted atmosphere, gentle anime expressions, colored outlines, cohesive shapes, restrained pixel clusters, and a premium, charming collectible-game finish. Do NOT reproduce the pink-haired character, faces, costumes, logos, Japanese writing, café layout, UI borders, furniture, or composition shown in that image. Make a completely ORIGINAL adult cat-maid, visually part of the same fictional game.
+TASK
+Generate exactly ONE original adult cat-maid full-body character design for the same 2D pixel-art chibi game as ATTACHED IMAGE A, the APPROVED HINA MASTER. Not a card, portrait crop, sheet, render of a café or written description.
 
-Generate exactly ONE standalone, full-body character illustration — NOT a character sheet, multiple poses, collage, interface mockup, portrait-only crop, video frame sequence, rendered café interior or written description. She should face the viewer (very gentle three-quarter angle is allowed), standing in a relaxed balanced pose with both hands, both feet, both ears and the complete tail clearly visible within generous margins. Include sufficient space around hair and accessories for later editing and animation. One character; no duplicates, reflections, background people, animals or text.
+REFERENCE ROLES AND PRIORITY
+IMAGE A (HINA): absolute reference for shared visual language only — chibi body geometry, compact proportions, line weight/pixel clusters, shading, outline, material rendering, maid-uniform family and framing. The CHARACTER IDENTITY below controls the NEW character's hair, eyes, ears, tail, personal colors, expression, accessories and outfit variations. NEVER copy Hina's navy bob, ice-blue eyes, triangle clip, face or exact palette. Do NOT attach the café scene or another character.
 
-Make this a high-quality 2D pixel-art-influenced anime game character designed for a small on-screen chibi presentation: approximately 2.5–3.25 heads tall, appealing expressive head and eyes, stable body landmarks, coherent anatomy and believable joints for a future walk cycle. Use deliberate pixel-like clusters, clean stepped edges, controlled hard/soft transitions and readable shapes rather than photographic detail, 3D rendering, glossy plastic surfaces, blur, noisy microtexture, painterly smear or artificial pixelation overlay. Warm cream/chocolate clothing materials, sophisticated pink/terracotta/rosewood accents where appropriate, colored outlines and subtle cool shadow shifts; allow the specific maid's signature palette to stand out against these shared materials. Do not require strict numeric pixel-size fidelity from the generator.
+SHARED STYLE LOCK — NON-NEGOTIABLE
+- Replicate Hina's compact adult chibi type: approximately 2.8–3.0 heads tall from scalp to shoes (exclude cat ears); large head about one-third of non-ear height; rounded face; short torso and compact arms/legs. Not a tall, elongated anime illustration.
+- Actual intentional 2D pixel-art appearance: crisp stepped dark colored contours, coherent pixel clusters, simplified surfaces, 2–3 discrete cel-shading values per material and small controlled highlights. NO smooth digital anime painting, gradient airbrushing, vectors, 3D look, fake pixel noise or postprocessed pixelation.
+- Same underlying maid costume language: short/modest A-line café dress, ivory ruffled apron, visible collar/bodice/cuffs, neat hem, socks and closed service shoes. Preserve shared silhouette/complexity, but customize colors and selected details as stated in the identity block.
+- Same facial language/lineweight as Hina, but original face expression and identity. Soft warm diffuse upper-left light; subtle cool shadows. Similar graphic density at the same apparent size.
+- Single centered almost-front standing pose, hands/ears/feet/tail entirely visible, relaxed balanced posture; character ~80–86% of frame height; portrait ~3:4 aspect ratio if supported.
+- Plain uniform warm-light ivory background; NO café scenery, shadows on ground, vignette, gradients, frames, UI, text, logos, duplicates, motion blur, watermarks or props.
+- The result must visually belong to the **same character lineup as Hina** even after shrinking to 96–128 px. Same artistic type, NOT the same individual.
 
-Each maid must have a memorable, non-interchangeable hair silhouette; one strong face cue; precisely described cat ears, tail and costume details; and at most one or two dominant accessories. Differentiate designs with intentional color relationships, not random decorations. Garments must read as practical yet adorable café staff clothing with covered, tasteful styling, apron, shoes and recognizable maid trim. Avoid fetish styling or revealing focus. Keep outfit geometry simple enough to remain stable across independently generated walking frames, while expressive enough to support collectible portraits later.
-
-Composition: isolated character against a simple flat warm-neutral light backdrop that contrasts with her hair and clothing; no furniture, floor tiles, setting, vignette, cast shadow, border, UI, captions, lettering, logo or watermark. Full-body and large in frame without cropping. This is the approved-identity CANDIDATE for downstream image-to-video tests, not the final card portrait.
-
-Character identity specification (mandatory; these details override generic visual suggestions):
+CHARACTER IDENTITY — CHANGE ONLY THESE APPROVED VARIABLES
 Create SUZU, an ORIGINAL adult Genki cat-maid, with a bright, ready-to-help energy and a gentle proud smile. This is the same visual identity already explored in our D-pixel-cafe study: do not redesign her into a clover or twin-tail character. Her dominant silhouette is a mint-green BOB hairstyle with straight layered bangs, two longer face-framing side locks and two short tied tufts, each secured with a tiny ribbon and bell. Use soft mint #8FD8C0 as directional hue, deeper seafoam shade and luminous pale-mint highlights; do not require literal color-code output. Large almond-round amber-gold eyes, two defined glints, delicately curved brows and warm peach skin. Keep her face sunny, endearing and open, not childish.
 
 Cat ears are erect and mint with cream-pink inner fur; the LEFT ear has a small notch at its tip (preserve which side in the character's own anatomy), clearly distinguishable even in a compact silhouette. Her tail is slim cream with mint tip and a SINGLE gold bell attached near the tip; do not replace with stripes or a clover. Her defining outfit is a chocolate-brown maid dress with cream ruffled pinafore, clear white collar, puff sleeves, clean burgundy bow centered on the chest, light hosiery and practical dark-brown shoes. A small GOLD BELL on a slim neck choker identifies her in close-up; another small tied bell at the hair tuft is acceptable, but avoid making ornaments too large or numerous.
 
 Suzu must read as eager and efficient even when stationary: light spring in her stance, hands relaxed near the apron, warm eyes engaging the viewer. Ensure her mint hair reads clearly against the shared café palette; her burgundy bow, golden bells and ear notch must carry into future stills. The accepted style reference anchors visual language, not clothing copies. Keep exact accessory placement deliberately consistent for later chibi motion and eventual portrait.
 
-If the style reference conflicts with the specified identity, preserve the CHARACTER IDENTITY and only transfer the reference's rendering language. Return only the rendered image.
+FINAL CHECK
+If the identity block suggests longer legs, naturalistic anatomy, a different art technique or a larger/more detailed uniform, keep HINA'S SHARED CHIBI PROPORTIONS/STYLE and adapt the identity marker into them. Do not copy Hina's distinctive personal features. Return only the rendered single full-body image.
 ```
 
-**Saída esperada:** `01_suzu_step1_fullbody_v01.png` — uma personagem original inteira, **não** portrait recortado, não card, não vídeo.
+**Saída:** `01_suzu_step1_fullbody_v02.png`. Aprová-la **lado a lado com a Hina na mesma altura** (proporção, contorno, pixel clusters, uniformes) antes de fazer vídeo. A imagem NÃO é um portrait detalhado do card.
 
-## PROMPT 2 — criar quadro inicial de caminhada (copiar inteiro)
+## PROMPT 2 — EDITAR a maid aprovada para pose de caminhada horizontal
 
 ```text
-Two images are attached: IMAGE A is the already generated full-body maid from STEP 1 and is the ABSOLUTE CHARACTER IDENTITY REFERENCE; IMAGE B is the project STYLE REFERENCE and controls the general cozy pixel-art anime / visual-novel rendering language only. Do NOT copy any character or scene from IMAGE B. If the two references conflict, IMAGE A wins for face, hairstyle, ears, tail, clothing, proportions, accessory placement, color and character design.
+TASK
+EDIT IMAGE A into exactly ONE full-body initial frame for a RIGHTWARD, HORIZONTAL, WALK-IN-PLACE cycle in a 2D Unity café game. Not a video, sheet or collage.
 
-Generate exactly ONE clean full-body still image to serve as the initial frame for short AI image-to-video WALK animation. The output is NOT a sprite sheet, animation strip, montage, scene, in-game screenshot, card or text description. Keep exactly the same maid as IMAGE A with the same recognizable face, iris colors (including left/right heterochromia if present), hair locks, ear asymmetries, tail coloration, maid uniform, seam/ribbon placements, ornaments, shoes and silhouette. No costume redesign, extra objects, prop creation, missing limbs or changes to the intended age.
+REFERENCES
+IMAGE A: authoritative identity, face, hair anatomy, ear/tail asymmetries, proportions, costume details and accessory placement. IMAGE B: the approved HINA master, authoritative for common pixel-art chibi style and proportions. Do not transplant Hina's personal design. Change only walking pose and background; preserve the exact character and the group's visual language.
 
-She is frozen at a believable MID-STRIDE phase of a light, short, game-like walk, slightly toward screen right (the horizontal X direction) but with face and chest still mostly front-facing / gentle three-quarter view so both eyes remain visible. One foot a little forward, the opposite arm a little forward, stable hips, balanced posture, hands visible, relaxed expression appropriate to her personality. Avoid running, hopping, long strides, dancing, dramatic twisting or side-stepping with broken anatomy. Give the hair, apron and tail plausible resting positions that a video model could animate later, without motion blur. Keep the character's feet fully visible, tail tip visible, and generous empty space at all edges. The future game engine translates her position on X; this frame is for WALK-IN-PLACE motion, not traveling across the image.
+POSE / PHYSICS
+Orient face, gaze, shoulders, hips, knees and feet toward SCREEN RIGHT (a genuinely side-oriented three-quarter view, approx. 65–80° away from front). Do NOT keep face/chest pointing at the viewer while legs mime sideways walking. Show a clear, anatomically coherent stride: one foot contacts the virtual ground, the other advances far enough to create a legible weight-transfer cycle; opposing arm swing; quiet modest body bob. Avoid crossed runway legs, mincing steps, moonwalk, skating, hopping or exaggerated marching. The character stays in the same screen position; Unity translates her later. Camera fixed, no zoom.
+Keep the same 2.8–3.0-head compact chibi anatomy, stepped colored outlines and clustered cel shading of IMAGE B. Do not turn into a smooth anime illustration. Maintain exact left/right asymmetry in the character's own anatomy: do NOT mirror her features. Both shoes, tail tip, ears, hands and accessories stay inside frame with generous margins.
 
-Background must be a completely opaque, absolutely uniform, single flat CHROMA KEY color #0000FF from edge to edge, without gradient, texture, lighting, horizon, checkerboard, floor line, shadow, shadow halo, reflections, vignette, props, text, watermark, UI or people. Do not introduce any glow or semi-transparent green/blue outline on the maid. Keep her original colors, especially around thin strands, ears, jewelry, skirt hems and tail. Use a crisp hard silhouette against the solid background. No environmental lighting changes.
+BACKGROUND
+Pure, uniform, opaque CHROMA #0000FF from edge to edge. No gradient, soft shadow, halo, ground, horizon, vignette, reflection, transparency checkerboard, text or extra objects. Avoid chroma-color spill or damage to eyes/hair/trim. If the actual foreground overlaps the proposed chroma, select an absent color and document the change.
 
-Character-specific identity lock and chroma notes:
+IDENTITY LOCK
 Lock Suzu to the STEP 1 image: mint bob with straight bangs and two side locks, tied short tufts, amber-gold eyes, notched LEFT ear, cream tail with mint tip and gold bell, gold choker bell, chocolate-and-cream maid dress and burgundy chest bow. Do NOT change the hair to long twin tails, add clover ornaments, invent stripes on the tail, or invert the ear notch. Chroma is saturated pure BLUE #0000FF because mint-green hair and ears make green a risky background. Keep the edge of every mint strand clean; if her actual rendered costume contains blue, change chroma to another clearly absent solid hue before using the image in video.
 
-Only produce the final single still image. Do not include an explanation.
+OUTPUT
+One clean full-body STILL only. Preserve IMAGE A identity and IMAGE B artistry; no animation strip, no scene or explanation.
 ```
 
-**Saída esperada:** `01_suzu_step2_walkstart_v01_blue.png` (adapte ao chroma realmente usado). O vídeo/ciclo só nasce depois, na etapa Tencent.
+**Saída:** `01_suzu_step2_walkstart_v02_blue.png` (ajustar nome à cor real). A Etapa 2 deve preservar a IDENTIDADE da imagem A e o ESTILO do chibi mestre B. Não aceitar resultado de corpo alongado, pose frontal fingindo andar lateralmente ou fundo com gradiente.
 
-## Revisão antes de aceitar
+## Gate visual antes de animar
 
-- [ ] Identidade da ficha preservada, inclusive lados/asimetrias
-- [ ] Personagem continua original, sem copiar a maid da referência
-- [ ] Etapa 1: rosto, uniforme, orelhas, cauda, braços e sapatos visíveis
-- [ ] Etapa 2: mesma identidade da Etapa 1, pose de meio passo natural
-- [ ] Chroma sem tons conflitantes no cabelo/olhos/roupa/acessórios, contorno limpo
-- [ ] Responsável aprovou/rejeitou e nome/versão do arquivo foram registrados
+- [ ] **Hina-locked:** altura em cabeças, silhueta, contorno em degraus, 2–3 sombras por material e detalhe visual coerentes com a Hina aprovada.
+- [ ] **Identidade:** todos os marcadores específicos desta ficha estão visíveis, no lado anatômico correto; nenhuma característica da Hina foi copiada indevidamente.
+- [ ] **Família do uniforme:** estrutura maid equivalente à Hina (avental marfim, vestido curto/modesto, sapato de café) com adaptações de cor/acessório específicas.
+- [ ] **Composição:** um full-body, orelhas/cauda/mãos/sapatos inteiros, enquadramento consistente, sem cenário nem texto.
+- [ ] **Gameplay:** legível ao reduzir para ~96–128 px de altura, sem perder marcas essenciais.
+- [ ] **Walk still:** orientação efetivamente para a direita, transferência de peso e passo legível, sem redesenho ou arte borrada.
+- [ ] **Chroma:** fundo uniforme de cor ausente em cabelo, olhos, roupa e acessórios.
+- [ ] **Aprovação humana:** atingir pelo menos 9/10 na rubrica de [HINA_STYLE_LOCK.md](../HINA_STYLE_LOCK.md), sem falha eliminatória; registrar versão aprovada/rejeitada. Sem vídeo antes da aprovação.
+
+**Se houver somente um defeito**, peça uma **edição direcionada** da imagem atual (mude apenas o defeito; preserve o resto) em vez de gerar uma maid do zero. Os modelos podem variar; os prompts **não garantem resultado idêntico sem QA**.
