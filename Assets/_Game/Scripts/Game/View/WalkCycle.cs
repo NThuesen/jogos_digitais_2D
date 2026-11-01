@@ -17,6 +17,12 @@ namespace Neko.Game.View
         /// <summary>Slower than this, in world units per second, and she counts as standing.</summary>
         public const float MinSpeed = 0.25f;
 
+        /// <summary>
+        /// Most drawings per real second while walking: two full cycles a second, one drawing per
+        /// screen frame at 60 Hz. Faster than that skips drawings instead of showing more of them.
+        /// </summary>
+        public const float MaxFramesPerSecond = 60f;
+
         /// <summary>How fast the cycle runs on to its resting frame once she has stopped.</summary>
         public const float SettleFramesPerSecond = 60f;
 
@@ -50,14 +56,20 @@ namespace Neko.Game.View
         /// </summary>
         /// <param name="distance">How far she moved on screen this frame.</param>
         /// <param name="seconds">Game time of the frame. Zero while paused, which freezes it.</param>
-        public void Step(float distance, float seconds)
+        /// <param name="realSeconds">
+        /// Wall-clock time of the frame, which caps how fast the drawings may change. At 2x and
+        /// 4x the distance per frame is two or four times larger, and without a cap the cycle
+        /// would skip several drawings per screen frame and strobe.
+        /// </param>
+        public void Step(float distance, float seconds, float realSeconds)
         {
             if (seconds <= 0f) return;
 
             Moving = distance / seconds > MinSpeed;
             if (Moving)
             {
-                Phase = Mathf.Repeat(Phase + distance / _unitsPerCycle * _frames, _frames);
+                var advance = Mathf.Min(distance / _unitsPerCycle * _frames, MaxFramesPerSecond * realSeconds);
+                Phase = Mathf.Repeat(Phase + advance, _frames);
                 return;
             }
 

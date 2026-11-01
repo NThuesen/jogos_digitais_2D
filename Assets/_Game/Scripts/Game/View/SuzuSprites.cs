@@ -30,7 +30,7 @@ namespace Neko.Game.View
         public static readonly int[] RestFrames = { 0, 10, 11, 12, 13, 26 };
 
         /// <summary>World distance covered by one full 30-frame cycle (two steps).</summary>
-        public const float UnitsPerCycle = 1.2f;
+        public const float UnitsPerCycle = 2.0f;
 
         /// <summary>
         /// Puts her soles on the line the procedural maid's shoes sit on. The sprite's pivot is the

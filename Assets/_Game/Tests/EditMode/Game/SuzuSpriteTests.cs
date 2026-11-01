@@ -99,8 +99,19 @@ namespace Neko.Tests.EditMode.Game
         public void FramesFollowDistanceNotTime()
         {
             var cycle = Cycle();
-            cycle.Step(0.05f, 0.016f); // 0.05 / 1.5 * 30 = exactly one frame
+            cycle.Step(0.05f, 0.02f, 0.02f); // 0.05 / 1.5 * 30 = exactly one frame
             Assert.AreEqual(27, cycle.Frame);
+            Assert.IsTrue(cycle.Moving);
+        }
+
+        [Test]
+        public void FastForwardNeverSkipsMoreThanADrawingPerScreenFrame()
+        {
+            var cycle = Cycle();
+            var before = cycle.Phase;
+            cycle.Step(0.8f, 0.0667f, 0.0167f); // 4x speed: 16 frames of distance in one 60 Hz frame
+            var moved = Mathf.Repeat(cycle.Phase - before, 30f);
+            Assert.LessOrEqual(moved, WalkCycle.MaxFramesPerSecond * 0.0167f + 1e-4f);
             Assert.IsTrue(cycle.Moving);
         }
 
@@ -108,7 +119,7 @@ namespace Neko.Tests.EditMode.Game
         public void ACompleteCycleOfDistanceReturnsToTheSameFrame()
         {
             var cycle = Cycle();
-            for (var i = 0; i < 30; i++) cycle.Step(0.05f, 0.016f);
+            for (var i = 0; i < 30; i++) cycle.Step(0.05f, 0.02f, 0.02f);
             Assert.AreEqual(26, cycle.Frame);
         }
 
@@ -116,9 +127,9 @@ namespace Neko.Tests.EditMode.Game
         public void ZeroGameTimeFreezesTheCycle()
         {
             var cycle = Cycle();
-            cycle.Step(0.05f, 0.016f);
+            cycle.Step(0.05f, 0.02f, 0.02f);
             var frame = cycle.Frame;
-            for (var i = 0; i < 20; i++) cycle.Step(0.5f, 0f);
+            for (var i = 0; i < 20; i++) cycle.Step(0.5f, 0f, 0f);
             Assert.AreEqual(frame, cycle.Frame);
         }
 
@@ -126,12 +137,12 @@ namespace Neko.Tests.EditMode.Game
         public void StoppingRunsOnToAFrameWithBothFeetDownAndHolds()
         {
             var cycle = Cycle();
-            for (var i = 0; i < 17; i++) cycle.Step(0.05f, 0.016f); // frame 43 % 30 = 13
+            for (var i = 0; i < 17; i++) cycle.Step(0.05f, 0.02f, 0.02f); // frame 43 % 30 = 13
             Assert.IsFalse(cycle.AtRest);
-            for (var i = 0; i < 60; i++) cycle.Step(0f, 0.016f);
+            for (var i = 0; i < 60; i++) cycle.Step(0f, 0.016f, 0.016f);
             Assert.IsTrue(cycle.AtRest);
             var held = cycle.Frame;
-            for (var i = 0; i < 20; i++) cycle.Step(0f, 0.016f);
+            for (var i = 0; i < 20; i++) cycle.Step(0f, 0.016f, 0.016f);
             Assert.AreEqual(held, cycle.Frame);
         }
 
@@ -139,11 +150,11 @@ namespace Neko.Tests.EditMode.Game
         public void SettlingIsQuickEnoughNotToLookLikeSlidingToAStop()
         {
             var cycle = Cycle();
-            for (var i = 0; i < 17; i++) cycle.Step(0.05f, 0.016f);
+            for (var i = 0; i < 17; i++) cycle.Step(0.05f, 0.02f, 0.02f);
             var time = 0f;
             while (!cycle.AtRest && time < 5f)
             {
-                cycle.Step(0f, 0.016f);
+                cycle.Step(0f, 0.016f, 0.016f);
                 time += 0.016f;
             }
 

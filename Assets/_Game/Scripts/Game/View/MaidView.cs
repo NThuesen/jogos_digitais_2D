@@ -198,7 +198,7 @@ namespace Neko.Game.View
         /// </summary>
         private void SyncAuthored(MaidPose pose, float travelled)
         {
-            _cycle.Step(travelled, Clocks.Game);
+            _cycle.Step(travelled, Clocks.Game, Clocks.Ui);
             _body.sprite = _authored[_cycle.Frame];
             _body.transform.localPosition = SuzuSprites.BodyOffset;
             _body.color = pose == MaidPose.Tired ? new Color(0.8f, 0.8f, 0.88f) : Color.white;

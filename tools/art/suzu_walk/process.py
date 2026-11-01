@@ -122,7 +122,7 @@ def main():
     ap.add_argument("--out", default="Assets/_Game/Resources/Suzu")
     ap.add_argument("--docs", default="docs/art/suzu-walk")
     ap.add_argument("--work", default="art_working/01_suzu/step5_processed")
-    ap.add_argument("--height", type=int, default=112, help="character height in output pixels")
+    ap.add_argument("--height", type=int, default=120, help="character height in output pixels")
     ap.add_argument("--style", choices=["smooth", "pixel"], default="pixel")
     ap.add_argument("--colors", type=int, default=48)
     args = ap.parse_args()

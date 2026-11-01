@@ -11,7 +11,7 @@ imported. Every parameter and the SHA-256 of each source frame are in
 
 **What the tool does:** removes matte streaks, replaces the closed eyes of the video's long
 blink with the eyes of the nearest open frame, anchors the planted foot and the skirt axis,
-scales every frame by one factor to 112 px of character height, quantises to one shared 48 colour
+scales every frame by one factor to 120 px of character height, quantises to one shared 48 colour
 palette with hard alpha, and packs the 30 cells into one grid. Import settings are Point, no
 mipmaps, uncompressed, clamp, non-readable (see `suzu_walk_sheet.png.meta`).
 
