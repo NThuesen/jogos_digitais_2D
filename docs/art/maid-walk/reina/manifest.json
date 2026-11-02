@@ -1,0 +1,112 @@
+{
+ "id": "reina",
+ "name": "Reina",
+ "frames_found": 36,
+ "folder": "05_reina/step4_blender/walk_x/frames",
+ "numbering": [
+  143,
+  178
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 0,
+ "matte_px": 30326,
+ "chroma_px": 0,
+ "height_mean": 852.3,
+ "height_range": [
+  845,
+  856
+ ],
+ "cx_std": 11.1,
+ "drift_x": 29.0,
+ "drift_y": 4,
+ "step_diff_mean": 0.0669,
+ "wrap_diff": 0.1886,
+ "loop_ratio": 1.21,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.1843,
+ "loop_trim": [
+  2,
+  34
+ ],
+ "loop_ratio_before_trim": 2.82,
+ "source_frame_numbers": [
+  145,
+  177
+ ],
+ "units_per_cycle": 2.42,
+ "slide_factor": 3.5,
+ "cell": [
+  82,
+  124
+ ],
+ "scale": 0.1408,
+ "frames": 33,
+ "columns": 6,
+ "rows": 6,
+ "idle_frame": 9,
+ "rest_frames": [
+  9,
+  10,
+  11,
+  24,
+  25,
+  26
+ ],
+ "foot_speed_px_per_frame": 2.0,
+ "max_foot_separation_px": 34.1,
+ "noslide_units_per_cycle": 0.688,
+ "status": "NEEDS_PROCESSING",
+ "note": "trimmed to source frames 145-177 to close the loop",
+ "resource": "Maids/reina_walk",
+ "sheet_sha256": "ea474732cd88803e75b065226ddcb020bd56e1267f65a6f3265633cc3eb80400",
+ "source_sha256": {
+  "0143.png": "4c9943848e81852f4401b4b8c0daabf084b6229d31c42a89d19a77e411f74696",
+  "0144.png": "c40997589d34fa56e72e409b76ba6e29d302bc641ed1ed90da3efd670a0f6de5",
+  "0145.png": "2b60506cbf10998c6c7e7c309f641a9d17fbf00ba34cfbbc87b85f1de62e943a",
+  "0146.png": "4dd489a708bd60b0d38d8f61ffd0d499699573b51bc45cf157b50af8b4391088",
+  "0147.png": "84a37bb486ca76bf1f54cce278acf6f4b65bcd1efd696009912c23ad73dbabc4",
+  "0148.png": "fcb34dc5b8fd3feea2cd320f220ecc903dbdff3d5b8f197aa0ea9485dfe7a085",
+  "0149.png": "945974fe798357795ec049b38ff7352ad1d2a8de560ae8a8dcd3d115977bf5e4",
+  "0150.png": "0ce4a0711908cc6f8bb8827a4453a2a2e8d4af705d51e6b9d78fc3aa26468dd2",
+  "0151.png": "e1f78b9328c650c133b37135952895d8c0ec76484fbc7c8ec391318d67c84cc7",
+  "0152.png": "af5d3c2e1bf732a1c0fcf227ee3c119ad8c5740a4808b2ba0e074c8c3b48ec8b",
+  "0153.png": "4a031c7979e73b2a69e3b1714b50f31cea41316147bbe13ae6fdf07103da7668",
+  "0154.png": "bfe643043b48e2e03aa9361bafa188a832cd570579ebf1821d4c1243e621971e",
+  "0155.png": "5fb40dd913b4d44626f676b829f8b93fab2e4a1b63249d3356bc6eea48596f1c",
+  "0156.png": "69178d513b533020a096adefcf63c357da6dfb3238a2f2eb1eec0be36b76cc25",
+  "0157.png": "c0498752b963a889eedc6ae04e1e0c990c6a9c3a571dbba44a8cfb0d7dbbaf6b",
+  "0158.png": "3d72ef827029a11d95d5209ca374e05a17d11063614a41a0c1b6d11cb975b344",
+  "0159.png": "e25ced1964bace353c4b122aa8e0b0b6dbe15d849a263d057ecb3f2745e8b99d",
+  "0160.png": "4b3baccbf2609245017a6c247b6f11ada958310b6564c22ea2a5c28ba69cd312",
+  "0161.png": "926cb0ba613f192ce409fda654df268c3ae862c9759abb9c953ede68bbff192d",
+  "0162.png": "fb5e0742574b6976348ab1c47c455bd4e1600697696893cb3bfdade8e5162efc",
+  "0163.png": "b2f1286e0da9bed147d0d01a7c12bc2776deb2ab874940a406cbd5f6cf3663a1",
+  "0164.png": "3bbb51a076eba8f11c805e45d476267bd657b799b5fa347dcd7f284b421ed31a",
+  "0165.png": "e656449803fe457a59e9cde30ef69508e65870577edafeb58a5505e107356d6a",
+  "0166.png": "5209eec951ad9ba8c4efeb719e734630726dbb7d66d2a082cd924b241d11094d",
+  "0167.png": "8f1a880cc99510d94da451c3b030983175562bff07e05719564655740a3d20b0",
+  "0168.png": "1636f74f4d81a66d2805e321d150ac7a4c208cb8b8ab5f6efc27b38a85f477e2",
+  "0169.png": "cd89dc94f3ac4a5f77cfce3de12923ad9345b95d21092a4eaaeb57643cf77675",
+  "0170.png": "684066a255145baf3fe2d7167b1653e6de9a3f587617b87349d471eea7d35853",
+  "0171.png": "b02a86d2280fcb6c8762df749e7f1dc1dec452f42273577a623e671db264b251",
+  "0172.png": "9a78289c9464e5c66b17fc65561df7bdf905a9ce223d36956d4e71ca03caceeb",
+  "0173.png": "f5bad04f725d109afd26516e4a9ff004b479d6d791ba16fcda3c567ad72cbf67",
+  "0174.png": "a641a2e559924903002e43e3acf9c0c7e3f5d73c1ebd0415a18d09e3e14b785d",
+  "0175.png": "0d349f2a39c43343ffc9121c6ab7b50c890be9db4f33c43897c64c4e96fdf360",
+  "0176.png": "e38b269f126879040374ec5e9e8bbbc065fda3e60ff4f46f5f3d1960ffc709a0",
+  "0177.png": "3c24f542cd517b6871988cc5f69e84204f577305d678d6e66bfb31f39c3a71ed",
+  "0178.png": "571256b4dc358d6a8de555aef1a88702a321fcf8c219260e6031b8fcdb7f2c30"
+ },
+ "parameters": {
+  "height_px": 120,
+  "colors": 48,
+  "style": "pixel",
+  "pad_px": 3,
+  "pixels_per_unit": 96
+ }
+}

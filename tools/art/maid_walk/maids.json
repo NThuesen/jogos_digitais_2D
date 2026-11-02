@@ -1,0 +1,21 @@
+{
+  "_comment": "Roster read by maid_walk.py. 'folder' is under art_working/ (git-ignored raw Blender frames, never modified). 'status' is the QA verdict recorded by 'audit'; only READY/NEEDS_PROCESSING/LIMITED are packed. height_px is the on-screen character height in sprite pixels (Hina, the approved reference, sets 120).",
+  "defaults": {"height_px": 120, "colors": 48, "style": "pixel", "pad_px": 3, "pixels_per_unit": 96, "body_offset_y": -0.58, "carried_offset_y": -0.04},
+  "maids": [
+    {"id": "suzu",   "name": "Suzu",   "archetype": "Genki",    "folder": "01_suzu/step4_blender/walk_x/frames"},
+    {"id": "hina",   "name": "Hina",   "archetype": "Kuudere",  "folder": "02_hina/step4_blender/walk_x/frames"},
+    {"id": "akari",  "name": "Akari",  "archetype": "Tsundere", "folder": "03_akari/step4_blender/walk_x/frames"},
+    {"id": "momo",   "name": "Momo",   "archetype": "Dojikko",  "folder": "04_momo/step4_blender/walk_x/frames"},
+    {"id": "reina",  "name": "Reina",  "archetype": "Ojousama", "folder": "05_reina/step4_blender/walk_x/frames"},
+    {"id": "kaede",  "name": "Kaede",  "archetype": "Oneesan",  "folder": "06_kaede/step4_blender/walk_x/frames"},
+    {"id": "nene",   "name": "Nene",   "archetype": "Idol",     "folder": "07_nene/step4_blender/walk_x/frames", "chroma": "green"},
+    {"id": "ichika", "name": "Ichika", "archetype": "Gourmand", "folder": "08_ichika/step4_blender/walk_x/frames"},
+    {"id": "yoru",   "name": "Yoru",   "archetype": "Mukuchi",  "folder": "09_yoru/step4_blender/walk_x/frames"}
+  ],
+  "legacy": [
+    {"id": "suzu", "name": "Suzu", "archetype": "Genki", "resource": "Suzu/suzu_walk_sheet",
+     "frames": 30, "columns": 6, "rows": 5, "cell": [92, 126], "pixels_per_unit": 96, "idle_frame": 10,
+     "rest_frames": [0, 10, 11, 12, 13, 26], "units_per_cycle": 2.0, "body_offset_y": -0.58, "carried_offset_y": -0.04,
+     "source": "docs/art/suzu-walk/manifest.json (PR #27, unchanged)"}
+  ]
+}

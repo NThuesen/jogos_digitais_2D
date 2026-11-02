@@ -1,0 +1,100 @@
+{
+ "id": "momo",
+ "name": "Momo",
+ "frames_found": 27,
+ "folder": "04_momo/step4_blender/walk_x/frames",
+ "numbering": [
+  36,
+  62
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 0,
+ "matte_px": 26594,
+ "chroma_px": 0,
+ "height_mean": 921.7,
+ "height_range": [
+  915,
+  927
+ ],
+ "cx_std": 1.8,
+ "drift_x": 7.0,
+ "drift_y": 3,
+ "step_diff_mean": 0.0555,
+ "wrap_diff": 0.2356,
+ "loop_ratio": 1.18,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.0954,
+ "loop_trim": [
+  0,
+  19
+ ],
+ "loop_ratio_before_trim": 4.24,
+ "source_frame_numbers": [
+  36,
+  55
+ ],
+ "units_per_cycle": 1.47,
+ "slide_factor": 4.1,
+ "cell": [
+  70,
+  124
+ ],
+ "scale": 0.13019,
+ "frames": 20,
+ "columns": 6,
+ "rows": 4,
+ "idle_frame": 9,
+ "rest_frames": [
+  9,
+  10,
+  11
+ ],
+ "foot_speed_px_per_frame": 1.71,
+ "max_foot_separation_px": 34.8,
+ "noslide_units_per_cycle": 0.356,
+ "status": "NEEDS_PROCESSING",
+ "note": "trimmed to source frames 36-55 to close the loop",
+ "resource": "Maids/momo_walk",
+ "sheet_sha256": "53cf87055f9343b87967bf813c15e0a374434089d659fd52fbc6139093395093",
+ "source_sha256": {
+  "0036.png": "24832436154ff595fdadffd0529e066b17e63aa0532ac8626f7c26505606a853",
+  "0037.png": "fa003f668421fcd9ba6cbc729647538d382c38742d15470b4c1df0d31a06c03d",
+  "0038.png": "2d204db1cc71becb4e8427875e16d5cbf4b23a5a8af1fe2a25df2b7e65dd908f",
+  "0039.png": "d80698cb18936f65ac1c59c1305172018171ad410307189463a5f94f4cbbf659",
+  "0040.png": "08ae3a3761e98139a86c243a17efcbac135782710b7d95dd6216e7dfce299893",
+  "0041.png": "8a30b1c7f19b5427c87fd1eddc6086486e9d08f50076e86627727d04e0638d5f",
+  "0042.png": "2ef837c259c0ed875ebae142fe767c04c6bd9a6e2b5a95f9fbfab0f39fb4c068",
+  "0043.png": "6bae908e6e7afde2d9984bc44fd1191b1bea0107f7745a7946c9037456c9cd5b",
+  "0044.png": "b4a1104c2f6e800ff54a9919532d73a8b526f116414bfa73f52f2c1b796118e6",
+  "0045.png": "0ee5ece23c9536b6c371979419c6b8f99c31f8ededd4a0fc322730083768bd83",
+  "0046.png": "0037895091800bc8281736bd63f043ca0b6789c74ffc48e5b1779ecf988ef224",
+  "0047.png": "24667d565ad8020d989967774db5e01bb92f1c8e10e20e3289569a4ffcce574f",
+  "0048.png": "91ef3e2ea9068e5027f29e86db29a9cdee341ff75637bf891e4293097badf472",
+  "0049.png": "109ece61c66f13ec861e04d2f90cfbe9a1efe4e955cbc192d5ed56fc5d3c9913",
+  "0050.png": "03a5cffd14de0be04137f0adca8ca110d0f622033f26de84cb99edb57579932f",
+  "0051.png": "e607db1485f390fdaa57179db5369965201328af369bdd3547ff484261e52761",
+  "0052.png": "5904e82906f8da71df72464b11de7257fb9b32f101cac39043d7e01a929de702",
+  "0053.png": "b977470b459ef13db729006622286f96e0be2a7b8e1515f0306d14af3a55d87c",
+  "0054.png": "f8426e1a8be13608ea307540a24cab37285dcebe437db3574e125318bd3f6271",
+  "0055.png": "35db10e5303702f6f55eedbeab2c5f360c7a2f6e9c547b03e0e417f7b478e863",
+  "0056.png": "1aff2c20edd54281dd4470e1c470db60f028b4629c56d3d11f31ee9907732441",
+  "0057.png": "9942bc416b9d2c73c906be87c065ba5a9f4ca23d40c2b91b78b73610a68fe5f3",
+  "0058.png": "c93ad23379a724f949de5286fa35e429c7356bf305497eb8ae25e584d999e00f",
+  "0059.png": "dac48beda29f28cad35df39e137d63f84ce06bd24120ed41ea921af88bb2697c",
+  "0060.png": "9218b8cedfbe62ada76ee24cdbedb098a66fd065c8143743104f443b342a9f1d",
+  "0061.png": "f7147c121c0b9d7b41dceee595303bb8216a875e6f83fda64664fa61215f80b1",
+  "0062.png": "52e425b4eea8dafb81c3f51500fd5e7388b5d7c2720f5ca84a35f12bcc2f3c6a"
+ },
+ "parameters": {
+  "height_px": 120,
+  "colors": 48,
+  "style": "pixel",
+  "pad_px": 3,
+  "pixels_per_unit": 96
+ }
+}

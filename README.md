@@ -78,10 +78,10 @@ trabalho em grupo isso significa que ninguém resolve conflito de merge em YAML 
 
 ## Créditos de assets
 
-Nenhum asset de terceiros. Uma única imagem original do projeto é importada:
+Nenhum asset de terceiros. Imagens originais do projeto são importadas (a caminhada da Suzu e as sete caminhadas de `Assets/_Game/Resources/Maids/`, ver a proveniência abaixo). A primeira é:
 `Assets/_Game/Resources/Suzu/suzu_walk_sheet.png`, a caminhada da Suzu, processada por
 `tools/art/suzu_walk/process.py` a partir de frames produzidos neste projeto. Origem,
-parâmetros e hash: [proveniência](docs/art/SUZU_ASSET_PROVENANCE.md). Nenhum som foi importado.
+parâmetros e hash de todas: [proveniência](docs/art/SUZU_ASSET_PROVENANCE.md); pipeline das demais: `tools/art/maid_walk/maid_walk.py`. Nenhum som foi importado.
 
 - **Toda a demais arte** é gerada em tempo de execução. Personagens, ícones e o letreiro saem de
   dezessete campos de distância em `Assets/_Game/Scripts/Game/Art/ShapeRasteriser.cs`: uma

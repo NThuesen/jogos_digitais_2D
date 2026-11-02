@@ -1,0 +1,97 @@
+{
+ "id": "suzu",
+ "name": "Suzu",
+ "frames_found": 24,
+ "folder": "01_suzu/step4_blender/walk_x/frames",
+ "numbering": [
+  33,
+  56
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 226,
+ "specks": 73,
+ "matte_px": 997,
+ "chroma_px": 0,
+ "height_mean": 832.5,
+ "height_range": [
+  827,
+  837
+ ],
+ "cx_std": 4.9,
+ "drift_x": 15.0,
+ "drift_y": 5,
+ "step_diff_mean": 0.0752,
+ "wrap_diff": 0.1746,
+ "loop_ratio": 1.1,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.1054,
+ "loop_trim": [
+  1,
+  15
+ ],
+ "loop_ratio_before_trim": 2.32,
+ "source_frame_numbers": [
+  34,
+  48
+ ],
+ "units_per_cycle": 1.1,
+ "slide_factor": 2.8,
+ "cell": [
+  76,
+  124
+ ],
+ "scale": 0.14414,
+ "frames": 15,
+ "columns": 6,
+ "rows": 3,
+ "idle_frame": 6,
+ "rest_frames": [
+  6,
+  7,
+  8
+ ],
+ "foot_speed_px_per_frame": 2.51,
+ "max_foot_separation_px": 39.1,
+ "noslide_units_per_cycle": 0.393,
+ "status": "NEEDS_PROCESSING",
+ "note": "73 specks removed; trimmed to source frames 34-48 to close the loop",
+ "resource": "Maids/suzu_walk",
+ "sheet_sha256": "46b4b6f9667c04e31fbc1b13624b3c8324ebd56882785349ad512029214b4a5b",
+ "source_sha256": {
+  ".gitignore0033.png": "b460300aaf94e2b4df48040c80ca658bc1387b62f972c06d85e0a603f0744692",
+  ".gitignore0034.png": "bad2890c574338bdac864274be7932e5a8f094fa752f2c3202b043d98185c0fe",
+  ".gitignore0035.png": "962250b98ed4662d31a52a3f208ea7eeda381a6d8b56c320fdf4cd1022fad96b",
+  ".gitignore0036.png": "4a24bd9fda6c96cdb8d67f569067f5105f79fdad8da02ab164f862ac806160b0",
+  ".gitignore0037.png": "c927942c2dbebb9815f1725cd07e1c42f825d0bf5051ffbc9e4505f9d2a53502",
+  ".gitignore0038.png": "f0f17a10ddd855ebc5860541c9f4db5463c5db779e0b4c0a42eea9270a45d294",
+  ".gitignore0039.png": "6f4bb96f57faaeb5498dca85752ea88d710175843b70311d79e66da9b564918e",
+  ".gitignore0040.png": "84997915ae40e69592f485685a30ed86350991ac59a9c37100e58b264227d688",
+  ".gitignore0041.png": "663ea41f56afbdf594ed5ef3cc4c157899e018695d4a480c8a0dec2a8e164755",
+  ".gitignore0042.png": "545b1589de768089c017fa70b15e15b20e1a3606be8aa3934353e4f7858e7229",
+  ".gitignore0043.png": "6e0f9a2c45cbb6d4f24e828c485ad15cc8c16fedf07ba7aad0e3697d5bd4fa99",
+  ".gitignore0044.png": "b3325420f934909583c5045fceb7302a5f83a4a236db1f17d20af4c45c135322",
+  ".gitignore0045.png": "8976cd35d1b057489256794bbfa22c5554e6174ccd86ace43f5bd11df67ac77e",
+  ".gitignore0046.png": "118a8dd1f866936b840c6905bb37b33015d0d224133c695af655c156c5e8fc86",
+  ".gitignore0047.png": "3feeebf2b5b1bdab3d7ca54015fab245ba9da61ed880977bf4eba9f922dd4267",
+  ".gitignore0048.png": "6338a18219ba3450691c83b7e6fb57f26eccb45f4572b6bc6d129ebdfa8d19c3",
+  ".gitignore0049.png": "1bf08cdadb6610811d52063078408ae931a19d4661ce58f72ed65c122e28c17a",
+  ".gitignore0050.png": "2fe7e4b41468ee0ce4535f8ffbd9b063cf41f89df9c62364990b216af17782a3",
+  ".gitignore0051.png": "745212c5dfc2b4fe4b9bb404dfbe468a8fb847103c75f9afb88dd61c3873296a",
+  ".gitignore0052.png": "697e166898a4826bc1bd2ec4ceb8738eef183a1441fd66526135b9b647936274",
+  ".gitignore0053.png": "4be26a35616287704caa05953191a15636d9cfc4bb5c98cf1500409d484769ff",
+  ".gitignore0054.png": "8ac850b489695108bf232bbd9355bd271e18942f84c620302db94e613bc8d259",
+  ".gitignore0055.png": "bdcf8242d50005b30d97ab74d8d9d591cd4960765b7c8ed2acefe4c7c3c57f32",
+  ".gitignore0056.png": "049ebbda810c4d42ab41593f4635a76e339894802184208c70531ef3c874884a"
+ },
+ "parameters": {
+  "height_px": 120,
+  "colors": 48,
+  "style": "pixel",
+  "pad_px": 3,
+  "pixels_per_unit": 96
+ }
+}

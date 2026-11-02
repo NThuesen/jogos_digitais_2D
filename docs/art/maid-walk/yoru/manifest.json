@@ -1,0 +1,110 @@
+{
+ "id": "yoru",
+ "name": "Yoru",
+ "frames_found": 34,
+ "folder": "09_yoru/step4_blender/walk_x/frames",
+ "numbering": [
+  57,
+  90
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 0,
+ "matte_px": 403140,
+ "chroma_px": 0,
+ "height_mean": 840.2,
+ "height_range": [
+  834,
+  846
+ ],
+ "cx_std": 10.4,
+ "drift_x": 29.0,
+ "drift_y": 6,
+ "step_diff_mean": 0.0729,
+ "wrap_diff": 0.0577,
+ "loop_ratio": 0.87,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.1445,
+ "loop_trim": [
+  0,
+  33
+ ],
+ "loop_ratio_before_trim": 0.79,
+ "source_frame_numbers": [
+  57,
+  90
+ ],
+ "units_per_cycle": 2.49,
+ "slide_factor": 4.1,
+ "cell": [
+  90,
+  124
+ ],
+ "scale": 0.14283,
+ "frames": 34,
+ "columns": 6,
+ "rows": 6,
+ "idle_frame": 19,
+ "rest_frames": [
+  4,
+  5,
+  6,
+  19,
+  20,
+  21
+ ],
+ "foot_speed_px_per_frame": 1.71,
+ "max_foot_separation_px": 34.2,
+ "noslide_units_per_cycle": 0.606,
+ "status": "NEEDS_PROCESSING",
+ "note": "faint matte removed",
+ "resource": "Maids/yoru_walk",
+ "sheet_sha256": "d41e914497c053ee213555e89b73c91dcfe86a09ad7c0b6ea5f4b2ecca3c8cad",
+ "source_sha256": {
+  ".gitignore0057.png": "2c066649bdb115e5d08a9fbd92e7f8e589b3dd7f05d35b64fda3f9f7cf2e2cf4",
+  ".gitignore0058.png": "742fdf673f3e09dee2fccf5aa03ef4b8ef4cadf3d59bbc68eebf5d531025933b",
+  ".gitignore0059.png": "b75272fd3ccc95928c9748a64daa1b12cd67ef75a548109b95fca79bb502ac2a",
+  ".gitignore0060.png": "6ce0cd0db44bf023abbb65e7b9528cc9b14ad6102e96d084a42458e60e26957d",
+  ".gitignore0061.png": "1901a887d933b6d6663b760038ab7251ab94fec184dc991da7d9a77b3d73ef85",
+  ".gitignore0062.png": "91afa39e8cda946bfd6f9d8e0ca6d70936acd600508d65c3ccf72dbdff705627",
+  ".gitignore0063.png": "3d2c0a48a25a7c859b1927fbe9c08d1e5e88813da8cfc2e62f9c819a1dddb2d5",
+  ".gitignore0064.png": "9376e7f19100946197bb407f99f012169148c5f903ee50a4a81c77a07aeb523f",
+  ".gitignore0065.png": "31a66abe2b94620b8336862274f627fc1fc6af073bf00d35cf632e58b3aabf5c",
+  ".gitignore0066.png": "fa9a34f008c61ecba72436b855ceadc002b86d1196b1a717d9a6a99990d18ea5",
+  ".gitignore0067.png": "80f455573b94e6348b766d0021a639f072fd03ffe3f027c0f42aa4d410a93b79",
+  ".gitignore0068.png": "4a4e5c4c89ccda54006c7d297efdbc553df5bb5f77480ed8be92b310eddd49a3",
+  ".gitignore0069.png": "60987ecebd9b4c2d824fbdf2325d29b5f59023eb0564022c84edd9ca1b9a6470",
+  ".gitignore0070.png": "8c837fbf0d6a1ddb7afa72c859c88199671acb290ee5ef1ee396d512dd8a1944",
+  ".gitignore0071.png": "605e3666c3c9afb2556ee829be9ddb7b144b4772ae38342b0680cec567207911",
+  ".gitignore0072.png": "53742ef3b2e87126d83a54fc7aa223f7551f5d7d9c8ede55230563f95e73f2ee",
+  ".gitignore0073.png": "9099634f38b82d55ee1809845a9996f5628ef8b198111cc2c59501ec5f34a715",
+  ".gitignore0074.png": "0e2899dfea8d389f5040f0e7bd0e482f9e12b338621415a0cfdf8b42a529e68a",
+  ".gitignore0075.png": "42f0967253114e847ac4c2f0083034e9ca5b8c1fdd2b0d3f550398515def16a9",
+  ".gitignore0076.png": "98cea77f994532b04aaa359c76d8e9906c47ec2fbcc3f7c92c6703001258a335",
+  ".gitignore0077.png": "97af77b558b38de3a9d29c8604a67c88c02270fff24813c6765963cace220a90",
+  ".gitignore0078.png": "df7a5a0ac8d89d69a7fd105b3919a1f4cc543d909cd06332022789227fd4de33",
+  ".gitignore0079.png": "19607c3b9b74f31be763aae29c0e286fa0561a0656684ad47291c158a12bee42",
+  ".gitignore0080.png": "59a7f3cb792d5cf2e8a56268c49cf7debe863a83af53c8b5658e63a0edb41bef",
+  ".gitignore0081.png": "29d20506b0cd4b0ccb631b298836fd02fa75a83c217b78d1ef66de2e4ab04731",
+  ".gitignore0082.png": "f7034f688e426e56861710c68027434b8f1a0ff30f637182e7a231f579e42068",
+  ".gitignore0083.png": "c5ffc7e8f42bbf529db33158ac3625d3868137667da890a707895d31adbb1618",
+  ".gitignore0084.png": "d8c6444f73a948c33c5921aa66024978bc0394b19c246a1fbd61924567be592c",
+  ".gitignore0085.png": "24e3b654a79d426122509c1364d8e24c3daaa1e9841b82d359b954e608929d78",
+  ".gitignore0086.png": "96a24949bd799c59825a6ac208455a29346449ff34be9dc6560fa2a2d408ecf2",
+  ".gitignore0087.png": "8f4f6ecaa40ac4e3824f49baa73774c1a29dd5a702ec482e5392ce6002a8e131",
+  ".gitignore0088.png": "5ff9c52e5402f3809209043af778361f21d5b2dd2888788a6ee57db4eb7af5e9",
+  ".gitignore0089.png": "62625e56535e27be19012cdfc93abd8c9f205b616be7dade68b71dfd3f6f93db",
+  ".gitignore0090.png": "973239d8c1ff76398dea4216b07cb680eb949355e829c9b165352566f5b5eb25"
+ },
+ "parameters": {
+  "height_px": 120,
+  "colors": 48,
+  "style": "pixel",
+  "pad_px": 3,
+  "pixels_per_unit": 96
+ }
+}

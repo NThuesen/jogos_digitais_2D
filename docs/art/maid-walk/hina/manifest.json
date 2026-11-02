@@ -1,0 +1,113 @@
+{
+ "id": "hina",
+ "name": "Hina",
+ "frames_found": 35,
+ "folder": "02_hina/step4_blender/walk_x/frames",
+ "numbering": [
+  15,
+  49
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 0,
+ "matte_px": 315583,
+ "chroma_px": 0,
+ "height_mean": 869.4,
+ "height_range": [
+  862,
+  873
+ ],
+ "cx_std": 2.1,
+ "drift_x": 7.0,
+ "drift_y": 12,
+ "step_diff_mean": 0.0561,
+ "wrap_diff": 0.0814,
+ "loop_ratio": 1.29,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.0898,
+ "loop_trim": [
+  0,
+  34
+ ],
+ "loop_ratio_before_trim": 1.45,
+ "source_frame_numbers": [
+  15,
+  49
+ ],
+ "units_per_cycle": 2.57,
+ "slide_factor": 5.2,
+ "cell": [
+  74,
+  124
+ ],
+ "scale": 0.13802,
+ "frames": 35,
+ "columns": 6,
+ "rows": 6,
+ "idle_frame": 30,
+ "rest_frames": [
+  16,
+  17,
+  18,
+  19,
+  30,
+  31,
+  32,
+  33
+ ],
+ "foot_speed_px_per_frame": 1.35,
+ "max_foot_separation_px": 30.3,
+ "noslide_units_per_cycle": 0.491,
+ "status": "NEEDS_PROCESSING",
+ "note": "faint matte removed",
+ "resource": "Maids/hina_walk",
+ "sheet_sha256": "3fb2711015e3a66ce6eac3cf304669113a941a7be042dd88b973426d8ece7f51",
+ "source_sha256": {
+  "0015.png": "f867c6c291cb3fd8effe8f211283cf6ea07ff1fc337112de626ffd8c872e6338",
+  "0016.png": "2e7e02d62a95b4b0ff1774eb14b8850ba2079d72c905a187ba5361ee0c4fa999",
+  "0017.png": "289b7734d8538d716c2cbe296ff226f2dd676e1153424fcff63a81a0a0e556c3",
+  "0018.png": "95b514fd4f3c928aa70915ab4b7bfcb2280176bf352d8b86ea579a69e6241cd3",
+  "0019.png": "8071d8cf65e725ca5e111a0d165bbcc21cd406e2f87a25b6a7d1ade8bcae574a",
+  "0020.png": "29629a945ce5f6efa82718d535080f40a8eab4bc0859cb69d4b8bbd85a0a384f",
+  "0021.png": "3c661e6ee10c0de3ab6d9ab033b3aa61368aa92570f8308ad903bc1631165e4f",
+  "0022.png": "20e0b5fc0ae60f5a122fc3e4d8c8c7ba9f458cf73e9b6cf94a59fc32f9065121",
+  "0023.png": "548dfc3f525b5dac260da2d2741903cd1e5879217ba7b9e970fbe7b17fcbf07d",
+  "0024.png": "8e27ebdf869e22186fcbaea711fc8ec316c5d0199395ecb435a186948d52818f",
+  "0025.png": "f1eba78728e5dcac363136002958f203d20d21065140e60740c301a6595c9bb8",
+  "0026.png": "645fd3d3c2540e0329899b631c8eb769097117fad0cd0a6eac7dbc4a1d452ef7",
+  "0027.png": "509ca911aafb08945973ba6aeaf1de75ad8f77aaa586b15ff8acd453411d2297",
+  "0028.png": "c3ee572bcf0990032a94cd6a18e2503dc6f9ca2260dd2cc3bb9896388e3039b9",
+  "0029.png": "ebf0145a325e66cccb81119fa7dda765e6018406c79d4c3c9265b14a44981315",
+  "0030.png": "6f333265b5ce7a9bb0ed57015b947a497132720f4436e17635cc420a7a1f91b4",
+  "0031.png": "43054b531c80bdfb559244a27c24004d7b6e74d1ddcd0057876ff49ed943f1d8",
+  "0032.png": "559963b0429adf45331a0c8b08f239d959934a361eccecd3a85454395f1e622f",
+  "0033.png": "2e424dc420c00e8b7457f248adb8205f31faf35878d9fc5ef844cb9eb671e930",
+  "0034.png": "32dc8e749e7485e6c6f117a7a950cce80b1f2f15898639f71f33fc1e06176db8",
+  "0035.png": "120a51fc6babc94d9bf9ae0aa2bda32bf8893991fd2bfa37d26285867d713df2",
+  "0036.png": "49bae542383cf67d85788ac2eb544fb442f1acfed8c294fa2f9ea1f1e83e56fa",
+  "0037.png": "67d86aaf4c590e4132a6b0f3fd69cf2f0297a79735b26e4659cf240cdd1b2e51",
+  "0038.png": "caef7891d715b4e4b19adf300361fdca5193ed44788e4bea86f7343b20563637",
+  "0039.png": "5d30df63872062276aaf487d334b7f0ca6a0e76b7afb528d8f30c3441dda7ced",
+  "0040.png": "8f2fd593f40f1559e46ae64f41151cb79fd28bfe2c22960bbe77bca23530842e",
+  "0041.png": "e24b8ef5bd9147ca51522e989d170aad1c68d19f4c5b669187db463e9b1c3048",
+  "0042.png": "f951b0628c2f04d1bbf4d2695934a7a055c3aa8aafcc9c67be9524a2780c01bc",
+  "0043.png": "d7ad547ab39baa7d8cb0616cadb93ed47dcc5537bdb5c41bd34b3c026ea53d4d",
+  "0044.png": "16de9c557bb8ef0583a6b6e18606406350d8276e47a27737585633e818220c56",
+  "0045.png": "d067f7fd6d2e9d955772d6f50564610832a0485907e4838ecaf63caf65ba039e",
+  "0046.png": "e41a1cb0e9cb4b9bd78764aada20fed29bb91156bf7ebd6c07fabbe987d342ad",
+  "0047.png": "4b9a24e73f9f77d9ff70b97b0098e8704fac532bbfab8221d18af44d3ca011a6",
+  "0048.png": "eb466e698d20448bc4b4de0c916839553232141f28111b628fa602f7d2e9fafa",
+  "0049.png": "abcc72af17bc6942a6d2ff7fdcc9c77180127bfcd4054275e383b750e35abd25"
+ },
+ "parameters": {
+  "height_px": 120,
+  "colors": 48,
+  "style": "pixel",
+  "pad_px": 3,
+  "pixels_per_unit": 96
+ }
+}

@@ -1,0 +1,99 @@
+{
+ "id": "akari",
+ "name": "Akari",
+ "frames_found": 24,
+ "folder": "03_akari/step4_blender/walk_x/frames",
+ "numbering": [
+  33,
+  56
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 0,
+ "matte_px": 44122,
+ "chroma_px": 0,
+ "height_mean": 878.0,
+ "height_range": [
+  869,
+  885
+ ],
+ "cx_std": 3.0,
+ "drift_x": 10.0,
+ "drift_y": 1,
+ "step_diff_mean": 0.0872,
+ "wrap_diff": 0.1121,
+ "loop_ratio": 1.19,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.114,
+ "loop_trim": [
+  0,
+  23
+ ],
+ "loop_ratio_before_trim": 1.29,
+ "source_frame_numbers": [
+  33,
+  56
+ ],
+ "units_per_cycle": 1.76,
+ "slide_factor": 2.4,
+ "cell": [
+  84,
+  124
+ ],
+ "scale": 0.13667,
+ "frames": 24,
+ "columns": 6,
+ "rows": 4,
+ "idle_frame": 18,
+ "rest_frames": [
+  6,
+  7,
+  18,
+  19,
+  20
+ ],
+ "foot_speed_px_per_frame": 2.97,
+ "max_foot_separation_px": 40.1,
+ "noslide_units_per_cycle": 0.743,
+ "status": "READY",
+ "note": "",
+ "resource": "Maids/akari_walk",
+ "sheet_sha256": "76f5ae16df6f9d17db00cd965e9a1fbe1a66658c63001965780a2b1561bd6500",
+ "source_sha256": {
+  "0033.png": "2b877d179b28b14ab75a27acfb69b7d0c1b1d6c5ba86e482df8c9d320ad3b64e",
+  "0034.png": "0f72defa97a92fbe14a23471cbfa966b20e7154b7d9073dd5fd1040826bcdab6",
+  "0035.png": "300e788e1de8ed987a86d1dcdc9bfdfd6cc8ee83f762d556b4d4a3554f2ea00a",
+  "0036.png": "aafce26f281290f9f65f25a9f01de2faf9ff72e5a5159b08f8923bf258e36d2c",
+  "0037.png": "564f74e049382cc581abfcf40a16ae4aa67c3ba33fb2ce564f175879f509488f",
+  "0038.png": "5058cf5116c161eec573b6018a4ab16de372be56f9e7aad31592443e0f4cae9d",
+  "0039.png": "f7b6adff70ece2281c1b78962249671ab647cc9d66abd0f6f1b763ce9ab303ef",
+  "0040.png": "da02d010427b9963c9ca88f456c82938f7054d98b8801780e631e1acf74d7faf",
+  "0041.png": "c9c99ab55c9a420fc01d09b0e2e3c7f030e3ba0441174705a6335f1f79e434ec",
+  "0042.png": "4e305e6403e6a602dcf6ec8b7afc521450d29e8353b5289b0ace218b2084897c",
+  "0043.png": "807879fa0aed10761a5c42b5571444ae0b590bc7a087f056c9180dfcfe9e03e3",
+  "0044.png": "a26fe7189876c5da6dec50ac53e506d0f91f245b2548784308a1dccf9a64d995",
+  "0045.png": "ea5f2608c9be22c7e160cf2cb6330243b2578ffa46ad4318771f686e94fcce5c",
+  "0046.png": "7da6ccbfadea4733d486ef903cd34e0b3bb79f2a043adcff54d3d73664d3e350",
+  "0047.png": "f9017a11b6a12cd91590e741995d32f6aac78098af50f953aa9141587adedd8d",
+  "0048.png": "ecff464fde3d54f6d48c337fd3c0690267491c1597e089507aa6819defb503ca",
+  "0049.png": "9391e9710b80a51e527e617ea976a7e8ecfede9520c42c1cf5b2991e7ab28d15",
+  "0050.png": "9b35f34f897686a896b637345c0053fe49b10e0c057ce043d36a6428febbea8a",
+  "0051.png": "4cad3ff7e3a795e6a4c5f8093c089d1aca38a128c4938b334a2465367c193f8b",
+  "0052.png": "410dab45599269531d1552383c944aff30597ca12a4b1652f2ce11cd4cb135b5",
+  "0053.png": "07a7005865dd3504a4900f31ab0be4b310962d9c0a5306f4959d9618251a03d5",
+  "0054.png": "f7402a7a78c8b4bccbefe003beb9127637b2f2180f93e46a01a9246c2a39fe73",
+  "0055.png": "3e5c8e79f793c4145e1270dc6e0181c5af62680de1a2ecda14334af75575e69b",
+  "0056.png": "0510f326060bca40cc51bf158c1021265877ed7166800dffee4b62025693dd87"
+ },
+ "parameters": {
+  "height_px": 120,
+  "colors": 48,
+  "style": "pixel",
+  "pad_px": 3,
+  "pixels_per_unit": 96
+ }
+}

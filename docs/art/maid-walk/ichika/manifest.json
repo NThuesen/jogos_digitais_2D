@@ -1,0 +1,98 @@
+{
+ "id": "ichika",
+ "name": "Ichika",
+ "frames_found": 24,
+ "folder": "08_ichika/step4_blender/walk_x/frames",
+ "numbering": [
+  92,
+  115
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 0,
+ "matte_px": 163098,
+ "chroma_px": 0,
+ "height_mean": 852.7,
+ "height_range": [
+  845,
+  858
+ ],
+ "cx_std": 6.7,
+ "drift_x": 18.0,
+ "drift_y": 6,
+ "step_diff_mean": 0.0773,
+ "wrap_diff": 0.0559,
+ "loop_ratio": 0.68,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.1272,
+ "loop_trim": [
+  0,
+  23
+ ],
+ "loop_ratio_before_trim": 0.72,
+ "source_frame_numbers": [
+  92,
+  115
+ ],
+ "units_per_cycle": 1.76,
+ "slide_factor": 2.8,
+ "cell": [
+  74,
+  124
+ ],
+ "scale": 0.14073,
+ "frames": 24,
+ "columns": 6,
+ "rows": 4,
+ "idle_frame": 11,
+ "rest_frames": [
+  11,
+  12,
+  13,
+  22
+ ],
+ "foot_speed_px_per_frame": 2.56,
+ "max_foot_separation_px": 37.3,
+ "noslide_units_per_cycle": 0.639,
+ "status": "NEEDS_PROCESSING",
+ "note": "faint matte removed",
+ "resource": "Maids/ichika_walk",
+ "sheet_sha256": "414cd27b68f9ca0e7b6164d479ebdcbaa4b21bae66f1dde255095d0bc823ed4f",
+ "source_sha256": {
+  "0092.png": "152d5cd8d423d462e5d71af2ed1fb5e1ece5f072e15fa26df178870cb12de71d",
+  "0093.png": "11fc415656203608a4258d96bd4eb162ffb9cd7ecae086f32209295e05217a24",
+  "0094.png": "a57baf0fb14ec5199838a24893717003f0682122f04416bc3d894a96f384cf8a",
+  "0095.png": "e7bba12fd7fd9fc382aa947cb72ffe60324a62431c2fd0e6ef9f5b9b92096ffc",
+  "0096.png": "b67a4b825253cdedc5545eb8bad2a8673b0eb1e4fe62faec2bd786c97f19814e",
+  "0097.png": "dad798b84875325950d3ebc31593097c37ca10e239e38f73910366ba8dcb1925",
+  "0098.png": "514cfc3bfb3735d39575e0c24b3a7f07420212f6b0e2c4cfbfcb9f5d0fb2d197",
+  "0099.png": "b13bb4454c92b9c2d4530bcb38f293f8f6f7241132dd36cd7bacdd22a979a0c4",
+  "0100.png": "ba1b3fe2981b252695d30e578d16a02e5151d27f703610000bd08d6eabb8980a",
+  "0101.png": "7989bb37c82e90518de72705d8b4762ba83029c44ec7539555520a84fcd9d570",
+  "0102.png": "2f5282fb9a52a3d122c8297fa9a3e31ca9956453f5b01f0f3194a6fb1f075b76",
+  "0103.png": "5ef420dc5752522d9015ada931f5142371ca50c91106a398c09f0bc7cce9e3e8",
+  "0104.png": "fe1b753977d1e8b776ba6cf56eaf84c0d8d9745b11d32406c59b1eaed78d0836",
+  "0105.png": "76e16104914c0f9c7d9b9c58bdc1ba4629b22b5ca65f5bde754d844ef0f7d53c",
+  "0106.png": "d48ff1e07cb0d37273912410041dff18f39288e846603afd896aa9002fad12f5",
+  "0107.png": "a567049dc8c19abbbafcf0eb62c7b00bd0556325ee1e18b65894a76dfc516dce",
+  "0108.png": "9d350f3b5b985f05c4e45d36cb4e857c11fb146b0474ad4a2cb899f5a37c2466",
+  "0109.png": "a5e6c66543915d9754bf3ac698e76f98085c367077a2c9ed2258d49819d2fd2c",
+  "0110.png": "6e6ecd1b2b977f40edbe99006ef69e53b532dc96bfae27f90fb547d153b46235",
+  "0111.png": "74c1545e19085e1f56b11db77548108e01eab324822b874ee8d4b81d3f6fbc21",
+  "0112.png": "ba51727e8e75c3a86976d43d9123c37480ea7d1af985f9e9ff3f206f182e73bd",
+  "0113.png": "0818f14e4b91996e91a992f112dcea442f36d651b191e8f66ec8596cf9d08ac6",
+  "0114.png": "9ff25ce7685eff879b57158cbf9f840686bcba970786bce5a4337e27026d64d8",
+  "0115.png": "cb8368e2333b155e7e48b28f353751d2f2a48583c4ef6da6d8eb742fd9efde5c"
+ },
+ "parameters": {
+  "height_px": 120,
+  "colors": 48,
+  "style": "pixel",
+  "pad_px": 3,
+  "pixels_per_unit": 96
+ }
+}

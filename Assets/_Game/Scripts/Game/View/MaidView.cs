@@ -33,6 +33,7 @@ namespace Neko.Game.View
         /// </summary>
         private Sprite[] _authored;
 
+        private MaidAnimCatalog.Entry _entry;
         private WalkCycle _cycle;
         private bool _carriedIsPlate;
 
@@ -162,7 +163,8 @@ namespace Neko.Game.View
 
         private void BindAuthored()
         {
-            _authored = SuzuSprites.Applies(_maid) ? SuzuSprites.Load(_sprites) : null;
+            _entry = MaidAnimCatalog.Resolve(_maid);
+            _authored = _entry != null ? MaidAnimCatalog.Load(_sprites, _entry) : null;
             _cycle = null;
             _body.color = Color.white;
 
@@ -184,15 +186,15 @@ namespace Neko.Game.View
                 _carriedIsPlate = true;
             }
 
-            _cycle = new WalkCycle(SuzuSprites.Frames, SuzuSprites.UnitsPerCycle,
-                SuzuSprites.RestFrames, SuzuSprites.IdleFrame);
+            _cycle = new WalkCycle(_entry.frames, _entry.units_per_cycle,
+                _entry.rest_frames, _entry.idle_frame);
             _body.sprite = _authored[_cycle.Frame];
-            _body.transform.localPosition = SuzuSprites.BodyOffset;
-            _carried.transform.localPosition = SuzuSprites.CarriedOffset;
+            _body.transform.localPosition = _entry.BodyOffset;
+            _carried.transform.localPosition = _entry.CarriedOffset;
         }
 
         /// <summary>
-        /// Picks the frame for an authored maid. The pose only decides what is laid on top of the
+        /// Picks the frame for an authored maid (any entry of the catalog). The pose only decides what is laid on top of the
         /// walk: the sheet has no carry, cook or tired drawings, so those reuse the walk and the
         /// standing frame, with the existing plate and mood bar saying the rest.
         /// </summary>
@@ -200,7 +202,7 @@ namespace Neko.Game.View
         {
             _cycle.Step(travelled, Clocks.Game, Clocks.Ui);
             _body.sprite = _authored[_cycle.Frame];
-            _body.transform.localPosition = SuzuSprites.BodyOffset;
+            _body.transform.localPosition = _entry.BodyOffset;
             _body.color = pose == MaidPose.Tired ? new Color(0.8f, 0.8f, 0.88f) : Color.white;
         }
 
