@@ -39,12 +39,12 @@
   90
  ],
  "units_per_cycle": 2.49,
- "slide_factor": 4.1,
+ "slide_factor": 3.9,
  "cell": [
-  90,
-  124
+  188,
+  252
  ],
- "scale": 0.14283,
+ "scale": 0.28565,
  "frames": 34,
  "columns": 6,
  "rows": 6,
@@ -57,13 +57,13 @@
   20,
   21
  ],
- "foot_speed_px_per_frame": 1.71,
- "max_foot_separation_px": 34.2,
- "noslide_units_per_cycle": 0.606,
+ "foot_speed_px_per_frame": 1.74,
+ "max_foot_separation_px": 34.4,
+ "noslide_units_per_cycle": 0.641,
  "status": "NEEDS_PROCESSING",
  "note": "faint matte removed",
  "resource": "Maids/yoru_walk",
- "sheet_sha256": "d41e914497c053ee213555e89b73c91dcfe86a09ad7c0b6ea5f4b2ecca3c8cad",
+ "sheet_sha256": "001cb5b0b2e538fb7979ee9c78185913b0a96bc8573fea4deb4bf32e2820aefb",
  "source_sha256": {
   ".gitignore0057.png": "2c066649bdb115e5d08a9fbd92e7f8e589b3dd7f05d35b64fda3f9f7cf2e2cf4",
   ".gitignore0058.png": "742fdf673f3e09dee2fccf5aa03ef4b8ef4cadf3d59bbc68eebf5d531025933b",
@@ -101,10 +101,11 @@
   ".gitignore0090.png": "973239d8c1ff76398dea4216b07cb680eb949355e829c9b165352566f5b5eb25"
  },
  "parameters": {
-  "height_px": 120,
-  "colors": 48,
-  "style": "pixel",
-  "pad_px": 3,
-  "pixels_per_unit": 96
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
  }
 }

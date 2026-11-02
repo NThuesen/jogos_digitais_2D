@@ -16,7 +16,9 @@ Window > General > Test Runner > PlayMode, run `MaidGameplayTests`:
 
 ## Trade-offs
 - **Sliding feet**: sources are slow walks in place; cadence is ~30 drawings/s at 1x, capped at 60/s. Feet slide 2.4-5.2x (see inventory). Needs faster-stride footage to fix.
-- **Style**: one Lanczos downsample to 120 px height + 48-colour palette + hard alpha; faces lose some detail.
+- **Style (ART-04, current)**: illustrated anime 2D. One Lanczos downsample (premultiplied alpha) of the original frame to 240 px character height; original colours, shading, outlines and soft alpha untouched; no palette, no hard alpha. The sprite is still 1.3 world units tall (`pixels_per_unit = 240/1.3`), so sharpness and on-screen size are independent. Import: Trilinear, mipmaps (bias -0.5), high-quality block compression, non-readable. Cells are multiples of 4 px.
+- **Style (ART-03, rollback)**: 120 px + 48-colour palette + hard alpha, commit `37b0f3f`; `maid_walk.py process --style pixel` reproduces it (and the old Point-filter import must then be restored by hand).
+- **Evidence**: `evidence_illustrated/` (9 maids together in a real shift at 1280x720 and 960x600, per-maid sequence shots, `fidelity_vs_original.png`).
 - **Loops**: Suzu (24→15, a single-step loop), Momo (27→20 frames), Reina (36→33) and Kaede (28→17) were trimmed to the stretch that loops; Kaede still jumps slightly at the wrap (LIMITED).
 - **Equipment**: gear removes the authored look (layers cannot be drawn over a flat sheet).
 - **Only walk exists**: Idle/Carry/Cook/Tired reuse walk frames, plate and dimming.

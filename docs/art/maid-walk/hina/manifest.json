@@ -39,33 +39,33 @@
   49
  ],
  "units_per_cycle": 2.57,
- "slide_factor": 5.2,
+ "slide_factor": 4.6,
  "cell": [
-  74,
-  124
+  152,
+  252
  ],
- "scale": 0.13802,
+ "scale": 0.27604,
  "frames": 35,
  "columns": 6,
  "rows": 6,
  "idle_frame": 30,
  "rest_frames": [
+  15,
   16,
   17,
   18,
-  19,
   30,
   31,
   32,
   33
  ],
- "foot_speed_px_per_frame": 1.35,
- "max_foot_separation_px": 30.3,
- "noslide_units_per_cycle": 0.491,
+ "foot_speed_px_per_frame": 1.47,
+ "max_foot_separation_px": 29.5,
+ "noslide_units_per_cycle": 0.556,
  "status": "NEEDS_PROCESSING",
  "note": "faint matte removed",
  "resource": "Maids/hina_walk",
- "sheet_sha256": "3fb2711015e3a66ce6eac3cf304669113a941a7be042dd88b973426d8ece7f51",
+ "sheet_sha256": "a70b1d5934a7d4a9cee9b324e9c7817b9331b364971ea64dfa09b927e61fc5b8",
  "source_sha256": {
   "0015.png": "f867c6c291cb3fd8effe8f211283cf6ea07ff1fc337112de626ffd8c872e6338",
   "0016.png": "2e7e02d62a95b4b0ff1774eb14b8850ba2079d72c905a187ba5361ee0c4fa999",
@@ -104,10 +104,11 @@
   "0049.png": "abcc72af17bc6942a6d2ff7fdcc9c77180127bfcd4054275e383b750e35abd25"
  },
  "parameters": {
-  "height_px": 120,
-  "colors": 48,
-  "style": "pixel",
-  "pad_px": 3,
-  "pixels_per_unit": 96
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
  }
 }

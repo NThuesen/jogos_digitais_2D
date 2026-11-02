@@ -9,10 +9,10 @@
    "columns": 6,
    "rows": 3,
    "cell": [
-    76,
-    124
+    156,
+    252
    ],
-   "pixels_per_unit": 96,
+   "pixels_per_unit": 184.615,
    "idle_frame": 6,
    "rest_frames": [
     6,
@@ -33,16 +33,16 @@
    "columns": 6,
    "rows": 6,
    "cell": [
-    74,
-    124
+    152,
+    252
    ],
-   "pixels_per_unit": 96,
+   "pixels_per_unit": 184.615,
    "idle_frame": 30,
    "rest_frames": [
+    15,
     16,
     17,
     18,
-    19,
     30,
     31,
     32,
@@ -62,10 +62,10 @@
    "columns": 6,
    "rows": 4,
    "cell": [
-    84,
-    124
+    172,
+    252
    ],
-   "pixels_per_unit": 96,
+   "pixels_per_unit": 184.615,
    "idle_frame": 18,
    "rest_frames": [
     6,
@@ -88,10 +88,10 @@
    "columns": 6,
    "rows": 4,
    "cell": [
-    70,
-    124
+    144,
+    252
    ],
-   "pixels_per_unit": 96,
+   "pixels_per_unit": 184.615,
    "idle_frame": 9,
    "rest_frames": [
     9,
@@ -112,10 +112,10 @@
    "columns": 6,
    "rows": 6,
    "cell": [
-    82,
-    124
+    168,
+    252
    ],
-   "pixels_per_unit": 96,
+   "pixels_per_unit": 184.615,
    "idle_frame": 9,
    "rest_frames": [
     9,
@@ -139,10 +139,10 @@
    "columns": 6,
    "rows": 3,
    "cell": [
-    76,
-    124
+    156,
+    252
    ],
-   "pixels_per_unit": 96,
+   "pixels_per_unit": 184.615,
    "idle_frame": 13,
    "rest_frames": [
     9,
@@ -165,10 +165,10 @@
    "columns": 6,
    "rows": 5,
    "cell": [
-    72,
-    124
+    148,
+    252
    ],
-   "pixels_per_unit": 96,
+   "pixels_per_unit": 184.615,
    "idle_frame": 14,
    "rest_frames": [
     2,
@@ -192,10 +192,10 @@
    "columns": 6,
    "rows": 4,
    "cell": [
-    74,
-    124
+    152,
+    252
    ],
-   "pixels_per_unit": 96,
+   "pixels_per_unit": 184.615,
    "idle_frame": 11,
    "rest_frames": [
     11,
@@ -217,10 +217,10 @@
    "columns": 6,
    "rows": 6,
    "cell": [
-    90,
-    124
+    188,
+    252
    ],
-   "pixels_per_unit": 96,
+   "pixels_per_unit": 184.615,
    "idle_frame": 19,
    "rest_frames": [
     4,

@@ -75,15 +75,16 @@ namespace Neko.Tests.EditMode.Game
         }
 
         [Test]
-        public void EverySheetIsImportedPointFilteredAndNonReadable()
+        public void EverySheetIsImportedTrilinearMippedAndNonReadable()
         {
             foreach (var entry in MaidAnimCatalog.All)
             {
                 var texture = Resources.Load<Texture2D>(entry.resource);
                 Assert.IsNotNull(texture, entry.resource);
                 Assert.IsFalse(texture.isReadable, entry.id);
-                Assert.AreEqual(FilterMode.Point, texture.filterMode, entry.id);
-                Assert.LessOrEqual(texture.width * texture.height, 1024 * 1024, entry.id + " is bigger than it needs to be");
+                Assert.AreEqual(FilterMode.Trilinear, texture.filterMode, entry.id); // illustrated art (ART-04): smooth, not point-sampled
+                Assert.Greater(texture.mipmapCount, 1, entry.id + " needs mipmaps: the sprite is drawn smaller than its texture");
+                Assert.LessOrEqual(texture.width * texture.height, 2048 * 2048, entry.id + " is bigger than it needs to be");
             }
         }
 
@@ -93,7 +94,7 @@ namespace Neko.Tests.EditMode.Game
             long pixels = 0;
             foreach (var entry in MaidAnimCatalog.All)
                 pixels += Resources.Load<Texture2D>(entry.resource).width * Resources.Load<Texture2D>(entry.resource).height;
-            Assert.Less(pixels * 4, 12L * 1024 * 1024, "the walk sheets must stay under 12 MB uncompressed (about 10.2 MB measured for nine)");
+            Assert.Less(pixels, 12L * 1000 * 1000, "the walk sheets must stay under 12 Mpx for nine maids (about 10 Mpx measured: ~13 MB block-compressed on the GPU, ~40 MB if a platform left them uncompressed)");
         }
 
         [Test]
