@@ -1,0 +1,113 @@
+// Isolated temporary presentation; never modifies a production widget or save.
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Neko.Game.Art;
+using Neko.Game.Ui;
+using Neko.Sim.Economy;
+using Neko.Sim.Save;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+public sealed class CompactQaView : MonoBehaviour
+{
+    public Canvas Canvas; public Camera Camera; public GraphicRaycaster Raycaster;
+    public readonly List<Probe> Probes=new List<Probe>();
+    public readonly List<Sprite> Sprites=new List<Sprite>();
+    public readonly List<string> Failures=new List<string>();
+    public int Clicks;
+    public string Report="";
+    public sealed class Probe { public Button Button; public Text Label; public string Name; public bool Active; public Rect Safe; public int Events; public int Width; public string Mode; public string ItemId; public int Price; }
+    public static Vector4 Border(Texture2D t)=>new Vector4(160f*t.width/2072,110f*t.height/380,160f*t.width/2072,110f*t.height/380);
+    public void Build(int width,int height,string page,bool renderTarget)
+    {
+        UiKit.Sprites=new SpriteFactory();
+        var cg=new GameObject("QA Camera");cg.transform.SetParent(transform);Camera=cg.AddComponent<Camera>();
+        Camera.orthographic=true;Camera.transform.position=new Vector3(0,0,-10);Camera.clearFlags=CameraClearFlags.SolidColor;
+        Camera.backgroundColor=Palette.Hex("#352631");
+        if(renderTarget)Camera.targetTexture=new RenderTexture(width,height,24,RenderTextureFormat.ARGB32);
+        var g=new GameObject("QA Canvas",typeof(RectTransform));g.transform.SetParent(transform);
+        Canvas=g.AddComponent<Canvas>();Canvas.renderMode=RenderMode.ScreenSpaceCamera;Canvas.worldCamera=Camera;Canvas.planeDistance=5;
+        var sc=g.AddComponent<CanvasScaler>();sc.uiScaleMode=CanvasScaler.ScaleMode.ScaleWithScreenSize;sc.referenceResolution=new Vector2(1280,720);sc.matchWidthOrHeight=1;
+        Raycaster=g.AddComponent<GraphicRaycaster>();UiKit.EnsureEventSystem();
+        Heading("UI-004 COMPACT NORMAL | "+page+" | "+width+"x"+height,0,330,24,1100);
+        Heading("Catálogo real / mesma escala de UI / ambiente isolado",0,295,18,1000);
+        var stock=Shop.StockFor(10).OrderBy(i=>i.Price).ToArray();
+        var cheapest=stock.First();var shortPrice=stock.First(i=>i.Price>0);var expensive=stock.Last();
+        Report+="CATALOG "+string.Join(", ",stock.Select(i=>i.Id+"="+Strings.Money(i.Price)))+"\n";
+        for(int col=0;col<4;col++)
+        {
+            int texWidth=page=="samples"?new[]{0,1024,768,512}[col]:new[]{0,2072,768,768}[col];
+            string mode=col==0?"current":page=="aspect"&&col==3?"aspect":page=="comparison"&&col==3?"simple":"sliced";
+            float x=-420+280*col;
+            Heading(col==0?"Atual do jogo":texWidth+" / "+mode,x,255,18,270);
+            var cases=new[]{(cheapest,150f,44f,true,"Loja / menor"),(shortPrice,150f,44f,true,"Loja / curto"),(expensive,150f,44f,true,"Loja / maior"),(expensive,150f,44f,false,"Loja / indisponível"),(expensive,120f,44f,true,"Navegação"),(expensive,230f,54f,true,"Diálogo")};
+            for(int row=0;row<cases.Length;row++)
+            {
+                var c=cases[row];var item=c.Item1;var size=new Vector2(c.Item2,c.Item3);float y=200-row*84;
+                string text=row==4?Strings.Get("dialog.back"):row==5?"Confirmar":Strings.Money(item.Price);
+                Heading(c.Item5+" "+size.x+"x"+size.y,x,y+size.y/2+12,13,275);
+                Button b;
+                if(row==5)b=UiKit.Button(g.transform,text,size,Palette.Good,null);
+                else b=Scenery.Plank(g.transform,text,size,null,Typeface.Small,row<4?(c.Item4?Logo.Brass:Logo.Board):(Color?)null);
+                b.interactable=c.Item4;
+                var label=b.GetComponentInChildren<Text>();
+                if(row<4&&c.Item4)label.color=Palette.Hex("#3A2A1A");
+                var rect=(RectTransform)b.transform;rect.anchoredPosition=new Vector2(x,y);
+                var probe=new Probe {Button=b,Label=label,Name=page+" col"+col+" row"+row,Active=c.Item4,Width=texWidth,Mode=mode,ItemId=item.Id,Price=item.Price};
+                b.onClick.AddListener(()=>{probe.Events++;Clicks++;});Probes.Add(probe);
+                if(texWidth!=0)Apply(b,texWidth,mode,size);
+                probe.Safe=label.rectTransform.rect;
+                // Same actual catalog label, also set after construction as dynamic UI content.
+                label.text=text;
+            }
+        }
+        Heading("Indisponível = Button.interactable false + tint nativo; nenhum PNG DISABLED",0,-310,15,1100);
+    }
+    public void Apply(Button b,int width,string mode,Vector2 size)
+    {
+        var img=b.GetComponent<Image>();
+        foreach(var other in b.GetComponentsInChildren<Image>())if(other!=img){other.gameObject.SetActive(false);Destroy(other.gameObject);}
+        var label=b.GetComponentInChildren<Text>();var shadow=label.GetComponent<Shadow>();if(shadow!=null)shadow.enabled=false;
+        var texture=Resources.Load<Texture2D>("UI004CompactQa/candidate_"+width);
+        if(texture==null)throw new Exception("Missing candidate "+width);
+        var sprite=Sprite.Create(texture,new Rect(0,0,texture.width,texture.height),new Vector2(.5f,.5f),100,0,SpriteMeshType.FullRect,Border(texture));Sprites.Add(sprite);
+        img.sprite=sprite;img.color=Color.white;img.type=mode=="sliced"?Image.Type.Sliced:Image.Type.Simple;img.preserveAspect=mode=="aspect";img.pixelsPerUnitMultiplier=texture.height/size.y;
+        label.color=b.interactable?Palette.Hex("#3A2A1A"):Palette.Cream;
+        float scale=size.y/380f;
+        label.rectTransform.offsetMin=new Vector2(160*scale+4,62*scale+1);
+        label.rectTransform.offsetMax=new Vector2(-(160*scale+4),-(62*scale+1));
+    }
+    public void Inspect()
+    {
+        Canvas.ForceUpdateCanvases();
+        foreach(var p in Probes)
+        {
+            var t=p.Label;var slot=t.rectTransform.rect;
+            bool fits=t.preferredWidth<=slot.width+.5f && t.preferredHeight<=slot.height+.5f;
+            if(!fits)Failures.Add(p.Name+" text does not fit");
+            Report+=p.Name+" active="+p.Active+" tex="+p.Width+" mode="+p.Mode+" label='"+t.text+"' font="+t.fontSize+" pref="+t.preferredWidth+"x"+t.preferredHeight+" slot="+slot.size+" FIT="+fits+" lines="+t.cachedTextGenerator.lineCount+"\n";
+        }
+        Report+="CANVAS "+((RectTransform)Canvas.transform).rect.size+" scale="+Canvas.scaleFactor+"\n";
+    }
+    public PointerEventData Pointer(Probe p,float nx=.5f)
+    {
+        var r=(RectTransform)p.Button.transform;var pt=RectTransformUtility.WorldToScreenPoint(Camera,r.TransformPoint(new Vector3((nx-.5f)*r.rect.width,0)));
+        var ev=new PointerEventData(EventSystem.current){position=pt,button=PointerEventData.InputButton.Left,eligibleForClick=true};
+        var hits=new List<RaycastResult>();Raycaster.Raycast(ev,hits);
+        if(hits.Count==0 || ExecuteEvents.GetEventHandler<IPointerClickHandler>(hits[0].gameObject)!=p.Button.gameObject)throw new Exception("Wrong hit target "+p.Name);
+        ev.pointerPress=p.Button.gameObject;ev.pointerCurrentRaycast=ev.pointerPressRaycast=hits[0];return ev;
+    }
+    public void Send(Probe p,PointerEventData ev,string phase)
+    {
+        if(phase=="down")ExecuteEvents.Execute(p.Button.gameObject,ev,ExecuteEvents.pointerDownHandler);
+        else if(phase=="up")ExecuteEvents.Execute(p.Button.gameObject,ev,ExecuteEvents.pointerUpHandler);
+        else ExecuteEvents.Execute(p.Button.gameObject,ev,ExecuteEvents.pointerClickHandler);
+    }
+    void Heading(string text,float x,float y,int font,float width)
+    {
+        var t=UiKit.Label(Canvas.transform,text,font,Color.white);t.rectTransform.anchoredPosition=new Vector2(x,y);t.rectTransform.sizeDelta=new Vector2(width,28);
+    }
+    void OnDestroy(){foreach(var s in Sprites)if(s!=null)Destroy(s);if(Camera!=null&&Camera.targetTexture!=null){Camera.targetTexture.Release();Destroy(Camera.targetTexture);}}
+}
