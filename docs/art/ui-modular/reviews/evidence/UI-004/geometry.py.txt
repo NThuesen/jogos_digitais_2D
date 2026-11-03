@@ -1,0 +1,12 @@
+from pathlib import Path
+import json,numpy as np
+from PIL import Image
+from scipy import ndimage as nd
+root=Path(__file__).resolve().parents[6]
+a=np.array(Image.open(root/'art_working/ui_modular/blender_clean/UI-004_button_primary_normal_v01.png'))
+ref=np.median(a[100:614,700:1500,:3],axis=1)
+r={'method':'Per-column RGB absolute deviation from median straight band (x700:1500), y100:614; not a perceptual score.','column_deviation_percentiles_50_90_95_99':{str(x):np.percentile(np.abs(a[100:614,x,:3].astype(float)-ref).mean(axis=1),[50,90,95,99]).tolist() for x in [250,300,340,360,380,400,420,450,500,1771,1811,1831,1871,1921]},'solid_outline_holes':int((nd.binary_fill_holes(a[:,:,3]>128)&~(a[:,:,3]>128)).sum()),'border_raw_LBRT':[400,360,400,360],'source_centre_size':[1372,4]}
+# Adjacent-column RGB jumps at slice cuts compared to nearby 10-column steps.
+for x in [400,1772]:
+ d=np.abs(np.diff(a[100:614,x-6:x+6,:3].astype(float),axis=1)).mean(axis=(0,2));r.setdefault('seam_rgb_steps',{})[str(x)]={'cut':float(d[5]),'neighborhood_median':float(np.median(d))}
+(root/'docs/art/ui-modular/reviews/evidence/UI-004/geometry.json').write_text(json.dumps(r,indent=2));print(json.dumps(r,indent=2))

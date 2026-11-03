@@ -1,0 +1,66 @@
+{
+  "art_working/ui_modular/export_unity/UI-004_QA/alpha_before_after.png": {
+    "bytes": 353001,
+    "sha256": "77145b6fa012ddf9e977b93fbd5a656adc08e8ce838621c7c1ae5edc34e9b9ba"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/candidate_1024x341.png": {
+    "bytes": 321652,
+    "sha256": "3acff0c554957735d64b93773d5a7bdf77bff34be37d329de387a5d1865e401a"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/candidate_2048x682.png": {
+    "bytes": 1207550,
+    "sha256": "00db1307e2a5865dc31a2512fb59235215834c4ece142982ccf2f15d7cb29a82"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/candidate_2172x724.png": {
+    "bytes": 1324109,
+    "sha256": "03b58c3e2b500b8a48311cd3b3c75c8551c79d599693176ad5b5da664aeb0446"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/candidate_512x170.png": {
+    "bytes": 85521,
+    "sha256": "a2f204c392c24932a0f1fdba9f65e7a0f31d21bb83c19e1266cec1eff681b92c"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/candidate_768x256.png": {
+    "bytes": 184919,
+    "sha256": "bb85e663959269fe566be07bf00cabea41239adde1c3e469e3d5cdb5d521913c"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/unity_aspect_1280x720.png": {
+    "bytes": 236353,
+    "sha256": "048ce1cec44dcf67fa6c1fbfa037923a4190236c3c8e74642220b8cf275ae548"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/unity_aspect_960x600.png": {
+    "bytes": 185680,
+    "sha256": "93c87787c966cc56d4ebeb37dc0a576871db320bc08927a1bdcaa48b5c177aa2"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/unity_default24_1280x720.png": {
+    "bytes": 262174,
+    "sha256": "630f941ead8bf89170a969816af0d6aaab56926aff3c661d167f62c0bf1d3422"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/unity_default24_960x600.png": {
+    "bytes": 209397,
+    "sha256": "5784f7980f6c3575e4d86a0b874bffa84a4395b8385d7bb8f861a37592f75da8"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/unity_original_1280x720.png": {
+    "bytes": 263086,
+    "sha256": "927ff46d3168dd3ab730789fbd1d0c1c94132e6268a1c7b6d11207b8c843fbb3"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/unity_original_960x600.png": {
+    "bytes": 204748,
+    "sha256": "d199076f361054e0043f5975669de69f7680b9ee279b418712248ec414f7b916"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/unity_sliced_1280x720.png": {
+    "bytes": 262899,
+    "sha256": "3d19e0632dd8eb4905f58bb0520fdd37039cdac1f0e8f238243c3e05161d86e8"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/unity_sliced_960x600.png": {
+    "bytes": 205325,
+    "sha256": "4bc49f7369e84103541f9ed7fa18f216ea53b4767f788ae3ba6327457ba2bf1a"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/unity_stretch_1280x720.png": {
+    "bytes": 266496,
+    "sha256": "317dd2046877ad0945fbdc31ee3aa7c72a151f8946e2c3d0f904a830ec4582ee"
+  },
+  "art_working/ui_modular/export_unity/UI-004_QA/unity_stretch_960x600.png": {
+    "bytes": 206728,
+    "sha256": "388c28b6af3052f879db0fbc230590885fab24dd1806d5d9c56f9febc729c3e9"
+  }
+}

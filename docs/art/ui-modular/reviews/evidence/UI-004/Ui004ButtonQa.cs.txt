@@ -1,0 +1,97 @@
+// Temporary isolated QA. Source archived as text; no production UI modified.
+using System.Collections;
+using System.IO;
+using System.Text;
+using Neko.Game.Art;
+using Neko.Game.Ui;
+using NUnit.Framework;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.TestTools;
+using UnityEngine.UI;
+public sealed class Ui004ButtonQa
+{
+    readonly StringBuilder log = new StringBuilder();
+    readonly System.Collections.Generic.List<string> widthFailures = new System.Collections.Generic.List<string>();
+    string Output => Path.Combine(Application.dataPath,"../art_working/ui_modular/export_unity/UI-004_QA");
+    [UnityTest] public IEnumerator Run()
+    {
+        UiKit.Sprites = new SpriteFactory();
+        foreach(var win in new[]{new Vector2Int(960,600),new Vector2Int(1280,720)})
+            foreach(var mode in new[]{"sliced","stretch","aspect","default24","original"})
+                yield return Capture(win.x,win.y,mode);
+        log.AppendLine("TEXT WIDTH FAILURES: "+widthFailures.Count+"\n"+string.Join("\n",widthFailures));
+        File.WriteAllText(Path.Combine(Output,"unity_qa_log.txt"),log.ToString());
+        Assert.AreEqual(0,widthFailures.Count,"Text width failures (all cases captured first): "+string.Join("; ",widthFailures));
+    }
+    IEnumerator Capture(int width,int height,string mode)
+    {
+        var root=new GameObject("UI004 QA");
+        var cameraGo=new GameObject("QA Camera");cameraGo.transform.SetParent(root.transform);
+        var cam=cameraGo.AddComponent<Camera>();cam.orthographic=true;cam.transform.position=new Vector3(0,0,-10);
+        cam.clearFlags=CameraClearFlags.SolidColor;cam.backgroundColor=new Color(.14f,.10f,.12f);
+        var rt=new RenderTexture(width,height,24,RenderTextureFormat.ARGB32);cam.targetTexture=rt;
+        var go=new GameObject("Canvas",typeof(RectTransform));go.transform.SetParent(root.transform);
+        var canvas=go.AddComponent<Canvas>();canvas.renderMode=RenderMode.ScreenSpaceCamera;canvas.worldCamera=cam;canvas.planeDistance=5;
+        var scaler=go.AddComponent<CanvasScaler>();scaler.uiScaleMode=CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution=new Vector2(1280,720);scaler.matchWidthOrHeight=1;
+        var raycaster=go.AddComponent<GraphicRaycaster>();UiKit.EnsureEventSystem();
+        Label(go.transform,"UI-004 NORMAL | "+mode+" | "+width+"x"+height,0,325,24,1000);
+        Label(go.transform,"Comparação em unidades reais de UI / texto dinâmico / cliques simulados",0,290,18,1000);
+        int[] widths={2048,1024,768,512};int[] heights={682,341,256,170};
+        var resources=new System.Collections.Generic.List<Object>();
+        int clicks=0,expected=0;
+        for(int col=0;col<4;col++)
+        {
+            int tw=(mode=="original"&&col==0)?2172:widths[col],th=(mode=="original"&&col==0)?724:heights[col];float x=-420+280*col;
+            Label(go.transform,tw+"x"+th,x,253,20,260);
+            var texture=new Texture2D(2,2,TextureFormat.RGBA32,false);texture.LoadImage(File.ReadAllBytes(Path.Combine(Output,"candidate_"+tw+"x"+th+".png")));
+            texture.wrapMode=TextureWrapMode.Clamp;texture.filterMode=FilterMode.Bilinear;
+            var border=new Vector4(400f/2172*tw,360f/724*th,400f/2172*tw,360f/724*th);
+            var sprite=Sprite.Create(texture,new Rect(0,0,tw,th),new Vector2(.5f,.5f),100,0,SpriteMeshType.FullRect,border);
+            resources.Add(sprite);resources.Add(texture);
+            var sizes=new[]{new Vector2(210,44),new Vector2(120,44),new Vector2(230,54),new Vector2(260,88)};
+            for(int row=0;row<sizes.Length;row++)
+            {
+                var size=sizes[row];float y=190-row*130;
+                Label(go.transform,size.x+"x"+size.y,x,y+size.y/2+17,16,260);
+                string initial=row==1?"Comprar":"Confirmar";
+                var button=UiKit.Button(go.transform,initial,size,Color.white,()=>{clicks++;},mode=="default24"?24:(row==1?16:18));
+                var br=(RectTransform)button.transform;br.anchoredPosition=new Vector2(x,y);
+                var image=button.GetComponent<Image>();image.sprite=sprite;image.type=(mode=="sliced"||mode=="default24"||mode=="original")?Image.Type.Sliced:Image.Type.Simple;
+                image.pixelsPerUnitMultiplier=th/size.y;image.preserveAspect=mode=="aspect";
+                var text=button.GetComponentInChildren<Text>();text.text=initial+" ";text.text=initial; // dynamic label
+                if(mode!="default24") { text.rectTransform.offsetMin=new Vector2(400f/2172*tw/(th/size.y)+3,2);text.rectTransform.offsetMax=-text.rectTransform.offsetMin; }
+                log.AppendLine(mode+" "+width+"x"+height+" tex="+tw+"x"+th+" rect="+size+" border="+border+" multiplier="+image.pixelsPerUnitMultiplier+" text="+initial+" preferred="+text.preferredWidth+"x"+text.preferredHeight+" slot="+text.rectTransform.rect.size);
+                if(mode=="sliced" && text.preferredWidth>text.rectTransform.rect.width+.5f) widthFailures.Add(width+"x"+height+" tex="+tw+" size="+size+" pref="+text.preferredWidth+" slot="+text.rectTransform.rect.width);
+                for(int frame=0;frame<2;frame++) yield return null;
+                Canvas.ForceUpdateCanvases();
+                foreach(var n in new[]{new Vector2(.5f,.5f),new Vector2(.02f,.5f)})
+                {
+                    var screen=RectTransformUtility.WorldToScreenPoint(cam,br.TransformPoint(new Vector3((n.x-.5f)*size.x,(n.y-.5f)*size.y)));
+                    var ev=new PointerEventData(EventSystem.current){position=screen,button=PointerEventData.InputButton.Left};
+                    var hits=new System.Collections.Generic.List<RaycastResult>();raycaster.Raycast(ev,hits);
+                    Assert.IsTrue(hits.Count>0);var handler=ExecuteEvents.GetEventHandler<IPointerClickHandler>(hits[0].gameObject);
+                    Assert.AreEqual(button.gameObject,handler,"correct hitbox");
+                    ev.pointerPress=handler;ExecuteEvents.Execute(handler,ev,ExecuteEvents.pointerClickHandler);expected++;
+                }
+                var outside=RectTransformUtility.WorldToScreenPoint(cam,br.TransformPoint(new Vector3(size.x/2+5,0)));
+                var miss=new System.Collections.Generic.List<RaycastResult>();raycaster.Raycast(new PointerEventData(EventSystem.current){position=outside},miss);
+                Assert.IsFalse(miss.Exists(h=>h.gameObject==button.gameObject),"outside hitbox");
+            }
+        }
+        for(int frame=0;frame<25;frame++)yield return null; // let UiKit punch settle before capture
+        Canvas.ForceUpdateCanvases();
+        Assert.AreEqual(expected,clicks);
+        var cs=((RectTransform)go.transform).rect.size;Assert.AreEqual(720,cs.y,.1);Assert.AreEqual(720f*width/height,cs.x,.1);
+        log.AppendLine("PASS "+mode+" "+width+"x"+height+" canvas="+cs+" scale="+canvas.scaleFactor+" simulated clicks="+clicks+"/"+expected+" outside misses=16");
+        cam.Render();RenderTexture.active=rt;var capture=new Texture2D(width,height,TextureFormat.RGB24,false);capture.ReadPixels(new Rect(0,0,width,height),0,0);capture.Apply();RenderTexture.active=null;
+        File.WriteAllBytes(Path.Combine(Output,"unity_"+mode+"_"+width+"x"+height+".png"),capture.EncodeToPNG());
+        Object.Destroy(capture);cam.targetTexture=null;rt.Release();Object.Destroy(rt);Object.Destroy(root);
+        foreach(var resource in resources)Object.Destroy(resource);yield return null;
+    }
+    static void Label(Transform parent,string value,float x,float y,int font,float width)
+    {
+        var t=UiKit.Label(parent,value,font,Color.white);t.rectTransform.anchoredPosition=new Vector2(x,y);t.rectTransform.sizeDelta=new Vector2(width,32);
+    }
+}
