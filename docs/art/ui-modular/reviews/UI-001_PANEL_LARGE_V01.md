@@ -1,6 +1,6 @@
 # Revisão técnica — UI-001 `panel_large` v01
 
-**Estado do asset: `UNITY_QA`.** Recomendação técnica: **APPROVE (com restrições de uso abaixo)**. Aprovação final e movimentação para `approved/` dependem do responsável. Nada foi integrado ao jogo: nenhuma tela, `Neko.Sim`, save, câmera, HUD, teste protegido ou workflow foi tocado.
+**Estado do asset: `APPROVED` (decisão do responsável, ver [seção 6](#6-aprovação-final)); `INTEGRATED`: pendente.** A recomendação técnica das seções 1–5 foi APPROVE com restrições. O PNG aprovado está versionado em `docs/art/ui-modular/approved/UI-001_panel_large_v01.png`. Nada foi integrado ao jogo (inalterado após a aprovação): nenhuma tela, `Neko.Sim`, save, câmera, HUD, teste protegido ou workflow foi tocado.
 
 Evidências: [`evidence/UI-001/`](evidence/UI-001/). Rodado em 2026-11-03, Unity 6000.5.9f1, Windows.
 
@@ -72,3 +72,32 @@ Limitações: (a) cliques via `GraphicRaycaster` + `ExecuteEvents`, **não** mou
 ## 5. Recomendação e pendências
 
 **APPROVE** para uso como painel grande/médio-grande, sob: borders 280/280/280/250, escala 0,5, tamanho mínimo ≈440×300 u, conteúdo dentro das margens seguras. Pendências antes de `approved/`/`INTEGRATED`: aprovação final do responsável; decidir **trim/export** (o sprite tem margem transparente assimétrica: topo 45 e base 79 px, por causa da sombra, o que desloca o corpo visível dentro do rect), resolução/compressão para WebGL e validação em WebGL ao integrar; botões e demais peças continuam não produzidos.
+
+## 6. Aprovação final
+
+**Decisão:** o responsável aprovou o UI-001 `panel_large` v01 como componente visual reutilizável. **Não integrado**: nenhuma tela, `UiKit`, cena, `Neko.Sim` ou teste foi modificado.
+
+**Arquivo aprovado:** `docs/art/ui-modular/approved/UI-001_panel_large_v01.png`, 1536×1024 RGBA, 1 833 033 bytes, SHA-256 `ba300ece650f18e8ef4e938aa84e9c9df3146396dc82a91ba4551306a9ee85f8`, **idêntico byte a byte** ao `blender_clean/` validado (conferido por SHA-256 após a cópia). Sem trim, resize, quantização ou compressão. O bruto (`d5631b7f…7f22a`) segue intacto em `raw_gpt/`, ignorado pelo Git.
+
+**Parâmetros de importação Unity testados** (uma única configuração; ao integrar, reproduzir e revalidar):
+
+| Parâmetro | Valor |
+| --- | --- |
+| Texture/Sprite | Sprite (2D and UI), Single, Mesh Type **Full Rect** |
+| Border (L, B, R, T) | **280, 280, 280, 250** px de origem |
+| Pixels Per Unit | 100, com `Image.pixelsPerUnitMultiplier = 2` (equivale a PPU 200: escala 0,5) |
+| Image | `Image.Type.Sliced` |
+| Compressão | Uncompressed (RGBA32 ≈ 6,3 MB), sem mipmaps, Clamp, Bilinear, Max Size 2048, alpha is transparency |
+
+**Margens assimétricas do sprite** (px de origem, entre a borda do PNG e o corpo visível): esquerda 27, direita 26, topo 45, base 79 (a base inclui a sombra de contato). Em escala 0,5: 13,5 / 13 / 22,5 / 39,5 u. Como os borders incluem essas margens, o corpo visível fica deslocado ≈8,5 u para cima do centro do rect. Ao alinhar painéis a outros elementos, medir pelo corpo visível, não pelo rect. A assimetria está nos borders (topo 250, base 280) de propósito e **não deve ser "corrigida" com trim** sem nova validação.
+
+**Margens seguras de conteúdo** (creme livre medido na imagem, tolerância de cor 45; escala 0,5; contadas a partir da borda do rect): **esquerda 70, direita 70, topo 110, base 125 u**. Esse retângulo evita o recorte em voluta dos cantos (as volutas douradas invadem o creme nos quatro cantos). Fora dele só cabem faixas centrais: entre os cantos a linha dourada reta começa ≈54–61 px de origem do corpo (topo/base) e ≈43–57 px (laterais), mas o conteúdo retangular nessas faixas não pode alcançar os cantos.
+
+**Restrições de dimensionamento**
+- Limite geométrico: soma dos borders = 280 u de largura e 265 u de altura em escala 0,5. Abaixo disso o Unity comprime os cantos proporcionalmente (não testado; não usar).
+- **O tamanho mínimo útil depende do conteúdo, não só da geometria.** Área útil = tamanho − (140 u na largura, 235 u na altura). Exemplo medido: 440×600 u comporta título, 6 linhas de texto e dois botões de 145 u; 1080×330 u comporta uma única linha (útil 95 u de altura); 400×300 u tem moldura perfeita, mas útil de apenas 260×65 u e **não comporta** o conteúdo de teste. Defina o tamanho de cada painel a partir do conteúdo mais o inset acima; para painéis menores, usar UI-002/UI-003.
+- Escala 0,5 é a testada. Outras escalas exigem nova captura.
+
+**Sobreposição no painel alto:** "Cliques" sobre "Cancelar" na captura 440×600 é do **harness de QA** (rótulo de contador e botões ancorados no mesmo canto de uma área útil de 300 u de largura), **não da arte** nem do 9-slice. Está registrado aqui apenas para que a captura não seja lida como defeito do painel.
+
+**NOT RUN (não alegar como validado):** build/execução WebGL e comportamento no navegador; compressão de textura (DXT/ASTC) e qualidade pós-compressão; memória e tamanho de download em WebGL; otimização/redução de resolução do PNG; Android/APK/AAB; EditMode/PlayMode completos do projeto (nenhum código mudou); mouse/toque reais do sistema operacional; escalas diferentes de 0,5 e outras resoluções; integração em telas reais (Loja, Balanço, Elenco etc.). Tudo isso fica para a integração real, que exigirá nova PR própria, `.meta`/GUID estáveis e captura antes/depois.

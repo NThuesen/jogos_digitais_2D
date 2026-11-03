@@ -4,7 +4,7 @@ Este arquivo é um **ÍNDICE**, não um prompt para substituir `[STATE]`. Clique
 
 ## Botão principal — exatamente o que você faz
 
-1. Abra **NORMAL** e anexe os PNGs existentes indicados nele. Após o UI-001 aprovado, anexe também `UI-001_panel_large_v01.png`. Gere só **uma imagem** e renomeie `UI-004_button_primary_normal_v01.png`.
+1. Abra **NORMAL** e anexe os PNGs existentes indicados nele. Anexe também o painel aprovado `docs/art/ui-modular/approved/UI-001_panel_large_v01.png` (existe no Git). Gere só **uma imagem** e renomeie `UI-004_button_primary_normal_v01.png`.
 2. Abra **HOVER**. Anexe os PNGs indicados **e o normal já aprovado**. Gere e salve `UI-004_button_primary_hover_v01.png`.
 3. Abra **PRESSED**; anexe o NORMAL e salve `UI-004_button_primary_pressed_v01.png`.
 4. Abra **DISABLED**; anexe o NORMAL e salve `UI-004_button_primary_disabled_v01.png`.

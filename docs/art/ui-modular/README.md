@@ -38,4 +38,6 @@ docs/art/ui-modular/
 
 Essas pastas usam `.gitkeep`. **Os PNGs ainda não foram gerados automaticamente, e os caminhos `approved/UI-...` só passam a existir após aprovação humana.** A imagem gerada pode baixar com nome aleatório; o tutorial mostra como renomeá-la. Consulte [contrato](../CURRENT_VISUAL_DIRECTION.md) e [UI-02](../../roadmap/UI-02_SCREEN_POLISH.md).
 
+**Exceção:** `docs/art/ui-modular/approved/UI-001_panel_large_v01.png` está versionado (APPROVED, não integrado).
+
 **Referência ART-01D:** preservar aconchego, molduras e visual novel; **não** reproduzir pixel art nem copiar personagens. Cenário e menus podem diferir em ornamentação, mantendo linguagem comum. O piloto deve passar nas resoluções 960×600 e 1280×720 antes de produção em escala.

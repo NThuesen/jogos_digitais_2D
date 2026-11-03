@@ -10,7 +10,7 @@
 
 ## 2. Anexe estes PNGs de produção QUANDO existirem
 
-- **Arquivo FUTURO, apenas depois de gerado/aprovado:** `art_working/ui_modular/approved/UI-001_panel_large_v01.png` (não existe na main hoje).
+- [`UI-001_panel_large_v01.png`](../../approved/UI-001_panel_large_v01.png) — `docs/art/ui-modular/approved/UI-001_panel_large_v01.png` (**APPROVED, versionado no Git a partir do PR #39; referência oficial do painel**).
 
 ## 3. Prompt pronto para copiar
 

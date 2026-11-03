@@ -29,7 +29,7 @@ Abra os links e **baixe o arquivo original**, depois anexe pelo ícone de imagem
 4. Baixe o resultado e **renomeie** o arquivo, se necessário, para **`UI-001_panel_large_v01.png`**.
 5. Coloque em `art_working/ui_modular/raw_gpt/UI-001_panel_large_v01.png`. Não substitua esse bruto ao refazer.
 6. Caso precise, limpe fundo no Blender e salve **o mesmo nome** em `art_working/ui_modular/blender_clean/`. **Não apague o miolo creme do painel.**
-7. Compare a imagem isolada e o resultado na Unity com conteúdo e 9-slice em 960×600 / 1280×720. Só quando o responsável aprovar, copie-a para `art_working/ui_modular/approved/UI-001_panel_large_v01.png` (local), registre [ASSET_REGISTRY.md](ASSET_REGISTRY.md) e prossiga.
+7. Compare a imagem isolada e o resultado na Unity com conteúdo e 9-slice em 960×600 / 1280×720. Para o UI-001 isso já foi feito: o PNG limpo aprovado está versionado em `docs/art/ui-modular/approved/UI-001_panel_large_v01.png` (SHA-256 `ba300ece…ee85f8`, ver [revisão](reviews/UI-001_PANEL_LARGE_V01.md)). Para os demais, só quando o responsável aprovar, copie para `art_working/ui_modular/approved/` (local), registre [ASSET_REGISTRY.md](ASSET_REGISTRY.md) e prossiga.
 
 ## Passo 2 — Botão principal: são QUATRO prompts diferentes
 
@@ -42,14 +42,14 @@ Abra os links e **baixe o arquivo original**, depois anexe pelo ícone de imagem
 | 3 | [**PRESSED**](prompts/variants/04_BUTTON_PRIMARY_PRESSED.md) | Mesmos existentes + **o botão NORMAL aprovado**. | `UI-004_button_primary_pressed_v01.png` |
 | 4 | [**DISABLED**](prompts/variants/04_BUTTON_PRIMARY_DISABLED.md) | Mesmos existentes + **o botão NORMAL aprovado**. | `UI-004_button_primary_disabled_v01.png` |
 
-**Fluxo concreto:** primeiro gere NORMAL → salve em `raw_gpt/` → limpe se necessário → aprove → coloque em `approved/` → só então HOVER, PRESSED e DISABLED. A pasta `approved/` não contém esse PNG ainda. Quando um prompt pede uma imagem "futura", ele não está dizendo que você já deveria encontrá-la no GitHub.
+**Fluxo concreto:** primeiro gere NORMAL → salve em `raw_gpt/` → limpe se necessário → aprove → coloque em `approved/` → só então HOVER, PRESSED e DISABLED. O único PNG aprovado até agora é o UI-001 (versionado em `docs/art/ui-modular/approved/`); o botão NORMAL ainda não existe. Quando um prompt pede uma imagem "futura", ele não está dizendo que você já deveria encontrá-la no GitHub.
 
 Ao gerar as variantes, peça para manter **o mesmo contorno e tamanho da imagem NORMAL**; se a IA alterar demais o formato entre estados, a solução técnica melhor é construir variações de iluminação/tint no Blender ou Unity sobre o PNG NORMAL, sem sacrificar alinhamento. A Unity controla cliques, hover e estado via `Button`.
 
 ## Passo 3 — Maid Card compacto (terceira peça do piloto)
 
 1. Abra [**08_MAID_CARD_COMPACT.md**](prompts/08_MAID_CARD_COMPACT.md).
-2. Anexe `style_anchor_reference.png`, `webgl_chrome_960x600.jpg`, `after_ES-2_escalacao_960x600.png` e **`suzu_walk.png` de `Assets/_Game/Resources/Maids/`**. Anexe também o painel aprovado `UI-001_panel_large_v01.png` se já existir.
+2. Anexe `style_anchor_reference.png`, `webgl_chrome_960x600.jpg`, `after_ES-2_escalacao_960x600.png` e **`suzu_walk.png` de `Assets/_Game/Resources/Maids/`**. Anexe também o painel aprovado `docs/art/ui-modular/approved/UI-001_panel_large_v01.png` (já existe no Git).
 3. Gere **somente a moldura vazia, com janela transparente para portrait**. Não coloque uma personagem dentro da moldura.
 4. Salve como **`UI-008_maid_card_compact_v01.png`** em `raw_gpt/`, depois `blender_clean/` e `approved/` quando cabível.
 5. Teste na Unity com Suzu real atrás da moldura e textos dinâmicos em 960×600 e 1280×720. A geração de portraits é outro gate.

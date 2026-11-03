@@ -1,10 +1,10 @@
 # Registro de produção — assets modulares
 
-**Nenhum asset foi aprovado nem integrado; UI-001 está em `UNITY_QA`.** **[OUTPUT_MANIFEST.md](OUTPUT_MANIFEST.md) lista individualmente as 95 saídas com o nome exato e o prompt específico; esta tabela agrupa as 25 famílias.** Estado padrão: `PENDING`. Um prompt existente **não** equivale a PNG disponível. Atualize esta tabela somente com arquivos e validações realmente existentes.
+**Único asset aprovado: UI-001 (`APPROVED`, ainda não `INTEGRATED`).** **[OUTPUT_MANIFEST.md](OUTPUT_MANIFEST.md) lista individualmente as 95 saídas com o nome exato e o prompt específico; esta tabela agrupa as 25 famílias.** Estado padrão: `PENDING`. Um prompt existente **não** equivale a PNG disponível. Atualize esta tabela somente com arquivos e validações realmente existentes.
 
 | ID | Peça / prompt | Estado | Raw local | PNG limpo local | Versão aprovada / PR | Unity / QA |
 | --- | --- | --- | --- | --- | --- | --- |
-| UI-001 | [01_PANEL_LARGE](prompts/01_PANEL_LARGE.md) | UNITY_QA | `raw_gpt/UI-001_panel_large_v01.png` (local, ignorado) | `blender_clean/UI-001_panel_large_v01.png` (local, ignorado) | — (aguarda aprovação final) | PASS 960×600 e 1280×720; WebGL NOT RUN — [revisão](reviews/UI-001_PANEL_LARGE_V01.md) |
+| UI-001 | [01_PANEL_LARGE](prompts/01_PANEL_LARGE.md) | APPROVED | `raw_gpt/UI-001_panel_large_v01.png` (local, ignorado) | `blender_clean/UI-001_panel_large_v01.png` (local, ignorado) | [`approved/UI-001_panel_large_v01.png`](approved/UI-001_panel_large_v01.png) — PR #39 | UNITY_QA PASS 960×600 e 1280×720; **INTEGRATED: pendente**; WebGL/compressão NOT RUN — [revisão](reviews/UI-001_PANEL_LARGE_V01.md) |
 | UI-002 | [02_PANEL_MEDIUM](prompts/02_PANEL_MEDIUM.md) | PENDING | — | — | — | NOT RUN |
 | UI-003 | [03_PANEL_SMALL_LABEL](prompts/03_PANEL_SMALL_LABEL.md) | PENDING | — | — | — | NOT RUN |
 | UI-004 | [04_BUTTON_PRIMARY](prompts/04_BUTTON_PRIMARY.md) | PENDING | — | — | — | NOT RUN |
@@ -42,3 +42,12 @@
 - Unity: caminho em `Assets/_Game/` se integrado, tipo `Sliced/Simple`, `Pixels Per Unit`, bordas ou camadas, escala.
 - QA: screenshot antes/depois 960×600 e 1280×720, interação/scroll/contraste, WebGL e memória quando relevante.
 - Decisão: APPROVED/REWORK/REJECTED, motivo e PR.
+
+## UI-001 `panel_large` v01 — ficha
+
+- Origem: [01_PANEL_LARGE](prompts/01_PANEL_LARGE.md), GPT; bruto local `raw_gpt/UI-001_panel_large_v01.png` (SHA-256 `d5631b7f…7f22a`, intacto, ignorado).
+- Arte limpa/aprovada: `docs/art/ui-modular/approved/UI-001_panel_large_v01.png`, 1536×1024 RGBA, 1 833 033 bytes, SHA-256 `ba300ece650f18e8ef4e938aa84e9c9df3146396dc82a91ba4551306a9ee85f8` (idêntico ao `blender_clean/`). Técnica: processamento programático de alpha; sem trim, resize, quantização ou compressão.
+- Unity (testado, não integrado): Sprite Single, Full Rect, **border L280 B280 R280 T250**, PPU 100 + `Image.pixelsPerUnitMultiplier` 2 (escala 0,5), Uncompressed, sem mipmaps, Clamp, Bilinear.
+- QA e limites de uso: [revisão](reviews/UI-001_PANEL_LARGE_V01.md#6-aprovação-final).
+- Decisão: **APPROVED** pelo responsável; **INTEGRATED** pendente (nenhuma tela alterada).
+

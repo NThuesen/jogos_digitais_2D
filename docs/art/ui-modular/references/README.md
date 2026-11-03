@@ -1,6 +1,6 @@
 # REFERÊNCIAS REAIS — nomes exatos dos arquivos PNG/JPG no repositório
 
-**Esta página mostra arquivos que JÁ EXISTEM na `main` de NThuesen/jogos_digitais_2D.** Para anexar ao GPT, clique no link, baixe o arquivo original e carregue como imagem. Não invente nomes nem presuma que `UI-001_...` já foi gerado. **O prompt individual indica exatamente quais anexar.**
+**Esta página mostra arquivos que JÁ EXISTEM na `main` de NThuesen/jogos_digitais_2D.** Para anexar ao GPT, clique no link, baixe o arquivo original e carregue como imagem. Não invente nomes. Único asset modular já aprovado e versionado: [`UI-001_panel_large_v01.png`](../approved/UI-001_panel_large_v01.png) (`docs/art/ui-modular/approved/`). **O prompt individual indica exatamente quais anexar.**
 
 ## Âncoras históricas de estilo (usar forma/atmosfera, NÃO pixel art)
 
@@ -49,6 +49,6 @@ Estas são as referências corretas de **identidade das maids hoje**, em `Assets
 
 ## O que NÃO existe ainda e NÃO pode ser baixado do GitHub
 
-Todos os PNGs `UI-001_...`, `UI-004_...`, `UI-008_...`, etc. O caminho `art_working/ui_modular/approved/UI-001_panel_large_v01.png`, por exemplo, é **um destino futuro**, não referência existente. Será criado localmente depois de gerar, limpar, validar e aprovar o piloto. Os prompts deixam isso indicado.
+Os PNGs `UI-004_...`, `UI-008_...` etc. ainda não existem; caminhos `art_working/ui_modular/approved/UI-...` são destinos futuros. **Exceção:** `UI-001_panel_large_v01.png` já foi gerado, validado e aprovado e vive em `docs/art/ui-modular/approved/`. Os prompts deixam isso indicado.
 
 Veja [tutorial](../TUTORIAL.md) e [manifesto](../OUTPUT_MANIFEST.md) para cruzar referências com saídas.
