@@ -64,8 +64,9 @@ namespace Neko.Game.Ui
         private void Ledger()
         {
             var plaque = Scenery.Plaque(transform, new Vector2(1020f, 168f));
+            // Below the wordmark and the "Voltar" plank, which the plaque used to cover and block.
             UiKit.Anchor((RectTransform)plaque.parent, new Vector2(0.5f, 1f),
-                new Vector2(0f, -16f));
+                new Vector2(0f, -64f));
 
             var row = UiKit.Row(plaque, 26f, 16f);
             UiKit.Anchor(row, new Vector2(0.5f, 1f), new Vector2(0f, -10f));
@@ -101,12 +102,12 @@ namespace Neko.Game.Ui
         private void Today()
         {
             _today = UiKit.Row(transform, 10f);
-            UiKit.Anchor(_today, new Vector2(0.5f, 1f), new Vector2(0f, -240f));
+            UiKit.Anchor(_today, new Vector2(0.5f, 1f), new Vector2(0f, -272f));
             _today.sizeDelta = new Vector2(1120f, 200f);
 
             _chemistry = UiKit.Label(transform, "", Typeface.Body, Logo.Brass, bold: true);
             UiKit.Anchor(_chemistry.rectTransform, new Vector2(0.5f, 1f),
-                new Vector2(0f, -198f));
+                new Vector2(0f, -240f));
             _chemistry.rectTransform.sizeDelta = new Vector2(760f, 28f);
         }
 
@@ -129,7 +130,7 @@ namespace Neko.Game.Ui
                 if (maid == null) continue;
 
                 var card = MaidCard.Build(_today, maid, 0.72f, showSalary: false,
-                    playingAs: slot.Role);
+                    playingAs: slot.Role, exact: true);
                 _cards.Add(card.gameObject);
             }
 
@@ -158,8 +159,8 @@ namespace Neko.Game.Ui
             UiKit.Anchor(row, new Vector2(0.5f, 0f), new Vector2(0f, 150f));
             row.sizeDelta = new Vector2(1100f, 92f);
 
-            Scenery.Plank(row, Strings.Get("hub.lineup"), new Vector2(200f, 84f),
-                () => OnLineup?.Invoke(), Typeface.Heading, Logo.Brass)
+            Scenery.Plank(row, Strings.Get("hub.lineup"), new Vector2(240f, 84f),
+                () => OnLineup?.Invoke(), Typeface.Heading, Logo.Brass, exact: true)
                 .GetComponentInChildren<Text>().color = Palette.Hex("#3A2A1A");
 
             Scenery.Plank(row, Strings.Get("hub.roster"), new Vector2(170f, 84f),

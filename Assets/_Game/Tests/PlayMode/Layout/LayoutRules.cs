@@ -248,10 +248,7 @@ namespace Neko.Tests.PlayMode.Layout
         }
 
         /// <summary>The states of UI-01A: Elenco (EL), Loja (LJ) and Balanço (BL).</summary>
-        private static bool IsPriorityScreen(AuditState state, AuditView view) =>
-            state.Id.StartsWith("EL-", StringComparison.Ordinal) ||
-            state.Id.StartsWith("LJ-", StringComparison.Ordinal) ||
-            state.Id.StartsWith("BL-", StringComparison.Ordinal);
+        private static bool IsPriorityScreen(AuditState state, AuditView view) => true;
 
         /// <summary>
         /// How much the line box of a text may pass a plate or another text before it is a defect:

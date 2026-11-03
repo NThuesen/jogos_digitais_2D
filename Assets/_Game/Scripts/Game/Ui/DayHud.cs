@@ -32,7 +32,7 @@ namespace Neko.Game.Ui
 
         protected override void Build()
         {
-            var bar = Scenery.Plaque(transform, new Vector2(760f, 76f));
+            var bar = Scenery.Plaque(transform, new Vector2(760f, 76f), null, exact: true);
             UiKit.Anchor((RectTransform)bar.parent, new Vector2(0.5f, 1f), new Vector2(0f, -10f));
 
             var row = UiKit.Row(bar, 24f, 12f);
