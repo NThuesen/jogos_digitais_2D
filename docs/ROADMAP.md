@@ -8,7 +8,7 @@
 
 | Marco | Entrega | Estado | Responsável sugerido | Contrato |
 | --- | --- | --- | --- | --- |
-| **DOC-01** | Alinhar documentação e registrar decisões vigentes, sem reescrever o histórico | EM INTEGRAÇÃO nesta revisão | Documentação | [Direção visual](art/CURRENT_VISUAL_DIRECTION.md) |
+| **DOC-01** | Alinhar documentação e registrar decisões vigentes, sem reescrever o histórico | CONCLUÍDO nesta entrega documental | Documentação | [Direção visual](art/CURRENT_VISUAL_DIRECTION.md) |
 | **UI-01A** | Reusar o Layout_Check existente; corrigir clipping/colisões/scroll/cliques em **Loja, Balanço, Elenco**, 960×600 e 1280×720 | PENDENTE | Codex | [UI-01 atual](roadmap/UI-01_LAYOUT.md) |
 | **UI-01B** | Regressão das outras telas; corrigir apenas problemas bloqueantes e relatar cobertura | PENDENTE após UI-01A | Codex | [UI-01 atual](roadmap/UI-01_LAYOUT.md) |
 | **ENV-01** | Redesenhar o restaurante e mobiliário para anime 2D ilustrado/cozy, usando maids/escala atuais; sem redesign de menus | PENDENTE, aprovação estética em cada entrega material | Claude Code (arte) + Codex (integração/QA) | [Direção visual](art/CURRENT_VISUAL_DIRECTION.md) |
