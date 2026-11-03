@@ -78,9 +78,9 @@ escalação é melhor que outra.
 Câmera, salão, interface e áudio são construídos em código. Não há prefab nenhum — e num
 trabalho em grupo isso significa que ninguém resolve conflito de merge em YAML com GUID.
 
-## Arte, áudio e créditos
+## Arte, áudio e créditos (Créditos de assets)
 
-**Nove walk sheets ilustrados** são imagens originais importadas em `Assets/_Game/Resources/Maids/`, produzidas de imagens/vídeos autorais do projeto por meio do pipeline offline `tools/art/maid_walk/maid_walk.py`. As fontes brutas exportadas pelo Blender ficam fora do Git. O sprite sheet original da Suzu (`Resources/Suzu/`) permanece apenas como backup. [Proveniência e hashes](docs/art/SUZU_ASSET_PROVENANCE.md) · [estado da animação e WebGL](docs/art/maid-walk/README.md).
+**Nove walk sheets ilustrados** são imagens originais importadas em `Assets/_Game/Resources/Maids/`, produzidas de imagens/vídeos autorais do projeto por meio do pipeline offline `tools/art/maid_walk/maid_walk.py`. As fontes brutas exportadas pelo Blender ficam fora do Git. O sprite sheet original da Suzu (`Assets/_Game/Resources/Suzu/suzu_walk_sheet.png`) permanece apenas como backup histórico. [Proveniência e hashes](docs/art/SUZU_ASSET_PROVENANCE.md) · [estado da animação e WebGL](docs/art/maid-walk/README.md).
 
 A arte remanescente **ainda contém** elementos procedurais e móveis desenhados em código (`ShapeRasteriser`, `FurnitureArt`). O cenário atual será redesenhado para **anime 2D ilustrado/cozy**; não é referência obrigatória de pixel art. Portraits exclusivos dos Maid Cards, poses ilustradas além do Walk, equipamentos ilustrados e `visual_id` persistente **não foram entregues**.
 
