@@ -19,14 +19,14 @@ Neko Maid Inc. Original MODULAR Unity sprite, cozy illustrated 2D anime cafe / o
 
 Generate ONE wide empty anime visual-novel speech PANEL, horizontal front-on rounded cream field with refined rosewood border, symmetric corners suitable for a nine-slice. It should have enough interior for multiline text rendered by Unity. Transparent outside, cream center filled. NO tail, no text, no portrait, no buttons, no mockup.
 
-ONE image only. Intended filename after download: UI-19_dialog_panel_v01.png (the generator may not control the actual download name; rename the PNG yourself).
+ONE image only. Intended filename after download: UI-019_dialog_panel_v01.png (the generator may not control the actual download name; rename the PNG yourself).
 ```
 
 ## 4. Salve com este nome EXATO
 
-- Bruto: `art_working/ui_modular/raw_gpt/UI-19_dialog_panel_v01.png`
-- Transparência limpa (se necessário): `art_working/ui_modular/blender_clean/UI-19_dialog_panel_v01.png`
-- Apenas após aprovação: `art_working/ui_modular/approved/UI-19_dialog_panel_v01.png`
+- Bruto: `art_working/ui_modular/raw_gpt/UI-019_dialog_panel_v01.png`
+- Transparência limpa (se necessário): `art_working/ui_modular/blender_clean/UI-019_dialog_panel_v01.png`
+- Apenas após aprovação: `art_working/ui_modular/approved/UI-019_dialog_panel_v01.png`
 - Próxima tentativa: trocar **somente** `_v01.png` por `_v02.png` e registrar.
 
 **Nota:** cada anexo listado como FUTURO é criado nos passos anteriores; NÃO substitua por arquivo com nome parecido. A pasta `approved/` está vazia até o responsável aprovar um PNG.
