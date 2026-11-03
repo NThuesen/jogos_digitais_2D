@@ -1,31 +1,20 @@
-# 14_RESTAURANT_PROPS_SET — Catálogo de props; cada render contém UM objeto selecionado.
+# 14 — Decoração ambiental não interativa
 
-**Status:** PROMPT PREPARADO, **asset NÃO GERADO/NÃO APROVADO**. Fase: consulte [ordem e gate](../GENERATION_ORDER.md).
+Este arquivo é um **ÍNDICE**, não um prompt para substituir `[STATE]`. Clique em cada prompt abaixo: **ele já tem anexos reais e o PNG de saída definido**. Imagens novas: nenhuma gerada ainda.
 
-## Anexos
+Esses props são decorativos, **não** itens de Loja. Para itens de grid use o catálogo real de UI-024.
 
-style_anchor_reference.png; captura Salão; ART-04 maids; piso/parede já aprovados quando disponíveis.
+| Ordem | Prompt completo | Nome EXATO ao salvar |
+|---|---|---|
+| 1 | [`14_PROP_DECOR_BOOK_STACK.md`](variants/14_PROP_DECOR_BOOK_STACK.md) | `UI-014_prop_decor_book_stack_v01.png` |
+| 2 | [`14_PROP_DECOR_CAKE_SLICE.md`](variants/14_PROP_DECOR_CAKE_SLICE.md) | `UI-014_prop_decor_cake_slice_v01.png` |
+| 3 | [`14_PROP_DECOR_COFFEE_GRINDER.md`](variants/14_PROP_DECOR_COFFEE_GRINDER.md) | `UI-014_prop_decor_coffee_grinder_v01.png` |
+| 4 | [`14_PROP_DECOR_HANGING_PLANT.md`](variants/14_PROP_DECOR_HANGING_PLANT.md) | `UI-014_prop_decor_hanging_plant_v01.png` |
+| 5 | [`14_PROP_DECOR_NAPKIN_HOLDER.md`](variants/14_PROP_DECOR_NAPKIN_HOLDER.md) | `UI-014_prop_decor_napkin_holder_v01.png` |
+| 6 | [`14_PROP_DECOR_PASTRY_PLATE.md`](variants/14_PROP_DECOR_PASTRY_PLATE.md) | `UI-014_prop_decor_pastry_plate_v01.png` |
+| 7 | [`14_PROP_DECOR_TEA_CUP.md`](variants/14_PROP_DECOR_TEA_CUP.md) | `UI-014_prop_decor_tea_cup_v01.png` |
+| 8 | [`14_PROP_DECOR_TEA_JARS.md`](variants/14_PROP_DECOR_TEA_JARS.md) | `UI-014_prop_decor_tea_jars_v01.png` |
+| 9 | [`14_PROP_DECOR_TEA_KETTLE.md`](variants/14_PROP_DECOR_TEA_KETTLE.md) | `UI-014_prop_decor_tea_kettle_v01.png` |
+| 10 | [`14_PROP_DECOR_WALL_PICTURE.md`](variants/14_PROP_DECOR_WALL_PICTURE.md) | `UI-014_prop_decor_wall_picture_v01.png` |
 
-Acesse os caminhos em [references/README.md](../references/README.md); **anexe os arquivos de imagem** no ChatGPT antes de colar o prompt.
-
-## Campos a preencher antes de enviar
-
-- [PROP]=ROUND_TABLE | RECT_TABLE | CHAIR | PLANT | COUNTER_SEGMENT | CAKE_DISPLAY | SHELF | HANGING_LAMP | WALL_DECOR | RUG
-
-## PROMPT DE GERAÇÃO
-
-Cole **antes** o bloco global em [00_GLOBAL_RULES.md](00_GLOBAL_RULES.md); em seguida, copie **somente** o texto abaixo para a geração. Um asset/estado por imagem.
-
-```text
-Produce ONE original isolated CAFÉ PROP sprite for [PROP], in the same consistent anime illustrated perspective and softness as the attached approved room architecture and existing illustrated maids. Do not make a contact sheet or place ten props in one image.
-
-Show its recognizable silhouette and enough volume to read in an orthographic 2D management game without perspective exaggeration. Materials: warm painted wood/porcelain/fabric/greenery when appropriate; colored outlines and subtle shadows appropriate to the attached room, restrained surface detail; clean base/footprint, no painted labels or characters. Use true alpha outside, avoid white/green chroma halos.
-
-Align object geometry to the Unity room grid and floor contact point. Keep layer and footprint reasonable: floor props must not visually block adjacent interaction unnecessarily. Object ordering/occlusion/rotation are runtime Unity decisions.
-```
-
-## QA e decisões
-
-Um arquivo por PROP, com pivô/footprint registrado; gerar direções alternativas separadas se gameplay realmente exigir.
-
-**Registro:** [ASSET_REGISTRY.md](../ASSET_REGISTRY.md). Preserve `raw_gpt`, limpe alpha no Blender quando necessário e só integre após validação Unity e aprovação do responsável.
+Após baixar, **renomeie o PNG** conforme a terceira coluna e salve em `art_working/ui_modular/raw_gpt/`. O nome do download pode ser definido automaticamente pelo ChatGPT. Os arquivos aprovados só existirão depois do gate do responsável. [Tutorial](../TUTORIAL.md) · [Todos os nomes](../OUTPUT_MANIFEST.md).

@@ -1,32 +1,13 @@
-# 06_TABS_SET — Aba modular de Loja/menus (um estado por arquivo).
+# 06 — Abas de navegação
 
-**Status:** PROMPT PREPARADO, **asset NÃO GERADO/NÃO APROVADO**. Fase: consulte [ordem e gate](../GENERATION_ORDER.md).
+Este arquivo é um **ÍNDICE**, não um prompt para substituir `[STATE]`. Clique em cada prompt abaixo: **ele já tem anexos reais e o PNG de saída definido**. Imagens novas: nenhuma gerada ainda.
 
-## Anexos
+Gere INACTIVE primeiro; ACTIVE e HOVER usam a mesma geometria e devem ter seu próprio PNG.
 
-style_anchor_reference.png; painel e botões aprovados; screenshot Loja 960×600.
+| Ordem | Prompt completo | Nome EXATO ao salvar |
+|---|---|---|
+| 1 | [`06_TAB_ACTIVE.md`](variants/06_TAB_ACTIVE.md) | `UI-006_tab_active_v01.png` |
+| 2 | [`06_TAB_HOVER.md`](variants/06_TAB_HOVER.md) | `UI-006_tab_hover_v01.png` |
+| 3 | [`06_TAB_INACTIVE.md`](variants/06_TAB_INACTIVE.md) | `UI-006_tab_inactive_v01.png` |
 
-Acesse os caminhos em [references/README.md](../references/README.md); **anexe os arquivos de imagem** no ChatGPT antes de colar o prompt.
-
-## Campos a preencher antes de enviar
-
-- [STATE]=INACTIVE | ACTIVE | HOVER
-- [TARGET_ASPECT]=aprox. 3:1
-
-## PROMPT DE GERAÇÃO
-
-Cole **antes** o bloco global em [00_GLOBAL_RULES.md](00_GLOBAL_RULES.md); em seguida, copie **somente** o texto abaixo para a geração. Um asset/estado por imagem.
-
-```text
-Create ONE reusable horizontal TAB visual for a cozy anime café management UI. State [STATE] ONLY. Must fit a tab strip with dynamic Unity labels. Approximately 3:1, moderately rounded upper corners and straight lower seating edge; symmetrical, front-facing, easy to align adjacent to sibling tabs.
-
-Match the approved cream/rosewood illustrated style. ACTIVE: visibly raised and connected to the content panel, accent rim. INACTIVE: softer and recessed. HOVER: brighter than inactive yet clearly not selected. Geometry and alpha silhouette must remain consistent across variants.
-
-Large blank center, no words, no icons, no numbers, no tabs beside it.
-```
-
-## QA e decisões
-
-Três PNGs independentes; estado ACTIVE fica em Unity, não apenas desenho.
-
-**Registro:** [ASSET_REGISTRY.md](../ASSET_REGISTRY.md). Preserve `raw_gpt`, limpe alpha no Blender quando necessário e só integre após validação Unity e aprovação do responsável.
+Após baixar, **renomeie o PNG** conforme a terceira coluna e salve em `art_working/ui_modular/raw_gpt/`. O nome do download pode ser definido automaticamente pelo ChatGPT. Os arquivos aprovados só existirão depois do gate do responsável. [Tutorial](../TUTORIAL.md) · [Todos os nomes](../OUTPUT_MANIFEST.md).

@@ -1,30 +1,14 @@
-# 05_BUTTON_SECONDARY — Botão secundário discreto, um estado por arquivo.
+# 05 — Botão secundário (4 estados)
 
-**Status:** PROMPT PREPARADO, **asset NÃO GERADO/NÃO APROVADO**. Fase: consulte [ordem e gate](../GENERATION_ORDER.md).
+Este arquivo é um **ÍNDICE**, não um prompt para substituir `[STATE]`. Clique em cada prompt abaixo: **ele já tem anexos reais e o PNG de saída definido**. Imagens novas: nenhuma gerada ainda.
 
-## Anexos
+São quatro prompts separados. Gere NORMAL primeiro; nos outros três, anexe o PNG normal APROVADO para manter a geometria. Não renderize os quatro estados na mesma imagem.
 
-style_anchor_reference.png; UI-001; UI-004_normal aprovado; outras versões de UI-004 se relevantes.
+| Ordem | Prompt completo | Nome EXATO ao salvar |
+|---|---|---|
+| 1 | [`05_BUTTON_SECONDARY_DISABLED.md`](variants/05_BUTTON_SECONDARY_DISABLED.md) | `UI-005_button_secondary_disabled_v01.png` |
+| 2 | [`05_BUTTON_SECONDARY_HOVER.md`](variants/05_BUTTON_SECONDARY_HOVER.md) | `UI-005_button_secondary_hover_v01.png` |
+| 3 | [`05_BUTTON_SECONDARY_NORMAL.md`](variants/05_BUTTON_SECONDARY_NORMAL.md) | `UI-005_button_secondary_normal_v01.png` |
+| 4 | [`05_BUTTON_SECONDARY_PRESSED.md`](variants/05_BUTTON_SECONDARY_PRESSED.md) | `UI-005_button_secondary_pressed_v01.png` |
 
-Acesse os caminhos em [references/README.md](../references/README.md); **anexe os arquivos de imagem** no ChatGPT antes de colar o prompt.
-
-## Campos a preencher antes de enviar
-
-- [STATE]=NORMAL | HOVER | PRESSED | DISABLED
-- [TARGET_ASPECT]=aprox. 3.5:1
-
-## PROMPT DE GERAÇÃO
-
-Cole **antes** o bloco global em [00_GLOBAL_RULES.md](00_GLOBAL_RULES.md); em seguida, copie **somente** o texto abaixo para a geração. Um asset/estado por imagem.
-
-```text
-Generate exactly ONE SECONDARY button visual in state [STATE], part of the same family as the attached approved primary button but deliberately less visually dominant. Front-facing scalable button with compact cream/peach interior, delicate colored border, symmetric corners and clean straight bands.
-
-Same dimensions, alpha footprint and corner geometry across states. NORMAL = calm; HOVER = slight light accent; PRESSED = inset subtle shading; DISABLED = reduced contrast without disappearance. Keep ample unadorned central area for Unity's dynamic Back/Cancel/Details label. Do not include any words, icons, four-state sheets or other buttons.
-```
-
-## QA e decisões
-
-Não usar cor da ação destrutiva como padrão; sem efeito funcional baked.
-
-**Registro:** [ASSET_REGISTRY.md](../ASSET_REGISTRY.md). Preserve `raw_gpt`, limpe alpha no Blender quando necessário e só integre após validação Unity e aprovação do responsável.
+Após baixar, **renomeie o PNG** conforme a terceira coluna e salve em `art_working/ui_modular/raw_gpt/`. O nome do download pode ser definido automaticamente pelo ChatGPT. Os arquivos aprovados só existirão depois do gate do responsável. [Tutorial](../TUTORIAL.md) · [Todos os nomes](../OUTPUT_MANIFEST.md).
