@@ -4,7 +4,7 @@
 
 - Project: **Unity 6000.5.9f1**, 2D URP, desktop WebGL. Do not inherit mobile-starter assumptions.
 - **Visual/UI improvement tasks only:** [active roadmap](../ROADMAP.md) → read **only the assigned task ID**. For a one-off sprite correction unrelated to the roadmap, do not load the full roadmap.
-- **Current art direction, menus and visual-novel presentation only:** [Illustrated Anime 2D / current decisions (ACCEPTED)](../art/CURRENT_VISUAL_DIRECTION.md). The earlier cozy pixel-art note is historical; do not treat it as a mandatory style.
+- **Current art direction, menus and visual-novel presentation only:** [Illustrated Anime 2D / current decisions (ACCEPTED)](../art/CURRENT_VISUAL_DIRECTION.md). In Marco 4, image assets from GPT are **modular visuals**, while Unity retains all controls, layout, dynamic text/data and interaction; Blender alpha cleanup is acceptable. The earlier cozy pixel-art note is historical; do not treat it as a mandatory style.
 - **Maid portraits/chibis/cards only:** [Visual direction (ACCEPTED)](../art/MAID_VISUAL_DECISION.md) → [spec/layers (PROPOSED)](../art/MAID_VISUAL_SPEC.md) → [per-identity template](../art/maids/_TEMPLATE.md). Read these only for maid appearance/pipeline tasks, not unrelated Unity work.
 - `Assets/_Game/Scripts/Sim` (`Neko.Sim`) is deterministic C# without `UnityEngine`; it owns rules, economy, progression, and save format. `Assets/_Game/Scripts/Game` (`Neko.Game`) owns lifecycle, input, UI, audio, visuals and sim integration. UI must not reimplement sim rules.
 - `GameSession` mediates persistent changes, `SaveCodec` owns format/checksums and `SaveBridge` integrates Unity persistence. Inspect current code before editing their contracts.

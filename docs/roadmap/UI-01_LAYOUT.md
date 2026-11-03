@@ -1,6 +1,6 @@
 # UI-01 — Estabilização funcional da interface (estratégia B)
 
-**Estado:** infraestrutura parcial de Layout_Check **já integrada** pelo [PR #31](https://github.com/NThuesen/jogos_digitais_2D/pull/31); correções das telas **PENDENTES**. **Responsável sugerido:** Codex.
+**Estado:** **CONCLUÍDO na estratégia B** — [PR #31](https://github.com/NThuesen/jogos_digitais_2D/pull/31) (infraestrutura), [PR #33](https://github.com/NThuesen/jogos_digitais_2D/pull/33) (UI-01A) e [PR #34](https://github.com/NThuesen/jogos_digitais_2D/pull/34) (UI-01B). **18 defeitos corrigidos**, 25 estados de Layout_Check registrados, 15 estados históricos ainda não implementados. O contrato abaixo permanece como histórico de escopo/aceite, não tarefas pendentes. **Responsável técnico:** Codex.
 **Direção de arte:** [anime 2D ilustrado vigente](../art/CURRENT_VISUAL_DIRECTION.md). UI-01 **não** redesenha arte nem preserva visual antigo como regra permanente.
 **Histórico:** a [spec original](../../.kiro/specs/ui-01-layout/requirements.md), [design](../../.kiro/specs/ui-01-layout/design.md) e [tasks](../../.kiro/specs/ui-01-layout/tasks.md) registram a proposta extensa de 40 estados; não executá-la integralmente sem readequação ao escopo aprovado aqui.
 

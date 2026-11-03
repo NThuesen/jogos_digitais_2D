@@ -4,6 +4,8 @@
 **Implementação:** Claude Code (arte/crítica) + Codex (UI/integração/QA), em entregas separadas. **Leia:** [direção vigente](../art/CURRENT_VISUAL_DIRECTION.md), [roadmap](../ROADMAP.md) e [Unity](../agent/UNITY.md). ART-01/ART-02 registram decisões históricas, não gates ativos.
 
 ## Objetivo
+
+**Método de produção aprovado para UI-02/Marco 4:** GPT gera **peças de imagem separadas**, com prompts específicos e referência estética; Unity faz `Canvas`, `Button`, estados, textos, stats, preços, scroll, hitboxes e layout responsivo. **Jamais tratar uma tela inteira ilustrada como UI funcional.** Exportar PNG com alpha real; remover fundo com Blender é permitido se necessário, mantendo bordas limpas. Componentes com borda ajustável podem usar 9-slice; ornamentos assimétricos não devem ser deformados. Validar um kit piloto antes da produção em lote. Ver [contrato vigente](../art/CURRENT_VISUAL_DIRECTION.md#decisão-de-produção-aprovada--imagens-modulares--interatividade-unity-4a). A estética da referência ART-01D é **inspiração**, não retorno ao pixel art. **Estilo detalhado, paleta, materialidade e assets finais ainda dependem de decisão conjunta.**
 Fazer a estética, hierarquia e feedback trabalharem em favor da fantasia **“escalar maids adoráveis e acompanhar o desempenho do café”**. Preservar fluxo e funcionalidade existentes; o trabalho de UI-01 já deve ter resolvido bugs de layout antes de redesenhar.
 
 ## Sequência — dividir em PRs independentes, não um PR gigantesco
