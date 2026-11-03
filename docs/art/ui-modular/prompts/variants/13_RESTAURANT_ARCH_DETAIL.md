@@ -19,14 +19,14 @@ Neko Maid Inc. Original MODULAR Unity sprite, cozy illustrated 2D anime cafe / o
 
 Draw exactly ONE illustrated anime café environment ARCHITECTURAL LAYER: detached light/window/upper-wall decoration that can be layered, with alpha outside and no tile-placeable furnishings. Match the orthographic/three-quarter viewing direction in the actual attached Unity hall screenshot. Preserve room grid and changeable room size; Unity owns furniture, hitboxes, navigation and collisions. Cozy timber/cream atmosphere and warm lighting, but legible floor/maids. No UI, captions, character sprites, props stock or full furnished room screenshot. Transparent outer background, no large opaque rectangular backdrop. Not pixel art.
 
-ONE image only. Intended filename after download: UI-13_restaurant_arch_detail_v01.png (the generator may not control the actual download name; rename the PNG yourself).
+ONE image only. Intended filename after download: UI-013_restaurant_arch_detail_v01.png (the generator may not control the actual download name; rename the PNG yourself).
 ```
 
 ## 4. Salve com este nome EXATO
 
-- Bruto: `art_working/ui_modular/raw_gpt/UI-13_restaurant_arch_detail_v01.png`
-- Transparência limpa (se necessário): `art_working/ui_modular/blender_clean/UI-13_restaurant_arch_detail_v01.png`
-- Apenas após aprovação: `art_working/ui_modular/approved/UI-13_restaurant_arch_detail_v01.png`
+- Bruto: `art_working/ui_modular/raw_gpt/UI-013_restaurant_arch_detail_v01.png`
+- Transparência limpa (se necessário): `art_working/ui_modular/blender_clean/UI-013_restaurant_arch_detail_v01.png`
+- Apenas após aprovação: `art_working/ui_modular/approved/UI-013_restaurant_arch_detail_v01.png`
 - Próxima tentativa: trocar **somente** `_v01.png` por `_v02.png` e registrar.
 
 **Nota:** cada anexo listado como FUTURO é criado nos passos anteriores; NÃO substitua por arquivo com nome parecido. A pasta `approved/` está vazia até o responsável aprovar um PNG.
