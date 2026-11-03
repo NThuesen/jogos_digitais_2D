@@ -4,6 +4,8 @@
 
 Base: `98688920fc6ea5595eadfb7becd8d07d6fe78302` (main remota, inclui prompts da PR #43); branch `qa/ui-modular-batch-six`. Inspeção em 03/11/2026. A skill de modificação segura e o fluxo branch→PR foram reaproveitados; nenhuma memória canônica alterada.
 
+**Atualização posterior: HOVER v02 — CLEAN para QA direcionado; ver seção 7.** O lote v01 abaixo mantém seus resultados históricos, inclusive HOVER v01 REWORK.
+
 ## 1. Resultado consolidado
 
 `CLEAN` significa preparado para QA posterior, **não** aprovação artística ou validação Unity. Quando o RAW já tem alpha e padding adequados, não foi criada uma duplicata em blender_clean. Nenhum caso exigiu REJECTED: os arquivos são íntegros e não apresentam defeito irrecuperável demonstrado.
@@ -138,3 +140,51 @@ Não foi feita troca de sprite em runtime, medição de percepção temporal ou 
 - **Gate:** responsável revisa classificações/limpeza e decide o próximo QA. Nenhum dos 6 recebe APPROVED/INTEGRATED. Uma única PR deste lote; sem merge/auto-merge.
 
 O [manifesto das composições](evidence/BATCH-UI-002-003-008-004-STATES/evidence_manifest.json) registra paths/hashes. O script escreve somente três CLEANs e composições/métricas desta auditoria; não produz novos estados de arte. Dependências/versões e limites da reprodução no [README](evidence/BATCH-UI-002-003-008-004-STATES/README.md).
+
+## 7. Adendo — UI-004 COMPACT HOVER v02
+
+**Veredito: CLEAN, pronto para QA Unity direcionado; não APPROVED nem INTEGRATED.** A inspeção estática indica que v02 resolve o realce insuficiente de v01 em **120×44 e 150×44**. A borda fica mais luminosa, o creme continua discreto e não aparecem ornamentos novos ou uma nuvem de glow. **A geometria é próxima, porém não idêntica ao NORMAL:** preparar export/import comum e verificar a troca real de sprites antes de qualquer aprovação.
+
+Somente v02 foi auditado/limpo nesta atualização. HOVER v01 permanece **REWORK**, como registro histórico. NORMAL limpo/aprovado foi a única referência geométrica; v01 serviu à comparação do realce. Nenhuma auditoria anterior, Unity, WebGL ou build foi repetida. Arquivos e evidências anteriores permanecem intactos.
+
+### Arquivo e limpeza mínima
+
+| Dado | RAW v02 preservado | CLEAN v02 local |
+| --- | --- | --- |
+| Caminho | `art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_hover_v02.png` | `art_working/ui_modular/blender_clean/UI-004_button_primary_compact_hover_v02.png` |
+| Dimensões / formato | **2172×724 RGBA8** | **2176×408 RGBA8** |
+| Bytes | 1.205.847 | 1.006.994 |
+| SHA-256 | `4beaadaf15870747b92f1bd8ea323d442e0b7e083d9ca8cba4e1730369ac6e6a` | `c47a56f4f1a83c12eb9a64644a38a9dba66a55cefbb2d15e7913f3f88000d45e` |
+
+PNG íntegro/decodificado. RAW: bbox alpha≥5 `[0,161,2172,555)`; bbox alpha>128 `[8,162,2164,554)`; 280 componentes alpha>0, 682 pixels separados com alpha máximo 3. Centro em alpha253; 755.407 pixels nessa cobertura e apenas 10 já 255. Há grandes margens verticais; reduzir diretamente o canvas RAW não representaria o tamanho visual do botão.
+
+Limpeza pelo mesmo critério conservador já documentado, **aplicado apenas ao v02**: removeu 985 pixels de resíduos (máximo alpha 3) separados/distantes do desenho e solidificou 824.139 pixels alpha250–254. **RGB retido idêntico; alpha9–249 inalterado; nenhum resize/recoloração/desenho.** Recorte `[0,157,2172,565)` e padding adicional **L2/T0/R2/B0**, para garantir exterior transparente inclusive nas laterais. A pequena expansão horizontal do CLEAN é padding, não largura desenhada nova.
+
+Nas laterais do RAW, apenas alpha≤5/7 chegava ao canvas; o contorno opaco estava dentro do arquivo. O padding não reconstrói informação ausente. CLEAN: bbox alpha>0 `[2,2,2174,406)`, alpha>128 `[10,5,2166,397)`; zero buracos no corpo opaco. Permanecem 28 componentes/155 pixels fracos separados (alpha≤3), próximos à borda, preservados como AA/sombra conservadores. Zero pixels alpha20–249 de borda com luminância>200. Composições sobre claro, escuro e magenta não mostraram halo claro/chroma visível.
+
+![HOVER v02 RAW×CLEAN — mesmo recorte e escala](evidence/BATCH-UI-002-003-008-004-STATES/HOVER-v02/v02_raw_clean_mattes.png)
+
+### Comparação de intensidade e identidade
+
+Referências preservadas: NORMAL SHA-256 `c82d06142b3953a97b9654d8b7bf53e611679a6ffb4822a3b268dff239c17eb6`; HOVER v01 SHA-256 `6c8dc92d2274419387301b7b1161920011032d9d0341256c935a694de718121c`. Para separar margens do desenho, esta comparação usa **bbox alpha>128 normalizada apenas em memória para 2049×367**, com regiões de centro/rim iguais entre as três imagens. É um método comparativo específico deste adendo; **não substitui os números da auditoria v01**, que usava outro recorte/ROI.
+
+| Comparação com NORMAL | ΔY médio no centro | ΔY médio no rim | Parecer estático |
+| --- | --- | --- | --- |
+| HOVER v01 | −0,002/255 | +3,260/255 | Feedback fraco; REWORK histórico mantido |
+| HOVER v02 | +0,759/255 | **+10,202/255** | Realce do rim≈3,1 vezes maior que v01 nesta medida; visível nos dois tamanhos |
+
+ΔY é amostra RGB ponderada, não ΔE/estudo perceptual. O centro v02 muda pouco: ΔRGB médio≈−0,56/+0,90/+3,22, MAE≈1,97/255. A intenção permanece creme quente/rosewood/dourado; o realce mais marcado está no relevo, não em símbolos novos. No parecer visual, **não é necessário aumentar novamente a intensidade antes de testar em Unity**.
+
+### Silhueta, alinhamento e 9-slice
+
+- Corpo opaco v02: 2156×392, razão 5,500; NORMAL: 2049×367, razão≈5,583. **Diferença de proporção do corpo≈−1,49%**, não corrigida deformando os pixels do master.
+- Após normalizar somente as bboxes para diagnóstico: IoU≈**99,9184%**, maior distância de contorno≈**2,83px** na grade 2049×367. Essa normalização remove a diferença de proporções do diagnóstico; não significa identidade literal dos masters.
+- Na **simulação raster de slice**, que usa os masters com padding e cortes proporcionais arredondados, o NORMAL e v02 têm 42px de altura visível em 44px. O v02 ocupa **1px a mais na largura visível**; centroide≈**+0,37px X**, diferença vertical<0,03px. IoU de máscara≈**99,24% em 120×44** e **99,39% em 150×44**. Os valores não são medidas Unity nem uma tolerância aprovada.
+- Bandas horizontais e cantos permanecem contínuos; não foram observadas novas deformações grosseiras na simulação. Compatibilidade de 9-slice **favorável para QA**, com ressalva de alinhamento. **Não é substituição direta do master 2072×380** com metadados copiados literalmente.
+- Borders proporcionais de investigação para CLEAN 2176×408: **L168,0309/B118,1053/R168,0309/T118,1053** (a partir do NORMAL L160/B110/R160/T110). São metadados candidatos, não homologados. Preparar um export/import comum com NORMAL, preservando cantos/faixas; não forçar um resize do canvas RAW nem considerar esses valores certificados em runtime.
+
+![NORMAL, HOVER v01 e v02 em 120×44/150×44 — simulação raster, NÃO UNITY](evidence/BATCH-UI-002-003-008-004-STATES/HOVER-v02/normal_v01_v02_native_sizes.png)
+
+**Recomendação objetiva:** seguir com v02 ao QA Unity de troca NORMAL↔HOVER nos dois tamanhos, com preço/texto real, sobre fundos claros/escuros. Confirmar percepção do hover, ausência de salto/piscada da silhueta e alinhamento após a preparação do export/import comum. Se o desvio pequeno observado aparecer em runtime, corrigir a normalização geométrica antes de aprovação; não redesenhar a peça nem reforçar novamente o brilho por antecipação.
+
+**NOT RUN:** Unity/WebGL/builds, texto/hitbox/interação reais, transição temporal e QA anterior. **Não aprovado nem integrado.** RAW, NORMAL, v01 e todas as evidências anteriores preservados. [Dados/transformações](evidence/BATCH-UI-002-003-008-004-STATES/HOVER-v02/analysis.json), [script exclusivo v02](evidence/BATCH-UI-002-003-008-004-STATES/HOVER-v02/audit_hover_v02.py.txt), [classificação](evidence/BATCH-UI-002-003-008-004-STATES/HOVER-v02/classification.json), [hashes das composições](evidence/BATCH-UI-002-003-008-004-STATES/HOVER-v02/evidence_manifest.json).

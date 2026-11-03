@@ -1,0 +1,78 @@
+"""Audit/clean HOVER v02 only. References and previous evidence are strictly read-only.
+Raster proof and 9-slice simulation do not execute Unity.
+"""
+from pathlib import Path
+import hashlib,json,platform
+import PIL,numpy as np,scipy
+from PIL import Image,ImageDraw,ImageFont
+from scipy import ndimage as nd
+ROOT=Path(__file__).resolve().parents[7];OUT=Path(__file__).resolve().parent
+RAW=ROOT/'art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_hover_v02.png'
+REF=ROOT/'art_working/ui_modular/blender_clean/UI-004_button_primary_compact_normal_v01.png'
+OLD=ROOT/'art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_hover_v01.png'
+CLEAN=ROOT/'art_working/ui_modular/blender_clean/UI-004_button_primary_compact_hover_v02.png'
+FONT=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',16)
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def bbox(mask):
+ if not mask.any():return None
+ y,x=np.where(mask);return [int(x.min()),int(y.min()),int(x.max()+1),int(y.max()+1)]
+def describe(a):
+ al=a[:,:,3];lab,n=nd.label(al>0);c=np.bincount(lab.ravel());c[0]=0;det=(lab>0)&(lab!=c.argmax());edge=(al>=20)&(al<250)
+ return {'dimensions':[a.shape[1],a.shape[0]],'alpha_histogram':{str(i):int(v) for i,v in enumerate(np.bincount(al.ravel(),minlength=256)) if v},'bbox_alpha_gt0_exclusive':bbox(al>0),'bbox_alpha_ge5_exclusive':bbox(al>=5),'bbox_alpha_gt128_exclusive':bbox(al>128),'components4':n,'detached_pixels':int(det.sum()),'detached_max_alpha':int(al[det].max()) if det.any() else 0,'edge_rgb_mean':a[:,:,:3][edge].mean(axis=0).tolist(),'bright_edge_luma_gt200':int(((a[:,:,:3][edge]@[.2126,.7152,.0722])>200).sum()),'opaque_outline_holes':int((nd.binary_fill_holes(al>128)&~(al>128)).sum())},det
+hashes={str(p.relative_to(ROOT)):sha(p) for p in [RAW,REF,OLD]}
+assert sha(REF)=='c82d06142b3953a97b9654d8b7bf53e611679a6ffb4822a3b268dff239c17eb6'
+assert sha(OLD)=='6c8dc92d2274419387301b7b1161920011032d9d0341256c935a694de718121c'
+im=Image.open(RAW);im.verify();assert RAW.read_bytes()[24:26]==bytes([8,6]);raw=np.array(Image.open(RAW));rf,det=describe(raw);alpha=raw[:,:,3];distance=nd.distance_transform_edt(alpha<20)
+remove=(alpha>0)&(alpha<=8)&((det&(distance>2))|(distance>8))
+clean=raw.copy();clean[:,:,3][remove]=0;clean[:,:,3][alpha>=250]=255
+assert np.array_equal(clean[:,:,:3],raw[:,:,:3]);assert np.array_equal(clean[:,:,3][(alpha>=9)&(alpha<250)],alpha[(alpha>=9)&(alpha<250)])
+b=bbox(clean[:,:,3]>0);crop=[max(0,b[0]-2),max(0,b[1]-2),min(clean.shape[1],b[2]+2),min(clean.shape[0],b[3]+2)]
+pad=[max(0,2-b[0]),max(0,2-b[1]),max(0,b[2]+2-clean.shape[1]),max(0,b[3]+2-clean.shape[0])]
+trim=np.pad(clean[crop[1]:crop[3],crop[0]:crop[2]],((pad[1],pad[3]),(pad[0],pad[2]),(0,0)))
+Image.fromarray(trim).save(CLEAN);cf,_=describe(trim)
+report={'scope':'HOVER v02 only; static raster, no Unity/WebGL/builds; references unchanged','environment':{'python':platform.python_version(),'pillow':PIL.__version__,'numpy':np.__version__,'scipy':scipy.__version__},'input_hashes':hashes,'raw':{**rf,'bytes':RAW.stat().st_size,'sha256':sha(RAW),'png_bit_depth':8,'png_color_type':6,'max_alpha_left_right_canvas_edges':[int(alpha[:,0].max()),int(alpha[:,-1].max())]},'clean':{**cf,'bytes':CLEAN.stat().st_size,'sha256':sha(CLEAN),'crop_raw_xyxy_exclusive':crop,'padding_LTRB':pad,'removed_residue_pixels':int(remove.sum()),'removed_max_alpha':int(alpha[remove].max()),'solidified_pixels':int(((alpha>=250)&(alpha<255)).sum()),'retained_rgb_changes':0,'alpha9_249_changes':0},'comparison':{}}
+normal=np.array(Image.open(REF));old=np.array(Image.open(OLD))
+# Compare effective opaque silhouette after excluding padding: diagnostic only, not production transforms.
+def normalize_body(a):
+ box=bbox(a[:,:,3]>128);return np.array(Image.fromarray(a[box[1]:box[3],box[0]:box[2]]).resize((2049,367),Image.Resampling.LANCZOS))
+nbody=normalize_body(normal);nm=nbody[:,:,3]>128
+for name,arr in [('hover_v01',old),('hover_v02',trim)]:
+ body=normalize_body(arr);mask=body[:,:,3]>128;edge=mask^nd.binary_erosion(mask);re=nm^nd.binary_erosion(nm);d=body[:,:,:3].astype(float)-nbody[:,:,:3]
+ center=np.zeros(mask.shape,bool);center[75:280,200:1850]=True;rim=(nbody[:,:,3]>250)&~center
+ def region(m):return {'mean_rgb_delta':d[m].mean(axis=0).tolist(),'mean_abs_rgb_delta':float(np.abs(d[m]).mean()),'mean_luma_delta':float((d[m]@[.2126,.7152,.0722]).mean())}
+ box=bbox(arr[:,:,3]>128);bb=bbox(normal[:,:,3]>128)
+ report['comparison'][name]={'body_normalization_size':[2049,367],'body_iou':float((mask&nm).sum()/(mask|nm).sum()),'body_boundary_max_px':float(max(nd.distance_transform_edt(~edge)[re].max(),nd.distance_transform_edt(~re)[edge].max())),'opaque_body_aspect':(box[2]-box[0])/(box[3]-box[1]),'opaque_body_aspect_relative_to_normal':((box[2]-box[0])/(box[3]-box[1]))/((bb[2]-bb[0])/(bb[3]-bb[1]))-1,'center':region(center),'rim':region(rim)}
+# Simulate each full candidate with proportional NORMAL borders; rounded raster cuts are approximate.
+def slice_image(a,w,h):
+ sh,sw=a.shape[:2];l=round(160*sw/2072);r=l;t=round(110*sh/380);b=t
+ scale=h/sh;dl=round(l*scale);dt=round(t*scale);xs=[0,l,sw-r,sw];ys=[0,t,sh-b,sh];xx=[0,dl,w-dl,w];yy=[0,dt,h-dt,h];out=Image.new('RGBA',(w,h))
+ for y in range(3):
+  for x in range(3):
+   part=Image.fromarray(a).crop((xs[x],ys[y],xs[x+1],ys[y+1])).resize((xx[x+1]-xx[x],yy[y+1]-yy[y]),Image.Resampling.BILINEAR);out.paste(part,(xx[x],yy[y]))
+ return out
+sheet=Image.new('RGB',(930,630),(246,233,214));draw=ImageDraw.Draw(sheet)
+draw.text((10,8),'SIMULACAO RASTER — NAO E UNITY — sem texto dinamico',font=FONT,fill='black')
+for col,(name,a) in enumerate([('NORMAL aprovado',normal),('HOVER v01 REWORK',old),('HOVER v02 apos limpeza',trim)]):
+ x=col*310;draw.text((x+8,40),name,font=FONT,fill='black')
+ for row,(w,h) in enumerate([(120,44),(150,44)]):
+  y=115+row*130;draw.text((x+15,y-30),f'{w}x{h}',font=FONT,fill='black');tile=slice_image(a,w,h);sheet.paste(tile,(x+(310-w)//2,y),tile)
+  dark=Image.new('RGBA',(310,100),(26,20,30,255));dark.alpha_composite(tile,((310-w)//2,28));sheet.paste(dark.convert('RGB'),(x,380+row*110))
+sheet.save(OUT/'normal_v01_v02_native_sizes.png')
+# Full silhouette, backgrounds, before/after cleanup in common crop coordinates.
+proof=Image.new('RGB',(1000,420));draw=ImageDraw.Draw(proof);rawcrop=np.pad(raw[crop[1]:crop[3],crop[0]:crop[2]],((pad[1],pad[3]),(pad[0],pad[2]),(0,0)))
+for row,bg in enumerate([(248,236,216),(26,20,30),(255,0,255)]):
+ for col,a in enumerate([rawcrop,trim]):
+  tile=Image.new('RGBA',(500,140),bg+(255,));im=Image.fromarray(a);im.thumbnail((480,100),Image.Resampling.LANCZOS);tile.alpha_composite(im,((500-im.width)//2,30));proof.paste(tile.convert('RGB'),(col*500,row*140));draw.text((col*500+8,row*140+5),'RAW v02 (mesmo recorte)' if col==0 else 'CLEAN v02',font=FONT,fill='white' if row==1 else 'black')
+proof.save(OUT/'v02_raw_clean_mattes.png')
+# Report geometry at each actual slice size, not only a normalized silhouette.
+for name,a in [('normal',normal),('hover_v01',old),('hover_v02',trim)]:
+ for w,h in [(120,44),(150,44)]:
+  sim=np.array(slice_image(a,w,h));m=sim[:,:,3]>128;box=bbox(m);key=f'{w}x{h}';slot=report.setdefault('raster_geometry',{}).setdefault(key,{})
+  slot[name]={'visible_bbox':box,'centroid_xy':np.array(nd.center_of_mass(m))[::-1].tolist()}
+  if name=='normal':slot['_ref_mask']=m
+  else:slot[name]['mask_iou_vs_normal']=float((m&slot['_ref_mask']).sum()/(m|slot['_ref_mask']).sum())
+for slot in report['raster_geometry'].values():del slot['_ref_mask']
+(OUT/'analysis.json').write_text(json.dumps(report,indent=2)+'\n')
+for rel,h in hashes.items():assert sha(ROOT/rel)==h
+print(json.dumps({k:v for k,v in report.items() if k in ['comparison','raster_geometry']},indent=2))
+print('CLEAN',trim.shape[1],trim.shape[0],sha(CLEAN),'CROP',crop,'PAD',pad,'REMOVE',int(remove.sum()))
