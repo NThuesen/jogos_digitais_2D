@@ -1,0 +1,71 @@
+using System.Collections;
+using System.IO;
+using System.Text;
+using NUnit.Framework;
+using UnityEngine;
+using UnityEngine.TestTools;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using Neko.Game.Ui;
+using Neko.Sim.Economy;
+using Neko.Sim.Save;
+public class CompactQaTests
+{
+    [UnityTest] public IEnumerator Matrices()
+    {
+        string output=Path.GetFullPath(Path.Combine(Application.dataPath,"../docs/art/ui-modular/reviews/evidence/UI-004-COMPACT"));
+        var log=new StringBuilder();var failures=new System.Collections.Generic.List<string>();
+        int down=0,up=0,click=0,disabled=0,outside=0;
+        foreach(var window in new[]{new Vector2Int(960,600),new Vector2Int(1280,720)})
+        foreach(var page in new[]{"comparison","samples","aspect"})
+        {
+            var go=new GameObject("Compact QA");var v=go.AddComponent<CompactQaView>();v.Build(window.x,window.y,page,true);
+            for(int i=0;i<8;i++)yield return null;
+            v.Inspect();failures.AddRange(v.Failures);log.AppendLine(window+" "+page+"\n"+v.Report);
+            Assert.AreEqual(720,((RectTransform)v.Canvas.transform).rect.height,.1);
+            Assert.AreEqual(720f*window.x/window.y,((RectTransform)v.Canvas.transform).rect.width,.1);
+            foreach(var p in v.Probes)
+            {
+                foreach(float nx in new[]{.5f,.02f})
+                {
+                    int before=p.Events;var e=v.Pointer(p,nx);
+                    v.Send(p,e,"down");down++;Assert.AreEqual(before,p.Events,"down must not click");
+                    yield return null;
+                    v.Send(p,e,"up");up++;Assert.AreEqual(before,p.Events,"up before click dispatch");
+                    v.Send(p,e,"click");click++;Assert.AreEqual(before+(p.Active?1:0),p.Events,p.Name);
+                    if(!p.Active)disabled++;
+                }
+                var rect=(RectTransform)p.Button.transform;var pt=RectTransformUtility.WorldToScreenPoint(v.Camera,rect.TransformPoint(new Vector3(rect.rect.width/2+4,0)));
+                var hits=new System.Collections.Generic.List<RaycastResult>();v.Raycaster.Raycast(new PointerEventData(EventSystem.current){position=pt},hits);
+                Assert.IsFalse(hits.Exists(h=>h.gameObject==p.Button.gameObject));outside++;
+            }
+            // Sweep every catalog label with the same actual Text/font/slot, no fake long prices.
+            foreach(var p in v.Probes)if(p.Name.EndsWith("row2"))
+            {
+                string saved=p.Label.text;
+                foreach(var item in Shop.StockFor(10))
+                {
+                    p.Label.text=Strings.Money(item.Price);Canvas.ForceUpdateCanvases();
+                    bool fit=p.Label.preferredWidth<=p.Label.rectTransform.rect.width+.5 && p.Label.preferredHeight<=p.Label.rectTransform.rect.height+.5;
+                    log.AppendLine("CATALOG_FIT "+window+" "+p.Name+" "+item.Id+" '"+p.Label.text+"' "+fit);
+                    if(!fit)failures.Add("catalog "+item.Id+" "+p.Name);
+                }
+                p.Label.text=saved;
+            }
+            for(int i=0;i<25;i++)yield return null;
+            Canvas.ForceUpdateCanvases();v.Camera.Render();var rt=v.Camera.targetTexture;
+            RenderTexture.active=rt;var capture=new Texture2D(window.x,window.y,TextureFormat.RGB24,false);capture.ReadPixels(new Rect(0,0,window.x,window.y),0,0);capture.Apply();RenderTexture.active=null;
+            File.WriteAllBytes(Path.Combine(output,"unity_"+page+"_"+window.x+"x"+window.y+".png"),capture.EncodeToPNG());
+            Object.Destroy(capture);Object.Destroy(go);yield return null;
+        }
+        // Exercise the real pure purchase rule on disposable profiles; no GameSession/save write.
+        var profile=new Profile();profile.Wallet.Restore(1000,1000000,0);int money=profile.Wallet.Money,owned=profile.OwnedPlaceables.Count;
+        var result=Shop.Buy(profile,"koi_pond");Assert.IsTrue(result.Ok);Assert.AreEqual(money-900,profile.Wallet.Money);Assert.AreEqual(owned+1,profile.OwnedPlaceables.Count);
+        var refused=Shop.Buy(profile,"koi_pond");Assert.IsFalse(refused.Ok);Assert.AreEqual(100,profile.Wallet.Money);
+        log.AppendLine("PURCHASE real Shop.Buy: success charges900/adds1; insufficient funds refused with no mutation");
+        foreach(int w in new[]{2072,1024,768,512}){var t=Resources.Load<Texture2D>("UI004CompactQa/candidate_"+w);log.AppendLine("TEXTURE "+t.width+"x"+t.height+" format="+t.format+" mip="+t.mipmapCount+" readable="+t.isReadable+" runtimeBytes="+UnityEngine.Profiling.Profiler.GetRuntimeMemorySizeLong(t));}
+        log.AppendLine("SIMULATED down="+down+" up="+up+" click="+click+" disabledBlocked="+disabled+" outsideMiss="+outside+"; FAILURES="+failures.Count);
+        File.WriteAllText(Path.Combine(output,"unity_qa_log.txt"),log.ToString());
+        Assert.AreEqual(0,failures.Count,string.Join(";",failures));
+    }
+}

@@ -1,0 +1,1 @@
+{"name":"CompactQa.Editor","references":["CompactQa.Runtime","Neko.Game","Neko.Sim"],"includePlatforms":["Editor"]}

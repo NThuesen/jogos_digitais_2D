@@ -1,6 +1,6 @@
 # OUTPUT_MANIFEST — 99 saídas com nomes fixos
 
-**99 saídas planejadas**, incluindo COMPACT NORMAL e seus três estados de interação. Situação real: UI-001 APPROVED (não integrado); NORMAL ornamental REWORK; COMPACT NORMAL gerado/QA PASS na PR #42 e aprovado pelo responsável, com registro/merge independente; HOVER/PRESSED/DISABLED compactos ainda PENDING. O manifesto reserva nomes, não publica automaticamente os PNGs. Cada linha corresponde a 1 imagem isolada e a 1 prompt pronto. **Não peça para gerar tudo de uma vez.**
+**99 saídas planejadas**, incluindo COMPACT NORMAL e seus três estados de interação. Situação real: UI-001 APPROVED (não integrado); NORMAL ornamental REWORK; COMPACT NORMAL gerado/QA PASS na PR #42 e aprovado pelo responsável, com registro APPROVED na PR #42 integrada, ainda não INTEGRATED; HOVER/PRESSED/DISABLED compactos ainda PENDING. O manifesto reserva nomes, não publica automaticamente os PNGs. Cada linha corresponde a 1 imagem isolada e a 1 prompt pronto. **Não peça para gerar tudo de uma vez.**
 
 - Abra o prompt, baixe e anexe os PNGs reais listados nele, copie só o bloco indicado.
 - Quando terminar, **renomeie o download** com o nome exato abaixo e coloque em `art_working/ui_modular/raw_gpt/`.

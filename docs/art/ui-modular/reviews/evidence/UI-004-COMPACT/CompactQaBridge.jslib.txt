@@ -1,0 +1,1 @@
+mergeInto(LibraryManager.library,{CompactQaReport:function(payload){window.compactQa=JSON.parse(UTF8ToString(payload));}});

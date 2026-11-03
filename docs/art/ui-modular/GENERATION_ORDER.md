@@ -1,6 +1,6 @@
 # Ordem de geração e aprovação (sem lotes)
 
-**Status do fluxo em 03/11/2026:** UI-001 APPROVED (não integrado); UI-004 ornamental NORMAL v01 REWORK; UI-004 COMPACT NORMAL gerado, limpo, com QA PASS na PR #42 e aprovado pelo responsável (registro/merge em processo independente); HOVER/PRESSED/DISABLED ornamentais e compactos ainda não gerados. O objetivo é uma linguagem visual consistente, não completar 95 imagens por completude. Cada link vai para **um prompt executável**, sem `[STATE]` a preencher.
+**Status do fluxo em 03/11/2026:** UI-001 APPROVED (não integrado); UI-004 ornamental NORMAL v01 REWORK; UI-004 COMPACT NORMAL gerado, limpo, com QA PASS na PR #42 e aprovado pelo responsável (registro APPROVED na PR #42 integrada, ainda não INTEGRATED); HOVER/PRESSED/DISABLED ornamentais e compactos ainda não gerados. O objetivo é uma linguagem visual consistente, não completar 99 imagens por completude. Cada link vai para **um prompt executável**, sem `[STATE]` a preencher.
 
 ## Prioridade atual — estados da UI-004 compacta
 

@@ -1,6 +1,6 @@
 # Tutorial de geração — anexos exatos, prompts prontos, nomes definidos
 
-**Você não precisa inventar nomes nem preencher `[STATE]`.** Cada arquivo em `prompts/` ou `prompts/variants/` traz **(1) anexos com nomes e links reais; (2) um bloco único pronto para copiar; (3) nome e pasta exatos do PNG final**. O [manifesto](OUTPUT_MANIFEST.md) contém os **96 nomes**. O UI-001 está aprovado e versionado; o NORMAL ornamental de UI-004 permaneceu REWORK; o COMPACT NORMAL foi gerado e validado na PR #42, com aprovação expressa do responsável, embora a formalização no registro/merge ainda possa estar pendente. Os estados compactos HOVER/PRESSED/DISABLED são os próximos candidatos. O registro distingue prompts, PNGs disponíveis, aprovados e integrados.
+**Você não precisa inventar nomes nem preencher `[STATE]`.** Cada arquivo em `prompts/` ou `prompts/variants/` traz **(1) anexos com nomes e links reais; (2) um bloco único pronto para copiar; (3) nome e pasta exatos do PNG final**. O [manifesto](OUTPUT_MANIFEST.md) contém os **99 nomes**. O UI-001 está aprovado e versionado; o NORMAL ornamental de UI-004 permaneceu REWORK; o COMPACT NORMAL foi gerado e validado na PR #42, com aprovação expressa do responsável, com registro APPROVED incorporado pela PR #42 (sem integração Unity). Os estados compactos HOVER/PRESSED/DISABLED são os próximos candidatos. O registro distingue prompts, PNGs disponíveis, aprovados e integrados.
 
 ## Passo zero — baixar as referências que já EXISTEM
 
@@ -57,7 +57,7 @@ Ao gerar as variantes, peça para manter **o mesmo contorno e tamanho da imagem 
 5. Mostre o PNG para revisão humana antes de aprovar. Claude Code avalia coesão/legibilidade visual; depois Codex testa os tamanhos reais **150×44 da Loja (preços, não o rótulo "Comprar")**, **120×44** e **230×54** nas resoluções `960×600` e `1280×720`. Sem conclusões de WebGL antes de uma execução real.
 6. Registre o resultado no [ASSET_REGISTRY.md](ASSET_REGISTRY.md) (`RAW` / `CLEAN` / `UNITY_QA` / `REWORK` / `APPROVED`, conforme evidência); a existência deste tutorial **não aprova nem integra** o asset. HOVER, PRESSED e DISABLED compactos só após aprovação do NORMAL correspondente.
 
-**Nome e status atualizados após geração:** `UI-004_button_primary_compact_normal_v01.png` — gerado e limpo localmente; QA da [PR #42](https://github.com/NThuesen/jogos_digitais_2D/pull/42) recomendou aprovação, confirmada pelo responsável. A aprovação formal e a integração são registros distintos. [Manifesto de saídas](OUTPUT_MANIFEST.md).
+**Nome e status atualizados após geração:** `UI-004_button_primary_compact_normal_v01.png` — gerado e limpo localmente; QA da [PR #42](https://github.com/NThuesen/jogos_digitais_2D/pull/42) recomendou aprovação, confirmada pelo responsável. A aprovação formal consta da PR #42 integrada; o asset ainda não está INTEGRATED na Unity. [Manifesto de saídas](OUTPUT_MANIFEST.md).
 
 ## Passo 2B — Gerar HOVER, PRESSED e DISABLED do botão **compacto** aprovado
 
@@ -91,7 +91,7 @@ Ao gerar as variantes, peça para manter **o mesmo contorno e tamanho da imagem 
 - [**Arquitetura**](prompts/13_RESTAURANT_BACKGROUND.md), [**props decorativos**](prompts/14_RESTAURANT_PROPS_SET.md), [**paredes**](prompts/23_WALL_SEGMENT.md) e [**placeables reais da Unity**](prompts/24_FURNITURE_SINGLE.md): cada subarquivo tem nome próprio, anexos e destino.
 - [**Portraits das nove maids**](prompts/21_MAID_PORTRAIT.md): somente após aprovação específica; cada prompt já indica o PNG real `*_walk.png` e a evidência visual de sua maid.
 
-Não é obrigatório gerar todas as 95 imagens. Elas estão **documentadas de antemão** para você poder escolher sem reescrever prompt ou nome.
+Não é obrigatório gerar todas as 99 imagens. Elas estão **documentadas de antemão** para você poder escolher sem reescrever prompt ou nome.
 
 ## Como salvar e tratar transparência
 

@@ -1,11 +1,11 @@
 # 04 — Botão primário (duas famílias, quatro estados por família)
 
-Este arquivo é um **ÍNDICE**, não um prompt para substituir `[STATE]`. Clique em cada prompt abaixo: **ele já tem anexos reais e o PNG de saída definido**. O NORMAL ornamental v01 já foi gerado localmente, mas está em REWORK; HOVER/PRESSED/DISABLED não foram gerados. O NORMAL compacto foi gerado, passou pelo QA da PR #42 e recebeu aprovação de produto do responsável; a formalização no registry/merge da PR #42 é independente da documentação destes novos prompts.
+Este arquivo é um **ÍNDICE**, não um prompt para substituir `[STATE]`. Clique em cada prompt abaixo: **ele já tem anexos reais e o PNG de saída definido**. O NORMAL ornamental v01 já foi gerado localmente, mas está em REWORK; HOVER/PRESSED/DISABLED não foram gerados. O NORMAL compacto foi gerado, passou pelo QA da PR #42 e recebeu aprovação de produto do responsável; a aprovação já foi registrada na PR #42 integrada; a integração Unity é outra etapa.
 
 ## Decisão de produto vigente — famílias separadas
 
 - **ORNAMENTAL GRANDE (~260×88):** `UI-004_button_primary_normal_v01.png`; QA [PR #40](https://github.com/NThuesen/jogos_digitais_2D/pull/40) resultou `REWORK` nos tamanhos atuais. O bom resultado relativo em 260×88 **não é aprovação**, e 768×256/WebGL não foram homologados.
-- **COMPACTA SIMPLIFICADA (44–54):** NORMAL gerado, limpo e testado na [PR #42](https://github.com/NThuesen/jogos_digitais_2D/pull/42), com aprovação de produto do responsável (a formalização/integração têm gates próprios). Os novos prompts de estados compactos usam o **NORMAL limpo local 2072×380**, nunca o ornamental ou o RAW 2172×724. Foco em `150×44`, `120×44` e `230×54`.
+- **COMPACTA SIMPLIFICADA (44–54):** NORMAL gerado, limpo e testado na [PR #42](https://github.com/NThuesen/jogos_digitais_2D/pull/42), com aprovação de produto do responsável (a aprovação consta da PR #42; integração Unity ainda pendente). Os novos prompts de estados compactos usam o **NORMAL limpo local 2072×380**, nunca o ornamental ou o RAW 2172×724. Foco em `150×44`, `120×44` e `230×54`.
 - **Abas:** permanecem componentes específicos da UI-006, não variantes do ornamental.
 
 A divisão foi **aprovada como arquitetura visual**; o NORMAL compacto foi aprovado separadamente pelo responsável. Outros estados permanecem `PENDING` até geração, revisão e QA. [Tutorial passo a passo](../TUTORIAL.md#passo-2a--gerar-agora-o-botão-compacto-normal-nova-variante-ui-004).

@@ -1,0 +1,927 @@
+{
+  "environment": "Headless Chromium, software WebGL (renderer recorded below); browser mouse automation, not physical mouse.",
+  "windows": [
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "initial": {
+        "ready": true,
+        "width": 960,
+        "height": 600,
+        "clicks": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "failures": [],
+        "probes": [
+          {
+            "name": "comparison col0 row0",
+            "label": "0 \u00a5",
+            "mode": "current",
+            "x": 130.00001525878906,
+            "y": 133.33331298828125,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col0 row1",
+            "label": "60 \u00a5",
+            "mode": "current",
+            "x": 130.00001525878906,
+            "y": 203.33334350585938,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col0 row2",
+            "label": "900 \u00a5",
+            "mode": "current",
+            "x": 130.00001525878906,
+            "y": 273.3333435058594,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col0 row3",
+            "label": "900 \u00a5",
+            "mode": "current",
+            "x": 130.00001525878906,
+            "y": 343.3333435058594,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": false
+          },
+          {
+            "name": "comparison col0 row4",
+            "label": "Voltar",
+            "mode": "current",
+            "x": 130.00001525878906,
+            "y": 413.3333435058594,
+            "width": 99.99999237060547,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col0 row5",
+            "label": "Confirmar",
+            "mode": "current",
+            "x": 130.00001525878906,
+            "y": 483.33331298828125,
+            "width": 191.66664123535156,
+            "height": 44.999996185302734,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col1 row0",
+            "label": "0 \u00a5",
+            "mode": "sliced",
+            "x": 363.3333435058594,
+            "y": 133.33331298828125,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col1 row1",
+            "label": "60 \u00a5",
+            "mode": "sliced",
+            "x": 363.3333435058594,
+            "y": 203.33334350585938,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col1 row2",
+            "label": "900 \u00a5",
+            "mode": "sliced",
+            "x": 363.3333435058594,
+            "y": 273.3333435058594,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col1 row3",
+            "label": "900 \u00a5",
+            "mode": "sliced",
+            "x": 363.3333435058594,
+            "y": 343.3333435058594,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": false
+          },
+          {
+            "name": "comparison col1 row4",
+            "label": "Voltar",
+            "mode": "sliced",
+            "x": 363.3333435058594,
+            "y": 413.3333435058594,
+            "width": 99.99999237060547,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col1 row5",
+            "label": "Confirmar",
+            "mode": "sliced",
+            "x": 363.3333435058594,
+            "y": 483.33331298828125,
+            "width": 191.66664123535156,
+            "height": 44.999996185302734,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col2 row0",
+            "label": "0 \u00a5",
+            "mode": "sliced",
+            "x": 596.6666870117188,
+            "y": 133.33331298828125,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col2 row1",
+            "label": "60 \u00a5",
+            "mode": "sliced",
+            "x": 596.6666870117188,
+            "y": 203.33334350585938,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col2 row2",
+            "label": "900 \u00a5",
+            "mode": "sliced",
+            "x": 596.6666870117188,
+            "y": 273.3333435058594,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col2 row3",
+            "label": "900 \u00a5",
+            "mode": "sliced",
+            "x": 596.6666870117188,
+            "y": 343.3333435058594,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": false
+          },
+          {
+            "name": "comparison col2 row4",
+            "label": "Voltar",
+            "mode": "sliced",
+            "x": 596.6666870117188,
+            "y": 413.3333435058594,
+            "width": 99.99999237060547,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col2 row5",
+            "label": "Confirmar",
+            "mode": "sliced",
+            "x": 596.6666870117188,
+            "y": 483.33331298828125,
+            "width": 191.66664123535156,
+            "height": 44.999996185302734,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col3 row0",
+            "label": "0 \u00a5",
+            "mode": "simple",
+            "x": 830,
+            "y": 133.33331298828125,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col3 row1",
+            "label": "60 \u00a5",
+            "mode": "simple",
+            "x": 830,
+            "y": 203.33334350585938,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col3 row2",
+            "label": "900 \u00a5",
+            "mode": "simple",
+            "x": 830,
+            "y": 273.3333435058594,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col3 row3",
+            "label": "900 \u00a5",
+            "mode": "simple",
+            "x": 830,
+            "y": 343.3333435058594,
+            "width": 124.99998474121094,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": false
+          },
+          {
+            "name": "comparison col3 row4",
+            "label": "Voltar",
+            "mode": "simple",
+            "x": 830,
+            "y": 413.3333435058594,
+            "width": 99.99999237060547,
+            "height": 36.666664123535156,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col3 row5",
+            "label": "Confirmar",
+            "mode": "simple",
+            "x": 830,
+            "y": 483.33331298828125,
+            "width": 191.66664123535156,
+            "height": 44.999996185302734,
+            "events": 0,
+            "enabled": true
+          }
+        ]
+      },
+      "results": [
+        {
+          "name": "comparison col0 row0",
+          "label": "0 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col0 row1",
+          "label": "60 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col0 row2",
+          "label": "900 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col0 row3",
+          "label": "900 \u00a5",
+          "enabled": false,
+          "down_no_click": true,
+          "up_click_delta": 0
+        },
+        {
+          "name": "comparison col0 row4",
+          "label": "Voltar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col0 row5",
+          "label": "Confirmar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col1 row0",
+          "label": "0 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col1 row1",
+          "label": "60 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col1 row2",
+          "label": "900 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col1 row3",
+          "label": "900 \u00a5",
+          "enabled": false,
+          "down_no_click": true,
+          "up_click_delta": 0
+        },
+        {
+          "name": "comparison col1 row4",
+          "label": "Voltar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col1 row5",
+          "label": "Confirmar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col2 row0",
+          "label": "0 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col2 row1",
+          "label": "60 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col2 row2",
+          "label": "900 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col2 row3",
+          "label": "900 \u00a5",
+          "enabled": false,
+          "down_no_click": true,
+          "up_click_delta": 0
+        },
+        {
+          "name": "comparison col2 row4",
+          "label": "Voltar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col2 row5",
+          "label": "Confirmar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col3 row0",
+          "label": "0 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col3 row1",
+          "label": "60 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col3 row2",
+          "label": "900 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col3 row3",
+          "label": "900 \u00a5",
+          "enabled": false,
+          "down_no_click": true,
+          "up_click_delta": 0
+        },
+        {
+          "name": "comparison col3 row4",
+          "label": "Voltar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col3 row5",
+          "label": "Confirmar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        }
+      ],
+      "final_clicks": 20,
+      "page_errors": [],
+      "console_diagnostics": [
+        {
+          "type": "warning",
+          "text": "Shader 'Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling' is not supported (in 'Blit FSR Upscaling'). PostProcessing render passes will not execute.\n"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "initial": {
+        "ready": true,
+        "width": 1280,
+        "height": 720,
+        "clicks": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "failures": [],
+        "probes": [
+          {
+            "name": "comparison col0 row0",
+            "label": "0 \u00a5",
+            "mode": "current",
+            "x": 220,
+            "y": 160,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col0 row1",
+            "label": "60 \u00a5",
+            "mode": "current",
+            "x": 220,
+            "y": 244,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col0 row2",
+            "label": "900 \u00a5",
+            "mode": "current",
+            "x": 220,
+            "y": 328,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col0 row3",
+            "label": "900 \u00a5",
+            "mode": "current",
+            "x": 220,
+            "y": 412,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": false
+          },
+          {
+            "name": "comparison col0 row4",
+            "label": "Voltar",
+            "mode": "current",
+            "x": 220,
+            "y": 496,
+            "width": 120,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col0 row5",
+            "label": "Confirmar",
+            "mode": "current",
+            "x": 220,
+            "y": 580,
+            "width": 230,
+            "height": 54,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col1 row0",
+            "label": "0 \u00a5",
+            "mode": "sliced",
+            "x": 500,
+            "y": 160,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col1 row1",
+            "label": "60 \u00a5",
+            "mode": "sliced",
+            "x": 500,
+            "y": 244,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col1 row2",
+            "label": "900 \u00a5",
+            "mode": "sliced",
+            "x": 500,
+            "y": 328,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col1 row3",
+            "label": "900 \u00a5",
+            "mode": "sliced",
+            "x": 500,
+            "y": 412,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": false
+          },
+          {
+            "name": "comparison col1 row4",
+            "label": "Voltar",
+            "mode": "sliced",
+            "x": 500,
+            "y": 496,
+            "width": 120,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col1 row5",
+            "label": "Confirmar",
+            "mode": "sliced",
+            "x": 500,
+            "y": 580,
+            "width": 230,
+            "height": 54,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col2 row0",
+            "label": "0 \u00a5",
+            "mode": "sliced",
+            "x": 780,
+            "y": 160,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col2 row1",
+            "label": "60 \u00a5",
+            "mode": "sliced",
+            "x": 780,
+            "y": 244,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col2 row2",
+            "label": "900 \u00a5",
+            "mode": "sliced",
+            "x": 780,
+            "y": 328,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col2 row3",
+            "label": "900 \u00a5",
+            "mode": "sliced",
+            "x": 780,
+            "y": 412,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": false
+          },
+          {
+            "name": "comparison col2 row4",
+            "label": "Voltar",
+            "mode": "sliced",
+            "x": 780,
+            "y": 496,
+            "width": 120,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col2 row5",
+            "label": "Confirmar",
+            "mode": "sliced",
+            "x": 780,
+            "y": 580,
+            "width": 230,
+            "height": 54,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col3 row0",
+            "label": "0 \u00a5",
+            "mode": "simple",
+            "x": 1060,
+            "y": 160,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col3 row1",
+            "label": "60 \u00a5",
+            "mode": "simple",
+            "x": 1060,
+            "y": 244,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col3 row2",
+            "label": "900 \u00a5",
+            "mode": "simple",
+            "x": 1060,
+            "y": 328,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col3 row3",
+            "label": "900 \u00a5",
+            "mode": "simple",
+            "x": 1060,
+            "y": 412,
+            "width": 150,
+            "height": 44,
+            "events": 0,
+            "enabled": false
+          },
+          {
+            "name": "comparison col3 row4",
+            "label": "Voltar",
+            "mode": "simple",
+            "x": 1060,
+            "y": 496,
+            "width": 120,
+            "height": 44,
+            "events": 0,
+            "enabled": true
+          },
+          {
+            "name": "comparison col3 row5",
+            "label": "Confirmar",
+            "mode": "simple",
+            "x": 1060,
+            "y": 580,
+            "width": 230,
+            "height": 54,
+            "events": 0,
+            "enabled": true
+          }
+        ]
+      },
+      "results": [
+        {
+          "name": "comparison col0 row0",
+          "label": "0 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col0 row1",
+          "label": "60 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col0 row2",
+          "label": "900 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col0 row3",
+          "label": "900 \u00a5",
+          "enabled": false,
+          "down_no_click": true,
+          "up_click_delta": 0
+        },
+        {
+          "name": "comparison col0 row4",
+          "label": "Voltar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col0 row5",
+          "label": "Confirmar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col1 row0",
+          "label": "0 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col1 row1",
+          "label": "60 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col1 row2",
+          "label": "900 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col1 row3",
+          "label": "900 \u00a5",
+          "enabled": false,
+          "down_no_click": true,
+          "up_click_delta": 0
+        },
+        {
+          "name": "comparison col1 row4",
+          "label": "Voltar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col1 row5",
+          "label": "Confirmar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col2 row0",
+          "label": "0 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col2 row1",
+          "label": "60 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col2 row2",
+          "label": "900 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col2 row3",
+          "label": "900 \u00a5",
+          "enabled": false,
+          "down_no_click": true,
+          "up_click_delta": 0
+        },
+        {
+          "name": "comparison col2 row4",
+          "label": "Voltar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col2 row5",
+          "label": "Confirmar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col3 row0",
+          "label": "0 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col3 row1",
+          "label": "60 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col3 row2",
+          "label": "900 \u00a5",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col3 row3",
+          "label": "900 \u00a5",
+          "enabled": false,
+          "down_no_click": true,
+          "up_click_delta": 0
+        },
+        {
+          "name": "comparison col3 row4",
+          "label": "Voltar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        },
+        {
+          "name": "comparison col3 row5",
+          "label": "Confirmar",
+          "enabled": true,
+          "down_no_click": true,
+          "up_click_delta": 1
+        }
+      ],
+      "final_clicks": 20,
+      "page_errors": [],
+      "console_diagnostics": [
+        {
+          "type": "warning",
+          "text": "Shader 'Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling' is not supported (in 'Blit FSR Upscaling'). PostProcessing render passes will not execute.\n"
+        }
+      ],
+      "result": "PASS"
+    }
+  ],
+  "browser_version": "153.0.8010.12",
+  "result": "PASS"
+}

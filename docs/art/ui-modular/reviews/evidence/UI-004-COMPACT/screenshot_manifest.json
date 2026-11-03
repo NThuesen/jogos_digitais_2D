@@ -1,0 +1,38 @@
+{
+  "alpha_before_after.png": {
+    "bytes": 263737,
+    "sha256": "d1f49bdb09fe74deb6f8b11c90e9c9db9828978f69c5c1cb2a5715a9751ef918"
+  },
+  "unity_aspect_1280x720.png": {
+    "bytes": 255323,
+    "sha256": "8dd888567cefa00b7c0ef323c9c1f9586654a92531d12c3bbbe1676012ccaea7"
+  },
+  "unity_aspect_960x600.png": {
+    "bytes": 209843,
+    "sha256": "136a6c2a4eb19afd337a532b0ca8064776018bffc5e4ff2aa386276318f4ccbb"
+  },
+  "unity_comparison_1280x720.png": {
+    "bytes": 273453,
+    "sha256": "a8a334dcd67b4832cfe5ecf49e0449a6a4c166e4fcfef065b37e598e34f7111c"
+  },
+  "unity_comparison_960x600.png": {
+    "bytes": 223830,
+    "sha256": "1c603beb312726c14d4d68cf7de5ee8d02544e8b5c7137476e0005f18b88a0de"
+  },
+  "unity_samples_1280x720.png": {
+    "bytes": 267764,
+    "sha256": "f8478a87d7e29362b2dada745253ba4312c2a6985ff14bb6d5cfc7daaf6c4a20"
+  },
+  "unity_samples_960x600.png": {
+    "bytes": 219157,
+    "sha256": "518073ac6df11e77509af8931d75e9a84c2370edeca6b6e96e423c8ccc66e672"
+  },
+  "webgl_1280x720.png": {
+    "bytes": 217091,
+    "sha256": "d914ff674c6b255019cb3a2df3cee08e95e3ac0f272f4febab76583c9dc8b168"
+  },
+  "webgl_960x600.png": {
+    "bytes": 190948,
+    "sha256": "714ca91ec5e2c6b46c574c07c66d7bba208137c35139cad5e24887e03eff9f53"
+  }
+}

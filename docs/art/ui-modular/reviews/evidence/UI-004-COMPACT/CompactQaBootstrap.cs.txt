@@ -1,0 +1,32 @@
+using System;
+using System.Collections;
+using System.Runtime.InteropServices;
+using UnityEngine;
+public sealed class CompactQaBootstrap : MonoBehaviour
+{
+    CompactQaView view;bool ready;
+    [Serializable] public sealed class Snapshot {public bool ready;public int width,height,clicks;public string renderer;public string[] failures;public Item[] probes;}
+    [Serializable] public sealed class Item {public string name,label,mode;public float x,y,width,height;public int events;public bool enabled;}
+#if UNITY_WEBGL && !UNITY_EDITOR
+    [DllImport("__Internal")] static extern void CompactQaReport(string payload);
+#endif
+    IEnumerator Start()
+    {
+        view=gameObject.AddComponent<CompactQaView>();view.Build(Screen.width,Screen.height,"comparison",false);
+        for(int i=0;i<20;i++)yield return null;view.Inspect();ready=true;
+    }
+    void LateUpdate()
+    {
+        if(!ready)return;
+        var list=new System.Collections.Generic.List<Item>();
+        foreach(var p in view.Probes)
+        {
+            var r=(RectTransform)p.Button.transform;var position=RectTransformUtility.WorldToScreenPoint(view.Camera,r.position);
+            list.Add(new Item{name=p.Name,label=p.Label.text,mode=p.Mode,x=position.x,y=Screen.height-position.y,width=r.rect.width*view.Canvas.scaleFactor,height=r.rect.height*view.Canvas.scaleFactor,events=p.Events,enabled=p.Button.interactable});
+        }
+        var snapshot=new Snapshot{ready=true,width=Screen.width,height=Screen.height,clicks=view.Clicks,renderer=SystemInfo.graphicsDeviceName,failures=view.Failures.ToArray(),probes=list.ToArray()};
+#if UNITY_WEBGL && !UNITY_EDITOR
+        CompactQaReport(JsonUtility.ToJson(snapshot));
+#endif
+    }
+}

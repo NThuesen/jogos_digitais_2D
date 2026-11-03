@@ -20,7 +20,7 @@
 ### Decisão de produto UI-004 — duas famílias (03/11/2026)
 
 - **Ornamental grande (~260×88):** linguagem rica para CTA de destaque. O `UI-004_button_primary_normal_v01.png` original foi gerado localmente e avaliado na [PR #40](https://github.com/NThuesen/jogos_digitais_2D/pull/40), mas segue `REWORK`, sem arte aprovada/integrada; 768×256 e WebGL continuam candidatos `NOT RUN`.
-- **Compacta simplificada (altura 44–54):** para botões de compra/navegação, com foco no botão real da Loja `150×44`, `120×44` e eventual `230×54`. **NORMAL compacto já gerado:** QA na PR #42, aprovado pelo responsável; registro/integração seguem fluxo próprio. **Próximo passo artístico:** [HOVER, PRESSED e DISABLED compactos](TUTORIAL.md#passo-2b--gerar-hover-pressed-e-disabled-do-botão-compacto-aprovado), com NORMAL limpo como referência exata. Outros estados ainda PENDING.
+- **Compacta simplificada (altura 44–54):** para botões de compra/navegação, com foco no botão real da Loja `150×44`, `120×44` e eventual `230×54`. **NORMAL compacto já gerado:** QA na PR #42, aprovado pelo responsável; a aprovação já foi registrada na PR #42 integrada; a integração Unity é outra etapa. **Próximo passo artístico:** [HOVER, PRESSED e DISABLED compactos](TUTORIAL.md#passo-2b--gerar-hover-pressed-e-disabled-do-botão-compacto-aprovado), com NORMAL limpo como referência exata. Outros estados ainda PENDING.
 - **Abas 210×44:** continuam peças próprias, não se transformam no botão ornamental.
 - A divisão **está aprovada como direção de produto**, não como aprovação de qualquer PNG. O NORMAL compacto já foi revisado pelo responsável; os demais estados exigem suas próprias evidências e aprovação antes de integração.
 
