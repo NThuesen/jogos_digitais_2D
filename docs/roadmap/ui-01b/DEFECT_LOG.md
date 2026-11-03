@@ -61,3 +61,8 @@ Isolamento de saves: o `SessionFactory.Boot` guarda o save existente e o restaur
 - `Assets/_Game/Tests/PlayMode/Layout/AuditStates.cs`: +14 estados (MN-1..3, EM-2, ES-1..2, CX-1..2, SL-1..2, OD-1, FL-1, DG-1..2), rotinas de build e três checks (`MenuShowsTheSavedRecords`, `DialogBlocksTheLayerBelow`, `TilesAreClickable`). Nenhuma asserção removida.
 - `Assets/_Game/Tests/PlayMode/Layout/LayoutRules.cs`: `IsPriorityScreen` passa a ser verdadeiro para todos os estados (R3.1/R4.1/R4.2/R6.2 valem em todas as telas). Amplia a verificação; nada afrouxado.
 - Sem alteração em workflows, `.meta` novos além dos gerados pela Unity, cenas, `Packages/` ou `ProjectSettings/`.
+
+## Ajuste pós-revisão
+
+- `credits.body` (Menu) deixou de afirmar pixel art: agora cita as nove caminhadas com sprites originais anime 2D ilustrados, gráficos restantes procedurais, áudio sintetizado e ausência de assets de terceiros. Validado em 960×600 e 1280×720 (`evidence/after_credits_*`); `LayoutCheckTests` 32/32 PASS.
+- Salão reutiliza `CameraRig.FrameRoomBetweenHud` (autorizado como solução temporária): a sala é reduzida de escala para não se sobrepor ao estoque.

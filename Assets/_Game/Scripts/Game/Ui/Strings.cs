@@ -181,9 +181,9 @@ namespace Neko.Game.Ui
                 { "settings.sfx", "Efeitos" },
 
                 { "credits.body",
-                    "Neko Maid Inc. As caminhadas das maids são pixel art original deste projeto. " +
-                    "Os demais gráficos são gerados em tempo de execução e todos os sons " +
-                    "são sintetizados. Não há assets de terceiros neste projeto." },
+                    "Neko Maid Inc. As nove caminhadas das maids usam sprites originais anime 2D ilustrados. " +
+                    "Os demais gráficos são procedurais e o áudio é sintetizado. " +
+                    "Não há assets de terceiros." },
             };
 
         public static IReadOnlyDictionary<string, string> All => Table;
