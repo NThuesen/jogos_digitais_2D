@@ -34,17 +34,17 @@ namespace Neko.Game.Ui
 
         protected override void Build()
         {
-            var bar = Scenery.Plaque(transform, new Vector2(1240f, 58f));
+            var bar = Scenery.Plaque(transform, new Vector2(1100f, 58f), null, exact: true);
             UiKit.Anchor((RectTransform)bar.parent, new Vector2(0.5f, 1f), new Vector2(0f, -8f));
 
             var title = UiKit.Label(bar, Strings.Get("hall.title"), Typeface.Body, Palette.Text,
                 TextAnchor.MiddleLeft, bold: true);
             title.rectTransform.sizeDelta = new Vector2(300f, 28f);
-            title.rectTransform.anchoredPosition = new Vector2(-440f, 0f);
+            title.rectTransform.anchoredPosition = new Vector2(-390f, 0f);
 
             _metrics = UiKit.Label(bar, "", Typeface.Small, Palette.Text, TextAnchor.MiddleRight);
-            _metrics.rectTransform.sizeDelta = new Vector2(820f, 28f);
-            _metrics.rectTransform.anchoredPosition = new Vector2(140f, 0f);
+            _metrics.rectTransform.sizeDelta = new Vector2(740f, 28f);
+            _metrics.rectTransform.anchoredPosition = new Vector2(120f, 0f);
 
             Scenery.PlankAt(transform, Strings.Get("dialog.back"), new Vector2(120f, 44f),
                 new Vector2(1f, 1f), new Vector2(-26f, -78f), () => OnBack?.Invoke(),
@@ -55,7 +55,7 @@ namespace Neko.Game.Ui
             UiKit.Anchor(_picked.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 150f));
             _picked.rectTransform.sizeDelta = new Vector2(900f, 26f);
 
-            _stockList = UiKit.ScrollRow(transform, new Vector2(1180f, 120f), 8f);
+            _stockList = UiKit.ScrollRow(transform, new Vector2(1100f, 120f), 8f);
             UiKit.Anchor((RectTransform)_stockList.parent, new Vector2(0.5f, 0f),
                 new Vector2(0f, 16f));
         }
@@ -66,7 +66,8 @@ namespace Neko.Game.Ui
 
             Room?.Build(Session.Profile.Grid);
             Room?.SetFlowOverlay(true);
-            Camera?.FrameRoom(Session.Profile.Grid.Width, Session.Profile.Grid.Height);
+            // Between the title bar and the stock shelf, so neither covers a floor tile.
+            Camera?.FrameRoomBetweenHud(Session.Profile.Grid.Width, Session.Profile.Grid.Height);
 
             SyncMetrics();
             BuildStock();
@@ -105,7 +106,7 @@ namespace Neko.Game.Ui
             foreach (var pair in counts)
             {
                 var def = PlaceableCatalog.ById(pair.Key);
-                var card = UiKit.Panel(_stockList, new Vector2(112f, 100f), Palette.Panel, 0.2f);
+                var card = UiKit.Panel(_stockList, new Vector2(112f, 100f), Palette.Panel, 0.2f, exact: true);
                 card.GetComponent<Image>().raycastTarget = true;
 
                 var icon = new GameObject("Icon", typeof(RectTransform)).AddComponent<Image>();
@@ -121,8 +122,8 @@ namespace Neko.Game.Ui
 
                 var label = UiKit.Label(card, def.DisplayName + " ×" + pair.Value, Typeface.Tiny,
                     Palette.Text);
-                label.rectTransform.sizeDelta = new Vector2(104f, 30f);
-                label.rectTransform.anchoredPosition = new Vector2(0f, -32f);
+                label.rectTransform.sizeDelta = new Vector2(104f, 32f);
+                label.rectTransform.anchoredPosition = new Vector2(0f, -30f);
 
                 var button = card.gameObject.AddComponent<Button>();
                 button.targetGraphic = card.GetComponent<Image>();

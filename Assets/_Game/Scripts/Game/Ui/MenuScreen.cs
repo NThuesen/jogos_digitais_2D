@@ -144,16 +144,28 @@ namespace Neko.Game.Ui
                     Strings.Get("dialog.no")), Typeface.Small);
         }
 
+        private GameSession _session;
+
+        /// <summary>The Menu is built on first show, after the game binds its session: keep it and apply on Refresh.</summary>
         public void SetSession(GameSession session)
         {
+            _session = session;
+            Apply();
+        }
+
+        public override void Refresh() => Apply();
+
+        private void Apply()
+        {
+            var session = _session;
             if (session == null || _records == null) return;
 
             var records = session.Profile.Records;
 
             _records.text =
-                Strings.Get("menu.records") + "\\n" +
+                Strings.Get("menu.records") + "\n" +
                 Strings.Get("menu.bestday") + ": " + records.BestDay + "   " +
-                Strings.Get("menu.bestrevenue") + ": " + Strings.Money(records.BestRevenue) + "\\n" +
+                Strings.Get("menu.bestrevenue") + ": " + Strings.Money(records.BestRevenue) + "\n" +
                 Strings.Get("menu.servedtotal") + ": " + records.TotalCustomersServed + "   " +
                 Strings.Get("menu.legendaries") + ": " + records.LegendariesFound + "   " +
                 Strings.Get("menu.lost") + ": " + records.BusinessesLost;

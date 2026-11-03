@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Neko.Game.Core;
+using Neko.Game.Feel;
 using Neko.Game.Ui;
 using NUnit.Framework;
 using CafeLevelTable = Neko.Sim.Economy.CafeLevelTable;
@@ -367,14 +368,29 @@ namespace Neko.Tests.PlayMode.Layout
         /// <summary>The implemented states, in table order.</summary>
         private static AuditState[] Create() => new[]
         {
-            // Empresa. Task 6.1 adds the Empresa checks (Requirement 11).
+            // UI-01B. Menu: a fresh business, the largest records, and the "Nova empresa" confirmation.
+            new AuditState("MN-1", "Menu", context => MenuRoutine(MenuKind.Fresh), AuditState.NoChecks, new[] { 1 }),
+            new AuditState("MN-2", "Menu", context => MenuRoutine(MenuKind.Records), MenuShowsTheSavedRecords, new[] { 10 }),
+            new AuditState("MN-3", "Menu", context => MenuRoutine(MenuKind.Confirm), DialogBlocksTheLayerBelow, new[] { 10 }),
+
+            // Empresa. Task 6.1 adds the Empresa checks (Requirement 11). EM-2: the largest values.
             new AuditState("EM-1", "Empresa", BuildNewGameDayOne, AuditState.NoChecks, new[] { 1 }),
+            new AuditState("EM-2", "Empresa", context => HubRoutine(), AuditState.NoChecks, new[] { 10 }),
+
+            // UI-01B. Escalação: a full lineup, and a legitimate partial one (empty positions, maids on the bench).
+            new AuditState("ES-1", "Escalação", context => LineupRoutine(true), AuditState.NoChecks, new[] { 10 }),
+            new AuditState("ES-2", "Escalação", context => LineupRoutine(false), AuditState.NoChecks, new[] { 10 }),
 
             // Elenco (UI-01A). EL-1 holds eight maids, the first selected; EL-2 puts the longest
             // values in the detail of the selected one; EL-3 a maid with no traits.
             new AuditState("EL-1", "Elenco", context => RosterRoutine(RosterKind.Full), AuditState.NoChecks, new[] { 10 }),
             new AuditState("EL-2", "Elenco", context => RosterRoutine(RosterKind.Longest), AuditState.NoChecks, new[] { 10 }),
             new AuditState("EL-3", "Elenco", context => RosterRoutine(RosterKind.NoTraits), AuditState.NoChecks, new[] { 10 }),
+
+            // UI-01B. Caixas: the shelf with the largest fichas, and the reveal after opening one.
+            new AuditState("CX-1", "Caixas", context => BoxesRoutine(), AuditState.NoChecks, new[] { 10 }),
+            new AuditState("CX-2", "Caixas (resultado)", context => BoxesRoutine(), AuditState.NoChecks, new[] { 10 },
+                new AuditView("Caixas (resultado)", 10, OpenTheFirstBox)),
 
             // Loja (UI-01A), café level 10 stock, one tab each.
             new AuditState("LJ-1", "Loja (Móveis)", context => ShopRoutine(true), AuditState.NoChecks, new[] { 10 }),
@@ -385,11 +401,27 @@ namespace Neko.Tests.PlayMode.Layout
             new AuditState("LJ-4", "Loja (Móveis, fim da lista)", context => ShopRoutine(true), LastRowIsReachable, new[] { 10 },
                 new AuditView("Loja (Móveis, fim da lista)", 10, ScrollToTheEnd)),
 
+            // UI-01B. Salão with the stock shelf full, then with one piece picked up; both check that no UI
+            // sits over a floor tile (a click on a tile places a piece only when nothing blocks it).
+            new AuditState("SL-1", "Salão", context => HallRoutine(), TilesAreClickable, new[] { 10 }),
+            new AuditState("SL-2", "Salão (peça escolhida)", context => HallRoutine(), TilesAreClickable, new[] { 10 },
+                new AuditView("Salão (peça escolhida)", 10, PickTheFirstPiece)),
+
+            // UI-01B. O dia, frozen on its first frame with a full lineup.
+            new AuditState("OD-1", "O dia", context => DayRoutine(), AuditState.NoChecks, new[] { 10 }),
+
             // Balanço (UI-01A): a profitable day, a loss day, and every tally with eight level-ups.
             new AuditState("BL-1", "Balanço", context => BooksRoutine(BooksKind.Profit), AuditState.NoChecks, new[] { 10 }),
             new AuditState("BL-2", "Balanço", context => BooksRoutine(BooksKind.Loss), AuditState.NoChecks, new[] { 10 }),
             new AuditState("BL-3", "Balanço", context => BooksRoutine(BooksKind.Everything), AuditState.NoChecks, new[] { 10 }),
+
+            // UI-01B. Falência, and the Dialogs: a long text with both buttons, and an error over the Salão.
+            new AuditState("FL-1", "Falência", context => BustRoutine(), AuditState.NoChecks, new[] { 10 }),
+            new AuditState("DG-1", "Diálogo (confirmar/cancelar)", context => DialogRoutine(false), DialogBlocksTheLayerBelow, new[] { 10 }),
+            new AuditState("DG-2", "Diálogo (sobre o Salão)", context => DialogRoutine(true), DialogBlocksTheLayerBelow, new[] { 10 }),
         };
+
+        private enum MenuKind { Fresh, Records, Confirm }
 
         private enum RosterKind { Full, Longest, NoTraits }
 
@@ -486,7 +518,7 @@ namespace Neko.Tests.PlayMode.Layout
             foreach (var button in context.Ui.Current.GetComponentsInChildren<UnityEngine.UI.Button>(false))
             {
                 var text = button.GetComponentInChildren<UnityEngine.UI.Text>();
-                if (text == null || text.text != label) continue;
+                if (text == null || !text.text.StartsWith(label, StringComparison.Ordinal)) continue;
 
                 button.onClick.Invoke();
                 yield break;
@@ -537,6 +569,261 @@ namespace Neko.Tests.PlayMode.Layout
             root.Session.FinishDay(result);
             root.Ui.Show<BooksScreen>();
             yield return null;
+        }
+
+
+        // -------------------------------------------------------------------------------
+        // UI-01B: Menu, Empresa, Escalação, Caixas, Salão, O dia, Falência, Dialogs
+        // -------------------------------------------------------------------------------
+
+        /// <summary>The Menu as boot leaves it: a fresh business, the largest records, or the "Nova empresa" Dialog open.</summary>
+        private static IEnumerator MenuRoutine(MenuKind kind)
+        {
+            var builder = SessionFactory.NewProfile(NewGameSeed, kind == MenuKind.Fresh ? 1 : 10).WithDay(1);
+            if (kind != MenuKind.Fresh)
+            {
+                builder.WithRecords(SessionFactory.LargeValues.Day, SessionFactory.LargeValues.DayAmount,
+                    SessionFactory.LargeValues.CustomersServed, SessionFactory.LargeValues.Day,
+                    SessionFactory.LargeValues.BusinessesLost, SessionFactory.LargeValues.LegendariesFound);
+            }
+
+            yield return SessionFactory.Boot(builder.Build());
+
+            // The sign and the parade sway forever on tweens, which Settled cannot wait out: stop them and
+            // level what they rotated, as SessionFactory.Settle documents for the Menu.
+            Tween.KillAll();
+            foreach (var rect in GameRoot.Instance.Ui.Current.GetComponentsInChildren<UnityEngine.RectTransform>(true))
+            {
+                rect.localRotation = UnityEngine.Quaternion.identity;
+            }
+
+            if (kind == MenuKind.Confirm) PressButtonText(Strings.Get("menu.newgame"));
+            yield return null;
+        }
+
+        /// <summary>
+        /// MN-2: the Menu of a business with records says "Continuar" and lists the records on one line each,
+        /// as the game binds the session before the Menu is first shown (UI-01B D1).
+        /// </summary>
+        private static void MenuShowsTheSavedRecords(Measurement measurement, List<Violation> violations)
+        {
+            var texts = new List<string>();
+            foreach (var text in GameRoot.Instance.Ui.Current.GetComponentsInChildren<UnityEngine.UI.Text>(false)) texts.Add(text.text);
+
+            var continues = texts.Contains(Strings.Get("menu.continue"));
+            var records = texts.Exists(t => t.StartsWith(Strings.Get("menu.records") + "\n", StringComparison.Ordinal) &&
+                                            t.Contains(Strings.Get("menu.bestday") + ": " + SessionFactory.LargeValues.Day));
+            if (continues && records) return;
+
+            violations.Add(new Violation(measurement, "MN-2",
+                (continues ? "" : "no \"Continuar\" button; ") + (records ? "" : "no records text with real line breaks"),
+                "\"Continuar\" and the records lines", measurement.LayerPath));
+        }
+
+        /// <summary>Empresa at café level 10 with the largest money, fichas, day and an eight-maid roster.</summary>
+        private static IEnumerator HubRoutine()
+        {
+            var builder = SessionFactory.NewProfile(NewGameSeed, 10).WithDay(SessionFactory.LargeValues.Day)
+                .WithMoney(SessionFactory.LargeValues.Balance).WithFichas(SessionFactory.LargeValues.Fichas).EmptyRoom();
+            builder.WithMaid(SessionFactory.Longest.MaidName().Item, Rarity.Legendary, 20, 5, TraitId.AngelHands);
+            foreach (var n in CastNames) builder.WithMaid(n, Rarity.Common, 3, 1);
+            builder.AutoFillLineup();
+
+            yield return SessionFactory.Boot(builder.Build());
+            yield return SessionFactory.ToHub();
+        }
+
+        /// <summary>Escalação with eight maids; <paramref name="full"/> fills the lineup, otherwise the lineup stays empty.</summary>
+        private static IEnumerator LineupRoutine(bool full)
+        {
+            var builder = SessionFactory.NewProfile(NewGameSeed, 10).WithDay(1)
+                .WithMoney(SessionFactory.LargeValues.Balance).EmptyRoom();
+            builder.WithMaid(SessionFactory.Longest.MaidName().Item, Rarity.Legendary, 20, 5, TraitId.AngelHands, TraitId.QuickStep, TraitId.Charisma);
+            foreach (var n in CastNames) builder.WithMaid(n, Rarity.Rare, 8, 2, TraitId.Hostess);
+            if (full) builder.AutoFillLineup();
+
+            yield return SessionFactory.Boot(builder.Build());
+            yield return SessionFactory.ToHub();
+            yield return SessionFactory.ToLineup();
+        }
+
+        /// <summary>Caixas with the largest fichas, a booted game walked to the shelf.</summary>
+        private static IEnumerator BoxesRoutine()
+        {
+            var builder = SessionFactory.NewProfile(NewGameSeed, 10).WithDay(1)
+                .WithMoney(SessionFactory.LargeValues.Balance).WithFichas(SessionFactory.LargeValues.Fichas).EmptyRoom();
+            builder.WithMaid("Hina", Rarity.Rare, 12, 3, TraitId.Lucky);
+
+            yield return SessionFactory.Boot(builder.Build());
+            yield return SessionFactory.ToHub();
+            yield return SessionFactory.ToBoxes();
+        }
+
+        /// <summary>Presses the first "Abrir" button of the shelf, as a player does; the Reveal then is the Active_Layer.</summary>
+        private static IEnumerator OpenTheFirstBox(StateContext context)
+        {
+            PressButtonText(Strings.Get("box.open"));
+            yield return null;
+        }
+
+        /// <summary>Salão at café level 10 with every placeable in stock and an empty room.</summary>
+        private static IEnumerator HallRoutine()
+        {
+            var builder = SessionFactory.NewProfile(NewGameSeed, 10).WithDay(1)
+                .WithMoney(SessionFactory.LargeValues.Balance).EmptyRoom();
+            builder.WithMaid("Hina", Rarity.Rare, 5, 1, TraitId.Lucky);
+            foreach (var item in Neko.Sim.Economy.Shop.StockFor(10))
+            {
+                if (item.Kind == ShopItemKind.Placeable) builder.WithStock(item.Id, 3);
+            }
+
+            yield return SessionFactory.Boot(builder.Build());
+            yield return SessionFactory.ToHub();
+            yield return SessionFactory.ToHall();
+        }
+
+        /// <summary>Picks up the first piece of the stock shelf, as a click on its card does.</summary>
+        private static IEnumerator PickTheFirstPiece(StateContext context)
+        {
+            foreach (var button in context.Ui.Current.GetComponentsInChildren<UnityEngine.UI.Button>(false))
+            {
+                var text = button.GetComponentInChildren<UnityEngine.UI.Text>();
+                if (text == null || !text.text.Contains("×")) continue;
+
+                button.onClick.Invoke();
+                yield break;
+            }
+
+            Assert.Fail("PickTheFirstPiece: the Salão has no stock card");
+        }
+
+        /// <summary>O dia: a running day under the DayHud with a full lineup, its clock paused.</summary>
+        private static IEnumerator DayRoutine()
+        {
+            var builder = SessionFactory.NewProfile(NewGameSeed, 10).WithDay(1)
+                .WithMoney(SessionFactory.LargeValues.Balance);
+            builder.WithMaid("Hina", Rarity.Rare, 5, 1, TraitId.Lucky);
+            foreach (var n in CastNames) builder.WithMaid(n, Rarity.Common, 3, 1);
+            builder.AutoFillLineup();
+
+            yield return SessionFactory.Boot(builder.Build());
+            yield return SessionFactory.ToHub();
+            yield return SessionFactory.ToDay();
+        }
+
+        /// <summary>Falência, shown as <c>GameRoot</c> shows it after a day that bankrupts the business.</summary>
+        private static IEnumerator BustRoutine()
+        {
+            var builder = SessionFactory.NewProfile(NewGameSeed, 10).WithDay(1).WithMoney(40).EmptyRoom();
+            builder.WithMaid("Hina", Rarity.Common, 1, 0);
+
+            yield return SessionFactory.Boot(builder.Build());
+            yield return SessionFactory.ToHub();
+
+            GameRoot.Instance.Ui.Show<BustScreen>();
+            yield return null;
+        }
+
+        /// <summary>A Dialog with a long title and body: both buttons over Empresa, or an error over the Salão.</summary>
+        private static IEnumerator DialogRoutine(bool overHall)
+        {
+            var builder = SessionFactory.NewProfile(NewGameSeed, 10).WithDay(1)
+                .WithMoney(SessionFactory.LargeValues.Balance).EmptyRoom();
+            builder.WithMaid("Hina", Rarity.Common, 1, 0);
+
+            yield return SessionFactory.Boot(builder.Build());
+            yield return SessionFactory.ToHub();
+            if (overHall) yield return SessionFactory.ToHall();
+
+            var body = string.Join(" ", System.Linq.Enumerable.Repeat("Não foi possível guardar a empresa neste aparelho.", 4));
+            var ui = GameRoot.Instance.Ui;
+            if (overHall) ui.Dialog("Algo deu errado", body);
+            else ui.Dialog("Uma pergunta bem comprida para a janela", body, "Sim, continuar", () => { }, "Não, voltar", () => { });
+            yield return null;
+        }
+
+        /// <summary>Presses the first active button whose label is <paramref name="label"/>; fails when there is none.</summary>
+        private static void PressButtonText(string label)
+        {
+            var layer = LayoutModel.ActiveLayer(GameRoot.Instance.Ui);
+            foreach (var button in layer.GetComponentsInChildren<UnityEngine.UI.Button>(false))
+            {
+                var text = button.GetComponentInChildren<UnityEngine.UI.Text>();
+                if (text == null || !text.text.StartsWith(label, StringComparison.Ordinal)) continue;
+
+                button.onClick.Invoke();
+                return;
+            }
+
+            Assert.Fail("PressButtonText: " + LayoutModel.PathOf(layer) + " has no button \"" + label + "\"");
+        }
+
+        /// <summary>
+        /// A Dialog takes every click: a click at any point of the window lands on the Dialog's own
+        /// graphics (its shade or its box), so nothing of the Screen below can be pressed through it.
+        /// </summary>
+        private static void DialogBlocksTheLayerBelow(Measurement measurement, List<Violation> violations)
+        {
+            var clicks = new Clicks(measurement);
+            var viewport = measurement.Viewport;
+            var leaks = 0;
+            string first = null;
+            for (var i = 1; i < 16; i++)
+            {
+                for (var j = 1; j < 10; j++)
+                {
+                    var point = new UnityEngine.Vector2(viewport.xMin + viewport.width * i / 16f, viewport.yMin + viewport.height * j / 10f);
+                    var top = clicks.TopTarget(point);
+                    if (top != null && top.transform.IsChildOf(measurement.Layer)) continue;
+
+                    leaks++;
+                    if (first == null) first = (top != null ? LayoutModel.PathOf(top.transform) : "nothing") + " at " + point;
+                }
+            }
+
+            if (leaks > 0)
+            {
+                violations.Add(new Violation(measurement, "DG-1",
+                    leaks + " of 135 points of the window do not land on the Dialog; first " + first,
+                    "every click lands on the Dialog", measurement.LayerPath));
+            }
+        }
+
+        /// <summary>
+        /// Salão: no raycast target lies over a floor tile that the window shows, so a click on that
+        /// tile reaches the room (the game ignores a click while the pointer is over any UI graphic).
+        /// </summary>
+        private static void TilesAreClickable(Measurement measurement, List<Violation> violations)
+        {
+            var root = GameRoot.Instance;
+            var canvas = root.Ui.GetComponentInParent<UnityEngine.Canvas>();
+            var camera = canvas.worldCamera;
+            var clicks = new Clicks(measurement);
+            var blocked = 0;
+            var shown = 0;
+            string first = null;
+            foreach (var tile in root.Room.GetComponentsInChildren<UnityEngine.SpriteRenderer>())
+            {
+                if (!tile.enabled || tile.name != "Tile") continue;
+
+                var pixel = (UnityEngine.Vector2)camera.WorldToScreenPoint(tile.bounds.center) - camera.pixelRect.min;
+                var point = pixel / canvas.scaleFactor;
+                if (!measurement.Viewport.Contains(point)) continue;
+
+                shown++;
+                var top = clicks.TopTarget(point);
+                if (top == null) continue;
+
+                blocked++;
+                if (first == null) first = LayoutModel.PathOf(top.transform) + " over the tile at " + point;
+            }
+
+            if (blocked > 0)
+            {
+                violations.Add(new Violation(measurement, "SL-1",
+                    blocked + " of " + shown + " visible floor tiles are covered by UI; first " + first,
+                    "no UI over a floor tile", measurement.LayerPath));
+            }
         }
 
         private static IReadOnlyList<AuditState> Register(AuditState[] states)

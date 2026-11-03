@@ -138,12 +138,15 @@ namespace Neko.Game.Ui
             var column = UiKit.Column(parent, 0f, 0f);
             column.sizeDelta = new Vector2(30f * scale, 26f * scale);
 
-            var number = UiKit.Label(column, value.ToString(), Mathf.RoundToInt(15f * scale),
-                Palette.Text, bold: true);
-            number.rectTransform.sizeDelta = new Vector2(30f * scale, 16f * scale);
+            // The boxes are at least a line tall at the rounded font size, so at small scales the
+            // number's line and the caption's line do not overlap.
+            var numberSize = Mathf.RoundToInt(15f * scale);
+            var captionSize = Mathf.RoundToInt(9f * scale);
+            var number = UiKit.Label(column, value.ToString(), numberSize, Palette.Text, bold: true);
+            number.rectTransform.sizeDelta = new Vector2(30f * scale, Mathf.Max(16f * scale, numberSize * 1.3f));
 
-            var caption = UiKit.Label(column, label, Mathf.RoundToInt(9f * scale), Palette.TextDim);
-            caption.rectTransform.sizeDelta = new Vector2(30f * scale, 11f * scale);
+            var caption = UiKit.Label(column, label, captionSize, Palette.TextDim);
+            caption.rectTransform.sizeDelta = new Vector2(30f * scale, Mathf.Max(11f * scale, captionSize * 1.3f));
         }
 
         /// <summary>Traits as dots along the bottom edge. Hovering is not a thing here.</summary>

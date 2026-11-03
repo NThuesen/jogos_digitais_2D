@@ -55,14 +55,14 @@ namespace Neko.Game.Ui
 
             _board = UiKit.Row(transform, 18f);
             UiKit.Anchor(_board, new Vector2(0.5f, 1f), new Vector2(0f, -86f));
-            _board.sizeDelta = new Vector2(1200f, 190f);
+            _board.sizeDelta = new Vector2(1100f, 190f);
 
             var benchLabel = UiKit.Label(transform, Strings.Get("lineup.bench"), Typeface.Body,
                 Logo.Brass, TextAnchor.MiddleLeft, bold: true);
             UiKit.Anchor(benchLabel.rectTransform, new Vector2(0f, 1f), new Vector2(26f, -292f));
             benchLabel.rectTransform.sizeDelta = new Vector2(300f, 26f);
 
-            _bench = UiKit.ScrollRow(transform, new Vector2(1200f, 252f), 12f);
+            _bench = UiKit.ScrollRow(transform, new Vector2(1100f, 252f), 12f);
             UiKit.Anchor((RectTransform)_bench.parent, new Vector2(0.5f, 1f),
                 new Vector2(0f, -318f));
 
@@ -74,14 +74,14 @@ namespace Neko.Game.Ui
             UiKit.Anchor(tools, new Vector2(1f, 0f), new Vector2(-26f, 20f));
             tools.sizeDelta = new Vector2(400f, 44f);
 
-            Scenery.Plank(tools, Strings.Get("lineup.auto"), new Vector2(190f, 42f), () =>
+            Scenery.Plank(tools, Strings.Get("lineup.auto"), new Vector2(190f, 46f), () =>
             {
                 Session.Profile.Lineup.AutoFill(Session.Profile.Maids);
                 Session.Touch();
                 Refresh();
             }, Typeface.Small);
 
-            Scenery.Plank(tools, Strings.Get("lineup.clear"), new Vector2(130f, 42f), () =>
+            Scenery.Plank(tools, Strings.Get("lineup.clear"), new Vector2(130f, 46f), () =>
             {
                 Session.Profile.Lineup.Clear();
                 Session.Touch();
@@ -165,7 +165,7 @@ namespace Neko.Game.Ui
             if (slot == null) return;
 
             var maid = Session.Profile.MaidById(slot.MaidId);
-            var card = MaidCard.Build(parent, maid, 0.62f, showSalary: false, playingAs: slot.Role);
+            var card = MaidCard.Build(parent, maid, 0.62f, showSalary: false, playingAs: slot.Role, exact: true);
             card.GetComponent<Image>().raycastTarget = true;
 
             var button = card.gameObject.AddComponent<Button>();
@@ -209,7 +209,7 @@ namespace Neko.Game.Ui
                 if (profile.Lineup.Contains(maid.Id)) continue;
 
                 any = true;
-                var card = MaidCard.Build(_bench, maid, 1.02f);
+                var card = MaidCard.Build(_bench, maid, 1.02f, exact: true);
                 card.GetComponent<Image>().raycastTarget = true;
                 _built.Add(card.gameObject);
 

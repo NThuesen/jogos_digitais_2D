@@ -1,0 +1,25 @@
+{"header":"Layout_Check","state":"MN-1","screen":"Menu","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"MN-2","screen":"Menu","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"MN-3","screen":"Menu","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"EM-1","screen":"Empresa","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"EM-2","screen":"Empresa","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"ES-1","screen":"Escalação","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"ES-2","screen":"Escalação","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"EL-1","screen":"Elenco","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"EL-2","screen":"Elenco","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"EL-3","screen":"Elenco","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"CX-1","screen":"Caixas","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"CX-2","screen":"Caixas (resultado)","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"LJ-1","screen":"Loja (Móveis)","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"LJ-2","screen":"Loja (Roupas)","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"LJ-3","screen":"Loja (Presentes)","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"LJ-4","screen":"Loja (Móveis, fim da lista)","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"SL-1","screen":"Salão","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"SL-2","screen":"Salão (peça escolhida)","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"OD-1","screen":"O dia","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"BL-1","screen":"Balanço","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"BL-2","screen":"Balanço","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"BL-3","screen":"Balanço","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"FL-1","screen":"Falência","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"DG-1","screen":"Diálogo (confirmar/cancelar)","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}
+{"header":"Layout_Check","state":"DG-2","screen":"Diálogo (sobre o Salão)","windows":["960x600","1280x720","960x600"],"violations":0,"rigPath":"Primary","unity":"6000.5.9f1"}

@@ -208,8 +208,8 @@ namespace Neko.Game.Ui
             var body = UiKit.Label(column, Strings.Get("bust.body"), Typeface.Body, Palette.Text);
             body.rectTransform.sizeDelta = new Vector2(600f, 100f);
 
-            Scenery.Plank(column, Strings.Get("bust.restart"), new Vector2(340f, 60f),
-                () => OnRestart?.Invoke(), Typeface.Heading, Logo.Brass);
+            Scenery.Plank(column, Strings.Get("bust.restart"), new Vector2(400f, 60f),
+                () => OnRestart?.Invoke(), Typeface.Heading, Logo.Brass, exact: true);
         }
     }
 }

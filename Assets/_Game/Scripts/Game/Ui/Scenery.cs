@@ -145,28 +145,29 @@ namespace Neko.Game.Ui
         /// that way until the captures showed them all floating in the middle of the screen.
         /// </remarks>
         public static Button PlankAt(Transform parent, string text, Vector2 size, Vector2 anchor,
-            Vector2 offset, Action onClick, int fontSize = Typeface.Body, Color? tint = null)
+            Vector2 offset, Action onClick, int fontSize = Typeface.Body, Color? tint = null,
+            bool exact = false)
         {
-            var button = Plank(parent, text, size, onClick, fontSize, tint);
+            var button = Plank(parent, text, size, onClick, fontSize, tint, exact);
             UiKit.Anchor(button.GetComponent<RectTransform>(), anchor, offset);
             return button;
         }
 
         /// <summary>A wooden button, in the same workshop as everything else.</summary>
         public static Button Plank(Transform parent, string text, Vector2 size, Action onClick,
-            int fontSize = Typeface.Body, Color? tint = null)
+            int fontSize = Typeface.Body, Color? tint = null, bool exact = false)
         {
-            var root = UiKit.Panel(parent, size, Logo.BoardDeep, 0.3f);
+            var root = UiKit.Panel(parent, size, Logo.BoardDeep, 0.3f, exact);
             root.gameObject.name = "Plank";
             root.GetComponent<Image>().raycastTarget = true;
 
             var face = UiKit.Panel(root, new Vector2(size.x - 8f, size.y - 8f),
-                tint ?? Logo.Board, 0.28f);
+                tint ?? Logo.Board, 0.28f, exact);
             UiKit.Anchor(face, new Vector2(0.5f, 0.5f), Vector2.zero);
             face.GetComponent<Image>().raycastTarget = false;
 
             var shine = UiKit.Panel(root, new Vector2(size.x - 20f, size.y * 0.3f),
-                Palette.WithAlpha(Logo.BoardLight, 0.5f), 0.5f);
+                Palette.WithAlpha(Logo.BoardLight, 0.5f), 0.5f, exact);
             UiKit.Anchor(shine, new Vector2(0.5f, 1f), new Vector2(0f, -8f));
             shine.GetComponent<Image>().raycastTarget = false;
 

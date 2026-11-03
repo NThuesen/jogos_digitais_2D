@@ -153,7 +153,7 @@ namespace Neko.Game.Ui
                 var column = UiKit.Column(row, 4f, 0f);
                 column.sizeDelta = new Vector2(MaidCard.Width + 12f, 280f);
 
-                var card = MaidCard.Build(column, entry.Maid);
+                var card = MaidCard.Build(column, entry.Maid, exact: true);
                 card.localScale = Vector3.zero;
 
                 if (entry.Duplicate)

@@ -115,7 +115,7 @@ namespace Neko.Game.Ui
             UiKit.Stretch(shade);
             shade.GetComponent<Image>().raycastTarget = true;
 
-            var box = UiKit.Panel(_dialogLayer, new Vector2(620f, 300f), Palette.Panel);
+            var box = UiKit.Panel(_dialogLayer, new Vector2(620f, 300f), Palette.Panel, exact: true);
             UiKit.Anchor(box, new Vector2(0.5f, 0.5f), Vector2.zero);
 
             var column = UiKit.Column(box, 18f, 28f);
@@ -130,7 +130,7 @@ namespace Neko.Game.Ui
             var row = UiKit.Row(column, 14f);
             row.sizeDelta = new Vector2(560f, 56f);
 
-            UiKit.Button(row, confirm ?? Strings.Get("dialog.ok"), new Vector2(200f, 54f),
+            UiKit.Button(row, confirm ?? Strings.Get("dialog.ok"), new Vector2(230f, 54f),
                 Palette.Focus, () =>
                 {
                     CloseDialog();
@@ -139,7 +139,7 @@ namespace Neko.Game.Ui
 
             if (cancel == null) return;
 
-            UiKit.Button(row, cancel, new Vector2(200f, 54f), Palette.Wall, () =>
+            UiKit.Button(row, cancel, new Vector2(230f, 54f), Palette.Wall, () =>
             {
                 CloseDialog();
                 onCancel?.Invoke();
