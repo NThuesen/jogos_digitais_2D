@@ -1,5 +1,8 @@
 # Catálogo das nove maids — HINA STYLE LOCK v2
 
+> **PROMPT HISTÓRICO DE PRODUÇÃO — não define mais o estilo de runtime.** Este texto documenta as imagens/vídeos que deram origem às nove maids. Desde o [ART-04](../maid-walk/README.md), o jogo usa **sprites anime 2D ilustrados**, sem quantização para pixel art. A [decisão atual](../CURRENT_VISUAL_DIRECTION.md) prevalece; preserve os frames originais e não gere novamente personagens para forçar pixelização. Para novas imagens, é preciso revisar estes prompts explicitamente em tarefa futura.
+
+
 **Mesma família visual, nove identidades diferentes.** A Hina full-body aprovada pelo responsável é a referência-mestra obrigatória de **pixel art, proporção chibi e uniforme**. Cada ficha contém um **PROMPT 1 completo** (full-body) e **PROMPT 2 completo** (quadro inicial walk-x), sem precisar concatenar com prompts-base. [Guia prático de geração](README.md) · [Contrato visual e rubrica](HINA_STYLE_LOCK.md).
 
 **Aviso:** a imagem-mestra da Hina ainda não está versionada aqui; anexe a versão full-body aprovada da Biblioteca/arquivos locais em **todas** as gerações, não o frame com chroma. A antiga imagem de cenário de café permanece referência histórica **e não deve ser usada como anexo** da pipeline v2.

@@ -1,5 +1,8 @@
 # Pipeline de arte v2 — nove maids com o mesmo estilo chibi da Hina
 
+> **PROMPT HISTÓRICO DE PRODUÇÃO — não define mais o estilo de runtime.** Este texto documenta as imagens/vídeos que deram origem às nove maids. Desde o [ART-04](../maid-walk/README.md), o jogo usa **sprites anime 2D ilustrados**, sem quantização para pixel art. A [decisão atual](../CURRENT_VISUAL_DIRECTION.md) prevalece; preserve os frames originais e não gere novamente personagens para forçar pixelização. Para novas imagens, é preciso revisar estes prompts explicitamente em tarefa futura.
+
+
 **Decisão do responsável em 2026-11-01:** o resultado **full-body da Hina** (bob azul-noite, olhos gelo, presilha triangular prateada, uniforme azul-marinho/marfim, fundo marfim) foi escolhido como **padrão artístico**. Todas as nove maids devem compartilhar esse **tipo de personagem chibi pixel-art**. As identidades continuam diferentes. A Suzu anterior com anatomia mais alongada **não é o modelo estético** — preserva-se o experimento técnico já realizado, sem alterar o Unity neste PR.
 
 **Começar aqui:** [HINA_STYLE_LOCK.md](HINA_STYLE_LOCK.md) → [índice das nove fichas](MAIDS_INDEX.md) → ficha `maids/NN_nome.md` → copiar o prompt correspondente. **Cada ficha tem PROMPT 1 e PROMPT 2 COMPLETOS**; nunca concatenar os prompts-base.
