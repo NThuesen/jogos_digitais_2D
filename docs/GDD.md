@@ -253,7 +253,7 @@ a mediana.
 
 **Limites atuais:** uma empresa nova não tem obrigatoriamente as nove identidades; sprites são selecionados por nome+arquétipo, equipamentos voltam ao visual procedural e não há `visual_id` persistido. Só o Walk ilustrado está integrado; Idle/Carry/Cook/Tired completos e portraits para os Maid Cards continuam futuros. Nenhuma mudança em economia, RNG, recrutamento ou save decorre da direção visual.
 
-**UI:** o UI-01 vigente faz correções de **layout e legibilidade** nas telas existentes, em 960×600 e 1280×720; não transforma a interface marrom atual em arte final. O futuro UI-02 poderá atualizar paleta, fontes, proporções e portraits, mantendo nomes, stats e regras em elementos de UI. Ver [roadmap](ROADMAP.md).
+**UI:** UI-01A/B foram concluídos pelos PRs #33/#34 em **960×600 e 1280×720**, sem tornar a interface marrom atual arte final. **Decisão de pipeline (03/11):** GPT produz **assets visuais modulares**, opcionalmente tratados no Blender para transparência; Unity faz composição, cliques, estados e textos/dados dinâmicos. Telas inteiras em PNG podem ser mockups/fundos, não UI funcional. O futuro UI-02 poderá atualizar paleta, fontes, proporções e portraits, preservando regras de gameplay. Ver [contrato vigente](art/CURRENT_VISUAL_DIRECTION.md) e [roadmap](ROADMAP.md).
 
 Partículas, números flutuantes, squash/stretch e tremor de câmera continuam parte do acabamento funcional existente; novas animações e cenas exigem escopo e validação próprios.
 
