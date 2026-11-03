@@ -296,7 +296,7 @@ namespace Neko.Game.Core
             Clocks.Reset();
 
             var shift = Session.StartDay();
-            Camera.FrameRoom(shift.Grid.Width, shift.Grid.Height);
+            Camera.FrameRoomBetweenHud(shift.Grid.Width, shift.Grid.Height);
             Presenter.Begin(shift);
 
             // Shown first, then filled. A screen builds its widgets on its first show,

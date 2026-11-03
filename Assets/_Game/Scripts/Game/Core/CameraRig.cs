@@ -29,6 +29,20 @@ namespace Neko.Game.Core
         /// </remarks>
         public const float Margin = 0.9f;
 
+        /// <summary>
+        /// HUD bands during a shift, in 720-pixel reference units (the canvas matches height,
+        /// so these are the same fraction of the screen at every window size): the top bar
+        /// and the bottom lineup strip plus hint line.
+        /// </summary>
+        public const float ShiftTopInset = 92f;
+        public const float ShiftBottomInset = 128f;
+
+        /// <summary>Tiles above the top row that a standing maid's head occupies.</summary>
+        public const float HeadRoom = 0.8f;
+
+        /// <summary>Tiles below the bottom row kept for feet and the room frame.</summary>
+        public const float FootRoom = 0.3f;
+
         private Vector3 _home;
         private float _shakeSeconds;
         private float _shakeAmplitude;
@@ -64,6 +78,33 @@ namespace Neko.Game.Core
             var wantedWidth = (width + Margin * 2f) * 0.5f / NarrowestAspect;
 
             Camera.orthographicSize = Mathf.Max(wantedHeight, wantedWidth);
+        }
+
+        /// <summary>
+        /// Frames the room so that every tile, and the head of a maid standing on the top row,
+        /// sits between the shift HUD's top bar and bottom strip instead of behind them.
+        /// Never zooms in further than <see cref="FrameRoom"/> would.
+        /// </summary>
+        public void FrameRoomBetweenHud(int width, int height)
+        {
+            FrameRoom(width, height);
+
+            const float reference = 720f;
+            var low = ShiftBottomInset / reference;
+            var high = 1f - ShiftTopInset / reference;
+
+            var bottom = -0.5f - FootRoom;
+            var top = height - 0.5f + HeadRoom;
+            var size = Mathf.Max(Camera.orthographicSize, (top - bottom) / (2f * (high - low)));
+            Camera.orthographicSize = size;
+
+            // Centre the content in the band between the two HUD edges.
+            var middle = (top + bottom) * 0.5f;
+            var centre = (low + high) * 0.5f;
+            var y = middle + size - 2f * size * centre;
+
+            _home = new Vector3((width - 1) * 0.5f, y, -10f);
+            transform.position = _home;
         }
 
         public void Shake(float amplitude, float seconds)

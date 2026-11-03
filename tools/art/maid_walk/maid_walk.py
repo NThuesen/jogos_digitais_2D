@@ -397,13 +397,27 @@ META_FOLDER = "fileFormatVersion: 2\nguid: GUID\nfolderAsset: yes\nDefaultImport
 META_TEXT = "fileFormatVersion: 2\nguid: GUID\nTextScriptImporter:\n  externalObjects: {}\n  userData:\n  assetBundleName:\n  assetBundleVariant:\n"
 
 
-def ensure_meta(path, template):
-    """Unity .meta with a GUID derived from the asset's path, so reruns never change it."""
+# Import settings that follow the processed style (the template carries tokens, never a fixed style).
+META_STYLE = {
+    "illustrated": {"ENABLE_MIPMAP": "1", "FILTER_MODE": "2", "MIP_BIAS": "-0.5"},  # Trilinear + mipmaps
+    "pixel": {"ENABLE_MIPMAP": "0", "FILTER_MODE": "0", "MIP_BIAS": "0"},           # Point, no mipmaps
+}
+
+
+def ensure_meta(path, template, style="illustrated"):
+    """Unity .meta for `path`. An existing GUID is always kept; a new asset gets one derived from its path."""
     meta = path + ".meta"
-    if True:  # always rewritten: import settings (filter, mipmaps, compression) come from the template
+    guid = None
+    if os.path.exists(meta):
+        found = re.search(r"^guid: ([0-9a-f]{32})\s*$", open(meta, encoding="utf8").read(), re.M)
+        guid = found.group(1) if found else None
+    if guid is None:
         guid = hashlib.md5(os.path.relpath(path, ROOT).replace("\\", "/").encode()).hexdigest()
-        with open(meta, "w", encoding="utf8", newline="\n") as f:
-            f.write(template.replace("GUID", guid))
+    text = template.replace("GUID", guid)
+    for token, value in META_STYLE[style].items():
+        text = text.replace(token, value)
+    with open(meta, "w", encoding="utf8", newline="\n") as f:
+        f.write(text)
 
 
 def main():
@@ -470,8 +484,10 @@ def main():
             json.dump({"maids": entries}, f, indent=1)
             f.write("\n")
     if write:
-        for f in glob.glob(os.path.join(OUT_RES, "*_walk.png")):  # rewrites every .meta from the template
-            ensure_meta(f, META_TEXTURE)
+        # Only the sheets processed in this run: a `--only` run never touches another maid's asset or .meta.
+        for r in results:
+            if r.get("resource"):
+                ensure_meta(os.path.join(OUT_RES, r["id"] + "_walk.png"), META_TEXTURE, maids[0]["style"])
         ensure_meta(os.path.join(OUT_RES, "maid_walk_catalog.json"), META_TEXT)
         ensure_meta(OUT_RES, META_FOLDER)
     with open(os.path.join(work, "audit.json"), "w", encoding="utf8") as f:

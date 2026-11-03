@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: ENABLE_MIPMAP
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,9 +34,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 2
+    filterMode: FILTER_MODE
     aniso: 1
-    mipBias: -0.5
+    mipBias: MIP_BIAS
     wrapU: 1
     wrapV: 1
     wrapW: 1
