@@ -57,5 +57,6 @@
 - Bruto intacto: **2172×724 RGBA**, SHA-256 `91466ecc77f6bb1d6b30540883961c5b1d0babbce7e3d9b83c9aef059e98f2bf`. A informação preliminar 2048×682 não se confirmou para este arquivo.
 - Limpo local: **2172×724**, SHA-256 `03b58c3e2b500b8a48311cd3b3c75c8551c79d599693176ad5b5da664aeb0446`; removeu 1.094 pixels de resíduos separados e solidificou alpha≥250; RGB integralmente preservado.
 - Slice testado: borders de origem L400/B360/R400/T360, escala vertical ajustada à altura; ornamentos inteiros, porém pouco legíveis em 44–54 u. Texto Comprar 16 falha em 120×44 a 1280×720.
-- Proposta condicional: candidata **768×256**, 0,75 MiB RGBA32, caso maior **260×88**; não autoriza mudar telas. PNGs e capturas locais/ignorados; evidências textuais, hashes e restrições na [revisão](reviews/UI-004_BUTTON_PRIMARY_NORMAL_V01.md).
-- Pendências: responsável decidir rework/uso maior restrito, limpeza, resolução e publicação; WebGL e integração NOT RUN.
+- Proposta condicional: candidata **768×256**, 0,75 MiB RGBA32, caso maior **260×88**; não autoriza mudar telas. Texturas do botão locais/ignoradas; duas capturas Unity versionadas, hashes e restrições na [revisão](reviews/UI-004_BUTTON_PRIMARY_NORMAL_V01.md).
+- **Proposta ainda não aprovada:** duas famílias — ornamental grande (~260×88) e compacto simplificado (altura 44–54); abas seguem como componentes próprios. Compacto não produzido nem implementado. A candidata 768×256 é somente para o botão grande.
+- Pendências: responsável decidir rework/uso maior restrito, proposta das famílias, limpeza, resolução e publicação das texturas; compressão, WebGL e integração NOT RUN.

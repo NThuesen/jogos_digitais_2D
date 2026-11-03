@@ -56,7 +56,7 @@ Alternativas realmente renderizadas:
 - `Simple` com preserveAspect: preserva desenho, mas em 210×44 desenha apenas ≈132×44 dentro da hitbox 210×44, estreitando o creme sem adaptar a área de texto; não resolve o problema.
 - 9-slice: mantém extremos e faixas contínuos nos quatro tamanhos. **PASS geométrico com restrição de escala**, sem resolver a perda de detalhe por tamanho final. Camadas independentes não foram construídas porque o slice já preservou a geometria.
 
-## 4. Unity real e capturas locais
+## 4. Unity real e evidências
 
 Harness isolado temporário, removido após execução; [fonte](evidence/UI-004/Ui004ButtonQa.cs.txt), [assembly](evidence/UI-004/Ui004.Qa.asmdef.txt), [comando com guarda](evidence/UI-004/run_qa.sh.txt), [log](evidence/UI-004/unity_qa_log.txt), [resultado final FAIL](evidence/UI-004/unity_results.xml). Reprodução: copiar fonte/assembly para `Assets/_QA_UI004_Temp/`, executar antes o script de alpha para criar candidatas, executar o comando arquivado (ajustando caminhos da máquina), depois remover apenas esse ambiente temporário. Não editar testes existentes.
 
@@ -64,17 +64,17 @@ Reuso de `UiKit.Button`, `UiKit.Label`, `SpriteFactory` e do método câmera/Ren
 
 Dimensões reais conferidas: `ShopScreen.cs` 210×44 (abas), `HubScreen.cs`/`HallScreen.cs`/`ShopScreen.cs` etc. 120×44 (voltar), `UiRoot.cs` 230×54 (diálogo); `DayHud.cs` 56×44 (velocidade/pular), fora da família avaliada. O 120×44 com “Comprar” é um stress test autorizado, não alegação de que esse texto já esteja nesse botão do jogo. Loja usa também compra 150×44, não renderizada nesta rodada.
 
-**Todos os PNGs permanecem locais e ignorados**, inclusive capturas, conforme a restrição de publicação. Não há PNG de candidato no PR. As imagens abaixo podem ser abertas no checkout local; no GitHub não estarão disponíveis até autorização de publicação. [Manifesto de paths/SHA-256](evidence/UI-004/local_png_manifest.json) acompanha as 10 capturas reais e demais PNGs locais.
+**Duas capturas reais das matrizes 9-slice estão versionadas abaixo**, com publicação autorizada pelo responsável no fechamento da PR #40. São cópias byte a byte das capturas originais; dimensões e SHA-256 conferem com as entradas `unity_sliced_*` do [manifesto de origem](evidence/UI-004/local_png_manifest.json). Este fechamento apenas publica evidências existentes: não houve nova execução Unity ou build. O bruto, o limpo e as texturas reduzidas do botão permanecem locais/ignorados; nenhum deles é publicado como asset aprovado.
 
 960×600 — matriz 9-slice (colunas 2048/1024/768/512; linhas 210×44,120×44,230×54,260×88):
 
-![Unity real 960×600 — slice](../../../../art_working/ui_modular/export_unity/UI-004_QA/unity_sliced_960x600.png)
+![Unity real 960×600 — slice](evidence/UI-004/unity_sliced_960x600.png)
 
 1280×720 — mesma matriz, inclusive a quebra em 120×44:
 
-![Unity real 1280×720 — slice](../../../../art_working/ui_modular/export_unity/UI-004_QA/unity_sliced_1280x720.png)
+![Unity real 1280×720 — slice](evidence/UI-004/unity_sliced_1280x720.png)
 
-Diretório local: `art_working/ui_modular/export_unity/UI-004_QA/`. As outras oito capturas são `unity_{stretch,aspect,default24,original}_{960x600,1280x720}.png`; `original` substitui a primeira coluna por 2172×724 limpo, sem redução. Comparações inspecionadas em ambas as resoluções, inclusive o original real.
+Diretório local: `art_working/ui_modular/export_unity/UI-004_QA/`. As outras oito capturas permanecem locais/ignoradas e são `unity_{stretch,aspect,default24,original}_{960x600,1280x720}.png`; `original` substitui a primeira coluna por 2172×724 limpo, sem redução. Comparações inspecionadas em ambas as resoluções, inclusive o original real.
 
 | Caso | 960×600 | 1280×720 |
 | --- | --- | --- |
@@ -102,7 +102,9 @@ Estimativas **RGBA32 sem mipmaps**, `W×H×4`, sem compressão de bloco, atlas, 
 | **768×256 candidata recomendada** | **0,750** | **3,000** | conserva folhas/relevo do caso260×88, suaviza minificação, reserva mais amostras que512 |
 | 512×170 | 0,332 | 1,328 | suaviza mais; bolinhas, linhas finas e textura de papel ficam mais fundidas no caso maior |
 
-**Recomendação condicional: 768×256**, sem trim, para o caso maior validado **260×88**, Bilinear/Clamp, sem mipmaps, RGBA32, borders fracionários acima, PPU 100/multiplier2,909091, texto18 com insets seguros. Body 24 foi renderizado no caso maior, mas novos textos precisam de medição de largura e margens próprias. Não recomendar automaticamente512 pelo custo: o objetivo é preservar a identidade ornamental, já fragilizada em tamanho pequeno. Reduções continuam candidatas; o limpo integral e o bruto são conservados. 2048/2172 podem servir de masters, sem justificar sua memória em runtime nesses tamanhos.
+**Resolução candidata, ainda não aprovada: 768×256, somente para o botão ornamental grande (~260×88)**, sem trim, com leitura favorável no caso testado **260×88**, Bilinear/Clamp, sem mipmaps, RGBA32, borders fracionários acima, PPU 100/multiplier2,909091, texto18 com insets seguros. Body 24 foi renderizado no caso maior, mas novos textos precisam de medição de largura e margens próprias. Não recomendar automaticamente512 pelo custo: o objetivo é preservar a identidade ornamental, já fragilizada em tamanho pequeno. Reduções continuam candidatas; o limpo integral e o bruto são conservados. 2048/2172 podem servir de masters, sem justificar sua memória em runtime nesses tamanhos.
+
+**Compressão de textura e execução WebGL não foram validadas (NOT RUN). A candidata 768×256 não se aplica automaticamente à família compacta proposta nem às abas.**
 
 Comparação visual qualitativa em frames Unity, não experimento de acuidade/SSIM ou benchmark. Um teste futuro de mipmaps/compressão pode mudar a escolha; nenhuma configuração dessas foi aprovada nesta tarefa.
 
@@ -118,6 +120,13 @@ Comparação visual qualitativa em frames Unity, não experimento de acuidade/SS
 
 **REWORK para homologação como botão principal nos tamanhos existentes.** O gargalo é o tamanho visível dos motivos e da superfície, não falta de pixels do master. Sem redesenhar agora, o responsável pode decidir restringir este asset ao CTA maior 260×88; isso exigiria aprovação explícita desse uso e nova tarefa para eventual integração. Não alterar layouts existentes para acomodá-lo nesta PR. Para44–54 u, discutir família mais simples/ornamentos adequados e/ou export com margens menores, sempre como candidato novo e QA próprio; um trim não foi aplicado nem validado. 56×44 não é alvo deste asset.
 
-Ainda depende do responsável: aceite da limpeza; aceitar ou retrabalhar a arte no tamanho real; possível uso restrito maior; candidata 768×256 e parâmetros finais; eventual publicação das capturas e PNGs. Depois disso, aprovação formal e integração em PR própria. **Não avançar aos três estados restantes antes de resolver o NORMAL.**
+**Proposta de arquitetura ainda não aprovada — duas famílias de botões:**
+
+- **Ornamental grande (~260×88):** possível uso restrito do UI-004 NORMAL v01, preservando motivos e relevo; candidata 768×256 exclusiva deste caso maior. Não é botão universal.
+- **Compacto simplificado (altura 44–54):** família própria, a definir, com desenho menos denso e área útil para texto dinâmico. Não foi produzida, implementada ou validada nesta PR.
+
+**Abas continuam sendo componentes próprios**, fora dessas duas famílias de botões; a linha 210×44 da matriz é evidência de escala, não aprovação para reutilizar o ornamental nas abas. A proposta depende de aprovação do responsável e não autoriza alteração de telas ou produção de novos estados.
+
+Ainda depende do responsável: aceite da limpeza; aceitar ou retrabalhar a arte no tamanho real; aprovação da proposta de duas famílias e do possível uso restrito maior; candidata 768×256 e parâmetros finais; eventual publicação das demais capturas ou texturas do botão. Depois disso, aprovação formal e integração em PR própria. **Não avançar aos três estados restantes antes de resolver o NORMAL.**
 
 **NOT RUN:** WebGL/build/navegador, memória GPU residente/download, compressão e mipmaps, mouse físico, navegação por teclado/foco, sequência pointerDown/up e estados visuais; integração em telas definitivas; alturas/larguras além das quatro testadas. EditMode/PlayMode completos e simulação não executados por não haver mudança no jogo; somente este harness PlayMode foi executado e falhou conforme registrado. Android/APK/AAB não executados, fora do escopo. Nenhum merge ou auto-merge solicitado.
