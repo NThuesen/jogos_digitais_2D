@@ -10,6 +10,8 @@ Unity 6000.5.9f1 · 2D URP · WebGL
 
 ## O jogo
 
+**Kit de produção de arte modular:** [prompts detalhados, tutorial, referências e pastas](docs/art/ui-modular/README.md). Imagens de UI geradas com GPT são peças; interações e textos dinâmicos ficam na Unity. **Ainda não há novos assets aprovados neste kit.**
+
 **Arte vigente:** nove maids caminham em **anime 2D ilustrado/chibi** (PRs #29/#30); o café e os menus atuais ainda são provisórios. [Direção visual aprovada](docs/art/CURRENT_VISUAL_DIRECTION.md) · [Roadmap estratégia B](docs/ROADMAP.md).
 
 Cada dia tem quatro passos: montar a escalação, abrir as portas, assistir, e ler o balanço.

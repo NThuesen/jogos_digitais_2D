@@ -29,6 +29,8 @@
 8. **Gate de produto:** usuário aprova arte final de cenário, portraits e menus antes de merge visual. Agentes podem resolver detalhes técnicos triviais; mudanças estruturais relevantes voltam ao responsável.
 9. **Contrato 4A já aprovado (produção, não estética):** GPT gera assets gráficos **modulares** (fundos, peças, molduras, ícones, portraits etc.); Unity mantém layout, cliques, scroll, estados e **todos os textos/dados dinâmicos**. Nunca usar screenshot/PNG de tela inteira como UI funcional. Transparência pode ser obtida no Blender, desde que o alpha e as bordas sejam validados. Ver [contrato visual vigente](art/CURRENT_VISUAL_DIRECTION.md#decisão-de-produção-aprovada--imagens-modulares--interatividade-unity-4a).
 
+**Infra operacional do Marco 4:** [kit modular GPT/Blender/Unity](art/ui-modular/README.md) · [tutorial para anexar referências](art/ui-modular/TUTORIAL.md) · [ordem de geração](art/ui-modular/GENERATION_ORDER.md). **Apenas prompts e pastas foram criados**; nenhum PNG de UI novo foi aprovado, importado ou integrado por este trabalho.
+
 ## Documentação legada
 
 - [ART-01 / explorações A/B/C/D](roadmap/ART-01_STYLE.md) e [direção cozy pixel-art anterior](art/COZY_VISUAL_NOVEL_DIRECTION.md): histórico de pesquisas, não estilo atual.

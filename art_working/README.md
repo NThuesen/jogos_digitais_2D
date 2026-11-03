@@ -1,5 +1,7 @@
 # Área de trabalho local — frames exportados pelo Blender
 
+**Novo pipeline de arte modular:** `art_working/ui_modular/` contém os diretórios `raw_gpt/`, `blender_clean/`, `approved/` e `export_unity/`, com `.gitkeep` versionado e PNGs/Blend ignorados. [Tutorial e prompts canônicos](../docs/art/ui-modular/README.md). Não misturar esses arquivos com os frames de Walk.
+
 **Ponto de entrada:** depois de criar a maid no ChatGPT (Etapa 1), gerar a imagem de caminhada em chroma (Etapa 2), e criar o vídeo no Tencent (Etapa 3), **salve as imagens quadro a quadro exportadas do Blender aqui (Etapa 4)**.
 
 Esta pasta está **fora de `Assets/` do Unity** deliberadamente: frames brutos são material de produção, não sprites aprovados ou importados no jogo. Todos os diretórios de `frames/` já foram criados no repositório com arquivos `.gitkeep`. **Os PNGs e vídeos brutos são ignorados pelo Git por padrão** (ver [`.gitignore`](.gitignore)), para não poluir GitHub com milhares de arquivos; eles ficam apenas no seu computador/worktree até um fluxo explícito de revisão e integração. **Agentes em outros worktrees/máquinas não verão os PNGs ignorados.** Não tratar a criação destas pastas como inclusão de assets no jogo.
