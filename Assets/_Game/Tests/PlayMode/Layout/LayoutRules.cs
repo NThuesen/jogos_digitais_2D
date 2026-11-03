@@ -37,6 +37,12 @@ namespace Neko.Tests.PlayMode.Layout
         private static LayoutRule[] Create() => new LayoutRule[]
         {
             new LayoutRule("R2.1", "Property 1: Everything fits the window", EverythingFitsTheWindow),
+            // UI-01A: the essential rules of the three priority screens.
+            // They run on the Loja, Balanço and Elenco states only; the other screens are UI-01B.
+            new LayoutRule("R3.1", "Text lies inside the plate that frames it", TextFitsItsContainer, IsPriorityScreen),
+            new LayoutRule("R4.1", "Text does not collide with other text", TextDoesNotOverlapText, IsPriorityScreen),
+            new LayoutRule("R4.2", "Text is not under a control that is not its own", TextIsNotUnderAnotherControl, IsPriorityScreen),
+            new LayoutRule("R6.2", "A click on a visible button reaches it", ClicksReachTheButton, IsPriorityScreen),
             // Task 4 registers the other rules here: R3.1–R3.3, R4.1–R4.3, R5.1–R5.3, R6.1–R6.3,
             // then R14.5, which applies to SL-4 alone.
         };
@@ -102,6 +108,168 @@ namespace Neko.Tests.PlayMode.Layout
                 violations.Add(new Violation(measurement, "R2.1",
                     tested + LayoutReport.Box(bounds) + ", outside by " + outside, expected, element.Path));
             }
+        }
+
+        /// <summary>
+        /// R3.1: the Text_Bounds of a Text_Element, cut to its clip rect, lie inside the drawn bounds
+        /// of the plate that frames it (its Container), so no text spills over its own panel.
+        /// </summary>
+        private static void TextFitsItsContainer(RuleInput input, List<Violation> violations)
+        {
+            var measurement = input.Measurement;
+            foreach (var element in measurement.Elements)
+            {
+                if (!element.IsText || element.Culled || element.Shape.IsEmpty) continue;
+
+                var container = element.Container;
+                var plate = container?.Shape.DrawnBounds;
+                if (!plate.HasValue) continue;
+
+                var bounds = element.ClipRect.HasValue
+                    ? LayoutModel.Intersect(element.TextBounds, element.ClipRect.Value)
+                    : element.TextBounds;
+                var outside = Outside(bounds, Rect.MinMaxRect(plate.Value.xMin - LineBoxSlack, plate.Value.yMin - LineBoxSlack,
+                    plate.Value.xMax + LineBoxSlack, plate.Value.yMax + LineBoxSlack));
+                if (outside == null) continue;
+
+                violations.Add(new Violation(measurement, "R3.1",
+                    "Text_Bounds " + LayoutReport.Box(bounds) + ", outside its plate " + container.Path + " by " + outside,
+                    "inside the plate's drawn bounds " + LayoutReport.Box(plate.Value), element.Path));
+            }
+        }
+
+        /// <summary>R4.1: the Text_Bounds of two Text_Elements never overlap by more than a rounding error.</summary>
+        private static void TextDoesNotOverlapText(RuleInput input, List<Violation> violations)
+        {
+            var measurement = input.Measurement;
+            var texts = new List<MeasuredElement>();
+            foreach (var element in measurement.Elements)
+            {
+                if (element.IsText && !element.Culled && !element.Shape.IsEmpty && element.GlyphCount > 0) texts.Add(element);
+            }
+
+            for (var i = 0; i < texts.Count; i++)
+            {
+                var a = Visible(texts[i]);
+                for (var j = i + 1; j < texts.Count; j++)
+                {
+                    var overlap = Overlap(a, Visible(texts[j]));
+                    if (overlap == null) continue;
+
+                    violations.Add(new Violation(measurement, "R4.1",
+                        "Text_Bounds overlap by " + overlap + ": " + texts[i].Path + " and " + texts[j].Path,
+                        "no two texts overlap", texts[i].Path, texts[j].Path));
+                }
+            }
+        }
+
+        /// <summary>
+        /// R4.2: the Text_Bounds of a Text_Element do not overlap the rect of an Interactive_Control
+        /// that does not contain the text, such as a count drawn under the buy button of its row.
+        /// </summary>
+        private static void TextIsNotUnderAnotherControl(RuleInput input, List<Violation> violations)
+        {
+            var measurement = input.Measurement;
+            foreach (var element in measurement.Elements)
+            {
+                if (!element.IsText || element.Culled || element.Shape.IsEmpty || element.GlyphCount == 0) continue;
+
+                var text = Visible(element);
+                foreach (var control in measurement.Controls)
+                {
+                    if (element.Transform.IsChildOf(control.RectTransform)) continue;
+
+                    var rect = control.ClipRect.HasValue
+                        ? LayoutModel.Intersect(control.OwnRect, control.ClipRect.Value)
+                        : control.OwnRect;
+                    var overlap = Overlap(text, rect);
+                    if (overlap == null) continue;
+
+                    violations.Add(new Violation(measurement, "R4.2",
+                        "Text_Bounds overlap " + control.Path + " by " + overlap,
+                        "text outside every control that does not contain it", element.Path, control.Path));
+                }
+            }
+        }
+
+        /// <summary>
+        /// R6.2: every interactable button that is on screen is at least
+        /// <see cref="Neko.Game.Ui.UiKit.MinimumHitSize"/> units each way, and a click at the points of its
+        /// drawn shape that its scroll area shows reaches the button, not something over it. A row that a
+        /// scroll area has scrolled out of view has no such points and is skipped.
+        /// </summary>
+        private static void ClicksReachTheButton(RuleInput input, List<Violation> violations)
+        {
+            var measurement = input.Measurement;
+            var clicks = input.Clicks;
+            foreach (var control in measurement.Controls)
+            {
+                if (control.Kind != ControlKind.Selectable || !control.Interactable) continue;
+
+                var shown = new List<Vector2>();
+                foreach (var point in clicks.SamplePoints(control))
+                {
+                    var inScroll = !control.ClipRect.HasValue || control.ClipRect.Value.Contains(point);
+                    if (inScroll && measurement.Viewport.Contains(point)) shown.Add(point);
+                }
+
+                if (shown.Count == 0) continue;
+
+                var fullyShown = !control.ClipRect.HasValue || LayoutModel.Intersect(control.OwnRect, control.ClipRect.Value).size == control.OwnRect.size;
+                var min = Neko.Game.Ui.UiKit.MinimumHitSize - Rounding;
+                if (fullyShown && (control.OwnRect.width < min || control.OwnRect.height < min))
+                {
+                    violations.Add(new Violation(measurement, "R6.2",
+                        "button is " + LayoutReport.Number(control.OwnRect.width) + "x" + LayoutReport.Number(control.OwnRect.height),
+                        "at least " + LayoutReport.Number(Neko.Game.Ui.UiKit.MinimumHitSize) + " each way", control.Path));
+                }
+
+                var misses = 0;
+                string blocker = null;
+                foreach (var point in shown)
+                {
+                    if (clicks.TopHandler(point) == control.Component.gameObject) continue;
+
+                    misses++;
+                    if (blocker == null)
+                    {
+                        var top = clicks.TopTarget(point);
+                        blocker = (top != null ? top.name : "nothing") + " at " + point;
+                    }
+                }
+
+                if (misses > 0)
+                {
+                    violations.Add(new Violation(measurement, "R6.2",
+                        misses + " of " + shown.Count + " points of the button do not reach it; first blocked by " + blocker,
+                        "every shown point of the button reaches it", control.Path));
+                }
+            }
+        }
+
+        /// <summary>The states of UI-01A: Elenco (EL), Loja (LJ) and Balanço (BL).</summary>
+        private static bool IsPriorityScreen(AuditState state, AuditView view) =>
+            state.Id.StartsWith("EL-", StringComparison.Ordinal) ||
+            state.Id.StartsWith("LJ-", StringComparison.Ordinal) ||
+            state.Id.StartsWith("BL-", StringComparison.Ordinal);
+
+        /// <summary>
+        /// How much the line box of a text may pass a plate or another text before it is a defect:
+        /// the box of a glyph run is its line height, so two stacked lines or a line and its plate
+        /// edge touch by a pixel or two without any ink colliding.
+        /// </summary>
+        private const float LineBoxSlack = 2f;
+
+        private static Rect Visible(MeasuredElement element) =>
+            element.ClipRect.HasValue ? LayoutModel.Intersect(element.TextBounds, element.ClipRect.Value) : element.TextBounds;
+
+        /// <summary>How far two rects overlap, such as "12.0x8.5"; null when they overlap by a pixel or less.</summary>
+        private static string Overlap(Rect a, Rect b)
+        {
+            var width = Mathf.Min(a.xMax, b.xMax) - Mathf.Max(a.xMin, b.xMin);
+            var height = Mathf.Min(a.yMax, b.yMax) - Mathf.Max(a.yMin, b.yMin);
+            if (width <= LineBoxSlack || height <= LineBoxSlack) return null;
+            return LayoutReport.Number(width) + "x" + LayoutReport.Number(height);
         }
 
         /// <summary><paramref name="rect"/> moved in by <paramref name="margin"/> on each side.</summary>

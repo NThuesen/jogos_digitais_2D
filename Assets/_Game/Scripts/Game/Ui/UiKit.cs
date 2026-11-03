@@ -40,7 +40,7 @@ namespace Neko.Game.Ui
         }
 
         public static RectTransform Panel(Transform parent, Vector2 size, Color colour,
-            float corner = 0.35f)
+            float corner = 0.35f, bool exact = false)
         {
             var go = new GameObject("Panel", typeof(RectTransform));
             go.transform.SetParent(parent, false);
@@ -49,10 +49,21 @@ namespace Neko.Game.Ui
             rect.sizeDelta = size;
 
             var image = go.AddComponent<Image>();
-            image.sprite = Sprites.Get(
-                new ShapeSpec(ShapeId.RoundedRect, Color.white, detail: corner), 96);
+            if (exact)
+            {
+                // 9-sliced: the drawn edge is the rect's edge, so what is laid out inside the
+                // rect is inside the panel. The radius is a fixed length, whatever the size.
+                image.sprite = Sprites.Panel(Mathf.RoundToInt(Mathf.Clamp(corner * 40f, 3f, 20f)));
+                image.type = Image.Type.Sliced;
+            }
+            else
+            {
+                image.sprite = Sprites.Get(
+                    new ShapeSpec(ShapeId.RoundedRect, Color.white, detail: corner), 96);
+                image.type = Image.Type.Simple;
+            }
+
             image.color = colour;
-            image.type = Image.Type.Simple;
             return rect;
         }
 
@@ -231,9 +242,10 @@ namespace Neko.Game.Ui
         }
 
         /// <summary>A scrollable list. Returns the content transform to add rows to.</summary>
-        public static RectTransform ScrollList(Transform parent, Vector2 size, float spacing = 8f)
+        public static RectTransform ScrollList(Transform parent, Vector2 size, float spacing = 8f,
+            bool exact = false)
         {
-            var viewport = Panel(parent, size, Palette.WithAlpha(Palette.Wall, 0.45f), 0.12f);
+            var viewport = Panel(parent, size, Palette.WithAlpha(Palette.Wall, 0.45f), 0.12f, exact);
             viewport.gameObject.name = "Scroll";
 
             viewport.gameObject.AddComponent<RectMask2D>();

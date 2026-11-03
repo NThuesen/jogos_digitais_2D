@@ -41,16 +41,18 @@ namespace Neko.Game.Ui
             _header = UiKit.Label(transform, "", Typeface.Body, Logo.Brass,
                 TextAnchor.MiddleRight, bold: true);
             UiKit.Anchor(_header.rectTransform, new Vector2(1f, 1f), new Vector2(-170f, -26f));
-            _header.rectTransform.sizeDelta = new Vector2(300f, 32f);
+            _header.rectTransform.sizeDelta = new Vector2(460f, 32f);
 
             Scenery.PlankAt(transform, Strings.Get("dialog.back"), new Vector2(120f, 44f),
                 new Vector2(1f, 1f), new Vector2(-26f, -18f), () => OnBack?.Invoke(),
                 Typeface.Small);
 
-            _grid = UiKit.ScrollList(transform, new Vector2(700f, 560f), 10f);
+            // 600 wide: the detail plaque starts 630 from the left at the 960x600 canvas (1152 wide),
+            // and the grid ends at 622. At 700 it ran 92 units under the plaque.
+            _grid = UiKit.ScrollList(transform, new Vector2(600f, 560f), 10f, exact: true);
             UiKit.Anchor((RectTransform)_grid.parent, new Vector2(0f, 0f), new Vector2(22f, 20f));
 
-            var plaque = Scenery.Plaque(transform, new Vector2(500f, 560f));
+            var plaque = Scenery.Plaque(transform, new Vector2(500f, 560f), null, exact: true);
             UiKit.Anchor((RectTransform)plaque.parent, new Vector2(1f, 0f), new Vector2(-22f, 20f));
             _detail = plaque;
         }
@@ -76,7 +78,7 @@ namespace Neko.Game.Ui
         private void BuildRow(Sim.Save.Profile profile, int start)
         {
             var row = UiKit.Row(_grid, 8f);
-            row.sizeDelta = new Vector2(680f, 180f);
+            row.sizeDelta = new Vector2(580f, 180f);
             _built.Add(row.gameObject);
 
             for (var i = start; i < start + 4 && i < profile.Maids.Count; i++)
@@ -84,7 +86,7 @@ namespace Neko.Game.Ui
                 var maid = profile.Maids[i];
                 var playing = profile.Lineup.RoleOf(maid.Id);
 
-                var card = MaidCard.Build(row, maid, 0.82f, showSalary: true, playingAs: playing);
+                var card = MaidCard.Build(row, maid, 0.82f, showSalary: true, playingAs: playing, exact: true);
                 card.GetComponent<Image>().raycastTarget = true;
 
                 var button = card.gameObject.AddComponent<Button>();
@@ -113,7 +115,7 @@ namespace Neko.Game.Ui
             head.sizeDelta = new Vector2(460f, 160f);
 
             MaidCard.Build(head, maid, 0.72f, showSalary: false,
-                playingAs: Session.Profile.Lineup.RoleOf(maid.Id));
+                playingAs: Session.Profile.Lineup.RoleOf(maid.Id), exact: true);
 
             var facts = UiKit.Column(head, 3f, 0f);
             facts.sizeDelta = new Vector2(310f, 155f);
@@ -123,7 +125,7 @@ namespace Neko.Game.Ui
             Fact(facts, "roster.salary", Strings.Money(maid.Salary), Palette.Alarm);
             Fact(facts, "roster.level", maid.Level + " / " + Maid.MaxLevel, Palette.Text);
             Fact(facts, "roster.tags", string.Join(" · ", ChemistryTags.Describe(maid)),
-                Palette.TextDim);
+                Palette.TextDim, 2);
 
             Stat(column, "roster.serve", maid.Total.Serve);
             Stat(column, "roster.cook", maid.Total.Cook);
@@ -157,10 +159,11 @@ namespace Neko.Game.Ui
                     }, Strings.Get("dialog.no")), Typeface.Small, Palette.Alarm);
         }
 
-        private static void Fact(Transform parent, string key, string value, Color colour)
+        private static void Fact(Transform parent, string key, string value, Color colour,
+            int lines = 1)
         {
             var row = UiKit.Row(parent, 6f);
-            row.sizeDelta = new Vector2(300f, 22f);
+            row.sizeDelta = new Vector2(300f, 22f * lines);
 
             var label = UiKit.Label(row, Strings.Get(key), Typeface.Tiny, Palette.TextDim,
                 TextAnchor.MiddleLeft);
@@ -168,7 +171,8 @@ namespace Neko.Game.Ui
 
             var text = UiKit.Label(row, value, Typeface.Small, colour, TextAnchor.MiddleLeft,
                 bold: true);
-            text.rectTransform.sizeDelta = new Vector2(176f, 20f);
+            text.rectTransform.sizeDelta = new Vector2(176f, 22f * lines - 2f);
+            if (lines > 1) text.alignment = TextAnchor.MiddleLeft;
         }
 
         private static void Stat(Transform parent, string key, int value)
