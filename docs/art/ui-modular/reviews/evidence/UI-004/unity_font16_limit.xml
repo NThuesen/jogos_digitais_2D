@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-03 18:56:23Z" end-time="2026-11-03 18:56:25Z" duration="2,0878898">
+  <test-suite type="TestSuite" id="1099" name="Neko Maid Inc" fullname="Neko Maid Inc" runstate="Runnable" testcasecount="77" result="Failed" site="Child" start-time="2026-11-03 18:56:23Z" end-time="2026-11-03 18:56:25Z" duration="2.087890" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1095" name="Ui004.Qa.dll" fullname="C:/dev/PocketSlop-Games/jogos_digitais_2D/Library/ScriptAssemblies/Ui004.Qa.dll" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-11-03 18:56:23Z" end-time="2026-11-03 18:56:25Z" duration="2.072482" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="34384" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestFixture" id="1093" name="Ui004ButtonQa" fullname="Ui004ButtonQa" classname="Ui004ButtonQa" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-11-03 18:56:23Z" end-time="2026-11-03 18:56:25Z" duration="2.070135" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-case id="1094" name="Run" fullname="Ui004ButtonQa.Run" methodname="Run" classname="Ui004ButtonQa" runstate="Runnable" seed="1208329114" result="Failed" start-time="2026-11-03 18:56:23Z" end-time="2026-11-03 18:56:25Z" duration="2.051866" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  text width
+  Expected: less than or equal to 65.8336945f
+  But was:  67.0f
+]]></message>
+            <stack-trace><![CDATA[at Ui004ButtonQa+<Capture>d__4.MoveNext () [0x008d5] in C:\dev\PocketSlop-Games\jogos_digitais_2D\Assets\_QA_UI004_Temp\Ui004ButtonQa.cs:63
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@1405238725ab\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Saving results to: C:/Users/nicho/AppData/LocalLow/SlipperyZlope Games/Neko Maid Inc\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

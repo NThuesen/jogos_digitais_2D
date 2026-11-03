@@ -7,7 +7,7 @@
 | UI-001 | [01_PANEL_LARGE](prompts/01_PANEL_LARGE.md) | APPROVED | `raw_gpt/UI-001_panel_large_v01.png` (local, ignorado) | `blender_clean/UI-001_panel_large_v01.png` (local, ignorado) | [`approved/UI-001_panel_large_v01.png`](approved/UI-001_panel_large_v01.png) — PR #39 | UNITY_QA PASS 960×600 e 1280×720; **INTEGRATED: pendente**; WebGL/compressão NOT RUN — [revisão](reviews/UI-001_PANEL_LARGE_V01.md) |
 | UI-002 | [02_PANEL_MEDIUM](prompts/02_PANEL_MEDIUM.md) | PENDING | — | — | — | NOT RUN |
 | UI-003 | [03_PANEL_SMALL_LABEL](prompts/03_PANEL_SMALL_LABEL.md) | PENDING | — | — | — | NOT RUN |
-| UI-004 | [04_BUTTON_PRIMARY](prompts/04_BUTTON_PRIMARY.md) | PENDING | — | — | — | NOT RUN |
+| UI-004 | [04_BUTTON_PRIMARY](prompts/04_BUTTON_PRIMARY.md) | **REWORK (NORMAL v01)** | `raw_gpt/UI-004_button_primary_normal_v01.png` (2172×724, local ignorado) | `blender_clean/UI-004_button_primary_normal_v01.png` (local ignorado; RGB preservado) | Não aprovado; demais estados PENDING | Unity 960×600 e 1280×720 executado: **FAIL** leitura em tamanhos pequenos/120×44; interação simulada PASS; slice viável; candidata 768×256 para 260×88; [revisão](reviews/UI-004_BUTTON_PRIMARY_NORMAL_V01.md) |
 | UI-005 | [05_BUTTON_SECONDARY](prompts/05_BUTTON_SECONDARY.md) | PENDING | — | — | — | NOT RUN |
 | UI-006 | [06_TABS_SET](prompts/06_TABS_SET.md) | PENDING | — | — | — | NOT RUN |
 | UI-007 | [07_MODAL_DIALOG](prompts/07_MODAL_DIALOG.md) | PENDING | — | — | — | NOT RUN |
@@ -51,3 +51,12 @@
 - QA e limites de uso: [revisão](reviews/UI-001_PANEL_LARGE_V01.md#6-aprovação-final).
 - Decisão: **APPROVED** pelo responsável; **INTEGRATED** pendente (nenhuma tela alterada).
 
+## UI-004 `button_primary_normal` v01 — QA pendente de aceite
+
+- **REWORK**, não APPROVED nem INTEGRATED. Direção visual geral aceita; tamanho real ainda não homologado. HOVER/PRESSED/DISABLED permanecem PENDING, não produzidos.
+- Bruto intacto: **2172×724 RGBA**, SHA-256 `91466ecc77f6bb1d6b30540883961c5b1d0babbce7e3d9b83c9aef059e98f2bf`. A informação preliminar 2048×682 não se confirmou para este arquivo.
+- Limpo local: **2172×724**, SHA-256 `03b58c3e2b500b8a48311cd3b3c75c8551c79d599693176ad5b5da664aeb0446`; removeu 1.094 pixels de resíduos separados e solidificou alpha≥250; RGB integralmente preservado.
+- Slice testado: borders de origem L400/B360/R400/T360, escala vertical ajustada à altura; ornamentos inteiros, porém pouco legíveis em 44–54 u. Texto Comprar 16 falha em 120×44 a 1280×720.
+- Proposta condicional: candidata **768×256**, 0,75 MiB RGBA32, caso maior **260×88**; não autoriza mudar telas. Texturas do botão locais/ignoradas; duas capturas Unity versionadas, hashes e restrições na [revisão](reviews/UI-004_BUTTON_PRIMARY_NORMAL_V01.md).
+- **Proposta ainda não aprovada:** duas famílias — ornamental grande (~260×88) e compacto simplificado (altura 44–54); abas seguem como componentes próprios. Compacto não produzido nem implementado. A candidata 768×256 é somente para o botão grande.
+- Pendências: responsável decidir rework/uso maior restrito, proposta das famílias, limpeza, resolução e publicação das texturas; compressão, WebGL e integração NOT RUN.
