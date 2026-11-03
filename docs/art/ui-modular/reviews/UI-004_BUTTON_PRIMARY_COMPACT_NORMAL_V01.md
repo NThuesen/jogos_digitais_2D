@@ -1,6 +1,6 @@
 # UI-004 COMPACT NORMAL v01 — limpeza e QA
 
-**Estado: UNITY_QA, aguardando decisão do responsável. Veredito técnico: PASS na configuração Sliced e nos casos Unity Editor e WebGL isolado descritos abaixo. Veredito visual do Codex: recomendar aprovação do NORMAL compacto, sob a configuração e os limites testados. Isso não constitui APPROVED nem INTEGRATED.** O ornamental anterior continua REWORK; são variantes distintas.
+**Estado: APPROVED pelo responsável em 03/11/2026; não INTEGRATED.** A aprovação inclui o recorte **2072×380** e o export/configuração **9-slice 768×141** testados na PR #42, nos casos e limites registrados abaixo. Vereditos técnicos e evidências de QA preservados. O ornamental anterior continua REWORK; são variantes distintas.
 
 O compacto mantém moldura, superfície creme e texto legíveis em **150×44**, **120×44** e **230×54**, em **960×600 e 1280×720**. As capturas mostram o componente atual e o candidato na mesma escala. Não houve substituição de telas, UiKit, Scenery.Plank, lógica de compra ou save. Somente NORMAL foi produzido manualmente pelo responsável; esta tarefa não gerou arte.
 
@@ -45,10 +45,10 @@ O raio/transição das extremidades termina aproximadamente em x120 do limpo e n
 | Mesh / sprite | `Sprite.Create`, **Full Rect**, pivot 0,5/0,5, PPU 100 |
 | Image | **Sliced**, cor branca (preserva a paleta do PNG), alpha hit threshold0 |
 | Bordas do master 2072×380 | **L160 / B110 / R160 / T110** |
-| Candidata recomendada | **768×141**, derivada somente depois do recorte; ainda não aprovada |
-| Bordas dessa candidata | **L59,305 / B40,816 / R59,305 / T40,816** px, fracionárias |
-| Multiplier, altura44 | **141/44 = 3,204545** |
-| Multiplier, altura54 | **141/54 = 2,611111** |
+| Export aprovado | **768×141**, derivado somente depois do recorte; aprovação do responsável na seção 9 |
+| Bordas do export aprovado | **L59,305 / B40,816 / R59,305 / T40,816** px, fracionárias |
+| Multiplier, altura 44 | **141/44 = 3,204545** |
+| Multiplier, altura 54 | **141/54 = 2,611111** |
 | Filtro / wrap | **Bilinear / Clamp** |
 | Import da textura de QA | Uncompressed RGBA32, sem mipmaps, NPOT None, Max Size 4096 (inclui master 2072), Alpha Is Transparency, Read/Write false |
 | Canvas | Screen Space Camera, referência 1280×720, MatchHeight 1, referencePixelsPerUnit 100 |
@@ -130,7 +130,7 @@ Não foi identificado defeito intrínseco que obrigue regeneração para os trê
 
 ## 6. Resolução e memória
 
-Derivadas por Lanczos **depois** do recorte. A candidata768×141 é o equilíbrio recomendado: mantém a leitura do filete e do relevo nas duas resoluções e custa menos que1024/master.512×94 também funciona tecnicamente, mas suaviza mais a hierarquia dos filetes, especialmente no caso230×54; não escolher apenas pela menor memória. Não se aplica a resolução768×256 do ornamental: é outro asset e outro recorte.
+Derivadas por Lanczos **depois** do recorte. O export aprovado 768×141 é o equilíbrio recomendado: mantém a leitura do filete e do relevo nas duas resoluções e custa menos que1024/master.512×94 também funciona tecnicamente, mas suaviza mais a hierarquia dos filetes, especialmente no caso230×54; não escolher apenas pela menor memória. Não se aplica a resolução768×256 do ornamental: é outro asset e outro recorte.
 
 | Textura | RGBA32 sem mipmaps (MiB, estimativa) | Quatro estados hipotéticos (MiB) | Profiler Editor, bytes reportados |
 | --- | --- | --- | --- |
@@ -164,6 +164,15 @@ Ambiente temporário e build removidos após as capturas. Template/compressão r
 
 Os scripts temporários de runtime/teste/Editor, comandos com a guarda de processos do projeto e script de navegador estão arquivados como texto em [evidence/UI-004-COMPACT](evidence/UI-004-COMPACT/). O ambiente temporário em Assets, seus PNGs/metas e a build foram removidos após o QA e não entram no PR. Originais e limpo permanecem em art_working ignorados. Capturas reais e [manifesto de hashes](evidence/UI-004-COMPACT/screenshot_manifest.json) acompanham a documentação. Não houve modificação de testes/CI/configuração/cenas protegidos no diff final.
 
-**Decisão proposta: recomendar aprovação do NORMAL compacto somente para os casos medidos, sem marcar APPROVED. Estado registrado: UNITY_QA.** Cabe ao responsável aceitar limpeza/recorte, arte em escala real, candidata768×141, parâmetros e cores de texto funcionais. Somente após essa decisão planejar integração própria e outros estados. O ornamental permanece REWORK; UI-001 mantém seu histórico de aprovação; abas são independentes.
+**Decisão final do responsável: APPROVED para o NORMAL compacto**, incluindo o recorte 2072×380 e a configuração 9-slice 768×141 testada na PR #42. A integração permanece pendente e requer tarefa própria; nenhum PNG foi integrado à Unity nesta atualização. O ornamental permanece REWORK; UI-001 mantém seu histórico de aprovação; abas são independentes. HOVER/PRESSED/DISABLED não foram produzidos.
 
-**NOT RUN:** mouse físico; qualidade/comportamento em telas finais (incluindo scroll/clipping da Loja completa), foco/teclado/gamepad, outros idiomas/textos/dimensões, compressão de bloco/mipmaps, medição GPU residente e download de produção, suítes completas EditMode/PlayMode e simulação (sem alteração de jogo), Android/APK/AAB. Nenhuma publicação, merge ou auto-merge autorizado nesta tarefa.
+**NOT RUN:** mouse físico; qualidade/comportamento em telas finais (incluindo scroll/clipping da Loja completa), foco/teclado/gamepad, outros idiomas/textos/dimensões, compressão de bloco/mipmaps, medição GPU residente e download de produção, suítes completas EditMode/PlayMode e simulação (sem alteração de jogo), Android/APK/AAB. O responsável autorizou somente registrar a aprovação e fazer squash merge normal da PR #42, respeitando os checks; integração e geração dos outros estados permanecem fora do escopo.
+
+## 9. Aprovação do responsável
+
+**Decisão em 03/11/2026: APPROVED, não INTEGRATED.** O responsável aprovou explicitamente o **UI-004 COMPACT NORMAL v01**, o **recorte 2072×380** e a **configuração 9-slice 768×141 testada na PR #42**. Esta seção registra a decisão posterior ao QA; os testes não foram repetidos e todas as evidências permanecem intactas.
+
+- **Master limpo aprovado:** 2072×380, SHA-256 `c82d06142b3953a97b9654d8b7bf53e611679a6ffb4822a3b268dff239c17eb6`, mantido local em `art_working/ui_modular/blender_clean/UI-004_button_primary_compact_normal_v01.png`. RAW preservado no caminho e hash da seção 1. Nenhum arquivo de arte foi regravado ou publicado nesta atualização.
+- **Export/configuração aprovados:** 768×141, borders L59,305/B40,816/R59,305/T40,816 (master L160/B110/R160/T110), Full Rect, PPU 100, multiplier 3,204545 em altura 44 e 2,611111 em 54, Bilinear/Clamp, sem mipmaps/compressão; demais parâmetros e limites na seção 2. A aprovação cobre os casos testados 150×44, 120×44 e 230×54.
+- **Escopo do merge:** registro técnico e decisão de aprovação na mesma PR #42; sem integração definitiva, alteração de telas, publicação de PNG bruto/limpo/export ou produção dos outros estados. Ornamental continua REWORK.
+- **Pendências mantidas:** futura integração própria e verificações de produção, GPU física/memória residente, compressão/mipmaps, mouse físico/foco/teclado e telas completas. Aprovação do NORMAL não transforma os itens NOT RUN em PASS.
