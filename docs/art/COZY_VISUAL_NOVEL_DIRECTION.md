@@ -1,6 +1,6 @@
-# Direção visual aprovada — Cozy Pixel-Art Anime + Visual Novel
+# Direção visual de 28/10 — Cozy Pixel-Art Anime + Visual Novel (HISTÓRICO)
 
-**Estado:** ACCEPTED — direção de apresentação e linguagem visual; **não implementada** e **sem arte final aprovada**.
+**Estado atual: SUPERADA EM PARTE pela decisão de 03/11/2026.** Esta página registra a proposta de 28/10, sem prescrever pixel art aos agentes. A [direção vigente](CURRENT_VISUAL_DIRECTION.md) exige **maids anime 2D ilustradas**, futuro restaurante coerente com elas e menus que podem diferir da gameplay. As nove maids Walk já estão integradas (PRs #29/#30); cenário e portraits continuam futuros. As decisões e gates abaixo são **históricos**, não bloqueiam a estratégia B de UI-01.
 **Aprovada em:** 28/10/2026, pelo responsável do produto.
 **Âmbito:** menus, Escalação, Elenco, momentos narrativos e apresentação do café, mantendo o gameplay 2D.
 **Índice:** [GDD](../GDD.md) (produto) · [Maid Card + Chibi](MAID_VISUAL_DECISION.md) (personagens) · [Roadmap](../ROADMAP.md) (execução).

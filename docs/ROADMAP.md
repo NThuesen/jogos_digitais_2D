@@ -1,44 +1,39 @@
 # Roadmap ativo — Neko Maid Inc.
 
-**Estado:** plano de trabalho aprovado em 27/10/2026; os itens abaixo ainda não são entregas concluídas.
-**Objetivo deste ciclo:** tornar o core loop já jogável mais legível, acolhedor e centrado nas maids, sem adicionar mecânicas novas.
-**Para agentes:** este arquivo é um índice. Leia **apenas** a nota da tarefa atribuída e seus links relevantes. A regra de branch/PR permanece em [AGENTS.md](../AGENTS.md).
+**Atualizado em 03/11/2026.** Base integrada: [ART-03 / PR #29](https://github.com/NThuesen/jogos_digitais_2D/pull/29), [ART-04 / PR #30](https://github.com/NThuesen/jogos_digitais_2D/pull/30) e infraestrutura parcial [UI-01 / PR #31](https://github.com/NThuesen/jogos_digitais_2D/pull/31).
+**Direção de arte vigente:** [anime 2D ilustrado/chibi + restaurante ilustrado futuro](art/CURRENT_VISUAL_DIRECTION.md). Planos anteriores pixel art são históricos.
+**Objetivo:** estabilizar a interface antes de redesenhar o ambiente e, depois, os menus; sem modificar regras de jogo.
 
-## Sequência e dependências
+## Execução aprovada: estratégia B
 
-| ID | Entrega | Estado | Dependência | Contrato da tarefa |
+| Marco | Entrega | Estado | Responsável sugerido | Contrato |
 | --- | --- | --- | --- | --- |
-| **UI-01** | Corrigir layout, clipping e legibilidade de telas existentes | PLANNED | Nenhuma; pode ocorrer em paralelo com ART-01 | [UI-01](roadmap/UI-01_LAYOUT.md) |
-| **ART-01** | Explorar propostas A/B/C de maid, card e chibi | REVIEW | Estudos no [PR #12](https://github.com/NThuesen/jogos_digitais_2D/pull/12), não aprovados como estilo final | [ART-01](roadmap/ART-01_STYLE.md) |
-| **ART-01D** | Explorar a direção **cozy pixel-art anime + visual novel** em arte original | PLANNED | Norte conceitual aprovado; ainda falta aprovação de assets | [Direção aceita + experimento](art/COZY_VISUAL_NOVEL_DIRECTION.md) |
-| **ART-02** | Integrar uma identidade portrait + chibi no Unity (vertical slice) | BLOCKED | Prévia/identidade visual original de ART-01D **aprovada pelo responsável** | [ART-02](roadmap/ART-02_VERTICAL_SLICE.md) |
-| **UI-02** | Evoluir UI conforme direção artística aprovada, por telas | BLOCKED | Assets/estilo de ART-01D aprovados; usar aprendizado de ART-02 | [UI-02](roadmap/UI-02_SCREEN_POLISH.md) |
-| **UX-01** | Avaliar compreensão do primeiro dia/resultado sem presumir erro de balanceamento | DEFERRED | Evidências de playtest após as correções relevantes | [UX-01](roadmap/UX-01_FIRST_DAY.md) |
+| **DOC-01** | Alinhar documentação e registrar decisões vigentes, sem reescrever o histórico | EM INTEGRAÇÃO nesta revisão | Documentação | [Direção visual](art/CURRENT_VISUAL_DIRECTION.md) |
+| **UI-01A** | Reusar o Layout_Check existente; corrigir clipping/colisões/scroll/cliques em **Loja, Balanço, Elenco**, 960×600 e 1280×720 | PENDENTE | Codex | [UI-01 atual](roadmap/UI-01_LAYOUT.md) |
+| **UI-01B** | Regressão das outras telas; corrigir apenas problemas bloqueantes e relatar cobertura | PENDENTE após UI-01A | Codex | [UI-01 atual](roadmap/UI-01_LAYOUT.md) |
+| **ENV-01** | Redesenhar o restaurante e mobiliário para anime 2D ilustrado/cozy, usando maids/escala atuais; sem redesign de menus | PENDENTE, aprovação estética em cada entrega material | Claude Code (arte) + Codex (integração/QA) | [Direção visual](art/CURRENT_VISUAL_DIRECTION.md) |
+| **UI-02** | Redesenhar menus, portraits e cards por tela com linguagem visual novel/management | PENDENTE após estabilização; assets e layouts sujeitos à aprovação | Claude Code + Codex | [UI-02](roadmap/UI-02_SCREEN_POLISH.md) |
+| **UX-01** | Avaliar entendimento do primeiro dia e resultado em playtest | ADIADO | A definir | [UX-01](roadmap/UX-01_FIRST_DAY.md) |
 
-**PLANNED = pendente; REVIEW = estudos entregues para avaliação, sem aprovação final; BLOCKED = dependência não cumprida; DEFERRED = não iniciar sem evidência.** Nenhum estado é atualizado por suposição; registrar a Issue/PR e a evidência ao mudar o status. Não inventar datas ou tempo estimado.
+**Concluído e preservado:** ART-03 (nove maids em turno real, PR #29), ART-04 (walk sheets ilustrados, HUD e WebGL QA, PR #30). **Parcial entregue:** UI-01, infraestrutura de Layout_Check pelo PR #31; nenhuma tela foi corrigida ali. **Não concluído:** portraits exclusivos dos cards, animações ilustradas além do Walk, identidade visual persistida, cenário ilustrado e UI-02.
 
-## Responsabilidades e ciclo de correção
+## Regras de execução
 
-- **Claude / Claude Code:** ART-01D — referências originais cozy pixel-art + visual novel, imagens de prévia, comparação crítica e recomendação. Não alterar gameplay, não escolher sozinho o estilo definitivo e não implantar infraestrutura de geração em massa.
-- **Codex:** implementação pontual de UI-01; depois ART-02 e UI-02 conforme gates e decisões. Inspecionar estado real, criar branch automaticamente, validar e abrir PR.
-- **Claude Code como revisor, quando acionado:** revisar diffs e **capturas reais** de patches Codex; classificar `blocking / important / optional`. Codex corrige apenas findings válidos e produz novas evidências. Revisão não é uma dependência automática de outra pessoa para todo PR.
-- **Responsável:** aprova/rejeita **aparência e decisões de produto**; não precisa desenhar, codificar ou analisar código manualmente.
+1. **Quatro entregas independentes:** documentação → UI-01 prioritário → regressão geral → redesign (restaurante antes dos menus). Manter escopo limitado e PRs separados; não presumir número de PR.
+2. UI-01 corrige a **interface atual**, não define sua aparência final. Preservar a engenharia e a UX utilizável, mas permitir novas fontes, paleta, dimensões e composição em UI-02 com validação real.
+3. O Layout_Check de 40 estados da [spec histórica](../.kiro/specs/ui-01-layout/tasks.md) **não** é pré-requisito de conclusão de UI-01A: expandir progressivamente. Nunca declarar cobertura que não foi executada. Cada correção precisa de defeito reproduzido e evidência antes/depois.
+4. UI-01A prioriza Loja (Móveis, Roupas, Presentes), Balanço e Elenco. UI-01B confere Empresa, Escalação, Caixas, Menu, Salão, O dia, Dialogs e Falência. Corrigir regressões de input, leitura e navegação, não embelezar o tema provisório.
+5. Referências de validação: **960×600 e 1280×720**, com testes em Unity real e, quando relevante, WebGL. Sim CI não comprova aparência.
+6. Respeitar as mudanças de câmera e HUD do PR #30. Um turno QA com nove identidades não altera o limite de recrutamento normal. Posto vazio na escalação continua válido.
+7. Não dividir alterações concorrentes em `UiKit`, `HallScreen`, `DayHud` ou `CameraRig` entre agentes; preservar `Neko.Sim`, save, branch protection e testes. Novas alterações nos testes `Layout_Check` já existentes exigem revisão de manutenção dos arquivos protegidos.
+8. **Gate de produto:** usuário aprova arte final de cenário, portraits e menus antes de merge visual. Agentes podem resolver detalhes técnicos triviais; mudanças estruturais relevantes voltam ao responsável.
 
-**Fluxo quando houver revisão:** Codex implementa → valida e produz evidências → Claude Code revisa implementação e captura → Codex corrige findings válidos → revalidação → PR/integração conforme proteção GitHub. Não criar IA observadora de CI.
+## Documentação legada
 
-## Restrições deste ciclo
-1. **UI-01 não depende da direção artística final.** Corrigir defeitos de layout sem trocar todos os temas.
-2. **ART-01D é exploração de qualidade visual; ART-02 é implementação.** A direção geral está aprovada, mas **nenhum asset final nem stack técnica** está aprovado. Não fazer biblioteca grande de módulos ou refactor de UI nesta exploração.
-3. Uma maid tem portrait para card e chibi para restaurante, com identidade consistente, conforme [decisão aceita](art/MAID_VISUAL_DECISION.md). Não fixar formatos/stack não decididos.
-4. O GDD rege regras, economia e experiência; a [arquitetura](ARCHITECTURE.md) rege boundaries técnicos. Este roadmap não os substitui.
-5. Para UI e gameplay, evidência **dentro do Unity na resolução de referência 960×600** (sem extrapolar para todas as telas/resoluções), incluindo capturas antes/depois. CI da simulação não verifica UI visual.
-6. Não confundir preferências visuais com bugs: **deixar uma posição vazia e uma maid no banco na escalação é comportamento válido**, confirmado pelo responsável. Não corrigir como defeito.
-7. Manter tarefas pequenas, sem infra nova, testes artificiais, mudanças de balanceamento ou publicações sem autorização.
+- [ART-01 / explorações A/B/C/D](roadmap/ART-01_STYLE.md) e [direção cozy pixel-art anterior](art/COZY_VISUAL_NOVEL_DIRECTION.md): histórico de pesquisas, não estilo atual.
+- [ART-02 / experimento de uma maid](roadmap/ART-02_VERTICAL_SLICE.md): experimento planejado na fase anterior, superado **apenas na integração do Walk** por ART-03/04; retratos próprios, camadas editáveis e `visual_id` **não** foram entregues.
+- [Spec UI-01 de 29/10 e 02/11](../.kiro/specs/ui-01-layout/requirements.md): contrato e plano históricos que originaram os testes. Preservados para rastreabilidade, mas o escopo enxuto vigente está em [UI-01 atual](roadmap/UI-01_LAYOUT.md).
 
-**Evidência de partida:** [observações dos prints de 27/10/2026](roadmap/VISUAL_BASELINE.md). Esses prints foram fornecidos na conversa e **não são arquivos versionados**; o agente que trabalhar no Unity deve obter sua própria captura comparável.
+## Responsabilidades
 
-## Trilha paralela: ECON-01A — diagnóstico econômico (autorizado em 29/10/2026)
-
-A preparação do baseline econômico foi autorizada como tarefa **independente** dos marcos de arte/UI acima. Consultar [ECON-01A](roadmap/ECON-01_BASELINE.md) para escopo, gates e validação; checkpoint operacional em [ECON-01_HANDOFF](../.agent/ECON-01_HANDOFF.md). O documento de origem [proposal.md](../proposal.md) é uma **proposta não aprovada de números**, não uma implementação.
-
-**Estado: READY / execução não iniciada.** Esta autorização cobre reprodução do diagnóstico, instrumentação mínima e documentação, **não** mudanças de balanceamento, produto, cenas ou integração em main. As etapas seguintes exigem branches/PRs próprios e aprovação das decisões materiais. A restrição 7 do ciclo visual permanece em vigor para as tarefas visuais.
+**Codex:** implementação e validação técnica de UI-01A/UI-01B; **Claude Code:** direção/implementação artística, com revisão de capturas quando solicitado; **responsável:** aprova identidade estética e alterações de escopo. Ler apenas a nota da tarefa atribuída; [AGENTS.md](../AGENTS.md) rege branches, PRs, segurança e evidências.

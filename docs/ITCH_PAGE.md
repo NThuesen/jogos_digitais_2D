@@ -1,7 +1,8 @@
-# Página do itch.io — Neko Maid Inc.
+# Página do itch.io — Neko Maid Inc. (RASCUNHO A REVALIDAR)
 
-Texto pronto para colar na página do jogo. Cada bloco abaixo é um campo do itch.io; o que
-está entre colchetes é instrução para quem publica, não texto da página.
+**Não publicado por esta revisão.** Texto antigo de divulgação: validar gameplay, preços, testes, screenshots e assets antes de publicar. A direção artística atual é [anime 2D ilustrado/chibi](art/CURRENT_VISUAL_DIRECTION.md), não a antiga descrição exclusivamente procedural.
+
+Cada bloco abaixo é um campo do itch.io; o que está entre colchetes é instrução para quem publica, não texto da página.
 
 ---
 
@@ -84,21 +85,11 @@ E a conta é honesta nos dois sentidos: a lendária custa **210 por dia** de sal
 
 ---
 
-## Nada aqui foi importado
+## Arte e áudio originais do projeto
 
-Não existe um único arquivo de imagem ou de som neste projeto.
+As **nove maids do restaurante** usam sprite sheets **ilustrados importados**, criados a partir de desenhos e vídeos produzidos neste projeto (ChatGPT/Tencent/Blender, pipeline offline); ver [proveniência](art/SUZU_ASSET_PROVENANCE.md) e [ART-04](art/maid-walk/README.md). Não afirmar que o jogo não contém imagens importadas. A arte restante mistura formas procedurais, móveis desenhados em código e UI existente, a ser redesenhada.
 
-- **Toda a arte** é gerada em tempo de execução. Personagens e ícones saem de dezessete
-  campos de distância: uma maid é uma pilha de camadas tingidas; o letreiro do menu são
-  retângulos arredondados e dois triângulos. Os móveis são pixel art pintada em código.
-- **Todo o áudio** — 26 sons — é sintetizado por um script do repositório, que descreve cada
-  som como uma pilha de vozes e escreve o `.wav`. O mesmo comando produz sempre os mesmos
-  bytes.
-- **A fonte** é a embutida do Unity.
-
-O que há para creditar é de onde vem o desenho: a camada de gerenciamento do **Café Mania /
-Diner Dash** e o **Ultimate Team** do FIFA. Nenhum código, arte ou áudio veio de nenhum dos
-dois.
+Os sons são gerados pelo script de síntese do projeto; a fonte é a embutida no Unity. Nenhum asset de franquia foi incorporado. O próximo cenário será ilustrado/cozy; os portraits específicos do card ainda não foram entregues.
 
 ---
 
@@ -121,7 +112,7 @@ O jogo salva automaticamente após as mudanças na empresa e ao concluir cada di
 - A simulação inteira é uma assembly **sem referência ao UnityEngine**: um dia de café roda
   em milissegundos num teste comum, que é o único jeito honesto de afirmar que uma escalação
   é melhor que outra
-- 257 testes de simulação, 292 EditMode, 17 PlayMode
+- Testes de simulação, EditMode e PlayMode: **consultar relatórios da revisão candidata**; contagens antigas não representam a build atual (ART-04 reportou 326 EditMode / 52 PlayMode após integração de UI-01).
 - Uma cena com um objeto vazio; câmera, salão, interface e áudio construídos em código, sem
   nenhum prefab
 
@@ -129,7 +120,7 @@ O jogo salva automaticamente após as mudanças na empresa e ao concluir cada di
 
 ---
 
-## Capturas [ordem de upload]
+## Capturas históricas [substituir por imagens da build final antes de publicar]
 
 Da pasta `visual_assets/frames/2026-10-22_neko_maid_inc/`:
 

@@ -1,42 +1,29 @@
-# Decisão visual: Maid Card + Chibi
+# Decisão visual — identidade da maid, chibi ilustrado e futuro portrait
 
-**Estado:** ACCEPTED — direção visual de produto, **não implementada**.
-**Âmbito:** aparência de cada maid no Neko Maid Inc.; não altera regras de gameplay, raridade ou economia.
-**Estilo e apresentação agora aceitos:** [Cozy Pixel-Art Anime + Visual Novel](COZY_VISUAL_NOVEL_DIRECTION.md). O contrato portrait + chibi permanece; os assets e a pipeline continuam pendentes.
-**Contrato dos dados:** [MAID_VISUAL_SPEC.md](MAID_VISUAL_SPEC.md).
-**Ficha por identidade:** [maids/_TEMPLATE.md](maids/_TEMPLATE.md).
-**Para implementar:** ler [nota Unity](../agent/UNITY.md) e os arquivos de código indicados abaixo, sem carregar o GDD completo salvo mudança de produto.
+**Estado:** direção de produto **ACEITA** em 03/11/2026; integração do **Walk ilustrado** das nove maids **CONCLUÍDA** nos PRs [#29](https://github.com/NThuesen/jogos_digitais_2D/pull/29) e [#30](https://github.com/NThuesen/jogos_digitais_2D/pull/30). **Portraits ilustrados, visual_id persistente e camadas intercambiáveis NÃO concluídos.**
+**Referência vigente:** [CURRENT_VISUAL_DIRECTION.md](CURRENT_VISUAL_DIRECTION.md).
+**Contrato conceitual futuro:** [MAID_VISUAL_SPEC.md](MAID_VISUAL_SPEC.md) (**PROPOSED**, não esquema implementado).
 
-## Decidido
-1. Toda maid deve ser reconhecível em **duas representações 2D** da mesma identidade:
-   - **Portrait / Maid Card:** arte expressiva e atraente, com ênfase em rosto, cabelo, uniforme, personalidade e colecionabilidade; o card é composto pela UI do jogo.
-   - **Chibi / Restaurante:** sprite compacto, fofo, silhueta legível em movimento e animações reutilizáveis (andar, esperar, servir etc.).
-2. **Mesma identidade, assets/apresentações diferentes.** Cor e silhueta do cabelo, orelhas, cauda, cores, uniforme e acessório característico devem combinar entre portrait e chibi.
-3. Visual composto de **camadas intercambiáveis** e parâmetros estruturados; peças podem ser trocadas isoladamente, sem redesenhar todas as maids. Produção de arte e código fica a cargo da IA; a pessoa responsável **aprova ou rejeita a aparência**, sem desenhar/editar manualmente.
-4. **Card = portrait + UI nativa** (nome, raridade/moldura, posição, números). Não gerar como uma imagem única todo o texto e a moldura do card.
-5. O sistema preserva a legibilidade do arquétipo e seus sinais distintivos já definidos no [GDD, §2.6](../GDD.md) e a cor da moldura de raridade no [GDD, §2.8](../GDD.md). Uma escolha estética não pode mudar as regras da simulação.
+## Decisões aceitas
 
-## Situação existente (verificada no código)
-- `Assets/_Game/Scripts/Game/View/MaidSpriteBuilder.cs`: chibi por camadas de `ShapeSpec`; poses `Idle`, `Walk`, `Carry`, `Cook`, `Tired`; equipamento já muda camadas.
-- `Assets/_Game/Scripts/Game/View/MaidView.cs`: apresenta e anima o chibi no restaurante.
-- `Assets/_Game/Scripts/Game/Ui/MaidCard.cs`: monta o card na UI, **mas o portrait atual reutiliza o sprite gerado por `MaidSpriteBuilder`**.
-- `Assets/_Game/Scripts/Game/Art/ShapeRasteriser.cs`: rasterização procedural existente.
-- O [GDD, §8](../GDD.md) descreve o **estado atual**, com formas geradas em runtime e nenhuma imagem importada. Esta decisão documenta uma **direção futura**; não declare PNGs, portrait separado, novos renderers ou assets já existentes.
+1. A identidade de cada maid deve ser reconhecível tanto no **chibi ilustrado do restaurante** quanto em um **portrait expressivo futuro no Maid Card**: cabelo, olhos, orelhas, cauda, uniforme, acessórios e cores coerentes.
+2. As nove identidades do restaurante seguem **anime 2D ilustrado/chibi** com os frames originais do Blender; **não** converter sprites para pixel art, nem regenerá-los para combinar com o cenário anterior.
+3. **Card = ilustração + UI dinâmica**: nome, raridade, profissão/posição, atributos e ações não devem ser texto baked em imagem.
+4. Escala no restaurante ajustada para visibilidade e enquadramento, preservando detalhes na textura. Menus podem ter uma linguagem visual novel distinta da gameplay. O cenário será redesenhado para combinar com as personagens, não o contrário.
+5. Qualquer mudança estrutural de identidade persistente, equipamentos ou composição de camadas exigirá uma tarefa de produto separada; não alterar regras/saves por inferência.
 
-## Ainda aberto — não decidir por inferência
-- **Linguagem geral aprovada:** cozy pixel-art anime café com apresentação de visual novel. **Ainda abertos:** paleta exata, proporções, acabamento, escala, personagens/cenários originais e aprovação dos assets; exigir prévias antes de produzir biblioteca grande.
-- Técnicas e formatos de produção (imagens IA transparentes, camadas vetoriais/SDF existentes ou combinação), resolução, slicing, atlases e animação. **Python/Pillow, ScriptableObjects, prefabs e Unity 2D Animation são alternativas, não requisitos aceitos.**
-- Quantidade de partes/variantes, gatilho de geração (editor/offline/runtime), regras de compatibilidade entre camadas e persistência de seeds/IDs. Resolver quando uma implementação real exigir.
-- Se haverá uma ficha por personagem nomeado, por família visual ou uma spec resolvida a partir de combinações. **Não criar um arquivo Markdown por carta aleatória do jogador.**
+## Implementado hoje
 
-## Experimento mínimo recomendado (não é milestone aprovado)
-Gerar **uma** identidade de maid em portrait e chibi a partir da mesma spec, com uma variação de cabelo/acessório; inserir um card no layout existente e mostrar chibi andando. Avaliar lado a lado: fofura, clareza em escala real, coesão e custo de modificar uma peça. Só expandir biblioteca após aprovação visual.
+- `MaidAnimCatalog` + `MaidView` + `WalkCycle`: as nove identidades ilustradas caminham em turno real. Processamento offline em `tools/art/maid_walk/maid_walk.py`, preservando cores/alpha suave; detalhes e limitações em [maid-walk/README.md](maid-walk/README.md).
+- Resolução por **nome + arquétipo**; novos saves **não garantem** as nove identidades. Equipamento retorna ao renderer procedural. Outras poses reutilizam Walk/rest frame, bandeja e escurecimento; não existem nove conjuntos independentes de Idle, Carry, Cook e Tired.
+- `MaidCard.cs` ainda usa composição de UI/procedural, **não um portrait ilustrado exclusivo** de cada uma das nove personagens.
+- A compatibilidade visual entre portrait futuro e chibi é objetivo **a validar**, não algo já demonstrado pelo ART-04.
 
-## Critérios para aceitar uma implementação
-- Visual no card e no restaurante corresponde à **mesma maid** sem leitura do nome.
-- Camada alterada muda somente seu efeito esperado nas duas representações; sem refazer personagens inteiros.
-- Pose andando/esperando mantém leitura em tamanho de jogo; texto e raridade do card continuam nítidos pela UI.
-- Mudanças de arte não duplicam lógica de stats/economia nem quebram equipamento visual existente, save, cenas ou GUIDs.
-- Evidência real: screenshots/capturas de card e gameplay no Unity; build/PlayMode informados como passou/falhou/não executado. CI de simulação não comprova estética.
+## Em aberto
 
-**Quando revisitar esta decisão:** se o protótipo demonstrar que camadas degradam qualidade ou tornam portrait/chibi inconsistentes, registrar a evidência e decidir alternativa — não substituir silenciosamente a direção.
+- Portraits e expressões, integração em cartas e painéis; variantes e peças (cabelo/roupa/acessório) sem perda de fidelidade artística.
+- Se/como persistir `visual_id` ou mapear cartas aleatórias a designs, mantendo serialização e comportamento existentes.
+- Equipamentos sem fallback procedural, novas animações ilustradas e alterações de câmera/posição relevantes ao futuro cenário.
+- Paleta, tipografia, composição dos menus e estilo final do cenário; aprovação humana com capturas reais do Unity.
+
+**Histórico:** a decisão de outubro propunha camadas intercambiáveis completas e uma única maid experimental antes de expandir. A expansão do **Walk** aconteceu com os PRs #29/#30; isso não prova modularidade de camadas nem implementação de portraits. A antiga direção cozy pixel-art está preservada em [COZY_VISUAL_NOVEL_DIRECTION.md](COZY_VISUAL_NOVEL_DIRECTION.md) apenas como histórico.

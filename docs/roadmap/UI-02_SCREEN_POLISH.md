@@ -1,7 +1,7 @@
 # UI-02 — Evoluir telas com a direção visual aprovada
 
-**Status:** BLOCKED até aprovação explícita de ART-01; usar aprendizados de ART-02 sempre que possível.
-**Agente implementador:** Codex. **Leia:** [roadmap](../ROADMAP.md), [ART-01](ART-01_STYLE.md), [ART-02](ART-02_VERTICAL_SLICE.md) somente quanto aos resultados aprovados, [Unity](../agent/UNITY.md). O GDD só se a experiência/regra mudar.
+**Status:** PENDENTE no marco 4 da [estratégia B](../ROADMAP.md); **não** bloqueado pela antiga exploração ART-01. A direção ilustrada foi aprovada e o Walk das nove maids já está integrado (PRs #29/#30); portraits e layout de cada tela continuam sujeitos a aprovação estética.
+**Implementação:** Claude Code (arte/crítica) + Codex (UI/integração/QA), em entregas separadas. **Leia:** [direção vigente](../art/CURRENT_VISUAL_DIRECTION.md), [roadmap](../ROADMAP.md) e [Unity](../agent/UNITY.md). ART-01/ART-02 registram decisões históricas, não gates ativos.
 
 ## Objetivo
 Fazer a estética, hierarquia e feedback trabalharem em favor da fantasia **“escalar maids adoráveis e acompanhar o desempenho do café”**. Preservar fluxo e funcionalidade existentes; o trabalho de UI-01 já deve ter resolvido bugs de layout antes de redesenhar.
@@ -19,7 +19,7 @@ O responsável pode escolher uma **fatias menor** para o PR inicial. Uma tela po
 - Estilo **aprovado** não é licença para refazer código de base indiscriminadamente. Preferir melhorias localizadas antes de alterar `UiKit.cs`, `Scenery.cs` e `Palette.cs` globalmente.
 - **Raridade, texto, stats, nomes, posição e moeda são UI**, não pixels gerados na imagem de portrait. A identidade de maid entre portrait e chibi segue [decisão visual](../art/MAID_VISUAL_DECISION.md).
 - Não mudar geração de economia, save, lootbox, chances, seleção e resultados do turno. Mudanças de comportamento exigem decisão separada no GDD.
-- Preservar legibilidade dos nove arquétipos, informações de raridade e contrastes, inclusive para cartas de cores distintas. Evitar UI toda na mesma tonalidade marrom; paleta definitiva ainda depende da ART-01.
+- Preservar legibilidade dos nove arquétipos, informações de raridade e contrastes, inclusive para cartas de cores distintas. Evitar UI toda na mesma tonalidade marrom; a paleta final dos menus ainda será definida com a aprovação visual das telas; não reativar a escolha pixel art.
 - Nova arte/animação não pode tornar performance impraticável em desktop WebGL; avaliar após integração real, não por promessa.
 - Não presumir que a existência de `Screen` ou `UiKit` garante ajuste automático em 960×600; conferir em runtime.
 
