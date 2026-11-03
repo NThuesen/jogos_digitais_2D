@@ -68,7 +68,7 @@ namespace Neko.Game.Ui
 
             _strip = UiKit.Row(transform, 8f);
             UiKit.Anchor(_strip, new Vector2(0f, 0f), new Vector2(16f, 46f));
-            _strip.sizeDelta = new Vector2(1000f, 76f);
+            _strip.sizeDelta = new Vector2(1100f, 76f);
 
             var hint = UiKit.Label(transform, Strings.Get("day.watching"), Typeface.Small,
                 Palette.WithAlpha(Palette.Cream, 0.7f));
@@ -97,21 +97,21 @@ namespace Neko.Game.Ui
 
             foreach (var worker in shift.Workers)
             {
-                var chip = UiKit.Panel(_strip, new Vector2(132f, 68f),
+                var chip = UiKit.Panel(_strip, new Vector2(116f, 68f),
                     Palette.WithAlpha(Palette.Panel, 0.92f), 0.2f);
                 _chips.Add(chip.gameObject);
 
                 var name = UiKit.Label(chip, worker.Name, Typeface.Tiny, Palette.Text,
                     bold: true);
-                name.rectTransform.sizeDelta = new Vector2(126f, 18f);
+                name.rectTransform.sizeDelta = new Vector2(112f, 18f);
                 UiKit.Anchor(name.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -4f));
 
                 var role = UiKit.Label(chip, RoleTable.For(worker.Role).DisplayName,
                     Typeface.Tiny, worker.InPosition ? Palette.TextDim : Palette.Alarm);
-                role.rectTransform.sizeDelta = new Vector2(126f, 16f);
+                role.rectTransform.sizeDelta = new Vector2(112f, 16f);
                 UiKit.Anchor(role.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -22f));
 
-                var mood = UiKit.Bar(chip, new Vector2(110f, 9f), Palette.Good, Palette.Wall);
+                var mood = UiKit.Bar(chip, new Vector2(98f, 9f), Palette.Good, Palette.Wall);
                 UiKit.Anchor((RectTransform)mood.rectTransform.parent, new Vector2(0.5f, 0f),
                     new Vector2(0f, 8f));
 

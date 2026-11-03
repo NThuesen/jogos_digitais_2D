@@ -39,12 +39,12 @@
   48
  ],
  "units_per_cycle": 1.1,
- "slide_factor": 2.8,
+ "slide_factor": 2.7,
  "cell": [
-  76,
-  124
+  156,
+  252
  ],
- "scale": 0.14414,
+ "scale": 0.28829,
  "frames": 15,
  "columns": 6,
  "rows": 3,
@@ -54,13 +54,13 @@
   7,
   8
  ],
- "foot_speed_px_per_frame": 2.51,
+ "foot_speed_px_per_frame": 2.5,
  "max_foot_separation_px": 39.1,
- "noslide_units_per_cycle": 0.393,
+ "noslide_units_per_cycle": 0.406,
  "status": "NEEDS_PROCESSING",
  "note": "73 specks removed; trimmed to source frames 34-48 to close the loop",
  "resource": "Maids/suzu_walk",
- "sheet_sha256": "46b4b6f9667c04e31fbc1b13624b3c8324ebd56882785349ad512029214b4a5b",
+ "sheet_sha256": "8a7f4f09c865c77e878dca5460585bafe02d5f7f3fe78ae75b7458be12caffc7",
  "source_sha256": {
   ".gitignore0033.png": "b460300aaf94e2b4df48040c80ca658bc1387b62f972c06d85e0a603f0744692",
   ".gitignore0034.png": "bad2890c574338bdac864274be7932e5a8f094fa752f2c3202b043d98185c0fe",
@@ -88,10 +88,11 @@
   ".gitignore0056.png": "049ebbda810c4d42ab41593f4635a76e339894802184208c70531ef3c874884a"
  },
  "parameters": {
-  "height_px": 120,
-  "colors": 48,
-  "style": "pixel",
-  "pad_px": 3,
-  "pixels_per_unit": 96
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
  }
 }

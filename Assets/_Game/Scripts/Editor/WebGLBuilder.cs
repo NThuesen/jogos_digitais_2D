@@ -31,9 +31,35 @@ namespace Neko.Game.Editor
             else EditorApplication.Exit(1);
         }
 
-        public static BuildReport Run()
+        /// <summary>
+        /// QA build with the NEKO_QA_NINE fixture (nine authored maids in one shift), written to
+        /// Build/WebGL_QA. The define is added only for this build and removed afterwards.
+        /// </summary>
+        public static void BuildQa()
         {
-            Directory.CreateDirectory(Output);
+            const string define = "NEKO_QA_NINE";
+            var target = NamedBuildTarget.WebGL;
+            var before = PlayerSettings.GetScriptingDefineSymbols(target);
+            BuildReport report;
+            try
+            {
+                PlayerSettings.SetScriptingDefineSymbols(target, string.IsNullOrEmpty(before) ? define : before + ";" + define);
+                report = Run("Build/WebGL_QA");
+            }
+            finally
+            {
+                PlayerSettings.SetScriptingDefineSymbols(target, before);
+            }
+
+            Debug.Log("QA build " + report.summary.result + " · " + report.summary.totalSize + " bytes");
+            EditorApplication.Exit(report.summary.result == BuildResult.Succeeded ? 0 : 1);
+        }
+
+        public static BuildReport Run() => Run(Output);
+
+        public static BuildReport Run(string output)
+        {
+            Directory.CreateDirectory(output);
 
             PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
 
@@ -53,7 +79,7 @@ namespace Neko.Game.Editor
             var options = new BuildPlayerOptions
             {
                 scenes = new[] { "Assets/_Game/Scenes/Boot.unity" },
-                locationPathName = Output,
+                locationPathName = output,
                 target = BuildTarget.WebGL,
                 targetGroup = BuildTargetGroup.WebGL,
                 options = BuildOptions.None,

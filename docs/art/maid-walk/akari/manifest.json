@@ -39,12 +39,12 @@
   56
  ],
  "units_per_cycle": 1.76,
- "slide_factor": 2.4,
+ "slide_factor": 2.3,
  "cell": [
-  84,
-  124
+  172,
+  252
  ],
- "scale": 0.13667,
+ "scale": 0.27335,
  "frames": 24,
  "columns": 6,
  "rows": 4,
@@ -56,13 +56,13 @@
   19,
   20
  ],
- "foot_speed_px_per_frame": 2.97,
- "max_foot_separation_px": 40.1,
- "noslide_units_per_cycle": 0.743,
+ "foot_speed_px_per_frame": 3.0,
+ "max_foot_separation_px": 39.6,
+ "noslide_units_per_cycle": 0.78,
  "status": "READY",
  "note": "",
  "resource": "Maids/akari_walk",
- "sheet_sha256": "76f5ae16df6f9d17db00cd965e9a1fbe1a66658c63001965780a2b1561bd6500",
+ "sheet_sha256": "b45fc50515464814243fcac49e110a8411152dd049282fcd80cd975d20e81294",
  "source_sha256": {
   "0033.png": "2b877d179b28b14ab75a27acfb69b7d0c1b1d6c5ba86e482df8c9d320ad3b64e",
   "0034.png": "0f72defa97a92fbe14a23471cbfa966b20e7154b7d9073dd5fd1040826bcdab6",
@@ -90,10 +90,11 @@
   "0056.png": "0510f326060bca40cc51bf158c1021265877ed7166800dffee4b62025693dd87"
  },
  "parameters": {
-  "height_px": 120,
-  "colors": 48,
-  "style": "pixel",
-  "pad_px": 3,
-  "pixels_per_unit": 96
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
  }
 }

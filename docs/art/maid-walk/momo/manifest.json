@@ -39,12 +39,12 @@
   55
  ],
  "units_per_cycle": 1.47,
- "slide_factor": 4.1,
+ "slide_factor": 3.9,
  "cell": [
-  70,
-  124
+  144,
+  252
  ],
- "scale": 0.13019,
+ "scale": 0.26038,
  "frames": 20,
  "columns": 6,
  "rows": 4,
@@ -54,13 +54,13 @@
   10,
   11
  ],
- "foot_speed_px_per_frame": 1.71,
+ "foot_speed_px_per_frame": 1.72,
  "max_foot_separation_px": 34.8,
- "noslide_units_per_cycle": 0.356,
+ "noslide_units_per_cycle": 0.373,
  "status": "NEEDS_PROCESSING",
  "note": "trimmed to source frames 36-55 to close the loop",
  "resource": "Maids/momo_walk",
- "sheet_sha256": "53cf87055f9343b87967bf813c15e0a374434089d659fd52fbc6139093395093",
+ "sheet_sha256": "0f40961c552574e5bb32fdd2bb87b02a12e4c611f4e8d7aa1ecfcb7b4ae1466b",
  "source_sha256": {
   "0036.png": "24832436154ff595fdadffd0529e066b17e63aa0532ac8626f7c26505606a853",
   "0037.png": "fa003f668421fcd9ba6cbc729647538d382c38742d15470b4c1df0d31a06c03d",
@@ -91,10 +91,11 @@
   "0062.png": "52e425b4eea8dafb81c3f51500fd5e7388b5d7c2720f5ca84a35f12bcc2f3c6a"
  },
  "parameters": {
-  "height_px": 120,
-  "colors": 48,
-  "style": "pixel",
-  "pad_px": 3,
-  "pixels_per_unit": 96
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
  }
 }

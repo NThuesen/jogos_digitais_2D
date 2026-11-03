@@ -12,7 +12,8 @@ Every number is measured on the sequence being processed; nothing is copied from
   clean   : zero the low-alpha matte, key green chroma where the export still has it, drop specks
   anchor  : feet (lowest opaque row) and body axis (median x of the torso band) per frame
   resize  : ONE Lanczos resample from the raw crop, premultiplied alpha, one scale per maid
-  style   : shared per-maid palette + hard alpha ("pixel"), or untouched ("smooth")
+  style   : "illustrated" (default, ART-04): colours, shading and soft alpha untouched.
+            "pixel" (ART-03, kept only to reproduce / roll back): per-maid 48-colour palette + hard alpha.
   measure : rest frames (both shoes down), idle frame, foot speed -> no-slide units per cycle
 
 Requires Python 3.9+, Pillow, numpy, scipy.
@@ -35,6 +36,7 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..")
 CFG = os.path.join(os.path.dirname(__file__), "maids.json")
 OUT_RES = os.path.join(ROOT, "Assets", "_Game", "Resources", "Maids")
 OUT_DOCS = os.path.join(ROOT, "docs", "art", "maid-walk")
+REFERENCE_HEIGHT_PX = 120  # height the foot analysis was tuned at
 SOLID = 128  # alpha at or above this is "the character"
 
 
@@ -43,12 +45,17 @@ def sha256(path):
         return hashlib.sha256(f.read()).hexdigest()
 
 
-def load_config(only):
+def load_config(only, style=None):
     cfg = json.load(open(CFG, encoding="utf8"))
+    style = style or cfg["style"]
     maids = []
     for m in cfg["maids"]:
         full = dict(cfg["defaults"])
+        full.update(cfg["styles"][style])
         full.update(m)
+        full["style"] = style
+        # texture pixels per world unit: the sprite is always `world_height` units tall, however sharp the texture
+        full["pixels_per_unit"] = round(full["height_px"] / full["world_height"], 3)
         if not only or m["id"] in only:
             maids.append(full)
     return cfg, maids
@@ -56,13 +63,12 @@ def load_config(only):
 
 # ------------------------------------------------------------------------------ cleaning
 def key_green(rgba):
-    """Remove a green screen that the export left in. Only green connected to the frame border
-    is background, so green inside the character (none today) would survive."""
+    """Remove a green screen that the export left in, including pockets the figure encloses."""
     rgb = rgba[..., :3].astype(int)
     dom = rgb[..., 1] - np.maximum(rgb[..., 0], rgb[..., 2])
-    lab, _ = nd.label(dom > 60)
-    border = np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))
-    bg = np.isin(lab, border[border > 0])
+    # Every strongly green pixel, not only the ones touching the border: the screen also shows through
+    # enclosed gaps (between a hair bun and a curl). No maid wears this green; teal has g close to b, so dom stays small.
+    bg = dom > 60
     ring = nd.binary_dilation(bg, iterations=3) & ~bg
     soft = ring & (dom > 12)
     out = rgba.copy()
@@ -301,7 +307,14 @@ def run(m, write):
         crop[sy0 - y0:sy0 - y0 + (min(f.shape[0], y1) - sy0), sx0 - x0:sx0 - x0 + (min(f.shape[1], x1) - sx0)] = \
             f[sy0:min(f.shape[0], y1), sx0:min(f.shape[1], x1)]
         im = Image.fromarray(crop, "RGBA").convert("RGBa").resize((cw, ch), Image.LANCZOS).convert("RGBA")
-        cells.append(np.array(im))
+        arr = np.array(im)
+        # whole-pixel multiples of 4 (block compression), feet stay on the bottom row, body axis stays centred
+        h4, w4 = -(-arr.shape[0] // 4) * 4, -(-arr.shape[1] // 4) * 4
+        canvas = np.zeros((h4, w4, 4), np.uint8)
+        ox = (w4 - arr.shape[1]) // 2
+        canvas[h4 - arr.shape[0]:, ox:ox + arr.shape[1]] = arr
+        cells.append(canvas)
+    cw, ch = cells[0].shape[1], cells[0].shape[0]
 
     if m["style"] == "pixel":
         opaque = np.concatenate([c[c[..., 3] >= SOLID][:, :3] for c in cells])
@@ -314,16 +327,28 @@ def run(m, write):
             out.append(np.dstack([q, np.where(c[..., 3] >= SOLID, 255, 0).astype(np.uint8)]))
         cells = out
     for c in cells:  # bleed colour under transparent texels: no dark halo under filtering
+        if m["style"] != "pixel":
+            c[c[..., 3] < 4, 3] = 0  # resampling dust, invisible but it would keep mip levels from being clean
         idx = nd.distance_transform_edt(c[..., 3] == 0, return_distances=False, return_indices=True)
         filled = c[idx[0], idx[1]]
         c[..., :3] = np.where((c[..., 3] == 0)[..., None], filled[..., :3], c[..., :3])
 
-    rest, seps, speed = analyse_feet(cells, m["pixels_per_unit"])
+    # Foot analysis thresholds (two floor rows, 4 px apart, 14 px per step) were tuned at the 120 px
+    # reference height; measure on a copy at that height so the result does not depend on texture sharpness.
+    ref_scale = REFERENCE_HEIGHT_PX / float(m["height_px"])
+    ref_ppu = REFERENCE_HEIGHT_PX / float(m["world_height"])
+    if abs(ref_scale - 1.0) > 1e-6:
+        ref = [np.array(Image.fromarray(c, "RGBA").convert("RGBa").resize(
+            (max(1, int(round(c.shape[1] * ref_scale))), max(1, int(round(c.shape[0] * ref_scale)))), Image.LANCZOS).convert("RGBA"))
+            for c in cells]
+    else:
+        ref = cells
+    rest, seps, speed = analyse_feet(ref, ref_ppu)
     if len(rest) < 2:  # never leave the runtime without a resting frame
         rest = sorted(np.argsort(seps)[:2].tolist()) if any(seps) else [0, n // 2]
     idle = min(rest, key=lambda i: seps[i] if seps[i] >= 4 else 999)
     stride = max(seps)
-    noslide = round(speed * n / m["pixels_per_unit"], 3) if speed else 0.0
+    noslide = round(speed * n / ref_ppu, 3) if speed else 0.0
     cols = 6
     rows = (n + cols - 1) // cols
     cadence = m.get("cadence_fps", CADENCE_FPS)
@@ -343,14 +368,13 @@ def pack(cells, cols, rows, cw, ch):
     return Image.fromarray(sheet, "RGBA")
 
 
-def contact(cells, path, rest, idle, bg=(214, 178, 140)):
+def contact(cells, path, rest, idle, bg=(214, 178, 140), z=2, resample=Image.NEAREST):
     cw, ch = cells[0].shape[1], cells[0].shape[0]
     cols = min(12, len(cells))
     rows = (len(cells) + cols - 1) // cols
-    z = 2
     sheet = Image.new("RGB", (cols * cw * z, rows * ch * z), bg)
     for i, c in enumerate(cells):
-        im = Image.fromarray(c, "RGBA").resize((cw * z, ch * z), Image.NEAREST)
+        im = Image.fromarray(c, "RGBA").resize((cw * z, ch * z), resample)
         sheet.paste(im, ((i % cols) * cw * z, (i // cols) * ch * z), im)
         if i in rest:
             x, y = (i % cols) * cw * z, (i // cols) * ch * z
@@ -358,13 +382,13 @@ def contact(cells, path, rest, idle, bg=(214, 178, 140)):
     sheet.save(path)
 
 
-def gif(cells, path, fps=30):
+def gif(cells, path, fps=30, z=3, resample=Image.NEAREST):
     cw, ch = cells[0].shape[1], cells[0].shape[0]
     frames = []
     for c in cells:
         bg = Image.new("RGBA", (cw, ch), (214, 178, 140, 255))
         bg.alpha_composite(Image.fromarray(c, "RGBA"))
-        frames.append(bg.resize((cw * 3, ch * 3), Image.NEAREST).convert("P", palette=Image.ADAPTIVE))
+        frames.append(bg.resize((cw * z, ch * z), resample).convert("P", palette=Image.ADAPTIVE))
     frames[0].save(path, save_all=True, append_images=frames[1:], duration=int(1000 / fps), loop=0, disposal=2)
 
 
@@ -373,22 +397,39 @@ META_FOLDER = "fileFormatVersion: 2\nguid: GUID\nfolderAsset: yes\nDefaultImport
 META_TEXT = "fileFormatVersion: 2\nguid: GUID\nTextScriptImporter:\n  externalObjects: {}\n  userData:\n  assetBundleName:\n  assetBundleVariant:\n"
 
 
-def ensure_meta(path, template):
-    """Unity .meta with a GUID derived from the asset's path, so reruns never change it."""
+# Import settings that follow the processed style (the template carries tokens, never a fixed style).
+META_STYLE = {
+    "illustrated": {"ENABLE_MIPMAP": "1", "FILTER_MODE": "2", "MIP_BIAS": "-0.5"},  # Trilinear + mipmaps
+    "pixel": {"ENABLE_MIPMAP": "0", "FILTER_MODE": "0", "MIP_BIAS": "0"},           # Point, no mipmaps
+}
+
+
+def ensure_meta(path, template, style="illustrated"):
+    """Unity .meta for `path`. An existing GUID is always kept; a new asset gets one derived from its path."""
     meta = path + ".meta"
-    if not os.path.exists(meta):
+    guid = None
+    if os.path.exists(meta):
+        found = re.search(r"^guid: ([0-9a-f]{32})\s*$", open(meta, encoding="utf8").read(), re.M)
+        guid = found.group(1) if found else None
+    if guid is None:
         guid = hashlib.md5(os.path.relpath(path, ROOT).replace("\\", "/").encode()).hexdigest()
-        with open(meta, "w", encoding="utf8", newline="\n") as f:
-            f.write(template.replace("GUID", guid))
+    text = template.replace("GUID", guid)
+    for token, value in META_STYLE[style].items():
+        text = text.replace(token, value)
+    with open(meta, "w", encoding="utf8", newline="\n") as f:
+        f.write(text)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["audit", "process"])
     ap.add_argument("--only", default="")
+    ap.add_argument("--style", choices=["illustrated", "pixel"], help="default: the style named in maids.json")
     args = ap.parse_args()
     only = [s for s in args.only.split(",") if s]
-    cfg, maids = load_config(only)
+    cfg, maids = load_config(only, args.style)
+    pixel = maids and maids[0]["style"] == "pixel"
+    pv = dict(z=2, resample=Image.NEAREST) if pixel else dict(z=1, resample=Image.BICUBIC)
     write = args.cmd == "process"
     work = os.path.join(ROOT, "art_working", "_maid_walk_out")
     os.makedirs(work, exist_ok=True)
@@ -400,7 +441,7 @@ def main():
             results.append(res)
             continue
         res["status"], res["note"] = status_for(res, m)
-        contact(cells, os.path.join(work, m["id"] + "_contact.png"), res["rest_frames"], res["idle_frame"])
+        contact(cells, os.path.join(work, m["id"] + "_contact.png"), res["rest_frames"], res["idle_frame"], **pv)
         if res["status"] != "REJECTED" and m.get("pack", True):
             sheet = pack(cells, res["columns"], res["rows"], res["cell"][0], res["cell"][1])
             if write:
@@ -410,11 +451,11 @@ def main():
                 res["resource"] = "Maids/" + m["id"] + "_walk"
                 res["sheet_sha256"] = sha256(sheet_path)
                 res["source_sha256"] = {os.path.basename(p): sha256(p) for p in prepare(m)}
-                res["parameters"] = {k: m[k] for k in ("height_px", "colors", "style", "pad_px", "pixels_per_unit")}
+                res["parameters"] = {k: m[k] for k in ("height_px", "colors", "style", "pad_px", "pixels_per_unit", "world_height")}
                 d = os.path.join(OUT_DOCS, m["id"])
                 os.makedirs(d, exist_ok=True)
-                gif(cells, os.path.join(d, "walk_preview.gif"))
-                contact(cells, os.path.join(d, "contact_sheet.png"), res["rest_frames"], res["idle_frame"])
+                gif(cells, os.path.join(d, "walk_preview.gif"), z=3 if pixel else 1, resample=pv["resample"])
+                contact(cells, os.path.join(d, "contact_sheet.png"), res["rest_frames"], res["idle_frame"], **pv)
                 with open(os.path.join(d, "manifest.json"), "w", encoding="utf8") as f:
                     json.dump(res, f, indent=1)
         results.append(res)
@@ -443,8 +484,10 @@ def main():
             json.dump({"maids": entries}, f, indent=1)
             f.write("\n")
     if write:
-        for f in glob.glob(os.path.join(OUT_RES, "*_walk.png")):
-            ensure_meta(f, META_TEXTURE)
+        # Only the sheets processed in this run: a `--only` run never touches another maid's asset or .meta.
+        for r in results:
+            if r.get("resource"):
+                ensure_meta(os.path.join(OUT_RES, r["id"] + "_walk.png"), META_TEXTURE, maids[0]["style"])
         ensure_meta(os.path.join(OUT_RES, "maid_walk_catalog.json"), META_TEXT)
         ensure_meta(OUT_RES, META_FOLDER)
     with open(os.path.join(work, "audit.json"), "w", encoding="utf8") as f:

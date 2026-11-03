@@ -6,8 +6,10 @@ Unlike `pgrep -x Unity`, reading argv is not affected by Linux's truncated
 """
 import csv
 import io
+import json
 import os
 import pathlib
+import re
 import subprocess
 import sys
 
@@ -15,6 +17,45 @@ import sys
 def is_editor(executable: str) -> bool:
     name = executable.replace("\\", "/").rstrip("/").split("/")[-1].lower()
     return name in {"unity", "unity.exe", "unity-editor"}
+
+
+EDITOR_FLAGS = {"-projectpath", "-batchmode", "-executemethod", "-createproject",
+                "-runtests", "-quit", "-logfile", "-nographics"}
+EDITOR = "editor"
+MCP = "mcp"
+AMBIGUOUS = "ambiguous"
+
+
+def tokenize(command_line: str):
+    """Split a command line into tokens, honouring double quotes (Windows style)."""
+    return [a or b for a, b in re.findall(r'"([^"]*)"|(\S+)', command_line)]
+
+
+def classify(command_line):
+    """Classify one Unity-named process by its FULL command line.
+
+    MCP: the Unity CLI's MCP server, i.e. `unity mcp [...]` with no Editor flags. It never
+         opens the project, so it must not block Editor operations.
+    AMBIGUOUS: the command line is missing/unreadable. Treated as blocking (fail-closed).
+    EDITOR: anything else, including every real Editor launch.
+    """
+    if command_line is None or not command_line.strip():
+        return AMBIGUOUS
+    tokens = tokenize(command_line)
+    if not tokens:
+        return AMBIGUOUS
+    # The Editor binary lives in an ".../Editor/Unity.exe" install folder; the CLI does not.
+    if re.search(r"[\\/]editor[\\/]unity(\.exe)?$", tokens[0].lower()):
+        return EDITOR
+    args = [t.lower() for t in tokens[1:]]
+    if args and args[0] == "mcp" and not any(a in EDITOR_FLAGS for a in args):
+        return MCP
+    return EDITOR
+
+
+def blocking(processes):
+    """processes: iterable of (pid, command_line). Returns the pids that block an Editor run."""
+    return [pid for pid, line in processes if classify(line) != MCP]
 
 
 def editors_linux():
@@ -28,7 +69,9 @@ def editors_linux():
         try:
             args = (pid_dir / "cmdline").read_bytes().split(b"\0")
             if args[0] and is_editor(args[0].decode("utf-8", errors="replace")):
-                found.append(int(pid_dir.name))
+                line = " ".join('"%s"' % a.decode("utf-8", errors="replace")
+                                for a in args if a)
+                found.append((int(pid_dir.name), line))
         except (FileNotFoundError, ProcessLookupError, PermissionError):
             # Short-lived process gone or not owned by this user.
             continue
@@ -43,20 +86,24 @@ def editors_macos():
         if len(fields) == 2 and fields[0].isdigit():
             executable = fields[1].split(None, 1)[0]
             if is_editor(executable):
-                found.append(int(fields[0]))
+                found.append((int(fields[0]), fields[1]))
     return found
 
 
 def editors_windows():
+    """(pid, full command line) of every Unity.exe; the line is None when unreadable."""
+    script = ("Get-CimInstance Win32_Process -Filter \"Name='Unity.exe'\" | "
+              "Select-Object ProcessId,CommandLine | ConvertTo-Json -Compress")
     output = subprocess.check_output(
-        ["tasklist.exe", "/FI", "IMAGENAME eq Unity.exe", "/FO", "CSV", "/NH"],
-        text=True, errors="replace"
-    )
-    found = []
-    for cells in csv.reader(io.StringIO(output)):
-        if len(cells) >= 2 and cells[0].lower() == "unity.exe" and cells[1].isdigit():
-            found.append(int(cells[1]))
-    return found
+        ["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", script],
+        text=True, errors="replace")
+    output = output.strip()
+    if not output:
+        return []
+    data = json.loads(output)
+    if isinstance(data, dict):
+        data = [data]
+    return [(int(row["ProcessId"]), row.get("CommandLine")) for row in data]
 
 
 if __name__ == "__main__":
@@ -72,7 +119,9 @@ if __name__ == "__main__":
     except (RuntimeError, OSError, subprocess.SubprocessError) as exc:
         print(f"ERROR: Unity Editor process detection unavailable: {exc}", file=sys.stderr)
         sys.exit(2)
+    found = blocking(found)
     if found:
-        print(f"ERROR: Unity Editor is already running (PID(s) {', '.join(map(str, found))}). "
+        print(f"ERROR: Unity Editor is already running or cannot be told apart from one "
+              f"(PID(s) {', '.join(map(str, found))}). "
               "Close it before running another Editor operation.", file=sys.stderr)
         sys.exit(1)

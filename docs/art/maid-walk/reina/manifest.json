@@ -39,12 +39,12 @@
   177
  ],
  "units_per_cycle": 2.42,
- "slide_factor": 3.5,
+ "slide_factor": 3.4,
  "cell": [
-  82,
-  124
+  168,
+  252
  ],
- "scale": 0.1408,
+ "scale": 0.2816,
  "frames": 33,
  "columns": 6,
  "rows": 6,
@@ -59,11 +59,11 @@
  ],
  "foot_speed_px_per_frame": 2.0,
  "max_foot_separation_px": 34.1,
- "noslide_units_per_cycle": 0.688,
+ "noslide_units_per_cycle": 0.715,
  "status": "NEEDS_PROCESSING",
  "note": "trimmed to source frames 145-177 to close the loop",
  "resource": "Maids/reina_walk",
- "sheet_sha256": "ea474732cd88803e75b065226ddcb020bd56e1267f65a6f3265633cc3eb80400",
+ "sheet_sha256": "1febda572a21fb5de7c32f1e6e56ccf5a9a8db693d872ea2a87e89d7f56c6c64",
  "source_sha256": {
   "0143.png": "4c9943848e81852f4401b4b8c0daabf084b6229d31c42a89d19a77e411f74696",
   "0144.png": "c40997589d34fa56e72e409b76ba6e29d302bc641ed1ed90da3efd670a0f6de5",
@@ -103,10 +103,11 @@
   "0178.png": "571256b4dc358d6a8de555aef1a88702a321fcf8c219260e6031b8fcdb7f2c30"
  },
  "parameters": {
-  "height_px": 120,
-  "colors": 48,
-  "style": "pixel",
-  "pad_px": 3,
-  "pixels_per_unit": 96
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
  }
 }

@@ -93,7 +93,7 @@ Idle reuses a both-feet-down frame; Carry shows the walk plus the existing plate
 
 ## Style trade-off
 
-Frames are reduced once (Lanczos, premultiplied alpha) to 120 px character height and quantised to a 48-colour per-maid palette with hard alpha, as the accepted Suzu pipeline did. Source frames are smooth illustrations rather than true pixel art, so edges are pixel-stepped but some fine detail (face, hair strands) is lost; `style: smooth` in `maids.json` keeps the full-colour downsample if the owner prefers.
+Since ART-04 frames are reduced once (Lanczos, premultiplied alpha) to 240 px character height with original colours and soft alpha (`style: illustrated`). The ART-03 treatment (120 px, 48-colour palette, hard alpha) is `--style pixel` / commit `37b0f3f`. Foot measurements are taken on a 120 px copy so rest frames, idle frame and `units_per_cycle` do not depend on texture sharpness.
 
 ## Evidence
 

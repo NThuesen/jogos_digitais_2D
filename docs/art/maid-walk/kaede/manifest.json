@@ -39,12 +39,12 @@
   58
  ],
  "units_per_cycle": 1.25,
- "slide_factor": 3.8,
+ "slide_factor": 3.7,
  "cell": [
-  76,
-  124
+  156,
+  252
  ],
- "scale": 0.14102,
+ "scale": 0.28204,
  "frames": 17,
  "columns": 6,
  "rows": 3,
@@ -58,11 +58,11 @@
  ],
  "foot_speed_px_per_frame": 1.85,
  "max_foot_separation_px": 36.8,
- "noslide_units_per_cycle": 0.328,
+ "noslide_units_per_cycle": 0.341,
  "status": "LIMITED",
  "note": "loop does not close even after trimming (x2.5 a normal step); 93 specks removed; trimmed to source frames 42-58 to close the loop",
  "resource": "Maids/kaede_walk",
- "sheet_sha256": "fa83f45386f2fe18a3d21706e4dbf516faa80f415a86dd5df01c3136ee510398",
+ "sheet_sha256": "d5f7e47ed17d4a996714489858bc087ddcfa34bc3d683ed7caa81fc0b49eb331",
  "source_sha256": {
   "0035.png": "6a54d58f105aeb7b57e00540650f1d052bb64ca2806479891c329274bf0f2d12",
   "0036.png": "5d7135a140abf90f890b39b0b50011711f393980cb6a1fa3c86265d02a33b2fa",
@@ -94,10 +94,11 @@
   "0062.png": "5d634936c1d804c6f100ce95955090d30b58c4c197901a4843d3b0405110297e"
  },
  "parameters": {
-  "height_px": 120,
-  "colors": 48,
-  "style": "pixel",
-  "pad_px": 3,
-  "pixels_per_unit": 96
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
  }
 }
