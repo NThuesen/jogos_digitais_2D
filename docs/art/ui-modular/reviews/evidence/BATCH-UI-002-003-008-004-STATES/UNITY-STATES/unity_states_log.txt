@@ -1,0 +1,269 @@
+SPRITE normal rect=(x:0.00, y:0.00, width:768.00, height:141.00) border=(59.31, 40.82, 59.31, 40.82) ppu=100
+SPRITE hover rect=(x:0.00, y:0.00, width:768.00, height:141.00) border=(59.31, 40.82, 59.31, 40.82) ppu=100
+SPRITE pressed rect=(x:0.00, y:0.00, width:768.00, height:141.00) border=(59.31, 40.82, 59.31, 40.82) ppu=100
+SPRITE disabled rect=(x:0.00, y:0.00, width:768.00, height:141.00) border=(59.31, 40.82, 59.31, 40.82) ppu=100
+CASE 960x600 light=False CATALOG=stool:60,koi_pond:900
+CANVAS (1152.00, 720.00) scale=0,8333333
+BASE_MESH col0 row0 vertices=36
+TEXT col0 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+TEXT col0 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col0 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col0 row1 vertices=36
+TEXT col0 row1 '60 ¥' pref=33,6x19,2 slot=(104.95, 27.64) fits=True
+TEXT col0 row1 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col0 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col0 row2 vertices=36
+TEXT col0 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+TEXT col0 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col0 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col0 row3 vertices=36
+TEXT col0 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+TEXT col0 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col0 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+BASE_MESH col1 row0 vertices=36
+TEXT col1 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+TEXT col1 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col1 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col1 row1 vertices=36
+TEXT col1 row1 '60 ¥' pref=33,6x19,2 slot=(104.95, 27.64) fits=True
+TEXT col1 row1 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col1 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col1 row2 vertices=36
+TEXT col1 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+TEXT col1 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col1 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col1 row3 vertices=36
+TEXT col1 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+TEXT col1 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col1 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+BASE_MESH col2 row0 vertices=36
+TEXT col2 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+TEXT col2 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col2 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col2 row1 vertices=36
+TEXT col2 row1 '60 ¥' pref=33,6x19,2 slot=(104.95, 27.64) fits=True
+TEXT col2 row1 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col2 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col2 row2 vertices=36
+TEXT col2 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+TEXT col2 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col2 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col2 row3 vertices=36
+TEXT col2 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+TEXT col2 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col2 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+BASE_MESH col3 row0 vertices=36
+TEXT col3 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+TEXT col3 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col3 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col3 row1 vertices=36
+TEXT col3 row1 '60 ¥' pref=33,6x19,2 slot=(104.95, 27.64) fits=True
+TEXT col3 row1 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col3 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col3 row2 vertices=36
+TEXT col3 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+TEXT col3 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col3 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col3 row3 vertices=36
+TEXT col3 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+TEXT col3 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col3 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+CASE 960x600 light=True CATALOG=stool:60,koi_pond:900
+CANVAS (1152.00, 720.00) scale=0,8333333
+BASE_MESH col0 row0 vertices=36
+TEXT col0 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+TEXT col0 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col0 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col0 row1 vertices=36
+TEXT col0 row1 '60 ¥' pref=33,6x19,2 slot=(104.95, 27.64) fits=True
+TEXT col0 row1 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col0 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col0 row2 vertices=36
+TEXT col0 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+TEXT col0 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col0 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col0 row3 vertices=36
+TEXT col0 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+TEXT col0 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col0 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+BASE_MESH col1 row0 vertices=36
+TEXT col1 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+TEXT col1 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col1 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col1 row1 vertices=36
+TEXT col1 row1 '60 ¥' pref=33,6x19,2 slot=(104.95, 27.64) fits=True
+TEXT col1 row1 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col1 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col1 row2 vertices=36
+TEXT col1 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+TEXT col1 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col1 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col1 row3 vertices=36
+TEXT col1 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+TEXT col1 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col1 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+BASE_MESH col2 row0 vertices=36
+TEXT col2 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+TEXT col2 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col2 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col2 row1 vertices=36
+TEXT col2 row1 '60 ¥' pref=33,6x19,2 slot=(104.95, 27.64) fits=True
+TEXT col2 row1 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col2 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col2 row2 vertices=36
+TEXT col2 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+TEXT col2 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col2 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col2 row3 vertices=36
+TEXT col2 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+TEXT col2 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col2 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+BASE_MESH col3 row0 vertices=36
+TEXT col3 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+TEXT col3 row0 'Voltar' pref=48x19,2 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col3 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col3 row1 vertices=36
+TEXT col3 row1 '60 ¥' pref=33,6x19,2 slot=(104.95, 27.64) fits=True
+TEXT col3 row1 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col3 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col3 row2 vertices=36
+TEXT col3 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+TEXT col3 row2 '900 ¥' pref=43,2x19,2 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col3 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col3 row3 vertices=36
+TEXT col3 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+TEXT col3 row3 'Confirmar' pref=109,2x25,2 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col3 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+CASE 1280x720 light=False CATALOG=stool:60,koi_pond:900
+CANVAS (1280.00, 720.00) scale=1
+BASE_MESH col0 row0 vertices=36
+TEXT col0 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+TEXT col0 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col0 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col0 row1 vertices=36
+TEXT col0 row1 '60 ¥' pref=35x20 slot=(104.95, 27.64) fits=True
+TEXT col0 row1 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col0 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col0 row2 vertices=36
+TEXT col0 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+TEXT col0 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col0 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col0 row3 vertices=36
+TEXT col0 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+TEXT col0 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col0 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+BASE_MESH col1 row0 vertices=36
+TEXT col1 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+TEXT col1 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col1 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col1 row1 vertices=36
+TEXT col1 row1 '60 ¥' pref=35x20 slot=(104.95, 27.64) fits=True
+TEXT col1 row1 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col1 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col1 row2 vertices=36
+TEXT col1 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+TEXT col1 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col1 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col1 row3 vertices=36
+TEXT col1 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+TEXT col1 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col1 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+BASE_MESH col2 row0 vertices=36
+TEXT col2 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+TEXT col2 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col2 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col2 row1 vertices=36
+TEXT col2 row1 '60 ¥' pref=35x20 slot=(104.95, 27.64) fits=True
+TEXT col2 row1 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col2 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col2 row2 vertices=36
+TEXT col2 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+TEXT col2 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col2 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col2 row3 vertices=36
+TEXT col2 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+TEXT col2 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col2 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+BASE_MESH col3 row0 vertices=36
+TEXT col3 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+TEXT col3 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col3 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col3 row1 vertices=36
+TEXT col3 row1 '60 ¥' pref=35x20 slot=(104.95, 27.64) fits=True
+TEXT col3 row1 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col3 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col3 row2 vertices=36
+TEXT col3 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+TEXT col3 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col3 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col3 row3 vertices=36
+TEXT col3 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+TEXT col3 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col3 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+CASE 1280x720 light=True CATALOG=stool:60,koi_pond:900
+CANVAS (1280.00, 720.00) scale=1
+BASE_MESH col0 row0 vertices=36
+TEXT col0 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+TEXT col0 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col0 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col0 row1 vertices=36
+TEXT col0 row1 '60 ¥' pref=35x20 slot=(104.95, 27.64) fits=True
+TEXT col0 row1 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col0 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col0 row2 vertices=36
+TEXT col0 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+TEXT col0 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col0 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col0 row3 vertices=36
+TEXT col0 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+TEXT col0 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col0 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+BASE_MESH col1 row0 vertices=36
+TEXT col1 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+TEXT col1 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col1 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col1 row1 vertices=36
+TEXT col1 row1 '60 ¥' pref=35x20 slot=(104.95, 27.64) fits=True
+TEXT col1 row1 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col1 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col1 row2 vertices=36
+TEXT col1 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+TEXT col1 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col1 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col1 row3 vertices=36
+TEXT col1 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+TEXT col1 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col1 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+BASE_MESH col2 row0 vertices=36
+TEXT col2 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+TEXT col2 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col2 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col2 row1 vertices=36
+TEXT col2 row1 '60 ¥' pref=35x20 slot=(104.95, 27.64) fits=True
+TEXT col2 row1 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col2 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col2 row2 vertices=36
+TEXT col2 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+TEXT col2 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col2 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col2 row3 vertices=36
+TEXT col2 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+TEXT col2 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col2 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+BASE_MESH col3 row0 vertices=36
+TEXT col3 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+TEXT col3 row0 'Voltar' pref=51x20 slot=(74.95, 27.64) fits=True
+SEQUENCE PASS col3 row0 clicks=1 rect=(x:-60.00, y:-22.00, width:120.00, height:44.00) label=Voltar
+BASE_MESH col3 row1 vertices=36
+TEXT col3 row1 '60 ¥' pref=35x20 slot=(104.95, 27.64) fits=True
+TEXT col3 row1 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col3 row1 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=60 ¥
+BASE_MESH col3 row2 vertices=36
+TEXT col3 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+TEXT col3 row2 '900 ¥' pref=45x20 slot=(104.95, 27.64) fits=True
+SEQUENCE PASS col3 row2 clicks=1 rect=(x:-75.00, y:-22.00, width:150.00, height:44.00) label=900 ¥
+BASE_MESH col3 row3 vertices=36
+TEXT col3 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+TEXT col3 row3 'Confirmar' pref=114x27 slot=(176.53, 34.38) fits=True
+SEQUENCE PASS col3 row3 clicks=1 rect=(x:-115.00, y:-27.00, width:230.00, height:54.00) label=Confirmar
+TOTAL mesh/state=512 raycast=6656 clicks=64 disabledBlocked=64 textFailures=0

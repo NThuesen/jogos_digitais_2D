@@ -1,12 +1,12 @@
 # Auditoria em lote — UI-002, UI-003, UI-008 e estados UI-004 COMPACT v01
 
-**Escopo: arquivos PNG, limpeza conservadora e inspeção visual estática. Nenhum asset novo aprovado ou integrado.** Unity, WebGL, builds e QA/runtime anteriores **não foram executados ou repetidos**. UI-001 e UI-004 COMPACT NORMAL foram somente lidos como referências; seus arquivos e aprovações permanecem intactos. Não houve geração de arte, alteração de cenas/gameplay ou redesenho.
+**Escopo inicial (seções 1–7): arquivos PNG, limpeza conservadora e inspeção visual estática. Nenhum asset novo aprovado ou integrado.** A seção 8 acrescenta somente QA Unity direcionado dos estados. WebGL, builds e QA extensos anteriores não foram repetidos. UI-001 e UI-004 COMPACT NORMAL foram somente lidos como referências; seus arquivos e aprovações permanecem intactos. Não houve geração de arte, alteração de cenas/gameplay ou redesenho.
 
 Base: `98688920fc6ea5595eadfb7becd8d07d6fe78302` (main remota, inclui prompts da PR #43); branch `qa/ui-modular-batch-six`. Inspeção em 03/11/2026. A skill de modificação segura e o fluxo branch→PR foram reaproveitados; nenhuma memória canônica alterada.
 
 **Atualização posterior: HOVER v02 — CLEAN para QA direcionado; ver seção 7.** O lote v01 abaixo mantém seus resultados históricos, inclusive HOVER v01 REWORK.
 
-## 1. Resultado consolidado
+## 1. Resultado consolidado — checkpoint estático histórico
 
 `CLEAN` significa preparado para QA posterior, **não** aprovação artística ou validação Unity. Quando o RAW já tem alpha e padding adequados, não foi criada uma duplicata em blender_clean. Nenhum caso exigiu REJECTED: os arquivos são íntegros e não apresentam defeito irrecuperável demonstrado.
 
@@ -188,3 +188,51 @@ Referências preservadas: NORMAL SHA-256 `c82d06142b3953a97b9654d8b7bf53e611679a
 **Recomendação objetiva:** seguir com v02 ao QA Unity de troca NORMAL↔HOVER nos dois tamanhos, com preço/texto real, sobre fundos claros/escuros. Confirmar percepção do hover, ausência de salto/piscada da silhueta e alinhamento após a preparação do export/import comum. Se o desvio pequeno observado aparecer em runtime, corrigir a normalização geométrica antes de aprovação; não redesenhar a peça nem reforçar novamente o brilho por antecipação.
 
 **NOT RUN:** Unity/WebGL/builds, texto/hitbox/interação reais, transição temporal e QA anterior. **Não aprovado nem integrado.** RAW, NORMAL, v01 e todas as evidências anteriores preservados. [Dados/transformações](evidence/BATCH-UI-002-003-008-004-STATES/HOVER-v02/analysis.json), [script exclusivo v02](evidence/BATCH-UI-002-003-008-004-STATES/HOVER-v02/audit_hover_v02.py.txt), [classificação](evidence/BATCH-UI-002-003-008-004-STATES/HOVER-v02/classification.json), [hashes das composições](evidence/BATCH-UI-002-003-008-004-STATES/HOVER-v02/evidence_manifest.json).
+
+
+## 8. QA Unity — estados COMPACT
+
+**Resultado atual: HOVER v02 PASS; PRESSED v01 PASS; DISABLED v01 REWORK visual. Nenhum estado aprovado ou integrado.** O responsável pode avaliar a aprovação dos dois primeiros sob a configuração testada. O DISABLED precisa de feedback visual mais claro antes de aprovação. A auditoria estática anterior permanece como histórico.
+
+### Export/import comum e geometria
+
+O export NORMAL aprovado 768×141 foi copiado byte a byte, SHA-256 `e69e548a1d67a9e23b89b4f3849046f1720fe61db03c87c384fd9893c82388f6`. Nenhum RAW/CLEAN foi alterado. Os demais exports locais registram o corpo alpha>128 à bbox NORMAL [4,2,763,138). A escala dos cantos é uniforme em X/Y; somente a banda central horizontal absorve a diferença de proporção. Processamento premultiplicado, bicubic em 4× e redução Lanczos; sem recoloração ou substituição da máscara alpha. É preparação de candidatos, não novo master aprovado. Transformações, fontes e hashes integrais: [manifesto](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/export_manifest.json).
+
+Todos: Sprite Single/Full Rect, PPU100, borders L/R59,3050193 e B/T40,8157895, Bilinear/Clamp, RGBA32 sem compressão/mipmaps, Alpha Is Transparency, Image branca/Sliced; multiplier141/altura (3,204545 em44; 2,611111 em54). Quatro texturas custam aproximadamente1,652MiB RGBA32 sem mipmaps, estimativa teórica; memória GPU residente não medida. Os quatro corpos têm a mesma bbox; IoU contra NORMAL99,9207% HOVER e99,9325% PRESSED/DISABLED. Máscaras não são idênticas; desvio máximo do centroide≈0,062px na textura, inferior a0,024u no botão de54u.
+
+### Execução e interação
+
+Unity6000.5.9f1, Editor PlayMode, câmera/RenderTexture e CanvasScaler1280×720/MatchHeight1 reutilizando a metodologia anterior. Harness temporário isolado removido após execução; fontes arquivadas como texto. Native Button/SpriteSwap, Image de arte filha e hitbox transparente fixa; sem ColorTint adicional. UiKit.Label, Typeface, Strings.Money e catálogo real reutilizados. Nenhuma tela ou helper de produção alterado. O Punch dos helpers atuais não foi aplicado: sua integração e efeito sobre hitbox continuam pendentes.
+
+**Interação simulada via ExecuteEvents e GraphicRaycaster, não mouse físico.** Sequência NORMAL→pointerEnter/HOVER→pointerDown/PRESSED→pointerUp/HOVER→click→pointerExit/NORMAL→DISABLED→tentativa bloqueada→NORMAL. Um teste direcionado passou:512 verificações de estado/malha (36vértices),6.656 amostras de raycast,64 cliques disponíveis e64 tentativas indisponíveis bloqueadas, zero falhas de ajuste de texto. RectTransform, posição, escala, malha e hitbox constantes. Recortes NORMAL/restaurado e HOVER/após pointerUp são RGB idênticos em ambas as resoluções. Compilação inicial do harness exigiu corrigir a chamada GetMesh para a API desta Unity; teste final passou sem alterar produção ou enfraquecer assertions.
+
+| Caso | Texto real | 960×600 | 1280×720 |
+| --- | --- | --- | --- |
+| Navegação120×44 | Voltar, fonte18 | Geometria/texto/interação PASS | Geometria/texto/interação PASS |
+| Loja150×44 | 60¥ e900¥ via Strings.Money, fonte18 | Geometria/texto/interação PASS | Geometria/texto/interação PASS |
+| Maior230×54 | Confirmar, fonte24 | Geometria/texto/interação PASS | Geometria/texto/interação PASS |
+
+O catálogo consultado fornece stool60 e koi_pond900; não foi repetida a varredura extensa ou Shop.Buy. Textos centralizados, sem clipping/quebra e moldura contínua nos casos acima. Texto escuro #3A2A1A em todos os estados; contraste pontual estimado nas capturas≈9,47–10,21:1 (face mediana/pixel escuro do texto), não certificação de todos os pixels/glifos.
+
+### Capturas reais e parecer visual
+
+| Fundo | 960×600 | 1280×720 |
+| --- | --- | --- |
+| Escuro | [Matriz](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/unity_states_dark_960x600.png) | [Matriz](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/unity_states_dark_1280x720.png) |
+| Claro | [Matriz](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/unity_states_light_960x600.png) | [Matriz](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/unity_states_light_1280x720.png) |
+
+![Sequência real do mesmo botão150×44, nas duas resoluções](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/unity_transition_contact.png)
+
+[Animação960×600](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/unity_transition_960x600.webp) · [Animação1280×720](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/unity_transition_1280x720.webp). Composição de recortes reais ampliados2× por nearest; duração escolhida para inspeção, não medição de latência.
+
+| Estado | Técnico | Visual / veredito | Recomendação |
+| --- | --- | --- | --- |
+| HOVER v02 | PASS | PASS: brilho da moldura perceptível mesmo em120×44; creme, identidade e alinhamento preservados | Candidato à aprovação do responsável, na configuração testada |
+| PRESSED v01 | PASS | PASS: escurecimento discreto contra NORMAL, queda clara a partir de HOVER; sem deslocar peça/texto | Candidato à aprovação do responsável, na configuração testada |
+| DISABLED v01 | PASS funcional | REWORK: bloqueia clique, mas dessaturação isolada é fraca e a peça ainda parece disponível | Rever arte ou aprovar styling complementar explícito e repetir somente QA afetado |
+
+O problema DISABLED é de feedback visual da arte/configuração de estado, não limpeza ou hitbox. Não se aplicou tint para ocultar essa limitação; SpriteSwap e ColorTint não operam simultaneamente como transição nativa única. Qualquer styling adicional exige decisão posterior. Nenhum redesenho/recoloração nesta tarefa.
+
+**NOT RUN:** mouse físico; elegibilidade de clique/drag/cancel pelo módulo de input completo; teclado/gamepad/foco; WebGL/navegador/builds; compressão e memória GPU residente; integração nas telas/helper Punch; Loja completa/gameplay/QA extensos anteriores. NORMAL aprovado e ornamental REWORK preservados. PASS do harness não aprova automaticamente a arte nem a integração.
+
+[Fontes e reprodução](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/README.md) · [Resultado XML](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/unity_states_results.xml) · [Log](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/unity_states_log.txt) · [Vereditos](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/verdict.json) · [Comparação de frames](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/frame_analysis.json).

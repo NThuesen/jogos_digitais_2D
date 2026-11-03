@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+PROJECT=/mnt/c/dev/PocketSlop-Games/jogos_digitais_2D
+source "$PROJECT/tools/unity-guard.sh"
+/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -NonInteractive -Command 'if (Get-CimInstance Win32_Process | Where-Object Name -eq Unity.exe) { throw "Unity Editor already running" }'
+unity_guard_prepare
+UNITY_BIN='/mnt/c/Program Files/Unity/Hub/Editor/6000.5.9f1/Editor/Unity.exe'
+"$UNITY_BIN" -batchmode -quit -projectPath 'C:\dev\PocketSlop-Games\jogos_digitais_2D' -executeMethod Ui004StatesSetup.Configure -logFile 'C:\dev\PocketSlop-Games\jogos_digitais_2D\Logs\states-setup.log'
+"$UNITY_BIN" -batchmode -projectPath 'C:\dev\PocketSlop-Games\jogos_digitais_2D' -runTests -testPlatform PlayMode -testFilter Ui004StatesTests.Transitions -testResults 'C:\dev\PocketSlop-Games\jogos_digitais_2D\Logs\states-results.xml' -logFile 'C:\dev\PocketSlop-Games\jogos_digitais_2D\Logs\states-unity.log'
+python3 "$PROJECT/tools/validate-unity-results.py" "$PROJECT/Logs/states-results.xml"

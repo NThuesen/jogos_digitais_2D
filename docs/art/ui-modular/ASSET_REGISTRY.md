@@ -73,7 +73,13 @@
 - **Pendências:** integração própria, testes de produção e itens NOT RUN documentados. RAW, CLEAN e evidências preservados; nenhum PNG integrado nesta atualização. HOVER/PRESSED/DISABLED compactos têm auditoria própria abaixo e permanecem sem aprovação. O [prompt](prompts/variants/04_BUTTON_PRIMARY_COMPACT_NORMAL.md) documenta a origem; geração manual informada pelo responsável, anexos efetivamente usados não inferidos do PNG.
 - **Famílias separadas:** ornamental antigo permanece **REWORK**; UI-001 mantém seu histórico. Abas são componentes próprios.
 
-## UI-004 COMPACT — estados HOVER, PRESSED e DISABLED (auditoria de PNG)
+## UI-004 COMPACT — estados HOVER, PRESSED e DISABLED
+
+**Atualização Unity direcionada:** HOVER v02 **UNITY_QA — PASS**, PRESSED v01 **UNITY_QA — PASS**, DISABLED v01 **REWORK visual** (funcional PASS). Aguarda decisão do responsável; nenhum estado APPROVED/INTEGRATED. Export comum768×141 e configuração do NORMAL testados em120×44/150×44/230×54 a960×600/1280×720, fundos claros/escuros. Interação simulada Editor, sem mouse físico ou WebGL. DISABLED parece disponível sem styling complementar; aprovação não recomendada ainda. [Resultados e evidências novas](reviews/UI_BATCH_002_003_008_COMPACT_STATES_V01.md#8-qa-unity--estados-compact).
+
+### Checkpoint anterior — auditoria estática de PNG
+
+As classificações e NOT RUN abaixo descrevem o checkpoint estático; o resultado Unity atual acima prevalece para os três estados testados.
 
 - **RAWs v01 locais existentes**, todos 2048×375 RGBA8 e ignorados. O HOVER v02 foi auditado em adendo próprio abaixo. Auditoria estática concluída; nenhum estado aprovado ou integrado. [Revisão do lote](reviews/UI_BATCH_002_003_008_COMPACT_STATES_V01.md) contém os hashes integrais, métricas e composições.
 - **HOVER v01: REWORK**, por realce pouco perceptível em 120/150×44 no parecer raster estático; alpha já limpo, sem CLEAN duplicado. Rever intensidade com o responsável, sem recoloração/regeneração nesta tarefa.
