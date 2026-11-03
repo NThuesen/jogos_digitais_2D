@@ -1,0 +1,1002 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Build the primary RenderTexture path and the rig smoke test": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307228736
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307251147
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793308537376
+      }
+    ],
+    "1.2 Decision point: keep the primary path or switch to the fallback path": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307228810
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793308545388
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793374414500
+      }
+    ],
+    "1.3 Probe meshes, glyphs and raycasts": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307228864
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793374423574
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793377446975
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793377550924
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793638432700
+      }
+    ],
+    "2.1 Complete the element model in `LayoutModel.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307228899
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793638446603
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793640910057
+      }
+    ],
+    "2.2 Write the report and capture writer in `LayoutReport.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307228932
+      }
+    ],
+    "2.3 Write the text baseline store in `TextBaseline.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307228992
+      }
+    ],
+    "2.4 Write the hit map in `HitMap.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229030
+      }
+    ],
+    "2.5 Write the contrast probe in `ContrastProbe.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229062
+      }
+    ],
+    "3.1 Write `SessionFactory.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229095
+      }
+    ],
+    "3.2 Write the Audit_State registry in `AuditStates.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229133
+      }
+    ],
+    "3.3 Write the audit loop in `LayoutCheckTests.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229165
+      }
+    ],
+    "4.1 Write the property test for the scroll window model": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229198
+      }
+    ],
+    "4.2 Write the property test for the contrast function": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229239
+      }
+    ],
+    "4.3 Write the kernel example tests": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229272
+      }
+    ],
+    "5.1 Implement rule R2.1": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229305
+      }
+    ],
+    "5.2 Implement rule R2.2": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229353
+      }
+    ],
+    "5.3 Implement rule R2.3": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229389
+      }
+    ],
+    "5.4 Implement rules R3.1 to R3.3": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229429
+      }
+    ],
+    "5.5 Implement rules R4.1 to R4.3": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229462
+      }
+    ],
+    "5.6 Implement rules R5.1 to R5.3": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229495
+      }
+    ],
+    "5.7 Implement rules R6.1 to R6.3": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229530
+      }
+    ],
+    "5.8 Implement rules R7.1 to R7.3": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229566
+      }
+    ],
+    "5.9 Implement the named-containment helper in `StateChecks.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229603
+      }
+    ],
+    "5.10 Add the Console check to `LayoutCheckTests.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229643
+      }
+    ],
+    "6.1 Implement the Loja states LJ-1 to LJ-4 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229684
+      }
+    ],
+    "6.2 Implement the Balanço and Falência states BL-1 to BL-4 and FL-1 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229741
+      }
+    ],
+    "6.3 Implement the Elenco states EL-1 to EL-4 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229795
+      }
+    ],
+    "7.1 Implement the Empresa states EM-1 to EM-4 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229829
+      }
+    ],
+    "7.2 Implement the Escalação states ES-1 to ES-3 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229861
+      }
+    ],
+    "7.3 Implement the Caixas and reveal states CX-1 to CX-4 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229893
+      }
+    ],
+    "7.4 Implement the Salão states SL-1 to SL-4 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229927
+      }
+    ],
+    "7.5 Implement rule R14.5 in `StateChecks.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229961
+      }
+    ],
+    "7.6 Implement the O dia states OD-1 to OD-3 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307229993
+      }
+    ],
+    "7.7 Implement the Menu states MN-1 and MN-2 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230031
+      }
+    ],
+    "7.8 Implement the Dialog states MN-3, ES-4, EL-5, LJ-5, LJ-6, DG-1 and DG-2 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230063
+      }
+    ],
+    "7.9 Implement the session-mirror checks in `StateChecks.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230097
+      }
+    ],
+    "7.10 Implement the typeface and card-composition checks in `StateChecks.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230129
+      }
+    ],
+    "7.11 Implement the scroll-setting check and the Audit_State completeness test": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230163
+      }
+    ],
+    "8.1 Write `NavigationTests.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230195
+      }
+    ],
+    "8.2 Write `Assets/_Game/Tests/EditMode/Game/WorldArtBaselineTests.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230229
+      }
+    ],
+    "9.1 Record the text snapshot, the \"antes\" captures and the failure report": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230262
+      }
+    ],
+    "9.2 Record the World_Art hashes": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230301
+      }
+    ],
+    "9.3 Confirm that the Baseline run repeats": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230336
+      }
+    ],
+    "10. Checkpoint: Layout_Check on the Baseline": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230368
+      }
+    ],
+    "11.1 Create `docs/roadmap/ui-01-evidence/DEFECT_LOG.md` with every entry": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230398
+      }
+    ],
+    "11.2 Plan each fix in `DEFECT_LOG.md`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230509
+      }
+    ],
+    "12.1 Write the property test for the panel shape model": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230690
+      }
+    ],
+    "12.2 Add `SpriteFactory.Panel()` to `Assets/_Game/Scripts/Game/Art/SpriteFactory.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230743
+      }
+    ],
+    "12.3 Switch `UiKit.Panel` in `Assets/_Game/Scripts/Game/Ui/UiKit.cs` to the sliced sprite": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230777
+      }
+    ],
+    "12.4 Record the Layout_Check after the C1 fix": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230811
+      }
+    ],
+    "13. Checkpoint: after the C1 fix": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230851
+      }
+    ],
+    "14.1 Fix the Loja in `Assets/_Game/Scripts/Game/Ui/ShopScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230884
+      }
+    ],
+    "14.2 Fix the Balanço and the Falência in `Assets/_Game/Scripts/Game/Ui/BooksScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230914
+      }
+    ],
+    "14.3 Fix the Elenco in `Assets/_Game/Scripts/Game/Ui/RosterScreen.cs`, and in `MaidCard.cs` for card entries": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230947
+      }
+    ],
+    "14.4 Fix the Empresa in `Assets/_Game/Scripts/Game/Ui/HubScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307230980
+      }
+    ],
+    "14.5 Fix the Escalação in `Assets/_Game/Scripts/Game/Ui/LineupScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307231014
+      }
+    ],
+    "14.6 Fix the Caixas and the reveal in `Assets/_Game/Scripts/Game/Ui/BoxScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307231046
+      }
+    ],
+    "14.7 Fix the Salão in `Assets/_Game/Scripts/Game/Ui/HallScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307231079
+      }
+    ],
+    "14.8 Fix the O dia in `Assets/_Game/Scripts/Game/Ui/DayHud.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307231113
+      }
+    ],
+    "14.9 Fix the Menu in `Assets/_Game/Scripts/Game/Ui/MenuScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307231145
+      }
+    ],
+    "14.10 Fix the Dialogs in `Assets/_Game/Scripts/Game/Ui/UiRoot.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307231184
+      }
+    ],
+    "15. Checkpoint: after the screens": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307231221
+      }
+    ],
+    "16.1 Run the \"depois\" captures and the full suites": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307231255
+      }
+    ],
+    "16.2 Copy the committed captures to the Evidence_Folder": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307231287
+      }
+    ],
+    "16.3 Complete `docs/roadmap/ui-01-evidence/DEFECT_LOG.md`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307231322
+      }
+    ],
+    "16.4 Check the scope of the Change_Set": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307231355
+      }
+    ],
+    "17.1 Edit the UI-01 row of `docs/ROADMAP.md`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793307231389
+      }
+    ],
+    "1. Prototype the batch-mode resolution rig": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793638432748
+      }
+    ],
+    "2.1 Model the elements of the Active_Layer in `LayoutModel.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643690069
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643703760
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793645940603
+      }
+    ],
+    "2.2 Add the Visible_Shape and the Room_Grid_Area to `LayoutModel.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643690124
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793645945288
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793647032096
+      }
+    ],
+    "2.3 Prove the model on the Empresa": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643690270
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793647036338
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793648379005
+      }
+    ],
+    "2.4 Write the report and capture writer in `LayoutReport.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643690322
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793648384274
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793671966217
+      }
+    ],
+    "2.5 Write the click helpers in `Clicks.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643690412
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793671970099
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793672842243
+      }
+    ],
+    "3.1 Write the session builder in `SessionFactory.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643690509
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793672846881
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793702985324
+      }
+    ],
+    "3.2 Add the value providers to `SessionFactory.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643690580
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793702989582
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793704055208
+      }
+    ],
+    "3.3 Write the Audit_State registry in `AuditStates.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643690656
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793704060896
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793704924481
+      }
+    ],
+    "3.4 Write the audit loop in `LayoutCheckTests.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643690738
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793704928678
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793707147417
+      }
+    ],
+    "4.1 Implement rule R2.1": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643690818
+      },
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793707153425
+      },
+      {
+        "executionId": "f84db91f-a2ba-46fe-9682-387fad430c2f",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793708596354
+      }
+    ],
+    "4.2 Implement rules R3.1 to R3.3": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643690898
+      }
+    ],
+    "4.3 Implement rules R4.1 to R4.3": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643690980
+      }
+    ],
+    "4.4 Implement rules R5.1 to R5.3": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691048
+      }
+    ],
+    "4.5 Implement rules R6.1 to R6.3": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691093
+      }
+    ],
+    "4.6 Implement the named-containment helper in `StateChecks.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691141
+      }
+    ],
+    "4.7 Add the Console check to `LayoutCheckTests.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691187
+      }
+    ],
+    "5.1 Implement the Loja states LJ-1 to LJ-4 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691239
+      }
+    ],
+    "5.2 Implement the Balanço and Falência states BL-1 to BL-4 and FL-1 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691294
+      }
+    ],
+    "5.3 Implement the Elenco states EL-1 to EL-4 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691356
+      }
+    ],
+    "6.1 Implement the Empresa states EM-1 to EM-4 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691469
+      }
+    ],
+    "6.2 Implement the Escalação states ES-1 to ES-3 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691513
+      }
+    ],
+    "6.3 Implement the Caixas and reveal states CX-1 to CX-4 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691558
+      }
+    ],
+    "6.4 Implement the Salão states SL-1 to SL-4 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691605
+      }
+    ],
+    "6.5 Implement rule R14.5 in `StateChecks.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691656
+      }
+    ],
+    "6.6 Implement the O dia states OD-1 to OD-3 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691695
+      }
+    ],
+    "6.7 Implement the Menu states MN-1 and MN-2 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691736
+      }
+    ],
+    "6.8 Implement the Dialog states MN-3, ES-4, EL-5, LJ-5, LJ-6, DG-1 and DG-2 and their checks": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691775
+      }
+    ],
+    "7.1 Record the \"antes\" captures and the failure report": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691822
+      }
+    ],
+    "8. Checkpoint: Layout_Check on the Baseline": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691861
+      }
+    ],
+    "9.1 Create `docs/roadmap/ui-01-evidence/DEFECT_LOG.md` with every entry": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691905
+      }
+    ],
+    "9.2 Plan each fix in `DEFECT_LOG.md`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691944
+      }
+    ],
+    "10.1 Add `SpriteFactory.Panel()` to `Assets/_Game/Scripts/Game/Art/SpriteFactory.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643691985
+      }
+    ],
+    "10.2 Switch `UiKit.Panel` in `Assets/_Game/Scripts/Game/Ui/UiKit.cs` to the sliced sprite": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692023
+      }
+    ],
+    "10.3 Record the Layout_Check after the C1 fix": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692073
+      }
+    ],
+    "11. Checkpoint: after the C1 fix": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692120
+      }
+    ],
+    "12.1 Fix the Loja in `Assets/_Game/Scripts/Game/Ui/ShopScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692162
+      }
+    ],
+    "12.2 Fix the Balanço and the Falência in `Assets/_Game/Scripts/Game/Ui/BooksScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692212
+      }
+    ],
+    "12.3 Fix the Elenco in `Assets/_Game/Scripts/Game/Ui/RosterScreen.cs`, and in `MaidCard.cs` for card entries": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692293
+      }
+    ],
+    "12.4 Fix the Empresa in `Assets/_Game/Scripts/Game/Ui/HubScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692330
+      }
+    ],
+    "12.5 Fix the Escalação in `Assets/_Game/Scripts/Game/Ui/LineupScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692371
+      }
+    ],
+    "12.6 Fix the Caixas and the reveal in `Assets/_Game/Scripts/Game/Ui/BoxScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692411
+      }
+    ],
+    "12.7 Fix the Salão in `Assets/_Game/Scripts/Game/Ui/HallScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692452
+      }
+    ],
+    "12.8 Fix the O dia in `Assets/_Game/Scripts/Game/Ui/DayHud.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692487
+      }
+    ],
+    "12.9 Fix the Menu in `Assets/_Game/Scripts/Game/Ui/MenuScreen.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692528
+      }
+    ],
+    "12.10 Fix the Dialogs in `Assets/_Game/Scripts/Game/Ui/UiRoot.cs`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692567
+      }
+    ],
+    "13. Checkpoint: after the screens": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692603
+      }
+    ],
+    "14.1 Run the \"depois\" captures and the full suites": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692637
+      }
+    ],
+    "14.2 Copy the committed captures to the Evidence_Folder": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692679
+      }
+    ],
+    "14.3 Complete `docs/roadmap/ui-01-evidence/DEFECT_LOG.md`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692726
+      }
+    ],
+    "14.4 Check the scope of the Change_Set": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692768
+      }
+    ],
+    "15.1 Edit the UI-01 row of `docs/ROADMAP.md`": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793643692805
+      }
+    ],
+    "2. Build the layout model and the helpers on the Baseline code": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793672842310
+      }
+    ],
+    "3. Build the session factory, the Audit_State registry and the audit loop": [
+      {
+        "executionId": "bda5045b-36c2-4f49-a058-51af7edfd197",
+        "chatSessionId": "sess_ef8bd647-a8a7-4bd2-a915-20ceaf4e35ed",
+        "timestamp": 1793707147475
+      }
+    ]
+  }
+}
