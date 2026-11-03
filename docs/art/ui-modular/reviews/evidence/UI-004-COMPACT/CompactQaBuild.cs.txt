@@ -1,0 +1,30 @@
+using System;
+using System.IO;
+using UnityEditor;
+using UnityEditor.Build.Reporting;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+public static class CompactQaBuild
+{
+    public static void Build()
+    {
+        CompactQaSetup.Configure();
+        var oldTemplate=PlayerSettings.WebGL.template;var oldCompression=PlayerSettings.WebGL.compressionFormat;
+        var oldRun=PlayerSettings.runInBackground;
+        try
+        {
+            var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
+            new GameObject("Isolated Compact QA").AddComponent<CompactQaBootstrap>();
+            string scenePath="Assets/_QA_UI004Compact_Temp/CompactQa.unity";EditorSceneManager.SaveScene(scene,scenePath);
+            PlayerSettings.WebGL.template="PROJECT:UI004CompactQa";PlayerSettings.WebGL.compressionFormat=WebGLCompressionFormat.Disabled;PlayerSettings.runInBackground=true;
+            var result=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{scenePath},locationPathName="Build/UI004CompactQA",target=BuildTarget.WebGL,options=BuildOptions.Development});
+            File.WriteAllText("Logs/compact-webgl-build-summary.txt","result="+result.summary.result+" bytes="+result.summary.totalSize+" time="+result.summary.totalTime+" errors="+result.summary.totalErrors);
+            if(result.summary.result!=BuildResult.Succeeded)throw new Exception("QA WebGL build failed");
+        }
+        finally
+        {
+            PlayerSettings.WebGL.template=oldTemplate;PlayerSettings.WebGL.compressionFormat=oldCompression;PlayerSettings.runInBackground=oldRun;AssetDatabase.SaveAssets();
+        }
+    }
+}

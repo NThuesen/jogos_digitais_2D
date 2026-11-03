@@ -1,0 +1,1350 @@
+(960, 600) comparison
+CATALOG outfit_basic=0 ¥, stool=60 ¥, plant=80 ¥, gift_small=80 ¥, head_band=90 ¥, shoes_flats=100 ¥, acc_apron=110 ¥, table_2=120 ¥, window=140 ¥, rug=150 ¥, showa_poster=160 ¥, stove=180 ¥, lantern_sakura=180 ¥, gothic_candelabra=190 ¥, star_lamp=200 ¥, gift_medium=200 ¥, head_sakura=210 ¥, head_gothic=230 ¥, shoes_sakura=230 ¥, acc_sakura=240 ¥, shoes_gothic=250 ¥, cat_tower=260 ¥, head_chef=260 ¥, acc_gothic=260 ¥, acc_timer=300 ¥, table_4=320 ¥, outfit_sakura=320 ¥, shoes_running=320 ¥, outfit_gothic=340 ¥, teabar=380 ¥, outfit_chef=380 ¥, head_showa=380 ¥, head_starry=400 ¥, acc_showa=400 ¥, shoes_showa=410 ¥, sakura_tree=420 ¥, acc_starry=420 ¥, gothic_mirror=430 ¥, shoes_starry=430 ¥, dessert=450 ¥, gift_large=450 ¥, outfit_showa=500 ¥, planetarium=520 ¥, outfit_starry=520 ¥, showa_jukebox=540 ¥, chandelier=620 ¥, bakery=700 ¥, stage=800 ¥, koi_pond=900 ¥
+comparison col0 row0 active=True tex=0 mode=current label='0 ¥' font=18 pref=24x19,2 slot=(134.00, 28.00) FIT=True lines=1
+comparison col0 row1 active=True tex=0 mode=current label='60 ¥' font=18 pref=33,6x19,2 slot=(134.00, 28.00) FIT=True lines=1
+comparison col0 row2 active=True tex=0 mode=current label='900 ¥' font=18 pref=43,2x19,2 slot=(134.00, 28.00) FIT=True lines=1
+comparison col0 row3 active=False tex=0 mode=current label='900 ¥' font=18 pref=43,2x19,2 slot=(134.00, 28.00) FIT=True lines=1
+comparison col0 row4 active=True tex=0 mode=current label='Voltar' font=18 pref=48x19,2 slot=(104.00, 28.00) FIT=True lines=1
+comparison col0 row5 active=True tex=0 mode=current label='Confirmar' font=24 pref=109,2x25,2 slot=(210.00, 34.00) FIT=True lines=1
+comparison col1 row0 active=True tex=2072 mode=sliced label='0 ¥' font=18 pref=24x19,2 slot=(104.95, 27.64) FIT=True lines=1
+comparison col1 row1 active=True tex=2072 mode=sliced label='60 ¥' font=18 pref=33,6x19,2 slot=(104.95, 27.64) FIT=True lines=1
+comparison col1 row2 active=True tex=2072 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+comparison col1 row3 active=False tex=2072 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+comparison col1 row4 active=True tex=2072 mode=sliced label='Voltar' font=18 pref=48x19,2 slot=(74.95, 27.64) FIT=True lines=1
+comparison col1 row5 active=True tex=2072 mode=sliced label='Confirmar' font=24 pref=109,2x25,2 slot=(176.53, 34.38) FIT=True lines=1
+comparison col2 row0 active=True tex=768 mode=sliced label='0 ¥' font=18 pref=24x19,2 slot=(104.95, 27.64) FIT=True lines=1
+comparison col2 row1 active=True tex=768 mode=sliced label='60 ¥' font=18 pref=33,6x19,2 slot=(104.95, 27.64) FIT=True lines=1
+comparison col2 row2 active=True tex=768 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+comparison col2 row3 active=False tex=768 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+comparison col2 row4 active=True tex=768 mode=sliced label='Voltar' font=18 pref=48x19,2 slot=(74.95, 27.64) FIT=True lines=1
+comparison col2 row5 active=True tex=768 mode=sliced label='Confirmar' font=24 pref=109,2x25,2 slot=(176.53, 34.38) FIT=True lines=1
+comparison col3 row0 active=True tex=768 mode=simple label='0 ¥' font=18 pref=24x19,2 slot=(104.95, 27.64) FIT=True lines=1
+comparison col3 row1 active=True tex=768 mode=simple label='60 ¥' font=18 pref=33,6x19,2 slot=(104.95, 27.64) FIT=True lines=1
+comparison col3 row2 active=True tex=768 mode=simple label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+comparison col3 row3 active=False tex=768 mode=simple label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+comparison col3 row4 active=True tex=768 mode=simple label='Voltar' font=18 pref=48x19,2 slot=(74.95, 27.64) FIT=True lines=1
+comparison col3 row5 active=True tex=768 mode=simple label='Confirmar' font=24 pref=109,2x25,2 slot=(176.53, 34.38) FIT=True lines=1
+CANVAS (1152.00, 720.00) scale=0,8333333
+
+CATALOG_FIT (960, 600) comparison col0 row2 table_2 '120 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 stool '60 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 table_4 '320 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 stove '180 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 teabar '380 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 dessert '450 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 bakery '700 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 plant '80 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 window '140 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 rug '150 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 cat_tower '260 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 stage '800 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 chandelier '620 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 koi_pond '900 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 star_lamp '200 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 planetarium '520 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 showa_poster '160 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 head_band '90 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 head_sakura '210 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 head_gothic '230 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 head_chef '260 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 head_starry '400 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 head_showa '380 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 acc_apron '110 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 acc_timer '300 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 acc_starry '420 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 acc_showa '400 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 shoes_running '320 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 gift_small '80 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 gift_medium '200 ¥' True
+CATALOG_FIT (960, 600) comparison col0 row2 gift_large '450 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 table_2 '120 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 stool '60 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 table_4 '320 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 stove '180 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 teabar '380 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 dessert '450 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 bakery '700 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 plant '80 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 window '140 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 rug '150 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 cat_tower '260 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 stage '800 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 chandelier '620 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 koi_pond '900 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 star_lamp '200 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 planetarium '520 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 showa_poster '160 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 head_band '90 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 head_sakura '210 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 head_gothic '230 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 head_chef '260 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 head_starry '400 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 head_showa '380 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 acc_apron '110 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 acc_timer '300 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 acc_starry '420 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 acc_showa '400 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 shoes_running '320 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 gift_small '80 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 gift_medium '200 ¥' True
+CATALOG_FIT (960, 600) comparison col1 row2 gift_large '450 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 table_2 '120 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 stool '60 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 table_4 '320 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 stove '180 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 teabar '380 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 dessert '450 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 bakery '700 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 plant '80 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 window '140 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 rug '150 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 cat_tower '260 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 stage '800 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 chandelier '620 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 koi_pond '900 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 star_lamp '200 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 planetarium '520 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 showa_poster '160 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 head_band '90 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 head_sakura '210 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 head_gothic '230 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 head_chef '260 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 head_starry '400 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 head_showa '380 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 acc_apron '110 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 acc_timer '300 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 acc_starry '420 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 acc_showa '400 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 shoes_running '320 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 gift_small '80 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 gift_medium '200 ¥' True
+CATALOG_FIT (960, 600) comparison col2 row2 gift_large '450 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 table_2 '120 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 stool '60 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 table_4 '320 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 stove '180 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 teabar '380 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 dessert '450 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 bakery '700 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 plant '80 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 window '140 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 rug '150 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 cat_tower '260 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 stage '800 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 chandelier '620 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 koi_pond '900 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 star_lamp '200 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 planetarium '520 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 showa_poster '160 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 head_band '90 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 head_sakura '210 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 head_gothic '230 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 head_chef '260 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 head_starry '400 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 head_showa '380 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 acc_apron '110 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 acc_timer '300 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 acc_starry '420 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 acc_showa '400 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 shoes_running '320 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 gift_small '80 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 gift_medium '200 ¥' True
+CATALOG_FIT (960, 600) comparison col3 row2 gift_large '450 ¥' True
+(960, 600) samples
+CATALOG outfit_basic=0 ¥, stool=60 ¥, plant=80 ¥, gift_small=80 ¥, head_band=90 ¥, shoes_flats=100 ¥, acc_apron=110 ¥, table_2=120 ¥, window=140 ¥, rug=150 ¥, showa_poster=160 ¥, stove=180 ¥, lantern_sakura=180 ¥, gothic_candelabra=190 ¥, star_lamp=200 ¥, gift_medium=200 ¥, head_sakura=210 ¥, head_gothic=230 ¥, shoes_sakura=230 ¥, acc_sakura=240 ¥, shoes_gothic=250 ¥, cat_tower=260 ¥, head_chef=260 ¥, acc_gothic=260 ¥, acc_timer=300 ¥, table_4=320 ¥, outfit_sakura=320 ¥, shoes_running=320 ¥, outfit_gothic=340 ¥, teabar=380 ¥, outfit_chef=380 ¥, head_showa=380 ¥, head_starry=400 ¥, acc_showa=400 ¥, shoes_showa=410 ¥, sakura_tree=420 ¥, acc_starry=420 ¥, gothic_mirror=430 ¥, shoes_starry=430 ¥, dessert=450 ¥, gift_large=450 ¥, outfit_showa=500 ¥, planetarium=520 ¥, outfit_starry=520 ¥, showa_jukebox=540 ¥, chandelier=620 ¥, bakery=700 ¥, stage=800 ¥, koi_pond=900 ¥
+samples col0 row0 active=True tex=0 mode=current label='0 ¥' font=18 pref=24x19,2 slot=(134.00, 28.00) FIT=True lines=1
+samples col0 row1 active=True tex=0 mode=current label='60 ¥' font=18 pref=33,6x19,2 slot=(134.00, 28.00) FIT=True lines=1
+samples col0 row2 active=True tex=0 mode=current label='900 ¥' font=18 pref=43,2x19,2 slot=(134.00, 28.00) FIT=True lines=1
+samples col0 row3 active=False tex=0 mode=current label='900 ¥' font=18 pref=43,2x19,2 slot=(134.00, 28.00) FIT=True lines=1
+samples col0 row4 active=True tex=0 mode=current label='Voltar' font=18 pref=48x19,2 slot=(104.00, 28.00) FIT=True lines=1
+samples col0 row5 active=True tex=0 mode=current label='Confirmar' font=24 pref=109,2x25,2 slot=(210.00, 34.00) FIT=True lines=1
+samples col1 row0 active=True tex=1024 mode=sliced label='0 ¥' font=18 pref=24x19,2 slot=(104.95, 27.64) FIT=True lines=1
+samples col1 row1 active=True tex=1024 mode=sliced label='60 ¥' font=18 pref=33,6x19,2 slot=(104.95, 27.64) FIT=True lines=1
+samples col1 row2 active=True tex=1024 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+samples col1 row3 active=False tex=1024 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+samples col1 row4 active=True tex=1024 mode=sliced label='Voltar' font=18 pref=48x19,2 slot=(74.95, 27.64) FIT=True lines=1
+samples col1 row5 active=True tex=1024 mode=sliced label='Confirmar' font=24 pref=109,2x25,2 slot=(176.53, 34.38) FIT=True lines=1
+samples col2 row0 active=True tex=768 mode=sliced label='0 ¥' font=18 pref=24x19,2 slot=(104.95, 27.64) FIT=True lines=1
+samples col2 row1 active=True tex=768 mode=sliced label='60 ¥' font=18 pref=33,6x19,2 slot=(104.95, 27.64) FIT=True lines=1
+samples col2 row2 active=True tex=768 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+samples col2 row3 active=False tex=768 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+samples col2 row4 active=True tex=768 mode=sliced label='Voltar' font=18 pref=48x19,2 slot=(74.95, 27.64) FIT=True lines=1
+samples col2 row5 active=True tex=768 mode=sliced label='Confirmar' font=24 pref=109,2x25,2 slot=(176.53, 34.38) FIT=True lines=1
+samples col3 row0 active=True tex=512 mode=sliced label='0 ¥' font=18 pref=24x19,2 slot=(104.95, 27.64) FIT=True lines=1
+samples col3 row1 active=True tex=512 mode=sliced label='60 ¥' font=18 pref=33,6x19,2 slot=(104.95, 27.64) FIT=True lines=1
+samples col3 row2 active=True tex=512 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+samples col3 row3 active=False tex=512 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+samples col3 row4 active=True tex=512 mode=sliced label='Voltar' font=18 pref=48x19,2 slot=(74.95, 27.64) FIT=True lines=1
+samples col3 row5 active=True tex=512 mode=sliced label='Confirmar' font=24 pref=109,2x25,2 slot=(176.53, 34.38) FIT=True lines=1
+CANVAS (1152.00, 720.00) scale=0,8333333
+
+CATALOG_FIT (960, 600) samples col0 row2 table_2 '120 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 stool '60 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 table_4 '320 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 stove '180 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 teabar '380 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 dessert '450 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 bakery '700 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 plant '80 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 window '140 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 rug '150 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 cat_tower '260 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 stage '800 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 chandelier '620 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 koi_pond '900 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 star_lamp '200 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 planetarium '520 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 showa_poster '160 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 head_band '90 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 head_sakura '210 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 head_gothic '230 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 head_chef '260 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 head_starry '400 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 head_showa '380 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 acc_apron '110 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 acc_timer '300 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 acc_starry '420 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 acc_showa '400 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 shoes_running '320 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 gift_small '80 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 gift_medium '200 ¥' True
+CATALOG_FIT (960, 600) samples col0 row2 gift_large '450 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 table_2 '120 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 stool '60 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 table_4 '320 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 stove '180 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 teabar '380 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 dessert '450 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 bakery '700 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 plant '80 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 window '140 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 rug '150 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 cat_tower '260 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 stage '800 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 chandelier '620 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 koi_pond '900 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 star_lamp '200 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 planetarium '520 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 showa_poster '160 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 head_band '90 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 head_sakura '210 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 head_gothic '230 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 head_chef '260 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 head_starry '400 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 head_showa '380 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 acc_apron '110 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 acc_timer '300 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 acc_starry '420 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 acc_showa '400 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 shoes_running '320 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 gift_small '80 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 gift_medium '200 ¥' True
+CATALOG_FIT (960, 600) samples col1 row2 gift_large '450 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 table_2 '120 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 stool '60 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 table_4 '320 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 stove '180 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 teabar '380 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 dessert '450 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 bakery '700 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 plant '80 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 window '140 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 rug '150 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 cat_tower '260 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 stage '800 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 chandelier '620 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 koi_pond '900 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 star_lamp '200 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 planetarium '520 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 showa_poster '160 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 head_band '90 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 head_sakura '210 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 head_gothic '230 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 head_chef '260 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 head_starry '400 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 head_showa '380 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 acc_apron '110 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 acc_timer '300 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 acc_starry '420 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 acc_showa '400 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 shoes_running '320 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 gift_small '80 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 gift_medium '200 ¥' True
+CATALOG_FIT (960, 600) samples col2 row2 gift_large '450 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 table_2 '120 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 stool '60 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 table_4 '320 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 stove '180 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 teabar '380 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 dessert '450 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 bakery '700 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 plant '80 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 window '140 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 rug '150 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 cat_tower '260 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 stage '800 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 chandelier '620 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 koi_pond '900 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 star_lamp '200 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 planetarium '520 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 showa_poster '160 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 head_band '90 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 head_sakura '210 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 head_gothic '230 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 head_chef '260 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 head_starry '400 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 head_showa '380 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 acc_apron '110 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 acc_timer '300 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 acc_starry '420 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 acc_showa '400 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 shoes_running '320 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 gift_small '80 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 gift_medium '200 ¥' True
+CATALOG_FIT (960, 600) samples col3 row2 gift_large '450 ¥' True
+(960, 600) aspect
+CATALOG outfit_basic=0 ¥, stool=60 ¥, plant=80 ¥, gift_small=80 ¥, head_band=90 ¥, shoes_flats=100 ¥, acc_apron=110 ¥, table_2=120 ¥, window=140 ¥, rug=150 ¥, showa_poster=160 ¥, stove=180 ¥, lantern_sakura=180 ¥, gothic_candelabra=190 ¥, star_lamp=200 ¥, gift_medium=200 ¥, head_sakura=210 ¥, head_gothic=230 ¥, shoes_sakura=230 ¥, acc_sakura=240 ¥, shoes_gothic=250 ¥, cat_tower=260 ¥, head_chef=260 ¥, acc_gothic=260 ¥, acc_timer=300 ¥, table_4=320 ¥, outfit_sakura=320 ¥, shoes_running=320 ¥, outfit_gothic=340 ¥, teabar=380 ¥, outfit_chef=380 ¥, head_showa=380 ¥, head_starry=400 ¥, acc_showa=400 ¥, shoes_showa=410 ¥, sakura_tree=420 ¥, acc_starry=420 ¥, gothic_mirror=430 ¥, shoes_starry=430 ¥, dessert=450 ¥, gift_large=450 ¥, outfit_showa=500 ¥, planetarium=520 ¥, outfit_starry=520 ¥, showa_jukebox=540 ¥, chandelier=620 ¥, bakery=700 ¥, stage=800 ¥, koi_pond=900 ¥
+aspect col0 row0 active=True tex=0 mode=current label='0 ¥' font=18 pref=24x19,2 slot=(134.00, 28.00) FIT=True lines=1
+aspect col0 row1 active=True tex=0 mode=current label='60 ¥' font=18 pref=33,6x19,2 slot=(134.00, 28.00) FIT=True lines=1
+aspect col0 row2 active=True tex=0 mode=current label='900 ¥' font=18 pref=43,2x19,2 slot=(134.00, 28.00) FIT=True lines=1
+aspect col0 row3 active=False tex=0 mode=current label='900 ¥' font=18 pref=43,2x19,2 slot=(134.00, 28.00) FIT=True lines=1
+aspect col0 row4 active=True tex=0 mode=current label='Voltar' font=18 pref=48x19,2 slot=(104.00, 28.00) FIT=True lines=1
+aspect col0 row5 active=True tex=0 mode=current label='Confirmar' font=24 pref=109,2x25,2 slot=(210.00, 34.00) FIT=True lines=1
+aspect col1 row0 active=True tex=2072 mode=sliced label='0 ¥' font=18 pref=24x19,2 slot=(104.95, 27.64) FIT=True lines=1
+aspect col1 row1 active=True tex=2072 mode=sliced label='60 ¥' font=18 pref=33,6x19,2 slot=(104.95, 27.64) FIT=True lines=1
+aspect col1 row2 active=True tex=2072 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+aspect col1 row3 active=False tex=2072 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+aspect col1 row4 active=True tex=2072 mode=sliced label='Voltar' font=18 pref=48x19,2 slot=(74.95, 27.64) FIT=True lines=1
+aspect col1 row5 active=True tex=2072 mode=sliced label='Confirmar' font=24 pref=109,2x25,2 slot=(176.53, 34.38) FIT=True lines=1
+aspect col2 row0 active=True tex=768 mode=sliced label='0 ¥' font=18 pref=24x19,2 slot=(104.95, 27.64) FIT=True lines=1
+aspect col2 row1 active=True tex=768 mode=sliced label='60 ¥' font=18 pref=33,6x19,2 slot=(104.95, 27.64) FIT=True lines=1
+aspect col2 row2 active=True tex=768 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+aspect col2 row3 active=False tex=768 mode=sliced label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+aspect col2 row4 active=True tex=768 mode=sliced label='Voltar' font=18 pref=48x19,2 slot=(74.95, 27.64) FIT=True lines=1
+aspect col2 row5 active=True tex=768 mode=sliced label='Confirmar' font=24 pref=109,2x25,2 slot=(176.53, 34.38) FIT=True lines=1
+aspect col3 row0 active=True tex=768 mode=aspect label='0 ¥' font=18 pref=24x19,2 slot=(104.95, 27.64) FIT=True lines=1
+aspect col3 row1 active=True tex=768 mode=aspect label='60 ¥' font=18 pref=33,6x19,2 slot=(104.95, 27.64) FIT=True lines=1
+aspect col3 row2 active=True tex=768 mode=aspect label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+aspect col3 row3 active=False tex=768 mode=aspect label='900 ¥' font=18 pref=43,2x19,2 slot=(104.95, 27.64) FIT=True lines=1
+aspect col3 row4 active=True tex=768 mode=aspect label='Voltar' font=18 pref=48x19,2 slot=(74.95, 27.64) FIT=True lines=1
+aspect col3 row5 active=True tex=768 mode=aspect label='Confirmar' font=24 pref=109,2x25,2 slot=(176.53, 34.38) FIT=True lines=1
+CANVAS (1152.00, 720.00) scale=0,8333333
+
+CATALOG_FIT (960, 600) aspect col0 row2 table_2 '120 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 stool '60 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 table_4 '320 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 stove '180 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 teabar '380 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 dessert '450 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 bakery '700 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 plant '80 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 window '140 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 rug '150 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 cat_tower '260 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 stage '800 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 chandelier '620 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 koi_pond '900 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 star_lamp '200 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 planetarium '520 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 showa_poster '160 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 head_band '90 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 head_sakura '210 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 head_gothic '230 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 head_chef '260 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 head_starry '400 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 head_showa '380 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 acc_apron '110 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 acc_timer '300 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 acc_starry '420 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 acc_showa '400 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 shoes_running '320 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 gift_small '80 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 gift_medium '200 ¥' True
+CATALOG_FIT (960, 600) aspect col0 row2 gift_large '450 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 table_2 '120 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 stool '60 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 table_4 '320 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 stove '180 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 teabar '380 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 dessert '450 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 bakery '700 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 plant '80 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 window '140 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 rug '150 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 cat_tower '260 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 stage '800 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 chandelier '620 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 koi_pond '900 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 star_lamp '200 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 planetarium '520 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 showa_poster '160 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 head_band '90 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 head_sakura '210 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 head_gothic '230 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 head_chef '260 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 head_starry '400 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 head_showa '380 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 acc_apron '110 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 acc_timer '300 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 acc_starry '420 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 acc_showa '400 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 shoes_running '320 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 gift_small '80 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 gift_medium '200 ¥' True
+CATALOG_FIT (960, 600) aspect col1 row2 gift_large '450 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 table_2 '120 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 stool '60 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 table_4 '320 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 stove '180 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 teabar '380 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 dessert '450 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 bakery '700 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 plant '80 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 window '140 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 rug '150 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 cat_tower '260 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 stage '800 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 chandelier '620 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 koi_pond '900 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 star_lamp '200 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 planetarium '520 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 showa_poster '160 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 head_band '90 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 head_sakura '210 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 head_gothic '230 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 head_chef '260 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 head_starry '400 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 head_showa '380 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 acc_apron '110 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 acc_timer '300 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 acc_starry '420 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 acc_showa '400 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 shoes_running '320 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 gift_small '80 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 gift_medium '200 ¥' True
+CATALOG_FIT (960, 600) aspect col2 row2 gift_large '450 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 table_2 '120 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 stool '60 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 table_4 '320 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 stove '180 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 teabar '380 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 dessert '450 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 bakery '700 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 plant '80 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 window '140 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 rug '150 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 cat_tower '260 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 stage '800 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 chandelier '620 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 koi_pond '900 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 star_lamp '200 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 planetarium '520 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 showa_poster '160 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 head_band '90 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 head_sakura '210 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 head_gothic '230 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 head_chef '260 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 head_starry '400 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 head_showa '380 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 acc_apron '110 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 acc_timer '300 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 acc_starry '420 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 acc_showa '400 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 shoes_running '320 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 gift_small '80 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 gift_medium '200 ¥' True
+CATALOG_FIT (960, 600) aspect col3 row2 gift_large '450 ¥' True
+(1280, 720) comparison
+CATALOG outfit_basic=0 ¥, stool=60 ¥, plant=80 ¥, gift_small=80 ¥, head_band=90 ¥, shoes_flats=100 ¥, acc_apron=110 ¥, table_2=120 ¥, window=140 ¥, rug=150 ¥, showa_poster=160 ¥, stove=180 ¥, lantern_sakura=180 ¥, gothic_candelabra=190 ¥, star_lamp=200 ¥, gift_medium=200 ¥, head_sakura=210 ¥, head_gothic=230 ¥, shoes_sakura=230 ¥, acc_sakura=240 ¥, shoes_gothic=250 ¥, cat_tower=260 ¥, head_chef=260 ¥, acc_gothic=260 ¥, acc_timer=300 ¥, table_4=320 ¥, outfit_sakura=320 ¥, shoes_running=320 ¥, outfit_gothic=340 ¥, teabar=380 ¥, outfit_chef=380 ¥, head_showa=380 ¥, head_starry=400 ¥, acc_showa=400 ¥, shoes_showa=410 ¥, sakura_tree=420 ¥, acc_starry=420 ¥, gothic_mirror=430 ¥, shoes_starry=430 ¥, dessert=450 ¥, gift_large=450 ¥, outfit_showa=500 ¥, planetarium=520 ¥, outfit_starry=520 ¥, showa_jukebox=540 ¥, chandelier=620 ¥, bakery=700 ¥, stage=800 ¥, koi_pond=900 ¥
+comparison col0 row0 active=True tex=0 mode=current label='0 ¥' font=18 pref=25x20 slot=(134.00, 28.00) FIT=True lines=1
+comparison col0 row1 active=True tex=0 mode=current label='60 ¥' font=18 pref=35x20 slot=(134.00, 28.00) FIT=True lines=1
+comparison col0 row2 active=True tex=0 mode=current label='900 ¥' font=18 pref=45x20 slot=(134.00, 28.00) FIT=True lines=1
+comparison col0 row3 active=False tex=0 mode=current label='900 ¥' font=18 pref=45x20 slot=(134.00, 28.00) FIT=True lines=1
+comparison col0 row4 active=True tex=0 mode=current label='Voltar' font=18 pref=51x20 slot=(104.00, 28.00) FIT=True lines=1
+comparison col0 row5 active=True tex=0 mode=current label='Confirmar' font=24 pref=114x27 slot=(210.00, 34.00) FIT=True lines=1
+comparison col1 row0 active=True tex=2072 mode=sliced label='0 ¥' font=18 pref=25x20 slot=(104.95, 27.64) FIT=True lines=1
+comparison col1 row1 active=True tex=2072 mode=sliced label='60 ¥' font=18 pref=35x20 slot=(104.95, 27.64) FIT=True lines=1
+comparison col1 row2 active=True tex=2072 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+comparison col1 row3 active=False tex=2072 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+comparison col1 row4 active=True tex=2072 mode=sliced label='Voltar' font=18 pref=51x20 slot=(74.95, 27.64) FIT=True lines=1
+comparison col1 row5 active=True tex=2072 mode=sliced label='Confirmar' font=24 pref=114x27 slot=(176.53, 34.38) FIT=True lines=1
+comparison col2 row0 active=True tex=768 mode=sliced label='0 ¥' font=18 pref=25x20 slot=(104.95, 27.64) FIT=True lines=1
+comparison col2 row1 active=True tex=768 mode=sliced label='60 ¥' font=18 pref=35x20 slot=(104.95, 27.64) FIT=True lines=1
+comparison col2 row2 active=True tex=768 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+comparison col2 row3 active=False tex=768 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+comparison col2 row4 active=True tex=768 mode=sliced label='Voltar' font=18 pref=51x20 slot=(74.95, 27.64) FIT=True lines=1
+comparison col2 row5 active=True tex=768 mode=sliced label='Confirmar' font=24 pref=114x27 slot=(176.53, 34.38) FIT=True lines=1
+comparison col3 row0 active=True tex=768 mode=simple label='0 ¥' font=18 pref=25x20 slot=(104.95, 27.64) FIT=True lines=1
+comparison col3 row1 active=True tex=768 mode=simple label='60 ¥' font=18 pref=35x20 slot=(104.95, 27.64) FIT=True lines=1
+comparison col3 row2 active=True tex=768 mode=simple label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+comparison col3 row3 active=False tex=768 mode=simple label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+comparison col3 row4 active=True tex=768 mode=simple label='Voltar' font=18 pref=51x20 slot=(74.95, 27.64) FIT=True lines=1
+comparison col3 row5 active=True tex=768 mode=simple label='Confirmar' font=24 pref=114x27 slot=(176.53, 34.38) FIT=True lines=1
+CANVAS (1280.00, 720.00) scale=1
+
+CATALOG_FIT (1280, 720) comparison col0 row2 table_2 '120 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 stool '60 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 table_4 '320 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 stove '180 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 teabar '380 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 dessert '450 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 bakery '700 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 plant '80 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 window '140 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 rug '150 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 cat_tower '260 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 stage '800 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 chandelier '620 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 koi_pond '900 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 star_lamp '200 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 planetarium '520 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 showa_poster '160 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 head_band '90 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 head_sakura '210 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 head_gothic '230 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 head_chef '260 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 head_starry '400 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 head_showa '380 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 acc_apron '110 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 acc_timer '300 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 acc_starry '420 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 acc_showa '400 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 shoes_running '320 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 gift_small '80 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 gift_medium '200 ¥' True
+CATALOG_FIT (1280, 720) comparison col0 row2 gift_large '450 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 table_2 '120 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 stool '60 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 table_4 '320 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 stove '180 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 teabar '380 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 dessert '450 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 bakery '700 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 plant '80 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 window '140 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 rug '150 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 cat_tower '260 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 stage '800 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 chandelier '620 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 koi_pond '900 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 star_lamp '200 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 planetarium '520 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 showa_poster '160 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 head_band '90 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 head_sakura '210 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 head_gothic '230 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 head_chef '260 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 head_starry '400 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 head_showa '380 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 acc_apron '110 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 acc_timer '300 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 acc_starry '420 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 acc_showa '400 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 shoes_running '320 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 gift_small '80 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 gift_medium '200 ¥' True
+CATALOG_FIT (1280, 720) comparison col1 row2 gift_large '450 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 table_2 '120 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 stool '60 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 table_4 '320 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 stove '180 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 teabar '380 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 dessert '450 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 bakery '700 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 plant '80 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 window '140 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 rug '150 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 cat_tower '260 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 stage '800 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 chandelier '620 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 koi_pond '900 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 star_lamp '200 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 planetarium '520 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 showa_poster '160 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 head_band '90 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 head_sakura '210 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 head_gothic '230 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 head_chef '260 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 head_starry '400 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 head_showa '380 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 acc_apron '110 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 acc_timer '300 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 acc_starry '420 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 acc_showa '400 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 shoes_running '320 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 gift_small '80 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 gift_medium '200 ¥' True
+CATALOG_FIT (1280, 720) comparison col2 row2 gift_large '450 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 table_2 '120 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 stool '60 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 table_4 '320 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 stove '180 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 teabar '380 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 dessert '450 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 bakery '700 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 plant '80 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 window '140 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 rug '150 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 cat_tower '260 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 stage '800 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 chandelier '620 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 koi_pond '900 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 star_lamp '200 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 planetarium '520 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 showa_poster '160 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 head_band '90 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 head_sakura '210 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 head_gothic '230 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 head_chef '260 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 head_starry '400 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 head_showa '380 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 acc_apron '110 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 acc_timer '300 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 acc_starry '420 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 acc_showa '400 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 shoes_running '320 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 gift_small '80 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 gift_medium '200 ¥' True
+CATALOG_FIT (1280, 720) comparison col3 row2 gift_large '450 ¥' True
+(1280, 720) samples
+CATALOG outfit_basic=0 ¥, stool=60 ¥, plant=80 ¥, gift_small=80 ¥, head_band=90 ¥, shoes_flats=100 ¥, acc_apron=110 ¥, table_2=120 ¥, window=140 ¥, rug=150 ¥, showa_poster=160 ¥, stove=180 ¥, lantern_sakura=180 ¥, gothic_candelabra=190 ¥, star_lamp=200 ¥, gift_medium=200 ¥, head_sakura=210 ¥, head_gothic=230 ¥, shoes_sakura=230 ¥, acc_sakura=240 ¥, shoes_gothic=250 ¥, cat_tower=260 ¥, head_chef=260 ¥, acc_gothic=260 ¥, acc_timer=300 ¥, table_4=320 ¥, outfit_sakura=320 ¥, shoes_running=320 ¥, outfit_gothic=340 ¥, teabar=380 ¥, outfit_chef=380 ¥, head_showa=380 ¥, head_starry=400 ¥, acc_showa=400 ¥, shoes_showa=410 ¥, sakura_tree=420 ¥, acc_starry=420 ¥, gothic_mirror=430 ¥, shoes_starry=430 ¥, dessert=450 ¥, gift_large=450 ¥, outfit_showa=500 ¥, planetarium=520 ¥, outfit_starry=520 ¥, showa_jukebox=540 ¥, chandelier=620 ¥, bakery=700 ¥, stage=800 ¥, koi_pond=900 ¥
+samples col0 row0 active=True tex=0 mode=current label='0 ¥' font=18 pref=25x20 slot=(134.00, 28.00) FIT=True lines=1
+samples col0 row1 active=True tex=0 mode=current label='60 ¥' font=18 pref=35x20 slot=(134.00, 28.00) FIT=True lines=1
+samples col0 row2 active=True tex=0 mode=current label='900 ¥' font=18 pref=45x20 slot=(134.00, 28.00) FIT=True lines=1
+samples col0 row3 active=False tex=0 mode=current label='900 ¥' font=18 pref=45x20 slot=(134.00, 28.00) FIT=True lines=1
+samples col0 row4 active=True tex=0 mode=current label='Voltar' font=18 pref=51x20 slot=(104.00, 28.00) FIT=True lines=1
+samples col0 row5 active=True tex=0 mode=current label='Confirmar' font=24 pref=114x27 slot=(210.00, 34.00) FIT=True lines=1
+samples col1 row0 active=True tex=1024 mode=sliced label='0 ¥' font=18 pref=25x20 slot=(104.95, 27.64) FIT=True lines=1
+samples col1 row1 active=True tex=1024 mode=sliced label='60 ¥' font=18 pref=35x20 slot=(104.95, 27.64) FIT=True lines=1
+samples col1 row2 active=True tex=1024 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+samples col1 row3 active=False tex=1024 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+samples col1 row4 active=True tex=1024 mode=sliced label='Voltar' font=18 pref=51x20 slot=(74.95, 27.64) FIT=True lines=1
+samples col1 row5 active=True tex=1024 mode=sliced label='Confirmar' font=24 pref=114x27 slot=(176.53, 34.38) FIT=True lines=1
+samples col2 row0 active=True tex=768 mode=sliced label='0 ¥' font=18 pref=25x20 slot=(104.95, 27.64) FIT=True lines=1
+samples col2 row1 active=True tex=768 mode=sliced label='60 ¥' font=18 pref=35x20 slot=(104.95, 27.64) FIT=True lines=1
+samples col2 row2 active=True tex=768 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+samples col2 row3 active=False tex=768 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+samples col2 row4 active=True tex=768 mode=sliced label='Voltar' font=18 pref=51x20 slot=(74.95, 27.64) FIT=True lines=1
+samples col2 row5 active=True tex=768 mode=sliced label='Confirmar' font=24 pref=114x27 slot=(176.53, 34.38) FIT=True lines=1
+samples col3 row0 active=True tex=512 mode=sliced label='0 ¥' font=18 pref=25x20 slot=(104.95, 27.64) FIT=True lines=1
+samples col3 row1 active=True tex=512 mode=sliced label='60 ¥' font=18 pref=35x20 slot=(104.95, 27.64) FIT=True lines=1
+samples col3 row2 active=True tex=512 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+samples col3 row3 active=False tex=512 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+samples col3 row4 active=True tex=512 mode=sliced label='Voltar' font=18 pref=51x20 slot=(74.95, 27.64) FIT=True lines=1
+samples col3 row5 active=True tex=512 mode=sliced label='Confirmar' font=24 pref=114x27 slot=(176.53, 34.38) FIT=True lines=1
+CANVAS (1280.00, 720.00) scale=1
+
+CATALOG_FIT (1280, 720) samples col0 row2 table_2 '120 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 stool '60 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 table_4 '320 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 stove '180 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 teabar '380 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 dessert '450 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 bakery '700 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 plant '80 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 window '140 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 rug '150 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 cat_tower '260 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 stage '800 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 chandelier '620 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 koi_pond '900 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 star_lamp '200 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 planetarium '520 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 showa_poster '160 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 head_band '90 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 head_sakura '210 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 head_gothic '230 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 head_chef '260 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 head_starry '400 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 head_showa '380 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 acc_apron '110 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 acc_timer '300 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 acc_starry '420 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 acc_showa '400 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 shoes_running '320 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 gift_small '80 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 gift_medium '200 ¥' True
+CATALOG_FIT (1280, 720) samples col0 row2 gift_large '450 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 table_2 '120 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 stool '60 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 table_4 '320 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 stove '180 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 teabar '380 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 dessert '450 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 bakery '700 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 plant '80 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 window '140 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 rug '150 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 cat_tower '260 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 stage '800 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 chandelier '620 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 koi_pond '900 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 star_lamp '200 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 planetarium '520 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 showa_poster '160 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 head_band '90 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 head_sakura '210 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 head_gothic '230 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 head_chef '260 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 head_starry '400 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 head_showa '380 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 acc_apron '110 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 acc_timer '300 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 acc_starry '420 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 acc_showa '400 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 shoes_running '320 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 gift_small '80 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 gift_medium '200 ¥' True
+CATALOG_FIT (1280, 720) samples col1 row2 gift_large '450 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 table_2 '120 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 stool '60 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 table_4 '320 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 stove '180 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 teabar '380 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 dessert '450 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 bakery '700 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 plant '80 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 window '140 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 rug '150 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 cat_tower '260 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 stage '800 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 chandelier '620 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 koi_pond '900 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 star_lamp '200 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 planetarium '520 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 showa_poster '160 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 head_band '90 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 head_sakura '210 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 head_gothic '230 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 head_chef '260 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 head_starry '400 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 head_showa '380 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 acc_apron '110 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 acc_timer '300 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 acc_starry '420 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 acc_showa '400 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 shoes_running '320 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 gift_small '80 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 gift_medium '200 ¥' True
+CATALOG_FIT (1280, 720) samples col2 row2 gift_large '450 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 table_2 '120 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 stool '60 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 table_4 '320 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 stove '180 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 teabar '380 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 dessert '450 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 bakery '700 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 plant '80 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 window '140 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 rug '150 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 cat_tower '260 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 stage '800 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 chandelier '620 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 koi_pond '900 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 star_lamp '200 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 planetarium '520 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 showa_poster '160 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 head_band '90 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 head_sakura '210 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 head_gothic '230 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 head_chef '260 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 head_starry '400 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 head_showa '380 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 acc_apron '110 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 acc_timer '300 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 acc_starry '420 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 acc_showa '400 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 shoes_running '320 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 gift_small '80 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 gift_medium '200 ¥' True
+CATALOG_FIT (1280, 720) samples col3 row2 gift_large '450 ¥' True
+(1280, 720) aspect
+CATALOG outfit_basic=0 ¥, stool=60 ¥, plant=80 ¥, gift_small=80 ¥, head_band=90 ¥, shoes_flats=100 ¥, acc_apron=110 ¥, table_2=120 ¥, window=140 ¥, rug=150 ¥, showa_poster=160 ¥, stove=180 ¥, lantern_sakura=180 ¥, gothic_candelabra=190 ¥, star_lamp=200 ¥, gift_medium=200 ¥, head_sakura=210 ¥, head_gothic=230 ¥, shoes_sakura=230 ¥, acc_sakura=240 ¥, shoes_gothic=250 ¥, cat_tower=260 ¥, head_chef=260 ¥, acc_gothic=260 ¥, acc_timer=300 ¥, table_4=320 ¥, outfit_sakura=320 ¥, shoes_running=320 ¥, outfit_gothic=340 ¥, teabar=380 ¥, outfit_chef=380 ¥, head_showa=380 ¥, head_starry=400 ¥, acc_showa=400 ¥, shoes_showa=410 ¥, sakura_tree=420 ¥, acc_starry=420 ¥, gothic_mirror=430 ¥, shoes_starry=430 ¥, dessert=450 ¥, gift_large=450 ¥, outfit_showa=500 ¥, planetarium=520 ¥, outfit_starry=520 ¥, showa_jukebox=540 ¥, chandelier=620 ¥, bakery=700 ¥, stage=800 ¥, koi_pond=900 ¥
+aspect col0 row0 active=True tex=0 mode=current label='0 ¥' font=18 pref=25x20 slot=(134.00, 28.00) FIT=True lines=1
+aspect col0 row1 active=True tex=0 mode=current label='60 ¥' font=18 pref=35x20 slot=(134.00, 28.00) FIT=True lines=1
+aspect col0 row2 active=True tex=0 mode=current label='900 ¥' font=18 pref=45x20 slot=(134.00, 28.00) FIT=True lines=1
+aspect col0 row3 active=False tex=0 mode=current label='900 ¥' font=18 pref=45x20 slot=(134.00, 28.00) FIT=True lines=1
+aspect col0 row4 active=True tex=0 mode=current label='Voltar' font=18 pref=51x20 slot=(104.00, 28.00) FIT=True lines=1
+aspect col0 row5 active=True tex=0 mode=current label='Confirmar' font=24 pref=114x27 slot=(210.00, 34.00) FIT=True lines=1
+aspect col1 row0 active=True tex=2072 mode=sliced label='0 ¥' font=18 pref=25x20 slot=(104.95, 27.64) FIT=True lines=1
+aspect col1 row1 active=True tex=2072 mode=sliced label='60 ¥' font=18 pref=35x20 slot=(104.95, 27.64) FIT=True lines=1
+aspect col1 row2 active=True tex=2072 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+aspect col1 row3 active=False tex=2072 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+aspect col1 row4 active=True tex=2072 mode=sliced label='Voltar' font=18 pref=51x20 slot=(74.95, 27.64) FIT=True lines=1
+aspect col1 row5 active=True tex=2072 mode=sliced label='Confirmar' font=24 pref=114x27 slot=(176.53, 34.38) FIT=True lines=1
+aspect col2 row0 active=True tex=768 mode=sliced label='0 ¥' font=18 pref=25x20 slot=(104.95, 27.64) FIT=True lines=1
+aspect col2 row1 active=True tex=768 mode=sliced label='60 ¥' font=18 pref=35x20 slot=(104.95, 27.64) FIT=True lines=1
+aspect col2 row2 active=True tex=768 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+aspect col2 row3 active=False tex=768 mode=sliced label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+aspect col2 row4 active=True tex=768 mode=sliced label='Voltar' font=18 pref=51x20 slot=(74.95, 27.64) FIT=True lines=1
+aspect col2 row5 active=True tex=768 mode=sliced label='Confirmar' font=24 pref=114x27 slot=(176.53, 34.38) FIT=True lines=1
+aspect col3 row0 active=True tex=768 mode=aspect label='0 ¥' font=18 pref=25x20 slot=(104.95, 27.64) FIT=True lines=1
+aspect col3 row1 active=True tex=768 mode=aspect label='60 ¥' font=18 pref=35x20 slot=(104.95, 27.64) FIT=True lines=1
+aspect col3 row2 active=True tex=768 mode=aspect label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+aspect col3 row3 active=False tex=768 mode=aspect label='900 ¥' font=18 pref=45x20 slot=(104.95, 27.64) FIT=True lines=1
+aspect col3 row4 active=True tex=768 mode=aspect label='Voltar' font=18 pref=51x20 slot=(74.95, 27.64) FIT=True lines=1
+aspect col3 row5 active=True tex=768 mode=aspect label='Confirmar' font=24 pref=114x27 slot=(176.53, 34.38) FIT=True lines=1
+CANVAS (1280.00, 720.00) scale=1
+
+CATALOG_FIT (1280, 720) aspect col0 row2 table_2 '120 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 stool '60 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 table_4 '320 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 stove '180 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 teabar '380 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 dessert '450 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 bakery '700 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 plant '80 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 window '140 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 rug '150 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 cat_tower '260 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 stage '800 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 chandelier '620 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 koi_pond '900 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 star_lamp '200 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 planetarium '520 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 showa_poster '160 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 head_band '90 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 head_sakura '210 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 head_gothic '230 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 head_chef '260 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 head_starry '400 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 head_showa '380 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 acc_apron '110 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 acc_timer '300 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 acc_starry '420 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 acc_showa '400 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 shoes_running '320 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 gift_small '80 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 gift_medium '200 ¥' True
+CATALOG_FIT (1280, 720) aspect col0 row2 gift_large '450 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 table_2 '120 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 stool '60 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 table_4 '320 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 stove '180 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 teabar '380 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 dessert '450 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 bakery '700 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 plant '80 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 window '140 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 rug '150 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 cat_tower '260 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 stage '800 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 chandelier '620 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 koi_pond '900 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 star_lamp '200 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 planetarium '520 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 showa_poster '160 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 head_band '90 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 head_sakura '210 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 head_gothic '230 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 head_chef '260 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 head_starry '400 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 head_showa '380 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 acc_apron '110 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 acc_timer '300 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 acc_starry '420 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 acc_showa '400 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 shoes_running '320 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 gift_small '80 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 gift_medium '200 ¥' True
+CATALOG_FIT (1280, 720) aspect col1 row2 gift_large '450 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 table_2 '120 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 stool '60 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 table_4 '320 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 stove '180 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 teabar '380 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 dessert '450 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 bakery '700 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 plant '80 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 window '140 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 rug '150 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 cat_tower '260 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 stage '800 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 chandelier '620 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 koi_pond '900 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 star_lamp '200 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 planetarium '520 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 showa_poster '160 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 head_band '90 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 head_sakura '210 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 head_gothic '230 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 head_chef '260 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 head_starry '400 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 head_showa '380 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 acc_apron '110 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 acc_timer '300 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 acc_starry '420 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 acc_showa '400 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 shoes_running '320 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 gift_small '80 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 gift_medium '200 ¥' True
+CATALOG_FIT (1280, 720) aspect col2 row2 gift_large '450 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 table_2 '120 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 stool '60 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 table_4 '320 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 stove '180 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 teabar '380 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 dessert '450 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 bakery '700 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 plant '80 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 window '140 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 rug '150 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 cat_tower '260 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 stage '800 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 chandelier '620 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 koi_pond '900 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 lantern_sakura '180 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 sakura_tree '420 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 gothic_candelabra '190 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 gothic_mirror '430 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 star_lamp '200 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 planetarium '520 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 showa_poster '160 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 showa_jukebox '540 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 outfit_basic '0 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 outfit_sakura '320 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 outfit_gothic '340 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 outfit_chef '380 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 outfit_starry '520 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 outfit_showa '500 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 head_band '90 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 head_sakura '210 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 head_gothic '230 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 head_chef '260 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 head_starry '400 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 head_showa '380 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 acc_apron '110 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 acc_sakura '240 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 acc_gothic '260 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 acc_timer '300 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 acc_starry '420 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 acc_showa '400 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 shoes_flats '100 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 shoes_sakura '230 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 shoes_gothic '250 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 shoes_running '320 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 shoes_starry '430 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 shoes_showa '410 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 gift_small '80 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 gift_medium '200 ¥' True
+CATALOG_FIT (1280, 720) aspect col3 row2 gift_large '450 ¥' True
+PURCHASE real Shop.Buy: success charges900/adds1; insufficient funds refused with no mutation
+TEXTURE 2072x380 format=RGBA32 mip=1 readable=False runtimeBytes=6558464
+TEXTURE 1024x188 format=RGBA32 mip=1 readable=False runtimeBytes=1623168
+TEXTURE 768x141 format=RGBA32 mip=1 readable=False runtimeBytes=958592
+TEXTURE 512x94 format=RGBA32 mip=1 readable=False runtimeBytes=455808
+SIMULATED down=288 up=288 click=288 disabledBlocked=48 outsideMiss=144; FAILURES=0

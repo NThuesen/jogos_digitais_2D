@@ -1,0 +1,15 @@
+using UnityEditor;
+using UnityEngine;
+public static class CompactQaSetup
+{
+    public static void Configure()
+    {
+        foreach(int w in new[]{2072,1024,768,512})
+        {
+            string path="Assets/_QA_UI004Compact_Temp/Runtime/Resources/UI004CompactQa/candidate_"+w+".png";
+            var imp=(TextureImporter)AssetImporter.GetAtPath(path);imp.textureType=TextureImporterType.Default;
+            imp.npotScale=TextureImporterNPOTScale.None;imp.maxTextureSize=4096;imp.mipmapEnabled=false;imp.isReadable=false;
+            imp.alphaIsTransparency=true;imp.textureCompression=TextureImporterCompression.Uncompressed;imp.wrapMode=TextureWrapMode.Clamp;imp.filterMode=FilterMode.Bilinear;imp.SaveAndReimport();
+        }
+    }
+}

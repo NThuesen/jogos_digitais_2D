@@ -1,0 +1,12 @@
+from pathlib import Path
+import json,numpy as np
+from PIL import Image
+ROOT=Path(__file__).resolve().parents[6]
+a=np.array(Image.open(ROOT/'art_working/ui_modular/blender_clean/UI-004_button_primary_compact_normal_v01.png'));ref=np.median(a[:,500:1600,:3],axis=1)
+report={'border_master_LBRT':[160,110,160,110],'central_source_size':[1752,160],'column_rgb_deviation_p50_p90_p95_p99':{str(x):np.percentile(np.abs(a[:,x,:3].astype(float)-ref).mean(axis=1),[50,90,95,99]).tolist() for x in [80,100,120,140,160,1900,1912,1942,1952]},'seams':{},'configurations':[]}
+for x in [160,1912]:
+ steps=np.abs(np.diff(a[:,x-6:x+6,:3].astype(float),axis=1)).mean(axis=(0,2));report['seams'][str(x)]={'cut_step_rgb':float(steps[5]),'local_median_step_rgb':float(np.median(steps))}
+for w,h in [(2072,380),(1024,188),(768,141),(512,94)]:
+ report['configurations'].append({'texture':[w,h],'border':[160*w/2072,110*h/380,160*w/2072,110*h/380],'multiplier_h44':h/44,'multiplier_h54':h/54,'rgba32_bytes':w*h*4})
+(ROOT/'docs/art/ui-modular/reviews/evidence/UI-004-COMPACT/geometry.json').write_text(json.dumps(report,indent=2)+'\n')
+print(json.dumps(report,indent=2))
