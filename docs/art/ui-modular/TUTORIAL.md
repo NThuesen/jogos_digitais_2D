@@ -1,6 +1,6 @@
 # Tutorial de geração — anexos exatos, prompts prontos, nomes definidos
 
-**Você não precisa inventar nomes nem preencher `[STATE]`.** Cada arquivo em `prompts/` ou `prompts/variants/` traz **(1) anexos com nomes e links reais; (2) um bloco único pronto para copiar; (3) nome e pasta exatos do PNG final**. O [manifesto](OUTPUT_MANIFEST.md) contém os **96 nomes**. O UI-001 já tem PNG aprovado e versionado; o NORMAL ornamental de UI-004 foi gerado localmente, mas ficou em REWORK após QA; o compacto NORMAL ainda não foi gerado. O registro distingue prompts, PNGs disponíveis, aprovados e integrados.
+**Você não precisa inventar nomes nem preencher `[STATE]`.** Cada arquivo em `prompts/` ou `prompts/variants/` traz **(1) anexos com nomes e links reais; (2) um bloco único pronto para copiar; (3) nome e pasta exatos do PNG final**. O [manifesto](OUTPUT_MANIFEST.md) contém os **96 nomes**. O UI-001 está aprovado e versionado; o NORMAL ornamental de UI-004 permaneceu REWORK; o COMPACT NORMAL foi gerado e validado na PR #42, com aprovação expressa do responsável, embora a formalização no registro/merge ainda possa estar pendente. Os estados compactos HOVER/PRESSED/DISABLED são os próximos candidatos. O registro distingue prompts, PNGs disponíveis, aprovados e integrados.
 
 ## Passo zero — baixar as referências que já EXISTEM
 
@@ -57,7 +57,22 @@ Ao gerar as variantes, peça para manter **o mesmo contorno e tamanho da imagem 
 5. Mostre o PNG para revisão humana antes de aprovar. Claude Code avalia coesão/legibilidade visual; depois Codex testa os tamanhos reais **150×44 da Loja (preços, não o rótulo "Comprar")**, **120×44** e **230×54** nas resoluções `960×600` e `1280×720`. Sem conclusões de WebGL antes de uma execução real.
 6. Registre o resultado no [ASSET_REGISTRY.md](ASSET_REGISTRY.md) (`RAW` / `CLEAN` / `UNITY_QA` / `REWORK` / `APPROVED`, conforme evidência); a existência deste tutorial **não aprova nem integra** o asset. HOVER, PRESSED e DISABLED compactos só após aprovação do NORMAL correspondente.
 
-**Nome e status:** `UI-004_button_primary_compact_normal_v01.png` — **PENDING (prompt documentado, PNG inexistente)**. [Manifesto de saídas](OUTPUT_MANIFEST.md).
+**Nome e status atualizados após geração:** `UI-004_button_primary_compact_normal_v01.png` — gerado e limpo localmente; QA da [PR #42](https://github.com/NThuesen/jogos_digitais_2D/pull/42) recomendou aprovação, confirmada pelo responsável. A aprovação formal e a integração são registros distintos. [Manifesto de saídas](OUTPUT_MANIFEST.md).
+
+## Passo 2B — Gerar HOVER, PRESSED e DISABLED do botão **compacto** aprovado
+
+**Não utilize os três prompts ornamentais originais** (`04_BUTTON_PRIMARY_HOVER/PRESSED/DISABLED.md`): eles pedem o botão antigo `UI-004_button_primary_normal_v01.png`, que continua em REWORK.
+
+1. Na pasta local `art_working/ui_modular/blender_clean/`, localize **`UI-004_button_primary_compact_normal_v01.png`**, versão limpa **2072×380** e SHA-256 **`c82d06142b3953a97b9654d8b7bf53e611679a6ffb4822a3b268dff239c17eb6`**. Esse é o único anexo obrigatório de geometria. Uma cópia byte a byte idêntica em `approved/` é equivalente. **Não anexe o RAW 2172×724 nem a redução 768×141 como master**.
+2. Opcional: anexe o painel [`UI-001_panel_large_v01.png`](approved/UI-001_panel_large_v01.png) para estilo. **O NORMAL compacto prevalece sobre ele** em cor, contorno e geometria. Não é necessário reenviar capturas históricas/pixel art.
+3. Gere **uma única imagem por prompt**, preferencialmente pedindo **edição da imagem NORMAL anexada** no GPT Web:
+   - [COMPACT HOVER](prompts/variants/04_BUTTON_PRIMARY_COMPACT_HOVER.md) → `UI-004_button_primary_compact_hover_v01.png`
+   - [COMPACT PRESSED](prompts/variants/04_BUTTON_PRIMARY_COMPACT_PRESSED.md) → `UI-004_button_primary_compact_pressed_v01.png`
+   - [COMPACT DISABLED](prompts/variants/04_BUTTON_PRIMARY_COMPACT_DISABLED.md) → `UI-004_button_primary_compact_disabled_v01.png`
+4. Baixe/renomeie os PNGs em `art_working/ui_modular/raw_gpt/`, sem sobrescrever o NORMAL ou o ornamental. Se a IA mudar silhueta, margens, espessura da moldura ou banda 9-slice, **rejeite/regere o estado**; alternativa: derivar iluminação/tint a partir do NORMAL no Blender/Unity.
+5. Mostre cada variante para revisão visual. Somente depois peça ao Codex **limpeza e QA incremental** dos estados em 120×44, 150×44 e 230×54 (960×600 e 1280×720). Cada estado permanece `PENDING`/RAW até evidências e aprovação próprias; Unity controla interação real.
+
+**Não existe homologação automática dos três PNGs só porque NORMAL passou no QA.** A família ornamental grande continua independente e em REWORK.
 
 ## Passo 3 — Maid Card compacto (terceira peça do piloto)
 

@@ -1,12 +1,20 @@
 # Ordem de geração e aprovação (sem lotes)
 
-**Status real em 03/11/2026:** UI-001 está APPROVED (não integrado); UI-004 ornamental NORMAL v01 foi gerado localmente, mas está REWORK; HOVER/PRESSED/DISABLED ornamentais e COMPACT NORMAL continuam PENDING. O objetivo é uma linguagem visual consistente, não completar 95 imagens por completude. Cada link vai para **um prompt executável**, sem `[STATE]` a preencher.
+**Status do fluxo em 03/11/2026:** UI-001 APPROVED (não integrado); UI-004 ornamental NORMAL v01 REWORK; UI-004 COMPACT NORMAL gerado, limpo, com QA PASS na PR #42 e aprovado pelo responsável (registro/merge em processo independente); HOVER/PRESSED/DISABLED ornamentais e compactos ainda não gerados. O objetivo é uma linguagem visual consistente, não completar 95 imagens por completude. Cada link vai para **um prompt executável**, sem `[STATE]` a preencher.
 
-## Prioridade atual aprovada — UI-004 COMPACT NORMAL
+## Prioridade atual — estados da UI-004 compacta
 
-**Próxima geração individual:** [`04_BUTTON_PRIMARY_COMPACT_NORMAL.md`](prompts/variants/04_BUTTON_PRIMARY_COMPACT_NORMAL.md) → `art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_normal_v01.png` (**PENDING**, não gerado). Anexos e blocos prontos estão no [tutorial](TUTORIAL.md#passo-2a--gerar-agora-o-botão-compacto-normal-nova-variante-ui-004).
+**NORMAL compacto já foi gerado e validado na [PR #42](https://github.com/NThuesen/jogos_digitais_2D/pull/42), com aprovação do responsável.** Próximas imagens candidatas são **COMPACT HOVER**, **COMPACT PRESSED** e **COMPACT DISABLED**, nessa ordem, cada qual com prompt próprio e um único PNG. [Tutorial e anexos](TUTORIAL.md#passo-2b--gerar-hover-pressed-e-disabled-do-botão-compacto-aprovado).
 
-A decisão de produto estabelece duas linhas: ornamental grande (~260×88, arte antiga ainda `REWORK`) e compacta simplificada (44–54, foco `150×44` Loja e `120×44` navegação). Abas são independentes. Primeiro produzir e revisar apenas o NORMAL compacto; **não** avançar HOVER/PRESSED/DISABLED de qualquer linha sem NORMAL correspondente aprovado. Não homologar 768×256/WebGL do grande por inferência.
+| Ordem | Prompt pronto | Saída local RAW |
+|---|---|---|
+| 1 | [COMPACT HOVER](prompts/variants/04_BUTTON_PRIMARY_COMPACT_HOVER.md) | `UI-004_button_primary_compact_hover_v01.png` |
+| 2 | [COMPACT PRESSED](prompts/variants/04_BUTTON_PRIMARY_COMPACT_PRESSED.md) | `UI-004_button_primary_compact_pressed_v01.png` |
+| 3 | [COMPACT DISABLED](prompts/variants/04_BUTTON_PRIMARY_COMPACT_DISABLED.md) | `UI-004_button_primary_compact_disabled_v01.png` |
+
+**Anexo principal:** NORMAL COMPACTO **limpo 2072×380** em `art_working/ui_modular/blender_clean/`, não o ornamental e não o bruto. Outros estados permanecem PENDING até geração, QA e aprovação próprios.
+
+A decisão de produto estabelece duas linhas: ornamental grande (~260×88, arte antiga ainda `REWORK`) e compacta simplificada (44–54, foco `150×44` Loja e `120×44` navegação). Abas são independentes. O NORMAL compacto já foi aprovado pelo responsável; gerar seus outros estados em separado, **sem** iniciar os estados ornamentais (NORMAL ornamental ainda REWORK). Não homologar 768×256/WebGL do grande por inferência.
 
 ## P0 — primeiro piloto (sequência originalmente documentada; mantida como histórico)
 
@@ -37,4 +45,4 @@ A decisão de produto estabelece duas linhas: ornamental grande (~260×88, arte 
 
 [Barra superior](prompts/15_TOP_BAR_HUD.md), [faixa inferior](prompts/16_BOTTOM_STRIP_DAY_UI.md). Revalidar maids/Yoru e HUD nos tamanhos 960×600 e 1280×720. Não alterar câmera do PR #30 sem justificativa.
 
-[Todos os 95 nomes exatos](OUTPUT_MANIFEST.md) · [Tutorial de anexos](TUTORIAL.md) · [Registro de aprovação](ASSET_REGISTRY.md).
+[Todos os 99 nomes exatos](OUTPUT_MANIFEST.md) · [Tutorial de anexos](TUTORIAL.md) · [Registro de aprovação](ASSET_REGISTRY.md).
