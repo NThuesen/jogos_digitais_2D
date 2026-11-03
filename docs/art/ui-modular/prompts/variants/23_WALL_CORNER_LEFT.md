@@ -19,14 +19,14 @@ Neko Maid Inc. — create exactly ONE modular original 2D anime illustrated cafe
 
 Illustrate exactly ONE architectural WALL SEGMENT for the dynamic Unity cafe room: a left wall-turning corner joined to the straight wall segment. Original cozy 2D anime illustration using the actual orthographic/3-4 view and grid orientation shown in the Unity hall screenshot. Correct edge alignment, uniform height, warm painterly color; alpha where appropriate. Do NOT embed placeable furniture, game UI, text, maid sprites, floor grid, full room or scene. Keep corners and decor from interfering with tile clicks. No artificial pixelation.
 
-Requested final file basename: UI-23_wall_corner_left_v01.png. I understand the interface may save under another filename; I will rename the downloaded PNG manually.
+Requested final file basename: UI-023_wall_corner_left_v01.png. I understand the interface may save under another filename; I will rename the downloaded PNG manually.
 ```
 
 ## Nome e destino exatos
 
-1. `art_working/ui_modular/raw_gpt/UI-23_wall_corner_left_v01.png` — original baixado/renomeado.
-2. `art_working/ui_modular/blender_clean/UI-23_wall_corner_left_v01.png` — opcional: limpeza RGBA no Blender.
-3. `art_working/ui_modular/approved/UI-23_wall_corner_left_v01.png` — somente se o responsável aprovar.
+1. `art_working/ui_modular/raw_gpt/UI-023_wall_corner_left_v01.png` — original baixado/renomeado.
+2. `art_working/ui_modular/blender_clean/UI-023_wall_corner_left_v01.png` — opcional: limpeza RGBA no Blender.
+3. `art_working/ui_modular/approved/UI-023_wall_corner_left_v01.png` — somente se o responsável aprovar.
 4. Nova tentativa: substitua apenas `_v01.png` por `_v02.png`, sem sobrescrever a original.
 
 Confira [tutorial](../../TUTORIAL.md) e [registro](../../ASSET_REGISTRY.md). Não gerar em lote antes do gate estético.

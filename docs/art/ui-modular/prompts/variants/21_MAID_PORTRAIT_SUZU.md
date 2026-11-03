@@ -19,14 +19,14 @@ Neko Maid Inc. — create exactly ONE modular original 2D anime illustrated cafe
 
 Make ONE original half-body ANIME 2D PORTRAIT of Suzu, the EXACT maid identifiable in the two attached official project images (suzu_walk.png and suzu_seq_010_1280x720.png). Expression NEUTRAL, slightly three-quarter, gentle welcoming demeanor. Faithfully reproduce her real hair colors/shapes, ears, accessories, face identity, clothing and palette from the attachments; DO NOT copy the pink maid character in old ART-01D. Soft painterly linework and colors consistent with the game's illustrated walk sheets (not pixel art), fully visible head/ears/shoulders, alpha outside. NO card frame, logo, text, props or full game screen. This is a future-gated character asset: if the reference does not clearly establish a feature, do not invent an identity-changing one.
 
-Requested final file basename: UI-21_maid_portrait_suzu_neutral_v01.png. I understand the interface may save under another filename; I will rename the downloaded PNG manually.
+Requested final file basename: UI-021_maid_portrait_suzu_neutral_v01.png. I understand the interface may save under another filename; I will rename the downloaded PNG manually.
 ```
 
 ## Nome e destino exatos
 
-1. `art_working/ui_modular/raw_gpt/UI-21_maid_portrait_suzu_neutral_v01.png` — original baixado/renomeado.
-2. `art_working/ui_modular/blender_clean/UI-21_maid_portrait_suzu_neutral_v01.png` — opcional: limpeza RGBA no Blender.
-3. `art_working/ui_modular/approved/UI-21_maid_portrait_suzu_neutral_v01.png` — somente se o responsável aprovar.
+1. `art_working/ui_modular/raw_gpt/UI-021_maid_portrait_suzu_neutral_v01.png` — original baixado/renomeado.
+2. `art_working/ui_modular/blender_clean/UI-021_maid_portrait_suzu_neutral_v01.png` — opcional: limpeza RGBA no Blender.
+3. `art_working/ui_modular/approved/UI-021_maid_portrait_suzu_neutral_v01.png` — somente se o responsável aprovar.
 4. Nova tentativa: substitua apenas `_v01.png` por `_v02.png`, sem sobrescrever a original.
 
 Confira [tutorial](../../TUTORIAL.md) e [registro](../../ASSET_REGISTRY.md). Não gerar em lote antes do gate estético.
