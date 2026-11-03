@@ -1,0 +1,111 @@
+"""Read approved references only. Audit six RAWs; controlled alpha-only cleanup for three frames.
+Evidence composites/simulations are not new art or Unity renders.
+"""
+from pathlib import Path
+import hashlib,json,platform
+import PIL,scipy
+import numpy as np
+from PIL import Image,ImageDraw,ImageFont
+from scipy import ndimage as nd
+ROOT=Path(__file__).resolve().parents[6];EVID=Path(__file__).resolve().parent
+RAW=ROOT/'art_working/ui_modular/raw_gpt';CLEAN=ROOT/'art_working/ui_modular/blender_clean'
+NAMES=['UI-002_panel_medium_v01','UI-003_panel_small_label_v01','UI-008_maid_card_compact_v01','UI-004_button_primary_compact_hover_v01','UI-004_button_primary_compact_pressed_v01','UI-004_button_primary_compact_disabled_v01']
+FONT=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',16)
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def bbox(mask):
+ if not mask.any():return None
+ y,x=np.where(mask);return [int(x.min()),int(y.min()),int(x.max()+1),int(y.max()+1)]
+def facts(a):
+ al=a[:,:,3];labels,n=nd.label(al>0);count=np.bincount(labels.ravel());count[0]=0;main=labels==count.argmax();det=(al>0)&~main
+ edge=(al>=20)&(al<250);holes=nd.binary_fill_holes(al>128)&~(al>128);hl,hn=nd.label(holes);hc=np.bincount(hl.ravel());hc[0]=0
+ return {'dimensions':[a.shape[1],a.shape[0]],'alpha_histogram':{str(i):int(v) for i,v in enumerate(np.bincount(al.ravel(),minlength=256)) if v},'bbox_alpha_gt0_exclusive':bbox(al>0),'bbox_alpha_ge5_exclusive':bbox(al>=5),'bbox_alpha_gt128_exclusive':bbox(al>128),'components_alpha_gt0_connectivity4':n,'detached_pixels':int(det.sum()),'detached_max_alpha':int(al[det].max()) if det.any() else 0,'enclosed_area_alpha_le128_pixels':int(holes.sum()),'largest_enclosed_bbox':bbox(hl==hc.argmax()) if holes.any() else None,'edge_rgb_mean':a[:,:,:3][edge].mean(axis=0).tolist() if edge.any() else None,'edge_luma_gt200_count':int(((a[:,:,:3][edge]@[.2126,.7152,.0722])>200).sum())},main,det
+report={'environment':{'python':platform.python_version(),'pillow':PIL.__version__,'numpy':np.__version__,'scipy':scipy.__version__},'base':'98688920fc6ea5595eadfb7becd8d07d6fe78302','references':{},'assets':{}}
+for rel in ['docs/art/ui-modular/approved/UI-001_panel_large_v01.png','art_working/ui_modular/blender_clean/UI-004_button_primary_compact_normal_v01.png']:
+ p=ROOT/rel;report['references'][rel]={'sha256':sha(p),'dimensions':list(Image.open(p).size)}
+assert report['references']['art_working/ui_modular/blender_clean/UI-004_button_primary_compact_normal_v01.png']['sha256']=='c82d06142b3953a97b9654d8b7bf53e611679a6ffb4822a3b268dff239c17eb6'
+arrays={};originals={}
+for name in NAMES:
+ p=RAW/(name+'.png');im=Image.open(p);im.verify();assert p.read_bytes()[24:26]==bytes([8,6]),'Unexpected PNG bit depth/color type';a=np.array(Image.open(p));assert a.ndim==3 and a.shape[2]==4
+ f,main,det=facts(a);f.update({'png_bit_depth':p.read_bytes()[24],'png_color_type':p.read_bytes()[25],'sha256':sha(p),'bytes':p.stat().st_size,'mode':Image.open(p).mode,'integrity':'PASS'});r={'raw':f};originals[name]=a
+ if not name.startswith('UI-004'):
+  al=a[:,:,3];dist=nd.distance_transform_edt(al<20)
+  # Isolated faint residue away from the edge, plus faint haze far from any substantial drawing.
+  remove=(al>0)&(al<=8)&((det&(dist>2))|(dist>8))
+  cleaned=a.copy();cleaned[:,:,3][remove]=0;cleaned[:,:,3][al>=250]=255
+  assert np.array_equal(cleaned[:,:,:3],a[:,:,:3])
+  # Preserve card's 150:206-like canvas contract and portrait/text coordinates. Crop excess panel padding only.
+  box=bbox(cleaned[:,:,3]>0)
+  crop=[max(0,box[0]-2),max(0,box[1]-2),min(a.shape[1],box[2]+2),min(a.shape[0],box[3]+2)] if not name.startswith('UI-008') else [0,0,a.shape[1],a.shape[0]]
+  trim=cleaned[crop[1]:crop[3],crop[0]:crop[2]].copy()
+  pad=[0,0,max(0,box[2]+2-a.shape[1]),max(0,box[3]+2-a.shape[0])] if not name.startswith('UI-008') else [0,0,0,0]
+  if any(pad):trim=np.pad(trim,((pad[1],pad[3]),(pad[0],pad[2]),(0,0)))
+  out=CLEAN/(name+'.png')
+  Image.fromarray(trim).save(out);cf,_,_=facts(trim);cf.update({'sha256':sha(out),'bytes':out.stat().st_size,'crop_raw_xyxy_exclusive':crop,'added_transparent_padding_LTRB':pad,'alpha_residue_removed':int(remove.sum()),'removed_alpha_max':int(al[remove].max()),'solidified_alpha250_254_pixels':int(((al>=250)&(al<255)).sum()),'rgb_changed_in_retained_crop':0,'connected_alpha9_249_changed':0})
+  r['clean']=cf;arrays[name]=trim
+  rawcrop=a[crop[1]:crop[3],crop[0]:crop[2]]
+  if any(pad):rawcrop=np.pad(rawcrop,((pad[1],pad[3]),(pad[0],pad[2]),(0,0)))
+  # Six proof tiles, same crop and scale. The PNG asset itself is kept ignored.
+  proof=Image.new('RGB',(1000,720));draw=ImageDraw.Draw(proof)
+  for row,bg in enumerate([(248,236,216),(26,20,30),(255,0,255)]):
+   for col,src in enumerate([rawcrop,trim]):
+    tile=Image.new('RGBA',(500,240),bg+(255,));sample=Image.fromarray(src);sample.thumbnail((474,206),Image.Resampling.LANCZOS);tile.alpha_composite(sample,((500-sample.width)//2,28+(206-sample.height)//2));proof.paste(tile.convert('RGB'),(col*500,row*240));draw.text((col*500+10,row*240+5),'RAW (mesmo recorte)' if col==0 else 'CLEAN',font=FONT,fill=(255,255,255) if row==1 else (0,0,0))
+  proof.save(EVID/(name+'_raw_clean_proof.png'))
+ else:
+  r['clean']={'written':False,'reason':'Already solid face, one component and padding matches normal proportionally; preserve legitimate interpolated edge alpha. No correction needed.'};arrays[name]=a
+ report['assets'][name]=r
+# Card's named text and portrait slots are measurements, not Unity-certified insets.
+a=arrays['UI-008_maid_card_compact_v01'];ra=originals['UI-008_maid_card_compact_v01']
+for label,box in {'portrait_safe':[200,210,850,700],'name_safe':[230,850,840,950],'stats_safe':[170,1040,900,1260]}.items():
+ x0,y0,x1,y1=box;roi=a[y0:y1,x0:x1];old=ra[y0:y1,x0:x1]
+ report.setdefault('card_slots',{})[label]={'raw_coordinates_xyxy_exclusive':box,'raw_nonzero_alpha_pixels':int((old[:,:,3]>0).sum()),'clean_nonzero_alpha_pixels':int((roi[:,:,3]>0).sum()),'clean_min_alpha':int(roi[:,:,3].min()),'clean_max_alpha':int(roi[:,:,3].max()),'median_rgb':np.median(roi[:,:,:3],axis=(0,1)).tolist()}
+# Reference remains untouched: resampling below is in-memory comparison, never re-exported as NORMAL.
+normal=np.array(Image.open(CLEAN/'UI-004_button_primary_compact_normal_v01.png'));ref=np.array(Image.fromarray(normal).resize((2048,375),Image.Resampling.LANCZOS));mask=ref[:,:,3]>128;solid=ref[:,:,3]>250
+states={};previous=None
+for state in ['hover','pressed','disabled']:
+ a=arrays['UI-004_button_primary_compact_'+state+'_v01'];m=a[:,:,3]>128;diff=a[:,:,:3].astype(float)-ref[:,:,:3];edge=m^nd.binary_erosion(m);re=mask^nd.binary_erosion(mask)
+ dist1=nd.distance_transform_edt(~edge)[re];dist2=nd.distance_transform_edt(~re)[edge]
+ center=np.zeros(mask.shape,bool);center[85:290,220:1830]=True;rim=solid&~center
+ def stat(region):
+  d=diff[region];rgb=a[:,:,:3][region].astype(float);r=ref[:,:,:3][region].astype(float)
+  return {'mean_rgb_delta':d.mean(axis=0).tolist(),'mean_abs_rgb_delta':float(np.abs(d).mean()),'luma_delta':float((d@[.2126,.7152,.0722]).mean()),'saturation_range_mean':float((rgb.max(1)-rgb.min(1)).mean()),'reference_saturation_range_mean':float((r.max(1)-r.min(1)).mean())}
+ states[state]={'dimensions':[2048,375],'alpha_equal_other_states':previous is None or bool(np.array_equal(a[:,:,3],previous[:,:,3])),'mask_iou_vs_normal_normalized':float((m&mask).sum()/(m|mask).sum()),'mask_xor_pixels':int((m^mask).sum()),'max_boundary_distance_pixels':float(max(dist1.max(),dist2.max())),'centroid_delta_xy_pixels':(np.array(nd.center_of_mass(m))[::-1]-np.array(nd.center_of_mass(mask))[::-1]).tolist(),'whole_solid':stat(solid),'center':stat(center),'rim':stat(rim),'proportional_border_LBRT':[160*2048/2072,110*375/380,160*2048/2072,110*375/380]};previous=a
+report['states']=states
+# Native-size raster-only slice comparison, without text (Unity is explicitly NOT RUN).
+def sliced(a,w,h):
+ sw,sh=a.shape[1],a.shape[0];left=round(160*sw/2072);right=left;top=round(110*sh/380);bottom=top
+ scale=h/sh;dl=round(left*scale);dr=dl;dt=round(top*scale);db=round(bottom*scale)
+ xs=[0,left,sw-right,sw];ys=[0,top,sh-bottom,sh];xx=[0,dl,w-dr,w];yy=[0,dt,h-db,h];out=Image.new('RGBA',(w,h))
+ for y in range(3):
+  for x in range(3):
+   piece=Image.fromarray(a).crop((xs[x],ys[y],xs[x+1],ys[y+1])).resize((xx[x+1]-xx[x],yy[y+1]-yy[y]),Image.Resampling.BILINEAR);out.paste(piece,(xx[x],yy[y]))
+ return out
+sheet=Image.new('RGB',(1040,560),(244,230,210));draw=ImageDraw.Draw(sheet)
+draw.text((12,8),'SIMULACAO RASTER PYTHON — NAO E UNITY — cores/escala sem texto',font=FONT,fill='black')
+for col,(label,a) in enumerate([('NORMAL aprovado',normal)]+[(s.upper(),arrays['UI-004_button_primary_compact_'+s+'_v01']) for s in ['hover','pressed','disabled']]):
+ x=col*260;draw.text((x+8,46),label,font=FONT,fill='black')
+ for row,(w,h) in enumerate([(120,44),(150,44),(230,54)]):
+  y=100+row*125;draw.text((x+8,y-24),f'{w}x{h}',font=FONT,fill='black');tile=sliced(a,w,h);sheet.paste(tile,(x+(260-w)//2,y),tile)
+ # same normalized full silhouette at a larger inspection size
+ sample=Image.fromarray(a).resize((245,45),Image.Resampling.LANCZOS);sheet.paste(sample,(x+7,490),sample)
+sheet.save(EVID/'states_raster_comparison.png')
+
+# Compositing only: inspect legitimate edge alpha over contrasting mattes.
+mattes=Image.new('RGB',(1040,390),(245,233,215));draw=ImageDraw.Draw(mattes)
+for col,(label,a) in enumerate([('NORMAL aprovado',normal)]+[(s.upper(),arrays['UI-004_button_primary_compact_'+s+'_v01']) for s in ['hover','pressed','disabled']]):
+ draw.text((col*260+8,8),label,font=FONT,fill='black')
+ for row,bg in enumerate([(248,236,216),(26,20,30),(255,0,255)]):
+  tile=Image.new('RGBA',(260,110),bg+(255,));im=Image.fromarray(a).resize((250,46),Image.Resampling.LANCZOS);tile.alpha_composite(im,(5,30));mattes.paste(tile.convert('RGB'),(col*260,40+row*110))
+mattes.save(EVID/'states_mattes.png')
+
+# Approved style reference beside the cleaned three frames; not an approval board.
+sheet=Image.new('RGB',(1100,650),(245,233,215));draw=ImageDraw.Draw(sheet)
+refpanel=Image.open(ROOT/'docs/art/ui-modular/approved/UI-001_panel_large_v01.png');refpanel.thumbnail((330,570),Image.Resampling.LANCZOS);sheet.paste(refpanel,(10,55),refpanel);draw.text((10,12),'UI-001 aprovado / estilo',font=FONT,fill='black')
+for i,name in enumerate(NAMES[:3]):
+ im=Image.fromarray(arrays[name]);im.thumbnail((350,500 if i==2 else 290),Image.Resampling.LANCZOS)
+ pos=(735,80) if i==2 else (355,80 if i==0 else 410);sheet.paste(im,pos,im);draw.text((pos[0],pos[1]-30),name[:6]+' CLEAN',font=FONT,fill='black')
+sheet.save(EVID/'frames_style_comparison.png')
+(EVID/'analysis.json').write_text(json.dumps(report,indent=2)+'\n')
+# Recheck original bytes and approved reference bytes after all operations.
+for name,r in report['assets'].items():assert sha(RAW/(name+'.png'))==r['raw']['sha256']
+for rel,f in report['references'].items():assert sha(ROOT/rel)==f['sha256']
+print(json.dumps({'clean':{n:r['clean'] for n,r in report['assets'].items()},'states':states,'card_slots':report['card_slots']},indent=2))
