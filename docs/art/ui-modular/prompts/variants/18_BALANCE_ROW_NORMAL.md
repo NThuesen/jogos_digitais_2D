@@ -19,14 +19,14 @@ Neko Maid Inc. Original MODULAR Unity sprite, cozy illustrated 2D anime cafe / o
 
 Generate ONE compact financial ledger ROW BACKGROUND, front-facing ~440:34 ratio, suitable for repeated rows in Unity's balance summary. Cozy illustrated cream painted-paper material, muted terracotta thin border, safe blank LEFT text zone and RIGHT amount zone. NORMAL: light, subtle and repeatable for many line items. Do not include monetary symbols, labels, numbers, plus/minus signs, UI widgets or extra rows. Single isolated asset, outside alpha; no pixel art.
 
-ONE image only. Intended filename after download: UI-18_balance_row_normal_v01.png (the generator may not control the actual download name; rename the PNG yourself).
+ONE image only. Intended filename after download: UI-018_balance_row_normal_v01.png (the generator may not control the actual download name; rename the PNG yourself).
 ```
 
 ## 4. Salve com este nome EXATO
 
-- Bruto: `art_working/ui_modular/raw_gpt/UI-18_balance_row_normal_v01.png`
-- Transparência limpa (se necessário): `art_working/ui_modular/blender_clean/UI-18_balance_row_normal_v01.png`
-- Apenas após aprovação: `art_working/ui_modular/approved/UI-18_balance_row_normal_v01.png`
+- Bruto: `art_working/ui_modular/raw_gpt/UI-018_balance_row_normal_v01.png`
+- Transparência limpa (se necessário): `art_working/ui_modular/blender_clean/UI-018_balance_row_normal_v01.png`
+- Apenas após aprovação: `art_working/ui_modular/approved/UI-018_balance_row_normal_v01.png`
 - Próxima tentativa: trocar **somente** `_v01.png` por `_v02.png` e registrar.
 
 **Nota:** cada anexo listado como FUTURO é criado nos passos anteriores; NÃO substitua por arquivo com nome parecido. A pasta `approved/` está vazia até o responsável aprovar um PNG.

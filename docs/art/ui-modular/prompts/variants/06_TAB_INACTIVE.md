@@ -19,14 +19,14 @@ Neko Maid Inc. Original MODULAR Unity sprite, cozy illustrated 2D anime cafe / o
 
 Create ONE blank horizontal 3:1 modular cafe UI TAB in INACTIVE state, illustrated in cozy anime visual-novel style. A consistent rosewood trim and cream face, upper corners softly rounded, bottom edge straight, clean interior for Unity's dynamic tab label. INACTIVE is visually quiet and recessed relative to the selected tab. Keep the same outline, aspect ratio and alignment as the attached inactive tab if supplied. Alpha outside. No word, icon, other tabs, pixel art or screen mockup.
 
-ONE image only. Intended filename after download: UI-06_tab_inactive_v01.png (the generator may not control the actual download name; rename the PNG yourself).
+ONE image only. Intended filename after download: UI-006_tab_inactive_v01.png (the generator may not control the actual download name; rename the PNG yourself).
 ```
 
 ## 4. Salve com este nome EXATO
 
-- Bruto: `art_working/ui_modular/raw_gpt/UI-06_tab_inactive_v01.png`
-- Transparência limpa (se necessário): `art_working/ui_modular/blender_clean/UI-06_tab_inactive_v01.png`
-- Apenas após aprovação: `art_working/ui_modular/approved/UI-06_tab_inactive_v01.png`
+- Bruto: `art_working/ui_modular/raw_gpt/UI-006_tab_inactive_v01.png`
+- Transparência limpa (se necessário): `art_working/ui_modular/blender_clean/UI-006_tab_inactive_v01.png`
+- Apenas após aprovação: `art_working/ui_modular/approved/UI-006_tab_inactive_v01.png`
 - Próxima tentativa: trocar **somente** `_v01.png` por `_v02.png` e registrar.
 
 **Nota:** cada anexo listado como FUTURO é criado nos passos anteriores; NÃO substitua por arquivo com nome parecido. A pasta `approved/` está vazia até o responsável aprovar um PNG.

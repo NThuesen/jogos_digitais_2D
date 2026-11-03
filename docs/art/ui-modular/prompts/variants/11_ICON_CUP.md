@@ -19,14 +19,14 @@ Neko Maid Inc. — create exactly ONE modular original 2D anime illustrated cafe
 
 Create exactly ONE standalone 2D UI ICON depicting a warm teacup on a small saucer. Warm cream and rosewood colored outlines with one soft peach accent, visual language illustrated-anime cafe, simplified for legibility at 24–44 Unity UI units. Square canvas with alpha around the icon, centred; same stroke width and visual weight as other approved icons. NO sprite atlas, no text, number, multiple icons, pixel art, mockup or excessive internal markings.
 
-Requested final file basename: UI-11_icon_cup_v01.png. I understand the interface may save under another filename; I will rename the downloaded PNG manually.
+Requested final file basename: UI-011_icon_cup_v01.png. I understand the interface may save under another filename; I will rename the downloaded PNG manually.
 ```
 
 ## Nome e destino exatos
 
-1. `art_working/ui_modular/raw_gpt/UI-11_icon_cup_v01.png` — original baixado/renomeado.
-2. `art_working/ui_modular/blender_clean/UI-11_icon_cup_v01.png` — opcional: limpeza RGBA no Blender.
-3. `art_working/ui_modular/approved/UI-11_icon_cup_v01.png` — somente se o responsável aprovar.
+1. `art_working/ui_modular/raw_gpt/UI-011_icon_cup_v01.png` — original baixado/renomeado.
+2. `art_working/ui_modular/blender_clean/UI-011_icon_cup_v01.png` — opcional: limpeza RGBA no Blender.
+3. `art_working/ui_modular/approved/UI-011_icon_cup_v01.png` — somente se o responsável aprovar.
 4. Nova tentativa: substitua apenas `_v01.png` por `_v02.png`, sem sobrescrever a original.
 
 Confira [tutorial](../../TUTORIAL.md) e [registro](../../ASSET_REGISTRY.md). Não gerar em lote antes do gate estético.

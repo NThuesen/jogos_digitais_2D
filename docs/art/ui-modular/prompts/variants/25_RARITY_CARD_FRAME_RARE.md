@@ -20,14 +20,14 @@ Neko Maid Inc. Original MODULAR Unity sprite, cozy illustrated 2D anime cafe / o
 
 Produce ONE empty VERTICAL MAID CARD RARITY FRAME in RARE style, identical geometry to the approved baseline compact maid card: 150x206 Unity unit aspect ratio; transparent cutout for a separate portrait in the upper half; restrained opaque cream text-safe areas at bottom. Use muted sapphire blue accents on border ornaments. Preserve the EXACT safe areas, corner positions and outline for consistency across grades. No maid portrait, text, stats, medals, multiple frames or screen mockup; alpha outside/inside portrait window. Illustrated anime cafe, not pixelated.
 
-ONE image only. Intended filename after download: UI-25_rarity_card_frame_rare_v01.png (the generator may not control the actual download name; rename the PNG yourself).
+ONE image only. Intended filename after download: UI-025_rarity_card_frame_rare_v01.png (the generator may not control the actual download name; rename the PNG yourself).
 ```
 
 ## 4. Salve com este nome EXATO
 
-- Bruto: `art_working/ui_modular/raw_gpt/UI-25_rarity_card_frame_rare_v01.png`
-- Transparência limpa (se necessário): `art_working/ui_modular/blender_clean/UI-25_rarity_card_frame_rare_v01.png`
-- Apenas após aprovação: `art_working/ui_modular/approved/UI-25_rarity_card_frame_rare_v01.png`
+- Bruto: `art_working/ui_modular/raw_gpt/UI-025_rarity_card_frame_rare_v01.png`
+- Transparência limpa (se necessário): `art_working/ui_modular/blender_clean/UI-025_rarity_card_frame_rare_v01.png`
+- Apenas após aprovação: `art_working/ui_modular/approved/UI-025_rarity_card_frame_rare_v01.png`
 - Próxima tentativa: trocar **somente** `_v01.png` por `_v02.png` e registrar.
 
 **Nota:** cada anexo listado como FUTURO é criado nos passos anteriores; NÃO substitua por arquivo com nome parecido. A pasta `approved/` está vazia até o responsável aprovar um PNG.

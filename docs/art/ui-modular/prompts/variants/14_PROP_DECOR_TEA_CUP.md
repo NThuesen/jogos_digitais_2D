@@ -15,14 +15,14 @@ Neko Maid Inc. — create exactly ONE modular original 2D anime illustrated cafe
 
 Render ONE isolated NON-INTERACTIVE decorative prop sprite: one small tea cup on a saucer, suitable for a decorative tabletop overlay. An original anime illustrated 2D cozy cafe prop, orthographic three-quarter view matching the real Unity Hall screenshot; gentle colored outlines, warm wood/porcelain/greenery materials where appropriate, alpha outside and clean edges for Blender cleanup. This is atmospheric decor only; NOT an existing game-placeable item, do not imply new shop behavior or collisions. No floor patch, room, UI, character, lettering, duplicate objects, contact sheet or pixel art.
 
-Requested final file basename: UI-14_prop_decor_tea_cup_v01.png. I understand the interface may save under another filename; I will rename the downloaded PNG manually.
+Requested final file basename: UI-014_prop_decor_tea_cup_v01.png. I understand the interface may save under another filename; I will rename the downloaded PNG manually.
 ```
 
 ## Nome e destino exatos
 
-1. `art_working/ui_modular/raw_gpt/UI-14_prop_decor_tea_cup_v01.png` — original baixado/renomeado.
-2. `art_working/ui_modular/blender_clean/UI-14_prop_decor_tea_cup_v01.png` — opcional: limpeza RGBA no Blender.
-3. `art_working/ui_modular/approved/UI-14_prop_decor_tea_cup_v01.png` — somente se o responsável aprovar.
+1. `art_working/ui_modular/raw_gpt/UI-014_prop_decor_tea_cup_v01.png` — original baixado/renomeado.
+2. `art_working/ui_modular/blender_clean/UI-014_prop_decor_tea_cup_v01.png` — opcional: limpeza RGBA no Blender.
+3. `art_working/ui_modular/approved/UI-014_prop_decor_tea_cup_v01.png` — somente se o responsável aprovar.
 4. Nova tentativa: substitua apenas `_v01.png` por `_v02.png`, sem sobrescrever a original.
 
 Confira [tutorial](../../TUTORIAL.md) e [registro](../../ASSET_REGISTRY.md). Não gerar em lote antes do gate estético.
