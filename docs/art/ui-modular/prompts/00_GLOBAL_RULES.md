@@ -1,23 +1,15 @@
-# PROMPT GLOBAL — copiar ANTES do prompt de asset
+# Regras compartilhadas (REFERÊNCIA — NÃO copiar separadamente)
 
-**Uso:** cole somente o bloco abaixo no ChatGPT, seguido do bloco `PROMPT DE GERAÇÃO` do asset escolhido. **Anexe antes** as imagens indicadas na ficha daquele prompt; não mandar este arquivo isoladamente sem um alvo.
+**Mudança operacional:** todos os prompts executáveis `01–25` e `prompts/variants/` **já trazem suas próprias regras globais**. Para gerar imagem, copie só **um bloco completo** do prompt escolhido, sem colar este arquivo antes. [Tutorial](../TUTORIAL.md).
 
-## PROMPT GLOBAL
+## Contrato invariável
 
-```text
-PROJECT: Neko Maid Inc. — original cozy anime 2D cat-maid café management game.
-
-TASK: Produce ONE production-oriented, MODULAR 2D art asset (or precisely one requested variant) suitable for assembly as an interactive Unity UI element or an isolated environmental sprite. Do NOT design a complete game screen, a contact sheet, a slide, a marketing mockup or a finished UI screenshot.
-
-ART DIRECTION: Cozy Illustrated Anime Café + Ornamental Visual Novel. Warm, welcoming, expressive illustrated-anime finish with refined colored outlines, soft painterly shading, subtle natural texture, delicate café-related ornamental motifs, visually clean hierarchy and readable silhouette at real game size. Avoid artificial pixelation, pixel-art grids, chunky aliased edges, chibi characters copied from the reference, photorealism, generic flat corporate icons, plastic 3D renders and excessive gold/visual clutter.
-
-REFERENCE POLICY: Use the attached reference images for atmosphere, shape grammar and compatibility only. Never copy their exact layout, text, character designs or decorative motifs pixel for pixel. The old style anchor includes pixel art; DO NOT reproduce its pixelation. When an approved asset reference is attached, match its finish, line weight, ornament scale and lighting without cloning it.
-
-MODULARITY: Isolate the requested item with clean margins; no other unrelated items, scenery, branding or explanatory labels. Keep all functional text, prices, stats, roles, currency amounts, character names, action labels and localization out of the image. Unity overlays and controls these dynamically. Exception ONLY when the asset prompt explicitly requests the permanent static game logo.
-
-TRANSPARENCY: For a frame, icon, portrait, overlay, button or object, prefer a genuine transparent PNG background, not painted checkerboard transparency. If transparency is unavailable, use a uniformly contrasting matte that can be removed cleanly in Blender without losing pale interior fills, thin outlines, glow or shadows. Keep the asset entirely inside the canvas with breathing room; no clipped corners or edge-touching elements. For architectural/background layers, an opaque background is allowed when the prompt explicitly says so.
-
-RESPONSIVENESS: The asset will be rendered in Unity at 960x600 and 1280x720. Favor a clear stable center and legible corners. If the prompt requests a resizable 9-slice asset, keep four symmetrical corners and uniform straight side bands; avoid textured/hard-coded labels in the stretchable center.
-
-OUTPUT: Return the image only, not an explanation, markup, code, sprite sheet of unrelated assets, watermark, fake UI screenshot or decorative presentation page. One variant per render. Preserve consistent viewpoint, lighting and margins with approved sibling pieces.
-```
+- Uma geração/um prompt = **um único PNG modular**, salvo com nome exato informado no próprio arquivo; variações têm prompts próprios.
+- Anexar os arquivos visuais **reais** indicados no prompt, como arquivos de imagem, não apenas URLs.
+- Anexar `art_working/ui_modular/approved/UI-...png` **apenas depois** que tal arquivo realmente existir e for aprovado; não inventar um PNG por causa do nome.
+- Café anime 2D ilustrado/cozy + visual novel ornamental; referência histórica ART-01D era pixel art e **não** obriga pixelização.
+- União de imagens e lógica na Unity: sem preços, stats, labels, funções ou botões funcionais baked; exceção apenas para logo permanente estático.
+- Fundo transparente real, se aplicável, ou matte removível e depois Blender. Preservar miolo preenchido, bordas, sombras e cortes das janelas de portrait.
+- 9-slice quando geometria justificar, não deformar motivos detalhados; testar composição no Unity 960×600 / 1280×720.
+- GPT pode nomear download automaticamente: **renomear depois de baixar**, conforme [OUTPUT_MANIFEST.md](../OUTPUT_MANIFEST.md).
+- Nenhuma imagem aprovada ou importada na Unity automaticamente por existir um prompt.

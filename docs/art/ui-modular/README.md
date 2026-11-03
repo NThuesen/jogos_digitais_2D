@@ -1,40 +1,41 @@
-# Neko Maid Inc. — Kit modular GPT → Blender → Unity
+# Kit modular de arte — Neko Maid Inc.
 
-**Estado em 03/11/2026:** INFRAESTRUTURA PREPARADA; **nenhuma imagem nova aprovada ou importada** por este PR. O estilo aprovado é **Cozy Illustrated Anime Café + Ornamental Visual Novel**, como orientação geral. Paleta final, materialidade exata, molduras, proporções e composição estão **em aprovação futura** — não tratar propostas de prompt como decisões estéticas definitivas.
+**Contrato vigente:** ChatGPT gera **imagens modulares**; Blender pode limpar fundo; Unity mantém controles, dados, textos, estados, cliques e responsive layout. **Não gerar uma tela inteira como UI clicável.** Estilo geral: Cozy Illustrated Anime Café + Ornamental Visual Novel; a paleta/materialidade final ainda depende de aprovação. [Fonte de verdade](../CURRENT_VISUAL_DIRECTION.md).
 
-**Contrato superior:** [direção visual atual](../CURRENT_VISUAL_DIRECTION.md) · [roadmap](../../ROADMAP.md) · [UI-02](../../roadmap/UI-02_SCREEN_POLISH.md).
+## Use nesta ordem
 
-## Começar aqui (5 passos)
+1. **[Tutorial passo a passo (com arquivos PNG reais)](TUTORIAL.md)** — instruções para anexar, copiar e salvar, incluindo o exemplo dos 4 botões.
+2. **[Índice de arquivos já existentes no repo](references/README.md)** — nomes exatos das referências e capturas.
+3. **[Ordem de geração e gates](GENERATION_ORDER.md)** — piloto 01 painel → 04 botão normal e variações → 08 Maid Card.
+4. **[95 saídas nomeadas](OUTPUT_MANIFEST.md)** — nome fixo de cada PNG, link para o prompt completo correspondente. **Todos os assets novos estão PENDING**; a lista reserva nomes, não arquivos.
+5. **[Prompts prontos](prompts/)** — cada prompt individual tem links diretos aos PNGs e UM bloco autossuficiente, **sem campos a substituir**.
+6. **[Registro de aprovação](ASSET_REGISTRY.md)** e [ficha](ASSET_HANDOFF_TEMPLATE.md) — histórico de validação da arte real.
 
-1. Leia [TUTORIAL.md](TUTORIAL.md). O tutorial define como escolher o asset, onde pegar as referências e o que anexar ao ChatGPT.
-2. Abra [GENERATION_ORDER.md](GENERATION_ORDER.md): comece **apenas com o piloto** `01_PANEL_LARGE`, `04_BUTTON_PRIMARY`, `08_MAID_CARD_COMPACT`; demais prompts são uma biblioteca pronta, **não autorização para gerar tudo**.
-3. Em um chat de geração de imagens por asset, **anexe os arquivos reais** conforme o campo **Anexos** do prompt. Links de GitHub dentro do texto do prompt não garantem que o gerador receberá a imagem.
-4. Cole o conteúdo de [00_GLOBAL_RULES.md](prompts/00_GLOBAL_RULES.md), seguido **do prompt escolhido** em [prompts/](prompts/). Preencha os parâmetros marcados `[...]` antes de enviar. Para variações, gere imagens separadas.
-5. Salve a saída original em `art_working/ui_modular/raw_gpt/`; após limpeza de alpha no Blender/edição, passe a `blender_clean/`. Somente após comparação Unity e aprovação humana registre `approved` no [ASSET_REGISTRY.md](ASSET_REGISTRY.md) e faça um **PR curado** dos assets finais para `docs/art/ui-modular/approved/` ou diretamente para `Assets/_Game/Resources/`, conforme a integração planejada.
+### Comece agora por estas três famílias
 
-## Local vs Git
+- [01 — painel grande, um prompt](prompts/01_PANEL_LARGE.md), saída `UI-001_panel_large_v01.png`.
+- [04 — botão primário, quatro prompts independentes](prompts/04_BUTTON_PRIMARY.md), saídas `UI-004_button_primary_{normal,hover,pressed,disabled}_v01.png` (nomes completos clicáveis no índice).
+- [08 — Maid Card compacto, um prompt](prompts/08_MAID_CARD_COMPACT.md), saída `UI-008_maid_card_compact_v01.png`.
 
-| Caminho | Função | Versionamento |
-| --- | --- | --- |
-| `docs/art/ui-modular/prompts/` | Especificações, prompts individuais, regras | **Git: sim** |
-| `docs/art/ui-modular/references/` | Índice de referências já versionadas; imagens não duplicadas | **Git: sim** |
-| `docs/art/ui-modular/incoming/` | Candidatos **selecionados para revisão compartilhada** | Git: só em PR explícito |
-| `docs/art/ui-modular/approved/` | Assets visuais aprovados para futura importação; inicialmente vazio | Git: só com aprovação |
-| `art_working/ui_modular/raw_gpt/` | Resposta bruta do gerador, todas as tentativas | PNG **ignorado pelo Git** |
-| `art_working/ui_modular/blender_clean/` | Recortes, máscaras e PNG alfa limpos | PNG **ignorado pelo Git** |
-| `art_working/ui_modular/export_unity/` | Exportação local candidata para Unity | PNG **ignorado pelo Git** |
+**ATENÇÃO:** `00_GLOBAL_RULES.md` é agora apenas referência técnica. Os prompts já contêm as regras; basta **copiar um único bloco** do arquivo individual.
 
-As pastas foram criadas com `.gitkeep`. **Uma pasta vazia no GitHub não significa que os PNGs existem**. Não copiar em lote os brutos para GitHub nem usar `git add -f` para ignorados sem aprovação. Os assets gráficos já existentes em ART-01D continuam disponíveis como referências históricas.
+## Pastas existentes e finalidade
 
-## Critérios de pronto por asset
+```text
+art_working/ui_modular/
+  raw_gpt/          # PNG baixado com o nome exato após renomeação (IGNORADO NO GIT)
+  blender_clean/    # PNG com alpha tratado (IGNORADO)
+  approved/         # cópia local após aprovação (IGNORADO)
+  export_unity/     # candidato para testes (IGNORADO)
+docs/art/ui-modular/
+  prompts/          # 25 entradas: 12 prompts individuais + 13 índices
+    variants/       # 83 prompts individuais e específicos para variações
+  references/       # lista de REFERÊNCIAS reais (sem duplicar PNGs)
+  incoming/         # PR específico para candidatos selecionados
+  approved/         # PR de arte aprovada
+  OUTPUT_MANIFEST.md
+```
 
-- **Identidade:** coerente com as nove maids ilustradas; não pixel art, não copiar a imagem de referência.
-- **Modularidade:** apenas uma peça ou variações explicitamente controladas; sem UI de tela inteira, screenshots, texto/números/stats baked (exceção: logo estático).
-- **Transparência:** alfa real se necessário, sem fundo xadrez falso, halo, borda verde/magenta ou perda de partes claras.
-- **Técnica:** centro limpo/área segura, escala e proporções utilizáveis; dividir ornamentos de cantos antes de aplicar 9-slice.
-- **Unity:** texto, preços, raridades, cliques, focus/hover/pressed/disabled, scroll e layout permanecem dinâmicos. QA em **960×600 e 1280×720** e WebGL quando integrado.
-- **Recursos:** registrar dimensões e tamanho, avaliar compressão/memória no navegador antes de ampliar biblioteca de texturas.
+Essas pastas usam `.gitkeep`. **Os PNGs ainda não foram gerados automaticamente, e os caminhos `approved/UI-...` só passam a existir após aprovação humana.** A imagem gerada pode baixar com nome aleatório; o tutorial mostra como renomeá-la. Consulte [contrato](../CURRENT_VISUAL_DIRECTION.md) e [UI-02](../../roadmap/UI-02_SCREEN_POLISH.md).
 
-## Papel dos agentes e decisão humana
-
-**ChatGPT:** gerar imagens quando instruído; **Blender:** limpeza manual de fundo/chroma e recorte; **Claude Code:** direção visual, crítica, preparo/integração de arte; **Codex:** integração Unity, automação e QA. **Responsável aprova cada asset-piloto** e decisões artísticas importantes. Não há novo redesign do gameplay, simulação ou saves neste kit.
+**Referência ART-01D:** preservar aconchego, molduras e visual novel; **não** reproduzir pixel art nem copiar personagens. Cenário e menus podem diferir em ornamentação, mantendo linguagem comum. O piloto deve passar nas resoluções 960×600 e 1280×720 antes de produção em escala.

@@ -1,5 +1,7 @@
 # Ficha de aprovação / handoff de asset
 
+**O `id` e o nome do PNG devem seguir [OUTPUT_MANIFEST.md](OUTPUT_MANIFEST.md).** Os campos abaixo são um EXEMPLO para o painel 01; outros assets têm arquivos e anexos específicos no próprio prompt.
+
 Copie esta ficha para cada **asset efetivamente produzido**; não marque PASS sem observação.
 
 ```yaml
