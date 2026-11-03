@@ -25,14 +25,14 @@ NORMAL: resting bright tactile surface, stable silhouette, no glow indicating se
 
 IMPORTANT: Render ONE NORMAL button, not four states together. Use the attached NORMAL reference for geometry when provided. No text. Output precisely the single button asset.
 
-ONE image only. Intended filename after download: UI-05_button_secondary_normal_v01.png (the generator may not control the actual download name; rename the PNG yourself).
+ONE image only. Intended filename after download: UI-005_button_secondary_normal_v01.png (the generator may not control the actual download name; rename the PNG yourself).
 ```
 
 ## 4. Salve com este nome EXATO
 
-- Bruto: `art_working/ui_modular/raw_gpt/UI-05_button_secondary_normal_v01.png`
-- Transparência limpa (se necessário): `art_working/ui_modular/blender_clean/UI-05_button_secondary_normal_v01.png`
-- Apenas após aprovação: `art_working/ui_modular/approved/UI-05_button_secondary_normal_v01.png`
+- Bruto: `art_working/ui_modular/raw_gpt/UI-005_button_secondary_normal_v01.png`
+- Transparência limpa (se necessário): `art_working/ui_modular/blender_clean/UI-005_button_secondary_normal_v01.png`
+- Apenas após aprovação: `art_working/ui_modular/approved/UI-005_button_secondary_normal_v01.png`
 - Próxima tentativa: trocar **somente** `_v01.png` por `_v02.png` e registrar.
 
 **Nota:** cada anexo listado como FUTURO é criado nos passos anteriores; NÃO substitua por arquivo com nome parecido. A pasta `approved/` está vazia até o responsável aprovar um PNG.
