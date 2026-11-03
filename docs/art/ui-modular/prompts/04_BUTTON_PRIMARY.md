@@ -1,14 +1,27 @@
-# 04 — Botão primário (4 estados)
+# 04 — Botão primário (duas famílias, quatro estados por família)
 
-Este arquivo é um **ÍNDICE**, não um prompt para substituir `[STATE]`. Clique em cada prompt abaixo: **ele já tem anexos reais e o PNG de saída definido**. O NORMAL ornamental v01 já foi gerado localmente, mas está em REWORK; HOVER/PRESSED/DISABLED não foram gerados. O COMPACT NORMAL será a próxima imagem.
+Este arquivo é um **ÍNDICE**, não um prompt para substituir `[STATE]`. Clique em cada prompt abaixo: **ele já tem anexos reais e o PNG de saída definido**. O NORMAL ornamental v01 já foi gerado localmente, mas está em REWORK; HOVER/PRESSED/DISABLED não foram gerados. O NORMAL compacto foi gerado, passou pelo QA da PR #42 e recebeu aprovação de produto do responsável; a aprovação já foi registrada na PR #42 integrada; a integração Unity é outra etapa.
 
 ## Decisão de produto vigente — famílias separadas
 
 - **ORNAMENTAL GRANDE (~260×88):** `UI-004_button_primary_normal_v01.png`; QA [PR #40](https://github.com/NThuesen/jogos_digitais_2D/pull/40) resultou `REWORK` nos tamanhos atuais. O bom resultado relativo em 260×88 **não é aprovação**, e 768×256/WebGL não foram homologados.
-- **COMPACTA SIMPLIFICADA (44–54):** gerar **agora somente** [`04_BUTTON_PRIMARY_COMPACT_NORMAL.md`](variants/04_BUTTON_PRIMARY_COMPACT_NORMAL.md) → `UI-004_button_primary_compact_normal_v01.png`, atualmente `PENDING`. Foco em `150×44` (compra da Loja com preço dinâmico), `120×44` (navegação) e `230×54` (teste adicional).
+- **COMPACTA SIMPLIFICADA (44–54):** NORMAL gerado, limpo e testado na [PR #42](https://github.com/NThuesen/jogos_digitais_2D/pull/42), com aprovação de produto do responsável (a aprovação consta da PR #42; integração Unity ainda pendente). Os novos prompts de estados compactos usam o **NORMAL limpo local 2072×380**, nunca o ornamental ou o RAW 2172×724. Foco em `150×44`, `120×44` e `230×54`.
 - **Abas:** permanecem componentes específicos da UI-006, não variantes do ornamental.
 
-A divisão foi **aprovada como arquitetura visual**, não como aprovação de assets. Não gerar estados da compacta antes de revisar o NORMAL. [Tutorial passo a passo](../TUTORIAL.md#passo-2a--gerar-agora-o-botão-compacto-normal-nova-variante-ui-004).
+A divisão foi **aprovada como arquitetura visual**; o NORMAL compacto foi aprovado separadamente pelo responsável. Outros estados permanecem `PENDING` até geração, revisão e QA. [Tutorial passo a passo](../TUTORIAL.md#passo-2a--gerar-agora-o-botão-compacto-normal-nova-variante-ui-004).
+
+## Botão compacto — novos prompts HOVER/PRESSED/DISABLED
+
+**Referência obrigatória para todos:** `art_working/ui_modular/blender_clean/UI-004_button_primary_compact_normal_v01.png` (2072×380, SHA-256 `c82d06142b3953a97b9654d8b7bf53e611679a6ffb4822a3b268dff239c17eb6`). O UI-001 é referência secundária opcional. Salve cada saída em `raw_gpt/` com o nome exato.
+
+| Estado | Prompt pronto | Nome exato |
+|---|---|---|
+| NORMAL | [COMPACT NORMAL](variants/04_BUTTON_PRIMARY_COMPACT_NORMAL.md) — histórico de geração/QA | `UI-004_button_primary_compact_normal_v01.png` |
+| HOVER | [COMPACT HOVER](variants/04_BUTTON_PRIMARY_COMPACT_HOVER.md) | `UI-004_button_primary_compact_hover_v01.png` |
+| PRESSED | [COMPACT PRESSED](variants/04_BUTTON_PRIMARY_COMPACT_PRESSED.md) | `UI-004_button_primary_compact_pressed_v01.png` |
+| DISABLED | [COMPACT DISABLED](variants/04_BUTTON_PRIMARY_COMPACT_DISABLED.md) | `UI-004_button_primary_compact_disabled_v01.png` |
+
+Gere **uma imagem por vez** e preserve a geometria do NORMAL (mesmo canvas/silhueta/cantos/bandas para 9-slice). Se a geração mudar a forma, **não aprove**: uma derivação de iluminação/tint no Blender/Unity pode ser tecnicamente mais segura. Esses três estados novos ainda **não foram gerados nem integrados**.
 
 ## Botão ornamental original — instruções históricas (não repetir agora)
 

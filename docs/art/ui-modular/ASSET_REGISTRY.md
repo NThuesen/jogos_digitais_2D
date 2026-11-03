@@ -1,6 +1,6 @@
 # Registro de produção — assets modulares
 
-**Assets aprovados: UI-001 e UI-004 COMPACT NORMAL v01 (`APPROVED`, ambos ainda não `INTEGRATED`). O PNG do compacto permanece local; somente o UI-001 está publicado como asset aprovado.** **[OUTPUT_MANIFEST.md](OUTPUT_MANIFEST.md) lista individualmente as 95 saídas com o nome exato e o prompt específico; esta tabela agrupa as 25 famílias.** Estado padrão: `PENDING`. Um prompt existente **não** equivale a PNG disponível. Atualize esta tabela somente com arquivos e validações realmente existentes.
+**Assets aprovados: UI-001 e UI-004 COMPACT NORMAL v01 (`APPROVED`, ambos ainda não `INTEGRATED`). O PNG do compacto permanece local; somente o UI-001 está publicado como asset aprovado.** **[OUTPUT_MANIFEST.md](OUTPUT_MANIFEST.md) lista individualmente as 99 saídas com o nome exato e o prompt específico; esta tabela agrupa as 25 famílias.** Estado padrão: `PENDING`. Um prompt existente **não** equivale a PNG disponível. Atualize esta tabela somente com arquivos e validações realmente existentes.
 
 | ID | Peça / prompt | Estado | Raw local | PNG limpo local | Versão aprovada / PR | Unity / QA |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -72,3 +72,11 @@
 - **WebGL isolado PASS** 960×600/1280×720, Chromium 153 headless/SwiftShader, 40 callbacks e 8 tentativas desabilitadas bloqueadas via mouse automatizado do navegador, não mouse físico. Warning FSR software documentado. Build/harness removidos; compressão de bloco, memória GPU residente e integração final NOT RUN. Nenhum PNG bruto/limpo/export publicado como asset aprovado.
 - **Pendências:** integração própria, testes de produção e itens NOT RUN documentados. RAW, CLEAN e evidências preservados; nenhum PNG integrado nesta atualização. HOVER/PRESSED/DISABLED compactos não produzidos. O [prompt](prompts/variants/04_BUTTON_PRIMARY_COMPACT_NORMAL.md) documenta a origem; geração manual informada pelo responsável, anexos efetivamente usados não inferidos do PNG.
 - **Famílias separadas:** ornamental antigo permanece **REWORK**; UI-001 mantém seu histórico. Abas são componentes próprios.
+
+## UI-004 COMPACT — estados HOVER, PRESSED e DISABLED (novos prompts)
+
+- **Estado inicial dos três: PENDING**, sem PNG gerado, limpo, aprovado ou integrado por esta atualização documental.
+- Prompts específicos: [HOVER](prompts/variants/04_BUTTON_PRIMARY_COMPACT_HOVER.md), [PRESSED](prompts/variants/04_BUTTON_PRIMARY_COMPACT_PRESSED.md) e [DISABLED](prompts/variants/04_BUTTON_PRIMARY_COMPACT_DISABLED.md).
+- **Referência principal obrigatória:** `art_working/ui_modular/blender_clean/UI-004_button_primary_compact_normal_v01.png` (2072×380; SHA-256 `c82d06142b3953a97b9654d8b7bf53e611679a6ffb4822a3b268dff239c17eb6`), NORMAL aprovado e ainda local/ignorado. O arquivo ornamental antigo e o RAW maior não são referências geométricas.
+- Saídas reservadas: `UI-004_button_primary_compact_hover_v01.png`, `UI-004_button_primary_compact_pressed_v01.png` e `UI-004_button_primary_compact_disabled_v01.png`.
+- Estados e integração ficam sob controle Unity; exige inspeção e QA próprios de cada imagem; aprovação do NORMAL não aprova os demais. A família ornamental permanece em REWORK.
