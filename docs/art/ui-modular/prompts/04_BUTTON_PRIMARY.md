@@ -1,32 +1,22 @@
-# 04_BUTTON_PRIMARY — Botão primário (um PNG para cada estado).
+# 04 — Botão primário (4 estados)
 
-**Status:** PROMPT PREPARADO, **asset NÃO GERADO/NÃO APROVADO**. Fase: consulte [ordem e gate](../GENERATION_ORDER.md).
+Este arquivo é um **ÍNDICE**, não um prompt para substituir `[STATE]`. Clique em cada prompt abaixo: **ele já tem anexos reais e o PNG de saída definido**. Imagens novas: nenhuma gerada ainda.
 
-## Anexos
+## Botão principal — exatamente o que você faz
 
-style_anchor_reference.png; UI-001 aprovado; a versão NORMAL aprovada obrigatória para os outros estados.
+1. Abra **NORMAL** e anexe os PNGs existentes indicados nele. Após o UI-001 aprovado, anexe também `UI-001_panel_large_v01.png`. Gere só **uma imagem** e renomeie `UI-004_button_primary_normal_v01.png`.
+2. Abra **HOVER**. Anexe os PNGs indicados **e o normal já aprovado**. Gere e salve `UI-004_button_primary_hover_v01.png`.
+3. Abra **PRESSED**; anexe o NORMAL e salve `UI-004_button_primary_pressed_v01.png`.
+4. Abra **DISABLED**; anexe o NORMAL e salve `UI-004_button_primary_disabled_v01.png`.
 
-Acesse os caminhos em [references/README.md](../references/README.md); **anexe os arquivos de imagem** no ChatGPT antes de colar o prompt.
+**São quatro prompts diferentes, quatro imagens diferentes. Não faça uma imagem com quatro botões.** Se o contorno mudar entre estados, ajuste/derive os efeitos a partir do normal no Blender/Unity. O clique é Unity `Button`.
 
-## Campos a preencher antes de enviar
 
-- [STATE]=NORMAL | HOVER | PRESSED | DISABLED
-- [TARGET_ASPECT]=aprox. 3.5:1
+| Ordem | Prompt completo | Nome EXATO ao salvar |
+|---|---|---|
+| 1 | [`04_BUTTON_PRIMARY_DISABLED.md`](variants/04_BUTTON_PRIMARY_DISABLED.md) | `UI-004_button_primary_disabled_v01.png` |
+| 2 | [`04_BUTTON_PRIMARY_HOVER.md`](variants/04_BUTTON_PRIMARY_HOVER.md) | `UI-004_button_primary_hover_v01.png` |
+| 3 | [`04_BUTTON_PRIMARY_NORMAL.md`](variants/04_BUTTON_PRIMARY_NORMAL.md) | `UI-004_button_primary_normal_v01.png` |
+| 4 | [`04_BUTTON_PRIMARY_PRESSED.md`](variants/04_BUTTON_PRIMARY_PRESSED.md) | `UI-004_button_primary_pressed_v01.png` |
 
-## PROMPT DE GERAÇÃO
-
-Cole **antes** o bloco global em [00_GLOBAL_RULES.md](00_GLOBAL_RULES.md); em seguida, copie **somente** o texto abaixo para a geração. Um asset/estado por imagem.
-
-```text
-Create EXACTLY ONE graphic for a primary interactive BUTTON in state [STATE], matching the approved panel family. Horizontal front-facing rounded-rectangle wooden/ivory café button, approximately 3.5:1 ratio, with straight middle bands for potential 9-slice. The central 65% must remain plain and bright enough for dynamic Unity text.
-
-Consistent with an original refined anime visual-novel café: warm rosewood outline, illustrated enamel/wood texture, restrained soft glow, playful but professional. [NORMAL]: clear solid baseline. [HOVER]: gentle brighter top rim/contrast, same silhouette. [PRESSED]: slightly inset/down-lit shading, no size or alignment change. [DISABLED]: desaturated quieter finish, still readable, same silhouette. Only the selected [STATE] should appear in THIS image.
-
-No baked label, no arrows, no symbol, no sprite sheet, no row of states. Real transparent outside, natural shadow within padding.
-```
-
-## QA e decisões
-
-Gerar 4 renders individuais (normal, hover, pressed, disabled); manter geometria e crop idênticos. Unity faz Button/state.
-
-**Registro:** [ASSET_REGISTRY.md](../ASSET_REGISTRY.md). Preserve `raw_gpt`, limpe alpha no Blender quando necessário e só integre após validação Unity e aprovação do responsável.
+Após baixar, **renomeie o PNG** conforme a terceira coluna e salve em `art_working/ui_modular/raw_gpt/`. O nome do download pode ser definido automaticamente pelo ChatGPT. Os arquivos aprovados só existirão depois do gate do responsável. [Tutorial](../TUTORIAL.md) · [Todos os nomes](../OUTPUT_MANIFEST.md).

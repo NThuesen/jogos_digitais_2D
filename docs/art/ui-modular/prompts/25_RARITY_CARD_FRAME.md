@@ -1,32 +1,14 @@
-# 25_RARITY_CARD_FRAME — Variação do frame de card por raridade, portrait separado.
+# 25 — Molduras de raridade
 
-**Status:** PROMPT PREPARADO, **asset NÃO GERADO/NÃO APROVADO**. Fase: consulte [ordem e gate](../GENERATION_ORDER.md).
+Este arquivo é um **ÍNDICE**, não um prompt para substituir `[STATE]`. Clique em cada prompt abaixo: **ele já tem anexos reais e o PNG de saída definido**. Imagens novas: nenhuma gerada ainda.
 
-## Anexos
+Quatro molduras, cada uma com a mesma janela/transparência para portrait; nenhuma inclui texto ou personagem.
 
-style_anchor_reference.png; UI-008 CARD COMPACT aprovado; badges UI-010 aprovados; screenshot Elenco.
+| Ordem | Prompt completo | Nome EXATO ao salvar |
+|---|---|---|
+| 1 | [`25_RARITY_CARD_FRAME_COMMON.md`](variants/25_RARITY_CARD_FRAME_COMMON.md) | `UI-025_rarity_card_frame_common_v01.png` |
+| 2 | [`25_RARITY_CARD_FRAME_EPIC.md`](variants/25_RARITY_CARD_FRAME_EPIC.md) | `UI-025_rarity_card_frame_epic_v01.png` |
+| 3 | [`25_RARITY_CARD_FRAME_LEGENDARY.md`](variants/25_RARITY_CARD_FRAME_LEGENDARY.md) | `UI-025_rarity_card_frame_legendary_v01.png` |
+| 4 | [`25_RARITY_CARD_FRAME_RARE.md`](variants/25_RARITY_CARD_FRAME_RARE.md) | `UI-025_rarity_card_frame_rare_v01.png` |
 
-Acesse os caminhos em [references/README.md](../references/README.md); **anexe os arquivos de imagem** no ChatGPT antes de colar o prompt.
-
-## Campos a preencher antes de enviar
-
-- [RARITY]=COMMON | RARE | EPIC | LEGENDARY
-- [FRAME]=compact 150x206
-
-## PROMPT DE GERAÇÃO
-
-Cole **antes** o bloco global em [00_GLOBAL_RULES.md](00_GLOBAL_RULES.md); em seguida, copie **somente** o texto abaixo para a geração. Um asset/estado por imagem.
-
-```text
-Design ONE collectible MAID CARD RARITY FRAME overlay of grade [RARITY] for the approved compact frame, matching EXACTLY the approved 150x206 base card's silhouette, safe text areas, portrait transparent window, corner positions and border width. Only the rarity accents should change.
-
-COMMON = neutral beige/ivory; RARE = refined sapphire blue; EPIC = violet; LEGENDARY = warm gold plus a very small premium ornament. Distinguish visually even in grayscale where possible through subtle border motif, not through a gigantic gem that obscures names.
-
-Absolutely no maid portrait, text, numeric stats, prices, labels, UI, another frame, or full screenshot. Transparent outside and transparent portrait aperture. Don't warp existing ornament geometry or change center layout between rarities.
-```
-
-## QA e decisões
-
-Primeiro validar frame base; quatro versões somente depois, separadas. Não confundir badge (10) com moldura integral (25).
-
-**Registro:** [ASSET_REGISTRY.md](../ASSET_REGISTRY.md). Preserve `raw_gpt`, limpe alpha no Blender quando necessário e só integre após validação Unity e aprovação do responsável.
+Após baixar, **renomeie o PNG** conforme a terceira coluna e salve em `art_working/ui_modular/raw_gpt/`. O nome do download pode ser definido automaticamente pelo ChatGPT. Os arquivos aprovados só existirão depois do gate do responsável. [Tutorial](../TUTORIAL.md) · [Todos os nomes](../OUTPUT_MANIFEST.md).

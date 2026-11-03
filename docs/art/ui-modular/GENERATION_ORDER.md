@@ -1,33 +1,34 @@
-# Ordem de geração e gates de aprovação
+# Ordem de geração e aprovação (sem lotes)
 
-**Não gere tudo automaticamente.** Os prompts são catálogo; avançar entre gates exige comparação visual real e aprovação explícita. Reaproveitar referência e assets aprovados; evitar 20 variações sem critério.
+**Status:** todos os novos PNGs estão PENDING. O objetivo é uma linguagem visual consistente, não completar 95 imagens por completude. Cada link vai para **um prompt executável**, sem `[STATE]` a preencher.
 
-## Gate P0 — piloto mínimo (prioridade imediata)
+## P0 — primeiro piloto
 
-| Ordem | Prompt | Objetivo | Gate |
-| --- | --- | --- | --- |
-| 1 | [01_PANEL_LARGE](prompts/01_PANEL_LARGE.md) | Fixar moldura/creme/matéria, testar 9-slice no Unity | Aprovação de 1 painel |
-| 2 | [04_BUTTON_PRIMARY](prompts/04_BUTTON_PRIMARY.md) | Fixar ação, 4 estados gerados **individualmente** | Aprovação normal + contraste hover/pressed/disabled |
-| 3 | [08_MAID_CARD_COMPACT](prompts/08_MAID_CARD_COMPACT.md) | Fixar moldura, área de retrato e legibilidade em tamanho real | Aprovação com uma maid existente atrás da moldura |
+| Ordem | Gerar | PNG exato que você salva | Como usar |
+|---|---|---|---|
+| 1 | [Painel grande](prompts/01_PANEL_LARGE.md) | `UI-001_panel_large_v01.png` | Aprovar material e testar 9-slice |
+| 2 | [Botão NORMAL](prompts/variants/04_BUTTON_PRIMARY_NORMAL.md) | `UI-004_button_primary_normal_v01.png` | Anexar painel aprovado; aprovar contorno e texto |
+| 3 | [Botão HOVER](prompts/variants/04_BUTTON_PRIMARY_HOVER.md) | `UI-004_button_primary_hover_v01.png` | Anexar **o PNG NORMAL aprovado** |
+| 4 | [Botão PRESSED](prompts/variants/04_BUTTON_PRIMARY_PRESSED.md) | `UI-004_button_primary_pressed_v01.png` | Anexar **o PNG NORMAL aprovado** |
+| 5 | [Botão DISABLED](prompts/variants/04_BUTTON_PRIMARY_DISABLED.md) | `UI-004_button_primary_disabled_v01.png` | Anexar **o PNG NORMAL aprovado** |
+| 6 | [Maid Card compacto](prompts/08_MAID_CARD_COMPACT.md) | `UI-008_maid_card_compact_v01.png` | Anexar Suzu do repo, validar portrait separado |
 
-**Não gerar novas maids** nesta etapa. Use imagens de Walk existentes apenas como referências de proporção; portrait específico é trabalho futuro.
+**Aprovação:** mostrar cada asset isolado e, quando possível, aplicado numa captura real da Unity. Se um estado deformar o botão, corrigir/derivar a partir do NORMAL no Blender/Unity em vez de forçar geração problemática.
 
-## Gate P1 — kit estrutural após P0
+## P1 — kit estrutural após P0 aprovado
 
-[02 painel médio](prompts/02_PANEL_MEDIUM.md), [03 label](prompts/03_PANEL_SMALL_LABEL.md), [05 botão secundário](prompts/05_BUTTON_SECONDARY.md), [06 abas](prompts/06_TABS_SET.md), [07 modal](prompts/07_MODAL_DIALOG.md), [10 raridades](prompts/10_RARITY_BADGES.md), [11 ícones](prompts/11_ICON_PACK.md).
+[Painel médio](prompts/02_PANEL_MEDIUM.md), [etiqueta](prompts/03_PANEL_SMALL_LABEL.md), [botões secundários](prompts/05_BUTTON_SECONDARY.md), [abas](prompts/06_TABS_SET.md), [modal](prompts/07_MODAL_DIALOG.md), [raridades](prompts/10_RARITY_BADGES.md), [ícones](prompts/11_ICON_PACK.md).
 
-## Gate P2 — tela representativa de UI
+## P2 — telas de gestão
 
-[09 detalhe da maid](prompts/09_MAID_CARD_DETAIL.md), [12 fundo Menu](prompts/12_MENU_BACKGROUND.md), [17 Loja](prompts/17_SHOP_ITEM_FRAME.md), [18 Balanço](prompts/18_BALANCE_ROW_FRAME.md), [19 balão](prompts/19_DIALOG_BALLOON.md), [20 logo](prompts/20_LOGO_WORDMARK.md), [21 portrait de maid](prompts/21_MAID_PORTRAIT.md), [25 moldura por raridade](prompts/25_RARITY_CARD_FRAME.md). Gerar `21` somente com identidade de personagem e gate específicos.
+[Detalhe da maid](prompts/09_MAID_CARD_DETAIL.md), [fundo Menu](prompts/12_MENU_BACKGROUND.md), [item Loja](prompts/17_SHOP_ITEM_FRAME.md), [linha Balanço](prompts/18_BALANCE_ROW_FRAME.md), [balão](prompts/19_DIALOG_BALLOON.md), [logo](prompts/20_LOGO_WORDMARK.md), [molduras de raridade](prompts/25_RARITY_CARD_FRAME.md). [Portraits](prompts/21_MAID_PORTRAIT.md) somente após aprovação específica de identidade.
 
-## Gate P3 — restaurante interativo (módulos, não screenshot)
+## P3 — restaurante (precisa respeitar grid da Unity)
 
-Antes de gerar imagem grande, conferir geometria atual, câmera, sorting e área clicável. [22 piso](prompts/22_FLOOR_TILE.md), [23 parede](prompts/23_WALL_SEGMENT.md), [24 móvel individual](prompts/24_FURNITURE_SINGLE.md), [13 fundo arquitetônico](prompts/13_RESTAURANT_BACKGROUND.md), [14 catálogo de props](prompts/14_RESTAURANT_PROPS_SET.md). O fundo é **layer arquitetônica**, não o café completo com mesas baked.
+[Piso tileable](prompts/22_FLOOR_TILE.md), [paredes](prompts/23_WALL_SEGMENT.md), [itens placeable reais](prompts/24_FURNITURE_SINGLE.md), [arquitetura em camadas](prompts/13_RESTAURANT_BACKGROUND.md) e [decorações não interativas](prompts/14_RESTAURANT_PROPS_SET.md). **Não produzir sala inteira com móveis interativos baked**; testar sorting, pivô, footprint e cliques.
 
-## Gate P4 — HUD e acabamento em gameplay
+## P4 — HUD do turno
 
-[15 barra superior](prompts/15_TOP_BAR_HUD.md), [16 faixa inferior](prompts/16_BOTTOM_STRIP_DAY_UI.md). Revalidar HUD/Yoru em duas resoluções após integração.
+[Barra superior](prompts/15_TOP_BAR_HUD.md), [faixa inferior](prompts/16_BOTTOM_STRIP_DAY_UI.md). Revalidar maids/Yoru e HUD nos tamanhos 960×600 e 1280×720. Não alterar câmera do PR #30 sem justificativa.
 
-## Ao concluir cada gate
-
-Registrar aprovado/reprovado, arquivo e hash, screenshot do Unity, tamanho/técnica de slicing, legibilidade, alpha e impacto aproximado de memória. **Um mockup bonito não substitui um teste de uso real.**
+[Todos os 95 nomes exatos](OUTPUT_MANIFEST.md) · [Tutorial de anexos](TUTORIAL.md) · [Registro de aprovação](ASSET_REGISTRY.md).

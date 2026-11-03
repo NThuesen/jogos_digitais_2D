@@ -1,6 +1,6 @@
 # Registro de produção — assets modulares
 
-**Nenhum asset novo foi gerado ou aprovado nesta infra.** Estado padrão: `PENDING`. Um prompt existente **não** equivale a PNG disponível. Atualize esta tabela somente com arquivos e validações realmente existentes.
+**Nenhum asset novo foi gerado ou aprovado nesta infra.** **[OUTPUT_MANIFEST.md](OUTPUT_MANIFEST.md) lista individualmente as 95 saídas com o nome exato e o prompt específico; esta tabela agrupa as 25 famílias.** Estado padrão: `PENDING`. Um prompt existente **não** equivale a PNG disponível. Atualize esta tabela somente com arquivos e validações realmente existentes.
 
 | ID | Peça / prompt | Estado | Raw local | PNG limpo local | Versão aprovada / PR | Unity / QA |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -34,7 +34,7 @@
 
 `PENDING` → `RAW` (imagem salva) → `CLEAN` (alfa/bordas verificados) → `UNITY_QA` (composição testada) → `APPROVED` (decisão do responsável) → `INTEGRATED` (PR/commit com GUID/asset). `REJECTED` ou `REWORK` exigem motivo.
 
-**Um ID pode ter várias variantes.** Use sufixos, por exemplo `UI-004_normal_v01`, `UI-004_hover_v01`; registrar separadamente os arquivos/estados. Para cada imagem aprovada, adicionar linha de detalhes ou ficha:
+**Um ID pode ter várias variantes.** Os sufixos canônicos estão no [manifesto de saídas](OUTPUT_MANIFEST.md), por exemplo `UI-004_button_primary_normal_v01.png` e `UI-004_button_primary_hover_v01.png`. Registrar separadamente os arquivos/estados, sem inventar nomes. Para cada imagem aprovada, adicionar linha de detalhes ou ficha:
 
 - Origem: prompt e versão, data, anexos exatos (caminhos/versões).
 - Original: caminho local / versão do bruto (não é necessário commitar bruto).

@@ -1,35 +1,19 @@
-# 21_MAID_PORTRAIT — Retrato individual de uma maid já definida; sob gate de identidade separado.
+# 21 — Portrait das nove maids
 
-**Status:** PROMPT PREPARADO, **asset NÃO GERADO/NÃO APROVADO**. Fase: consulte [ordem e gate](../GENERATION_ORDER.md).
+Este arquivo é um **ÍNDICE**, não um prompt para substituir `[STATE]`. Clique em cada prompt abaixo: **ele já tem anexos reais e o PNG de saída definido**. Imagens novas: nenhuma gerada ainda.
 
-## Anexos
+Gerar portraits só depois de autorização específica de identidade; cada prompt usa `*_walk.png` real da maid.
 
-APENAS com autorização para portraits: imagens oficiais daquela maid (nunca só frame de referência de ART-01D), identidade aprovada, card compacto/detalhe aprovado; style_anchor_reference.png.
+| Ordem | Prompt completo | Nome EXATO ao salvar |
+|---|---|---|
+| 1 | [`21_MAID_PORTRAIT_AKARI.md`](variants/21_MAID_PORTRAIT_AKARI.md) | `UI-021_maid_portrait_akari_neutral_v01.png` |
+| 2 | [`21_MAID_PORTRAIT_HINA.md`](variants/21_MAID_PORTRAIT_HINA.md) | `UI-021_maid_portrait_hina_neutral_v01.png` |
+| 3 | [`21_MAID_PORTRAIT_ICHIKA.md`](variants/21_MAID_PORTRAIT_ICHIKA.md) | `UI-021_maid_portrait_ichika_neutral_v01.png` |
+| 4 | [`21_MAID_PORTRAIT_KAEDE.md`](variants/21_MAID_PORTRAIT_KAEDE.md) | `UI-021_maid_portrait_kaede_neutral_v01.png` |
+| 5 | [`21_MAID_PORTRAIT_MOMO.md`](variants/21_MAID_PORTRAIT_MOMO.md) | `UI-021_maid_portrait_momo_neutral_v01.png` |
+| 6 | [`21_MAID_PORTRAIT_NENE.md`](variants/21_MAID_PORTRAIT_NENE.md) | `UI-021_maid_portrait_nene_neutral_v01.png` |
+| 7 | [`21_MAID_PORTRAIT_REINA.md`](variants/21_MAID_PORTRAIT_REINA.md) | `UI-021_maid_portrait_reina_neutral_v01.png` |
+| 8 | [`21_MAID_PORTRAIT_SUZU.md`](variants/21_MAID_PORTRAIT_SUZU.md) | `UI-021_maid_portrait_suzu_neutral_v01.png` |
+| 9 | [`21_MAID_PORTRAIT_YORU.md`](variants/21_MAID_PORTRAIT_YORU.md) | `UI-021_maid_portrait_yoru_neutral_v01.png` |
 
-Acesse os caminhos em [references/README.md](../references/README.md); **anexe os arquivos de imagem** no ChatGPT antes de colar o prompt.
-
-## Campos a preencher antes de enviar
-
-- [MAID_NAME]=uma das nove
-- [EXPRESSION]=NEUTRAL | HAPPY | FLUSTERED etc.
-- [POSE]=BUST_3Q
-
-## PROMPT DE GERAÇÃO
-
-Cole **antes** o bloco global em [00_GLOBAL_RULES.md](00_GLOBAL_RULES.md); em seguida, copie **somente** o texto abaixo para a geração. Um asset/estado por imagem.
-
-```text
-Create ONE ORIGINAL HIGH-FIDELITY 2D ILLUSTRATED ANIME PORTRAIT of the existing Neko Maid Inc. maid [MAID_NAME] with expression [EXPRESSION] and pose [POSE], using the ATTACHED OFFICIAL CHARACTER IDENTITY ART as a non-negotiable subject reference. Do not invent a new maid, hair shape, eyes, cat ears, tail, uniform accents, accessories, face identity or color palette. Preserve identity across expression variations.
-
-Composition: isolated bust/half-body portrait facing slightly toward the viewer, head/ears fully visible with breathing room; clean readable expression, soft colored linework, shading and proportions harmonious with the existing anime 2D Walk artwork (not pixel art). Transparent outside and no painted card frame; Unity will place portrait behind the card border and add names/stats dynamically.
-
-No caption, speech, icon, watermark or UI. Never base the character only on the old reference image's pink maid; this must be [MAID_NAME] from the real existing game.
-
-If no clear official reference to [MAID_NAME] is attached, DO NOT generate a substitute or generic catmaid; request the proper identity reference.
-```
-
-## QA e decisões
-
-NÃO executar sem autorização de portrait e anexos oficiais por personagem; não reescrever nine walking sprites.
-
-**Registro:** [ASSET_REGISTRY.md](../ASSET_REGISTRY.md). Preserve `raw_gpt`, limpe alpha no Blender quando necessário e só integre após validação Unity e aprovação do responsável.
+Após baixar, **renomeie o PNG** conforme a terceira coluna e salve em `art_working/ui_modular/raw_gpt/`. O nome do download pode ser definido automaticamente pelo ChatGPT. Os arquivos aprovados só existirão depois do gate do responsável. [Tutorial](../TUTORIAL.md) · [Todos os nomes](../OUTPUT_MANIFEST.md).

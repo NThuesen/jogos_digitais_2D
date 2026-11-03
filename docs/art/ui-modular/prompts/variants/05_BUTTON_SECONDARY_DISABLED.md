@@ -1,0 +1,38 @@
+# Botão secundário — DISABLED
+
+**Status:** prompt pronto; imagem ainda não gerada. **UM prompt = UMA imagem.**
+
+## 1. Anexe estes PNGs/JPGs existentes do repositório
+
+- **Arquivo existente:** [`style_anchor_reference.png`](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/art/art-01/D-pixel-cafe/reference/style_anchor_reference.png) — `docs/art/art-01/D-pixel-cafe/reference/style_anchor_reference.png`
+- **Arquivo existente:** [`D4_ui_kit.png`](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/art/art-01/D-pixel-cafe/incoming/D4_ui_kit.png) — `docs/art/art-01/D-pixel-cafe/incoming/D4_ui_kit.png`
+- **Arquivo existente:** [`after_LJ-1_loja-moveis_960x600.png`](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/roadmap/ui-01a/evidence/after_LJ-1_loja-moveis_960x600.png) — `docs/roadmap/ui-01a/evidence/after_LJ-1_loja-moveis_960x600.png`
+
+## 2. Anexe estes PNGs de produção QUANDO existirem
+
+- **Arquivo FUTURO, apenas depois de gerado/aprovado:** `art_working/ui_modular/approved/UI-05_button_secondary_normal_v01.png` (não existe na main hoje).
+
+## 3. Prompt pronto para copiar
+
+```text
+Neko Maid Inc. Original MODULAR Unity sprite, cozy illustrated 2D anime cafe / ornamental visual novel UI. Attached images are STYLE AND DIMENSION REFERENCES, NOT content to copy. Reinterpret their cozy atmosphere, avoid pixel art/pixel grids, traced ornaments, and complete screenshots. No text, prices, stat labels, watermarks, fake checkerboard or character artwork. Leave central areas for Unity's dynamic UI. The asset should be independent, front-facing, consistent with an approved sibling where attached. If alpha is not possible, use a matte background that can be removed in Blender; preserve cream inner fills and alpha cutouts.
+
+An original modular ornamented 2D anime café UI button, front-facing horizontal 3.5:1 rounded rectangle. Rosewood/terracotta painted frame with quiet cream/pale peach middle. 65% blank central area for dynamic Unity text, symmetrical corners/straight side bands for potential nine-slice, no printed words or icons. Single isolated sprite with clean transparency outside, not a button sheet, no screenshots or pixel art.
+
+Low-emphasis secondary navigation (back/cancel/details), visibly subordinate to the attached primary button.
+
+DISABLED: quieter/low-saturation material with adequate contrast, preserving EXACT footprint, outline, dimensions and text-safe zone from the attached NORMAL PNG.
+
+IMPORTANT: Render ONE DISABLED button, not four states together. Use the attached NORMAL reference for geometry when provided. No text. Output precisely the single button asset.
+
+ONE image only. Intended filename after download: UI-05_button_secondary_disabled_v01.png (the generator may not control the actual download name; rename the PNG yourself).
+```
+
+## 4. Salve com este nome EXATO
+
+- Bruto: `art_working/ui_modular/raw_gpt/UI-05_button_secondary_disabled_v01.png`
+- Transparência limpa (se necessário): `art_working/ui_modular/blender_clean/UI-05_button_secondary_disabled_v01.png`
+- Apenas após aprovação: `art_working/ui_modular/approved/UI-05_button_secondary_disabled_v01.png`
+- Próxima tentativa: trocar **somente** `_v01.png` por `_v02.png` e registrar.
+
+**Nota:** cada anexo listado como FUTURO é criado nos passos anteriores; NÃO substitua por arquivo com nome parecido. A pasta `approved/` está vazia até o responsável aprovar um PNG.
