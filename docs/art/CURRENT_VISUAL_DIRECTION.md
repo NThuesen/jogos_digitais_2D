@@ -27,6 +27,8 @@
 
 A [style reference do estudo ART-01D](art-01/D-pixel-cafe/reference/style_anchor_reference.png), seu [UI kit D4](art-01/D-pixel-cafe/incoming/D4_ui_kit.png) e o [parecer técnico](art-01/D-pixel-cafe/EVALUATION_FINAL.md) continuam **referências de atmosfera e composição para a fase 4A**, não assets finais aprovados nem ordem para usar pixel art. É permitido aproveitar a ideia de café acolhedor, luz quente, molduras ornamentais e linguagem visual novel; **pixelização, paleta exata, materialidade, densidade decorativa e composição final seguem em aberto** para decisão com o responsável.
 
+**Biblioteca de prompts aprovada como infraestrutura (sem novos assets finais):** [UI modular GPT → Blender → Unity](ui-modular/README.md), [tutorial e anexos](ui-modular/TUTORIAL.md), [prompts individuais](ui-modular/prompts/), [registro de aprovação](ui-modular/ASSET_REGISTRY.md). Respeitar o gate de piloto; a paleta específica ainda não foi aprovada.
+
 ## Execução aprovada — estratégia B
 
 | Marco | Escopo | Estado |

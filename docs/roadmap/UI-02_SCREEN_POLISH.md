@@ -25,6 +25,8 @@ O responsável pode escolher uma **fatias menor** para o PR inicial. Uma tela po
 - Nova arte/animação não pode tornar performance impraticável em desktop WebGL; avaliar após integração real, não por promessa.
 - Não presumir que a existência de `Screen` ou `UiKit` garante ajuste automático em 960×600; conferir em runtime.
 
+**Execução de prompts:** [kit UI modular](../art/ui-modular/README.md) · [tutorial e referências anexáveis](../art/ui-modular/TUTORIAL.md) · [prompts](../art/ui-modular/prompts/). Esta é infraestrutura, **não** aprovação automática de paleta ou assets.
+
 ## Evidência e aceite por PR
 - Lista de telas/estados tocados, comparação antes/depois **960×600**, screenshots reais do Unity, Console relevante, interações demonstradas e resultado de testes apropriados.
 - Usuário reconhece maid com rapidez no card e no restaurante; informações e botões legíveis; navegação e regra preservadas; feedback do dia explica decisões.
