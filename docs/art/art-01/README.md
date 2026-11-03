@@ -1,5 +1,8 @@
 # ART-01 — três direções visuais para aprovação
 
+> **ESTUDO HISTÓRICO, não estado vigente do produto.** Os mockups A/B/C e o experimento D são preservados para pesquisa e proveniência. As nove maids Walk ilustradas já estão integradas (PRs #29/#30); não tratar o antigo bloqueio de ART-02 ou pixel art como decisão atual. Consulte [a direção vigente](../CURRENT_VISUAL_DIRECTION.md) e o [roadmap atual](../../ROADMAP.md).
+
+
 **Estado:** as três direções (A, B e C) estão **`PROPOSED`** — **nenhuma está aprovada** e a **ART-02 permanece bloqueada**. Aguarda decisão explícita do responsável (ver [Decisão](#decisão-necessária)). Nenhuma biblioteca visual deve ser expandida até lá.
 **Tarefa:** [ART-01](../../roadmap/ART-01_STYLE.md). **Decisão fixa neste experimento:** [Portrait + Chibi](../MAID_VISUAL_DECISION.md) (ACCEPTED). A stack de produção segue **aberta**.
 

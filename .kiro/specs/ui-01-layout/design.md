@@ -1,5 +1,8 @@
 # Design Document: UI-01 layout and legibility
 
+> **ESPECIFICAÇÃO HISTÓRICA DO UI-01 (29/10–02/11/2026).** O PR #31 integrou somente a infraestrutura inicial do Layout_Check; telas ainda não foram corrigidas. O responsável aprovou em 03/11 uma execução **enxuta por marcos**: [UI-01 vigente](../../../docs/roadmap/UI-01_LAYOUT.md) e [direção visual ilustrada](../../../docs/art/CURRENT_VISUAL_DIRECTION.md). Preservar requisitos, decisões e tarefas originais para rastreabilidade; **não executar as 15 etapas/40 estados como gate obrigatório** nem aplicar câmera, baseline ou pixel art antigos automaticamente. Os estados não implementados continuam pendentes, não aprovados por inferência.
+
+
 ## Overview
 
 UI-01 makes every Screen, the card reveal and the Dialogs fit both Reference_Resolutions (960×600 and 1280×720) with no clipped or colliding text, and adds the Layout_Check that proves it. Three causes explain almost every defect in the requirements:

@@ -10,6 +10,8 @@ Unity 6000.5.9f1 · 2D URP · WebGL
 
 ## O jogo
 
+**Arte vigente:** nove maids caminham em **anime 2D ilustrado/chibi** (PRs #29/#30); o café e os menus atuais ainda são provisórios. [Direção visual aprovada](docs/art/CURRENT_VISUAL_DIRECTION.md) · [Roadmap estratégia B](docs/ROADMAP.md).
+
 Cada dia tem quatro passos: montar a escalação, abrir as portas, assistir, e ler o balanço.
 Durante o dia não há nada para clicar — a única coisa que decide o resultado é quem você pôs
 em cada posição.
@@ -76,24 +78,13 @@ escalação é melhor que outra.
 Câmera, salão, interface e áudio são construídos em código. Não há prefab nenhum — e num
 trabalho em grupo isso significa que ninguém resolve conflito de merge em YAML com GUID.
 
-## Créditos de assets
+## Arte, áudio e créditos
 
-Nenhum asset de terceiros. Imagens originais do projeto são importadas (a caminhada da Suzu e as sete caminhadas de `Assets/_Game/Resources/Maids/`, ver a proveniência abaixo). A primeira é:
-`Assets/_Game/Resources/Suzu/suzu_walk_sheet.png`, a caminhada da Suzu, processada por
-`tools/art/suzu_walk/process.py` a partir de frames produzidos neste projeto. Origem,
-parâmetros e hash de todas: [proveniência](docs/art/SUZU_ASSET_PROVENANCE.md); pipeline das demais: `tools/art/maid_walk/maid_walk.py`. Nenhum som foi importado.
+**Nove walk sheets ilustrados** são imagens originais importadas em `Assets/_Game/Resources/Maids/`, produzidas de imagens/vídeos autorais do projeto por meio do pipeline offline `tools/art/maid_walk/maid_walk.py`. As fontes brutas exportadas pelo Blender ficam fora do Git. O sprite sheet original da Suzu (`Resources/Suzu/`) permanece apenas como backup. [Proveniência e hashes](docs/art/SUZU_ASSET_PROVENANCE.md) · [estado da animação e WebGL](docs/art/maid-walk/README.md).
 
-- **Toda a demais arte** é gerada em tempo de execução. Personagens, ícones e o letreiro saem de
-  dezessete campos de distância em `Assets/_Game/Scripts/Game/Art/ShapeRasteriser.cs`: uma
-  maid é uma pilha de camadas tingidas; o letreiro do menu é um conjunto de retângulos
-  arredondados e dois triângulos. Os móveis são pixel art pintada pixel a pixel em código, em
-  `Assets/_Game/Scripts/Game/Art/FurnitureArt.cs`.
-- **Todo o áudio** é sintetizado por `tools/synthesise-audio.sh`, que descreve cada som como
-  uma pilha de vozes — forma de onda, varredura de altura, envelope, filtro, vibrato — e
-  escreve o `.wav`. O mesmo comando sempre produz os mesmos bytes.
-- **A fonte** é a embutida do próprio Unity (`LegacyRuntime.ttf`), resolvida em tempo de
-  execução. TextMeshPro não é usado: foi verificado que este editor não traz os recursos de
-  TMP, e um texto de TMP sem font asset se diagrama corretamente e não desenha nada.
+A arte remanescente **ainda contém** elementos procedurais e móveis desenhados em código (`ShapeRasteriser`, `FurnitureArt`). O cenário atual será redesenhado para **anime 2D ilustrado/cozy**; não é referência obrigatória de pixel art. Portraits exclusivos dos Maid Cards, poses ilustradas além do Walk, equipamentos ilustrados e `visual_id` persistente **não foram entregues**.
+
+Os 26 sons são sintetizados por `tools/synthesise-audio.sh`. A fonte de UI é a embutida no Unity (`LegacyRuntime.ttf`); TMP não é usado. Nenhum asset de terceiros foi incorporado, segundo a proveniência documentada. Não confundir assets originais importados com assets de terceiros.
 
 ### Ferramentas usadas na produção
 

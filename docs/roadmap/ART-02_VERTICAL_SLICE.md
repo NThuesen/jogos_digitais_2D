@@ -1,5 +1,8 @@
 # ART-02 — Uma maid completa no Unity (vertical slice visual)
 
+> **Arquivo histórico, não um plano de execução atual (03/11/2026).** A escolha de pixel art e os gates de ART-01/ART-02 foram superados **na representação Walk das nove maids**, entregue por PRs #29/#30. A direção vigente é [anime 2D ilustrado/chibi](../art/CURRENT_VISUAL_DIRECTION.md). Portraits, camadas e cenário ainda são trabalhos futuros; preservar este documento como registro da exploração, não iniciar o experimento antigo.
+
+
 **Status:** **LIBERADA para implementação experimental** pelo responsável em 2026-10-28, após conclusão da ART-01D como exploração. Aprovação restrita às referências, não aos assets finais. **Agente implementador recomendado:** Codex.
 **Leia:** [estilo aprovado/artwork ART-01](ART-01_STYLE.md), [decisão](../art/MAID_VISUAL_DECISION.md), [spec](../art/MAID_VISUAL_SPEC.md), [template da identidade](../art/maids/_TEMPLATE.md), [Unity](../agent/UNITY.md). Consultar GDD apenas para arquétipo/raridade quando necessário.
 

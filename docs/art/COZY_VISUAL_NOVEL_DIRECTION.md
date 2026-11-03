@@ -42,4 +42,4 @@ As três propostas vetoriais A · Café Pastel, B · Quadro-Negro Doce e C · Ki
 - **ART-02 (Unity):** permanece bloqueada até esse gate; então integrar uma identidade com portrait e chibi e validar no Editor real, a 960×600, com evidência visual e uma mudança modular pontual.
 - Somente depois do vertical slice decidir pipeline de produção e expansão da biblioteca, registrando escolhas técnicas conforme a evidência.
 
-**Fonte de verdade:** este documento registra a decisão sobre **estilo e apresentação**; [MAID_VISUAL_DECISION.md](MAID_VISUAL_DECISION.md) registra o contrato **portrait + chibi**. Não duplicar regras em `AGENTS.md`/`CLAUDE.md`; consultar este arquivo **apenas** em tarefas de direção artística, UI ou cenas de apresentação.
+**Fonte de verdade atual:** [CURRENT_VISUAL_DIRECTION.md](CURRENT_VISUAL_DIRECTION.md). Este registro de 28/10 descreve decisões históricas e seus gates anteriores; não orienta novas implementações como se pixel art ou ART-02 pendente fossem obrigatórios.
