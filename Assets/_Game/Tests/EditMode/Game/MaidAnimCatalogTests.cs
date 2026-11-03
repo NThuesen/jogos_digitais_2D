@@ -94,7 +94,7 @@ namespace Neko.Tests.EditMode.Game
             long pixels = 0;
             foreach (var entry in MaidAnimCatalog.All)
                 pixels += Resources.Load<Texture2D>(entry.resource).width * Resources.Load<Texture2D>(entry.resource).height;
-            Assert.Less(pixels, 12L * 1000 * 1000, "the walk sheets must stay under 12 Mpx for nine maids (about 10 Mpx measured: ~13 MB block-compressed on the GPU, ~40 MB if a platform left them uncompressed)");
+            Assert.Less(pixels, 12L * 1000 * 1000, "the walk sheets must stay under 12 Mpx for nine maids (about 10 Mpx measured). This caps pixels, not memory: the current WebGL build stores them uncompressed with mipmaps, about 50.8 MB in the build report");
         }
 
         [Test]
