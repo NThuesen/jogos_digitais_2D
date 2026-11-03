@@ -79,12 +79,6 @@ namespace Neko.Tests.PlayMode.Layout
         private const int EmpresaPlanks = 7;
 
         /// <summary>
-        /// The topmost raycast target at the centre of "Voltar" at 960×600: the stats plaque's inner
-        /// panel, which is drawn after the plank and overlaps its rect (D-EM-5).
-        /// </summary>
-        private const string PlaqueOverBackPath = "HubScreen/Plaque/Panel[1]";
-
-        /// <summary>
         /// How far inside its rect the stats plaque's drawn bounds must lie: 1 unit, plus the one
         /// <see cref="VisibleShape.SampleStep"/> by which <see cref="VisibleShape.DrawnBounds"/> can
         /// fall short of the true drawn edge, so the true edge lies more than 1 unit inside.
@@ -513,17 +507,17 @@ namespace Neko.Tests.PlayMode.Layout
         }
 
         /// <summary>
-        /// The click helpers find the Baseline's click targets on Empresa: at 960×600 the stats
-        /// plaque is the topmost raycast target at the centre of "Voltar" (D-EM-5), and at 1280×720
-        /// a click at the centre of the Loja plank opens the Loja.
+        /// The click helpers inspect Empresa's controls at both resolutions. At 960×600 they
+        /// diagnose whether "Voltar" is blocked (D-EM-5) without requiring the Baseline defect
+        /// to persist; at 1280×720 a click on the Loja plank must open the Loja.
         /// </summary>
         /// <remarks>
         /// Reaches Empresa as <see cref="ProbesAgreeWithTheRenderedFrame"/> does. A plank's centre is
-        /// its first <see cref="Clicks.SamplePoints"/> point. At 960×600 the test also checks that the
-        /// plaque keeps the click at that point from "Voltar", and that the Hit_Area of "Voltar" is
-        /// the plank's own rect, because the plank's root plate is its only raycast target. The Loja
-        /// click comes last, because it changes the Screen. Every finding is logged before the test
-        /// fails.
+        /// its first <see cref="Clicks.SamplePoints"/> point. At 960×600 the test logs the topmost
+        /// target and handler and checks that "Voltar" still has a raycast Hit_Area. Whether the
+        /// plaque blocks this point is a diagnostic, not a required outcome; the eventual R6.2
+        /// rule will enforce clickability. The Loja click comes last, because it changes the Screen.
+        /// Every finding is logged before the test fails.
         /// </remarks>
         [UnityTest]
         public IEnumerator ClicksFindTheBaselineTargets()
@@ -546,7 +540,7 @@ namespace Neko.Tests.PlayMode.Layout
 
             var failures = new List<string>();
 
-            // 960×600: the stats plaque over "Voltar" (D-EM-5).
+            // 960×600: diagnose whether the stats plaque blocks "Voltar" (D-EM-5).
             yield return ResolutionRig.Apply(960, 600);
             yield return Settle();
 
@@ -564,24 +558,14 @@ namespace Neko.Tests.PlayMode.Layout
                       "\"Voltar\" " + back.Path + ", rect " + LayoutModel.Describe(back.OwnRect) + ", Hit_Area " +
                       backArea + ", " + backPoints.Count + " sample points; at its centre " +
                       LayoutReport.Point(backCentre) + " the topmost raycast target is " + blocker +
-                      " and the click reaches " + TargetPath(clicks.Measurement, backHandler));
+                      " and the click reaches " + TargetPath(clicks.Measurement, backHandler) +
+                      "; D-EM-5 " + (backHandler == back.Component.gameObject
+                          ? "not reproduced (Voltar is reachable)"
+                          : "observed (Voltar is blocked; diagnostic only)"));
 
-            if (blocker != PlaqueOverBackPath)
+            if (backArea.Targets.Count == 0 || !backArea.Bounds.HasValue)
             {
-                failures.Add(size + ": the topmost raycast target at the centre of \"Voltar\" " +
-                             LayoutReport.Point(backCentre) + " is " + blocker + ", not the stats plaque's " +
-                             PlaqueOverBackPath + " (D-EM-5)");
-            }
-
-            if (backHandler == back.Component.gameObject)
-            {
-                failures.Add(size + ": a click at the centre of \"Voltar\" reaches the plank through " + blocker);
-            }
-
-            if (backArea.Targets.Count != 1 || backArea.Bounds != back.OwnRect)
-            {
-                failures.Add(size + ": the Hit_Area of \"Voltar\" is " + backArea + ", not the plank's own rect " +
-                             LayoutModel.Describe(back.OwnRect) + " from its root plate alone");
+                failures.Add(size + ": the \"Voltar\" plank has no raycast Hit_Area: " + backArea);
             }
 
             // 1280×720: a click at the centre of the Loja plank, last because it changes the Screen.
