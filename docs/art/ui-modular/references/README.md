@@ -12,7 +12,7 @@
 | [`pill_normal.png`](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/art/art-01/D-pixel-cafe/processed/ui/pill_normal.png) | `docs/art/art-01/D-pixel-cafe/processed/ui/pill_normal.png` |
 | [`D3_cafe_interior.png`](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/art/art-01/D-pixel-cafe/incoming/D3_cafe_interior.png) | `docs/art/art-01/D-pixel-cafe/incoming/D3_cafe_interior.png` |
 
-Estudo antigo e [limitações de modularidade](../art-01/D-pixel-cafe/EVALUATION_FINAL.md). **D4 não é UI final aprovada.**
+Estudo antigo e [limitações de modularidade](../../art-01/D-pixel-cafe/EVALUATION_FINAL.md). **D4 não é UI final aprovada.**
 
 ## Gameplay/UI real — captures verificadas
 
