@@ -1,6 +1,6 @@
-# OUTPUT_MANIFEST — 95 saídas com nomes fixos
+# OUTPUT_MANIFEST — 96 saídas com nomes fixos
 
-**95 imagens possíveis**, todas **PENDING**: esta infraestrutura não inclui os PNGs gerados. Cada linha corresponde a 1 imagem isolada e a 1 prompt pronto. **Não peça para gerar tudo de uma vez.**
+**96 saídas planejadas**, incluindo a nova variante COMPACT NORMAL da UI-004. Situação real: UI-001 APPROVED (não integrado); UI-004 NORMAL ornamental REWORK (bruto e limpo locais); COMPACT NORMAL e demais variantes ainda PENDING. O manifesto reserva nomes, não publica automaticamente os PNGs. Cada linha corresponde a 1 imagem isolada e a 1 prompt pronto. **Não peça para gerar tudo de uma vez.**
 
 - Abra o prompt, baixe e anexe os PNGs reais listados nele, copie só o bloco indicado.
 - Quando terminar, **renomeie o download** com o nome exato abaixo e coloque em `art_working/ui_modular/raw_gpt/`.
@@ -9,12 +9,13 @@
 
 | Prompt pronto | PNG exato | Pasta de saída | Estado |
 |---|---|---|---|
-| [`01_PANEL_LARGE.md`](prompts/01_PANEL_LARGE.md) | `UI-001_panel_large_v01.png` | `art_working/ui_modular/raw_gpt/UI-001_panel_large_v01.png` | PENDING |
+| [`01_PANEL_LARGE.md`](prompts/01_PANEL_LARGE.md) | `UI-001_panel_large_v01.png` | `art_working/ui_modular/raw_gpt/UI-001_panel_large_v01.png` | APPROVED (não integrado) |
 | [`02_PANEL_MEDIUM.md`](prompts/02_PANEL_MEDIUM.md) | `UI-002_panel_medium_v01.png` | `art_working/ui_modular/raw_gpt/UI-002_panel_medium_v01.png` | PENDING |
 | [`03_PANEL_SMALL_LABEL.md`](prompts/03_PANEL_SMALL_LABEL.md) | `UI-003_panel_small_label_v01.png` | `art_working/ui_modular/raw_gpt/UI-003_panel_small_label_v01.png` | PENDING |
 | [`04_BUTTON_PRIMARY_DISABLED.md`](prompts/variants/04_BUTTON_PRIMARY_DISABLED.md) | `UI-004_button_primary_disabled_v01.png` | `art_working/ui_modular/raw_gpt/UI-004_button_primary_disabled_v01.png` | PENDING |
 | [`04_BUTTON_PRIMARY_HOVER.md`](prompts/variants/04_BUTTON_PRIMARY_HOVER.md) | `UI-004_button_primary_hover_v01.png` | `art_working/ui_modular/raw_gpt/UI-004_button_primary_hover_v01.png` | PENDING |
-| [`04_BUTTON_PRIMARY_NORMAL.md`](prompts/variants/04_BUTTON_PRIMARY_NORMAL.md) | `UI-004_button_primary_normal_v01.png` | `art_working/ui_modular/raw_gpt/UI-004_button_primary_normal_v01.png` | PENDING |
+| [`04_BUTTON_PRIMARY_NORMAL.md`](prompts/variants/04_BUTTON_PRIMARY_NORMAL.md) | `UI-004_button_primary_normal_v01.png` | `art_working/ui_modular/raw_gpt/UI-004_button_primary_normal_v01.png` | REWORK (ornamental; não integrado) |
+| [`04_BUTTON_PRIMARY_COMPACT_NORMAL.md`](prompts/variants/04_BUTTON_PRIMARY_COMPACT_NORMAL.md) | `UI-004_button_primary_compact_normal_v01.png` | `art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_normal_v01.png` | PENDING (prompt pronto; PNG não gerado) |
 | [`04_BUTTON_PRIMARY_PRESSED.md`](prompts/variants/04_BUTTON_PRIMARY_PRESSED.md) | `UI-004_button_primary_pressed_v01.png` | `art_working/ui_modular/raw_gpt/UI-004_button_primary_pressed_v01.png` | PENDING |
 | [`05_BUTTON_SECONDARY_DISABLED.md`](prompts/variants/05_BUTTON_SECONDARY_DISABLED.md) | `UI-005_button_secondary_disabled_v01.png` | `art_working/ui_modular/raw_gpt/UI-005_button_secondary_disabled_v01.png` | PENDING |
 | [`05_BUTTON_SECONDARY_HOVER.md`](prompts/variants/05_BUTTON_SECONDARY_HOVER.md) | `UI-005_button_secondary_hover_v01.png` | `art_working/ui_modular/raw_gpt/UI-005_button_secondary_hover_v01.png` | PENDING |

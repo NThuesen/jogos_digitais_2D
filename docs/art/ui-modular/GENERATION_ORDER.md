@@ -1,8 +1,14 @@
 # Ordem de geração e aprovação (sem lotes)
 
-**Status:** todos os novos PNGs estão PENDING. O objetivo é uma linguagem visual consistente, não completar 95 imagens por completude. Cada link vai para **um prompt executável**, sem `[STATE]` a preencher.
+**Status real em 03/11/2026:** UI-001 está APPROVED (não integrado); UI-004 ornamental NORMAL v01 foi gerado localmente, mas está REWORK; HOVER/PRESSED/DISABLED ornamentais e COMPACT NORMAL continuam PENDING. O objetivo é uma linguagem visual consistente, não completar 95 imagens por completude. Cada link vai para **um prompt executável**, sem `[STATE]` a preencher.
 
-## P0 — primeiro piloto
+## Prioridade atual aprovada — UI-004 COMPACT NORMAL
+
+**Próxima geração individual:** [`04_BUTTON_PRIMARY_COMPACT_NORMAL.md`](prompts/variants/04_BUTTON_PRIMARY_COMPACT_NORMAL.md) → `art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_normal_v01.png` (**PENDING**, não gerado). Anexos e blocos prontos estão no [tutorial](TUTORIAL.md#passo-2a--gerar-agora-o-botão-compacto-normal-nova-variante-ui-004).
+
+A decisão de produto estabelece duas linhas: ornamental grande (~260×88, arte antiga ainda `REWORK`) e compacta simplificada (44–54, foco `150×44` Loja e `120×44` navegação). Abas são independentes. Primeiro produzir e revisar apenas o NORMAL compacto; **não** avançar HOVER/PRESSED/DISABLED de qualquer linha sem NORMAL correspondente aprovado. Não homologar 768×256/WebGL do grande por inferência.
+
+## P0 — primeiro piloto (sequência originalmente documentada; mantida como histórico)
 
 | Ordem | Gerar | PNG exato que você salva | Como usar |
 |---|---|---|---|

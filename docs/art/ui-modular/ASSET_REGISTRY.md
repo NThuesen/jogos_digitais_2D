@@ -58,5 +58,13 @@
 - Limpo local: **2172×724**, SHA-256 `03b58c3e2b500b8a48311cd3b3c75c8551c79d599693176ad5b5da664aeb0446`; removeu 1.094 pixels de resíduos separados e solidificou alpha≥250; RGB integralmente preservado.
 - Slice testado: borders de origem L400/B360/R400/T360, escala vertical ajustada à altura; ornamentos inteiros, porém pouco legíveis em 44–54 u. Texto Comprar 16 falha em 120×44 a 1280×720.
 - Proposta condicional: candidata **768×256**, 0,75 MiB RGBA32, caso maior **260×88**; não autoriza mudar telas. Texturas do botão locais/ignoradas; duas capturas Unity versionadas, hashes e restrições na [revisão](reviews/UI-004_BUTTON_PRIMARY_NORMAL_V01.md).
-- **Proposta ainda não aprovada:** duas famílias — ornamental grande (~260×88) e compacto simplificado (altura 44–54); abas seguem como componentes próprios. Compacto não produzido nem implementado. A candidata 768×256 é somente para o botão grande.
+- **Decisão de produto posterior APROVADA em 03/11/2026:** duas famílias — ornamental grande (~260×88) e compacto simplificado (altura 44–54); abas seguem como componentes próprios. Isto não aprova o NORMAL ornamental nem sua candidata 768×256/WebGL. Compacto segue sem PNG/implementação.
 - Pendências: responsável decidir rework/uso maior restrito, proposta das famílias, limpeza, resolução e publicação das texturas; compressão, WebGL e integração NOT RUN.
+
+## UI-004 `button_primary_compact_normal` v01 — nova variante planejada
+
+- **Estado: PENDING (somente prompt/tutorial).** [Prompt autossuficiente](prompts/variants/04_BUTTON_PRIMARY_COMPACT_NORMAL.md) e [passo a passo](TUTORIAL.md#passo-2a--gerar-agora-o-botão-compacto-normal-nova-variante-ui-004).
+- **Nome reservado:** `UI-004_button_primary_compact_normal_v01.png`; destino bruto planejado `art_working/ui_modular/raw_gpt/`. Bruto, limpo, approved e asset Unity **não existem** para a variante compacta no checkpoint.
+- **Contrato:** NORMAL isolado, sem texto, moeda, ícones nem estados adicionais; centro creme, contorno simplificado e compatibilidade visual com UI-001. Alvos `150×44` (Loja com preços dinâmicos), `120×44` (navegação), `230×54` (validação adicional); verificar em Unity 960×600 e 1280×720.
+- **Pendências de gate:** gerar via GPT Web, inspecionar/limpar, revisão humana, QA Unity e WebGL quando aplicável. Nada foi aprovado, importado ou integrado por esta atualização documental. `HOVER`/`PRESSED`/`DISABLED` compactos continuam futuros; não presumir seus PNGs.
+- **Famílias separadas:** o `UI-004_button_primary_normal_v01.png` ornamental antigo permanece `REWORK`. O registro de seu QA na [PR #40](https://github.com/NThuesen/jogos_digitais_2D/pull/40) é histórico, não substituído pela variante compacta.

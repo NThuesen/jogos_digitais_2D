@@ -52,3 +52,13 @@ A [style reference do estudo ART-01D](art-01/D-pixel-cafe/reference/style_anchor
 - [Walk sheets ilustrados e limitações](maid-walk/README.md) · [proveniência dos assets](SUZU_ASSET_PROVENANCE.md).
 - [Contrato de identidade / portrait + chibi](MAID_VISUAL_DECISION.md) · [UI-01 atual](../roadmap/UI-01_LAYOUT.md) · [UI-02 futuro](../roadmap/UI-02_SCREEN_POLISH.md).
 - [Direção cozy pixel-art + visual novel de 28/10](COZY_VISUAL_NOVEL_DIRECTION.md), [ART-01/ART-01D](../roadmap/ART-01_STYLE.md) e [prompts Hina v2](prompt-pipeline/README.md) são **registros históricos**; referências à obrigação de pixel art ou a gates de uma única maid **não substituem a direção vigente**.
+
+## Decisão adicional de produto — UI-004 (03/11/2026)
+
+**APROVADO pelo responsável: duas famílias de botão primário**, sem aprovação automática de PNG, export, layout ou integração.
+
+1. **Ornamental grande (~260×88):** uso potencial como CTA de destaque. O `UI-004_button_primary_normal_v01.png` existente foi avaliado na [revisão UI-004](ui-modular/reviews/UI-004_BUTTON_PRIMARY_NORMAL_V01.md) e segue `REWORK`; 768×256 é apenas candidata técnica e WebGL permanece `NOT RUN`.
+2. **Compacta simplificada (altura 44–54):** família própria para ações pequenas/frequentes. Próximo passo autorizado: documentar e gerar, manualmente no GPT Web, **apenas** `UI-004_button_primary_compact_normal_v01.png` usando [prompt próprio](ui-modular/prompts/variants/04_BUTTON_PRIMARY_COMPACT_NORMAL.md), priorizando compra real da Loja `150×44` (preços dinâmicos), navegação `120×44` e avaliação adicional em `230×54`.
+3. **Abas são peças independentes** (UI-006); não reutilizar o ornamental de forma universal. Não produzir HOVER/PRESSED/DISABLED compactos antes de aprovar NORMAL. Unity continua responsável por textos, preços, controle, interação e estados.
+
+Esta decisão substitui **somente a pendência sobre dividir as famílias** registrada na revisão histórica de UI-004. Não reclassifica aquele asset como `APPROVED`, não altera a arte atual de nenhuma tela e não modifica economia, gameplay, saves ou identidades das maids.
