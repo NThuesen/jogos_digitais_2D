@@ -1,5 +1,8 @@
 # ART-01D — Avaliação técnica dos Prompts 0, 1 e 2 (Suzu)
 
+> **EXPERIMENTO HISTÓRICO ART-01D.** Referências, avaliações e prompts abaixo registram a exploração original; a direção atual preserva as nove maids em **anime 2D ilustrado**, não pixel art. [Direção vigente](../../CURRENT_VISUAL_DIRECTION.md). Os PNGs antigos deste estudo não são o catálogo atual dos Walk sheets.
+
+
 > **Histórico da exploração. Fechamento em 2026-10-28:** ART-01D concluída, referências aprovadas e ART-02 experimental liberada para Codex. Bloqueios e instruções de geração abaixo descrevem etapas anteriores. Não gerar novas imagens agora. Ver [status e handoff atuais](README.md).
 
 **Status:** avaliação objetiva de **arte gerada** (ChatGPT Plus). **Não é aprovação técnica nem autorização para ART-02** (bloqueada até a validação em contexto, abaixo). Nada aqui é Unity; custo adicional **R$ 0**. Parâmetros de recorte/escala são **testes**, não decisões.

@@ -1,5 +1,8 @@
 # ART-01D — Prompts para o ChatGPT Plus
 
+> **EXPERIMENTO HISTÓRICO ART-01D.** Referências, avaliações e prompts abaixo registram a exploração original; a direção atual preserva as nove maids em **anime 2D ilustrado**, não pixel art. [Direção vigente](../../CURRENT_VISUAL_DIRECTION.md). Os PNGs antigos deste estudo não são o catálogo atual dos Walk sheets.
+
+
 > **Histórico da exploração. Fechamento em 2026-10-28:** ART-01D concluída, referências aprovadas e ART-02 experimental liberada para Codex. Bloqueios e instruções de geração abaixo descrevem etapas anteriores. Não gerar novas imagens agora. Ver [status e handoff atuais](README.md).
 
 Contexto: [README.md](README.md). Os prompts estão em inglês porque o modelo de imagem responde melhor; as instruções para você estão em português.

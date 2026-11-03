@@ -1,5 +1,8 @@
 # ART-01D — Cozy Pixel-Art Anime Café
 
+> **EXPERIMENTO HISTÓRICO ART-01D.** Referências, avaliações e prompts abaixo registram a exploração original; a direção atual preserva as nove maids em **anime 2D ilustrado**, não pixel art. [Direção vigente](../../CURRENT_VISUAL_DIRECTION.md). Os PNGs antigos deste estudo não são o catálogo atual dos Walk sheets.
+
+
 **Status (2026-10-28): ART-01D CONCLUÍDA COMO EXPLORAÇÃO.** O responsável aprovou direção D, identidade da Suzu, café D3 e linguagem ornamental D4 como referências da primeira implementação e **liberou explicitamente a ART-02 experimental para Codex**. Os PNGs não são assets finais. Exploração encerrada, sem novas imagens. Nada foi implementado ou validado no Unity.
 
 **Handoff:** [ART-02](../../../roadmap/ART-02_VERTICAL_SLICE.md). Começar com os assets existentes, portrait em card real e chibi no restaurante real; 96 px é hipótese inicial. Canvas de referência 1280×720, com validação adicional em 960×600, sem equivalência presumida. Movimento/idle, variação visual isolada e capturas reais nas duas resoluções dependem da integração. O responsável avaliará o Unity antes de qualquer merge da ART-02.
