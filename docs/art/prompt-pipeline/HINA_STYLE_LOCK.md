@@ -1,5 +1,8 @@
 # HINA STYLE LOCK — referência visual comum das nove maids (v2)
 
+> **PROMPT HISTÓRICO DE PRODUÇÃO — não define mais o estilo de runtime.** Este texto documenta as imagens/vídeos que deram origem às nove maids. Desde o [ART-04](../maid-walk/README.md), o jogo usa **sprites anime 2D ilustrados**, sem quantização para pixel art. A [decisão atual](../CURRENT_VISUAL_DIRECTION.md) prevalece; preserve os frames originais e não gere novamente personagens para forçar pixelização. Para novas imagens, é preciso revisar estes prompts explicitamente em tarefa futura.
+
+
 **Decisão artística (2026-11-01):** a imagem **full-body aprovada da Hina** é a referência-mestra das proporções chibi, da geometria do uniforme e do acabamento pixel-art de **todas** as nove maids. O primeiro desenho da Suzu, mais alongado e próximo de ilustração anime, **não** é a referência de estilo. Isso atualiza os prompts de produção; **não substitui** automaticamente sprites ou cenas Unity existentes.
 
 ## Qual imagem usar

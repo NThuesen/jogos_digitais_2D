@@ -247,40 +247,15 @@ a mediana.
 
 ## 8. Efeitos visuais e polimento gráfico
 
-**Nenhuma imagem é importada.** Dezessete formas geradas por campos de distância compõem
-maids, clientes, ícones e o letreiro. Uma maid é uma pilha de camadas tingidas, e é por isso
-que o vestuário é visível: equipar uma peça troca uma camada.
+**Direção vigente em 03/11/2026:** [anime 2D ilustrado/chibi para as nove maids](art/CURRENT_VISUAL_DIRECTION.md), com identidade e transparência preservadas dos frames originais. O restaurante **será redesenhado** em estilo cozy anime 2D ilustrado para harmonizar com elas; o cenário/paleta atual não é âncora estética. Menus e gameplay podem adotar apresentações visuais diferentes, com legibilidade e UI de dados dinâmica.
 
-Os **móveis** são pixel art pintada em código (`FurnitureArt`), na direção cozy aceita:
-vista de três quartos, 32 pixels por tile ampliados por um fator inteiro, sombras puxadas
-para o violeta e contorno escuro na cor de cada peça. O que é alto sobe além das próprias
-células e é ordenado pela fileira da frente; tapete e lago ficam por baixo de tudo. A cor de
-cada peça continua vindo do catálogo, e a Loja e o Salão mostram o mesmo desenho do café.
+**Já implementado:** nove walk sheets ilustrados importados em `Assets/_Game/Resources/Maids/`, via `MaidAnimCatalog` e `MaidView` ([PR #29](https://github.com/NThuesen/jogos_digitais_2D/pull/29), [PR #30](https://github.com/NThuesen/jogos_digitais_2D/pull/30)); PlayMode e WebGL QA verificados. O restante da arte de mundo/menus ainda inclui formas procedurais de `ShapeRasteriser` e móveis desenhados em código por `FurnitureArt`. O sprite sheet antigo da Suzu em `Resources/Suzu/` é backup, não é a entrada principal do catálogo.
 
-**Direção visual aprovada (ainda não implementada):** cada identidade de maid deverá ter
-um **portrait expressivo para o card** e um **chibi legível para o restaurante**, com
-identidade e módulos visuais consistentes entre as duas apresentações. O card permanece
-composto pela UI. A decisão, os pontos em aberto e o contrato de spec por identidade
-estão em [docs/art/MAID_VISUAL_DECISION.md](art/MAID_VISUAL_DECISION.md); o texto acima
-descreve somente a implementação atual.
+**Limites atuais:** uma empresa nova não tem obrigatoriamente as nove identidades; sprites são selecionados por nome+arquétipo, equipamentos voltam ao visual procedural e não há `visual_id` persistido. Só o Walk ilustrado está integrado; Idle/Carry/Cook/Tired completos e portraits para os Maid Cards continuam futuros. Nenhuma mudança em economia, RNG, recrutamento ou save decorre da direção visual.
 
-**Direção de apresentação aceita em 28/10/2026 (ainda não implementada):** combinar
-**cozy pixel-art anime café** com linguagem de **visual novel** nos menus, Elenco,
-Escalação e eventuais momentos entre dias: cenário detalhado, iluminação acolhedora,
-portraits expressivos e UI ornamental, mantendo o turno como simulação 2D com
-chibis legíveis. A direção, os limites e o gate para aprovar assets originais estão
-em [docs/art/COZY_VISUAL_NOVEL_DIRECTION.md](art/COZY_VISUAL_NOVEL_DIRECTION.md).
-A imagem de inspiração foi enviada na conversa e não está versionada no repo;
-não confundir aprovação da direção com arte final ou pipeline já escolhida.
+**UI:** o UI-01 vigente faz correções de **layout e legibilidade** nas telas existentes, em 960×600 e 1280×720; não transforma a interface marrom atual em arte final. O futuro UI-02 poderá atualizar paleta, fontes, proporções e portraits, mantendo nomes, stats e regras em elementos de UI. Ver [roadmap](ROADMAP.md).
 
-
-A paleta foi fechada com `pixels palette_check`: os nove acentos de arquétipo ficam numa
-escada de L\* de 40 a 72, quatro pontos entre vizinhos, todos abaixo da faixa de valor da cor
-de atenção e todos menos saturados que ela.
-
-Partículas, números flutuantes, esmagamento e estica, tremor de câmera e surgimento com
-overshoot — tudo em filas reaproveitadas, sem `ParticleSystem` (que exigiria um material, que
-é um asset).
+Partículas, números flutuantes, squash/stretch e tremor de câmera continuam parte do acabamento funcional existente; novas animações e cenas exigem escopo e validação próprios.
 
 ## 9. Rejogabilidade
 

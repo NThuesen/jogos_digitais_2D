@@ -1,5 +1,8 @@
 # Requirements Document
 
+> **ESPECIFICAÇÃO HISTÓRICA DO UI-01 (29/10–02/11/2026).** O PR #31 integrou somente a infraestrutura inicial do Layout_Check; telas ainda não foram corrigidas. O responsável aprovou em 03/11 uma execução **enxuta por marcos**: [UI-01 vigente](../../../docs/roadmap/UI-01_LAYOUT.md) e [direção visual ilustrada](../../../docs/art/CURRENT_VISUAL_DIRECTION.md). Preservar requisitos, decisões e tarefas originais para rastreabilidade; **não executar as 15 etapas/40 estados como gate obrigatório** nem aplicar câmera, baseline ou pixel art antigos automaticamente. Os estados não implementados continuam pendentes, não aprovados por inferência.
+
+
 ## Introduction
 
 This spec covers roadmap task **UI-01 — Estabilizar layout e legibilidade** for *Neko Maid Inc.* (Unity 6000.5.9f1, 2D URP, desktop WebGL, mouse only). The owner asked: "I would like now for you to fix the UI, currently a lot of menus and texts either collide or they clip outside their boxes, please fix them".

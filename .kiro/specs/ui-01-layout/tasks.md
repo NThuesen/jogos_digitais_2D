@@ -1,5 +1,8 @@
 # Implementation Plan: UI-01 layout and legibility
 
+> **ESPECIFICAÇÃO HISTÓRICA DO UI-01 (29/10–02/11/2026).** O PR #31 integrou somente a infraestrutura inicial do Layout_Check; telas ainda não foram corrigidas. O responsável aprovou em 03/11 uma execução **enxuta por marcos**: [UI-01 vigente](../../../docs/roadmap/UI-01_LAYOUT.md) e [direção visual ilustrada](../../../docs/art/CURRENT_VISUAL_DIRECTION.md). Preservar requisitos, decisões e tarefas originais para rastreabilidade; **não executar as 15 etapas/40 estados como gate obrigatório** nem aplicar câmera, baseline ou pixel art antigos automaticamente. Os estados não implementados continuam pendentes, não aprovados por inferência.
+
+
 ## Execution notes
 
 - **Unity batch runs need the Unity editor closed.** `tools/run-tests.sh` refuses to start while an editor has the project open. Command form: `UNITY_EDITOR=/Applications/Unity/Hub/Editor/6000.5.9f1/Unity.app/Contents/MacOS/Unity tools/run-tests.sh PlayMode|EditMode [filter]`. Every `tools/run-tests.sh` command in this plan uses that `UNITY_EDITOR=` prefix.

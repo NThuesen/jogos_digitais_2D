@@ -1,5 +1,8 @@
 # Baseline visual — prints de 27/10/2026
 
+> **Snapshot histórico de 27/10/2026, não o baseline atual.** As nove maids passaram ao anime 2D ilustrado e o enquadramento/HUD mudou no [PR #30](https://github.com/NThuesen/jogos_digitais_2D/pull/30). Para UI-01, reproduzir defeitos sobre a `main` atual, registrar novas capturas e seguir a [estratégia B](UI-01_LAYOUT.md).
+
+
 **Read when:** UI-01 ou seleção de telas para UI-02. Observações sobre capturas de uma sessão real. As imagens foram compartilhadas na conversa, **não estão versionadas aqui**. Reproduzir os cenários no Editor antes de alterar código; distinguir observação, hipótese e confirmação.
 
 | Tela | Observação visível | Classificação / próxima verificação |

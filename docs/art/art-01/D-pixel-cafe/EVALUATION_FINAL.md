@@ -1,5 +1,8 @@
 # ART-01D — Avaliação final: composição integrada (Escalação + restaurante + kit de UI)
 
+> **EXPERIMENTO HISTÓRICO ART-01D.** Referências, avaliações e prompts abaixo registram a exploração original; a direção atual preserva as nove maids em **anime 2D ilustrado**, não pixel art. [Direção vigente](../../CURRENT_VISUAL_DIRECTION.md). Os PNGs antigos deste estudo não são o catálogo atual dos Walk sheets.
+
+
 **Status:** direção D **aprovada provisoriamente para prototipagem** (identidade da Suzu, café D3 e linguagem ornamental D4 como referências oficiais da primeira implementação). **Os PNGs gerados continuam sem aprovação como assets finais.** Tudo abaixo é **MOCKUP** estático feito a partir de **ARTE GERADA** + recortes **PROCESSADOS**; **nada é captura Unity** e nada foi testado em runtime. Custo adicional **R$ 0**. **Fechamento (2026-10-28): ART-01D concluída como exploração; responsável liberou explicitamente ART-02 experimental por Codex com assets existentes, sem novas imagens.**
 
 Parte 1 (Suzu D0–D2): [EVALUATION_D0-D2.md](EVALUATION_D0-D2.md).

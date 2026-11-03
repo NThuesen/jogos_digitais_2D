@@ -1,6 +1,6 @@
-# Direção visual aprovada — Cozy Pixel-Art Anime + Visual Novel
+# Direção visual de 28/10 — Cozy Pixel-Art Anime + Visual Novel (HISTÓRICO)
 
-**Estado:** ACCEPTED — direção de apresentação e linguagem visual; **não implementada** e **sem arte final aprovada**.
+**Estado atual: SUPERADA EM PARTE pela decisão de 03/11/2026.** Esta página registra a proposta de 28/10, sem prescrever pixel art aos agentes. A [direção vigente](CURRENT_VISUAL_DIRECTION.md) exige **maids anime 2D ilustradas**, futuro restaurante coerente com elas e menus que podem diferir da gameplay. As nove maids Walk já estão integradas (PRs #29/#30); cenário e portraits continuam futuros. As decisões e gates abaixo são **históricos**, não bloqueiam a estratégia B de UI-01.
 **Aprovada em:** 28/10/2026, pelo responsável do produto.
 **Âmbito:** menus, Escalação, Elenco, momentos narrativos e apresentação do café, mantendo o gameplay 2D.
 **Índice:** [GDD](../GDD.md) (produto) · [Maid Card + Chibi](MAID_VISUAL_DECISION.md) (personagens) · [Roadmap](../ROADMAP.md) (execução).
@@ -42,4 +42,4 @@ As três propostas vetoriais A · Café Pastel, B · Quadro-Negro Doce e C · Ki
 - **ART-02 (Unity):** permanece bloqueada até esse gate; então integrar uma identidade com portrait e chibi e validar no Editor real, a 960×600, com evidência visual e uma mudança modular pontual.
 - Somente depois do vertical slice decidir pipeline de produção e expansão da biblioteca, registrando escolhas técnicas conforme a evidência.
 
-**Fonte de verdade:** este documento registra a decisão sobre **estilo e apresentação**; [MAID_VISUAL_DECISION.md](MAID_VISUAL_DECISION.md) registra o contrato **portrait + chibi**. Não duplicar regras em `AGENTS.md`/`CLAUDE.md`; consultar este arquivo **apenas** em tarefas de direção artística, UI ou cenas de apresentação.
+**Fonte de verdade atual:** [CURRENT_VISUAL_DIRECTION.md](CURRENT_VISUAL_DIRECTION.md). Este registro de 28/10 descreve decisões históricas e seus gates anteriores; não orienta novas implementações como se pixel art ou ART-02 pendente fossem obrigatórios.

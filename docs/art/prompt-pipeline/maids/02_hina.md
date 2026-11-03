@@ -1,5 +1,8 @@
 # 02 · HINA — Hina (Kuudere)
 
+> **ARQUIVO DE PROMPTS HISTÓRICOS.** Identidade e referências de personagem permanecem úteis, mas instruções de *pixel art* não são o estilo de runtime aprovado. As nove maids já usam [Walk anime 2D ilustrado](../../maid-walk/README.md); siga a [direção vigente](../../CURRENT_VISUAL_DIRECTION.md) e não regenere frames sem uma tarefa específica.
+
+
 **Pipeline v2 — HINA STYLE LOCK.** Hina é a referência-mestra de estilo já escolhida pelo responsável. Recriar só se houver necessidade; não invalidar o original aprovado.
 **Marcadores exclusivos:** bob azul-noite, olhos gelo, presilha triangular prata.
 **Chroma inicial da caminhada:** `#00FF00`, a confirmar nos pixels reais. Nunca sacrificar cores da personagem ao aplicar chroma.

@@ -3,7 +3,7 @@
 **Read when:** gerar/modificar uma maid, adicionar módulos visuais ou implementar o compositor.
 **Decisão de produto:** [MAID_VISUAL_DECISION.md](MAID_VISUAL_DECISION.md) (**ACCEPTED**).
 **Ficha de identidade:** [maids/_TEMPLATE.md](maids/_TEMPLATE.md).
-**Status deste contrato:** PROPOSED — nomes de campos e tecnologia ainda sujeitos a POC. Não confundir com classe C# ou asset existente.
+**Status deste contrato:** PROPOSED — campos de portrait, layers e `visual_id` continuam conceituais, não são schema implementado. **Já existe** um catálogo operacional de nove sprites Walk ilustrados por nome+arquétipo ([ART-04](maid-walk/README.md)), sem `visual_id` persistido nem portrait exclusivo; consulte a [direção vigente](CURRENT_VISUAL_DIRECTION.md).
 
 ## Uma fonte de identidade, duas saídas
 

@@ -1,31 +1,31 @@
-# UI-01 — Estabilizar layout e legibilidade
+# UI-01 — Estabilização funcional da interface (estratégia B)
 
-**Status:** PLANNED; **owner sugerido:** Codex; **pode iniciar em paralelo com ART-01**.
-**Escopo:** correções de apresentação em telas já existentes, **não redesign artístico**.
-**Leia antes:** [Baseline visual](VISUAL_BASELINE.md), [Unity](../agent/UNITY.md), [Validação](../agent/VALIDATION.md). Não carregar GDD inteiro se o comportamento do jogo não mudar.
+**Estado:** infraestrutura parcial de Layout_Check **já integrada** pelo [PR #31](https://github.com/NThuesen/jogos_digitais_2D/pull/31); correções das telas **PENDENTES**. **Responsável sugerido:** Codex.
+**Direção de arte:** [anime 2D ilustrado vigente](../art/CURRENT_VISUAL_DIRECTION.md). UI-01 **não** redesenha arte nem preserva visual antigo como regra permanente.
+**Histórico:** a [spec original](../../.kiro/specs/ui-01-layout/requirements.md), [design](../../.kiro/specs/ui-01-layout/design.md) e [tasks](../../.kiro/specs/ui-01-layout/tasks.md) registram a proposta extensa de 40 estados; não executá-la integralmente sem readequação ao escopo aprovado aqui.
 
-## Problema
-Nos prints de referência a 960×600 há texto sobrepondo painéis, informações comprimidas e valores de difícil leitura. Em especial nas telas Loja, Elenco e Balanço. Como as capturas não estão no repo, **reproduzir primeiro no Unity e registrar defeitos efetivos**, não assumir a causa por inspeção de código.
+## Entrega A — UI-01 prioritário
 
-## Ordem de ataque
-1. **Loja:** visitar Móveis, Roupas e Presentes com listagens reais; eliminar sobreposição nome/descrição/preço e corrigir contraste/scroll. Confirmar botão de compra visível, clicável e valor correto. Código inicial: `Assets/_Game/Scripts/Game/Ui/ShopScreen.cs`.
-2. **Balanço:** reproduzir um dia concluído; separar títulos, receitas, despesas, contadores de eventos e saldo final sem cortes. Valores devem permanecer vinculados à simulação, não rearranjados ou arredondados incorretamente. Código: `BooksScreen.cs`.
-3. **Elenco:** detalhes do card, atributos, salários e ações devem caber e permanecer legíveis; lista e painel de detalhe não devem se sobrepor. Código: `RosterScreen.cs`, `MaidCard.cs`.
-4. **Verificação curta de regressão:** entrar em Empresa, Escalação, Caixas e Salão, registrar defeitos de layout introduzidos e corrigir só regressões causadas pelo patch. Não transformar UI-01 em refactor geral.
+1. Partir da `main` **após PR #30**. Preservar a infraestrutura já existente: `ResolutionRig`, `LayoutModel`, `LayoutReport`, `Clicks`, `SessionFactory`, `AuditStates` e `LayoutCheckTests`. Validar a regra R2.1 já escrita antes de completar regras essenciais de **texto, colisões, scroll e cliques**. Ampliar fixtures apenas conforme necessário.
+2. Reproduzir defeitos atuais e registrar **antes**; não assumir que as capturas da versão de outubro continuam válidas depois do HUD/câmera do PR #30. Verificar em **960×600 e 1280×720**.
+3. Corrigir primeiro **Loja (Móveis, Roupas, Presentes)**, **Balanço** e **Elenco**: sem clipping, sobreposição, botões obstruídos ou listas inacessíveis. Manter valores e ações reais do `Neko.Sim`. Implementar `UiKit.Panel` 9-sliced **somente se o defeito C1 realmente se reproduzir**; revisar a repercussão em todas as telas afetadas.
+4. Entregar PR pequeno(s), capturas antes/depois, defect log e resultados reais de testes. O foco é **estabilidade**, não nova paleta, portraits ou mobiliário.
 
-## Invariantes e limites
-- **Escalação vazia parcialmente é estado permitido, não bug.** Preservar posição vazia, banco, química e regras atuais.
-- Preservar a paleta como **temporária**; não trocar tema, fontes, sistema de cards ou gerar assets novos nesta issue.
-- Evitar mudanças globais em `UiKit.cs`/`Scenery.cs` se uma correção local resolver; se mudar componente compartilhado, verificar telas que o utilizam.
-- Preservar cliques, scroll, navegação, estado de sessão, save, economy e scene wiring. Não mover lógica de `Neko.Sim` para UI.
-- Não alterar resolução base do jogo como forma de esconder clipping; referência obrigatória **960×600**. Outros tamanhos são exploração, não requisito novo silencioso.
-- Não alterar cena/pacotes/CI/testes protegidos só para atingir o layout (exigem fluxo excepcional próprio).
+## Entrega B — UI-01 regressão das outras telas
 
-## Entrega e aceite
-- PR pequeno com lista de problemas **reproduzidos** e links para capturas comparáveis *antes/depois* em 960×600, identificando Loja 3 abas, Elenco e Balanço.
-- Sem textos cortados/colidindo, informações e botões legíveis e utilizáveis nesses estados; nenhuma regressão de navegação.
-- Logs/Console sem erros relevantes ao navegar nesses fluxos; EditMode e PlayMode pertinentes executados quando disponíveis, cada um com resultado real.
-- Se qualquer ponto da captura não reproduzir, registrar **não reproduzido** e não inventar correção.
-- Visual aprovado como **legibilidade corrigida**, não como arte final aprovada.
+Verificar **Empresa, Escalação, Caixas, Menu, Salão, O dia, Dialogs e Falência** nas duas resoluções. Corrigir somente falhas relevantes de legibilidade, navegação, scroll e interação; documentar estados não testados.
 
-**Não fazer:** modular maid art, paleta rosa, novas telas, animações, balanceamento, onboarding ou sistemas extras.
+- Preservar `CameraRig.FrameRoomBetweenHud` e o ajuste dos cartões do HUD do [PR #30](https://github.com/NThuesen/jogos_digitais_2D/pull/30). Não repetir soluções baseadas na câmera anterior.
+- **Salão:** nenhuma UI pode bloquear clique em tiles acessíveis. A coluna vertical de estoque de 128 unidades é **opção histórica/temporária**, não layout aprovado do futuro restaurante. Escolher a menor correção funcional justificada por captura.
+- **Escalação parcialmente vazia** é estado válido, não bug. O turno especial com nove identidades pertence à QA, não ao recrutamento normal.
+- Concluir e ampliar os **40 Audit_States progressivamente**, sem exigir todos como gate de UI-01A. Listar cobertura real de cada etapa, sem afirmar auditoria completa.
+
+## Invariantes e aceite
+
+- Não alterar regras, dinheiro, recrutamento, raridade, RNG, save, `Neko.Sim` ou entrada da simulação. Manter cliques e resultados de interface corretos.
+- Tratar paleta, fonte, layout dos Maid Cards e cena atual como **provisórios**. O UI-02 e o futuro cenário podem substituí-los com aprovação visual separada.
+- Proteger `.meta`, cenas, `Packages/`, `ProjectSettings/`, CI e testes; alterações nos arquivos existentes de Layout_Check do PR #31 exigem revisão de manutenção e exceção administrativa específica, **não** desativação do guard.
+- Validar Unity EditMode/PlayMode e capturas comparáveis a **960×600 / 1280×720**; WebGL quando relevante. Relatar `PASS/FAIL/NOT RUN`; não confundir sim CI com aprovação visual.
+- As duas entregas podem resultar em PRs distintos; não presumir número de PR nem fazer merge de mudanças visuais ainda não aprovadas.
+
+**Depois:** [redesign de restaurante e UI-02](../ROADMAP.md), sem necessidade de polir a aparência marrom atual.

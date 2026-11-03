@@ -1,5 +1,8 @@
 # 01 · SUZU — Suzu (Genki)
 
+> **ARQUIVO DE PROMPTS HISTÓRICOS.** Identidade e referências de personagem permanecem úteis, mas instruções de *pixel art* não são o estilo de runtime aprovado. As nove maids já usam [Walk anime 2D ilustrado](../../maid-walk/README.md); siga a [direção vigente](../../CURRENT_VISUAL_DIRECTION.md) e não regenere frames sem uma tarefa específica.
+
+
 **Pipeline v2 — HINA STYLE LOCK.** Esta identidade continua candidata até aprovação visual; a Hina governa o estilo chibi comum.
 **Marcadores exclusivos:** bob menta, olhos âmbar, orelha esquerda entalhada, sininhos, laço bordô.
 **Chroma inicial da caminhada:** `#0000FF`, a confirmar nos pixels reais. Nunca sacrificar cores da personagem ao aplicar chroma.

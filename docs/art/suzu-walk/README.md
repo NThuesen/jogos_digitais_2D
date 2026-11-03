@@ -1,5 +1,8 @@
 # ART-02 — caminhada da Suzu no turno real
 
+> **Pipeline histórico da Suzu do PR #27.** O arquivo `Assets/_Game/Resources/Suzu/suzu_walk_sheet.png` permanece somente como backup: o catálogo atual usa `Resources/Maids/suzu_walk.png` ilustrado, junto às outras oito maids. Ver [ART-04 atual](../maid-walk/README.md) e [direção vigente](../CURRENT_VISUAL_DIRECTION.md).
+
+
 **Estado:** implementado em branch/PR de revisão; **aprovação estética do responsável pendente**. Sem merge.
 Não é a Suzu "totalmente animada": só **walk** tem arte nova. Idle, carry, cook e tired reutilizam
 quadros da própria caminhada (ver "Estados").

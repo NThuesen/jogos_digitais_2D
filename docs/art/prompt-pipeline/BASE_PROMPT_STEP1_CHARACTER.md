@@ -1,5 +1,8 @@
 # Prompt-base — Etapa 1 (Hina-locked chibi full-body)
 
+> **PROMPT HISTÓRICO DE PRODUÇÃO — não define mais o estilo de runtime.** Este texto documenta as imagens/vídeos que deram origem às nove maids. Desde o [ART-04](../maid-walk/README.md), o jogo usa **sprites anime 2D ilustrados**, sem quantização para pixel art. A [decisão atual](../CURRENT_VISUAL_DIRECTION.md) prevalece; preserve os frames originais e não gere novamente personagens para forçar pixelização. Para novas imagens, é preciso revisar estes prompts explicitamente em tarefa futura.
+
+
 **Uso:** contrato para novas fichas; as nove fichas atuais já incluem o texto completo. **Não** concatenar com elas. A imagem full-body aprovada da Hina deve ser anexada como **IMAGEM A**. Ver [HINA_STYLE_LOCK.md](HINA_STYLE_LOCK.md).
 
 ```text

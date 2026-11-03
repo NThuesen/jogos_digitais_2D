@@ -1,5 +1,8 @@
 # TEMPLATE — identidade visual de maid (não é uma personagem aprovada)
 
+> **Template conceitual para identidade/portrait futuros**, não o esquema atualmente serializado. Os nove Walk sheets ilustrados já são carregados por nome+arquétipo, sem `visual_id` persistido; ver [direção vigente](../CURRENT_VISUAL_DIRECTION.md) e [estado da implementação](../MAID_VISUAL_DECISION.md).
+
+
 **Quando usar:** só ao criar ou revisar um *design visual* específico. Copie para `docs/art/maids/<visual_id>.md`; substitua placeholders, não registre uma ficha por carta aleatória.
 **Contrato:** [MaidVisualSpec](../MAID_VISUAL_SPEC.md) (PROPOSED).
 **Decisão:** [Portrait + Chibi](../MAID_VISUAL_DECISION.md) (ACCEPTED).
