@@ -24,17 +24,17 @@ namespace Neko.Game.Ui
         public const float Height = 206f;
 
         public static RectTransform Build(Transform parent, Maid maid, float scale = 1f,
-            bool showSalary = true, Role? playingAs = null)
+            bool showSalary = true, Role? playingAs = null, bool exact = false)
         {
             var size = new Vector2(Width * scale, Height * scale);
             var rarity = maid != null ? maid.Card : null;
             var frame = rarity != null ? Palette.Hex(rarity.TintHex) : Palette.Wall;
 
-            var root = UiKit.Panel(parent, size, frame, 0.14f);
+            var root = UiKit.Panel(parent, size, frame, 0.14f, exact);
             root.gameObject.name = maid != null ? "Card " + maid.Name : "Card";
 
             var face = UiKit.Panel(root, new Vector2(size.x - 8f * scale, size.y - 8f * scale),
-                Palette.Panel, 0.13f);
+                Palette.Panel, 0.13f, exact);
             UiKit.Anchor(face, new Vector2(0.5f, 0.5f), Vector2.zero);
             face.GetComponent<Image>().raycastTarget = false;
 
@@ -49,12 +49,12 @@ namespace Neko.Game.Ui
             // A wash of her own accent behind the portrait, so two cards of the same rarity
             // still read apart at a glance.
             var wash = UiKit.Panel(face, new Vector2(size.x - 16f * scale, size.y * 0.52f),
-                Palette.WithAlpha(Palette.ForArchetype(maid.Archetype), 0.22f), 0.12f);
+                Palette.WithAlpha(Palette.ForArchetype(maid.Archetype), 0.22f), 0.12f, exact);
             UiKit.Anchor(wash, new Vector2(0.5f, 1f), new Vector2(0f, -4f * scale));
 
             Portrait(face, maid, size, scale);
             Name(face, maid, size, scale);
-            Position(root, maid, size, scale, playingAs);
+            Position(root, maid, size, scale, playingAs, exact);
             Numbers(face, maid, size, scale, showSalary);
             RarityPip(root, maid, size, scale);
 
@@ -97,12 +97,12 @@ namespace Neko.Game.Ui
         /// thing the lineup screen can tell somebody at a glance.
         /// </remarks>
         private static void Position(RectTransform root, Maid maid, Vector2 size, float scale,
-            Role? playingAs)
+            Role? playingAs, bool exact)
         {
             var wrong = playingAs.HasValue && playingAs.Value != maid.NaturalRole;
             var tint = wrong ? Palette.Alarm : Logo.Brass;
 
-            var tab = UiKit.Panel(root, new Vector2(size.x * 0.56f, 22f * scale), tint, 0.45f);
+            var tab = UiKit.Panel(root, new Vector2(size.x * 0.56f, 22f * scale), tint, 0.45f, exact);
             UiKit.Anchor(tab, new Vector2(0.5f, 1f), new Vector2(0f, -2f * scale));
             tab.GetComponent<Image>().raycastTarget = false;
 

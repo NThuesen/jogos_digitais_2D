@@ -48,6 +48,58 @@ namespace Neko.Game.Art
         /// swaps one entry in it. The caller supplies the key because the stack's meaning —
         /// "this maid, in this pose, wearing this" — is cheaper to describe than to hash.
         /// </remarks>
+        /// <summary>
+        /// A rounded rectangle whose drawn edge is the edge of its sprite, with its corners as the
+        /// 9-slice border: a panel of any size draws to the very edge of its rect, with crisp
+        /// corners of a fixed radius.
+        /// </summary>
+        /// <remarks>
+        /// <see cref="Get"/> draws shapes at 84% of the sprite and stretches them, which leaves a
+        /// clear margin of 8% a side and smears the corners of every wide panel.
+        /// </remarks>
+        public Sprite Panel(int radius)
+        {
+            radius = Mathf.Clamp(radius, 2, 32);
+            var key = "panel9#" + radius;
+            if (_cache.TryGetValue(key, out var cached) && cached != null) return cached;
+
+            var size = radius * 2 + 2;
+            var pixels = new Color32[size * size];
+            var half = size * 0.5f;
+            for (var y = 0; y < size; y++)
+            {
+                for (var x = 0; x < size; x++)
+                {
+                    var px = Mathf.Abs(x + 0.5f - half) - (half - radius);
+                    var py = Mathf.Abs(y + 0.5f - half) - (half - radius);
+                    var outside = Mathf.Sqrt(Mathf.Max(px, 0f) * Mathf.Max(px, 0f) +
+                                             Mathf.Max(py, 0f) * Mathf.Max(py, 0f));
+                    var distance = outside + Mathf.Min(Mathf.Max(px, py), 0f) - radius;
+                    var alpha = Mathf.Clamp01(0.5f - distance);
+                    pixels[y * size + x] = new Color32(255, 255, 255,
+                        (byte)Mathf.RoundToInt(alpha * 255f));
+                }
+            }
+
+            var texture = new Texture2D(size, size, TextureFormat.RGBA32, false)
+            {
+                name = key,
+                filterMode = FilterMode.Bilinear,
+                wrapMode = TextureWrapMode.Clamp,
+                hideFlags = HideFlags.HideAndDontSave,
+            };
+            texture.SetPixels32(pixels);
+            texture.Apply(false, false);
+
+            // 100 pixels per unit is the canvas scaler's reference, so the border is 1:1 on screen.
+            var sprite = Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f),
+                100f, 0, SpriteMeshType.FullRect, new Vector4(radius, radius, radius, radius));
+            sprite.name = key;
+            sprite.hideFlags = HideFlags.HideAndDontSave;
+            _cache[key] = sprite;
+            return sprite;
+        }
+
         public Sprite Layered(IReadOnlyList<ShapeSpec> layers, string cacheKey,
             int size = DefaultSize)
         {

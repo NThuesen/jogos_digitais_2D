@@ -120,16 +120,17 @@ namespace Neko.Game.Ui
         /// Used for every panel in the game that is not a button, so the whole interface looks
         /// like it came out of the same workshop as the sign.
         /// </remarks>
-        public static RectTransform Plaque(Transform parent, Vector2 size, Color? face = null)
+        public static RectTransform Plaque(Transform parent, Vector2 size, Color? face = null,
+            bool exact = false)
         {
-            var root = UiKit.Panel(parent, size, Logo.BoardDeep, 0.2f);
+            var root = UiKit.Panel(parent, size, Logo.BoardDeep, 0.2f, exact);
             root.gameObject.name = "Plaque";
 
-            var edge = UiKit.Panel(root, new Vector2(size.x - 6f, size.y - 6f), Rail, 0.19f);
+            var edge = UiKit.Panel(root, new Vector2(size.x - 6f, size.y - 6f), Rail, 0.19f, exact);
             UiKit.Anchor(edge, new Vector2(0.5f, 0.5f), Vector2.zero);
 
             var inner = UiKit.Panel(root, new Vector2(size.x - 12f, size.y - 12f),
-                face ?? Palette.Panel, 0.18f);
+                face ?? Palette.Panel, 0.18f, exact);
             UiKit.Anchor(inner, new Vector2(0.5f, 0.5f), Vector2.zero);
 
             return inner;

@@ -5,6 +5,9 @@ using Neko.Game.Core;
 using Neko.Game.Ui;
 using NUnit.Framework;
 using CafeLevelTable = Neko.Sim.Economy.CafeLevelTable;
+using Rarity = Neko.Sim.Team.Rarity;
+using ShopItemKind = Neko.Sim.Economy.ShopItemKind;
+using TraitId = Neko.Sim.Team.TraitId;
 
 namespace Neko.Tests.PlayMode.Layout
 {
@@ -366,7 +369,175 @@ namespace Neko.Tests.PlayMode.Layout
         {
             // Empresa. Task 6.1 adds the Empresa checks (Requirement 11).
             new AuditState("EM-1", "Empresa", BuildNewGameDayOne, AuditState.NoChecks, new[] { 1 }),
+
+            // Elenco (UI-01A). EL-1 holds eight maids, the first selected; EL-2 puts the longest
+            // values in the detail of the selected one; EL-3 a maid with no traits.
+            new AuditState("EL-1", "Elenco", context => RosterRoutine(RosterKind.Full), AuditState.NoChecks, new[] { 10 }),
+            new AuditState("EL-2", "Elenco", context => RosterRoutine(RosterKind.Longest), AuditState.NoChecks, new[] { 10 }),
+            new AuditState("EL-3", "Elenco", context => RosterRoutine(RosterKind.NoTraits), AuditState.NoChecks, new[] { 10 }),
+
+            // Loja (UI-01A), café level 10 stock, one tab each.
+            new AuditState("LJ-1", "Loja (Móveis)", context => ShopRoutine(true), AuditState.NoChecks, new[] { 10 }),
+            new AuditState("LJ-2", "Loja (Roupas)", context => ShopRoutine(false), AuditState.NoChecks, new[] { 10 },
+                new AuditView("Loja (Roupas)", 10, context => PressTab(context, "shop.clothes"))),
+            new AuditState("LJ-3", "Loja (Presentes)", context => ShopRoutine(false), AuditState.NoChecks, new[] { 10 },
+                new AuditView("Loja (Presentes)", 10, context => PressTab(context, "shop.gifts"))),
+            new AuditState("LJ-4", "Loja (Móveis, fim da lista)", context => ShopRoutine(true), LastRowIsReachable, new[] { 10 },
+                new AuditView("Loja (Móveis, fim da lista)", 10, ScrollToTheEnd)),
+
+            // Balanço (UI-01A): a profitable day, a loss day, and every tally with eight level-ups.
+            new AuditState("BL-1", "Balanço", context => BooksRoutine(BooksKind.Profit), AuditState.NoChecks, new[] { 10 }),
+            new AuditState("BL-2", "Balanço", context => BooksRoutine(BooksKind.Loss), AuditState.NoChecks, new[] { 10 }),
+            new AuditState("BL-3", "Balanço", context => BooksRoutine(BooksKind.Everything), AuditState.NoChecks, new[] { 10 }),
         };
+
+        private enum RosterKind { Full, Longest, NoTraits }
+
+        private enum BooksKind { Profit, Loss, Everything }
+
+        private static readonly string[] CastNames = { "Suzu", "Akari", "Momo", "Reina", "Kaede", "Nene", "Ichika" };
+
+        /// <summary>Eight maids at café level 10, a booted game walked to Elenco.</summary>
+        private static IEnumerator RosterRoutine(RosterKind kind)
+        {
+            var builder = SessionFactory.NewProfile(NewGameSeed, 10).WithDay(1)
+                .WithMoney(SessionFactory.LargeValues.Balance).EmptyRoom();
+            var name = SessionFactory.Longest.MaidName().Item;
+
+            if (kind == RosterKind.Longest) builder.WithMaid(name, Rarity.Legendary, 20, 5, TraitId.AngelHands, TraitId.QuickStep, TraitId.Charisma);
+            else if (kind == RosterKind.NoTraits) builder.WithMaid(name, Rarity.Common, 1, 0);
+            else builder.WithMaid("Hina", Rarity.Rare, 12, 3, TraitId.Lucky);
+
+            var rarities = new[] { Rarity.Common, Rarity.Rare, Rarity.Epic, Rarity.Legendary };
+            for (var i = 0; i < CastNames.Length; i++)
+            {
+                builder.WithMaid(CastNames[i], rarities[i % 4], 3 + i * 2, i % 6, TraitId.Hostess);
+            }
+
+            yield return SessionFactory.Boot(builder.Build());
+            yield return SessionFactory.ToHub();
+            yield return SessionFactory.ToRoster();
+        }
+
+        /// <summary>Café level 10 with every item owned many times, a booted game walked to the Shop.</summary>
+        private static IEnumerator ShopRoutine(bool large)
+        {
+            var builder = SessionFactory.NewProfile(NewGameSeed, 10).WithDay(1)
+                .WithMoney(large ? SessionFactory.LargeValues.Balance : 1500);
+            builder.WithMaid(SessionFactory.Longest.MaidName().Item, Rarity.Rare, 5, 1, TraitId.Lucky);
+            foreach (var item in Neko.Sim.Economy.Shop.StockFor(10))
+            {
+                if (item.Kind != ShopItemKind.Gift) builder.WithStock(item.Id, SessionFactory.LargeValues.StockPerItem);
+            }
+
+            yield return SessionFactory.Boot(builder.Build());
+            yield return SessionFactory.ToHub();
+            yield return SessionFactory.ToShop();
+        }
+
+        /// <summary>Scrolls the Screen's scroll area to its end, by the same position a drag to the end reaches.</summary>
+        private static IEnumerator ScrollToTheEnd(StateContext context)
+        {
+            var scroll = context.Ui.Current.GetComponentInChildren<UnityEngine.UI.ScrollRect>(false);
+            Assert.IsTrue(scroll != null, "ScrollToTheEnd: " + context.State.Id + " has no scroll area");
+
+            UnityEngine.Canvas.ForceUpdateCanvases();
+            scroll.verticalNormalizedPosition = 0f;
+            yield return null;
+        }
+
+        /// <summary>
+        /// The check of LJ-4: with the list scrolled to its end, the last row's button lies wholly
+        /// inside the scroll area, so every item of the list can be bought.
+        /// </summary>
+        private static void LastRowIsReachable(Measurement measurement, List<Violation> violations)
+        {
+            InteractiveControl last = null;
+            InteractiveControl area = null;
+            foreach (var control in measurement.Controls)
+            {
+                if (control.Kind == ControlKind.ScrollArea) area = control;
+                else if (control.Path.Contains("/Content/")) last = control;
+            }
+
+            if (area == null || last == null)
+            {
+                violations.Add(new Violation(measurement, "LJ-4", "the list has " + (area == null ? "no scroll area" : "no row button"),
+                    "a scroll area and a button in its last row", measurement.LayerPath));
+                return;
+            }
+
+            var visible = area.ClipRect ?? area.OwnRect;
+            var rect = last.OwnRect;
+            var slack = 0.5f;
+            if (rect.yMin < visible.yMin - slack || rect.yMax > visible.yMax + slack ||
+                rect.xMin < visible.xMin - slack || rect.xMax > visible.xMax + slack)
+            {
+                violations.Add(new Violation(measurement, "LJ-4",
+                    "the last row's button " + LayoutReport.Box(rect) + " is not inside the scroll area " + LayoutReport.Box(visible),
+                    "the last button wholly inside the scroll area", last.Path));
+            }
+        }
+
+        /// <summary>Presses the Shop tab labelled by <paramref name="key"/>, as a player would.</summary>
+        private static IEnumerator PressTab(StateContext context, string key)
+        {
+            var label = Strings.Get(key);
+            foreach (var button in context.Ui.Current.GetComponentsInChildren<UnityEngine.UI.Button>(false))
+            {
+                var text = button.GetComponentInChildren<UnityEngine.UI.Text>();
+                if (text == null || text.text != label) continue;
+
+                button.onClick.Invoke();
+                yield break;
+            }
+
+            Assert.Fail("PressTab: the Shop has no tab \"" + label + "\"");
+        }
+
+        /// <summary>A booted game whose day closes with a crafted result, with the Balanço on the screen.</summary>
+        private static IEnumerator BooksRoutine(BooksKind kind)
+        {
+            var builder = SessionFactory.NewProfile(NewGameSeed, 10).WithDay(1)
+                .WithMoney(kind == BooksKind.Loss ? 40 : SessionFactory.LargeValues.Balance).EmptyRoom();
+            builder.WithMaid("Hina", Rarity.Common, 1, 0);
+            foreach (var n in CastNames) builder.WithMaid(n, Rarity.Common, 1, 0);
+            var profile = builder.Build();
+
+            yield return SessionFactory.Boot(profile);
+            yield return SessionFactory.ToHub();
+
+            var result = new Neko.Sim.Shift.ShiftResult { Day = 1, Satisfaction = 0.9f, ChemistryScore = 80 };
+            if (kind == BooksKind.Profit)
+            {
+                result.DishRevenue = 4200;
+                result.Tips = 600;
+                result.Served = 30;
+                result.DishesCooked = 32;
+            }
+            else if (kind == BooksKind.Loss)
+            {
+                result.DishRevenue = 20;
+                result.Served = 1;
+                result.DishesCooked = 5;
+                result.Satisfaction = 0.2f;
+                result.ChemistryScore = 10;
+            }
+            else
+            {
+                result.DishRevenue = SessionFactory.LargeValues.DayAmount;
+                result.Tips = SessionFactory.LargeValues.DayAmount;
+                result.Served = SessionFactory.LargeValues.Tally;
+                result.DishesCooked = SessionFactory.LargeValues.Tally;
+                result.WrongOrders = result.Burnt = result.LeftAngry = result.TurnedAway = SessionFactory.LargeValues.Tally;
+                foreach (var maid in profile.Maids) result.XpByMaid[maid.Id] = 99999;
+            }
+
+            var root = GameRoot.Instance;
+            root.Session.FinishDay(result);
+            root.Ui.Show<BooksScreen>();
+            yield return null;
+        }
 
         private static IReadOnlyList<AuditState> Register(AuditState[] states)
         {

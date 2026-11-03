@@ -30,6 +30,10 @@ namespace Neko.Game.Ui
         private Text _bottomLine;
         private Text _balance;
 
+        private const float TallyWidth = 148f;
+        private const float TallyHeight = 54f;
+        private const float TallyGap = 6f;
+
         public GameSession Session;
         public Action OnContinue;
 
@@ -37,7 +41,7 @@ namespace Neko.Game.Ui
         {
             Scenery.Build(transform, withFloor: false);
 
-            var plaque = Scenery.Plaque(transform, new Vector2(1100f, 600f));
+            var plaque = Scenery.Plaque(transform, new Vector2(1100f, 600f), null, exact: true);
             UiKit.Anchor((RectTransform)plaque.parent, new Vector2(0.5f, 1f),
                 new Vector2(0f, -16f));
 
@@ -52,9 +56,18 @@ namespace Neko.Game.Ui
             _left = Column(plaque, "books.in", new Vector2(-268f, -132f));
             _right = Column(plaque, "books.out", new Vector2(268f, -132f));
 
-            _events = UiKit.Row(plaque, 10f);
+            // Five tallies and up to eight level-ups: a grid of seven columns holds all thirteen
+            // in two rows, where a single row ran off the plaque.
+            _events = new GameObject("Tallies", typeof(RectTransform)).GetComponent<RectTransform>();
+            _events.SetParent(plaque, false);
+            var grid = _events.gameObject.AddComponent<GridLayoutGroup>();
+            grid.cellSize = new Vector2(TallyWidth, TallyHeight);
+            grid.spacing = new Vector2(TallyGap, TallyGap);
+            grid.childAlignment = TextAnchor.UpperCenter;
+            grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+            grid.constraintCount = 7;
             UiKit.Anchor(_events, new Vector2(0.5f, 0f), new Vector2(0f, 128f));
-            _events.sizeDelta = new Vector2(1060f, 72f);
+            _events.sizeDelta = new Vector2(7 * TallyWidth + 6 * TallyGap, 2 * TallyHeight + TallyGap);
 
             _bottomLine = UiKit.Label(plaque, "", Typeface.Heading, Palette.Text, bold: true);
             _bottomLine.rectTransform.sizeDelta = new Vector2(1000f, 40f);
@@ -140,7 +153,7 @@ namespace Neko.Game.Ui
         private void Line(Transform parent, LedgerLine line, bool total = false)
         {
             var row = UiKit.Panel(parent, new Vector2(440f, total ? 34f : 28f),
-                Palette.WithAlpha(total ? Logo.Brass : Palette.Wall, total ? 0.4f : 0.35f), 0.3f);
+                Palette.WithAlpha(total ? Logo.Brass : Palette.Wall, total ? 0.4f : 0.35f), 0.3f, exact: true);
             _rows.Add(row.gameObject);
 
             var label = UiKit.Label(row, line.Label, total ? Typeface.Body : Typeface.Small,
@@ -158,18 +171,18 @@ namespace Neko.Game.Ui
 
         private void Tally(string key, int value, bool bad, Color? tint = null, string text = null)
         {
-            var chip = UiKit.Panel(_events, new Vector2(158f, 58f),
-                Palette.WithAlpha(Palette.Wall, 0.4f), 0.25f);
+            var chip = UiKit.Panel(_events, new Vector2(TallyWidth, TallyHeight),
+                Palette.WithAlpha(Palette.Wall, 0.4f), 0.25f, exact: true);
             _rows.Add(chip.gameObject);
 
             var number = UiKit.Label(chip, value.ToString(), Typeface.Heading,
                 tint ?? (bad ? Palette.Alarm : Palette.Text), bold: true);
-            number.rectTransform.sizeDelta = new Vector2(152f, 32f);
+            number.rectTransform.sizeDelta = new Vector2(TallyWidth - 6f, 30f);
             UiKit.Anchor(number.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -2f));
 
             var caption = UiKit.Label(chip, text ?? Strings.Get(key), Typeface.Tiny,
                 Palette.TextDim);
-            caption.rectTransform.sizeDelta = new Vector2(152f, 20f);
+            caption.rectTransform.sizeDelta = new Vector2(TallyWidth - 6f, 20f);
             UiKit.Anchor(caption.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 2f));
         }
     }

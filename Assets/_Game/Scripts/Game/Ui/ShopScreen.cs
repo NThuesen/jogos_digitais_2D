@@ -50,7 +50,7 @@ namespace Neko.Game.Ui
             Tab(tabs, "shop.clothes", ShopItemKind.Equipment);
             Tab(tabs, "shop.gifts", ShopItemKind.Gift);
 
-            _list = UiKit.ScrollList(transform, new Vector2(880f, 460f));
+            _list = UiKit.ScrollList(transform, new Vector2(880f, 460f), 8f, exact: true);
             UiKit.Anchor((RectTransform)_list.parent, new Vector2(0.5f, 0f), new Vector2(0f, 24f));
         }
 
@@ -86,13 +86,11 @@ namespace Neko.Game.Ui
         {
             var affordable = Session.Profile.Wallet.CanAfford(item.Price);
             var row = UiKit.Panel(_list, new Vector2(850f, 62f),
-                Palette.WithAlpha(affordable ? Palette.Panel : Palette.Wall, 0.92f), 0.2f);
+                Palette.WithAlpha(affordable ? Palette.Panel : Palette.Wall, 0.92f), 0.2f, exact: true);
             _rows.Add(row.gameObject);
 
-            // Furniture shows the piece itself, inside the visible panel: the rounded panel
-            // sprite only fills 84% of its rect, so the row's drawn edge is at -357, not -425.
-            // The text moves right past the icon and keeps its right edge, so nothing on that
-            // side of the row moves.
+            // Furniture shows the piece itself. The panel is 9-sliced, so the row's drawn edge is its
+            // rect edge (-425). The text moves right past the icon and keeps its right edge.
             var indent = 0f;
             if (item.Kind == ShopItemKind.Placeable)
             {
@@ -122,8 +120,9 @@ namespace Neko.Game.Ui
             {
                 var stock = UiKit.Label(row, Strings.Get("shop.owned") + ": " + owned,
                     Typeface.Tiny, Logo.Brass, TextAnchor.MiddleRight, bold: true);
+                // Right edge at 250: the buy plank starts at 265, so the count is never under it.
                 stock.rectTransform.sizeDelta = new Vector2(170f, 22f);
-                stock.rectTransform.anchoredPosition = new Vector2(215f, 14f);
+                stock.rectTransform.anchoredPosition = new Vector2(165f, 14f);
             }
 
             var buy = Scenery.Plank(row, Strings.Money(item.Price), new Vector2(150f, 44f),
