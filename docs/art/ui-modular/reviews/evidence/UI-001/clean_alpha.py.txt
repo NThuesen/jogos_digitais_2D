@@ -1,0 +1,32 @@
+import numpy as np, hashlib, os
+from PIL import Image
+from scipy import ndimage as ndi
+src="art_working/ui_modular/raw_gpt/UI-001_panel_large_v01.png"
+dst="art_working/ui_modular/blender_clean/UI-001_panel_large_v01.png"
+a=np.array(Image.open(src)); out=a.copy(); al=a[...,3]
+lab,n=ndi.label(al>0,structure=np.ones((3,3)))
+main=np.argmax(ndi.sum(al>0,lab,range(1,n+1)))+1
+res=(al>0)&(lab!=main)
+assert al[res].max()<=1, "residuals must be invisible-level only"
+out[...,3][res]=0
+# decontamination check BEFORE alpha normalisation: edge colour vs interior rim colour
+body=al>=250
+rim=ndi.binary_erosion(body,iterations=4)&~ndi.binary_erosion(body,iterations=12)
+edge=(al>20)&(al<250)&(lab==main)
+print("rim rgb",a[rim][:,:3].mean(0).round(1),"edge rgb",a[edge][:,:3].mean(0).round(1),"edge px",edge.sum())
+# alpha normalisation: near-opaque (>=250) -> 255, straight alpha so RGB untouched
+solid=al>=250
+print("solid px",solid.sum(),"alpha values changed:",np.unique(al[solid]))
+out[...,3][solid]=255
+os.makedirs(os.path.dirname(dst),exist_ok=True)
+Image.fromarray(out,"RGBA").save(dst,optimize=True)
+b=np.array(Image.open(dst))
+print("saved",dst,b.shape,os.path.getsize(dst),"bytes sha256",hashlib.sha256(open(dst,'rb').read()).hexdigest())
+print("RGB identical everywhere:",(a[...,:3]==b[...,:3]).all())
+d=(a[...,3]!=b[...,3]); print("alpha changed px:",d.sum(),"of which residual->0:",res.sum(),"edge px (<250) changed:",(d&~solid&~res).sum())
+print("alpha==255 share:",(b[...,3]==255).mean().round(4),"alpha 0:",(b[...,3]==0).mean().round(4),"components(alpha>0):",ndi.label(b[...,3]>0,structure=np.ones((3,3)))[1])
+# visible effect: composite on white/black, max abs diff
+for name,bg in (("white",255),("black",0),("mid",128)):
+    def comp(x):
+        f=x[...,3:4]/255.0; return x[...,:3]*f+bg*(1-f)
+    print("composite on",name,"max |diff|",np.abs(comp(a.astype(float))-comp(b.astype(float))).max().round(2),"mean",np.abs(comp(a.astype(float))-comp(b.astype(float))).mean().round(4))

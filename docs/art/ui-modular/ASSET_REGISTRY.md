@@ -1,10 +1,10 @@
 # Registro de produção — assets modulares
 
-**Nenhum asset novo foi gerado ou aprovado nesta infra.** **[OUTPUT_MANIFEST.md](OUTPUT_MANIFEST.md) lista individualmente as 95 saídas com o nome exato e o prompt específico; esta tabela agrupa as 25 famílias.** Estado padrão: `PENDING`. Um prompt existente **não** equivale a PNG disponível. Atualize esta tabela somente com arquivos e validações realmente existentes.
+**Nenhum asset foi aprovado nem integrado; UI-001 está em `UNITY_QA`.** **[OUTPUT_MANIFEST.md](OUTPUT_MANIFEST.md) lista individualmente as 95 saídas com o nome exato e o prompt específico; esta tabela agrupa as 25 famílias.** Estado padrão: `PENDING`. Um prompt existente **não** equivale a PNG disponível. Atualize esta tabela somente com arquivos e validações realmente existentes.
 
 | ID | Peça / prompt | Estado | Raw local | PNG limpo local | Versão aprovada / PR | Unity / QA |
 | --- | --- | --- | --- | --- | --- | --- |
-| UI-001 | [01_PANEL_LARGE](prompts/01_PANEL_LARGE.md) | PENDING | — | — | — | NOT RUN |
+| UI-001 | [01_PANEL_LARGE](prompts/01_PANEL_LARGE.md) | UNITY_QA | `raw_gpt/UI-001_panel_large_v01.png` (local, ignorado) | `blender_clean/UI-001_panel_large_v01.png` (local, ignorado) | — (aguarda aprovação final) | PASS 960×600 e 1280×720; WebGL NOT RUN — [revisão](reviews/UI-001_PANEL_LARGE_V01.md) |
 | UI-002 | [02_PANEL_MEDIUM](prompts/02_PANEL_MEDIUM.md) | PENDING | — | — | — | NOT RUN |
 | UI-003 | [03_PANEL_SMALL_LABEL](prompts/03_PANEL_SMALL_LABEL.md) | PENDING | — | — | — | NOT RUN |
 | UI-004 | [04_BUTTON_PRIMARY](prompts/04_BUTTON_PRIMARY.md) | PENDING | — | — | — | NOT RUN |
