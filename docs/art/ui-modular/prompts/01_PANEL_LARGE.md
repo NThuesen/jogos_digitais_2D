@@ -1,6 +1,6 @@
 # 01_PANEL_LARGE — pronto para copiar, sem campos variáveis
 
-**Ainda não gerado/aprovado.** Saída: `UI-001_panel_large_v01.png`.
+**APPROVED (PR #39).** Saída: `UI-001_panel_large_v01.png`. Prompt preservado só como registro; não regenerar sem decisão do responsável.
 
 ## 1. Anexe ao ChatGPT estes arquivos EXATOS do repositório
 
@@ -32,7 +32,7 @@ ONE image only. The intended saved PNG filename is UI-001_panel_large_v01.png. I
 
 - Gerado bruto: `art_working/ui_modular/raw_gpt/UI-001_panel_large_v01.png`
 - Corrigido no Blender, se necessário: `art_working/ui_modular/blender_clean/UI-001_panel_large_v01.png`
-- Aprovado, só após revisão: `art_working/ui_modular/approved/UI-001_panel_large_v01.png`
+- Aprovado e versionado: `docs/art/ui-modular/approved/UI-001_panel_large_v01.png` (SHA-256 `ba300ece650f18e8ef4e938aa84e9c9df3146396dc82a91ba4551306a9ee85f8`)
 - Nova tentativa: `UI-001_panel_large_v02.png` (não substitua a original).
 
 Imagem modular: as informações e interações da UI permanecem na Unity.

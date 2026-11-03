@@ -1,0 +1,159 @@
+// TEMPORARY, isolated QA for UI-001. Never committed. Does not touch any game screen.
+using System.Collections;
+using System.IO;
+using System.Text;
+using Neko.Game.Art;
+using Neko.Game.Ui;
+using NUnit.Framework;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.TestTools;
+using UnityEngine.UI;
+
+public sealed class Ui001PanelQa
+{
+    const string PngPath = "Assets/_QA_UI001_Temp/UI-001_panel_large_v01.png";
+    // derived from the pixel analysis: left, bottom, right, top (source px)
+    static readonly Vector4 Border = new Vector4(280, 280, 280, 250);
+    const float Multiplier = 2f; // source px -> canvas units: 0.5
+    // safe cream insets from the rect edge, canvas units (analysis: x100/y165 from body edge + margins, *0.5)
+    const float InL = 70, InR = 70, InT = 110, InB = 125;
+
+    int _clicks; int _cancels; readonly StringBuilder _log = new StringBuilder();
+
+    [UnityTest]
+    public IEnumerator Run()
+    {
+        var dir = System.Environment.GetEnvironmentVariable("UI001_OUT");
+        Assert.IsNotNull(dir, "UI001_OUT not set");
+        Directory.CreateDirectory(dir);
+
+        var imp = (TextureImporter)AssetImporter.GetAtPath(PngPath);
+        imp.textureType = TextureImporterType.Sprite;
+        imp.spriteImportMode = SpriteImportMode.Single;
+        imp.spritePixelsPerUnit = 100;
+        imp.spriteBorder = Border;
+        imp.mipmapEnabled = false;
+        imp.alphaIsTransparency = true;
+        imp.textureCompression = TextureImporterCompression.Uncompressed;
+        imp.maxTextureSize = 2048;
+        imp.wrapMode = TextureWrapMode.Clamp;
+        imp.filterMode = FilterMode.Bilinear;
+        var ts = new TextureImporterSettings(); imp.ReadTextureSettings(ts); ts.spriteMeshType = SpriteMeshType.FullRect; imp.SetTextureSettings(ts);
+        imp.SaveAndReimport();
+        var sprite = AssetDatabase.LoadAssetAtPath<Sprite>(PngPath);
+        Assert.IsNotNull(sprite);
+        _log.AppendLine("sprite rect " + sprite.rect + " border " + sprite.border + " ppu " + sprite.pixelsPerUnit);
+
+        UiKit.Sprites = new SpriteFactory();
+        var sizes = new (string n, float w, float h)[] {
+            ("orig3x2", 840, 560), ("wide", 1080, 330), ("tall", 440, 600), ("small", 400, 300) };
+        foreach (var win in new[] { (960, 600), (1280, 720) })
+            foreach (var sz in sizes)
+                yield return Case(sprite, dir, win.Item1, win.Item2, sz.n, sz.w, sz.h);
+
+        File.WriteAllText(Path.Combine(dir, "unity_qa_log.txt"), _log.ToString());
+    }
+
+    IEnumerator Case(Sprite sprite, string dir, int W, int H, string name, float pw, float ph)
+    {
+        var root = new GameObject("QA_Root");
+        var camGo = new GameObject("QA_Cam"); camGo.transform.SetParent(root.transform);
+        var cam = camGo.AddComponent<Camera>();
+        cam.orthographic = true; cam.orthographicSize = 5; cam.clearFlags = CameraClearFlags.SolidColor;
+        cam.backgroundColor = Palette.Darken(Palette.Wood, 0.45f);
+        cam.transform.position = new Vector3(0, 0, -10);
+        var rt = new RenderTexture(W, H, 24, RenderTextureFormat.ARGB32); cam.targetTexture = rt;
+
+        var cgo = new GameObject("QA_Canvas", typeof(RectTransform)); cgo.transform.SetParent(root.transform);
+        var canvas = cgo.AddComponent<Canvas>(); canvas.renderMode = RenderMode.ScreenSpaceCamera; canvas.worldCamera = cam; canvas.planeDistance = 5;
+        var sc = cgo.AddComponent<CanvasScaler>(); sc.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        sc.referenceResolution = new Vector2(1280, 720); sc.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight; sc.matchWidthOrHeight = 1f;
+        var gr = cgo.AddComponent<GraphicRaycaster>();
+        UiKit.EnsureEventSystem();
+
+        var panelGo = new GameObject("Panel", typeof(RectTransform)); panelGo.transform.SetParent(cgo.transform, false);
+        var pr = (RectTransform)panelGo.transform; pr.sizeDelta = new Vector2(pw, ph);
+        var img = panelGo.AddComponent<Image>(); img.sprite = sprite; img.type = Image.Type.Sliced; img.pixelsPerUnitMultiplier = Multiplier; img.raycastTarget = true;
+
+        var content = new GameObject("Content", typeof(RectTransform)); content.transform.SetParent(pr, false);
+        var cr = (RectTransform)content.transform; cr.anchorMin = Vector2.zero; cr.anchorMax = Vector2.one;
+        cr.offsetMin = new Vector2(InL, InB); cr.offsetMax = new Vector2(-InR, -InT);
+
+        float ch = ph - InT - InB;
+        var title = UiKit.Label(cr, "Balanço do dia", 30, Palette.Text, TextAnchor.UpperCenter, true);
+        title.rectTransform.anchorMin = new Vector2(0, 1); title.rectTransform.anchorMax = new Vector2(1, 1); title.rectTransform.pivot = new Vector2(.5f, 1);
+        title.rectTransform.sizeDelta = new Vector2(0, 44); title.rectTransform.anchoredPosition = Vector2.zero;
+        var body = UiKit.Label(cr, "Hoje a Mimi atendeu 42 clientes e a gorjeta total foi de ¥ 1.250. Ações são exemplos de texto dinâmico em português, com acentuação, para verificar quebra de linha e margens.", 20, Palette.Text, TextAnchor.UpperLeft);
+        body.rectTransform.anchorMin = new Vector2(0, 1); body.rectTransform.anchorMax = new Vector2(1, 1); body.rectTransform.pivot = new Vector2(.5f, 1);
+        float slot = Mathf.Max(40f, ch - 50f - 66f); body.rectTransform.sizeDelta = new Vector2(0, slot); body.rectTransform.anchoredPosition = new Vector2(0, -50);
+        var counter = UiKit.Label(cr, "Cliques: 0", 22, Palette.Text, TextAnchor.MiddleLeft, true);
+
+        float bw = Mathf.Min(190f, (pw - InL - InR - 10f) / 2f);
+        var okBtn = UiKit.Button(cr, "Confirmar", new Vector2(bw, 52), Palette.Good, () => { _clicks++; counter.text = "Cliques: " + _clicks; });
+        var noBtn = UiKit.Button(cr, "Cancelar", new Vector2(bw, 52), Palette.Alarm, () => { _cancels++; });
+        var pos = (RectTransform)okBtn.transform; pos.anchorMin = pos.anchorMax = new Vector2(1, 0); pos.pivot = new Vector2(1, 0); pos.anchoredPosition = Vector2.zero;
+        var pos2 = (RectTransform)noBtn.transform; pos2.anchorMin = pos2.anchorMax = new Vector2(1, 0); pos2.pivot = new Vector2(1, 0); pos2.anchoredPosition = new Vector2(-(bw + 10f), 0);
+        counter.rectTransform.anchorMin = counter.rectTransform.anchorMax = new Vector2(0, 0); counter.rectTransform.pivot = new Vector2(0, 0); counter.rectTransform.anchoredPosition = new Vector2(0, 14);
+        counter.rectTransform.sizeDelta = new Vector2(200, 34);
+        bool compact = ch < 150;
+        if (compact) {
+            body.gameObject.SetActive(false);
+            title.alignment = TextAnchor.MiddleLeft; title.rectTransform.anchorMin = new Vector2(0, 0); title.rectTransform.anchorMax = new Vector2(0, 0); title.rectTransform.pivot = new Vector2(0, 0); title.rectTransform.sizeDelta = new Vector2(260, 52); title.rectTransform.anchoredPosition = Vector2.zero;
+            counter.rectTransform.anchoredPosition = new Vector2(270, 9);
+        }
+        bool soft = name == "small";
+        System.Action<bool, string> Check = (ok, msg) => { if (soft) { _log.AppendLine("   LIMIT: " + (ok ? "ok " : "FAILS ") + msg); } else Assert.IsTrue(ok, msg); };
+
+        for (int i = 0; i < 6; i++) yield return null;
+        Canvas.ForceUpdateCanvases(); yield return null; yield return null;
+
+        var crect = ((RectTransform)cgo.transform).rect.size;
+        var expectW = 720f * W / H;
+        _log.AppendLine("[" + name + " " + W + "x" + H + "] canvas " + crect + " expected " + expectW.ToString("F1") + "x720 scale " + canvas.scaleFactor.ToString("F4") + " panel " + pw + "x" + ph);
+        Assert.AreEqual(720f, crect.y, 0.5f); Assert.AreEqual(expectW, crect.x, 0.5f);
+
+        var cs = cr.rect.size;
+        _log.AppendLine("   content " + cs + " body prefH " + body.preferredHeight.ToString("F0") + " title prefW " + title.preferredWidth.ToString("F0"));
+        if (body.gameObject.activeSelf) Check(body.preferredHeight <= slot + 0.5f, "body text fits slot (pref " + body.preferredHeight.ToString("F0") + " slot " + slot.ToString("F0") + ")");
+        Check(title.preferredWidth <= (compact ? 260f : cs.x) + 0.5f, "title fits");
+
+        foreach (var r in new[] { (RectTransform)okBtn.transform, (RectTransform)noBtn.transform, counter.rectTransform })
+        {
+            var corners = new Vector3[4]; r.GetWorldCorners(corners);
+            foreach (var c in corners) { var local = pr.InverseTransformPoint(c); Check(pr.rect.Contains(local), "element inside panel rect"); }
+        }
+
+        int before = _clicks;
+        Click(gr, cam, (RectTransform)okBtn.transform, true);
+        Assert.AreEqual(before + 1, _clicks, "Confirmar click did not register (" + name + " " + W + "x" + H + ")");
+        int bc = _cancels; Click(gr, cam, (RectTransform)noBtn.transform, true);
+        Assert.AreEqual(bc + 1, _cancels, "Cancelar click did not register");
+        int b2 = _clicks; Click(gr, cam, pr, false, new Vector2(0.5f, 0.97f));
+        Assert.AreEqual(b2, _clicks, "frame area triggered a button");
+        _log.AppendLine("   clicks ok: confirm=" + _clicks + " cancel=" + _cancels + "; counter text '" + counter.text + "'");
+
+        yield return null;
+        cam.Render();
+        RenderTexture.active = rt; var tex = new Texture2D(W, H, TextureFormat.RGB24, false); tex.ReadPixels(new Rect(0, 0, W, H), 0, 0); tex.Apply(); RenderTexture.active = null;
+        File.WriteAllBytes(Path.Combine(dir, "unity_" + name + "_" + W + "x" + H + ".png"), tex.EncodeToPNG());
+        Object.Destroy(tex); cam.targetTexture = null; rt.Release(); Object.Destroy(rt);
+        Object.Destroy(root); yield return null;
+    }
+
+    void Click(GraphicRaycaster gr, Camera cam, RectTransform target, bool expectButton, Vector2? normalized = null)
+    {
+        var n = normalized ?? new Vector2(.5f, .5f);
+        var world = target.TransformPoint(new Vector3((n.x - target.pivot.x) * target.rect.width, (n.y - target.pivot.y) * target.rect.height, 0));
+        var screen = RectTransformUtility.WorldToScreenPoint(cam, world);
+        var ev = new PointerEventData(EventSystem.current) { position = screen, button = PointerEventData.InputButton.Left };
+        var hits = new System.Collections.Generic.List<RaycastResult>(); gr.Raycast(ev, hits);
+        Assert.IsTrue(hits.Count > 0, "raycast hit nothing");
+        var top = hits[0].gameObject;
+        var handler = ExecuteEvents.GetEventHandler<IPointerClickHandler>(top);
+        if (expectButton) { Assert.IsNotNull(handler.GetComponent<Button>(), "top hit is not a Button: " + top.name); }
+        ev.pointerPress = handler; ev.pointerPressRaycast = hits[0]; ev.pointerCurrentRaycast = hits[0];
+        ExecuteEvents.Execute(handler, ev, ExecuteEvents.pointerClickHandler);
+    }
+}

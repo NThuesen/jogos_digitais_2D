@@ -11,7 +11,7 @@
 
 ## 2. Anexe também, quando existir
 
-- `art_working/ui_modular/approved/UI-001_panel_large_v01.png` — **futuro**, anexar só depois de gerar e aprovar, não existe na main agora.
+- [`UI-001_panel_large_v01.png`](../approved/UI-001_panel_large_v01.png) — `docs/art/ui-modular/approved/UI-001_panel_large_v01.png` (**APPROVED, versionado no Git a partir do PR #39; referência oficial do painel**).
 
 > Abra os links, baixe a imagem original e anexe as imagens no chat. Colar só a URL não equivale a anexar a referência. Os itens FUTUROS não são pré-requisitos existentes na main.
 

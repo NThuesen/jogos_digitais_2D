@@ -7,6 +7,7 @@
 - Uma geração/um prompt = **um único PNG modular**, salvo com nome exato informado no próprio arquivo; variações têm prompts próprios.
 - Anexar os arquivos visuais **reais** indicados no prompt, como arquivos de imagem, não apenas URLs.
 - Anexar `art_working/ui_modular/approved/UI-...png` **apenas depois** que tal arquivo realmente existir e for aprovado; não inventar um PNG por causa do nome.
+- **Exceção já aprovada:** o painel `UI-001_panel_large_v01.png` está versionado em `docs/art/ui-modular/approved/` (referência oficial; anexe esse arquivo).
 - Café anime 2D ilustrado/cozy + visual novel ornamental; referência histórica ART-01D era pixel art e **não** obriga pixelização.
 - União de imagens e lógica na Unity: sem preços, stats, labels, funções ou botões funcionais baked; exceção apenas para logo permanente estático.
 - Fundo transparente real, se aplicável, ou matte removível e depois Blender. Preservar miolo preenchido, bordas, sombras e cortes das janelas de portrait.

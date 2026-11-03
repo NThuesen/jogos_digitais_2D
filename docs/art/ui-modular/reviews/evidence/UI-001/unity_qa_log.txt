@@ -1,0 +1,51 @@
+sprite rect (x:0.00, y:0.00, width:1536.00, height:1024.00) border (280.00, 280.00, 280.00, 250.00) ppu 100
+[orig3x2 960x600] canvas (1152.00, 720.00) expected 1152,0x720 scale 0,8333 panel 840x560
+   content (700.00, 325.00) body prefH 64 title prefW 206
+   clicks ok: confirm=1 cancel=1; counter text 'Cliques: 1'
+[wide 960x600] canvas (1152.00, 720.00) expected 1152,0x720 scale 0,8333 panel 1080x330
+   content (940.00, 95.00) body prefH 42 title prefW 206
+   clicks ok: confirm=2 cancel=2; counter text 'Cliques: 2'
+[tall 960x600] canvas (1152.00, 720.00) expected 1152,0x720 scale 0,8333 panel 440x600
+   content (300.00, 365.00) body prefH 128 title prefW 206
+   clicks ok: confirm=3 cancel=3; counter text 'Cliques: 3'
+[small 960x600] canvas (1152.00, 720.00) expected 1152,0x720 scale 0,8333 panel 400x300
+   content (260.00, 65.00) body prefH 150 title prefW 206
+   LIMIT: ok title fits
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: FAILS element inside panel rect
+   LIMIT: FAILS element inside panel rect
+   clicks ok: confirm=4 cancel=4; counter text 'Cliques: 4'
+[orig3x2 1280x720] canvas (1280.00, 720.00) expected 1280,0x720 scale 1,0000 panel 840x560
+   content (700.00, 325.00) body prefH 68 title prefW 212
+   clicks ok: confirm=5 cancel=5; counter text 'Cliques: 5'
+[wide 1280x720] canvas (1280.00, 720.00) expected 1280,0x720 scale 1,0000 panel 1080x330
+   content (940.00, 95.00) body prefH 45 title prefW 212
+   clicks ok: confirm=6 cancel=6; counter text 'Cliques: 6'
+[tall 1280x720] canvas (1280.00, 720.00) expected 1280,0x720 scale 1,0000 panel 440x600
+   content (300.00, 365.00) body prefH 137 title prefW 212
+   clicks ok: confirm=7 cancel=7; counter text 'Cliques: 7'
+[small 1280x720] canvas (1280.00, 720.00) expected 1280,0x720 scale 1,0000 panel 400x300
+   content (260.00, 65.00) body prefH 160 title prefW 212
+   LIMIT: ok title fits
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: ok element inside panel rect
+   LIMIT: FAILS element inside panel rect
+   LIMIT: FAILS element inside panel rect
+   clicks ok: confirm=8 cancel=8; counter text 'Cliques: 8'
