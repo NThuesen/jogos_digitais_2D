@@ -40,7 +40,18 @@ A [style reference do estudo ART-01D](art-01/D-pixel-cafe/reference/style_anchor
 
 **UI-01 é estabilização da interface existente, não arte final.** Os **40 estados** da spec histórica são uma meta de cobertura incremental, **não um bloqueio** para iniciar correções prioritárias nem um critério para declarar que todos foram testados. Sempre registrar precisamente os estados verificados e `PASS / FAIL / NOT RUN`. A spec histórica aprovada anteriormente está em [`.kiro/specs/ui-01-layout/`](../../.kiro/specs/ui-01-layout/requirements.md); preservar os fatos, testes e decisões históricas, mas aplicar o escopo vigente deste documento.
 
-## Responsabilidades e proteção
+## Responsabilidades e proteção## Decisão adicional de produto — duas apresentações de Maid Card (04/11/2026)
+
+**APROVADO pelo responsável:** a **Escalação** deve usar uma apresentação **simplificada**, enquanto a apresentação **detalhada** preserva portrait e informações dinâmicas em contextos maiores. A mesma maid/dados alimentam ambas; **não** criar duas entidades, novos portraits ou alterar economia/saves.
+
+- **UI-008 existente:** `UI-008_maid_card_compact_v01.png` (RAW/CLEAN local; QA na [PR #44](https://github.com/NThuesen/jogos_digitais_2D/pull/44)) é **candidato visual restrito em 150×206** e **REWORK em 0,62×**. Não descartar nem renomear o arquivo. Não está APPROVED/INTEGRATED.
+- **Novo frame simplificado de Escalação:** `UI-008_maid_card_lineup_minimal_v01.png` (**PENDING, não gerado**), [prompt específico](ui-modular/prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md). Na referência atual 150×206, a Escalação usa 0,62× (~93×128). Moldura com janela transparente de portrait, faixa simples de nome e no máximo espaço para indicador Unity; sem salary/stats/traits dentro da mini-card. Outras informações ficam em componentes dinâmicos fora dela.
+- **UI-009:** `UI-009_maid_card_detail_v01.png` segue **PENDING**, como possível frame expandido de detalhes. Não é pré-requisito para criar o frame simplificado; não confundir com o UI-008 existente, que já pode servir de candidato detalhado em 150×206.
+- **Integração:** somente após aprovação visual/QA específicos; definir layout/posição do indicador e conteúdo externo em tarefa posterior. Reutilizar dados e sprites, preservar seleção, interação, localização e máscaras. Não integrar automaticamente em outras telas de `MaidCard.Build`.
+
+Esta decisão aprova **o conceito de duas apresentações**, não aprova PNG novo, nem autoriza mudanças de tela/código nesta atualização documental.
+
+
 
 - **Codex:** correções de layout, testes e regressões UI-01; tarefas técnicas de UI-02 quando autorizadas.
 - **Claude Code:** direção visual, produção/integração artística e revisão crítica, trabalhando em arquivos distintos quando houver paralelismo.

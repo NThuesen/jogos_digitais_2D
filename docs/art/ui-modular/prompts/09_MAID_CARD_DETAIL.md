@@ -1,6 +1,6 @@
 # 09_MAID_CARD_DETAIL — pronto para copiar, sem campos variáveis
 
-**Ainda não gerado/aprovado.** Saída: `UI-009_maid_card_detail_v01.png`.
+**Ainda não gerado/aprovado.** Saída: `UI-009_maid_card_detail_v01.png`. **Opcional/futuro:** a decisão de duas apresentações não exige gerar UI-009 agora; o UI-008 existente já é candidato a apresentação detalhada em 150×206. O novo frame da Escalação é [UI-008 LINEUP MINIMAL](variants/08_MAID_CARD_LINEUP_MINIMAL.md).
 
 ## 1. Anexe ao ChatGPT estes arquivos EXATOS do repositório
 
@@ -10,7 +10,7 @@
 
 ## 2. Anexe também, quando existir
 
-- `art_working/ui_modular/approved/UI-008_maid_card_compact_v01.png` — **futuro**, anexar só depois de gerar e aprovar, não existe na main agora.
+- `art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png` — **CLEAN local já gerado, mas NÃO aprovado**; anexe somente se for iniciar futuramente a arte expandida UI-009. Não substitua por `UI-008_maid_card_lineup_minimal_v01.png`, que é outra apresentação e ainda PENDING.
 
 > Abra os links, baixe a imagem original e anexe as imagens no chat. Colar só a URL não equivale a anexar a referência. Os itens FUTUROS não são pré-requisitos existentes na main.
 
@@ -19,7 +19,7 @@
 ```text
 PROJECT: Neko Maid Inc. Generate ONE ORIGINAL modular art sprite for cozy illustrated 2D anime café / ornamental visual novel management game. Use attachments to understand atmosphere and real Unity geometry, never trace or copy them. The ART-01D style anchor is historical PIXEL ART: retain its coziness, NOT its pixels. Maintain coherence with nine illustrated maids. No baked dynamic game text, prices, numbers, stats or fake UI; the exception is the static NEKO MAID INC. wordmark when explicitly requested. Unity controls clicks, responsive layout, localization and data. Output one asset only, no mockup board, watermark or checkerboard transparency. Use real PNG alpha outside when possible, or a uniform removable matte; do not erase the intended cream interior.
 
-Make ONE expanded MAID DETAIL CARD FRAME. Same motif, color logic and materials as the attached approved compact card, but more breathing room and a more expressive portrait window taking ~45% of the composition.
+Make ONE expanded MAID DETAIL CARD FRAME. Same motif, color logic and materials as the attached existing CLEAN UI-008 card (candidate only, not yet approved), but more breathing room and a more expressive portrait window taking ~45% of the composition.
 
 Provide empty dedicated areas for character illustration (alpha cut-out, front-on), name/role, detailed stats, traits, salary, and a neutral bottom zone where dynamic Unity buttons can be placed. All typography, symbols, numbers and portrait images will be added separately by Unity. Use subtle premium ornamentation and clear visual groupings, without hard separators that force one language or long label width.
 

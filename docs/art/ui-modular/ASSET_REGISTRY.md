@@ -1,6 +1,6 @@
 # Registro de produção — assets modulares
 
-**Assets aprovados: UI-001 e UI-004 COMPACT NORMAL v01 (`APPROVED`, ambos ainda não `INTEGRATED`). O PNG do compacto permanece local; somente o UI-001 está publicado como asset aprovado.** **[OUTPUT_MANIFEST.md](OUTPUT_MANIFEST.md) lista individualmente as 99 saídas com o nome exato e o prompt específico; esta tabela agrupa as 25 famílias.** Estado padrão: `PENDING`. Um prompt existente **não** equivale a PNG disponível. Atualize esta tabela somente com arquivos e validações realmente existentes.
+**Assets aprovados: UI-001 e UI-004 COMPACT NORMAL v01 (`APPROVED`, ambos ainda não `INTEGRATED`). O PNG do compacto permanece local; somente o UI-001 está publicado como asset aprovado.** **[OUTPUT_MANIFEST.md](OUTPUT_MANIFEST.md) lista individualmente as 100 saídas com o nome exato e o prompt específico; esta tabela agrupa as 25 famílias.** Estado padrão: `PENDING`. Um prompt existente **não** equivale a PNG disponível. Atualize esta tabela somente com arquivos e validações realmente existentes.
 
 | ID | Peça / prompt | Estado | Raw local | PNG limpo local | Versão aprovada / PR | Unity / QA |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -12,7 +12,8 @@
 | UI-005 | [05_BUTTON_SECONDARY](prompts/05_BUTTON_SECONDARY.md) | PENDING | — | — | — | NOT RUN |
 | UI-006 | [06_TABS_SET](prompts/06_TABS_SET.md) | PENDING | — | — | — | NOT RUN |
 | UI-007 | [07_MODAL_DIALOG](prompts/07_MODAL_DIALOG.md) | PENDING | — | — | — | NOT RUN |
-| UI-008 | [08_MAID_CARD_COMPACT](prompts/08_MAID_CARD_COMPACT.md) | PENDING | — | — | — | NOT RUN |
+| UI-008 (frame existente) | [08_MAID_CARD_COMPACT](prompts/08_MAID_CARD_COMPACT.md) | **UNITY_QA / REWORK em 0,62×** | `raw_gpt/UI-008_maid_card_compact_v01.png` (local ignorado) | `blender_clean/UI-008_maid_card_compact_v01.png` (local ignorado) | Não aprovado | PR #44: Editor/WebGL PASS técnico, candidato visual em 150×206; ilegível em 0,62×; sem integração |
+| UI-008 LINEUP MINIMAL (novo) | [08_MAID_CARD_LINEUP_MINIMAL](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md) | **PENDING** | — | — | — | Nova apresentação simplificada aprovada como conceito; PNG não gerado, QA NOT RUN |
 | UI-009 | [09_MAID_CARD_DETAIL](prompts/09_MAID_CARD_DETAIL.md) | PENDING | — | — | — | NOT RUN |
 | UI-010 | [10_RARITY_BADGES](prompts/10_RARITY_BADGES.md) | PENDING | — | — | — | NOT RUN |
 | UI-011 | [11_ICON_PACK](prompts/11_ICON_PACK.md) | PENDING | — | — | — | NOT RUN |
