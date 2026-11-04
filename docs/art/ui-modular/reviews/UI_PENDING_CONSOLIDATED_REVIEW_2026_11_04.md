@@ -26,7 +26,7 @@
 ## Já aprovados e integráveis nas telas reais (nenhum integrado ainda)
 Pré-requisito comum: **nenhum PNG está em `Assets/`** — falta importar os exports com a configuração do `B3_README`/`B4_README` e trocar o desenho por código. Requer sua autorização.
 - **Loja:** UI-017 v02 (9-slice), ícones UI-011 (9), UI-018 NORMAL/TOTAL.
-- **Painéis/botões:** UI-001/002/003, UI-004 HOVER/PRESSED/DISABLED (NORMAL compacto conforme registro anterior).
+- **Painéis/botões:** UI-001/002/003, UI-004 compact HOVER v02, PRESSED v01 e DISABLED v02 (o NORMAL compacto **não** consta em `approved/`: sem baseline aprovado, os três dependem dele).
 - **Elenco/Maid Card:** UI-008 compact; selos e molduras RARE/EPIC/LEGENDARY **só depois** de aprovar os COMMON.
 - **Menu:** UI-020 logo (somente sobre o UI-012 testado).
 - **Bloqueados:** UI-005 estados (NORMAL), UI-006 (INACTIVE), UI-019 TAIL (PANEL), raridades completas (COMMON).
