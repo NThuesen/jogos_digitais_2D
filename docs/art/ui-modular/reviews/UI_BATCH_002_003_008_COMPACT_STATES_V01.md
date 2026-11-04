@@ -1,10 +1,10 @@
 # Auditoria em lote — UI-002, UI-003, UI-008 e estados UI-004 COMPACT v01
 
-**Escopo inicial (seções 1–7): arquivos PNG, limpeza conservadora e inspeção visual estática. Nenhum asset novo aprovado ou integrado.** A seção 8 acrescenta somente QA Unity direcionado dos estados. WebGL, builds e QA extensos anteriores não foram repetidos. UI-001 e UI-004 COMPACT NORMAL foram somente lidos como referências; seus arquivos e aprovações permanecem intactos. Não houve geração de arte, alteração de cenas/gameplay ou redesenho.
+**Escopo inicial (seções 1–7): arquivos PNG, limpeza conservadora e inspeção visual estática. Nenhum asset novo aprovado ou integrado.** As seções 8–11 acrescentam QA direcionado no Editor e uma build WebGL consolidada temporária. QA extensos anteriores não foram repetidos. UI-001 e UI-004 COMPACT NORMAL foram somente lidos como referências; seus arquivos e aprovações permanecem intactos. Não houve geração de arte, alteração de cenas/gameplay ou redesenho.
 
 Base: `98688920fc6ea5595eadfb7becd8d07d6fe78302` (main remota, inclui prompts da PR #43); branch `qa/ui-modular-batch-six`. Inspeção em 03/11/2026. A skill de modificação segura e o fluxo branch→PR foram reaproveitados; nenhuma memória canônica alterada.
 
-**Atualização posterior: HOVER v02 — CLEAN para QA direcionado; ver seção 7.** O lote v01 abaixo mantém seus resultados históricos, inclusive HOVER v01 REWORK.
+**Resultado atual (seções 9–11): HOVER v02/PRESSED v01/DISABLED v02/UI-002/UI-003 candidatos à aprovação, com limites; UI-008 REWORK para uso universal em 0,62×.** O lote v01 abaixo mantém seus resultados históricos, inclusive HOVER v01/DISABLED v01 REWORK. Nenhum novo asset aprovado.
 
 ## 1. Resultado consolidado — checkpoint estático histórico
 
@@ -236,3 +236,93 @@ O problema DISABLED é de feedback visual da arte/configuração de estado, não
 **NOT RUN:** mouse físico; elegibilidade de clique/drag/cancel pelo módulo de input completo; teclado/gamepad/foco; WebGL/navegador/builds; compressão e memória GPU residente; integração nas telas/helper Punch; Loja completa/gameplay/QA extensos anteriores. NORMAL aprovado e ornamental REWORK preservados. PASS do harness não aprova automaticamente a arte nem a integração.
 
 [Fontes e reprodução](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/README.md) · [Resultado XML](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/unity_states_results.xml) · [Log](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/unity_states_log.txt) · [Vereditos](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/verdict.json) · [Comparação de frames](evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/frame_analysis.json).
+
+
+## 9. Continuação P0/P1 — DISABLED v02 e componentes no Editor
+
+**Nenhuma aprovação automática.** HOVER v02/PRESSED v01 mantêm o PASS anterior; seu QA Editor não foi repetido. DISABLED v01 permanece REWORK histórico. NORMAL aprovado, RAWs/CLEANs anteriores, UI-001 e ornamental REWORK preservados. Esta continuação usa somente novas evidências em [FOLLOWUP](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/README.md).
+
+### P0 — auditoria e preparação do DISABLED v02
+
+RAW íntegro RGBA8 **2172×724**, 1.185.854 bytes, SHA-256 `7d937f5757e7044f8184cf58dbf0d910405d5fce894c3eb45bf2b5f1e548d1fb`. Bbox alpha≥5 [0,164,2171,560), alpha>128 [8,166,2164,557); 1.433 componentes de alpha>0. Resíduos de alpha baixo existem fora da peça. Interior cinza/creme intencional preservado.
+
+CLEAN local **2176×410**, 941.613 bytes, SHA-256 `3709ee3a696aa5b929a315fcacec31c2457736a068e34352bea11cd2dc51074d`. Removidos 4.374 px, todos alpha≤2 e afastados do corpo pelo método conservador anterior; alpha 250–254 solidificado em 818.047 px. Crop RAW [0,158,2172,568), padding L/R2. RGB retido e alpha 9–249 inalterados; sem resize/recoloração do CLEAN. AA/sombra conectados mantidos. Inspeção RAW×CLEAN sobre claro/escuro/magenta não revelou novo halo claro/escuro, quebra de borda ou perda visual relevante. [Dados integrais](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/disabled_v02_audit.json).
+
+![RAW e CLEAN, mesmo recorte](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/disabled_raw_clean.png)
+
+Export candidato **768×141**, SHA-256 `be482f46bdb9479c476cdcf11cb6ac8a627ff0acbbacbdfde091614ded9d6c5a`: método comum da seção8, cantos uniformes X/Y, somente centro ajustado horizontalmente. Bbox alpha>128 igual ao NORMAL [4,2,763,138), IoU99,8825%; sem forçar igualdade da máscara. NORMAL/HOVER/PRESSED foram copiados byte a byte dos exports já testados. Não reutilizar o canvas RAW como resize direto. A superfície do v02 difere claramente: ΔY médio≈−36,79/255 contra NORMAL, versus≈−1,65/255 do v01, na mesma região da textura; medida RGB, não estudo perceptual.
+
+**Editor PASS técnico e visual:** NORMAL↔DISABLED v02↔NORMAL nos três tamanhos e duas resoluções;6 sequências,18 verificações de estado/malha,90 amostras de raycast;6 cliques reativados e6 tentativas desabilitadas bloqueadas. Malha36 vértices, posição/escala/hitbox constantes. **Simulado via ExecuteEvents/GraphicRaycaster, não mouse físico.** Texto #3A2A1A, sem tint, rótulos 18/24; 60/900¥ dinâmicos cabem. Contraste pontual estimado nas capturas≈6,87–10,24:1 entre estados (face amostrada/pixel escuro de texto), não certificação de todos os glifos. O v02 comunica indisponibilidade sem depender de tint adicional. **Candidato à aprovação do responsável**, sem aprovar/integrar nesta PR.
+
+### P1 — painéis, etiqueta e card
+
+As imagens CLEAN existentes não foram alteradas. A primeira renderização mostrou aliasing na redução dos masters grandes e salário próximo da moldura da card. Correções técnicas limitadas ao harness/exports: derivados exatos a 50% com Lanczos premultiplicado, e salário reposicionado dentro do creme; nenhum redesenho. Teste direcionado repetido após essa evidência, sem suíte extensa. Exports finais em [component_exports.json](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/component_exports.json); RAW/CLEAN intactos. A redução melhora a amostragem, mas não torna ornamentos finos legíveis em qualquer escala.
+
+| Componente | Casos Editor nas duas resoluções | Parecer atual |
+| --- | --- | --- |
+| UI-002 |330×170,380×220,330×270; Image Sliced, título Escalação de hoje20, nome/salário18¥/Química75/100 em18 | **PASS, candidato à aprovação nos limites testados.** Creme sólido, cantos/escalonamentos preservados e faixas contínuas; variações de altura/largura não deformam cantos. |
+| UI-003 |180×44 Voltar;260×54 Escalação de hoje;360×64 Química; fonte 18 | **PASS com restrições, candidato à aprovação.** Texto cabe sem invadir ornamentos; moldura contínua. Detalhes finos perdem leitura a44u; usar54–64u quando sua leitura importar. Texto longo pede largura maior, não aprovação universal para180×44. |
+| UI-008 |150×206 e93×127,72 (0,62×); Simple/preserveAspect; Suzu real + nome/stats/salário dinâmicos, comparação com MaidCard.Build | **REWORK para uso universal na escalação.** Transparência/recorte/ajuste de texto PASS; em 150×206 é candidato a avaliação visual, porém em 0,62× legenda 6 u (~5px a960×600) e ornamentos densos são pequenos demais. Não aprovar o uso reduzido com base no fit técnico. |
+
+Suzu vem de `MaidAnimCatalog`, `Maids/suzu_walk`, idle 6, frame 156×252; não portrait novo. Janela retangular segura sob a moldura, RectMask2D, preserveAspect; frame não recebe slice. Foram usados dados reais de `Maid.Create`, sem perfil/save. O teste não reproduz toda a tela de escalação nem seleciona/remove maids reais. A composição não tenta homologar ainda os campos de papel, raridade, arquétipo, traits ou todos os nomes/localizações da card de produção.
+
+**1 teste PlayMode direcionado PASS**, zero falhas de fit nos rótulos testados. Fit não prova legibilidade: a ressalva da card é visual. Paleta creme/rosewood/dourado conversa com UI-001; detalhes da card/etiqueta são mais densos que os painéis. Não foi identificada necessidade técnica de regenerar UI-002/003/DISABLED v02. UI-008 pode exigir outra apresentação compacta ou simplificação se o responsável exigir todos os detalhes em 0,62×; nova geração não é obrigatória antes de decidir layout/uso mínimo.
+
+### Capturas reais Editor
+
+| Evidência nova |960×600|1280×720|
+| --- | --- | --- |
+| NORMAL / DISABLED v01 / v02 |[Captura](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/editor_disabled_960x600.png)|[Captura](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/editor_disabled_1280x720.png)|
+| Painéis e etiquetas |[Captura](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/editor_panels_labels_960x600.png)|[Captura](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/editor_panels_labels_1280x720.png)|
+| Card atual × candidata |[Captura](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/editor_cards_960x600.png)|[Captura](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/editor_cards_1280x720.png)|
+
+As seis capturas foram inspecionadas; [log](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/editor_log.txt), [XML](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/editor_results.xml), [medições](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/followup_measurements.json). O toolbar do harness pode quebrar seu título; não é componente candidato nem teste de tela final.
+
+## 10. P3 — preparação para integração futura
+
+**Proposta técnica documentada, sem implementação ou decisão estrutural em nome do responsável.** Reutilizar Image/Label/Button nativos, uma configuração por família, exports com metadados consistentes e referências partilhadas; evitar processamento em runtime ou cópias por tela. Não substituir globalmente UiKit/Scenery. Todos os valores abaixo são candidatos para os casos medidos, sujeitos à aprovação artística/integração própria.
+
+| Asset | Export e borders L/B/R/T | Image / escala | Conteúdo / limites |
+| --- | --- | --- | --- |
+| UI-004 estados |768×141,59,3050/40,8158/59,3050/40,8158 |Sliced; multiplier141/altura, PPU100 |120×44/150×44/230×54, texto18/24 escuro, SpriteSwap sem ColorTint adicional; hitbox fixa e arte filha; NORMAL aprovado, HOVER/PRESSED/DISABLED v02 aguardam decisão. |
+| UI-002 |678×401,80/75/80/75; master1356×802,160/150/160/150 |Sliced; multiplier1,5, PPU100 |Cantos≈53,3×50u constantes. Conteúdo com margem≥45u nos casos330×170–380×220–330×270; confirmar outros layouts. |
+| UI-003 |1085×263,160/50/160/50; master2170×526,320/100/320/100 |Sliced; multiplier263/altura, PPU100 |Margem horizontal160×altura/263+6u; fonte 18.180×44 só título curto; longo testado em 260×54. Preferir54–64u para detalhe ornamental. |
+| UI-008 |535×735, sem borders; master1070×1470 |Simple, preserveAspect, escala uniforme |150×206 candidato visual;0,62× exige decisão de apresentação. Janela segura master[145,185,925,795), fundo/portrait sob moldura, nome y≈900; stats e salário no creme inferior. |
+
+Todos Full Rect, Bilinear/Clamp, alpha correto, sem mipmaps/compressão de bloco. Memória RGBA32 estimada sem mipmaps: estados4×0,413 MiB≈1,652MiB; UI-0021,037 MiB; UI-0031,089 MiB; UI-0081,500 MiB. Total incremental dessas sete texturas≈5,278 MiB, exclui referências/duplicatas de QA, fontes, Suzu e recursos já existentes. **Não é memória GPU residente medida**, nem orçamento aprovado. O uso dos masters grandes em produção não foi recomendado automaticamente.
+
+Borders medidos de cada geometria: UI-002 isola cantos com degrau e faixas retas; UI-003 isola todo ornamento lateral antes do trecho central. [Guias UI-002](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/UI-002_panel_medium_v01_geometry.png), [UI-003](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/UI-003_panel_small_label_v01_geometry.png), [janela UI-008](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/UI-008_maid_card_compact_v01_geometry.png). Valores próprios, não copiados do UI-001/ornamental.
+
+Pontos reais de integração: `ShopScreen.cs` compra150×44 e navegação120×44 via `Scenery.Plank`; botões de filtros210×44 não foram homologados nesta continuação. `Scenery.Plaque`/`UiKit.Panel`, caixas de informação e `UiRoot.Dialog` são pontos potenciais de UI-002, mas dialog620×300 e placas grandes atuais não foram testados aqui. UI-003 pode compor títulos/headers atuais (por exemplo grupos em `LineupScreen`); não é aba nem substituição de todos os textos. UI-008 passa por `MaidCard.Build`, usado por `LineupScreen` board0,62×/banco1,02×, `RosterScreen`0,82×/0,72×, `HubScreen`0,72× e `BoxScreen`1×. As outras escalas e telas completas seguem pendentes.
+
+Dependências/riscos da futura integração: preservar lógica de compra/seleção e dados dinâmicos; rever Punch do helper para não mover hitbox; foco/teclado/gamepad e cancelamento de clique pelo módulo de input; nomes longos/localização, raridade/papel/traits/equipamentos; máscaras/scroll e sobreposições; imagens/GUIDs de produção somente após autorização. Rever estilização de texto indisponível herdada: este QA usa texto escuro em todos os estados. Nenhum save ou gameplay alterado. Não gerar novas artes antes das decisões pendentes de card/uso mínimo; não há motivo demonstrado para gerar DISABLED v03.
+
+
+## 11. P2 — WebGL consolidado e fechamento
+
+**Uma única build temporária Succeeded**,146.733.404 bytes,4 min 30,189 s,0 erros de build; Development/WebGL, servidor local efêmero, sem publicação. [Resumo](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/webgl_build_summary.txt), [diagnósticos de build](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/webgl_build_diagnostics.txt). A build inclui recursos compartilhados existentes e referências de QA: seu tamanho não é o custo incremental destes assets. Nenhum APK/AAB ou segunda build.
+
+Chromium153.0.8010.12 headless, ANGLE/Vulkan/SwiftShader software. **Mouse automatizado do navegador, não mouse físico.** Duas sessões em960×600/1280×720: NORMAL→HOVER→PRESSED→HOVER→NORMAL pelo input real do player,6 cliques disponíveis,6 tentativas DISABLED v02 bloqueadas (e6 do v01 como controle comparativo). Nenhum clique no down, somente após up; estado e retângulo estáveis, retorno ao NORMAL ao sair do botão. Sem tint adicional. A mudança NORMAL↔DISABLED v02 por interactable foi testada no Editor; no navegador os indisponíveis são os controles estáticos da matriz, sem toggle automatizado.
+
+| Componente | Editor | WebGL nas duas resoluções | Veredito para decisão |
+| --- | --- | --- | --- |
+| HOVER v02 |PASS anterior, não repetido |PASS transição/feedback/alinhamento |PASS, aguarda responsável |
+| PRESSED v01 |PASS anterior, não repetido |PASS down/up/feedback/alinhamento |PASS, aguarda responsável |
+| DISABLED v02 |PASS |PASS render/texto/bloqueio de input |PASS, candidato à aprovação |
+| UI-002 |PASS |PASS slice/creme/texto nas três variações |PASS, candidato nos limites testados |
+| UI-003 |PASS restrito |PASS títulos/ornamentos/moldura nos casos testados |PASS, candidato com restrição de altura/largura |
+| UI-008 |PASS técnico, REWORK visual0,62× |Transparência/Suzu/dados PASS; leitura pequena mantém REWORK |REWORK para uso universal na escalação;150×206 restrito à avaliação visual |
+
+Zero page errors e zero console errors nas duas sessões. **Warning presente:** shader Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling não suportado pelo SwiftShader; postprocessing correspondente não executado. Build também avisou sobre compatibilidade WebGPU/Firefox anterior149 e símbolo JS stackTrace deprecado; Firefox/WebGPU não testados. Estes resultados não certificam GPU física, desempenho ou suporte geral a browsers. [Resultado e snapshots de estado](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/webgl_qa.json).
+
+As seis capturas WebGL foram comparadas com as seis Editor: sem diferença visual relevante de silhueta, posição, transparência ou recorte dos assets. Amostras das bordas de botão excluindo região central de texto têm MAE RGB≤1,33/255 e diferença pontual máxima15/255; não são imagens pixel-identical. [Método/dados](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/editor_webgl_border_comparison.json). **Diferença visível:** rasterização de texto WebGL mais pesada/compacta, especialmente nos menores rótulos da card; não foi alterada a tipografia de produção nem inferida uma causa definitiva. Fit continuou PASS, mas isto reforça o REWORK visual0,62×. Separadores decimais dos rótulos diagnósticos diferem por cultura; dados inteiros/preços permanecem corretos. A redução a 50% não elimina a densidade da arte em escalas minúsculas.
+
+| Capturas reais WebGL |960×600|1280×720|
+| --- | --- | --- |
+| Estados / comparação v01×v02 |[Captura](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/webgl_disabled_960x600.png)|[Captura](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/webgl_disabled_1280x720.png)|
+| UI-002 / UI-003 |[Captura](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/webgl_panels_labels_960x600.png)|[Captura](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/webgl_panels_labels_1280x720.png)|
+| UI-008 / Suzu |[Captura](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/webgl_cards_960x600.png)|[Captura](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/webgl_cards_1280x720.png)|
+
+**Limpeza do ambiente concluída:** build140 MiB, cena, harness, imports e template temporários removidos. PlayerSettings restaurado; três linhas de batching WebGL serializadas automaticamente foram inspecionadas e revertidas ao HEAD inicial. Nenhum arquivo de código/cena/configuração de produção permanece alterado. RAWs, CLEANs e exports candidatos locais preservados; somente documentação, provas e fontes como texto versionadas. [Hashes finais dos exports](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/final_export_manifest.json) prevalecem sobre o checkpoint de cópia de masters; [hashes das imagens de evidência](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/evidence_manifest.json), [vereditos](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/verdict.json).
+
+**Pendências do responsável:** aprovar/reprovar HOVER v02, PRESSED v01, DISABLED v02, UI-002 e UI-003 com seus limites; decidir uso mínimo/apresentação da UI-008 antes de autorizar integração universal ou nova geração. Não há necessidade demonstrada de DISABLED v03. Aprovar esta documentação não integra PNGs nem autoriza mudanças de layout/telas. **NOT RUN:** mouse físico, GPU física/performance/memória residente, compressão de bloco, Firefox/Safari, teclado/gamepad/foco/drag-cancel, telas completas/scroll/save/regras de compra e escalas não listadas. QA extensos anteriores não repetidos. Sem merge/auto-merge.

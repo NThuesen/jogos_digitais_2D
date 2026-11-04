@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+PROJECT=/mnt/c/dev/PocketSlop-Games/jogos_digitais_2D
+source "$PROJECT/tools/unity-guard.sh"
+/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -NonInteractive -Command 'if (Get-CimInstance Win32_Process | Where-Object Name -eq Unity.exe) { throw "Unity Editor already running" }'
+unity_guard_prepare
+'/mnt/c/Program Files/Unity/Hub/Editor/6000.5.9f1/Editor/Unity.exe' -batchmode -quit -projectPath 'C:\dev\PocketSlop-Games\jogos_digitais_2D' -executeMethod ModularQaBuild.Build -logFile 'C:\dev\PocketSlop-Games\jogos_digitais_2D\Logs\modular-webgl-build.log'

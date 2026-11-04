@@ -1,0 +1,130 @@
+{
+  "UI-002_panel_medium_v01_geometry.png": {
+    "size": [
+      850,
+      503
+    ],
+    "bytes": 423121,
+    "sha256": "4c4cb0dcd03c3e4f8ac54e5a19aa3d2570eb773d138b52f0e0937a957eb92523"
+  },
+  "UI-003_panel_small_label_v01_geometry.png": {
+    "size": [
+      850,
+      206
+    ],
+    "bytes": 197889,
+    "sha256": "b0e20308a2fdfa516ecd148add60b223b9bfac0e23afee430bc35ec235892936"
+  },
+  "UI-008_maid_card_compact_v01_geometry.png": {
+    "size": [
+      473,
+      650
+    ],
+    "bytes": 201262,
+    "sha256": "48f6a8ea7cc59b961106fc6b339851563d42989e04e4109f0609540a970516b6"
+  },
+  "disabled_raw_clean.png": {
+    "size": [
+      1000,
+      420
+    ],
+    "bytes": 208180,
+    "sha256": "e5c72fbabd028c29c2fbb71c5bc6cad20e969eaff1c4ec9450a1a3d108e4e395"
+  },
+  "editor_cards_1280x720.png": {
+    "size": [
+      1280,
+      720
+    ],
+    "bytes": 150612,
+    "sha256": "c59f9e3d758ae6b92b26b43dd566ab557c8da17758a1fc47a26f376a3985109f"
+  },
+  "editor_cards_960x600.png": {
+    "size": [
+      960,
+      600
+    ],
+    "bytes": 113041,
+    "sha256": "de274e57f908ceb5055c182870eb19970afc5d87e8a3d61faf43d9a148e334c8"
+  },
+  "editor_disabled_1280x720.png": {
+    "size": [
+      1280,
+      720
+    ],
+    "bytes": 168875,
+    "sha256": "cbb81c845b9647b078722f62b94c52083d178560ac45383f6f3c439913661c2f"
+  },
+  "editor_disabled_960x600.png": {
+    "size": [
+      960,
+      600
+    ],
+    "bytes": 138236,
+    "sha256": "07c434b0c9054ea7e0a1275f497813b9c02507ca77dee128d3e9f844f6061a24"
+  },
+  "editor_panels_labels_1280x720.png": {
+    "size": [
+      1280,
+      720
+    ],
+    "bytes": 448409,
+    "sha256": "349a6f23ab7a793365b061d246fdd7a14bf3ae4ac9db73ae972c3973b395025f"
+  },
+  "editor_panels_labels_960x600.png": {
+    "size": [
+      960,
+      600
+    ],
+    "bytes": 333477,
+    "sha256": "ea53949966c6d20eb19db949605ce4056602543b6e617e08834e658f267895bc"
+  },
+  "webgl_cards_1280x720.png": {
+    "size": [
+      1280,
+      720
+    ],
+    "bytes": 123935,
+    "sha256": "295c68c052b83c79ecdf4af6e5e7910ed49efe5a09ff2503da37c0af3ed206cb"
+  },
+  "webgl_cards_960x600.png": {
+    "size": [
+      960,
+      600
+    ],
+    "bytes": 96968,
+    "sha256": "4e0747075769cef21d5a31fc5f7ec767b69398fe7402a0041691b74652a42bfd"
+  },
+  "webgl_disabled_1280x720.png": {
+    "size": [
+      1280,
+      720
+    ],
+    "bytes": 133042,
+    "sha256": "e84884b8014fd98f01ffa0d47e38c97add1c824730a8263ef739a63e0fcfae61"
+  },
+  "webgl_disabled_960x600.png": {
+    "size": [
+      960,
+      600
+    ],
+    "bytes": 116892,
+    "sha256": "36493de895ecfc6a1e91ff61f76d27622027b306c5a2eb71b707e073da2e91fb"
+  },
+  "webgl_panels_labels_1280x720.png": {
+    "size": [
+      1280,
+      720
+    ],
+    "bytes": 327619,
+    "sha256": "060498b0b0b1ab15fcb7d7eacdd6bff311b1bb27c23105bf0320075711fc9a24"
+  },
+  "webgl_panels_labels_960x600.png": {
+    "size": [
+      960,
+      600
+    ],
+    "bytes": 260948,
+    "sha256": "73d4e1c0c619b97b0440ec9085c5ff4a8141d36238154dc218f27e0b2d7ca6b2"
+  }
+}

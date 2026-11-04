@@ -1,0 +1,14 @@
+from pathlib import Path
+import json,hashlib,shutil
+from PIL import Image
+import numpy as np
+root=Path.cwd();ev=root/'docs/art/ui-modular/reviews/evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP'
+shutil.copyfile('Logs/modular-webgl-build-summary.txt',ev/'webgl_build_summary.txt')
+lines=Path('Logs/modular-webgl-build.log').read_text(errors='replace').splitlines();(ev/'webgl_build_diagnostics.txt').write_text('\n'.join(x for x in lines if 'warning:' in x or 'Build completed' in x or "Build Finished" in x)+'\n')
+comparisons=[]
+for w,h in [(960,600),(1280,720)]:
+ a=np.array(Image.open(ev/f'editor_disabled_{w}x{h}.png')).astype(float);b=np.array(Image.open(ev/f'webgl_disabled_{w}x{h}.png')).astype(float);s=h/720
+ for col in range(3):
+  for row,(bw,bh) in enumerate([(120,44),(150,44),(230,54)]):
+   x=w/2+(col-1)*340*s;y=h/2-(180-row*160)*s;x0,x1=round(x-bw*s/2),round(x+bw*s/2);y0,y1=round(y-bh*s/2),round(y+bh*s/2);aa=a[y0:y1,x0:x1];bb=b[y0:y1,x0:x1];m=np.ones(aa.shape[:2],bool);m[round(bh*s*.15):round(bh*s*.85),round(bw*s*.10):round(bw*s*.90)]=False;d=np.abs(aa-bb)[m];comparisons.append({'viewport':[w,h],'column':col,'row':row,'border_pixels':int(m.sum()),'RGB_MAE':float(d.mean()),'RGB_max':float(d.max())})
+(ev/'editor_webgl_border_comparison.json').write_text(json.dumps({'method':'Button rectangle border region excluding central 80% width/70% height; inspect captures for text/platform differences separately.','samples':comparisons},indent=2)+'\n')

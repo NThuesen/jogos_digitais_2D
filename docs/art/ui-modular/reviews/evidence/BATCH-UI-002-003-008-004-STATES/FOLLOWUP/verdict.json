@@ -1,0 +1,39 @@
+{
+  "HOVER_v02": {
+    "editor": "PASS prior section8, not repeated",
+    "webgl": "PASS",
+    "overall": "PASS pending owner"
+  },
+  "PRESSED_v01": {
+    "editor": "PASS prior section8, not repeated",
+    "webgl": "PASS",
+    "overall": "PASS pending owner"
+  },
+  "DISABLED_v02": {
+    "editor": "PASS",
+    "webgl": "PASS",
+    "overall": "PASS pending owner"
+  },
+  "UI_002": {
+    "editor": "PASS tested sizes",
+    "webgl": "PASS tested sizes",
+    "overall": "PASS candidate"
+  },
+  "UI_003": {
+    "editor": "PASS restricted titles/sizes",
+    "webgl": "PASS restricted titles/sizes",
+    "overall": "PASS candidate; fine ornaments limited at44"
+  },
+  "UI_008": {
+    "editor": "technical PASS / visual REWORK at0.62",
+    "webgl": "technical PASS / visual REWORK at0.62",
+    "overall": "REWORK board presentation;150x206 restricted visual candidate"
+  },
+  "approved": false,
+  "integrated": false,
+  "physical_mouse": "NOT RUN",
+  "hardware_GPU": "NOT RUN",
+  "resident_GPU_memory": "NOT RUN",
+  "production_screen_integration": "NOT RUN",
+  "webgl_builds_this_task": 1
+}

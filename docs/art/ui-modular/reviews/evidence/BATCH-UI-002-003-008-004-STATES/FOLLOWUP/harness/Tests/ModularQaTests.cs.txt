@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using NUnit.Framework;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.TestTools;
+using UnityEngine.UI;
+public sealed class ModularQaTests
+{
+ string Evidence=>Path.GetFullPath(Path.Combine(Application.dataPath,"../docs/art/ui-modular/reviews/evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP"));
+ [UnityTest] public IEnumerator FocusedComponents()
+ {
+  var report=new StringBuilder();int sequences=0,checks=0,raycasts=0;
+  foreach(var size in new[]{new Vector2Int(960,600),new Vector2Int(1280,720)})
+  {
+   var root=new GameObject("Isolated modular QA");var view=root.AddComponent<ModularQaView>();view.Build(size.x,size.y,true);
+   for(int page=0;page<3;page++)
+   {
+    view.Show(page);for(int i=0;i<5;i++)yield return null;view.Inspect();report.AppendLine("PAGE "+page+" "+size+" scale="+view.Canvas.scaleFactor+" textFailures="+view.Failures.Count);foreach(var f in view.Facts)report.AppendLine(f);foreach(var f in view.Failures)report.AppendLine("TEXT_FAIL "+f);
+    if(page==0)
+    {
+     // Only NORMAL<->DISABLED v02 is exercised. HOVER/PRESSED are not re-tested in Editor.
+     foreach(int index in new[]{0,1,2})
+     {
+      var b=view.Buttons[index];var r=(RectTransform)b.transform;var im=(Image)b.targetGraphic;var baseline=im.canvasRenderer.GetMesh().vertices;Assert.Greater(baseline.Length,0);var position=r.position;int initial=view.Clicks;
+      var ev=new PointerEventData(EventSystem.current){button=PointerEventData.InputButton.Left};
+      for(int phase=0;phase<3;phase++)
+      {
+       b.interactable=phase!=1;yield return null;Canvas.ForceUpdateCanvases();Assert.AreEqual(view.Load(phase==1?"disabled":"normal"),im.overrideSprite);Assert.AreEqual(position,r.position);Assert.AreEqual(Vector3.one,r.localScale);
+       var vertices=im.canvasRenderer.GetMesh().vertices;Assert.AreEqual(baseline.Length,vertices.Length);for(int i=0;i<vertices.Length;i++)Assert.Less((vertices[i]-baseline[i]).sqrMagnitude,.000001f);checks++;
+       foreach(var n in new[]{Vector2.zero,new Vector2(.48f,.48f),new Vector2(-.48f,-.48f),new Vector2(.55f,0),new Vector2(0,.6f)})
+       {var p=RectTransformUtility.WorldToScreenPoint(view.Camera,r.TransformPoint(new Vector3(n.x*r.rect.width,n.y*r.rect.height)));var hits=new List<RaycastResult>();view.Raycaster.Raycast(new PointerEventData(EventSystem.current){position=p},hits);Assert.AreEqual(Mathf.Abs(n.x)<.5f&&Mathf.Abs(n.y)<.5f,hits.Exists(x=>x.gameObject==b.gameObject));raycasts++;}
+       if(phase==1){ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerDownHandler);ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerUpHandler);ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerClickHandler);Assert.AreEqual(initial,view.Clicks);}
+      }
+      ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerClickHandler);Assert.AreEqual(initial+1,view.Clicks);sequences++;report.AppendLine("DISABLED_V02_PASS size="+r.rect.size+" vertices="+baseline.Length);
+     }
+     // Short and long catalog prices fit the same real text slot.
+     var t=view.Buttons[1].GetComponentInChildren<Text>();var original=t.text;t.text=Neko.Game.Ui.Strings.Money(60);Canvas.ForceUpdateCanvases();Assert.LessOrEqual(t.preferredWidth,t.rectTransform.rect.width+.5f);t.text=original;
+    }
+    Capture(view.Camera,Path.Combine(Evidence,"editor_"+new[]{"disabled","panels_labels","cards"}[page]+"_"+size.x+"x"+size.y+".png"));
+   }
+   var rt=view.Camera.targetTexture;Object.Destroy(root);yield return null;rt.Release();Object.Destroy(rt);
+  }
+  report.AppendLine("TOTAL sequences="+sequences+" state_mesh_checks="+checks+" raycasts="+raycasts);File.WriteAllText(Path.Combine(Evidence,"editor_log.txt"),report.ToString());
+ }
+ static void Capture(Camera cam,string path){Canvas.ForceUpdateCanvases();cam.Render();var rt=cam.targetTexture;RenderTexture.active=rt;var tex=new Texture2D(rt.width,rt.height,TextureFormat.RGB24,false);tex.ReadPixels(new Rect(0,0,rt.width,rt.height),0,0);tex.Apply();RenderTexture.active=null;File.WriteAllBytes(path,tex.EncodeToPNG());Object.Destroy(tex);}
+}

@@ -1,0 +1,8 @@
+from pathlib import Path
+from PIL import Image
+import hashlib,json
+out=Path('art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA');ev=Path('docs/art/ui-modular/reviews/evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP');r={}
+for key,stem in [('panel','UI-002_panel_medium_v01'),('label','UI-003_panel_small_label_v01'),('card','UI-008_maid_card_compact_v01')]:
+ p=Path('art_working/ui_modular/blender_clean')/(stem+'.png');im=Image.open(p);size=(im.width//2,im.height//2);im.resize(size,Image.Resampling.LANCZOS).save(out/(key+'.png'));r[key]={'source':str(p),'source_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'target':size,'sha256':hashlib.sha256((out/(key+'.png')).read_bytes()).hexdigest(),'operation':'exact half dimensions, Pillow premultiplied RGBA Lanczos; source untouched'}
+ (Path('Assets/_QA_Modular_Temp/Resources/ModularQA')/(key+'.png')).write_bytes((out/(key+'.png')).read_bytes())
+(ev/'component_exports.json').write_text(json.dumps(r,indent=2)+'\n')

@@ -1,0 +1,1 @@
+mergeInto(LibraryManager.library,{ModularQaReport:function(payload){window.modularQa=JSON.parse(UTF8ToString(payload));}});
