@@ -82,6 +82,20 @@ Ao gerar as variantes, peça para manter **o mesmo contorno e tamanho da imagem 
 4. Salve como **`UI-008_maid_card_compact_v01.png`** em `raw_gpt/`, depois `blender_clean/` e `approved/` quando cabível.
 5. Teste na Unity com Suzu real atrás da moldura e textos dinâmicos em 960×600 e 1280×720. A geração de portraits é outro gate.
 
+## Atualização de 04/11/2026 — prompts corrigidos após QA da PR #47
+
+**Três v01 gerados reprovaram na auditoria** e seus arquivos devem permanecer como histórico. Os arquivos de prompt originais foram **substituídos in-place por instruções v02 completas**, com os anexos reais e nomes de destino corretos. Não sobrescrever v01 nem usar estes v02 como substitutos automáticos de artes aprovadas.
+
+| Falha comprovada | Prompt corrigido para copiar | Obrigatórios (nomes exatos dos anexos reais) | Novo PNG a salvar |
+| --- | --- | --- | --- |
+| UI-007: topo do ornamento cortado no RAW | [07_MODAL_DIALOG.md](prompts/07_MODAL_DIALOG.md) | \`UI-007_modal_dialog_v01.png\` RAW local (referência negativa para crop), \`UI-001_panel_large_v01.png\` aprovado, \`after_DG-1_dialogo-confirmar-cancelar_960x600.png\` do Git | \`UI-007_modal_dialog_v02.png\` |
+| UI-009: barras, sinais + e moedas pintados | [09_MAID_CARD_DETAIL.md](prompts/09_MAID_CARD_DETAIL.md) | \`UI-008_maid_card_compact_v01.png\` CLEAN local (referência de família), \`UI-001_panel_large_v01.png\` aprovado, \`after_EL-2_elenco_960x600.png\` do Git | \`UI-009_maid_card_detail_v02.png\` |
+| UI-022: textura do piso não seamless em 3×3 | [22_FLOOR_TILE.md](prompts/22_FLOOR_TILE.md) | \`UI-022_floor_tile_warm_oak_v01.png\` RAW local (referência negativa de bordas), \`after_SL-1_salao_960x600.png\` do Git, \`style_anchor_reference.png\` do Git | \`UI-022_floor_tile_warm_oak_v02.png\` |
+
+Cada um dos três prompts contém links reais para as referências **versionadas**, caminho completo para o arquivo **local** que deve ser anexado, um único bloco inglês autossuficiente, nome RAW/CLEAN/APPROVED e QA mínimo de revisão. Quando não tiver o arquivo local, não inventar ou substituí-lo silenciosamente por miniatura; o prompt descreve se o anexo é recuperável ou opcional.
+
+**Estado:** v02 PENDING (não gerados/não aprovados); v01 permanecem REWORK, segundo [relatório PR #47](https://github.com/NThuesen/jogos_digitais_2D/pull/47). Este ajuste de prompts é documental; **não** publica os PNGs RAW, não altera Unity nem aprova visualmente outros candidatos.
+
 ## Passo 4 — Demais componentes sem adivinhações## Passo 3B — NOVO: Maid Card minimalista para Escalação (duas apresentações aprovadas)
 
 **Decisão 04/11/2026:** o frame já gerado `UI-008_maid_card_compact_v01.png` permanece candidato para apresentação **detalhada em 150×206**, mas não é legível universalmente a **0,62× (~93×128)**. O novo frame de Escalação é **outro PNG**, não um v02 da arte detalhada. O conceito de duas apresentações está aprovado; nenhum dos PNGs UI-008 foi aprovado ou integrado.
