@@ -1,0 +1,54 @@
+{
+  "UI-007_modal_dialog_v02.png": {
+    "raw_sha256": "f0a5c10196ee38b4db32ceaf5c262876af7f164a00be59761eb10ddc74bd1a87",
+    "raw_bytes": 1905995,
+    "clean_sha256": "2b20380f904a8f68f7ac94b7d4e7116dbdf41f4bfdd1b9a817cf78ccd2c38ca5",
+    "clean_bytes": 1696581,
+    "dimensions": [
+      1733,
+      908
+    ],
+    "raw_mode": "RGBA",
+    "operation": "alpha only: remove alpha1-3 >6px from alpha>=8; solidify alpha250-254. No RGB/canvas/geometry changes.",
+    "removed_alpha1_3_pixels": 2261,
+    "solidified_pixels": 1252807
+  },
+  "UI-009_maid_card_detail_v02.png": {
+    "raw_sha256": "5535d2a590584ee8cd523b938ea7e7ba42890896f165a5166fab765601d48a5c",
+    "raw_bytes": 1813548,
+    "clean_sha256": "c812f267f1371bf33c5d4cf5178cab5af560db1fa8d5d1a140b0c0e894cbd6d0",
+    "clean_bytes": 1799029,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "raw_mode": "RGBA",
+    "operation": "alpha only: remove alpha1-3 >6px from alpha>=8; solidify alpha250-254. No RGB/canvas/geometry changes.",
+    "removed_alpha1_3_pixels": 1671,
+    "solidified_pixels": 1116945
+  },
+  "UI-022_floor_tile_warm_oak_v03.png": {
+    "raw_sha256": "fec2872bab7e181d4f2a409c3b4454e53936ddfe8d1232061eaffceacf6a95da",
+    "raw_bytes": 1001821,
+    "clean_sha256": "fec2872bab7e181d4f2a409c3b4454e53936ddfe8d1232061eaffceacf6a95da",
+    "clean_bytes": 1001821,
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "raw_mode": "RGB",
+    "operation": "byte-identical copy; opaque RGB, no cleanup needed",
+    "removed_alpha1_3_pixels": 0,
+    "solidified_pixels": 0
+  },
+  "UI-022_floor_tile_warm_oak_v03_tone34.png": {
+    "derived_from": "UI-022_floor_tile_warm_oak_v03.png (raw/CLEAN unchanged)",
+    "operation": "per-pixel sRGB blend 34% of (0.72,0.58,0.46) over RGB; no resampling, no geometry change; seamless/periodicity preserved",
+    "sha256": "42a4658f0fc1b641afddab670128686feff4ce817638b04c5cbc38300757fecb",
+    "bytes": 873267,
+    "dimensions": [
+      1024,
+      1024
+    ]
+  }
+}

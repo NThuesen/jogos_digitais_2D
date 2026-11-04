@@ -1,0 +1,18 @@
+using UnityEditor;
+using UnityEngine;
+public static class V02QaSetup
+{
+ static void Sprite(string n)
+ {
+  var im=(TextureImporter)AssetImporter.GetAtPath("Assets/_QA_V02_Temp/Resources/ModularQA/"+n+".png");
+  im.textureType=TextureImporterType.Sprite;im.spriteImportMode=SpriteImportMode.Single;im.spritePixelsPerUnit=100;im.npotScale=TextureImporterNPOTScale.None;im.maxTextureSize=4096;im.mipmapEnabled=false;im.isReadable=false;im.alphaIsTransparency=true;im.textureCompression=TextureImporterCompression.Uncompressed;im.wrapMode=TextureWrapMode.Clamp;im.filterMode=FilterMode.Bilinear;
+  var s=new TextureImporterSettings();im.ReadTextureSettings(s);s.spriteMeshType=SpriteMeshType.FullRect;im.SetTextureSettings(s);im.SaveAndReimport();
+ }
+ public static void Configure()
+ {
+  Sprite("modal");Sprite("detail");Sprite("menu");
+  var f=(TextureImporter)AssetImporter.GetAtPath("Assets/_QA_V02_Temp/Resources/ModularQA/floor.png");
+  f.textureType=TextureImporterType.Default;f.npotScale=TextureImporterNPOTScale.None;f.maxTextureSize=2048;f.mipmapEnabled=true;f.alphaSource=TextureImporterAlphaSource.None;f.textureCompression=TextureImporterCompression.Uncompressed;f.wrapMode=TextureWrapMode.Repeat;f.filterMode=FilterMode.Bilinear;f.SaveAndReimport();
+  AssetDatabase.SaveAssets();
+ }
+}

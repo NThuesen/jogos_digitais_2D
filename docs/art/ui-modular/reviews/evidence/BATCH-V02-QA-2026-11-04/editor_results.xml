@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-04 20:13:38Z" end-time="2026-11-04 20:13:40Z" duration="2,1241637">
+  <test-suite type="TestSuite" id="1099" name="Neko Maid Inc" fullname="Neko Maid Inc" runstate="Runnable" testcasecount="77" result="Failed" site="Child" start-time="2026-11-04 20:13:38Z" end-time="2026-11-04 20:13:40Z" duration="2.124164" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1098" name="V02Qa.Tests.dll" fullname="C:/dev/PocketSlop-Games/ui-modular-v02/Library/ScriptAssemblies/V02Qa.Tests.dll" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-11-04 20:13:38Z" end-time="2026-11-04 20:13:40Z" duration="2.103419" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="33244" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestFixture" id="1096" name="V02QaTests" fullname="V02QaTests" classname="V02QaTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-11-04 20:13:38Z" end-time="2026-11-04 20:13:40Z" duration="2.100058" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-case id="1097" name="V02Candidates" fullname="V02QaTests.V02Candidates" methodname="V02Candidates" classname="V02QaTests" runstate="Runnable" seed="1913554843" result="Failed" start-time="2026-11-04 20:13:38Z" end-time="2026-11-04 20:13:40Z" duration="2.082896" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  See evidence JSON
+  Expected: 0
+  But was:  6
+]]></message>
+            <stack-trace><![CDATA[at V02QaTests+<V02Candidates>d__4.MoveNext () [0x00541] in C:\dev\PocketSlop-Games\ui-modular-v02\Assets\_QA_V02_Temp\Tests\V02QaTests.cs:39
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@1405238725ab\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Saving results to: C:/Users/nicho/AppData/LocalLow/SlipperyZlope Games/Neko Maid Inc\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,177 @@
+{
+    "environment": "Unity Editor PlayMode, render textures, simulated pointer; not physical mouse; no WebGL",
+    "pages": [
+        {
+            "page": "modal",
+            "width": 960,
+            "height": 600,
+            "click_checks": 4,
+            "raycast_checks": 8,
+            "failures": [
+                "Confirmar contratação de Suzu agora?",
+                "Confirmar contratação de Suzu agora?"
+            ],
+            "facts": [
+                "Título ABAIXO do laço (teste) size=540x282,9 title_center_frac_y=0,35",
+                "Título na zona original (comparação) size=540x282,9 title_center_frac_y=0,24",
+                "TEXT Confirmar contratação de Suzu agora? font=20 rect=(334.80, 30.00) preferred=354x42 fits=False",
+                "TEXT Suzu está pronta para o próximo turno.|Custo: 900 ¥. Prévia isolada sem transação. font=16 rect=(378.00, 64.00) preferred=324x36 fits=True",
+                "TEXT Cancelar font=14 rect=(130.00, 34.00) preferred=55,2x14,4 fits=True",
+                "TEXT Confirmar font=14 rect=(130.00, 34.00) preferred=63,60001x14,4 fits=True",
+                "TEXT Confirmar contratação de Suzu agora? font=20 rect=(334.80, 30.00) preferred=354x42 fits=False",
+                "TEXT Suzu está pronta para o próximo turno.|Custo: 900 ¥. Prévia isolada sem transação. font=16 rect=(378.00, 64.00) preferred=324x36 fits=True",
+                "TEXT Cancelar font=14 rect=(130.00, 34.00) preferred=55,2x14,4 fits=True",
+                "TEXT Confirmar font=14 rect=(130.00, 34.00) preferred=63,60001x14,4 fits=True"
+            ],
+            "screenshot": "editor_modal_960x600.png"
+        },
+        {
+            "page": "detail",
+            "width": 960,
+            "height": 600,
+            "click_checks": 4,
+            "raycast_checks": 8,
+            "failures": [
+                "Hoshino Kagura-sama (nome longo)"
+            ],
+            "facts": [
+                "REAL_SUZU=Maids/suzu_walk idle=6",
+                "Retrato alinhado ao fundo da janela portrait_h=210,2 aperture=(166.29, 214.45) lowered=False",
+                "Retrato reduzido; nome e atributos longos portrait_h=167,3 aperture=(166.29, 214.45) lowered=True",
+                "TEXT Suzu font=20 rect=(288.28, 45.70) preferred=46,8x20,4 fits=True",
+                "TEXT Atendimento 75|Cozinha 60|Carisma 50|Salário 900 ¥ font=15 rect=(288.28, 133.59) preferred=108x67,2 fits=True",
+                "TEXT Contratar font=14 rect=(120.00, 30.00) preferred=60,00001x14,4 fits=True",
+                "TEXT Detalhes font=14 rect=(120.00, 30.00) preferred=55,2x14,4 fits=True",
+                "TEXT Hoshino Kagura-sama (nome longo) font=20 rect=(288.28, 45.70) preferred=331,2x42 fits=False",
+                "TEXT Atendimento 75|Cozinha 60|Carisma 50|Resistência 40|Salário 1.250 ¥|Traço: genki, cuidadosa font=15 rect=(288.28, 133.59) preferred=163,2x100,8 fits=True",
+                "TEXT Contratar font=14 rect=(120.00, 30.00) preferred=60,00001x14,4 fits=True",
+                "TEXT Detalhes font=14 rect=(120.00, 30.00) preferred=55,2x14,4 fits=True"
+            ],
+            "screenshot": "editor_detail_960x600.png"
+        },
+        {
+            "page": "detail_fringe",
+            "width": 960,
+            "height": 600,
+            "click_checks": 0,
+            "raycast_checks": 0,
+            "failures": [],
+            "facts": [
+                "Fringe probe: frame at 900x600 over cyan(.1,.9,.9)"
+            ],
+            "screenshot": "editor_detail_fringe_960x600.png"
+        },
+        {
+            "page": "floor_scale",
+            "width": 960,
+            "height": 600,
+            "click_checks": 0,
+            "raycast_checks": 0,
+            "failures": [],
+            "facts": [
+                "REAL_SUZU=Maids/suzu_walk idle=6",
+                "Floor via RawImage uvRect with Repeat; tile 128/192/256 canvas px (1280x720 reference)"
+            ],
+            "screenshot": "editor_floor_scale_960x600.png"
+        },
+        {
+            "page": "floor_context",
+            "width": 960,
+            "height": 600,
+            "click_checks": 0,
+            "raycast_checks": 0,
+            "failures": [],
+            "facts": [
+                "REAL_SUZU=Maids/suzu_walk idle=6",
+                "Overlay QA color (.72,.58,.46,a=.34) only evaluates a possible desaturation"
+            ],
+            "screenshot": "editor_floor_context_960x600.png"
+        },
+        {
+            "page": "modal",
+            "width": 1280,
+            "height": 720,
+            "click_checks": 4,
+            "raycast_checks": 8,
+            "failures": [
+                "Confirmar contratação de Suzu agora?",
+                "Confirmar contratação de Suzu agora?"
+            ],
+            "facts": [
+                "Título ABAIXO do laço (teste) size=540x282,9 title_center_frac_y=0,35",
+                "Título na zona original (comparação) size=540x282,9 title_center_frac_y=0,24",
+                "TEXT Confirmar contratação de Suzu agora? font=20 rect=(334.80, 30.00) preferred=369x45 fits=False",
+                "TEXT Suzu está pronta para o próximo turno.|Custo: 900 ¥. Prévia isolada sem transação. font=16 rect=(378.00, 64.00) preferred=330x35 fits=True",
+                "TEXT Cancelar font=14 rect=(130.00, 34.00) preferred=60x16 fits=True",
+                "TEXT Confirmar font=14 rect=(130.00, 34.00) preferred=67x16 fits=True",
+                "TEXT Confirmar contratação de Suzu agora? font=20 rect=(334.80, 30.00) preferred=369x45 fits=False",
+                "TEXT Suzu está pronta para o próximo turno.|Custo: 900 ¥. Prévia isolada sem transação. font=16 rect=(378.00, 64.00) preferred=330x35 fits=True",
+                "TEXT Cancelar font=14 rect=(130.00, 34.00) preferred=60x16 fits=True",
+                "TEXT Confirmar font=14 rect=(130.00, 34.00) preferred=67x16 fits=True"
+            ],
+            "screenshot": "editor_modal_1280x720.png"
+        },
+        {
+            "page": "detail",
+            "width": 1280,
+            "height": 720,
+            "click_checks": 4,
+            "raycast_checks": 8,
+            "failures": [
+                "Hoshino Kagura-sama (nome longo)"
+            ],
+            "facts": [
+                "REAL_SUZU=Maids/suzu_walk idle=6",
+                "Retrato alinhado ao fundo da janela portrait_h=210,2 aperture=(166.29, 214.45) lowered=False",
+                "Retrato reduzido; nome e atributos longos portrait_h=167,3 aperture=(166.29, 214.45) lowered=True",
+                "TEXT Suzu font=20 rect=(288.28, 45.70) preferred=47x22 fits=True",
+                "TEXT Atendimento 75|Cozinha 60|Carisma 50|Salário 900 ¥ font=15 rect=(288.28, 133.59) preferred=110x68 fits=True",
+                "TEXT Contratar font=14 rect=(120.00, 30.00) preferred=64x16 fits=True",
+                "TEXT Detalhes font=14 rect=(120.00, 30.00) preferred=60x16 fits=True",
+                "TEXT Hoshino Kagura-sama (nome longo) font=20 rect=(288.28, 45.70) preferred=344x45 fits=False",
+                "TEXT Atendimento 75|Cozinha 60|Carisma 50|Resistência 40|Salário 1.250 ¥|Traço: genki, cuidadosa font=15 rect=(288.28, 133.59) preferred=167x102 fits=True",
+                "TEXT Contratar font=14 rect=(120.00, 30.00) preferred=64x16 fits=True",
+                "TEXT Detalhes font=14 rect=(120.00, 30.00) preferred=60x16 fits=True"
+            ],
+            "screenshot": "editor_detail_1280x720.png"
+        },
+        {
+            "page": "detail_fringe",
+            "width": 1280,
+            "height": 720,
+            "click_checks": 0,
+            "raycast_checks": 0,
+            "failures": [],
+            "facts": [
+                "Fringe probe: frame at 900x600 over cyan(.1,.9,.9)"
+            ],
+            "screenshot": "editor_detail_fringe_1280x720.png"
+        },
+        {
+            "page": "floor_scale",
+            "width": 1280,
+            "height": 720,
+            "click_checks": 0,
+            "raycast_checks": 0,
+            "failures": [],
+            "facts": [
+                "REAL_SUZU=Maids/suzu_walk idle=6",
+                "Floor via RawImage uvRect with Repeat; tile 128/192/256 canvas px (1280x720 reference)"
+            ],
+            "screenshot": "editor_floor_scale_1280x720.png"
+        },
+        {
+            "page": "floor_context",
+            "width": 1280,
+            "height": 720,
+            "click_checks": 0,
+            "raycast_checks": 0,
+            "failures": [],
+            "facts": [
+                "REAL_SUZU=Maids/suzu_walk idle=6",
+                "Overlay QA color (.72,.58,.46,a=.34) only evaluates a possible desaturation"
+            ],
+            "screenshot": "editor_floor_context_1280x720.png"
+        }
+    ]
+}

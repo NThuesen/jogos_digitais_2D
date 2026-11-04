@@ -1,0 +1,25 @@
+# Conservative alpha-only CLEAN for the v02/v03 RAWs (same rule as process_new_batch.py.txt, PR #47).
+# Never overwrites an existing CLEAN; RGB and alpha 4..249 unchanged.
+from pathlib import Path
+import json,hashlib,shutil,sys
+from PIL import Image
+import numpy as np
+from scipy import ndimage as ndi
+SRC=Path(sys.argv[1]); ART=SRC/'art_working/ui_modular'; OUT=Path(sys.argv[2]); report={}
+def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+for name in ['UI-007_modal_dialog_v02.png','UI-009_maid_card_detail_v02.png','UI-022_floor_tile_warm_oak_v03.png']:
+    raw=ART/'raw_gpt'/name; clean=ART/'blender_clean'/name
+    assert not clean.exists(), f'CLEAN exists: {name}'
+    im=Image.open(raw); mode=im.mode; a=np.array(im.convert('RGBA')); al=a[...,3]
+    if mode=='RGB' or (al==255).all():
+        shutil.copyfile(raw,clean); op='byte-identical copy; opaque RGB, no cleanup needed'; rem=sol=0; c=a
+    else:
+        dist=ndi.distance_transform_edt(al<8); remove=(al>0)&(al<=3)&(dist>6); solid=(al>=250)&(al<255)
+        c=a.copy(); c[remove,3]=0; c[solid,3]=255; Image.fromarray(c).save(clean)
+        op='alpha only: remove alpha1-3 >6px from alpha>=8; solidify alpha250-254. No RGB/canvas/geometry changes.'; rem=int(remove.sum()); sol=int(solid.sum())
+        b=np.array(Image.open(clean).convert('RGBA')); assert np.array_equal(b[...,:3],a[...,:3]); assert np.array_equal(b[(al>=4)&(al<250),3],al[(al>=4)&(al<250)])
+    report[name]={'raw_sha256':sha(raw),'raw_bytes':raw.stat().st_size,'clean_sha256':sha(clean),'clean_bytes':clean.stat().st_size,'dimensions':list(im.size),'raw_mode':mode,'operation':op,'removed_alpha1_3_pixels':rem,'solidified_pixels':sol}
+    shutil.copyfile(clean,OUT/name)
+    if name!='UI-022_floor_tile_warm_oak_v03.png': shutil.copyfile(raw,OUT/'raw'/name)
+(OUT/'clean_report.json').write_text(json.dumps(report,indent=2)+'\n')
+print(json.dumps(report,indent=1))
