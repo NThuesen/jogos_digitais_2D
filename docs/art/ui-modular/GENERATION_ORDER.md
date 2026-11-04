@@ -2,6 +2,9 @@
 
 **Status vigente em 04/11/2026:** UI-001 e COMPACT NORMAL mantêm APPROVED. HOVER v02, PRESSED v01, DISABLED v02, UI-002 e UI-003 (com restrições) foram aprovados expressamente pelo responsável; UI-008 aceita somente em 150×206 detalhado, REWORK em 0,62×. [PNGs finais e handoff](approved/README.md). Nenhum integrado. LINEUP MINIMAL PENDING, não gerada. O objetivo é uma linguagem visual consistente, não completar 100 imagens por completude.
 
+## Prioridade atual de correção — v02 após QA da PR #47
+
+**Novos prompts já corrigidos in-place**: [UI-007 modal completo sem corte](prompts/07_MODAL_DIALOG.md) → `UI-007_modal_dialog_v02.png`; [UI-009 detalhe sem barras/símbolos pintados](prompts/09_MAID_CARD_DETAIL.md) → `UI-009_maid_card_detail_v02.png` (**opcional**, pois UI-008 detalhado já existe); [UI-022 piso seamless](prompts/22_FLOOR_TILE.md) → `UI-022_floor_tile_warm_oak_v02.png`. Os anexos reais e respectivos caminhos estão nos prompts e no [tutorial](TUTORIAL.md#atualização-de-04112026--prompts-corrigidos-após-qa-da-pr-47). Preserve v01 REWORK; v02 não gerados e não aprovados. Não integrar antes de novo QA. O restante da ordem abaixo é histórico/planejado, não instrução para regerar os assets já auditados.
 
 ## Histórico de geração — estados da UI-004 compacta
 
