@@ -40,6 +40,9 @@ namespace Neko.Game.Ui
             tagShadow.effectDistance = new Vector2(1.5f, -2f);
             tagline.rectTransform.sizeDelta = new Vector2(760f, 30f);
 
+            // The subtitle sits on the busiest part of the café: a soft dark plate keeps it readable.
+            Plate(tagline.rectTransform, new Vector2(520f, 36f), 0.6f, tagY + 3f);
+
             Parade();
             Buttons();
 
@@ -54,6 +57,9 @@ namespace Neko.Game.Ui
             credits.rectTransform.sizeDelta = new Vector2(330f, 92f);
             credits.alignment = TextAnchor.UpperRight;
 
+            Plate(_records.rectTransform, new Vector2(500f, 96f), 0.55f, null);
+            Plate(credits.rectTransform, new Vector2(350f, 78f), 0.55f, null);
+
             // Both corners sit on the illustrated café, so the small print gets a drop shadow.
             foreach (var small in new[] { _records, credits })
             {
@@ -61,6 +67,20 @@ namespace Neko.Game.Ui
                 drop.effectColor = new Color(0f, 0f, 0f, 0.75f);
                 drop.effectDistance = new Vector2(1f, -1.5f);
             }
+        }
+
+        /// <summary>A soft dark plate directly behind a label, matching its anchor, pivot and position.</summary>
+        private static void Plate(RectTransform label, Vector2 size, float alpha, float? y)
+        {
+            var plate = UiKit.Panel(label.parent, size, Palette.WithAlpha(Palette.Ink, alpha), 0.3f, exact: true);
+            plate.GetComponent<Image>().raycastTarget = false;
+            plate.anchorMin = label.anchorMin;
+            plate.anchorMax = label.anchorMax;
+            plate.pivot = label.pivot;
+            plate.anchoredPosition = y.HasValue
+                ? new Vector2(label.anchoredPosition.x, y.Value)
+                : label.anchoredPosition + new Vector2(label.pivot.x < 0.5f ? -10f : 10f, label.pivot.y < 0.5f ? -6f : 6f);
+            plate.SetSiblingIndex(label.GetSiblingIndex());
         }
 
         /// <summary>
@@ -190,17 +210,18 @@ namespace Neko.Game.Ui
         {
             var column = UiKit.Column(transform, 12f, 0f);
             UiKit.Anchor(column, new Vector2(0f, 0f), new Vector2(60f, 118f));
-            column.sizeDelta = new Vector2(420f, 136f);
+            column.sizeDelta = new Vector2(420f, 110f);
 
-            var play = Scenery.Plank(column, Strings.Get("menu.play"), new Vector2(380f, 68f),
-                () => OnPlay?.Invoke(), Typeface.Heading, Logo.Brass);
+            // UI-004 compact was approved at heights 44 and 54 (the slice absorbs the width), so the
+            // primary action uses 54 and the secondary 44 instead of the old 68/48 planks.
+            var play = UiArt.StateButton(column, Strings.Get("menu.play"), new Vector2(300f, 54f),
+                () => OnPlay?.Invoke(), "btn1", Typeface.Body);
             _continueLabel = play.GetComponentInChildren<Text>();
-            _continueLabel.color = Palette.Hex("#4A3220");
 
-            Scenery.Plank(column, Strings.Get("menu.newgame"), new Vector2(300f, 48f), () =>
+            UiArt.StateButton(column, Strings.Get("menu.newgame"), new Vector2(220f, 44f), () =>
                 Root.Dialog(Strings.Get("menu.newgame"), Strings.Get("menu.newgameask"),
                     Strings.Get("dialog.yes"), () => OnNewGame?.Invoke(),
-                    Strings.Get("dialog.no")), Typeface.Small);
+                    Strings.Get("dialog.no")), "btn2", Typeface.Small);
         }
 
         private GameSession _session;
