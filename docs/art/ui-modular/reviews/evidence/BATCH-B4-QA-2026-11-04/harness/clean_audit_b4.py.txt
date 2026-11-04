@@ -1,0 +1,54 @@
+import sys,json,hashlib,shutil
+from pathlib import Path
+from PIL import Image,ImageDraw
+import numpy as np
+from scipy import ndimage as ndi
+SRC=Path('jogos_digitais_2D/art_working/ui_modular'); OUT=Path('ui-modular-b4/docs/art/ui-modular/incoming/BATCH-B4'); (OUT/'raw').mkdir(parents=True,exist_ok=True); (OUT/'exports').mkdir(exist_ok=True)
+NEW=['UI-005_button_secondary_disabled_v01.png','UI-005_button_secondary_hover_v01.png','UI-005_button_secondary_pressed_v01.png','UI-006_tab_active_v01.png','UI-006_tab_hover_v01.png','UI-010_rarity_badge_rare_v01.png','UI-010_rarity_badge_epic_v01.png','UI-010_rarity_badge_legendary_v01.png','UI-017_shop_item_frame_v02.png','UI-018_balance_row_total_v01.png','UI-019_dialog_tail_v01.png','UI-025_rarity_card_frame_rare_v01.png','UI-025_rarity_card_frame_epic_v01.png','UI-025_rarity_card_frame_legendary_v01.png']
+REF={'UI-005':'UI-005_button_secondary_normal_v01.png','UI-006':'UI-006_tab_inactive_v01.png','UI-010':'UI-010_rarity_badge_common_v01.png','UI-017':'UI-017_shop_item_frame_v01.png','UI-018':'UI-018_balance_row_normal_v01.png','UI-019':'UI-019_dialog_panel_v01.png','UI-025':'UI-025_rarity_card_frame_common_v01.png'}
+def box(m):
+    ys,xs=np.where(m); return [int(xs.min()),int(ys.min()),int(xs.max()+1),int(ys.max()+1)]
+def rs(im,size): return im.convert('RGBa').resize(size,Image.Resampling.LANCZOS).convert('RGBA')
+def windows(al):
+    lab,k=ndi.label(al==0); bd=set(np.unique(np.concatenate([lab[0],lab[-1],lab[:,0],lab[:,-1]])))
+    return [(int((lab==i).sum()),box(lab==i)) for i in range(1,k+1) if i not in bd and (lab==i).sum()>1000]
+rep={}
+for n in NEW:
+    raw=SRC/'raw_gpt'/n; im=Image.open(raw); a=np.array(im.convert('RGBA')); al=a[...,3]; H,W=al.shape
+    strong=al>=8; dist=ndi.distance_transform_edt(~strong); dust=(al>0)&(al<=3)&(dist>6); sol=(al>=250)&(al<255)
+    b=box(al>=128); lab,k=ndi.label(al>=128)
+    r=dict(size=[W,H],mode=im.mode,bytes=raw.stat().st_size,sha=hashlib.sha256(raw.read_bytes()).hexdigest(),bbox128=b,vis=[b[2]-b[0],b[3]-b[1]],margin_pct=[round(b[0]/W*100,1),round(b[1]/H*100,1),round((W-b[2])/W*100,1),round((H-b[3])/H*100,1)],
+      edge_ge8=int((al[0]>=8).sum()+(al[-1]>=8).sum()+(al[:,0]>=8).sum()+(al[:,-1]>=8).sum()),edge_gt0=int((al[0]>0).sum()+(al[-1]>0).sum()+(al[:,0]>0).sum()+(al[:,-1]>0).sum()),dust=int(dust.sum()),solidify=int(sol.sum()),comps128=int(k),
+      windows=windows(al),halo=int(((a[...,:3].min(2)>220)&(al>8)&(al<240)).sum()),opaque255=int((al==255).sum()),alpha_zero=round(float((al==0).mean()),3))
+    ref=REF[n[:6]]; rp=SRC/'blender_clean'/ref
+    ra=np.array(Image.open(rp).convert('RGBA')); rb=box(ra[...,3]>=128)
+    r['ref']=ref; r['ref_vis']=[rb[2]-rb[0],rb[3]-rb[1]]; r['vis_ratio_vs_ref']=[round(r['vis'][0]/r['ref_vis'][0],3),round(r['vis'][1]/r['ref_vis'][1],3)]
+    r['aspect_vis']=round(r['vis'][0]/r['vis'][1],3); r['aspect_ref']=round(r['ref_vis'][0]/r['ref_vis'][1],3)
+    # mask IoU after cropping both to bbox and resizing ref mask to new bbox size
+    m1=(al>=128)[b[1]:b[3],b[0]:b[2]]; m2=Image.fromarray(((ra[...,3]>=128)[rb[1]:rb[3],rb[0]:rb[2]]*255).astype('uint8')).resize((m1.shape[1],m1.shape[0]),Image.NEAREST); m2=np.array(m2)>127
+    r['silhouette_iou_vs_ref']=round(float((m1&m2).sum()/(m1|m2).sum()),4)
+    # mean visible RGB vs ref
+    ma=al>=128; rm=ra[...,3]>=128; r['mean_rgb']=a[ma][:,:3].mean(0).round(1).tolist(); r['mean_rgb_ref']=ra[rm][:,:3].mean(0).round(1).tolist()
+    # CLEAN
+    clean=SRC/'blender_clean'/n; assert not clean.exists(),n
+    if im.mode=='RGB' or (al==255).all(): shutil.copyfile(raw,clean); op='copy (opaque)'
+    else:
+        c=a.copy(); c[dust,3]=0; c[sol,3]=255; Image.fromarray(c).save(clean); op='alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified'
+        q=np.array(Image.open(clean).convert('RGBA')); assert np.array_equal(q[...,:3],a[...,:3]); assert np.array_equal(q[(al>=4)&(al<250),3],al[(al>=4)&(al<250)])
+    shutil.copyfile(clean,OUT/n); shutil.copyfile(raw,OUT/'raw'/n); r['op']=op; r['clean_sha']=hashlib.sha256(clean.read_bytes()).hexdigest()
+    # export: crop bbox+8 and half size (UI-025: full canvas half like UI-008)
+    ci=Image.open(clean).convert('RGBA'); ca=np.array(ci)[...,3]; bb=box(ca>=8)
+    if n.startswith('UI-025'): crop=[0,0,W,H]
+    else: crop=[max(0,bb[0]-8),max(0,bb[1]-8),min(W,bb[2]+8),min(H,bb[3]+8)]
+    c2=ci.crop(crop); ex=rs(c2,(round(c2.width/2),round(c2.height/2))); ex.save(OUT/'exports'/n); r['export']=dict(dims=list(ex.size),crop=crop,sha=hashlib.sha256((OUT/'exports'/n).read_bytes()).hexdigest())
+    rep[n]=r
+json.dump(rep,open(OUT/'audit.json','w'),indent=1)
+for n,r in rep.items(): print(n,r['size'],r['mode'],'vis',r['vis'],'asp',r['aspect_vis'],'/ref',r['aspect_ref'],'visratio',r['vis_ratio_vs_ref'],'iou',r['silhouette_iou_vs_ref'],'margins',r['margin_pct'],'edge8',r['edge_ge8'],'dust',r['dust'],'comps',r['comps128'],'win',[(w[0],w[1]) for w in r['windows']][:2],'halo',r['halo'])
+# contact sheet: each new next to its ref
+sheet=Image.new('RGB',(1500,1900),(40,36,44)); d=ImageDraw.Draw(sheet)
+for i,n in enumerate(NEW):
+    for j,p in enumerate([SRC/'blender_clean'/REF[n[:6]],OUT/n]):
+        im=Image.open(p).convert('RGBA'); t=Image.new('RGBA',im.size,(120,100,125,255)); t.alpha_composite(im); t=t.convert('RGB'); t.thumbnail((360,260))
+        x=(i%2)*750+j*375+8 if False else (i%2)*750+j*375+8; y=(i//2)*260+22; sheet.paste(t,(x,y))
+    d.text(((i%2)*750+8,(i//2)*260+4),n[:60]+'  (ref left, new right)',fill='white')
+sheet.crop((0,0,1500,(len(NEW)+1)//2*260+30)).save(sys.argv[1]+'/b4_contact.png')

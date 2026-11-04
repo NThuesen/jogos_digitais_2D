@@ -1,0 +1,113 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using Neko.Game.Art;
+using Neko.Game.Ui;
+using Neko.Game.View;
+using Neko.Sim.Maids;
+public sealed class B4QaView:MonoBehaviour
+{
+ public Canvas Canvas;public Camera Camera;public GraphicRaycaster Raycaster;public int Clicks;
+ public readonly List<Button> Buttons=new List<Button>();public readonly List<Text> Content=new List<Text>();public readonly List<string> Failures=new List<string>();public readonly List<string> Facts=new List<string>();
+ RectTransform pageRoot;Color Ink=new Color(.23f,.16f,.10f);public static readonly string[] Pages={"buttons","tabs","badges","rarity","rows","tail"};
+ public void Build(int width,int height)
+ {
+  UiKit.Sprites=new SpriteFactory();var cg=new GameObject("QA Camera");cg.transform.SetParent(transform);Camera=cg.AddComponent<Camera>();Camera.orthographic=true;Camera.transform.position=new Vector3(0,0,-10);Camera.clearFlags=CameraClearFlags.SolidColor;Camera.backgroundColor=new Color(.18f,.14f,.18f);Camera.targetTexture=new RenderTexture(width,height,24,RenderTextureFormat.ARGB32);
+  var g=new GameObject("Canvas",typeof(RectTransform));g.transform.SetParent(transform);Canvas=g.AddComponent<Canvas>();Canvas.renderMode=RenderMode.ScreenSpaceCamera;Canvas.worldCamera=Camera;Canvas.planeDistance=5;var sc=g.AddComponent<CanvasScaler>();sc.uiScaleMode=CanvasScaler.ScaleMode.ScaleWithScreenSize;sc.referenceResolution=new Vector2(1280,720);sc.matchWidthOrHeight=1;Raycaster=g.AddComponent<GraphicRaycaster>();UiKit.EnsureEventSystem();
+ }
+ Sprite Load(string n)=>Resources.Load<Sprite>("ModularQA/"+n);
+ RectTransform Rect(Transform p,string name,Vector2 size,Vector2 pos){var r=new GameObject(name,typeof(RectTransform)).GetComponent<RectTransform>();r.SetParent(p,false);r.sizeDelta=size;r.anchoredPosition=pos;return r;}
+ Image Solid(Transform p,Vector2 size,Vector2 pos,Color c){var r=Rect(p,"solid",size,pos);var im=r.gameObject.AddComponent<Image>();im.color=c;im.raycastTarget=false;return im;}
+ Image Art(Transform p,Sprite s,Vector2 size,Vector2 pos,bool sliced=false){var r=Rect(p,s==null?"art":s.name,size,pos);var im=r.gameObject.AddComponent<Image>();im.sprite=s;if(sliced){im.type=Image.Type.Sliced;im.pixelsPerUnitMultiplier=s.rect.height/size.y;}else im.preserveAspect=true;im.raycastTarget=false;return im;}
+ Text Label(Transform p,string text,Vector2 size,Vector2 pos,int font=16,bool content=false,bool light=false,TextAnchor anchor=TextAnchor.MiddleCenter){var t=UiKit.Label(p,text,font,light?new Color(.98f,.90f,.77f):Ink,bold:true);t.rectTransform.sizeDelta=size;t.rectTransform.anchoredPosition=pos;t.horizontalOverflow=HorizontalWrapMode.Wrap;t.verticalOverflow=VerticalWrapMode.Truncate;t.alignment=anchor;t.raycastTarget=false;if(content)Content.Add(t);return t;}
+ Button Native(Transform p,string text,Vector2 size,Vector2 pos){var r=Rect(p,text,size,pos);var im=r.gameObject.AddComponent<Image>();im.color=new Color(.62f,.36f,.27f);var b=r.gameObject.AddComponent<Button>();b.targetGraphic=im;b.transition=Selectable.Transition.None;Label(r,text,size,Vector2.zero,14,true,true);b.onClick.AddListener(()=>Clicks++);Buttons.Add(b);return b;}
+ public void Show(int page)
+ {
+  if(pageRoot!=null){pageRoot.gameObject.SetActive(false);Destroy(pageRoot.gameObject);}Buttons.Clear();Content.Clear();Facts.Clear();Failures.Clear();pageRoot=Rect(Canvas.transform,"Page "+page,new Vector2(1120,630),Vector2.zero);
+  switch(page){case 0:ButtonsPage();break;case 1:Tabs();break;case 2:Badges();break;case 3:Rarity();break;case 4:Rows();break;case 5:Tail();break;}
+  Label(pageRoot,"QA lote B4 | "+Pages[page]+" | isolado, sem integração",new Vector2(1060,30),new Vector2(0,310),20,false,true);
+ }
+ // live SpriteSwap button: normal/hover/pressed/disabled
+ Button StateButton(Vector2 size,Vector2 pos,string text,string tag)
+ {
+  var r=Rect(pageRoot,"sec "+tag,size,pos);var im=r.gameObject.AddComponent<Image>();im.sprite=Load("sec_normal");im.type=Image.Type.Sliced;im.pixelsPerUnitMultiplier=Load("sec_normal").rect.height/size.y;
+  var b=r.gameObject.AddComponent<Button>();b.targetGraphic=im;b.transition=Selectable.Transition.SpriteSwap;var ss=new SpriteState{highlightedSprite=Load("sec_hover"),pressedSprite=Load("sec_pressed"),selectedSprite=Load("sec_normal"),disabledSprite=Load("sec_disabled")};b.spriteState=ss;b.onClick.AddListener(()=>Clicks++);Buttons.Add(b);
+  Label(r,text,new Vector2(size.x*.6f,size.y*.6f),Vector2.zero,18,true);return b;
+ }
+ void ButtonsPage()
+ {
+  Solid(pageRoot,new Vector2(1060,540),new Vector2(0,-10),new Color(.86f,.80f,.72f));string[] keys={"sec_normal","sec_hover","sec_pressed","sec_disabled"};string[] names={"NORMAL (aprovado? não: PENDING)","HOVER","PRESSED","DISABLED"};
+  var sizes=new[]{new Vector2(120,44),new Vector2(150,44),new Vector2(180,50),new Vector2(230,54)};string[] texts={"Voltar","Cancelar","Detalhes","Continuar"};
+  for(int s=0;s<4;s++)for(int k=0;k<4;k++){float x=(k-1.5f)*250;float y=215-s*70;var im=Art(pageRoot,Load(keys[k]),sizes[s],new Vector2(x,y),true);Label(im.transform,texts[s],new Vector2(sizes[s].x*.6f,sizes[s].y*.6f),Vector2.zero,18,true);}
+  for(int k=0;k<4;k++)Label(pageRoot,names[k],new Vector2(240,22),new Vector2((k-1.5f)*250,265),13,false);
+  var b=StateButton(new Vector2(180,50),new Vector2(-300,-125),"Detalhes","live");var b2=StateButton(new Vector2(180,50),new Vector2(0,-125),"Desabilitado","dis");b2.interactable=false;
+  Label(pageRoot,"Botões vivos (SpriteSwap): estados verificados por código",new Vector2(900,24),new Vector2(0,-175),14,false);
+  Facts.Add("SpriteSwap live button created; hover/pressed/disabled sprites assigned (hover has baked matte: diagnostic).");
+ }
+ void Tabs()
+ {
+  Solid(pageRoot,new Vector2(1060,300),new Vector2(0,100),new Color(.86f,.80f,.72f));Solid(pageRoot,new Vector2(1060,200),new Vector2(0,-150),new Color(.14f,.11f,.15f));
+  string[] keys={"tab_inactive","tab_hover","tab_active"};string[] n={"INACTIVE (PENDING)","HOVER","ACTIVE"};
+  for(int bg=0;bg<2;bg++)for(int i=0;i<3;i++){float x=(i-1)*340;float y=bg==0?150:-110;var im=Art(pageRoot,Load(keys[i]),new Vector2(210,44),new Vector2(x,y));Label(im.transform,"Receitas",new Vector2(130,26),new Vector2(0,-2),18,true);var im2=Art(pageRoot,Load(keys[i]),new Vector2(210,54),new Vector2(x,y-bg*0-(bg==0?-0:0)+(bg==0?-80:-70)));Label(im2.transform,"Receitas longas",new Vector2(150,28),new Vector2(0,-2),16,true);Label(pageRoot,n[i],new Vector2(240,20),new Vector2(x,bg==0?205:-55),13,false,bg==1);}
+  Facts.Add("Tabs Simple/preserveAspect 210x44 and 210x54; states compared in sequence.");
+ }
+ void Badges()
+ {
+  Solid(pageRoot,new Vector2(1060,300),new Vector2(0,150),new Color(.86f,.80f,.72f));Solid(pageRoot,new Vector2(1060,230),new Vector2(0,-100),new Color(.14f,.11f,.15f));
+  string[] keys={"badge_common","badge_rare","badge_epic","badge_legendary"};string[] n={"COMMON","RARE","EPIC","LEGENDARY"};
+  var boxes=new[]{new Vector2(52.8f,30.72f),new Vector2(70.4f,40.96f),new Vector2(96.8f,56.32f)};
+  for(int i=0;i<4;i++){float x=(i-1.5f)*250;for(int s=0;s<3;s++){var im=Art(pageRoot,Load(keys[i]),boxes[s],new Vector2(x,215-s*70));Solid(im.transform,Vector2.zero,Vector2.zero,Color.clear);}Label(pageRoot,n[i],new Vector2(200,20),new Vector2(x,270),13,false);
+   Art(pageRoot,Load(keys[i]),new Vector2(boxes[2].x*2,boxes[2].y*2),new Vector2(x,-90));Label(pageRoot,n[i]+" 2x",new Vector2(200,20),new Vector2(x,-190),13,false,true);}
+  Facts.Add("Badges Simple/preserveAspect in 52.8x30.72, 70.4x40.96, 96.8x56.32 boxes and 2x; rare/legendary aspect differs from common/epic.");
+ }
+ Sprite Suzu(){var m=Maid.Create(1,"Suzu",Archetype.Genki);var e=MaidAnimCatalog.Resolve(m);return MaidAnimCatalog.Load(UiKit.Sprites,e)[e.idle_frame];}
+ void Rarity()
+ {
+  var suzu=Suzu();Solid(pageRoot,new Vector2(1060,500),new Vector2(0,-5),new Color(.13f,.15f,.22f));string[] keys={"frame_common","frame_rare","frame_epic","frame_legendary"};string[] n={"COMMON (PENDING)","RARE","EPIC","LEGENDARY"};
+  // window safe rect in master px (1070x1470), intersection of all four
+  float x0=120,y0=172,x1=950,y1=789;
+  for(int i=0;i<4;i++)
+  {
+   float x=(i-1.5f)*255;var size=new Vector2(150,206);var card=Rect(pageRoot,keys[i],size,new Vector2(x,-5));var hit=card.gameObject.AddComponent<Image>();hit.color=Color.clear;var b=card.gameObject.AddComponent<Button>();b.targetGraphic=hit;b.transition=Selectable.Transition.None;b.onClick.AddListener(()=>Clicks++);Buttons.Add(b);
+   float sx=size.x/1070f,sy=size.y/1470f;var win=Rect(card,"portrait clip",new Vector2((x1-x0)*sx,(y1-y0)*sy),new Vector2(((x0+x1)/2-535)*sx,(735-(y0+y1)/2)*sy));win.gameObject.AddComponent<RectMask2D>();Solid(win,win.sizeDelta,Vector2.zero,new Color(.84f,.76f,.64f));
+   float ph=win.sizeDelta.y*.95f;float pw=ph*suzu.rect.width/suzu.rect.height;Art(win,suzu,new Vector2(pw,ph),new Vector2(0,-(win.sizeDelta.y-ph)/2));
+   Art(card,Load(keys[i]),size,Vector2.zero);Label(card,"Suzu",new Vector2(size.x*.6f,22),new Vector2(0,(735-1230)*sy),15,true);
+   Label(pageRoot,n[i],new Vector2(230,22),new Vector2(x,-130),14,false,true);
+  }
+  Facts.Add("Rarity frames 150x206 with Suzu behind a mask equal to the intersection of the four windows [120,172,950,789] of 1070x1470.");
+ }
+ void Rows()
+ {
+  Solid(pageRoot,new Vector2(1100,560),new Vector2(0,-5),new Color(.86f,.80f,.72f));
+  ShopRow(235,850,true,"Mesa para 2","Duas cadeiras acolchoadas, estilo café","×3",true,"UI-017 v02 850×62 com ícone");
+  ShopRow(160,850,false,"Conjunto de uniforme sazonal bordado com laço","Descrição longa para testar o texto dinâmico expandido até a esquerda","×12",true,"UI-017 v02 850×62 sem ícone, texto longo");
+  ShopRow(85,560,false,"Bouquet de rosas","Presente para uma maid","",false,"UI-017 v02 560×62 sem ícone, sem Comprar disponível");
+  ShopRow(10,380,true,"Cesta","Pequena","×1",true,"UI-017 v02 380×62 estreita com ícone");
+  Total(-70,380,46,"Total 12.500 ¥");Total(-140,520,54,"Total 1.234.567 ¥");Total(-205,300,40,"Total 12.500 ¥");
+ }
+ void ShopRow(float y,float w,bool icon,string name,string desc,string owned,bool buyEnabled,string tag)
+ {
+  float h=62;var row=Rect(pageRoot,"shop row",new Vector2(w,h),new Vector2(0,y));Art(row,Load("shop2"),new Vector2(w,h),Vector2.zero,true);
+  float left=-w/2+36;if(icon){Art(row,Load("icon_gift"),new Vector2(34,34),new Vector2(left+4,0));left+=48;}
+  float tw=w-(left+w/2)-(owned==""?150:210);Label(row,name,new Vector2(tw,22),new Vector2(left+tw/2,11),15,true,false,TextAnchor.MiddleLeft);Label(row,desc,new Vector2(tw,18),new Vector2(left+tw/2,-11),12,true,false,TextAnchor.MiddleLeft);
+  if(owned!="")Label(row,owned,new Vector2(60,20),new Vector2(w/2-165,0),14,true);var b=Native(row,"Comprar",new Vector2(110,34),new Vector2(w/2-75,0));b.interactable=buyEnabled;if(!buyEnabled)b.GetComponent<Image>().color=new Color(.5f,.45f,.42f);
+  Label(pageRoot,tag,new Vector2(w,16),new Vector2(0,y-38),11,false,true);Facts.Add(tag+" row="+w+"x62 mult="+(Load("shop2").rect.height/h).ToString("0.###")+" text_w="+tw.ToString("0.#"));
+ }
+ void Total(float y,float w,float h,string text)
+ {
+  var row=Rect(pageRoot,"total",new Vector2(w,h),new Vector2(0,y));Art(row,Load("total"),new Vector2(w,h),Vector2.zero,true);Label(row,"Total",new Vector2(110,h*.6f),new Vector2(-w/2+95,0),15,true);Label(row,"12.500 ¥",new Vector2(w*.26f,h*.55f),new Vector2(w*.28f,0),16,true);Facts.Add("UI-018 TOTAL "+w+"x"+h);
+ }
+ void Tail()
+ {
+  var suzu=Suzu();Solid(pageRoot,new Vector2(1100,500),new Vector2(0,-5),new Color(.55f,.45f,.38f));
+  var panel=Rect(pageRoot,"dialog",new Vector2(760,170),new Vector2(-100,60));Art(panel,Load("panel"),new Vector2(760,170),Vector2.zero,true);Label(panel,"Suzu",new Vector2(400,26),new Vector2(0,48),20,true);Label(panel,"O café abre em breve. Vamos preparar as receitas?\nTextos e decisões continuam sob controle da Unity.",new Vector2(620,70),new Vector2(0,-8),18,true);
+  var tailR=Art(panel,Load("tail"),new Vector2(54,54),new Vector2(760/2+14,-40));
+  Art(pageRoot,suzu,new Vector2(130,175),new Vector2(450,50));
+  var panel2=Rect(pageRoot,"dialog2",new Vector2(560,110),new Vector2(-200,-165));Art(panel2,Load("panel"),new Vector2(560,110),Vector2.zero,true);Label(panel2,"Cauda para baixo (rotacionada -90°)",new Vector2(460,40),Vector2.zero,17,true);
+  var t2=Art(panel2,Load("tail"),new Vector2(54,54),new Vector2(-120,-72));t2.rectTransform.localRotation=Quaternion.Euler(0,0,-90);
+  var t3=Art(pageRoot,Load("tail"),new Vector2(24,24),new Vector2(300,-165));Label(pageRoot,"24u",new Vector2(60,18),new Vector2(300,-190),12,false,true);var t4=Art(pageRoot,Load("tail"),new Vector2(40,40),new Vector2(360,-165));Label(pageRoot,"40u",new Vector2(60,18),new Vector2(360,-195),12,false,true);
+  Facts.Add("Tail Simple/preserveAspect 54u attached right of panel pointing right; rotated -90 for downward tail; 24u/40u legibility. Tail drawn separately from panel: seam visibility judged visually.");
+ }
+ public void Inspect(){Canvas.ForceUpdateCanvases();Failures.Clear();foreach(var t in Content){bool fit=t.preferredWidth<=t.rectTransform.rect.width+.5f&&t.preferredHeight<=t.rectTransform.rect.height+.5f;Facts.Add("TEXT "+t.text.Replace("\n","|")+" font="+t.fontSize+" rect="+t.rectTransform.rect.size+" preferred="+t.preferredWidth+"x"+t.preferredHeight+" fits="+fit);if(!fit)Failures.Add(t.text);}}
+}

@@ -1,0 +1,55 @@
+{
+    "environment": "Unity Editor PlayMode, render textures, simulated pointer; not physical mouse; no WebGL",
+    "pages": [
+        {
+            "page": "buttons",
+            "width": 960,
+            "height": 600,
+            "click_checks": 2,
+            "raycast_checks": 4,
+            "failures": [],
+            "facts": [
+                "HOVER v02 sliced borders w*.18/h*.36 at 120x44,150x44,180x50,230x54 on light and dark; v01 shown on dark strip as negative reference.",
+                "sec_hover imported 2172x724 texture format=RGBA32 border=(390.96, 260.64, 390.96, 260.64)"
+            ],
+            "screenshot": "editor_v02_buttons_960x600.png"
+        },
+        {
+            "page": "badges",
+            "width": 960,
+            "height": 600,
+            "click_checks": 0,
+            "raycast_checks": 0,
+            "failures": [],
+            "facts": [
+                "Badges Simple/preserveAspect in 52.8x30.72, 70.4x40.96, 96.8x56.32 boxes and 2x; v01 rare/legendary only as small negative reference."
+            ],
+            "screenshot": "editor_v02_badges_960x600.png"
+        },
+        {
+            "page": "buttons",
+            "width": 1280,
+            "height": 720,
+            "click_checks": 2,
+            "raycast_checks": 4,
+            "failures": [],
+            "facts": [
+                "HOVER v02 sliced borders w*.18/h*.36 at 120x44,150x44,180x50,230x54 on light and dark; v01 shown on dark strip as negative reference.",
+                "sec_hover imported 2172x724 texture format=RGBA32 border=(390.96, 260.64, 390.96, 260.64)"
+            ],
+            "screenshot": "editor_v02_buttons_1280x720.png"
+        },
+        {
+            "page": "badges",
+            "width": 1280,
+            "height": 720,
+            "click_checks": 0,
+            "raycast_checks": 0,
+            "failures": [],
+            "facts": [
+                "Badges Simple/preserveAspect in 52.8x30.72, 70.4x40.96, 96.8x56.32 boxes and 2x; v01 rare/legendary only as small negative reference."
+            ],
+            "screenshot": "editor_v02_badges_1280x720.png"
+        }
+    ]
+}
