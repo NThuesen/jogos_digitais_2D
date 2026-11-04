@@ -1,6 +1,6 @@
 # UI modular — aprovações da PR #47 (04/11/2026)
 
-Decisão expressa do responsável (Decisao expressa do responsavel: Encerrar revisao artistica e iniciar integracao visual (04/11/2026)). **APPROVED ≠ INTEGRATED.** Masters = CLEANs byte a byte (hashes e RAW no [manifesto](approved_manifest)); exports reduzidos quando existiam. QA técnico é o já registrado nas PRs de origem, **não repetido**; WebGL só nas telas integradas (PR de integração). RAWs/REWORK/v01 preservados em `incoming/`, nunca como assets aprovados.
+Decisão expressa do responsável (Decisao expressa do responsavel: Encerrar revisao artistica e iniciar integracao visual (04/11/2026)). **APPROVED ≠ INTEGRATED.** Masters = CLEANs byte a byte (hashes e RAW no [manifesto](UI_MODULAR_PR47_APPROVAL_MANIFEST.json)); exports reduzidos quando existiam. QA técnico é o já registrado nas PRs de origem, **não repetido**; WebGL só nas telas integradas (PR de integração). RAWs/REWORK/v01 preservados em `incoming/`, nunca como assets aprovados.
 
 | Master aprovado | Restrição |
 | --- | --- |
@@ -15,4 +15,4 @@ Decisão expressa do responsável (Decisao expressa do responsavel: Encerrar rev
 
 **REWORK:** UI-023 WALL STRAIGHT — para uso como parede; não integrar como cenário (histórico em `incoming/`). **Superados:** UI-007 v01, UI-009 v01, UI-022 v01.
 
-**Liberados por estas aprovações (dependem de masters de outras PRs):** UI-005 HOVER v02/PRESSED/DISABLED e UI-006 ACTIVE/HOVER (#52); TAIL UI-019 (#52); selos/molduras RARE/EPIC/LEGENDARY (#52).
+**Liberados por estas aprovações:** UI-005 HOVER v02/PRESSED/DISABLED e UI-006 ACTIVE/HOVER (#52); TAIL UI-019 (#52); selos/molduras RARE/EPIC/LEGENDARY completos com COMMON.
