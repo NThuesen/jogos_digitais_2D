@@ -1,0 +1,1697 @@
+[
+  {
+    "filename": "UI-005_button_secondary_normal_v01.png",
+    "raw": {
+      "path": "art_working/ui_modular/raw_gpt/UI-005_button_secondary_normal_v01.png",
+      "bytes": 1355926,
+      "sha256": "79cb555c31fb2728de35da1d18511409d5f97771460ef3f9f880ca44657a0444",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "a2a76ebd757a692438950ba1f911def9aab443c12784ca66917e471427acd997"
+    },
+    "clean": {
+      "path": "art_working/ui_modular/blender_clean/UI-005_button_secondary_normal_v01.png",
+      "bytes": 1137274,
+      "sha256": "b1e18aa35f9edea77147be5e6f66836b6a8d89f5acdc5155b8e1849fb9c9b8ba",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "3f891ff6e46736a67380ddb0abd66c5add0fd12d3d69edbe20ab6bd6889453c3"
+    },
+    "export": {
+      "path": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-005_button_secondary_normal_v01.png",
+      "bytes": 318425,
+      "sha256": "49fe2d82a4dbebaed2ca16ab457b6bec74848aa8e53d81fe2450bf00d5b07b98",
+      "dimensions": [
+        1059,
+        262
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "03b264578a798eb476e808ec698b1a798748f3b8f476e6a7ca4433ca8aad6692"
+    },
+    "before": {
+      "bbox_alpha_gt0": [
+        34,
+        101,
+        2140,
+        652
+      ],
+      "bbox_alpha_ge8": [
+        36,
+        103,
+        2138,
+        612
+      ],
+      "bbox_alpha_gt128": [
+        37,
+        104,
+        2136,
+        611
+      ],
+      "alpha_counts": {
+        "zero": 548103,
+        "1_3": 4426,
+        "4_249": 14695,
+        "250_254": 1001465,
+        "255": 3839
+      },
+      "components_alpha_gt0": 180,
+      "detached_alpha_le3_farther_than6px": 5,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 3.0,
+      "visible_aspect_alpha_gt128": 4.1400394477317555
+    },
+    "after": {
+      "bbox_alpha_gt0": [
+        34,
+        101,
+        2140,
+        618
+      ],
+      "bbox_alpha_ge8": [
+        36,
+        103,
+        2138,
+        612
+      ],
+      "bbox_alpha_gt128": [
+        37,
+        104,
+        2136,
+        611
+      ],
+      "alpha_counts": {
+        "zero": 548108,
+        "1_3": 4421,
+        "4_249": 14695,
+        "250_254": 0,
+        "255": 1005304
+      },
+      "components_alpha_gt0": 177,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 3.0,
+      "visible_aspect_alpha_gt128": 4.1400394477317555
+    },
+    "cleanup": {
+      "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+      "removed_pixels": 5,
+      "solidified_pixels": 1001465,
+      "rgb_unchanged": true,
+      "alpha4_249_unchanged": true,
+      "canvas_unchanged": true
+    },
+    "export_transform": {
+      "crop_xyxy": [
+        28,
+        95,
+        2146,
+        620
+      ],
+      "padding_LTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dimensions": [
+        1059,
+        262
+      ],
+      "sampling": "premultiplied RGBA Lanczos; no tint"
+    },
+    "status": "CLEAN",
+    "editor": "NOT RUN",
+    "webgl": "NOT RUN",
+    "artistic_approval": "PENDING",
+    "integrated": false
+  },
+  {
+    "filename": "UI-006_tab_inactive_v01.png",
+    "raw": {
+      "path": "art_working/ui_modular/raw_gpt/UI-006_tab_inactive_v01.png",
+      "bytes": 1379601,
+      "sha256": "f731e9e695902e86b8feaf07db6a0de02211ceb5c39bdf5c4ea805696ecf6a9b",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "4dc0f9f284830b48baa3a295ea7e09181f32c310335b004e1fe2438bb9ad3f0f"
+    },
+    "clean": {
+      "path": "art_working/ui_modular/blender_clean/UI-006_tab_inactive_v01.png",
+      "bytes": 1180465,
+      "sha256": "8b4b093168b30a9da3db57066b39fa0f7101d57d6df9ff79b716229eccf17b5c",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "94d198fc1751ccf85f57392eaa9c70fe920defe9f6304d89f934dc695afeee37"
+    },
+    "export": {
+      "path": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-006_tab_inactive_v01.png",
+      "bytes": 292423,
+      "sha256": "d79f4f76f02df177ae38679e8bae11b6dbc7c6e1bd7ec31f01f3d14e72f81ebb",
+      "dimensions": [
+        1002,
+        264
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "b0be7d1a5a1d4cba367925612a0ada88ace2fbd5fb7d1630df6878ec606064d8"
+    },
+    "before": {
+      "bbox_alpha_gt0": [
+        88,
+        28,
+        2079,
+        700
+      ],
+      "bbox_alpha_ge8": [
+        90,
+        95,
+        2077,
+        607
+      ],
+      "bbox_alpha_gt128": [
+        91,
+        96,
+        2076,
+        606
+      ],
+      "alpha_counts": {
+        "zero": 634789,
+        "1_3": 7699,
+        "4_249": 19254,
+        "250_254": 910379,
+        "255": 407
+      },
+      "components_alpha_gt0": 513,
+      "detached_alpha_le3_farther_than6px": 427,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 3.0,
+      "visible_aspect_alpha_gt128": 3.892156862745098
+    },
+    "after": {
+      "bbox_alpha_gt0": [
+        88,
+        93,
+        2079,
+        613
+      ],
+      "bbox_alpha_ge8": [
+        90,
+        95,
+        2077,
+        607
+      ],
+      "bbox_alpha_gt128": [
+        91,
+        96,
+        2076,
+        606
+      ],
+      "alpha_counts": {
+        "zero": 635216,
+        "1_3": 7272,
+        "4_249": 19254,
+        "250_254": 0,
+        "255": 910786
+      },
+      "components_alpha_gt0": 317,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 3.0,
+      "visible_aspect_alpha_gt128": 3.892156862745098
+    },
+    "cleanup": {
+      "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+      "removed_pixels": 427,
+      "solidified_pixels": 910379,
+      "rgb_unchanged": true,
+      "alpha4_249_unchanged": true,
+      "canvas_unchanged": true
+    },
+    "export_transform": {
+      "crop_xyxy": [
+        82,
+        87,
+        2085,
+        615
+      ],
+      "padding_LTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dimensions": [
+        1002,
+        264
+      ],
+      "sampling": "premultiplied RGBA Lanczos; no tint"
+    },
+    "status": "CLEAN",
+    "editor": "NOT RUN",
+    "webgl": "NOT RUN",
+    "artistic_approval": "PENDING",
+    "integrated": false
+  },
+  {
+    "filename": "UI-007_modal_dialog_v01.png",
+    "raw": {
+      "path": "art_working/ui_modular/raw_gpt/UI-007_modal_dialog_v01.png",
+      "bytes": 2137210,
+      "sha256": "2178e31412dceac10eab76966f9ae7d3e4c3ad4978feb34c0369a43fe4f9a525",
+      "dimensions": [
+        1816,
+        866
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "ad87d049f3310733bf8fd61595d917969d80f521174f41df4e116a984bd404c6"
+    },
+    "clean": {
+      "path": "art_working/ui_modular/blender_clean/UI-007_modal_dialog_v01.png",
+      "bytes": 1877271,
+      "sha256": "21b332c2b60dc01ff32f0e8862e5b9e3b02344b8a76defbd02b9b1010d219cc0",
+      "dimensions": [
+        1816,
+        866
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "5463562e6800bbd01352b63f11106f44a51f0e2f4288e552d436fddaca37ed0c"
+    },
+    "export": {
+      "path": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-007_modal_dialog_v01.png",
+      "bytes": 500707,
+      "sha256": "50f998c8224eea8d06a5416b78aed033e119ad5564312f3d4380225bf5457b1c",
+      "dimensions": [
+        908,
+        433
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "43f7555e7bebfc74f805ecca744be72135e42b8babd15b29a7cb991c3c48ec23"
+    },
+    "before": {
+      "bbox_alpha_gt0": [
+        0,
+        0,
+        1816,
+        866
+      ],
+      "bbox_alpha_ge8": [
+        6,
+        0,
+        1812,
+        853
+      ],
+      "bbox_alpha_gt128": [
+        8,
+        0,
+        1809,
+        851
+      ],
+      "alpha_counts": {
+        "zero": 109460,
+        "1_3": 9872,
+        "4_249": 26608,
+        "250_254": 1426716,
+        "255": 0
+      },
+      "components_alpha_gt0": 46,
+      "detached_alpha_le3_farther_than6px": 703,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 42,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 2.096997690531178,
+      "visible_aspect_alpha_gt128": 2.116333725029377
+    },
+    "after": {
+      "bbox_alpha_gt0": [
+        0,
+        0,
+        1816,
+        856
+      ],
+      "bbox_alpha_ge8": [
+        6,
+        0,
+        1812,
+        853
+      ],
+      "bbox_alpha_gt128": [
+        8,
+        0,
+        1809,
+        851
+      ],
+      "alpha_counts": {
+        "zero": 110163,
+        "1_3": 9169,
+        "4_249": 26608,
+        "250_254": 0,
+        "255": 1426716
+      },
+      "components_alpha_gt0": 39,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 42,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 2.096997690531178,
+      "visible_aspect_alpha_gt128": 2.116333725029377
+    },
+    "cleanup": {
+      "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+      "removed_pixels": 703,
+      "solidified_pixels": 1426716,
+      "rgb_unchanged": true,
+      "alpha4_249_unchanged": true,
+      "canvas_unchanged": true
+    },
+    "export_transform": {
+      "crop_xyxy": [
+        0,
+        0,
+        1816,
+        866
+      ],
+      "padding_LTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dimensions": [
+        908,
+        433
+      ],
+      "sampling": "premultiplied RGBA Lanczos; no tint"
+    },
+    "status": "CLEAN",
+    "editor": "NOT RUN",
+    "webgl": "NOT RUN",
+    "artistic_approval": "PENDING",
+    "integrated": false
+  },
+  {
+    "filename": "UI-008_maid_card_lineup_minimal_v01.png",
+    "raw": {
+      "path": "art_working/ui_modular/raw_gpt/UI-008_maid_card_lineup_minimal_v01.png",
+      "bytes": 997547,
+      "sha256": "ac79e9bc773327aa1eb320a703cde1a87c0f1e7156c962b3b6146805d13a5e11",
+      "dimensions": [
+        1070,
+        1470
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "11274e184b74ef0f550293c725f19783f1e142ba21fe6e661f5fce04ccc8b6e6"
+    },
+    "clean": {
+      "path": "art_working/ui_modular/blender_clean/UI-008_maid_card_lineup_minimal_v01.png",
+      "bytes": 891236,
+      "sha256": "0f80760c6d37a5016924c3f74a7500c482a9dd618365fcfe556cbdb19fd1a43a",
+      "dimensions": [
+        1070,
+        1470
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "07b1e5657e328b00429c49a10b1e0311e84bbfe7d72f7140e9bc9538575d10dc"
+    },
+    "export": {
+      "path": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-008_maid_card_lineup_minimal_v01.png",
+      "bytes": 245985,
+      "sha256": "0427a384664a16b3572e7657bd1ea8ebb8b7cfa7a20d8472b3a27e57e69a7155",
+      "dimensions": [
+        535,
+        735
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "0427953bb1a802c5cec62e19d4a5e134168666961ba7cb5b2803cb655a5ffbd6"
+    },
+    "before": {
+      "bbox_alpha_gt0": [
+        0,
+        0,
+        1070,
+        1470
+      ],
+      "bbox_alpha_ge8": [
+        30,
+        46,
+        1041,
+        1431
+      ],
+      "bbox_alpha_gt128": [
+        31,
+        47,
+        1039,
+        1428
+      ],
+      "alpha_counts": {
+        "zero": 929011,
+        "1_3": 37085,
+        "4_249": 26507,
+        "250_254": 577772,
+        "255": 2525
+      },
+      "components_alpha_gt0": 2777,
+      "detached_alpha_le3_farther_than6px": 18135,
+      "center_transparent_fraction": 0.9805465043160121,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 2,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 0.7278911564625851,
+      "visible_aspect_alpha_gt128": 0.7299058653149891
+    },
+    "after": {
+      "bbox_alpha_gt0": [
+        24,
+        41,
+        1046,
+        1437
+      ],
+      "bbox_alpha_ge8": [
+        30,
+        46,
+        1041,
+        1431
+      ],
+      "bbox_alpha_gt128": [
+        31,
+        47,
+        1039,
+        1428
+      ],
+      "alpha_counts": {
+        "zero": 947146,
+        "1_3": 18950,
+        "4_249": 26507,
+        "250_254": 0,
+        "255": 580297
+      },
+      "components_alpha_gt0": 241,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 1.0,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 2,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 0.7278911564625851,
+      "visible_aspect_alpha_gt128": 0.7299058653149891
+    },
+    "cleanup": {
+      "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+      "removed_pixels": 18135,
+      "solidified_pixels": 577772,
+      "rgb_unchanged": true,
+      "alpha4_249_unchanged": true,
+      "canvas_unchanged": true
+    },
+    "export_transform": {
+      "crop_xyxy": [
+        0,
+        0,
+        1070,
+        1470
+      ],
+      "padding_LTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dimensions": [
+        535,
+        735
+      ],
+      "sampling": "premultiplied RGBA Lanczos; no tint"
+    },
+    "status": "CLEAN",
+    "editor": "NOT RUN",
+    "webgl": "NOT RUN",
+    "artistic_approval": "PENDING",
+    "integrated": false,
+    "transparent_internal_windows": [
+      {
+        "pixels": 765585,
+        "bbox": [
+          107,
+          149,
+          963,
+          1089
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "UI-009_maid_card_detail_v01.png",
+    "raw": {
+      "path": "art_working/ui_modular/raw_gpt/UI-009_maid_card_detail_v01.png",
+      "bytes": 2114758,
+      "sha256": "2518aa27287dcee6ece45b33ca1a24d34e8a640c0f5d595235c9d28d97d3eb91",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "94324f596eb712c4a9de801cfb0aba3d7bd18094a268f044949fd6d1e74cf4f0"
+    },
+    "clean": {
+      "path": "art_working/ui_modular/blender_clean/UI-009_maid_card_detail_v01.png",
+      "bytes": 2062993,
+      "sha256": "5970311d3d765da4ff19c63e42c5059be81103c58dca09416d8e61ea0fcfe9de",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "46420f8b5d2dc81859f288861a3eeee978a791fe6a161169bb3811fded801959"
+    },
+    "export": {
+      "path": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-009_maid_card_detail_v01.png",
+      "bytes": 511688,
+      "sha256": "09ce4babf82a84578f833c2b5fa9f236dc036698862b79f04d35cc6115070e98",
+      "dimensions": [
+        768,
+        512
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "a5c3b57b924e57e478e26e1ac9a5ca30013f1af7b0b3b66fbac327aafecae78c"
+    },
+    "before": {
+      "bbox_alpha_gt0": [
+        0,
+        0,
+        1535,
+        1024
+      ],
+      "bbox_alpha_ge8": [
+        15,
+        2,
+        1521,
+        1012
+      ],
+      "bbox_alpha_gt128": [
+        16,
+        6,
+        1520,
+        1011
+      ],
+      "alpha_counts": {
+        "zero": 176451,
+        "1_3": 141422,
+        "4_249": 115856,
+        "250_254": 1139135,
+        "255": 0
+      },
+      "components_alpha_gt0": 2229,
+      "detached_alpha_le3_farther_than6px": 127243,
+      "center_transparent_fraction": 0.132720857771261,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 3,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 1.5,
+      "visible_aspect_alpha_gt128": 1.4965174129353234
+    },
+    "after": {
+      "bbox_alpha_gt0": [
+        9,
+        0,
+        1525,
+        1018
+      ],
+      "bbox_alpha_ge8": [
+        15,
+        2,
+        1521,
+        1012
+      ],
+      "bbox_alpha_gt128": [
+        16,
+        6,
+        1520,
+        1011
+      ],
+      "alpha_counts": {
+        "zero": 303694,
+        "1_3": 14179,
+        "4_249": 115856,
+        "250_254": 0,
+        "255": 1139135
+      },
+      "components_alpha_gt0": 850,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 0.2463171279325513,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 3,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 1.5,
+      "visible_aspect_alpha_gt128": 1.4965174129353234
+    },
+    "cleanup": {
+      "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+      "removed_pixels": 127243,
+      "solidified_pixels": 1139135,
+      "rgb_unchanged": true,
+      "alpha4_249_unchanged": true,
+      "canvas_unchanged": true
+    },
+    "export_transform": {
+      "crop_xyxy": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "padding_LTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dimensions": [
+        768,
+        512
+      ],
+      "sampling": "premultiplied RGBA Lanczos; no tint"
+    },
+    "status": "CLEAN",
+    "editor": "NOT RUN",
+    "webgl": "NOT RUN",
+    "artistic_approval": "PENDING",
+    "integrated": false,
+    "transparent_internal_windows": [
+      {
+        "pixels": 218612,
+        "bbox": [
+          133,
+          172,
+          642,
+          730
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "UI-010_rarity_badge_common_v01.png",
+    "raw": {
+      "path": "art_working/ui_modular/raw_gpt/UI-010_rarity_badge_common_v01.png",
+      "bytes": 1735801,
+      "sha256": "e4ef4d6e24e7156de6c23e2504d50771bb9cdbd7c9e03d90a57bedfb3ecbcefb",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "f20da8f9b410a9fc8e8459bf2416055d7fedaed8afafcfbdd3fe5a52fa8b1315"
+    },
+    "clean": {
+      "path": "art_working/ui_modular/blender_clean/UI-010_rarity_badge_common_v01.png",
+      "bytes": 1704380,
+      "sha256": "4a7cb48a3faac90a50f995d2c5448c749e83a3ba137eaa192613d7693158516f",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "9b931ed6c367c8dc0795f5babdbfb1642616791f0ccb19aa835d86a2b8f5673d"
+    },
+    "export": {
+      "path": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-010_rarity_badge_common_v01.png",
+      "bytes": 297254,
+      "sha256": "9d67bfc86ba3547ce22688d767b2c9935973da680422140d31d3106a3d6206e1",
+      "dimensions": [
+        664,
+        384
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "5d0f8b793b35448312865dc408ec595590cc0a2201f5885b026d797496b62082"
+    },
+    "before": {
+      "bbox_alpha_gt0": [
+        0,
+        3,
+        1506,
+        1024
+      ],
+      "bbox_alpha_ge8": [
+        112,
+        136,
+        1423,
+        889
+      ],
+      "bbox_alpha_gt128": [
+        113,
+        136,
+        1422,
+        889
+      ],
+      "alpha_counts": {
+        "zero": 884191,
+        "1_3": 10791,
+        "4_249": 8038,
+        "250_254": 669844,
+        "255": 0
+      },
+      "components_alpha_gt0": 1221,
+      "detached_alpha_le3_farther_than6px": 4187,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 1.5,
+      "visible_aspect_alpha_gt128": 1.7383798140770252
+    },
+    "after": {
+      "bbox_alpha_gt0": [
+        110,
+        134,
+        1425,
+        894
+      ],
+      "bbox_alpha_ge8": [
+        112,
+        136,
+        1423,
+        889
+      ],
+      "bbox_alpha_gt128": [
+        113,
+        136,
+        1422,
+        889
+      ],
+      "alpha_counts": {
+        "zero": 888378,
+        "1_3": 6604,
+        "4_249": 8038,
+        "250_254": 0,
+        "255": 669844
+      },
+      "components_alpha_gt0": 354,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 1.5,
+      "visible_aspect_alpha_gt128": 1.7383798140770252
+    },
+    "cleanup": {
+      "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+      "removed_pixels": 4187,
+      "solidified_pixels": 669844,
+      "rgb_unchanged": true,
+      "alpha4_249_unchanged": true,
+      "canvas_unchanged": true
+    },
+    "export_transform": {
+      "crop_xyxy": [
+        104,
+        128,
+        1431,
+        897
+      ],
+      "padding_LTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dimensions": [
+        664,
+        384
+      ],
+      "sampling": "premultiplied RGBA Lanczos; no tint"
+    },
+    "status": "CLEAN",
+    "editor": "NOT RUN",
+    "webgl": "NOT RUN",
+    "artistic_approval": "PENDING",
+    "integrated": false
+  },
+  {
+    "filename": "UI-011_icon_book_v01.png",
+    "raw": {
+      "path": "art_working/ui_modular/raw_gpt/UI-011_icon_book_v01.png",
+      "bytes": 896818,
+      "sha256": "52fc52ea6f1597d772aff246340f3f73863189674cd5a5d2c49fc099f12f8bc1",
+      "dimensions": [
+        1286,
+        1223
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "a5f7fb1b2974c297af281432637e1cf94d9ddf26f796d27b2157b22a869ad39a"
+    },
+    "clean": {
+      "path": "art_working/ui_modular/blender_clean/UI-011_icon_book_v01.png",
+      "bytes": 815157,
+      "sha256": "7055446d2982a937365475f88d9e1f0f4a2790c9a1fe13a24ef5772233a094c6",
+      "dimensions": [
+        1286,
+        1223
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "9ffac4801fbfb94a57c4687e2879b23654d3c099cfc3a560c8832f4f5cd17253"
+    },
+    "export": {
+      "path": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-011_icon_book_v01.png",
+      "bytes": 212490,
+      "sha256": "7455b8f81f3c8d815c56cc58e27495c587d545c487a68c46b9de44311ada27c6",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "7788a471435b264df66a963847369a4463d6e5ba0bbba4054baeb26bf8f96f29"
+    },
+    "before": {
+      "bbox_alpha_gt0": [
+        73,
+        51,
+        1248,
+        1201
+      ],
+      "bbox_alpha_ge8": [
+        91,
+        324,
+        1161,
+        1002
+      ],
+      "bbox_alpha_gt128": [
+        91,
+        325,
+        1160,
+        1001
+      ],
+      "alpha_counts": {
+        "zero": 1005600,
+        "1_3": 5823,
+        "4_249": 10716,
+        "250_254": 550068,
+        "255": 571
+      },
+      "components_alpha_gt0": 498,
+      "detached_alpha_le3_farther_than6px": 1324,
+      "center_transparent_fraction": 0.0010855157913981443,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 1.0515126737530662,
+      "visible_aspect_alpha_gt128": 1.581360946745562
+    },
+    "after": {
+      "bbox_alpha_gt0": [
+        85,
+        322,
+        1164,
+        1004
+      ],
+      "bbox_alpha_ge8": [
+        91,
+        324,
+        1161,
+        1002
+      ],
+      "bbox_alpha_gt128": [
+        91,
+        325,
+        1160,
+        1001
+      ],
+      "alpha_counts": {
+        "zero": 1006924,
+        "1_3": 4499,
+        "4_249": 10716,
+        "250_254": 0,
+        "255": 550639
+      },
+      "components_alpha_gt0": 158,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 0.0010855157913981443,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 1.0515126737530662,
+      "visible_aspect_alpha_gt128": 1.581360946745562
+    },
+    "cleanup": {
+      "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+      "removed_pixels": 1324,
+      "solidified_pixels": 550068,
+      "rgb_unchanged": true,
+      "alpha4_249_unchanged": true,
+      "canvas_unchanged": true
+    },
+    "export_transform": {
+      "crop_xyxy": [
+        83,
+        316,
+        1169,
+        1010
+      ],
+      "padding_LTRB": [
+        0,
+        196,
+        0,
+        196
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sampling": "premultiplied RGBA Lanczos; no tint"
+    },
+    "status": "CLEAN",
+    "editor": "NOT RUN",
+    "webgl": "NOT RUN",
+    "artistic_approval": "PENDING",
+    "integrated": false
+  },
+  {
+    "filename": "UI-012_menu_background_v01.png",
+    "raw": {
+      "path": "art_working/ui_modular/raw_gpt/UI-012_menu_background_v01.png",
+      "bytes": 2490243,
+      "sha256": "d079d353925245c9e8c7e2891e69d40e19b47678808241fce9e618b67c18c22d",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "pixel_sha256": "45dba9cf88bd33e5b49628890c3ccc8485476e4bb8f15a49e5b2139d12ee3dd5"
+    },
+    "clean": {
+      "path": "art_working/ui_modular/blender_clean/UI-012_menu_background_v01.png",
+      "bytes": 2490243,
+      "sha256": "d079d353925245c9e8c7e2891e69d40e19b47678808241fce9e618b67c18c22d",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "pixel_sha256": "45dba9cf88bd33e5b49628890c3ccc8485476e4bb8f15a49e5b2139d12ee3dd5"
+    },
+    "export": {
+      "path": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-012_menu_background_v01.png",
+      "bytes": 2490243,
+      "sha256": "d079d353925245c9e8c7e2891e69d40e19b47678808241fce9e618b67c18c22d",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "pixel_sha256": "45dba9cf88bd33e5b49628890c3ccc8485476e4bb8f15a49e5b2139d12ee3dd5"
+    },
+    "before": {
+      "bbox_alpha_gt0": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "bbox_alpha_ge8": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "bbox_alpha_gt128": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "alpha_counts": {
+        "zero": 0,
+        "1_3": 0,
+        "4_249": 0,
+        "250_254": 0,
+        "255": 1573352
+      },
+      "components_alpha_gt0": 1,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 5226,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 1.7768331562167907,
+      "visible_aspect_alpha_gt128": 1.7768331562167907
+    },
+    "after": {
+      "bbox_alpha_gt0": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "bbox_alpha_ge8": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "bbox_alpha_gt128": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "alpha_counts": {
+        "zero": 0,
+        "1_3": 0,
+        "4_249": 0,
+        "250_254": 0,
+        "255": 1573352
+      },
+      "components_alpha_gt0": 1,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 5226,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 1.7768331562167907,
+      "visible_aspect_alpha_gt128": 1.7768331562167907
+    },
+    "cleanup": {
+      "operation": "byte-identical copy; no cleanup needed",
+      "removed_pixels": 0,
+      "solidified_pixels": 0,
+      "rgb_unchanged": true,
+      "alpha4_249_unchanged": true,
+      "canvas_unchanged": true
+    },
+    "export_transform": {
+      "crop_xyxy": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "padding_LTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sampling": "premultiplied RGBA Lanczos; no tint"
+    },
+    "status": "CLEAN",
+    "editor": "NOT RUN",
+    "webgl": "NOT RUN",
+    "artistic_approval": "PENDING",
+    "integrated": false
+  },
+  {
+    "filename": "UI-019_dialog_panel_v01.png",
+    "raw": {
+      "path": "art_working/ui_modular/raw_gpt/UI-019_dialog_panel_v01.png",
+      "bytes": 1951327,
+      "sha256": "aaf40d388f8077cc62d54f2455c753a871168f1418fbd3ca4998e4d6cf28683c",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "fa0a3a9b08967626fc40655688d980348bf4ebdab2313811fcac18a0945b9991"
+    },
+    "clean": {
+      "path": "art_working/ui_modular/blender_clean/UI-019_dialog_panel_v01.png",
+      "bytes": 1703241,
+      "sha256": "631e6c8724b064be52f122fa19324f796a18d30fa0d7ed272dd73b6b2358db9b",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "a200165d8c1ef657c077a1196c698dfcb2d264ecaf249021ea0830d958d1a678"
+    },
+    "export": {
+      "path": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-019_dialog_panel_v01.png",
+      "bytes": 455521,
+      "sha256": "894f6eca6ddc4ebaa9a8eb078a571b4fa3768af73015c99bcb858a93a41f25f8",
+      "dimensions": [
+        1086,
+        362
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "abd8cd0f719e1529f24593def1f47cdc386094a2676a44e024774d6908cda70d"
+    },
+    "before": {
+      "bbox_alpha_gt0": [
+        22,
+        29,
+        2152,
+        696
+      ],
+      "bbox_alpha_ge8": [
+        27,
+        35,
+        2145,
+        685
+      ],
+      "bbox_alpha_gt128": [
+        28,
+        38,
+        2144,
+        683
+      ],
+      "alpha_counts": {
+        "zero": 191662,
+        "1_3": 16472,
+        "4_249": 21397,
+        "250_254": 1342836,
+        "255": 161
+      },
+      "components_alpha_gt0": 345,
+      "detached_alpha_le3_farther_than6px": 780,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 3.0,
+      "visible_aspect_alpha_gt128": 3.2806201550387595
+    },
+    "after": {
+      "bbox_alpha_gt0": [
+        22,
+        29,
+        2151,
+        691
+      ],
+      "bbox_alpha_ge8": [
+        27,
+        35,
+        2145,
+        685
+      ],
+      "bbox_alpha_gt128": [
+        28,
+        38,
+        2144,
+        683
+      ],
+      "alpha_counts": {
+        "zero": 192442,
+        "1_3": 15692,
+        "4_249": 21397,
+        "250_254": 0,
+        "255": 1342997
+      },
+      "components_alpha_gt0": 199,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 3.0,
+      "visible_aspect_alpha_gt128": 3.2806201550387595
+    },
+    "cleanup": {
+      "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+      "removed_pixels": 780,
+      "solidified_pixels": 1342836,
+      "rgb_unchanged": true,
+      "alpha4_249_unchanged": true,
+      "canvas_unchanged": true
+    },
+    "export_transform": {
+      "crop_xyxy": [
+        0,
+        0,
+        2172,
+        724
+      ],
+      "padding_LTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dimensions": [
+        1086,
+        362
+      ],
+      "sampling": "premultiplied RGBA Lanczos; no tint"
+    },
+    "status": "CLEAN",
+    "editor": "NOT RUN",
+    "webgl": "NOT RUN",
+    "artistic_approval": "PENDING",
+    "integrated": false
+  },
+  {
+    "filename": "UI-022_floor_tile_warm_oak_v01.png",
+    "raw": {
+      "path": "art_working/ui_modular/raw_gpt/UI-022_floor_tile_warm_oak_v01.png",
+      "bytes": 1794600,
+      "sha256": "1258bda075f2b6f641b972c2805d990ba7d64162e6b0f2f4d5767b43ef3636d8",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "pixel_sha256": "d735ffa1ca18b8a5bd2763b34a0495ba5b046483280b28ac3f06fc29c5e4c6fb"
+    },
+    "clean": {
+      "path": "art_working/ui_modular/blender_clean/UI-022_floor_tile_warm_oak_v01.png",
+      "bytes": 1794600,
+      "sha256": "1258bda075f2b6f641b972c2805d990ba7d64162e6b0f2f4d5767b43ef3636d8",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "pixel_sha256": "d735ffa1ca18b8a5bd2763b34a0495ba5b046483280b28ac3f06fc29c5e4c6fb"
+    },
+    "export": {
+      "path": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-022_floor_tile_warm_oak_v01.png",
+      "bytes": 1794600,
+      "sha256": "1258bda075f2b6f641b972c2805d990ba7d64162e6b0f2f4d5767b43ef3636d8",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "pixel_sha256": "d735ffa1ca18b8a5bd2763b34a0495ba5b046483280b28ac3f06fc29c5e4c6fb"
+    },
+    "before": {
+      "bbox_alpha_gt0": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "bbox_alpha_ge8": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "bbox_alpha_gt128": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "alpha_counts": {
+        "zero": 0,
+        "1_3": 0,
+        "4_249": 0,
+        "250_254": 0,
+        "255": 1572516
+      },
+      "components_alpha_gt0": 1,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 5016,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 1.0,
+      "visible_aspect_alpha_gt128": 1.0
+    },
+    "after": {
+      "bbox_alpha_gt0": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "bbox_alpha_ge8": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "bbox_alpha_gt128": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "alpha_counts": {
+        "zero": 0,
+        "1_3": 0,
+        "4_249": 0,
+        "250_254": 0,
+        "255": 1572516
+      },
+      "components_alpha_gt0": 1,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 5016,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 1.0,
+      "visible_aspect_alpha_gt128": 1.0
+    },
+    "cleanup": {
+      "operation": "byte-identical copy; no cleanup needed",
+      "removed_pixels": 0,
+      "solidified_pixels": 0,
+      "rgb_unchanged": true,
+      "alpha4_249_unchanged": true,
+      "canvas_unchanged": true
+    },
+    "export_transform": {
+      "crop_xyxy": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "padding_LTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sampling": "premultiplied RGBA Lanczos; no tint"
+    },
+    "status": "CLEAN",
+    "editor": "NOT RUN",
+    "webgl": "NOT RUN",
+    "artistic_approval": "PENDING",
+    "integrated": false,
+    "repeat_seams": {
+      "horizontal_mae_rgb": 3.4370015948963317,
+      "vertical_mae_rgb": 7.096757044125465,
+      "adjacent_horizontal_mae_rgb": 1.4392889282627594,
+      "adjacent_vertical_mae_rgb": 1.4845595451299656
+    }
+  },
+  {
+    "filename": "UI-023_wall_straight_v01.png",
+    "raw": {
+      "path": "art_working/ui_modular/raw_gpt/UI-023_wall_straight_v01.png",
+      "bytes": 1721823,
+      "sha256": "f750b156d3970ce15767e6f9e5b380b5c1ecaa80b04a8aaeac3e29e0901564cd",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "9fe17d903709e6f8854c20503fb2e1778342603f2465dc0e4244ec80ee1d755b"
+    },
+    "clean": {
+      "path": "art_working/ui_modular/blender_clean/UI-023_wall_straight_v01.png",
+      "bytes": 1690320,
+      "sha256": "a270baf32d74c3e5fedaec45fa71d93f0478a4029849a9fcff98fbef34b230de",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "01e0095ebf3115efc1cf5b0b6650a1b0e02896b46f906e9e9e0cc36ea7637cd1"
+    },
+    "export": {
+      "path": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-023_wall_straight_v01.png",
+      "bytes": 398260,
+      "sha256": "a1386274360804a6a2e82eb862c310938a50a4a301fc16c6732e23ad8f6cb855",
+      "dimensions": [
+        768,
+        512
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "e96fae068293bb3e434e75005e18525a63a9ca3cd64129a67e4659c6c9cfd5f5"
+    },
+    "before": {
+      "bbox_alpha_gt0": [
+        14,
+        9,
+        1522,
+        994
+      ],
+      "bbox_alpha_ge8": [
+        16,
+        41,
+        1518,
+        990
+      ],
+      "bbox_alpha_gt128": [
+        17,
+        42,
+        1517,
+        989
+      ],
+      "alpha_counts": {
+        "zero": 162421,
+        "1_3": 15823,
+        "4_249": 17281,
+        "250_254": 1377339,
+        "255": 0
+      },
+      "components_alpha_gt0": 71,
+      "detached_alpha_le3_farther_than6px": 2632,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 1.5,
+      "visible_aspect_alpha_gt128": 1.583949313621964
+    },
+    "after": {
+      "bbox_alpha_gt0": [
+        14,
+        35,
+        1521,
+        994
+      ],
+      "bbox_alpha_ge8": [
+        16,
+        41,
+        1518,
+        990
+      ],
+      "bbox_alpha_gt128": [
+        17,
+        42,
+        1517,
+        989
+      ],
+      "alpha_counts": {
+        "zero": 165053,
+        "1_3": 13191,
+        "4_249": 17281,
+        "250_254": 0,
+        "255": 1377339
+      },
+      "components_alpha_gt0": 25,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 0.0,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 0,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 1.5,
+      "visible_aspect_alpha_gt128": 1.583949313621964
+    },
+    "cleanup": {
+      "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+      "removed_pixels": 2632,
+      "solidified_pixels": 1377339,
+      "rgb_unchanged": true,
+      "alpha4_249_unchanged": true,
+      "canvas_unchanged": true
+    },
+    "export_transform": {
+      "crop_xyxy": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "padding_LTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dimensions": [
+        768,
+        512
+      ],
+      "sampling": "premultiplied RGBA Lanczos; no tint"
+    },
+    "status": "CLEAN",
+    "editor": "NOT RUN",
+    "webgl": "NOT RUN",
+    "artistic_approval": "PENDING",
+    "integrated": false
+  },
+  {
+    "filename": "UI-025_rarity_card_frame_common_v01.png",
+    "raw": {
+      "path": "art_working/ui_modular/raw_gpt/UI-025_rarity_card_frame_common_v01.png",
+      "bytes": 1219541,
+      "sha256": "8d71ec54518d2591e1fcec1d99eb0a029dcde0cf3d870126394ad57c711ae373",
+      "dimensions": [
+        1070,
+        1470
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "64ddd0e1e231108f59ad45a38f37110d96f247f3e6d1bc6199019c86d534e16f"
+    },
+    "clean": {
+      "path": "art_working/ui_modular/blender_clean/UI-025_rarity_card_frame_common_v01.png",
+      "bytes": 1093767,
+      "sha256": "1d60c0b894120372a7afcb58bb6121f644e61a1157bf5f969603458caa703327",
+      "dimensions": [
+        1070,
+        1470
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "190362635c1d19ebea950a60552f75f2f419fd8a3e37d6006dc2c17d89b65169"
+    },
+    "export": {
+      "path": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-025_rarity_card_frame_common_v01.png",
+      "bytes": 309860,
+      "sha256": "f44b668e58611fbfc128d522a07829c81ef265ec0fd6c391aa6485e252a75804",
+      "dimensions": [
+        535,
+        735
+      ],
+      "mode": "RGBA",
+      "pixel_sha256": "7344b9bd926234f813d24f4367bf2d8e6902b4c55494f1dac7221ff1e3dcd640"
+    },
+    "before": {
+      "bbox_alpha_gt0": [
+        25,
+        24,
+        1011,
+        1424
+      ],
+      "bbox_alpha_ge8": [
+        60,
+        27,
+        1008,
+        1417
+      ],
+      "bbox_alpha_gt128": [
+        61,
+        28,
+        1007,
+        1414
+      ],
+      "alpha_counts": {
+        "zero": 778354,
+        "1_3": 18518,
+        "4_249": 30551,
+        "250_254": 744617,
+        "255": 860
+      },
+      "components_alpha_gt0": 442,
+      "detached_alpha_le3_farther_than6px": 2392,
+      "center_transparent_fraction": 0.6114845938375351,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 6,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 0.7278911564625851,
+      "visible_aspect_alpha_gt128": 0.6825396825396826
+    },
+    "after": {
+      "bbox_alpha_gt0": [
+        54,
+        24,
+        1011,
+        1422
+      ],
+      "bbox_alpha_ge8": [
+        60,
+        27,
+        1008,
+        1417
+      ],
+      "bbox_alpha_gt128": [
+        61,
+        28,
+        1007,
+        1414
+      ],
+      "alpha_counts": {
+        "zero": 780746,
+        "1_3": 16126,
+        "4_249": 30551,
+        "250_254": 0,
+        "255": 745477
+      },
+      "components_alpha_gt0": 152,
+      "detached_alpha_le3_farther_than6px": 0,
+      "center_transparent_fraction": 0.6141370834047905,
+      "edge_opaque_pixels": 0,
+      "bright_semtransparent_pixels": 6,
+      "note": "Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.",
+      "canvas_aspect": 0.7278911564625851,
+      "visible_aspect_alpha_gt128": 0.6825396825396826
+    },
+    "cleanup": {
+      "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+      "removed_pixels": 2392,
+      "solidified_pixels": 744617,
+      "rgb_unchanged": true,
+      "alpha4_249_unchanged": true,
+      "canvas_unchanged": true
+    },
+    "export_transform": {
+      "crop_xyxy": [
+        0,
+        0,
+        1070,
+        1470
+      ],
+      "padding_LTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "dimensions": [
+        535,
+        735
+      ],
+      "sampling": "premultiplied RGBA Lanczos; no tint"
+    },
+    "status": "CLEAN",
+    "editor": "NOT RUN",
+    "webgl": "NOT RUN",
+    "artistic_approval": "PENDING",
+    "integrated": false,
+    "transparent_internal_windows": [
+      {
+        "pixels": 498183,
+        "bbox": [
+          118,
+          132,
+          950,
+          791
+        ]
+      }
+    ]
+  }
+]

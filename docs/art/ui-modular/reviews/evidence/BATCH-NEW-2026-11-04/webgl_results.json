@@ -1,0 +1,1829 @@
+{
+  "environment": "Headless Chromium / SwiftShader; browser mouse automation, not physical mouse",
+  "windows": [
+    {
+      "width": 960,
+      "height": 600,
+      "pages": [
+        {
+          "page": "controls",
+          "snapshot": {
+            "ready": true,
+            "page": 0,
+            "width": 960,
+            "height": 600,
+            "clicks": 5,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [
+              {
+                "name": "secondary Voltar",
+                "state": "",
+                "label": "Voltar",
+                "x": 161.25003051757812,
+                "y": 162.50003051757812,
+                "width": 99.99999237060547,
+                "height": 36.666664123535156,
+                "enabled": true
+              },
+              {
+                "name": "secondary Cancelar",
+                "state": "",
+                "label": "Cancelar",
+                "x": 373.7500305175781,
+                "y": 162.50003051757812,
+                "width": 124.99998474121094,
+                "height": 36.666664123535156,
+                "enabled": true
+              },
+              {
+                "name": "secondary Detalhes",
+                "state": "",
+                "label": "Detalhes",
+                "x": 586.25,
+                "y": 162.50003051757812,
+                "width": 149.99998474121094,
+                "height": 41.666664123535156,
+                "enabled": true
+              },
+              {
+                "name": "secondary Continuar",
+                "state": "",
+                "label": "Continuar",
+                "x": 798.75,
+                "y": 162.50003051757812,
+                "width": 191.66664123535156,
+                "height": 44.999996185302734,
+                "enabled": true
+              },
+              {
+                "name": "tab Receitas",
+                "state": "",
+                "label": "Receitas",
+                "x": 267.5,
+                "y": 291.6666564941406,
+                "width": 174.99998474121094,
+                "height": 36.666664123535156,
+                "enabled": true
+              },
+              {
+                "name": "tab Receitas",
+                "state": "",
+                "label": "Receitas",
+                "x": 267.5,
+                "y": 400,
+                "width": 174.99998474121094,
+                "height": 44.999996185302734,
+                "enabled": false
+              }
+            ],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 105.00003051757812,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 230.00001525878906,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 355.0000305175781,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 480,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 605,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 729.9999389648438,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 855,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "UI-005 Sliced with own borders; UI-006 Simple/preserveAspect, no generated active/hover states. Labels: tested text only.",
+              "TEXT Voltar font=18 rect=(62.40, 28.60) preferred=44.40001x19.2 fits=True",
+              "TEXT Cancelar font=18 rect=(78.00, 28.60) preferred=68.40001x19.2 fits=True",
+              "TEXT Detalhes font=18 rect=(93.60, 32.50) preferred=67.2x19.2 fits=True",
+              "TEXT Continuar font=18 rect=(119.60, 35.10) preferred=74.40001x19.2 fits=True",
+              "TEXT Receitas font=18 rect=(109.20, 28.60) preferred=66.00001x19.2 fits=True",
+              "TEXT Receitas font=18 rect=(109.20, 35.10) preferred=66.00001x19.2 fits=True",
+              "TEXT Voltar font=18 rect=(62.40, 28.60) preferred=44.40001x19.2 fits=True",
+              "TEXT Cancelar font=18 rect=(78.00, 28.60) preferred=68.40001x19.2 fits=True",
+              "TEXT Detalhes font=18 rect=(93.60, 32.50) preferred=67.2x19.2 fits=True",
+              "TEXT Continuar font=18 rect=(119.60, 35.10) preferred=74.40001x19.2 fits=True",
+              "TEXT Receitas font=18 rect=(109.20, 28.60) preferred=66.00001x19.2 fits=True",
+              "TEXT Receitas font=18 rect=(109.20, 35.10) preferred=66.00001x19.2 fits=True"
+            ]
+          },
+          "mouse_clicks": [
+            {
+              "label": "Voltar",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Cancelar",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Detalhes",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Continuar",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Receitas",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Receitas",
+              "enabled": false,
+              "expected_delta": 0,
+              "actual_delta": 0,
+              "passed": true
+            }
+          ],
+          "screenshot": "webgl_controls_960x600.png"
+        },
+        {
+          "page": "panels",
+          "snapshot": {
+            "ready": true,
+            "page": 1,
+            "width": 960,
+            "height": 600,
+            "clicks": 7,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [
+              {
+                "name": "Cancelar",
+                "state": "",
+                "label": "Cancelar",
+                "x": 396.6666564941406,
+                "y": 272.5,
+                "width": 133.33331298828125,
+                "height": 36.666664123535156,
+                "enabled": true
+              },
+              {
+                "name": "Confirmar",
+                "state": "",
+                "label": "Confirmar",
+                "x": 563.3333740234375,
+                "y": 272.5,
+                "width": 133.33331298828125,
+                "height": 36.666664123535156,
+                "enabled": true
+              }
+            ],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 105.00003051757812,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 230.00001525878906,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 355.0000305175781,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 480,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 605,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 729.9999389648438,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 855,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "UI-007 Simple: central top ornament not stretched. UI-019 Sliced; dynamic multiline text. No production dialog/transaction invoked.",
+              "TEXT Confirmar contratação? font=22 rect=(480.00, 32.00) preferred=225.6x24 fits=True",
+              "TEXT Suzu está pronta para o próximo turno.|Custo: 900 ¥. Esta é uma prévia isolada. font=18 rect=(480.00, 80.00) preferred=308.4x38.40001 fits=True",
+              "TEXT Suzu font=20 rect=(600.00, 26.00) preferred=44.40001x20.4 fits=True",
+              "TEXT O café abre em breve. Vamos organizar a equipe e preparar as receitas?|Textos e decisões continuam sob controle da Unity. font=18 rect=(800.00, 65.00) preferred=559.2001x38.40001 fits=True"
+            ]
+          },
+          "mouse_clicks": [
+            {
+              "label": "Cancelar",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Confirmar",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            }
+          ]
+        },
+        {
+          "page": "lineup",
+          "snapshot": {
+            "ready": true,
+            "page": 2,
+            "width": 960,
+            "height": 600,
+            "clicks": 10,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [
+              {
+                "name": "minimal",
+                "state": "",
+                "label": "Suzu",
+                "x": 163.33334350585938,
+                "y": 258.3333435058594,
+                "width": 124.99998474121094,
+                "height": 171.66665649414062,
+                "enabled": true
+              },
+              {
+                "name": "minimal",
+                "state": "",
+                "label": "Suzu",
+                "x": 346.6666564941406,
+                "y": 266.6666564941406,
+                "width": 77.49999237060547,
+                "height": 106.4333267211914,
+                "enabled": true
+              },
+              {
+                "name": "rarityframe",
+                "state": "",
+                "label": "Suzu",
+                "x": 680,
+                "y": 266.6666564941406,
+                "width": 124.99998474121094,
+                "height": 171.66665649414062,
+                "enabled": true
+              }
+            ],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 105.00003051757812,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 230.00001525878906,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 355.0000305175781,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 480,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 605,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 729.9999389648438,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 855,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "REAL_SUZU=Maids/suzu_walk idle=6",
+              "minimal size=(150.00, 206.00) mask_master=160,230,910,1000 scale=1 name_dynamic=Suzu",
+              "minimal size=(93.00, 127.72) mask_master=160,230,910,1000 scale=0.62 name_dynamic=Suzu",
+              "rarityframe size=(150.00, 206.00) mask_master=165,180,905,740 scale=1 name_dynamic=Suzu",
+              "TEXT Suzu font=16 rect=(105.00, 26.00) preferred=36x18 fits=True",
+              "TEXT Suzu font=10 rect=(65.10, 16.12) preferred=20.4x10.8 fits=True",
+              "TEXT Suzu font=16 rect=(105.00, 26.00) preferred=36x18 fits=True",
+              "TEXT 75 / 100 font=14 rect=(97.50, 22.00) preferred=46.8x14.4 fits=True"
+            ]
+          },
+          "mouse_clicks": [
+            {
+              "label": "Suzu",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Suzu",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Suzu",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            }
+          ],
+          "screenshot": "webgl_lineup_960x600.png"
+        },
+        {
+          "page": "detail",
+          "snapshot": {
+            "ready": true,
+            "page": 3,
+            "width": 960,
+            "height": 600,
+            "clicks": 10,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 105.00003051757812,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 230.00001525878906,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 355.0000305175781,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 480,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 605,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 729.9999389648438,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 855,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "REAL_SUZU=Maids/suzu_walk idle=6",
+              "DIAGNOSTIC_ONLY: UI-009 contains baked bars, plus and coin symbols; must not be mistaken for dynamic data.",
+              "TEXT Suzu font=20 rect=(200.00, 25.00) preferred=44.40001x20.4 fits=True",
+              "TEXT Atendimento 75|Cozinha 60|Carisma 50 font=16 rect=(200.00, 90.00) preferred=109.2x54 fits=True"
+            ]
+          },
+          "mouse_clicks": []
+        },
+        {
+          "page": "icons",
+          "snapshot": {
+            "ready": true,
+            "page": 4,
+            "width": 960,
+            "height": 600,
+            "clicks": 10,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 105.00003051757812,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 230.00001525878906,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 355.0000305175781,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 480,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 605,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 729.9999389648438,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 855,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "Simple/preserveAspect; badge is one common asset, not dynamic badge text; book at 24/32/44u."
+            ]
+          },
+          "mouse_clicks": []
+        },
+        {
+          "page": "background",
+          "snapshot": {
+            "ready": true,
+            "page": 5,
+            "width": 960,
+            "height": 600,
+            "clicks": 13,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [
+              {
+                "name": "Continuar",
+                "state": "",
+                "label": "Continuar",
+                "x": 480,
+                "y": 254.16665649414062,
+                "width": 191.66664123535156,
+                "height": 41.666664123535156,
+                "enabled": true
+              },
+              {
+                "name": "Novo jogo",
+                "state": "",
+                "label": "Novo jogo",
+                "x": 480,
+                "y": 314.1666564941406,
+                "width": 191.66664123535156,
+                "height": 41.666664123535156,
+                "enabled": true
+              },
+              {
+                "name": "Opções",
+                "state": "",
+                "label": "Opções",
+                "x": 480,
+                "y": 374.1666564941406,
+                "width": 191.66664123535156,
+                "height": 41.666664123535156,
+                "enabled": true
+              }
+            ],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 105.00003051757812,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 230.00001525878906,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 355.0000305175781,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 480,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 605,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 729.9999389648438,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 855,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "Background uniform cover: no stretch, centered crop; reference_width=1152 art_width=1279.32; labels are QA overlay, not painted in source."
+            ]
+          },
+          "mouse_clicks": [
+            {
+              "label": "Continuar",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Novo jogo",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Opções",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            }
+          ],
+          "screenshot": "webgl_background_960x600.png"
+        },
+        {
+          "page": "environment",
+          "snapshot": {
+            "ready": true,
+            "page": 6,
+            "width": 960,
+            "height": 600,
+            "clicks": 13,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 105.00003051757812,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 230.00001525878906,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 355.0000305175781,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 480,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 605,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 729.9999389648438,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 855,
+                "y": 581.6666259765625,
+                "width": 116.66665649414062,
+                "height": 24.999998092651367,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "Environment isolated composition only: no production grid, sorting, tile clicks or camera fit certified."
+            ]
+          },
+          "mouse_clicks": []
+        }
+      ],
+      "page_errors": [],
+      "console": [
+        {
+          "type": "warning",
+          "text": "Shader 'Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling' is not supported (in 'Blit FSR Upscaling'). PostProcessing render passes will not execute.\n"
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "pages": [
+        {
+          "page": "controls",
+          "snapshot": {
+            "ready": true,
+            "page": 0,
+            "width": 1280,
+            "height": 720,
+            "clicks": 5,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [
+              {
+                "name": "secondary Voltar",
+                "state": "",
+                "label": "Voltar",
+                "x": 257.5,
+                "y": 195,
+                "width": 120,
+                "height": 44,
+                "enabled": true
+              },
+              {
+                "name": "secondary Cancelar",
+                "state": "",
+                "label": "Cancelar",
+                "x": 512.5,
+                "y": 195,
+                "width": 150,
+                "height": 44,
+                "enabled": true
+              },
+              {
+                "name": "secondary Detalhes",
+                "state": "",
+                "label": "Detalhes",
+                "x": 767.5,
+                "y": 195,
+                "width": 180,
+                "height": 50,
+                "enabled": true
+              },
+              {
+                "name": "secondary Continuar",
+                "state": "",
+                "label": "Continuar",
+                "x": 1022.5,
+                "y": 195,
+                "width": 230,
+                "height": 54,
+                "enabled": true
+              },
+              {
+                "name": "tab Receitas",
+                "state": "",
+                "label": "Receitas",
+                "x": 385,
+                "y": 350,
+                "width": 210,
+                "height": 44,
+                "enabled": true
+              },
+              {
+                "name": "tab Receitas",
+                "state": "",
+                "label": "Receitas",
+                "x": 385,
+                "y": 480,
+                "width": 210,
+                "height": 54,
+                "enabled": false
+              }
+            ],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 190,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 340,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 490,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 640,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 790,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 940,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 1090,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "UI-005 Sliced with own borders; UI-006 Simple/preserveAspect, no generated active/hover states. Labels: tested text only.",
+              "TEXT Voltar font=18 rect=(62.40, 28.60) preferred=47x20 fits=True",
+              "TEXT Cancelar font=18 rect=(78.00, 28.60) preferred=72x20 fits=True",
+              "TEXT Detalhes font=18 rect=(93.60, 32.50) preferred=71x20 fits=True",
+              "TEXT Continuar font=18 rect=(119.60, 35.10) preferred=78x20 fits=True",
+              "TEXT Receitas font=18 rect=(109.20, 28.60) preferred=70x20 fits=True",
+              "TEXT Receitas font=18 rect=(109.20, 35.10) preferred=70x20 fits=True",
+              "TEXT Voltar font=18 rect=(62.40, 28.60) preferred=47x20 fits=True",
+              "TEXT Cancelar font=18 rect=(78.00, 28.60) preferred=72x20 fits=True",
+              "TEXT Detalhes font=18 rect=(93.60, 32.50) preferred=71x20 fits=True",
+              "TEXT Continuar font=18 rect=(119.60, 35.10) preferred=78x20 fits=True",
+              "TEXT Receitas font=18 rect=(109.20, 28.60) preferred=70x20 fits=True",
+              "TEXT Receitas font=18 rect=(109.20, 35.10) preferred=70x20 fits=True"
+            ]
+          },
+          "mouse_clicks": [
+            {
+              "label": "Voltar",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Cancelar",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Detalhes",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Continuar",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Receitas",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Receitas",
+              "enabled": false,
+              "expected_delta": 0,
+              "actual_delta": 0,
+              "passed": true
+            }
+          ],
+          "screenshot": "webgl_controls_1280x720.png"
+        },
+        {
+          "page": "panels",
+          "snapshot": {
+            "ready": true,
+            "page": 1,
+            "width": 1280,
+            "height": 720,
+            "clicks": 7,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [
+              {
+                "name": "Cancelar",
+                "state": "",
+                "label": "Cancelar",
+                "x": 540,
+                "y": 327,
+                "width": 160,
+                "height": 44,
+                "enabled": true
+              },
+              {
+                "name": "Confirmar",
+                "state": "",
+                "label": "Confirmar",
+                "x": 740,
+                "y": 327,
+                "width": 160,
+                "height": 44,
+                "enabled": true
+              }
+            ],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 190,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 340,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 490,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 640,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 790,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 940,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 1090,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "UI-007 Simple: central top ornament not stretched. UI-019 Sliced; dynamic multiline text. No production dialog/transaction invoked.",
+              "TEXT Confirmar contratação? font=22 rect=(480.00, 32.00) preferred=226x25 fits=True",
+              "TEXT Suzu está pronta para o próximo turno.|Custo: 900 ¥. Esta é uma prévia isolada. font=18 rect=(480.00, 80.00) preferred=324x41 fits=True",
+              "TEXT Suzu font=20 rect=(600.00, 26.00) preferred=45x22 fits=True",
+              "TEXT O café abre em breve. Vamos organizar a equipe e preparar as receitas?|Textos e decisões continuam sob controle da Unity. font=18 rect=(800.00, 65.00) preferred=584x41 fits=True"
+            ]
+          },
+          "mouse_clicks": [
+            {
+              "label": "Cancelar",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Confirmar",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            }
+          ]
+        },
+        {
+          "page": "lineup",
+          "snapshot": {
+            "ready": true,
+            "page": 2,
+            "width": 1280,
+            "height": 720,
+            "clicks": 10,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [
+              {
+                "name": "minimal",
+                "state": "",
+                "label": "Suzu",
+                "x": 260,
+                "y": 310.0000305175781,
+                "width": 150,
+                "height": 206,
+                "enabled": true
+              },
+              {
+                "name": "minimal",
+                "state": "",
+                "label": "Suzu",
+                "x": 480,
+                "y": 319.9999694824219,
+                "width": 93,
+                "height": 127.72000122070312,
+                "enabled": true
+              },
+              {
+                "name": "rarityframe",
+                "state": "",
+                "label": "Suzu",
+                "x": 880,
+                "y": 319.9999694824219,
+                "width": 150,
+                "height": 206,
+                "enabled": true
+              }
+            ],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 190,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 340,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 490,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 640,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 790,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 940,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 1090,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "REAL_SUZU=Maids/suzu_walk idle=6",
+              "minimal size=(150.00, 206.00) mask_master=160,230,910,1000 scale=1 name_dynamic=Suzu",
+              "minimal size=(93.00, 127.72) mask_master=160,230,910,1000 scale=0.62 name_dynamic=Suzu",
+              "rarityframe size=(150.00, 206.00) mask_master=165,180,905,740 scale=1 name_dynamic=Suzu",
+              "TEXT Suzu font=16 rect=(105.00, 26.00) preferred=37x17 fits=True",
+              "TEXT Suzu font=10 rect=(65.10, 16.12) preferred=24x11 fits=True",
+              "TEXT Suzu font=16 rect=(105.00, 26.00) preferred=37x17 fits=True",
+              "TEXT 75 / 100 font=14 rect=(97.50, 22.00) preferred=52x16 fits=True"
+            ]
+          },
+          "mouse_clicks": [
+            {
+              "label": "Suzu",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Suzu",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Suzu",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            }
+          ],
+          "screenshot": "webgl_lineup_1280x720.png"
+        },
+        {
+          "page": "detail",
+          "snapshot": {
+            "ready": true,
+            "page": 3,
+            "width": 1280,
+            "height": 720,
+            "clicks": 10,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 190,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 340,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 490,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 640,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 790,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 940,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 1090,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "REAL_SUZU=Maids/suzu_walk idle=6",
+              "DIAGNOSTIC_ONLY: UI-009 contains baked bars, plus and coin symbols; must not be mistaken for dynamic data.",
+              "TEXT Suzu font=20 rect=(200.00, 25.00) preferred=45x22 fits=True",
+              "TEXT Atendimento 75|Cozinha 60|Carisma 50 font=16 rect=(200.00, 90.00) preferred=112x53 fits=True"
+            ]
+          },
+          "mouse_clicks": []
+        },
+        {
+          "page": "icons",
+          "snapshot": {
+            "ready": true,
+            "page": 4,
+            "width": 1280,
+            "height": 720,
+            "clicks": 10,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 190,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 340,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 490,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 640,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 790,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 940,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 1090,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "Simple/preserveAspect; badge is one common asset, not dynamic badge text; book at 24/32/44u."
+            ]
+          },
+          "mouse_clicks": []
+        },
+        {
+          "page": "background",
+          "snapshot": {
+            "ready": true,
+            "page": 5,
+            "width": 1280,
+            "height": 720,
+            "clicks": 13,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [
+              {
+                "name": "Continuar",
+                "state": "",
+                "label": "Continuar",
+                "x": 640,
+                "y": 305,
+                "width": 230,
+                "height": 50,
+                "enabled": true
+              },
+              {
+                "name": "Novo jogo",
+                "state": "",
+                "label": "Novo jogo",
+                "x": 640,
+                "y": 377,
+                "width": 230,
+                "height": 50,
+                "enabled": true
+              },
+              {
+                "name": "Opções",
+                "state": "",
+                "label": "Opções",
+                "x": 640,
+                "y": 449,
+                "width": 230,
+                "height": 50,
+                "enabled": true
+              }
+            ],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 190,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 340,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 490,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 640,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 790,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 940,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 1090,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "Background uniform cover: no stretch, centered crop; reference_width=1280 art_width=1280; labels are QA overlay, not painted in source."
+            ]
+          },
+          "mouse_clicks": [
+            {
+              "label": "Continuar",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Novo jogo",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            },
+            {
+              "label": "Opções",
+              "enabled": true,
+              "expected_delta": 1,
+              "actual_delta": 1,
+              "passed": true
+            }
+          ],
+          "screenshot": "webgl_background_1280x720.png"
+        },
+        {
+          "page": "environment",
+          "snapshot": {
+            "ready": true,
+            "page": 6,
+            "width": 1280,
+            "height": 720,
+            "clicks": 13,
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+            "failures": [],
+            "probes": [],
+            "navigation": [
+              {
+                "name": "controls",
+                "state": "",
+                "label": "controls",
+                "x": 190,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "panels",
+                "state": "",
+                "label": "panels",
+                "x": 340,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "lineup",
+                "state": "",
+                "label": "lineup",
+                "x": 490,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "detail",
+                "state": "",
+                "label": "detail",
+                "x": 640,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "icons",
+                "state": "",
+                "label": "icons",
+                "x": 790,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "background",
+                "state": "",
+                "label": "background",
+                "x": 940,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              },
+              {
+                "name": "environment",
+                "state": "",
+                "label": "environment",
+                "x": 1090,
+                "y": 698,
+                "width": 140,
+                "height": 30,
+                "enabled": true
+              }
+            ],
+            "facts": [
+              "Environment isolated composition only: no production grid, sorting, tile clicks or camera fit certified."
+            ]
+          },
+          "mouse_clicks": []
+        }
+      ],
+      "page_errors": [],
+      "console": [
+        {
+          "type": "warning",
+          "text": "Shader 'Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling' is not supported (in 'Blit FSR Upscaling'). PostProcessing render passes will not execute.\n"
+        }
+      ]
+    }
+  ],
+  "browser_version": "153.0.8010.12",
+  "result": "PASS"
+}

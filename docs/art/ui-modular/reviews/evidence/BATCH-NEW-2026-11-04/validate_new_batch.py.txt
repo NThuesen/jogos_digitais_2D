@@ -1,0 +1,40 @@
+from pathlib import Path
+import json,hashlib,ast,re,xml.etree.ElementTree as ET
+from PIL import Image
+import numpy as np
+from scipy import ndimage as ndi
+S=Path('/mnt/c/dev/PocketSlop-Games/jogos_digitais_2D');W=Path('/mnt/c/dev/PocketSlop-Games/ui-modular-new-batch');B=W/'docs/art/ui-modular';E=B/'reviews/evidence/BATCH-NEW-2026-11-04'
+inv=json.loads((E/'inventory.json').read_text());aud=json.loads((E/'audit.json').read_text());assert len(inv['raws'])==23 and len(aud)==12
+current={p.name for p in (S/'art_working/ui_modular/raw_gpt').rglob('*') if p.suffix.lower()=='.png'};assert current=={r['filename'] for r in inv['raws']},'RAW file list changed; inspect additional files'
+def verify_record(r):
+ p=S/r['path'];d=p.read_bytes();assert len(d)==r['bytes'] and hashlib.sha256(d).hexdigest()==r['sha256'],p
+ with Image.open(p) as im:im.verify()
+ with Image.open(p) as im:im.load();assert list(im.size)==r.get('dimensions',r.get('size')),p
+for r in inv['raws']:verify_record(r['raw'])
+for r in json.loads((E/'preexisting_clean_snapshot.json').read_text()).values():verify_record(r)
+for a in aud:
+ for key in ['raw','clean','export']:verify_record(a[key])
+ raw=np.asarray(Image.open(S/a['raw']['path']).convert('RGBA'));clean=np.asarray(Image.open(S/a['clean']['path']).convert('RGBA'));assert raw.shape==clean.shape and np.array_equal(raw[:,:,:3],clean[:,:,:3])
+ al=raw[:,:,3];expected=al.copy();expected[(al>0)&(al<=3)&(ndi.distance_transform_edt(al<8)>6)]=0;expected[(al>=250)&(al<255)]=255;assert np.array_equal(expected,clean[:,:,3])
+for p in E.rglob('*.json'):json.loads(p.read_text())
+for p in E.rglob('*.py.txt'):ast.parse(p.read_text(),filename=str(p))
+for p in E.rglob('*.png'):
+ with Image.open(p) as im:im.verify()
+xml=ET.parse(E/'editor_results.xml').getroot();assert xml.attrib['passed']=='1' and xml.attrib['failed']=='0'
+r=json.loads((E/'editor_results.json').read_text());assert len(r['pages'])==14 and not any(p['failures'] for p in r['pages']);assert sum(p['click_checks'] for p in r['pages'])==56;assert sum(p['raycast_checks'] for p in r['pages'])==56
+links=0
+for p in [B/'ASSET_REGISTRY.md',B/'OUTPUT_MANIFEST.md',B/'reviews/UI_BATCH_NEW_2026_11_04.md',E/'README.md']:
+ assert not re.search(r'^(<<<<<<<|=======|>>>>>>>)',p.read_text(),re.M),p
+ for link in re.findall(r'\]\(([^)]+)\)',p.read_text()):
+  if '://' in link or link.startswith('#'):continue
+  assert (p.parent/link.split('#')[0]).exists(),(p,link);links+=1
+c=json.loads((E/'classification.json').read_text());assert len(c['assets'])==12;assert all(a['artistic_approval']=='PENDING' and a['integrated']==False for a in c['assets']);assert sum(a['verdict']=='REWORK' for a in c['assets'])==3
+if (E/'webgl_results.json').exists():
+ b=json.loads((E/'webgl_results.json').read_text());assert b['result']=='PASS';assert len(b['windows'])==2
+ for win in b['windows']:
+  assert len(win['pages'])==7 and not win['page_errors'] and not any(x['type']=='error' for x in win['console'])
+  assert all(not p['snapshot']['failures'] and all(c['passed'] for c in p['mouse_clicks']) for p in win['pages'])
+if (E/'evidence_manifest.json').exists():
+ for name,r in json.loads((E/'evidence_manifest.json').read_text()).items():
+  data=(E/name).read_bytes();assert hashlib.sha256(data).hexdigest()==r['sha256'] and len(data)==r['bytes'],name
+print(f'PASS: 23 RAWs unchanged, 8 previous CLEANs unchanged, 12 CLEAN/export provenance and exact alpha policy, PNG/JSON/Python/XML, Editor 14 pages/56 click/56 raycast, 3 REWORK/no approvals, {links} local links'+(', WebGL 14 pages' if (E/'webgl_results.json').exists() else '; WebGL not yet recorded'))

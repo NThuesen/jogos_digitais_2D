@@ -1,0 +1,25 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using UnityEngine;
+using UnityEngine.UI;
+public sealed class ModularQaBootstrap : MonoBehaviour
+{
+ ModularQaView view;bool ready;int oldPage=-1;
+ [Serializable] public sealed class Snapshot{public bool ready;public int page,width,height,clicks;public string renderer;public string[] failures;public Item[] probes;public Item[] navigation;public string[] facts;}
+ [Serializable] public sealed class Item{public string name,state,label;public float x,y,width,height;public bool enabled;}
+#if UNITY_WEBGL && !UNITY_EDITOR
+ [DllImport("__Internal")]static extern void ModularQaReport(string payload);
+#endif
+ IEnumerator Start(){view=gameObject.AddComponent<ModularQaView>();view.Build(Screen.width,Screen.height,false);for(int i=0;i<20;i++)yield return null;view.Inspect();ready=true;}
+ Item Describe(Button b){var r=(RectTransform)b.transform;var p=RectTransformUtility.WorldToScreenPoint(view.Camera,r.position);var im=b.targetGraphic as Image;var t=b.GetComponentInChildren<Text>();return new Item{name=b.name,label=t==null?"":t.text,state=im==null||im.overrideSprite==null?"":im.overrideSprite.name,x=p.x,y=Screen.height-p.y,width=r.rect.width*view.Canvas.scaleFactor,height=r.rect.height*view.Canvas.scaleFactor,enabled=b.interactable};}
+ void LateUpdate()
+ {
+  if(!ready)return;if(oldPage!=view.Page){view.Inspect();oldPage=view.Page;}var probes=new List<Item>();foreach(var b in view.Buttons)probes.Add(Describe(b));var nav=new List<Item>();foreach(var b in view.Canvas.GetComponentsInChildren<Button>())if(!view.Buttons.Contains(b))nav.Add(Describe(b));
+  var s=new Snapshot{ready=true,page=view.Page,width=Screen.width,height=Screen.height,clicks=view.Clicks,renderer=SystemInfo.graphicsDeviceName,failures=view.Failures.ToArray(),probes=probes.ToArray(),navigation=nav.ToArray(),facts=view.Facts.ToArray()};
+#if UNITY_WEBGL && !UNITY_EDITOR
+  ModularQaReport(JsonUtility.ToJson(s));
+#endif
+ }
+}

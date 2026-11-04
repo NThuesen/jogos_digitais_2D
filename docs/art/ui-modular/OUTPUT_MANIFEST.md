@@ -22,20 +22,20 @@
 | [`04_BUTTON_PRIMARY_PRESSED.md`](prompts/variants/04_BUTTON_PRIMARY_PRESSED.md) | `UI-004_button_primary_pressed_v01.png` | `art_working/ui_modular/raw_gpt/UI-004_button_primary_pressed_v01.png` | PENDING |
 | [`05_BUTTON_SECONDARY_DISABLED.md`](prompts/variants/05_BUTTON_SECONDARY_DISABLED.md) | `UI-005_button_secondary_disabled_v01.png` | `art_working/ui_modular/raw_gpt/UI-005_button_secondary_disabled_v01.png` | PENDING |
 | [`05_BUTTON_SECONDARY_HOVER.md`](prompts/variants/05_BUTTON_SECONDARY_HOVER.md) | `UI-005_button_secondary_hover_v01.png` | `art_working/ui_modular/raw_gpt/UI-005_button_secondary_hover_v01.png` | PENDING |
-| [`05_BUTTON_SECONDARY_NORMAL.md`](prompts/variants/05_BUTTON_SECONDARY_NORMAL.md) | `UI-005_button_secondary_normal_v01.png` | `art_working/ui_modular/raw_gpt/UI-005_button_secondary_normal_v01.png` | PENDING |
+| [`05_BUTTON_SECONDARY_NORMAL.md`](prompts/variants/05_BUTTON_SECONDARY_NORMAL.md) | `UI-005_button_secondary_normal_v01.png` | `art_working/ui_modular/raw_gpt/UI-005_button_secondary_normal_v01.png` | UNITY_QA — [QA do novo lote](reviews/UI_BATCH_NEW_2026_11_04.md); PASS restrito; sem aprovação/integração |
 | [`05_BUTTON_SECONDARY_PRESSED.md`](prompts/variants/05_BUTTON_SECONDARY_PRESSED.md) | `UI-005_button_secondary_pressed_v01.png` | `art_working/ui_modular/raw_gpt/UI-005_button_secondary_pressed_v01.png` | PENDING |
 | [`06_TAB_ACTIVE.md`](prompts/variants/06_TAB_ACTIVE.md) | `UI-006_tab_active_v01.png` | `art_working/ui_modular/raw_gpt/UI-006_tab_active_v01.png` | PENDING |
 | [`06_TAB_HOVER.md`](prompts/variants/06_TAB_HOVER.md) | `UI-006_tab_hover_v01.png` | `art_working/ui_modular/raw_gpt/UI-006_tab_hover_v01.png` | PENDING |
-| [`06_TAB_INACTIVE.md`](prompts/variants/06_TAB_INACTIVE.md) | `UI-006_tab_inactive_v01.png` | `art_working/ui_modular/raw_gpt/UI-006_tab_inactive_v01.png` | PENDING |
-| [`07_MODAL_DIALOG.md`](prompts/07_MODAL_DIALOG.md) | `UI-007_modal_dialog_v01.png` | `art_working/ui_modular/raw_gpt/UI-007_modal_dialog_v01.png` | PENDING |
+| [`06_TAB_INACTIVE.md`](prompts/variants/06_TAB_INACTIVE.md) | `UI-006_tab_inactive_v01.png` | `art_working/ui_modular/raw_gpt/UI-006_tab_inactive_v01.png` | UNITY_QA — [QA do novo lote](reviews/UI_BATCH_NEW_2026_11_04.md); PASS restrito; sem aprovação/integração |
+| [`07_MODAL_DIALOG.md`](prompts/07_MODAL_DIALOG.md) | `UI-007_modal_dialog_v01.png` | `art_working/ui_modular/raw_gpt/UI-007_modal_dialog_v01.png` | REWORK — [QA do novo lote](reviews/UI_BATCH_NEW_2026_11_04.md); REWORK; sem aprovação/integração |
 | [`08_MAID_CARD_COMPACT.md`](prompts/08_MAID_CARD_COMPACT.md) | `UI-008_maid_card_compact_v01.png` | `art_working/ui_modular/raw_gpt/UI-008_maid_card_compact_v01.png` | RAW/CLEAN local; QA PR #44: 150×206 candidato detalhado, 0,62× REWORK; não aprovado |
-| [`08_MAID_CARD_LINEUP_MINIMAL.md`](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md) | `UI-008_maid_card_lineup_minimal_v01.png` | `art_working/ui_modular/raw_gpt/UI-008_maid_card_lineup_minimal_v01.png` | PENDING — nova moldura simplificada de Escalação, ainda não gerada |
-| [`09_MAID_CARD_DETAIL.md`](prompts/09_MAID_CARD_DETAIL.md) | `UI-009_maid_card_detail_v01.png` | `art_working/ui_modular/raw_gpt/UI-009_maid_card_detail_v01.png` | PENDING |
-| [`10_RARITY_BADGE_COMMON.md`](prompts/variants/10_RARITY_BADGE_COMMON.md) | `UI-010_rarity_badge_common_v01.png` | `art_working/ui_modular/raw_gpt/UI-010_rarity_badge_common_v01.png` | PENDING |
+| [`08_MAID_CARD_LINEUP_MINIMAL.md`](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md) | `UI-008_maid_card_lineup_minimal_v01.png` | `art_working/ui_modular/raw_gpt/UI-008_maid_card_lineup_minimal_v01.png` | UNITY_QA — [QA do novo lote](reviews/UI_BATCH_NEW_2026_11_04.md); PASS restrito; sem aprovação/integração |
+| [`09_MAID_CARD_DETAIL.md`](prompts/09_MAID_CARD_DETAIL.md) | `UI-009_maid_card_detail_v01.png` | `art_working/ui_modular/raw_gpt/UI-009_maid_card_detail_v01.png` | REWORK — [QA do novo lote](reviews/UI_BATCH_NEW_2026_11_04.md); REWORK; sem aprovação/integração |
+| [`10_RARITY_BADGE_COMMON.md`](prompts/variants/10_RARITY_BADGE_COMMON.md) | `UI-010_rarity_badge_common_v01.png` | `art_working/ui_modular/raw_gpt/UI-010_rarity_badge_common_v01.png` | UNITY_QA — [QA do novo lote](reviews/UI_BATCH_NEW_2026_11_04.md); PASS restrito; sem aprovação/integração |
 | [`10_RARITY_BADGE_EPIC.md`](prompts/variants/10_RARITY_BADGE_EPIC.md) | `UI-010_rarity_badge_epic_v01.png` | `art_working/ui_modular/raw_gpt/UI-010_rarity_badge_epic_v01.png` | PENDING |
 | [`10_RARITY_BADGE_LEGENDARY.md`](prompts/variants/10_RARITY_BADGE_LEGENDARY.md) | `UI-010_rarity_badge_legendary_v01.png` | `art_working/ui_modular/raw_gpt/UI-010_rarity_badge_legendary_v01.png` | PENDING |
 | [`10_RARITY_BADGE_RARE.md`](prompts/variants/10_RARITY_BADGE_RARE.md) | `UI-010_rarity_badge_rare_v01.png` | `art_working/ui_modular/raw_gpt/UI-010_rarity_badge_rare_v01.png` | PENDING |
-| [`11_ICON_BOOK.md`](prompts/variants/11_ICON_BOOK.md) | `UI-011_icon_book_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_book_v01.png` | PENDING |
+| [`11_ICON_BOOK.md`](prompts/variants/11_ICON_BOOK.md) | `UI-011_icon_book_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_book_v01.png` | UNITY_QA — [QA do novo lote](reviews/UI_BATCH_NEW_2026_11_04.md); PASS restrito; sem aprovação/integração |
 | [`11_ICON_CAT_PAW.md`](prompts/variants/11_ICON_CAT_PAW.md) | `UI-011_icon_cat_paw_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_cat_paw_v01.png` | PENDING |
 | [`11_ICON_CLOCK.md`](prompts/variants/11_ICON_CLOCK.md) | `UI-011_icon_clock_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_clock_v01.png` | PENDING |
 | [`11_ICON_COIN.md`](prompts/variants/11_ICON_COIN.md) | `UI-011_icon_coin_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_coin_v01.png` | PENDING |
@@ -45,7 +45,7 @@
 | [`11_ICON_HEART.md`](prompts/variants/11_ICON_HEART.md) | `UI-011_icon_heart_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_heart_v01.png` | PENDING |
 | [`11_ICON_SHOP_BAG.md`](prompts/variants/11_ICON_SHOP_BAG.md) | `UI-011_icon_shop_bag_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_shop_bag_v01.png` | PENDING |
 | [`11_ICON_STAR.md`](prompts/variants/11_ICON_STAR.md) | `UI-011_icon_star_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_star_v01.png` | PENDING |
-| [`12_MENU_BACKGROUND.md`](prompts/12_MENU_BACKGROUND.md) | `UI-012_menu_background_v01.png` | `art_working/ui_modular/raw_gpt/UI-012_menu_background_v01.png` | PENDING |
+| [`12_MENU_BACKGROUND.md`](prompts/12_MENU_BACKGROUND.md) | `UI-012_menu_background_v01.png` | `art_working/ui_modular/raw_gpt/UI-012_menu_background_v01.png` | UNITY_QA — [QA do novo lote](reviews/UI_BATCH_NEW_2026_11_04.md); PASS restrito; sem aprovação/integração |
 | [`13_RESTAURANT_ARCH_DETAIL.md`](prompts/variants/13_RESTAURANT_ARCH_DETAIL.md) | `UI-013_restaurant_arch_detail_v01.png` | `art_working/ui_modular/raw_gpt/UI-013_restaurant_arch_detail_v01.png` | PENDING |
 | [`13_RESTAURANT_ARCH_FLOOR.md`](prompts/variants/13_RESTAURANT_ARCH_FLOOR.md) | `UI-013_restaurant_arch_floor_v01.png` | `art_working/ui_modular/raw_gpt/UI-013_restaurant_arch_floor_v01.png` | PENDING |
 | [`13_RESTAURANT_ARCH_WALLS.md`](prompts/variants/13_RESTAURANT_ARCH_WALLS.md) | `UI-013_restaurant_arch_walls_v01.png` | `art_working/ui_modular/raw_gpt/UI-013_restaurant_arch_walls_v01.png` | PENDING |
@@ -64,7 +64,7 @@
 | [`17_SHOP_ITEM_FRAME.md`](prompts/17_SHOP_ITEM_FRAME.md) | `UI-017_shop_item_frame_v01.png` | `art_working/ui_modular/raw_gpt/UI-017_shop_item_frame_v01.png` | PENDING |
 | [`18_BALANCE_ROW_NORMAL.md`](prompts/variants/18_BALANCE_ROW_NORMAL.md) | `UI-018_balance_row_normal_v01.png` | `art_working/ui_modular/raw_gpt/UI-018_balance_row_normal_v01.png` | PENDING |
 | [`18_BALANCE_ROW_TOTAL.md`](prompts/variants/18_BALANCE_ROW_TOTAL.md) | `UI-018_balance_row_total_v01.png` | `art_working/ui_modular/raw_gpt/UI-018_balance_row_total_v01.png` | PENDING |
-| [`19_DIALOG_PANEL.md`](prompts/variants/19_DIALOG_PANEL.md) | `UI-019_dialog_panel_v01.png` | `art_working/ui_modular/raw_gpt/UI-019_dialog_panel_v01.png` | PENDING |
+| [`19_DIALOG_PANEL.md`](prompts/variants/19_DIALOG_PANEL.md) | `UI-019_dialog_panel_v01.png` | `art_working/ui_modular/raw_gpt/UI-019_dialog_panel_v01.png` | UNITY_QA — [QA do novo lote](reviews/UI_BATCH_NEW_2026_11_04.md); PASS restrito; sem aprovação/integração |
 | [`19_DIALOG_TAIL.md`](prompts/variants/19_DIALOG_TAIL.md) | `UI-019_dialog_tail_v01.png` | `art_working/ui_modular/raw_gpt/UI-019_dialog_tail_v01.png` | PENDING |
 | [`20_LOGO_WORDMARK.md`](prompts/20_LOGO_WORDMARK.md) | `UI-020_logo_wordmark_v01.png` | `art_working/ui_modular/raw_gpt/UI-020_logo_wordmark_v01.png` | PENDING |
 | [`21_MAID_PORTRAIT_AKARI.md`](prompts/variants/21_MAID_PORTRAIT_AKARI.md) | `UI-021_maid_portrait_akari_neutral_v01.png` | `art_working/ui_modular/raw_gpt/UI-021_maid_portrait_akari_neutral_v01.png` | PENDING |
@@ -76,11 +76,11 @@
 | [`21_MAID_PORTRAIT_REINA.md`](prompts/variants/21_MAID_PORTRAIT_REINA.md) | `UI-021_maid_portrait_reina_neutral_v01.png` | `art_working/ui_modular/raw_gpt/UI-021_maid_portrait_reina_neutral_v01.png` | PENDING |
 | [`21_MAID_PORTRAIT_SUZU.md`](prompts/variants/21_MAID_PORTRAIT_SUZU.md) | `UI-021_maid_portrait_suzu_neutral_v01.png` | `art_working/ui_modular/raw_gpt/UI-021_maid_portrait_suzu_neutral_v01.png` | PENDING |
 | [`21_MAID_PORTRAIT_YORU.md`](prompts/variants/21_MAID_PORTRAIT_YORU.md) | `UI-021_maid_portrait_yoru_neutral_v01.png` | `art_working/ui_modular/raw_gpt/UI-021_maid_portrait_yoru_neutral_v01.png` | PENDING |
-| [`22_FLOOR_TILE.md`](prompts/22_FLOOR_TILE.md) | `UI-022_floor_tile_warm_oak_v01.png` | `art_working/ui_modular/raw_gpt/UI-022_floor_tile_warm_oak_v01.png` | PENDING |
+| [`22_FLOOR_TILE.md`](prompts/22_FLOOR_TILE.md) | `UI-022_floor_tile_warm_oak_v01.png` | `art_working/ui_modular/raw_gpt/UI-022_floor_tile_warm_oak_v01.png` | REWORK — [QA do novo lote](reviews/UI_BATCH_NEW_2026_11_04.md); REWORK; sem aprovação/integração |
 | [`23_WALL_CORNER_LEFT.md`](prompts/variants/23_WALL_CORNER_LEFT.md) | `UI-023_wall_corner_left_v01.png` | `art_working/ui_modular/raw_gpt/UI-023_wall_corner_left_v01.png` | PENDING |
 | [`23_WALL_CORNER_RIGHT.md`](prompts/variants/23_WALL_CORNER_RIGHT.md) | `UI-023_wall_corner_right_v01.png` | `art_working/ui_modular/raw_gpt/UI-023_wall_corner_right_v01.png` | PENDING |
 | [`23_WALL_DOOR.md`](prompts/variants/23_WALL_DOOR.md) | `UI-023_wall_door_v01.png` | `art_working/ui_modular/raw_gpt/UI-023_wall_door_v01.png` | PENDING |
-| [`23_WALL_STRAIGHT.md`](prompts/variants/23_WALL_STRAIGHT.md) | `UI-023_wall_straight_v01.png` | `art_working/ui_modular/raw_gpt/UI-023_wall_straight_v01.png` | PENDING |
+| [`23_WALL_STRAIGHT.md`](prompts/variants/23_WALL_STRAIGHT.md) | `UI-023_wall_straight_v01.png` | `art_working/ui_modular/raw_gpt/UI-023_wall_straight_v01.png` | UNITY_QA — [QA do novo lote](reviews/UI_BATCH_NEW_2026_11_04.md); PASS render isolado; sem aprovação/integração |
 | [`23_WALL_WINDOW.md`](prompts/variants/23_WALL_WINDOW.md) | `UI-023_wall_window_v01.png` | `art_working/ui_modular/raw_gpt/UI-023_wall_window_v01.png` | PENDING |
 | [`24_PLACEABLE_BAKERY.md`](prompts/variants/24_PLACEABLE_BAKERY.md) | `UI-024_placeable_bakery_v01.png` | `art_working/ui_modular/raw_gpt/UI-024_placeable_bakery_v01.png` | PENDING |
 | [`24_PLACEABLE_CAT_TOWER.md`](prompts/variants/24_PLACEABLE_CAT_TOWER.md) | `UI-024_placeable_cat_tower_v01.png` | `art_working/ui_modular/raw_gpt/UI-024_placeable_cat_tower_v01.png` | PENDING |
@@ -105,7 +105,7 @@
 | [`24_PLACEABLE_TABLE_4.md`](prompts/variants/24_PLACEABLE_TABLE_4.md) | `UI-024_placeable_table_4_v01.png` | `art_working/ui_modular/raw_gpt/UI-024_placeable_table_4_v01.png` | PENDING |
 | [`24_PLACEABLE_TEABAR.md`](prompts/variants/24_PLACEABLE_TEABAR.md) | `UI-024_placeable_teabar_v01.png` | `art_working/ui_modular/raw_gpt/UI-024_placeable_teabar_v01.png` | PENDING |
 | [`24_PLACEABLE_WINDOW.md`](prompts/variants/24_PLACEABLE_WINDOW.md) | `UI-024_placeable_window_v01.png` | `art_working/ui_modular/raw_gpt/UI-024_placeable_window_v01.png` | PENDING |
-| [`25_RARITY_CARD_FRAME_COMMON.md`](prompts/variants/25_RARITY_CARD_FRAME_COMMON.md) | `UI-025_rarity_card_frame_common_v01.png` | `art_working/ui_modular/raw_gpt/UI-025_rarity_card_frame_common_v01.png` | PENDING |
+| [`25_RARITY_CARD_FRAME_COMMON.md`](prompts/variants/25_RARITY_CARD_FRAME_COMMON.md) | `UI-025_rarity_card_frame_common_v01.png` | `art_working/ui_modular/raw_gpt/UI-025_rarity_card_frame_common_v01.png` | UNITY_QA — [QA do novo lote](reviews/UI_BATCH_NEW_2026_11_04.md); PASS restrito; sem aprovação/integração |
 | [`25_RARITY_CARD_FRAME_EPIC.md`](prompts/variants/25_RARITY_CARD_FRAME_EPIC.md) | `UI-025_rarity_card_frame_epic_v01.png` | `art_working/ui_modular/raw_gpt/UI-025_rarity_card_frame_epic_v01.png` | PENDING |
 | [`25_RARITY_CARD_FRAME_LEGENDARY.md`](prompts/variants/25_RARITY_CARD_FRAME_LEGENDARY.md) | `UI-025_rarity_card_frame_legendary_v01.png` | `art_working/ui_modular/raw_gpt/UI-025_rarity_card_frame_legendary_v01.png` | PENDING |
 | [`25_RARITY_CARD_FRAME_RARE.md`](prompts/variants/25_RARITY_CARD_FRAME_RARE.md) | `UI-025_rarity_card_frame_rare_v01.png` | `art_working/ui_modular/raw_gpt/UI-025_rarity_card_frame_rare_v01.png` | PENDING |

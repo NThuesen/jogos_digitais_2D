@@ -1,0 +1,18 @@
+{
+  "temporary_paths_removed": [
+    "Assets/_QA_NewBatch_Temp",
+    "Assets/_QA_NewBatch_Temp.meta",
+    "Assets/WebGLTemplates/ModularQa",
+    "Assets/WebGLTemplates/ModularQa.meta",
+    "Build/NewBatchQA",
+    "Assets/WebGLTemplates",
+    "Build",
+    "Assets/WebGLTemplates.meta"
+  ],
+  "build_bytes_removed": 154084702,
+  "production_diff_before_cleanup": [],
+  "project_settings": "Build finally restored original settings; git diff empty for Assets/_Game, ProjectSettings and Packages",
+  "source_raws_and_cleans": "preserved; final hash validation required",
+  "original_worktree": "not switched or edited; new local CLEAN/export outputs only, under ignored art_working",
+  "cache": "separate worktree Library remains ignored; original Library untouched"
+}
