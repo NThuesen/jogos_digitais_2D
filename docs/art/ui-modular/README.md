@@ -7,7 +7,7 @@
 1. **[Tutorial passo a passo (com arquivos PNG reais)](TUTORIAL.md)** — instruções para anexar, copiar e salvar, incluindo o exemplo dos 4 botões.
 2. **[Índice de arquivos já existentes no repo](references/README.md)** — nomes exatos das referências e capturas.
 3. **[Ordem de geração e gates](GENERATION_ORDER.md)** — piloto 01 painel → 04 botão normal e variações → 08 Maid Card.
-4. **[99 saídas nomeadas](OUTPUT_MANIFEST.md)** — nome fixo de cada PNG, link para o prompt completo correspondente. O manifesto reserva nomes, não arquivos gerados. Consulte o registro para distinguir UI-001 APPROVED, UI-004 ornamental REWORK e demais variantes PENDING.
+4. **[100 saídas nomeadas](OUTPUT_MANIFEST.md)** — nome fixo de cada PNG, link para o prompt completo correspondente. O manifesto reserva nomes, não arquivos gerados. Consulte o registro para distinguir UI-001 APPROVED, UI-004 ornamental REWORK e demais variantes PENDING.
 5. **[Prompts prontos](prompts/)** — cada prompt individual tem links diretos aos PNGs e UM bloco autossuficiente, **sem campos a substituir**.
 6. **[Registro de aprovação](ASSET_REGISTRY.md)** e [ficha](ASSET_HANDOFF_TEMPLATE.md) — histórico de validação da arte real.
 
@@ -15,9 +15,15 @@
 
 - [01 — painel grande, um prompt](prompts/01_PANEL_LARGE.md), saída `UI-001_panel_large_v01.png`.
 - [04 — botão primário, duas famílias](prompts/04_BUTTON_PRIMARY.md), incluindo os quatro prompts ornamentais históricos e os quatro compactos (NORMAL e novos HOVER/PRESSED/DISABLED); nomes exatos clicáveis no índice.
-- [08 — Maid Card compacto, um prompt](prompts/08_MAID_CARD_COMPACT.md), saída `UI-008_maid_card_compact_v01.png`.
+- [08 — Maid Card existente](prompts/08_MAID_CARD_COMPACT.md), `UI-008_maid_card_compact_v01.png` (candidato detalhado 150×206), e [novo frame simplificado de Escalação](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md), `UI-008_maid_card_lineup_minimal_v01.png` (PENDING).
 
-### Decisão de produto UI-004 — duas famílias (03/11/2026)
+### Decisão de produto UI-004 — duas famílias (03/11/2026)### Decisão de produto — duas apresentações de Maid Card (04/11/2026)
+
+- **Escalação a 0,62×:** gerar [**UI-008 LINEUP MINIMAL**](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md), `UI-008_maid_card_lineup_minimal_v01.png`, com janela transparente de portrait e faixa simples de nome. [Tutorial com anexos exatos](TUTORIAL.md#passo-3b--novo-maid-card-minimalista-para-escalação-duas-apresentações-aprovadas). **PENDING; não gerado nem integrado.**
+- **Card mais detalhado:** preservar `UI-008_maid_card_compact_v01.png` já gerado e limpo localmente, candidato visual restrito a 150×206 (PR #44); **REWORK a 0,62×**. O UI-009 expandido é uma proposta futura, não um pré-requisito. A decisão de produto não aprova as artes.
+- A mesma maid/dados/portrait são reutilizados em ambas as apresentações; Unity controla nome, indicadores e informações adicionais. Nenhuma cena ou lógica alterada nesta documentação.
+
+
 
 - **Ornamental grande (~260×88):** linguagem rica para CTA de destaque. O `UI-004_button_primary_normal_v01.png` original foi gerado localmente e avaliado na [PR #40](https://github.com/NThuesen/jogos_digitais_2D/pull/40), mas segue `REWORK`, sem arte aprovada/integrada; 768×256 e WebGL continuam candidatos `NOT RUN`.
 - **Compacta simplificada (altura 44–54):** para botões de compra/navegação, com foco no botão real da Loja `150×44`, `120×44` e eventual `230×54`. **NORMAL compacto já gerado:** QA na PR #42, aprovado pelo responsável; a aprovação já foi registrada na PR #42 integrada; a integração Unity é outra etapa. **Próximo passo artístico:** [HOVER, PRESSED e DISABLED compactos](TUTORIAL.md#passo-2b--gerar-hover-pressed-e-disabled-do-botão-compacto-aprovado), com NORMAL limpo como referência exata. Outros estados ainda PENDING.

@@ -1,5 +1,8 @@
 # 08_MAID_CARD_COMPACT — pronto para copiar, sem campos variáveis
 
+> **ATUALIZAÇÃO 04/11/2026 — PROMPT HISTÓRICO.** O `UI-008_maid_card_compact_v01.png` já foi gerado e limpo localmente. QA Editor/WebGL na PR #44: **candidato visual em 150×206**, **REWORK em 0,62× (~93×128)**. **Não regenerar esta arte para resolver a Escalação:** a nova decisão de produto estabelece um frame simplificado separado. Use [**08_MAID_CARD_LINEUP_MINIMAL.md**](variants/08_MAID_CARD_LINEUP_MINIMAL.md), com anexos reais e prompt robusto. O PNG existente não está aprovado/integrado.
+
+
 **Ainda não gerado/aprovado.** Saída: `UI-008_maid_card_compact_v01.png`.
 
 ## 1. Anexe ao ChatGPT estes arquivos EXATOS do repositório

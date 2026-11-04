@@ -1,6 +1,6 @@
 # Ordem de geração e aprovação (sem lotes)
 
-**Status do fluxo em 03/11/2026:** UI-001 APPROVED (não integrado); UI-004 ornamental NORMAL v01 REWORK; UI-004 COMPACT NORMAL gerado, limpo, com QA PASS na PR #42 e aprovado pelo responsável (registro APPROVED na PR #42 integrada, ainda não INTEGRATED); HOVER/PRESSED/DISABLED ornamentais e compactos ainda não gerados. O objetivo é uma linguagem visual consistente, não completar 99 imagens por completude. Cada link vai para **um prompt executável**, sem `[STATE]` a preencher.
+**Status do fluxo em 03/11/2026:** UI-001 APPROVED (não integrado); UI-004 ornamental NORMAL v01 REWORK; UI-004 COMPACT NORMAL gerado, limpo, com QA PASS na PR #42 e aprovado pelo responsável (registro APPROVED na PR #42 integrada, ainda não INTEGRATED); HOVER/PRESSED/DISABLED ornamentais e compactos ainda não gerados. O objetivo é uma linguagem visual consistente, não completar 100 imagens por completude. Cada link vai para **um prompt executável**, sem `[STATE]` a preencher.
 
 ## Prioridade atual — estados da UI-004 compacta
 
@@ -16,7 +16,15 @@
 
 A decisão de produto estabelece duas linhas: ornamental grande (~260×88, arte antiga ainda `REWORK`) e compacta simplificada (44–54, foco `150×44` Loja e `120×44` navegação). Abas são independentes. O NORMAL compacto já foi aprovado pelo responsável; gerar seus outros estados em separado, **sem** iniciar os estados ornamentais (NORMAL ornamental ainda REWORK). Não homologar 768×256/WebGL do grande por inferência.
 
-## P0 — primeiro piloto (sequência originalmente documentada; mantida como histórico)
+## P0 — primeiro piloto (sequência originalmente documentada; mantida como histórico)## Nova prioridade — Maid Card minimalista da Escalação (04/11/2026)
+
+**Decisão aprovada:** duas apresentações para a mesma maid, sem duplicar dados. O UI-008 já gerado é candidato **detalhado** em 150×206, mas falhou visualmente na Escalação a 0,62×. Gerar agora **somente** [UI-008 LINEUP MINIMAL](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md) → `art_working/ui_modular/raw_gpt/UI-008_maid_card_lineup_minimal_v01.png` (**PENDING**).
+
+**Anexos obrigatórios:** `art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png` (CLEAN local, não aprovado); `docs/roadmap/ui-01b/evidence/after_ES-2_escalacao_960x600.png`; `docs/art/ui-modular/approved/UI-001_panel_large_v01.png`. Opcionais: `Assets/_Game/Resources/Maids/suzu_walk.png` e `docs/art/maid-walk/evidence_illustrated/webgl_chrome_960x600.jpg`. [Tutorial detalhado](TUTORIAL.md#passo-3b--novo-maid-card-minimalista-para-escalação-duas-apresentações-aprovadas).
+
+**UI-009** (frame expandido) continua PENDING e não bloqueia esta etapa. UI-008 atual não é descartado, renomeado ou aprovado automaticamente. Nenhuma integração antes do QA/decisão.
+
+
 
 | Ordem | Gerar | PNG exato que você salva | Como usar |
 |---|---|---|---|
@@ -45,4 +53,4 @@ A decisão de produto estabelece duas linhas: ornamental grande (~260×88, arte 
 
 [Barra superior](prompts/15_TOP_BAR_HUD.md), [faixa inferior](prompts/16_BOTTOM_STRIP_DAY_UI.md). Revalidar maids/Yoru e HUD nos tamanhos 960×600 e 1280×720. Não alterar câmera do PR #30 sem justificativa.
 
-[Todos os 99 nomes exatos](OUTPUT_MANIFEST.md) · [Tutorial de anexos](TUTORIAL.md) · [Registro de aprovação](ASSET_REGISTRY.md).
+[Todos os 100 nomes exatos](OUTPUT_MANIFEST.md) · [Tutorial de anexos](TUTORIAL.md) · [Registro de aprovação](ASSET_REGISTRY.md).
