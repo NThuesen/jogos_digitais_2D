@@ -1,0 +1,129 @@
+{
+    "environment": "Unity Editor PlayMode, render textures, simulated pointer; not physical mouse; no WebGL",
+    "pages": [
+        {
+            "page": "icons",
+            "width": 960,
+            "height": 600,
+            "click_checks": 0,
+            "raycast_checks": 0,
+            "failures": [],
+            "facts": [
+                "Icons Simple preserveAspect; exports 512x512 uncropped for family-consistent scale"
+            ],
+            "screenshot": "editor_icons_960x600.png"
+        },
+        {
+            "page": "rows",
+            "width": 960,
+            "height": 600,
+            "click_checks": 3,
+            "raycast_checks": 6,
+            "failures": [],
+            "facts": [
+                "UI-017 850×62 (referência Unity) row=850x62 mult=2,613 icon_x=-363,3 text_x=-280,8 text_w=555,8",
+                "UI-017 texto longo row=850x62 mult=2,613 icon_x=-363,3 text_x=-280,8 text_w=555,8",
+                "UI-017 560×62 (estreita) row=560x62 mult=2,613 icon_x=-229,1 text_x=-173,4 text_w=303,4",
+                "UI-018 380×46 380x46 mult=3,217 pill_w=123,4",
+                "UI-018 520×54 número grande 520x54 mult=2,741 pill_w=172,1",
+                "UI-018 300×40 pequena 300x40 mult=3,7 pill_w=96",
+                "TEXT Mesa para 2 font=15 rect=(555.82, 20.00) preferred=84,00001x16,8 fits=True",
+                "TEXT Duas cadeiras acolchoadas, estilo café font=12 rect=(555.82, 18.00) preferred=211,2x12 fits=True",
+                "TEXT ×3 font=14 rect=(60.00, 20.00) preferred=14,4x14,4 fits=True",
+                "TEXT Comprar font=14 rect=(100.00, 34.00) preferred=55,2x14,4 fits=True",
+                "TEXT Conjunto de uniforme sazonal bordado com laço font=15 rect=(555.82, 20.00) preferred=328,8x16,8 fits=True",
+                "TEXT Descrição longa para testar truncamento do texto dinâmico font=12 rect=(555.82, 18.00) preferred=324x12 fits=True",
+                "TEXT ×12 font=14 rect=(60.00, 20.00) preferred=21,6x14,4 fits=True",
+                "TEXT Comprar font=14 rect=(100.00, 34.00) preferred=55,2x14,4 fits=True",
+                "TEXT Bancada de doces font=15 rect=(303.37, 20.00) preferred=127,2x16,8 fits=True",
+                "TEXT Vitrine refrigerada font=12 rect=(303.37, 18.00) preferred=99,60001x12 fits=True",
+                "TEXT ×0 font=14 rect=(60.00, 20.00) preferred=14,4x14,4 fits=True",
+                "TEXT Comprar font=14 rect=(100.00, 34.00) preferred=55,2x14,4 fits=True",
+                "TEXT Saldo font=15 rect=(120.00, 27.60) preferred=38,40001x16,8 fits=True",
+                "TEXT 12.500 ¥ font=16 rect=(115.38, 25.30) preferred=60,00001x18 fits=True",
+                "TEXT Saldo font=15 rect=(120.00, 32.40) preferred=38,40001x16,8 fits=True",
+                "TEXT 1.234.567 ¥ font=16 rect=(164.15, 29.70) preferred=81,60001x18 fits=True",
+                "TEXT Saldo font=15 rect=(120.00, 24.00) preferred=38,40001x16,8 fits=True",
+                "TEXT 12.500 ¥ font=16 rect=(88.04, 22.00) preferred=60,00001x18 fits=True"
+            ],
+            "screenshot": "editor_rows_960x600.png"
+        },
+        {
+            "page": "logo",
+            "width": 960,
+            "height": 600,
+            "click_checks": 3,
+            "raycast_checks": 6,
+            "failures": [],
+            "facts": [
+                "Logo Simple preserveAspect 520u and 200u over UI-012 cover; exact text read visually",
+                "TEXT Continuar font=14 rect=(230.00, 50.00) preferred=63,60001x14,4 fits=True",
+                "TEXT Novo jogo font=14 rect=(230.00, 50.00) preferred=66,00001x14,4 fits=True",
+                "TEXT Opções font=14 rect=(230.00, 50.00) preferred=49,2x14,4 fits=True"
+            ],
+            "screenshot": "editor_logo_960x600.png"
+        },
+        {
+            "page": "icons",
+            "width": 1280,
+            "height": 720,
+            "click_checks": 0,
+            "raycast_checks": 0,
+            "failures": [],
+            "facts": [
+                "Icons Simple preserveAspect; exports 512x512 uncropped for family-consistent scale"
+            ],
+            "screenshot": "editor_icons_1280x720.png"
+        },
+        {
+            "page": "rows",
+            "width": 1280,
+            "height": 720,
+            "click_checks": 3,
+            "raycast_checks": 6,
+            "failures": [],
+            "facts": [
+                "UI-017 850×62 (referência Unity) row=850x62 mult=2,613 icon_x=-363,3 text_x=-280,8 text_w=555,8",
+                "UI-017 texto longo row=850x62 mult=2,613 icon_x=-363,3 text_x=-280,8 text_w=555,8",
+                "UI-017 560×62 (estreita) row=560x62 mult=2,613 icon_x=-229,1 text_x=-173,4 text_w=303,4",
+                "UI-018 380×46 380x46 mult=3,217 pill_w=123,4",
+                "UI-018 520×54 número grande 520x54 mult=2,741 pill_w=172,1",
+                "UI-018 300×40 pequena 300x40 mult=3,7 pill_w=96",
+                "TEXT Mesa para 2 font=15 rect=(555.82, 20.00) preferred=84x17 fits=True",
+                "TEXT Duas cadeiras acolchoadas, estilo café font=12 rect=(555.82, 18.00) preferred=224x14 fits=True",
+                "TEXT ×3 font=14 rect=(60.00, 20.00) preferred=16x16 fits=True",
+                "TEXT Comprar font=14 rect=(100.00, 34.00) preferred=58x16 fits=True",
+                "TEXT Conjunto de uniforme sazonal bordado com laço font=15 rect=(555.82, 20.00) preferred=341x17 fits=True",
+                "TEXT Descrição longa para testar truncamento do texto dinâmico font=12 rect=(555.82, 18.00) preferred=339x14 fits=True",
+                "TEXT ×12 font=14 rect=(60.00, 20.00) preferred=24x16 fits=True",
+                "TEXT Comprar font=14 rect=(100.00, 34.00) preferred=58x16 fits=True",
+                "TEXT Bancada de doces font=15 rect=(303.37, 20.00) preferred=128x17 fits=True",
+                "TEXT Vitrine refrigerada font=12 rect=(303.37, 18.00) preferred=104x14 fits=True",
+                "TEXT ×0 font=14 rect=(60.00, 20.00) preferred=16x16 fits=True",
+                "TEXT Comprar font=14 rect=(100.00, 34.00) preferred=58x16 fits=True",
+                "TEXT Saldo font=15 rect=(120.00, 27.60) preferred=40x17 fits=True",
+                "TEXT 12.500 ¥ font=16 rect=(115.38, 25.30) preferred=62x17 fits=True",
+                "TEXT Saldo font=15 rect=(120.00, 32.40) preferred=40x17 fits=True",
+                "TEXT 1.234.567 ¥ font=16 rect=(164.15, 29.70) preferred=84x17 fits=True",
+                "TEXT Saldo font=15 rect=(120.00, 24.00) preferred=40x17 fits=True",
+                "TEXT 12.500 ¥ font=16 rect=(88.04, 22.00) preferred=62x17 fits=True"
+            ],
+            "screenshot": "editor_rows_1280x720.png"
+        },
+        {
+            "page": "logo",
+            "width": 1280,
+            "height": 720,
+            "click_checks": 3,
+            "raycast_checks": 6,
+            "failures": [],
+            "facts": [
+                "Logo Simple preserveAspect 520u and 200u over UI-012 cover; exact text read visually",
+                "TEXT Continuar font=14 rect=(230.00, 50.00) preferred=68x16 fits=True",
+                "TEXT Novo jogo font=14 rect=(230.00, 50.00) preferred=71x16 fits=True",
+                "TEXT Opções font=14 rect=(230.00, 50.00) preferred=53x16 fits=True"
+            ],
+            "screenshot": "editor_logo_1280x720.png"
+        }
+    ]
+}
