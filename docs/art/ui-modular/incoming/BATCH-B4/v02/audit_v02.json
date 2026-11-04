@@ -1,0 +1,329 @@
+{
+ "UI-005_button_secondary_hover_v02.png": {
+  "size": [
+   2172,
+   724
+  ],
+  "mode": "RGBA",
+  "bytes": 1329509,
+  "sha": "989c53486ed50f3e71fd19e0a0d62a9e0d223fc882edb1b69d26a46449e093ab",
+  "vis": [
+   2103,
+   509
+  ],
+  "aspect_vis": 4.132,
+  "margin_pct": [
+   1.6,
+   14.1,
+   1.6,
+   15.6
+  ],
+  "edge_ge8": 0,
+  "dust": 2,
+  "solidify": 1006633,
+  "comps128": 1,
+  "windows": [
+   [
+    1657,
+    [
+     256,
+     100,
+     1913,
+     101
+    ]
+   ],
+   [
+    1708,
+    [
+     230,
+     610,
+     1934,
+     613
+    ]
+   ]
+  ],
+  "halo": 0,
+  "alpha_zero_frac": 0.346,
+  "corner_alpha": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "checker_like": 0,
+  "mean_rgb": [
+   190.5,
+   155.8,
+   145.0
+  ],
+  "refs": {
+   "UI-005_button_secondary_normal_v01.png": {
+    "size": [
+     2172,
+     724
+    ],
+    "vis": [
+     2099,
+     507
+    ],
+    "aspect": 4.14,
+    "margin_pct": [
+     1.7,
+     14.4,
+     1.7,
+     15.6
+    ],
+    "iou_bbox": 0.9984,
+    "iou_canvas": 0.9953,
+    "mean_rgb": [
+     173.9,
+     144.1,
+     134.0
+    ],
+    "vis_ratio": [
+     1.002,
+     1.004
+    ]
+   }
+  },
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "0fbacd0d8c1a25e5dd79ba721543f3ae67a4039c2c869e2cc314a5881cbd16cd",
+  "export": {
+   "dims": [
+    1060,
+    264
+   ],
+   "crop": [
+    26,
+    93,
+    2146,
+    620
+   ],
+   "sha": "c70296433bfcb17c5ae948c7968f8b4cc2b1d260953264ab14a2b779caf278e7"
+  }
+ },
+ "UI-010_rarity_badge_rare_v02.png": {
+  "size": [
+   1536,
+   1024
+  ],
+  "mode": "RGBA",
+  "bytes": 1525798,
+  "sha": "072bc2e50ee1c99ca238d0610c5a8faca93ee4aa176af789d2876161a2574a51",
+  "vis": [
+   1240,
+   708
+  ],
+  "aspect_vis": 1.751,
+  "margin_pct": [
+   9.6,
+   14.9,
+   9.6,
+   15.9
+  ],
+  "edge_ge8": 0,
+  "dust": 887,
+  "solidify": 583174,
+  "comps128": 1,
+  "windows": [],
+  "halo": 0,
+  "alpha_zero_frac": 0.62,
+  "corner_alpha": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "checker_like": 0,
+  "mean_rgb": [
+   202.9,
+   176.3,
+   157.5
+  ],
+  "refs": {
+   "UI-010_rarity_badge_common_v01.png": {
+    "size": [
+     1536,
+     1024
+    ],
+    "vis": [
+     1309,
+     753
+    ],
+    "aspect": 1.738,
+    "margin_pct": [
+     7.4,
+     13.3,
+     7.4,
+     13.2
+    ],
+    "iou_bbox": 0.9752,
+    "iou_canvas": 0.8701,
+    "mean_rgb": [
+     216.7,
+     171.6,
+     136.0
+    ],
+    "vis_ratio": [
+     0.947,
+     0.94
+    ]
+   },
+   "UI-010_rarity_badge_epic_v01.png": {
+    "size": [
+     1536,
+     1024
+    ],
+    "vis": [
+     1312,
+     751
+    ],
+    "aspect": 1.747,
+    "margin_pct": [
+     7.2,
+     13.4,
+     7.4,
+     13.3
+    ],
+    "iou_bbox": 0.9792,
+    "iou_canvas": 0.874,
+    "mean_rgb": [
+     216.9,
+     168.9,
+     156.5
+    ],
+    "vis_ratio": [
+     0.945,
+     0.943
+    ]
+   }
+  },
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "c17b11c6c120e66787747c584e56c751623fe7d7b13f96e4724af3ba843399d1",
+  "export": {
+   "dims": [
+    629,
+    363
+   ],
+   "crop": [
+    139,
+    144,
+    1397,
+    870
+   ],
+   "sha": "138c7ae134953b1be9f47af2ab99a0c6be5dcfd5dae5f2682fc997a69b657992"
+  }
+ },
+ "UI-010_rarity_badge_legendary_v02.png": {
+  "size": [
+   1536,
+   1024
+  ],
+  "mode": "RGBA",
+  "bytes": 1746157,
+  "sha": "4708931d322779980c6c085df5e72b8d4a56e0b9fb806dada57eac2ca0c3aa92",
+  "vis": [
+   1314,
+   759
+  ],
+  "aspect_vis": 1.731,
+  "margin_pct": [
+   7.0,
+   13.1,
+   7.5,
+   12.8
+  ],
+  "edge_ge8": 0,
+  "dust": 7851,
+  "solidify": 673404,
+  "comps128": 1,
+  "windows": [],
+  "halo": 0,
+  "alpha_zero_frac": 0.556,
+  "corner_alpha": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "checker_like": 0,
+  "mean_rgb": [
+   227.3,
+   179.2,
+   129.1
+  ],
+  "refs": {
+   "UI-010_rarity_badge_common_v01.png": {
+    "size": [
+     1536,
+     1024
+    ],
+    "vis": [
+     1309,
+     753
+    ],
+    "aspect": 1.738,
+    "margin_pct": [
+     7.4,
+     13.3,
+     7.4,
+     13.2
+    ],
+    "iou_bbox": 0.9909,
+    "iou_canvas": 0.989,
+    "mean_rgb": [
+     216.7,
+     171.6,
+     136.0
+    ],
+    "vis_ratio": [
+     1.004,
+     1.008
+    ]
+   },
+   "UI-010_rarity_badge_epic_v01.png": {
+    "size": [
+     1536,
+     1024
+    ],
+    "vis": [
+     1312,
+     751
+    ],
+    "aspect": 1.747,
+    "margin_pct": [
+     7.2,
+     13.4,
+     7.4,
+     13.3
+    ],
+    "iou_bbox": 0.9939,
+    "iou_canvas": 0.9855,
+    "mean_rgb": [
+     216.9,
+     168.9,
+     156.5
+    ],
+    "vis_ratio": [
+     1.002,
+     1.011
+    ]
+   }
+  },
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "18b08b080d0a0ab45796477f6909b37d072bcb443b427d52023dae668eb29a15",
+  "export": {
+   "dims": [
+    666,
+    388
+   ],
+   "crop": [
+    99,
+    125,
+    1430,
+    902
+   ],
+   "sha": "9ff83912f3fd13576f34a51859a36e12fc0ffbcafd5523cd54edd54b47d12d2f"
+  }
+ }
+}

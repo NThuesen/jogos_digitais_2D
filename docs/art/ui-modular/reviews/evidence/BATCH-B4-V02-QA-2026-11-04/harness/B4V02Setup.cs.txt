@@ -1,0 +1,17 @@
+using System.IO;
+using UnityEditor;
+using UnityEngine;
+public static class B4V02Setup
+{
+ public static void Configure()
+ {
+  foreach(var path in Directory.GetFiles("Assets/_QA_B4V02_Temp/Resources/ModularQA","*.png"))
+  {
+   var p=path.Replace((char)92,'/');var n=Path.GetFileNameWithoutExtension(p);var im=(TextureImporter)AssetImporter.GetAtPath(p);
+   im.GetSourceTextureWidthAndHeight(out int w,out int h);Vector4 border=n.StartsWith("sec_")?new Vector4(w*.18f,h*.36f,w*.18f,h*.36f):Vector4.zero;
+   im.textureType=TextureImporterType.Sprite;im.spriteImportMode=SpriteImportMode.Single;im.spritePixelsPerUnit=100;im.spriteBorder=border;im.npotScale=TextureImporterNPOTScale.None;im.maxTextureSize=4096;im.mipmapEnabled=false;im.isReadable=false;im.alphaIsTransparency=true;im.textureCompression=TextureImporterCompression.Uncompressed;im.wrapMode=TextureWrapMode.Clamp;im.filterMode=FilterMode.Bilinear;
+   var s=new TextureImporterSettings();im.ReadTextureSettings(s);s.spriteMeshType=SpriteMeshType.FullRect;im.SetTextureSettings(s);im.SaveAndReimport();
+  }
+  AssetDatabase.SaveAssets();
+ }
+}

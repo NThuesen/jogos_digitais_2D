@@ -1,0 +1,92 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using NUnit.Framework;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.TestTools;
+using UnityEngine.UI;
+
+public sealed class B4V02QaTests
+{
+ [Serializable]public sealed class PageResult{public string page;public int width,height,click_checks,raycast_checks;public string[] failures,facts;public string screenshot;}
+ [Serializable]public sealed class Results{public string environment="Unity Editor PlayMode, render textures, simulated pointer; not physical mouse; no WebGL";public List<PageResult> pages=new List<PageResult>();}
+ string Evidence=>Path.GetFullPath(Path.Combine(Application.dataPath,"../docs/art/ui-modular/reviews/evidence/BATCH-B4-V02-QA-2026-11-04"));
+ Sprite Load(string n)=>Resources.Load<Sprite>("ModularQA/"+n);
+ int clicks;
+ RectTransform Rect(Transform p,string name,Vector2 size,Vector2 pos){var r=new GameObject(name,typeof(RectTransform)).GetComponent<RectTransform>();r.SetParent(p,false);r.sizeDelta=size;r.anchoredPosition=pos;return r;}
+ Image Solid(Transform p,Vector2 size,Vector2 pos,Color c){var r=Rect(p,"solid",size,pos);var im=r.gameObject.AddComponent<Image>();im.color=c;im.raycastTarget=false;return im;}
+ Image Art(Transform p,Sprite s,Vector2 size,Vector2 pos,bool sliced=false){var r=Rect(p,s.name,size,pos);var im=r.gameObject.AddComponent<Image>();im.sprite=s;if(sliced){im.type=Image.Type.Sliced;im.pixelsPerUnitMultiplier=s.rect.height/size.y;}else im.preserveAspect=true;im.raycastTarget=false;return im;}
+ Text Label(Transform p,string text,Vector2 size,Vector2 pos,int font,Color c){var r=Rect(p,"t",size,pos);var t=r.gameObject.AddComponent<Text>();t.font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");t.text=text;t.fontSize=font;t.fontStyle=FontStyle.Bold;t.color=c;t.alignment=TextAnchor.MiddleCenter;t.horizontalOverflow=HorizontalWrapMode.Wrap;t.verticalOverflow=VerticalWrapMode.Truncate;t.raycastTarget=false;return t;}
+ Button Live(Transform p,Vector2 size,Vector2 pos,string text,string tag,List<Button> buttons)
+ {
+  var r=Rect(p,"sec "+tag,size,pos);var im=r.gameObject.AddComponent<Image>();im.sprite=Load("sec_normal");im.type=Image.Type.Sliced;im.pixelsPerUnitMultiplier=Load("sec_normal").rect.height/size.y;
+  var b=r.gameObject.AddComponent<Button>();b.targetGraphic=im;b.transition=Selectable.Transition.SpriteSwap;b.spriteState=new SpriteState{highlightedSprite=Load("sec_hover"),pressedSprite=Load("sec_pressed"),selectedSprite=Load("sec_normal"),disabledSprite=Load("sec_disabled")};b.onClick.AddListener(()=>clicks++);buttons.Add(b);
+  Label(r,text,new Vector2(size.x*.6f,size.y*.6f),Vector2.zero,18,new Color(.23f,.16f,.10f));return b;
+ }
+ [UnityTest]public IEnumerator B4V02Candidates()
+ {
+  Directory.CreateDirectory(Evidence);var results=new Results();int failures=0;
+  var es=new GameObject("ES",typeof(EventSystem));
+  foreach(var size in new[]{new Vector2Int(960,600),new Vector2Int(1280,720)})
+  {
+   var root=new GameObject("QA");var cg=new GameObject("Cam");cg.transform.SetParent(root.transform);var cam=cg.AddComponent<Camera>();cam.orthographic=true;cam.transform.position=new Vector3(0,0,-10);cam.clearFlags=CameraClearFlags.SolidColor;cam.backgroundColor=new Color(.18f,.14f,.18f);cam.targetTexture=new RenderTexture(size.x,size.y,24,RenderTextureFormat.ARGB32);
+   var g=new GameObject("Canvas",typeof(RectTransform));g.transform.SetParent(root.transform);var canvas=g.AddComponent<Canvas>();canvas.renderMode=RenderMode.ScreenSpaceCamera;canvas.worldCamera=cam;canvas.planeDistance=5;var sc=g.AddComponent<CanvasScaler>();sc.uiScaleMode=CanvasScaler.ScaleMode.ScaleWithScreenSize;sc.referenceResolution=new Vector2(1280,720);sc.matchWidthOrHeight=1;var rc=g.AddComponent<GraphicRaycaster>();
+   for(int page=0;page<2;page++)
+   {
+    var pr=Rect(canvas.transform,"Page",new Vector2(1120,630),Vector2.zero);var buttons=new List<Button>();var facts=new List<string>();var errors=new List<string>();clicks=0;
+    if(page==0)
+    {
+     Solid(pr,new Vector2(1060,540),new Vector2(0,-10),new Color(.86f,.80f,.72f));Solid(pr,new Vector2(1060,120),new Vector2(0,-215),new Color(.14f,.11f,.15f));
+     string[] keys={"sec_normal","sec_hover","sec_pressed","sec_disabled"};string[] names={"NORMAL (PENDING #47)","HOVER v02","PRESSED","DISABLED"};var sizes=new[]{new Vector2(120,44),new Vector2(150,44),new Vector2(180,50),new Vector2(230,54)};string[] texts={"Voltar","Cancelar","Detalhes","Continuar"};
+     for(int s=0;s<4;s++)for(int k=0;k<4;k++){float x=(k-1.5f)*250;float y=215-s*62;var im=Art(pr,Load(keys[k]),sizes[s],new Vector2(x,y),true);Label(im.transform,texts[s],new Vector2(sizes[s].x*.6f,sizes[s].y*.6f),Vector2.zero,18,new Color(.23f,.16f,.10f));}
+     for(int k=0;k<4;k++)Label(pr,names[k],new Vector2(240,22),new Vector2((k-1.5f)*250,265),13,new Color(.23f,.16f,.10f));
+     // dark strip: same four, at 180x50, to expose any matte/halo
+     for(int k=0;k<4;k++)Art(pr,Load(keys[k]),new Vector2(180,50),new Vector2((k-1.5f)*250,-190),true);
+     // diagnostic: v01 hover (rejected, opaque matte) on the dark strip for comparison
+     Art(pr,Load("sec_hover_v01"),new Vector2(180,50),new Vector2(-440,-250),true);Label(pr,"HOVER v01 (rejeitado)",new Vector2(200,18),new Vector2(-440,-285),11,Color.white);
+     var b=Live(pr,new Vector2(180,50),new Vector2(-300,-100),"Detalhes","live",buttons);var b2=Live(pr,new Vector2(180,50),new Vector2(0,-100),"Desabilitado","dis",buttons);b2.interactable=false;
+     Label(pr,"Botões vivos (SpriteSwap): normal→hover v02→pressed→disabled por código",new Vector2(900,24),new Vector2(0,-140),13,new Color(.23f,.16f,.10f));
+     facts.Add("HOVER v02 sliced borders w*.18/h*.36 at 120x44,150x44,180x50,230x54 on light and dark; v01 shown on dark strip as negative reference.");
+    }
+    else
+    {
+     Solid(pr,new Vector2(1060,310),new Vector2(0,150),new Color(.86f,.80f,.72f));Solid(pr,new Vector2(1060,230),new Vector2(0,-110),new Color(.14f,.11f,.15f));
+     string[] keys={"b_common","b_rare","b_epic","b_legendary"};string[] n={"COMMON","RARE v02","EPIC","LEGENDARY v02"};var boxes=new[]{new Vector2(52.8f,30.72f),new Vector2(70.4f,40.96f),new Vector2(96.8f,56.32f)};
+     for(int i=0;i<4;i++){float x=(i-1.5f)*250;for(int s=0;s<3;s++)Art(pr,Load(keys[i]),boxes[s],new Vector2(x,215-s*70));Label(pr,n[i],new Vector2(200,20),new Vector2(x,270),13,new Color(.23f,.16f,.10f));Art(pr,Load(keys[i]),new Vector2(boxes[2].x*2,boxes[2].y*2),new Vector2(x,-60));Label(pr,n[i]+" 2x",new Vector2(200,20),new Vector2(x,-130),12,Color.white);}
+     var r1=Art(pr,Load("b_rare_v01"),new Vector2(96.8f,56.32f),new Vector2(-440,-215));var l1=Art(pr,Load("b_legendary_v01"),new Vector2(96.8f,56.32f),new Vector2(-300,-215));Label(pr,"v01 RARE / LEGENDARY (rejeitados, referência)",new Vector2(420,18),new Vector2(-230,-255),11,Color.white);
+     facts.Add("Badges Simple/preserveAspect in 52.8x30.72, 70.4x40.96, 96.8x56.32 boxes and 2x; v01 rare/legendary only as small negative reference.");
+    }
+    Label(pr,"QA B4 v02 | "+(page==0?"botões":"raridades")+" | isolado",new Vector2(1060,28),new Vector2(0,310),20,Color.white);
+    for(int i=0;i<6;i++)yield return null;Canvas.ForceUpdateCanvases();
+    int cc=0,rays=0;
+    foreach(var b in buttons)
+    {
+     var r=(RectTransform)b.transform;bool available=b.interactable;int baseline=clicks;var ev=new PointerEventData(EventSystem.current){button=PointerEventData.InputButton.Left};var img=b.targetGraphic as Image;
+     ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerEnterHandler);
+     if(available){yield return null;if(img.overrideSprite==null||img.overrideSprite.name!="sec_hover")errors.Add("hover sprite swap "+(img.overrideSprite==null?"null":img.overrideSprite.name));}
+     ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerDownHandler);
+     if(available){yield return null;if(img.overrideSprite==null||img.overrideSprite.name!="sec_pressed")errors.Add("pressed sprite swap "+(img.overrideSprite==null?"null":img.overrideSprite.name));}
+     ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerUpHandler);ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerClickHandler);ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerExitHandler);
+     if(clicks!=baseline+(available?1:0))errors.Add("click availability "+b.name);cc++;
+     if(!available){yield return null;if(img.overrideSprite==null||img.overrideSprite.name!="sec_disabled")errors.Add("disabled sprite swap");}
+     foreach(float offset in new[]{0f,.8f})
+     {
+      var p=RectTransformUtility.WorldToScreenPoint(cam,r.TransformPoint(new Vector3(offset*r.rect.width,0)));var hits=new List<RaycastResult>();rc.Raycast(new PointerEventData(EventSystem.current){position=p},hits);
+      if(hits.Exists(x=>x.gameObject==b.gameObject||x.gameObject.transform.IsChildOf(b.transform))!=(offset==0)&&available)errors.Add("raycast "+b.name+" "+offset);rays++;
+     }
+    }
+    // for the hover sprite: confirm real alpha in the imported sprite texture rect
+    if(page==0){var hs=Load("sec_hover");facts.Add("sec_hover imported "+hs.rect.width+"x"+hs.rect.height+" texture format="+hs.texture.format+" border="+hs.border);if(hs.rect.size!=Load("sec_normal").rect.size)errors.Add("hover size differs from normal");}
+    Canvas.ForceUpdateCanvases();cam.Render();var rt=cam.targetTexture;RenderTexture.active=rt;var tex=new Texture2D(rt.width,rt.height,TextureFormat.RGB24,false);tex.ReadPixels(new Rect(0,0,rt.width,rt.height),0,0);tex.Apply();RenderTexture.active=null;
+    string name="editor_v02_"+(page==0?"buttons":"badges")+"_"+size.x+"x"+size.y+".png";File.WriteAllBytes(Path.Combine(Evidence,name),tex.EncodeToPNG());UnityEngine.Object.Destroy(tex);
+    results.pages.Add(new PageResult{page=page==0?"buttons":"badges",width=size.x,height=size.y,click_checks=cc,raycast_checks=rays,failures=errors.ToArray(),facts=facts.ToArray(),screenshot=name});failures+=errors.Count;
+    UnityEngine.Object.Destroy(pr.gameObject);yield return null;
+   }
+   var rt2=cam.targetTexture;UnityEngine.Object.Destroy(root);yield return null;rt2.Release();UnityEngine.Object.Destroy(rt2);
+  }
+  UnityEngine.Object.Destroy(es);
+  File.WriteAllText(Path.Combine(Evidence,"editor_results.json"),JsonUtility.ToJson(results,true));Assert.AreEqual(0,failures,"See evidence JSON");
+ }
+}

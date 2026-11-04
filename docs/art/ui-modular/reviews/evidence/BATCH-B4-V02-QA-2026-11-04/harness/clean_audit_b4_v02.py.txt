@@ -1,0 +1,66 @@
+import sys,json,hashlib,shutil
+from pathlib import Path
+from PIL import Image,ImageDraw
+import numpy as np
+from scipy import ndimage as ndi
+SRC=Path('C:/dev/PocketSlop-Games/jogos_digitais_2D/art_working/ui_modular')
+OUT=Path('C:/dev/PocketSlop-Games/ui-modular-b4/docs/art/ui-modular/incoming/BATCH-B4/v02')
+(OUT/'raw').mkdir(parents=True,exist_ok=True); (OUT/'exports').mkdir(exist_ok=True)
+NEW={'UI-005_button_secondary_hover_v02.png':['UI-005_button_secondary_normal_v01.png'],
+'UI-010_rarity_badge_rare_v02.png':['UI-010_rarity_badge_common_v01.png','UI-010_rarity_badge_epic_v01.png'],
+'UI-010_rarity_badge_legendary_v02.png':['UI-010_rarity_badge_common_v01.png','UI-010_rarity_badge_epic_v01.png']}
+def box(m):
+    ys,xs=np.where(m); return [int(xs.min()),int(ys.min()),int(xs.max()+1),int(ys.max()+1)]
+def rs(im,size): return im.convert('RGBa').resize(size,Image.Resampling.LANCZOS).convert('RGBA')
+def windows(al):
+    lab,k=ndi.label(al==0); bd=set(np.unique(np.concatenate([lab[0],lab[-1],lab[:,0],lab[:,-1]])))
+    return [(int((lab==i).sum()),box(lab==i)) for i in range(1,k+1) if i not in bd and (lab==i).sum()>1000]
+rep={}
+for n,refs in NEW.items():
+    raw=SRC/'raw_gpt'/n; im=Image.open(raw); a=np.array(im.convert('RGBA')); al=a[...,3]; H,W=al.shape
+    strong=al>=8; dist=ndi.distance_transform_edt(~strong); dust=(al>0)&(al<=3)&(dist>6); sol=(al>=250)&(al<255)
+    b=box(al>=128); lab,k=ndi.label(al>=128)
+    r=dict(size=[W,H],mode=im.mode,bytes=raw.stat().st_size,sha=hashlib.sha256(raw.read_bytes()).hexdigest(),vis=[b[2]-b[0],b[3]-b[1]],aspect_vis=round((b[2]-b[0])/(b[3]-b[1]),3),
+      margin_pct=[round(b[0]/W*100,1),round(b[1]/H*100,1),round((W-b[2])/W*100,1),round((H-b[3])/H*100,1)],
+      edge_ge8=int((al[0]>=8).sum()+(al[-1]>=8).sum()+(al[:,0]>=8).sum()+(al[:,-1]>=8).sum()),dust=int(dust.sum()),solidify=int(sol.sum()),comps128=int(k),
+      windows=[(w[0],w[1]) for w in windows(al)],halo=int(((a[...,:3].min(2)>220)&(al>8)&(al<240)).sum()),alpha_zero_frac=round(float((al==0).mean()),3),
+      corner_alpha=[int(al[0,0]),int(al[0,-1]),int(al[-1,0]),int(al[-1,-1])],
+      # fake checker: count pixels with alpha 255 and RGB near 253/235 grey outside bbox-ish
+      checker_like=int(((al==255)&(np.abs(a[...,0].astype(int)-a[...,1])<3)&(np.abs(a[...,1].astype(int)-a[...,2])<3)&(((a[...,0]>=250)|((a[...,0]>=232)&(a[...,0]<=238)))) ).sum()))
+    ma=al>=128; r['mean_rgb']=a[ma][:,:3].mean(0).round(1).tolist()
+    r['refs']={}
+    for ref in refs:
+        rp=SRC/'blender_clean'/ref; ra=np.array(Image.open(rp).convert('RGBA')); rb=box(ra[...,3]>=128)
+        m1=(al>=128)[b[1]:b[3],b[0]:b[2]]; m2=Image.fromarray(((ra[...,3]>=128)[rb[1]:rb[3],rb[0]:rb[2]]*255).astype('uint8')).resize((m1.shape[1],m1.shape[0]),Image.NEAREST); m2=np.array(m2)>127
+        # also IoU in canvas coordinates (no rescale) when same canvas size
+        iou_canvas=None
+        if ra.shape[:2]==al.shape: iou_canvas=round(float(((al>=128)&(ra[...,3]>=128)).sum()/((al>=128)|(ra[...,3]>=128)).sum()),4)
+        rm=ra[...,3]>=128
+        r['refs'][ref]=dict(size=[ra.shape[1],ra.shape[0]],vis=[rb[2]-rb[0],rb[3]-rb[1]],aspect=round((rb[2]-rb[0])/(rb[3]-rb[1]),3),margin_pct=[round(rb[0]/ra.shape[1]*100,1),round(rb[1]/ra.shape[0]*100,1),round((ra.shape[1]-rb[2])/ra.shape[1]*100,1),round((ra.shape[0]-rb[3])/ra.shape[0]*100,1)],
+            iou_bbox=round(float((m1&m2).sum()/(m1|m2).sum()),4),iou_canvas=iou_canvas,mean_rgb=ra[rm][:,:3].mean(0).round(1).tolist(),vis_ratio=[round((b[2]-b[0])/(rb[2]-rb[0]),3),round((b[3]-b[1])/(rb[3]-rb[1]),3)])
+    clean=SRC/'blender_clean'/n; assert not clean.exists(),n
+    if im.mode=='RGB' or (al==255).all(): r['op']='NO CLEAN (opaque)'; print('OPAQUE',n)
+    else:
+        c=a.copy(); c[dust,3]=0; c[sol,3]=255; Image.fromarray(c).save(clean); r['op']='alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified'
+        q=np.array(Image.open(clean).convert('RGBA')); assert np.array_equal(q[...,:3],a[...,:3]); assert np.array_equal(q[(al>=4)&(al<250),3],al[(al>=4)&(al<250)])
+        shutil.copyfile(clean,OUT/n); r['clean_sha']=hashlib.sha256(clean.read_bytes()).hexdigest()
+        ci=Image.open(clean).convert('RGBA'); bb=box(np.array(ci)[...,3]>=8)
+        crop=[max(0,bb[0]-8),max(0,bb[1]-8),min(W,bb[2]+8),min(H,bb[3]+8)]
+        c2=ci.crop(crop); ex=rs(c2,(round(c2.width/2),round(c2.height/2))); ex.save(OUT/'exports'/n); r['export']=dict(dims=list(ex.size),crop=crop,sha=hashlib.sha256((OUT/'exports'/n).read_bytes()).hexdigest())
+    shutil.copyfile(raw,OUT/'raw'/n); rep[n]=r
+json.dump(rep,open(OUT/'audit_v02.json','w',encoding='utf-8'),indent=1)
+print(json.dumps(rep,indent=1))
+# contact: v01 | v02 | refs on checker bg
+def show(p,bg):
+    im=Image.open(p).convert('RGBA'); t=Image.new('RGBA',im.size,bg); t.alpha_composite(im); t=t.convert('RGB'); t.thumbnail((420,300)); return t
+rows=[('UI-005_button_secondary_hover_v01.png','B4raw'),('UI-005_button_secondary_hover_v02.png','new'),('UI-005_button_secondary_normal_v01.png','ref'),
+ ('UI-010_rarity_badge_common_v01.png','ref'),('UI-010_rarity_badge_epic_v01.png','ref'),('UI-010_rarity_badge_rare_v01.png','B4raw'),('UI-010_rarity_badge_rare_v02.png','new'),('UI-010_rarity_badge_legendary_v01.png','B4raw'),('UI-010_rarity_badge_legendary_v02.png','new')]
+sheet=Image.new('RGB',(1300,3*330),(40,36,44)); d=ImageDraw.Draw(sheet)
+def path(n,k):
+    return SRC/'blender_clean'/n if k in('ref','new') else Path('C:/dev/PocketSlop-Games/ui-modular-b4/docs/art/ui-modular/incoming/BATCH-B4/raw')/n
+for i,(n,k) in enumerate(rows):
+    x=(i%3)*430+6; y=(i//3)*330+18
+    for j,bg in enumerate([(40,36,44)]):
+        sheet.paste(show(path(n,k),bg),(x,y))
+    d.text((x,y-14),n[:48],fill='white')
+sheet.save(OUT/'b4_v02_contact.png')
