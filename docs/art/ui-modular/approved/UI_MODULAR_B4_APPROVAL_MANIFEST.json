@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "decision_dates": [
+    "2026-11-04"
+  ],
+  "authority": "Decisoes expressas do responsavel: Fechamento artistico do lote B4 (#52) e Encerramento definitivo do B4",
+  "qa_pr": 52,
+  "qa_scope": "Unity Editor PlayMode batchmode (6000.5.9f1), 960x600 e 1280x720, pointer simulado; evidencias reviews/evidence/BATCH-B4-QA-2026-11-04/ e BATCH-B4-V02-QA-2026-11-04/. WebGL NOT RUN; mouse/GPU fisicos NOT RUN.",
+  "integration": "Nao realizada; masters/exports versionados em docs/art/ui-modular/approved fora de Assets",
+  "configuration_scope": "Config Unity so para exports; ver B4_README",
+  "superseded_v01": [
+    "UI-010_rarity_badge_rare_v01.png (REWORK)",
+    "UI-010_rarity_badge_legendary_v01.png (REWORK)",
+    "UI-005_button_secondary_hover_v01.png (REWORK, RAW opaco com matte)"
+  ],
+  "no_v03_requested": [
+    "UI-010 RARE",
+    "UI-010 LEGENDARY"
+  ],
+  "assets": [
+    {
+      "filename": "UI-010_rarity_badge_epic_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Somente Simple/preserveAspect; sem folha central (diferente do COMMON).",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/raw/UI-010_rarity_badge_epic_v01.png",
+      "raw_sha256": "cea70f370100e3b11f76a58f294fd0a6e5d24101d3f46a042e3da221b09c9412",
+      "clean_sha256": "569c0bf966ebe2b36fe92dbfc9e767367a1a1cd5721700b32dd14f83cc8f9ba2",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-010_rarity_badge_epic_v01.png",
+        "sha256": "569c0bf966ebe2b36fe92dbfc9e767367a1a1cd5721700b32dd14f83cc8f9ba2",
+        "size": [
+          1536,
+          1024
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-010_rarity_badge_epic_v01.png",
+        "sha256": "4b8d42b0112588000d289839b2223fb3427c170c4940d782fbc766f188feeb10",
+        "dims": [
+          665,
+          384
+        ],
+        "crop": [
+          101,
+          128,
+          1431,
+          896
+        ]
+      }
+    },
+    {
+      "filename": "UI-010_rarity_badge_rare_v02.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Aprovado; aceita-se ~5% menor que COMMON/EPIC (1240x708 vs ~1310x752). Sem v03.",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/v02/raw/UI-010_rarity_badge_rare_v02.png",
+      "raw_sha256": "072bc2e50ee1c99ca238d0610c5a8faca93ee4aa176af789d2876161a2574a51",
+      "clean_sha256": "c17b11c6c120e66787747c584e56c751623fe7d7b13f96e4724af3ba843399d1",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-010_rarity_badge_rare_v02.png",
+        "sha256": "c17b11c6c120e66787747c584e56c751623fe7d7b13f96e4724af3ba843399d1",
+        "size": [
+          1536,
+          1024
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-010_rarity_badge_rare_v02.png",
+        "sha256": "138c7ae134953b1be9f47af2ab99a0c6be5dcfd5dae5f2682fc997a69b657992",
+        "dims": [
+          629,
+          363
+        ],
+        "crop": [
+          139,
+          144,
+          1397,
+          870
+        ]
+      }
+    },
+    {
+      "filename": "UI-010_rarity_badge_legendary_v02.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Aprovado; distincao dourada dentro da silhueta COMMON/EPIC. Sem v03.",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/v02/raw/UI-010_rarity_badge_legendary_v02.png",
+      "raw_sha256": "4708931d322779980c6c085df5e72b8d4a56e0b9fb806dada57eac2ca0c3aa92",
+      "clean_sha256": "18b08b080d0a0ab45796477f6909b37d072bcb443b427d52023dae668eb29a15",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-010_rarity_badge_legendary_v02.png",
+        "sha256": "18b08b080d0a0ab45796477f6909b37d072bcb443b427d52023dae668eb29a15",
+        "size": [
+          1536,
+          1024
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-010_rarity_badge_legendary_v02.png",
+        "sha256": "9ff83912f3fd13576f34a51859a36e12fc0ffbcafd5523cd54edd54b47d12d2f",
+        "dims": [
+          666,
+          388
+        ],
+        "crop": [
+          99,
+          125,
+          1430,
+          902
+        ]
+      }
+    },
+    {
+      "filename": "UI-017_shop_item_frame_v02.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Somente 9-slice (borders 85/45 px); proporcao visivel ~7,06:1 aceita; esticamento ~1,9x no miolo.",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/raw/UI-017_shop_item_frame_v02.png",
+      "raw_sha256": "c7d739fec7f3967dba03bf796b859e0cb344221fd40c65499563838e1f320081",
+      "clean_sha256": "f46371c1ff2438d57195602e641e18174e08caf33f6749cbfc82e849767f3049",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-017_shop_item_frame_v02.png",
+        "sha256": "f46371c1ff2438d57195602e641e18174e08caf33f6749cbfc82e849767f3049",
+        "size": [
+          2172,
+          724
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-017_shop_item_frame_v02.png",
+        "sha256": "f1b69db6ed2a8cff93234d16344a05b4e75390ea6974956fe54dd54f58de2035",
+        "dims": [
+          1059,
+          158
+        ],
+        "crop": [
+          27,
+          194,
+          2145,
+          510
+        ]
+      }
+    },
+    {
+      "filename": "UI-018_balance_row_total_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Capsula de valor fixa; testado 380x46, 520x54, 300x40.",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/raw/UI-018_balance_row_total_v01.png",
+      "raw_sha256": "448470902927b3c9a9af47c3c70076dcdb2ae009ae6e9d501fb1a2a7b1d34f1b",
+      "clean_sha256": "f5b5f02f227e3fa9384c9f4b32646b226d1f4d9260512bfe64101d8093605dcb",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-018_balance_row_total_v01.png",
+        "sha256": "f5b5f02f227e3fa9384c9f4b32646b226d1f4d9260512bfe64101d8093605dcb",
+        "size": [
+          2172,
+          724
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-018_balance_row_total_v01.png",
+        "sha256": "29c2f6eba4dd46b70f6e451585b18769ffb871c14eae316e57ddf46dcee11652",
+        "dims": [
+          1084,
+          154
+        ],
+        "crop": [
+          2,
+          204,
+          2170,
+          513
+        ]
+      }
+    },
+    {
+      "filename": "UI-019_dialog_tail_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Usar SOBREPOSTA (filha) ao painel; emenda nao e continua.",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/raw/UI-019_dialog_tail_v01.png",
+      "raw_sha256": "921655c6faee319aebb77d0905b2db82c830034636bdd294cce241cdc6d2c0b2",
+      "clean_sha256": "4bdf7faab8ad75bad03d6b1546e45a291697f97bd5b500fb276289cfb2bb4892",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-019_dialog_tail_v01.png",
+        "sha256": "4bdf7faab8ad75bad03d6b1546e45a291697f97bd5b500fb276289cfb2bb4892",
+        "size": [
+          1536,
+          1024
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-019_dialog_tail_v01.png",
+        "sha256": "769d60edda2c38a16bc66fb5d4d55d34172b571ed165a6cbe122fb3c5504a881",
+        "dims": [
+          261,
+          260
+        ],
+        "crop": [
+          459,
+          244,
+          981,
+          763
+        ]
+      }
+    },
+    {
+      "filename": "UI-025_rarity_card_frame_rare_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Area segura comum do retrato [120,172,950,789] em 1070x1470; SpriteSwap direto entre raridades NAO certificado.",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/raw/UI-025_rarity_card_frame_rare_v01.png",
+      "raw_sha256": "9a715c3bea6e8aedabdb886a549785eab67a79725f75063399a9d1cf06bb8a4c",
+      "clean_sha256": "1f03e1c374a3040914d89f01068616f59bab66fc3ccf8fe38879d71d2794771f",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-025_rarity_card_frame_rare_v01.png",
+        "sha256": "1f03e1c374a3040914d89f01068616f59bab66fc3ccf8fe38879d71d2794771f",
+        "size": [
+          1070,
+          1470
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-025_rarity_card_frame_rare_v01.png",
+        "sha256": "5841138f29e2997908a9cd253b9017d3f8c137a56682fb2beda537d941e6dfd5",
+        "dims": [
+          535,
+          735
+        ],
+        "crop": [
+          0,
+          0,
+          1070,
+          1470
+        ]
+      }
+    },
+    {
+      "filename": "UI-025_rarity_card_frame_epic_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Area segura comum [120,172,950,789]; sem SpriteSwap direto; fenda transparente 2px x ~1200px na borda esquerda (x~55-57), ja presente no UI-008 aprovado.",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/raw/UI-025_rarity_card_frame_epic_v01.png",
+      "raw_sha256": "842ff4a4bbd0899213f06c762cd58890a0caec79fa0f17e4fc1206b14c6cc884",
+      "clean_sha256": "3e05c89140190e34c58c99647012a351985227819f256c96c89b524ce5513d22",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-025_rarity_card_frame_epic_v01.png",
+        "sha256": "3e05c89140190e34c58c99647012a351985227819f256c96c89b524ce5513d22",
+        "size": [
+          1070,
+          1470
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-025_rarity_card_frame_epic_v01.png",
+        "sha256": "45a15adbc559ee2cbad89eb053212db4b2ed6b143054bc95be0e549f917136df",
+        "dims": [
+          535,
+          735
+        ],
+        "crop": [
+          0,
+          0,
+          1070,
+          1470
+        ]
+      }
+    },
+    {
+      "filename": "UI-025_rarity_card_frame_legendary_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Area segura comum [120,172,950,789]; janela ~6% mais baixa que COMMON; sem SpriteSwap direto.",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/raw/UI-025_rarity_card_frame_legendary_v01.png",
+      "raw_sha256": "0f499195448f08174ba0804c988d7f7d152256fc6dcdf188ed37f7c98795c0ad",
+      "clean_sha256": "ea21e03ac14a648b3bffcde111a20324e080191af88f556c84dd53d381f91a2d",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-025_rarity_card_frame_legendary_v01.png",
+        "sha256": "ea21e03ac14a648b3bffcde111a20324e080191af88f556c84dd53d381f91a2d",
+        "size": [
+          1070,
+          1470
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-025_rarity_card_frame_legendary_v01.png",
+        "sha256": "6309afc1452e6a78ddd37d74be0de9520c7d3b1eab62a5b4e772290a2fa6c2dd",
+        "dims": [
+          535,
+          735
+        ],
+        "crop": [
+          0,
+          0,
+          1070,
+          1470
+        ]
+      }
+    }
+  ],
+  "conditional": [
+    {
+      "filename": "UI-005_button_secondary_hover_v02.png",
+      "status": "ACCEPTED_VISUALLY_CONDITIONAL",
+      "depends_on": "UI-005 NORMAL (PENDING, PR #47)",
+      "raw_sha256": "989c53486ed50f3e71fd19e0a0d62a9e0d223fc882edb1b69d26a46449e093ab",
+      "clean_sha256": "0fbacd0d8c1a25e5dd79ba721543f3ae67a4039c2c869e2cc314a5881cbd16cd",
+      "path": "docs/art/ui-modular/incoming/BATCH-B4/v02/UI-005_button_secondary_hover_v02.png"
+    },
+    {
+      "filename": "UI-005_button_secondary_pressed_v01.png",
+      "status": "ACCEPTED_VISUALLY_CONDITIONAL",
+      "depends_on": "UI-005 NORMAL (PENDING, PR #47)",
+      "raw_sha256": "1af83942449ec2bbc82151c1818a0ea25058840a6f0ba5d0c972041a6c56428d",
+      "clean_sha256": "db80e52bde818d6b543cb6160991e31306e89c1636a347986ba597c1476b7390",
+      "path": "docs/art/ui-modular/incoming/BATCH-B4/UI-005_button_secondary_pressed_v01.png"
+    },
+    {
+      "filename": "UI-005_button_secondary_disabled_v01.png",
+      "status": "ACCEPTED_VISUALLY_CONDITIONAL",
+      "depends_on": "UI-005 NORMAL (PENDING, PR #47)",
+      "raw_sha256": "71cf9048628336e893f8feda55d926068c00dc6d6c524af08612bb6ca0135372",
+      "clean_sha256": "cd77fdbf94cdbddc4902ddd3b3cdf5a7246125ec26ba7465ce2c2b876701d2ca",
+      "path": "docs/art/ui-modular/incoming/BATCH-B4/UI-005_button_secondary_disabled_v01.png"
+    },
+    {
+      "filename": "UI-006_tab_active_v01.png",
+      "status": "ACCEPTED_VISUALLY_CONDITIONAL",
+      "depends_on": "UI-006 INACTIVE (PENDING, PR #47); Unity deve mostrar indicador persistente de aba selecionada",
+      "raw_sha256": "c8bc2b53d1f92ffe0b3c311d85d1a355de32224d46304cf4bef70df802cf4b40",
+      "clean_sha256": "55d09cecd6d33e7c792ba94a40214ba7a2031c0af81b045ee837d6dd7946834a",
+      "path": "docs/art/ui-modular/incoming/BATCH-B4/UI-006_tab_active_v01.png"
+    },
+    {
+      "filename": "UI-006_tab_hover_v01.png",
+      "status": "ACCEPTED_VISUALLY_CONDITIONAL",
+      "depends_on": "UI-006 INACTIVE (PENDING, PR #47)",
+      "raw_sha256": "a5f52cffad4ec1eadc64b97709cc7750f792a03300736efcdf204e1fb72c5a8d",
+      "clean_sha256": "8fe2c870e27dceeeb4fc7d4b27bdf6c1ce5fb18a15eee95bf185e5d77eb7fd62",
+      "path": "docs/art/ui-modular/incoming/BATCH-B4/UI-006_tab_hover_v01.png"
+    }
+  ]
+}
