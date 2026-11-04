@@ -1,0 +1,1384 @@
+{
+  "schema_version": 1,
+  "batch": "BATCH-2026-11-04",
+  "pr": 47,
+  "purpose": "Individual review and durable handoff; no new QA, generation, artistic approval or integration",
+  "authority": "Owner requested publication of 12 CLEAN masters, tested exports and the 3 REWORK RAW sources",
+  "audit_commit": "46b88b8702aabce79eeedb12879e7998a1b0e673",
+  "cleanup_commit": "b995746593731934595732e1831efb354fe49b4e",
+  "source_root_local": "/mnt/c/dev/PocketSlop-Games/jogos_digitais_2D",
+  "source_local_paths_preserved": true,
+  "binary_deduplication": "One PNG per unique SHA-256. UI-012 export shares its CLEAN; UI-022 RAW and export share its identical CLEAN. These logical roles are fully preserved without duplicate binary files.",
+  "assets": [
+    {
+      "filename": "UI-005_button_secondary_normal_v01.png",
+      "stage": "UNITY_QA",
+      "technical_verdict": "PASS restrito",
+      "restrictions": "NORMAL; 120×44 Voltar, 150×44 Cancelar, 180×50 Detalhes, 230×54 Continuar; demais estados PENDING.",
+      "artistic_approval": "PENDING",
+      "integrated": false,
+      "master": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-005_button_secondary_normal_v01.png",
+        "sha256": "b1e18aa35f9edea77147be5e6f66836b6a8d89f5acdc5155b8e1849fb9c9b8ba",
+        "bytes": 1137274,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "source_local": "art_working/ui_modular/blender_clean/UI-005_button_secondary_normal_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "tested_export": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-005_button_secondary_normal_v01.png",
+        "sha256": "49fe2d82a4dbebaed2ca16ab457b6bec74848aa8e53d81fe2450bf00d5b07b98",
+        "bytes": 318425,
+        "dimensions": [
+          1059,
+          262
+        ],
+        "source_local": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-005_button_secondary_normal_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "raw_preserved": null,
+      "raw_local_record": {
+        "path": "art_working/ui_modular/raw_gpt/UI-005_button_secondary_normal_v01.png",
+        "bytes": 1355926,
+        "sha256": "79cb555c31fb2728de35da1d18511409d5f97771460ef3f9f880ca44657a0444",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "a2a76ebd757a692438950ba1f911def9aab443c12784ca66917e471427acd997"
+      },
+      "cleanup": {
+        "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+        "removed_pixels": 5,
+        "solidified_pixels": 1001465,
+        "rgb_unchanged": true,
+        "alpha4_249_unchanged": true,
+        "canvas_unchanged": true
+      },
+      "export_transform": {
+        "crop_xyxy": [
+          28,
+          95,
+          2146,
+          620
+        ],
+        "padding_LTRB": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "dimensions": [
+          1059,
+          262
+        ],
+        "sampling": "premultiplied RGBA Lanczos; no tint"
+      },
+      "unity_tested_configuration": {
+        "filename": "UI-005_button_secondary_normal_v01.png",
+        "resource": "secondary",
+        "dimensions": [
+          1059,
+          262
+        ],
+        "border_LBRT": [
+          190.62,
+          94.32,
+          190.62,
+          94.32
+        ],
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmap": false,
+        "compression": "Uncompressed",
+        "image": "Sliced"
+      },
+      "qa_report": "docs/art/ui-modular/reviews/UI_BATCH_NEW_2026_11_04.md",
+      "qa_evidence_manifest": "docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04/evidence_manifest.json"
+    },
+    {
+      "filename": "UI-006_tab_inactive_v01.png",
+      "stage": "UNITY_QA",
+      "technical_verdict": "PASS restrito",
+      "restrictions": "Somente INACTIVE, Simple/preserveAspect em 210×44/54; em 210×44 arte ocupa ≈167u de largura dentro do hitbox 210u. Flor central não homologada para 9-slice; ACTIVE/HOVER PENDING.",
+      "artistic_approval": "PENDING",
+      "integrated": false,
+      "master": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-006_tab_inactive_v01.png",
+        "sha256": "8b4b093168b30a9da3db57066b39fa0f7101d57d6df9ff79b716229eccf17b5c",
+        "bytes": 1180465,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "source_local": "art_working/ui_modular/blender_clean/UI-006_tab_inactive_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "tested_export": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-006_tab_inactive_v01.png",
+        "sha256": "d79f4f76f02df177ae38679e8bae11b6dbc7c6e1bd7ec31f01f3d14e72f81ebb",
+        "bytes": 292423,
+        "dimensions": [
+          1002,
+          264
+        ],
+        "source_local": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-006_tab_inactive_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "raw_preserved": null,
+      "raw_local_record": {
+        "path": "art_working/ui_modular/raw_gpt/UI-006_tab_inactive_v01.png",
+        "bytes": 1379601,
+        "sha256": "f731e9e695902e86b8feaf07db6a0de02211ceb5c39bdf5c4ea805696ecf6a9b",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "4dc0f9f284830b48baa3a295ea7e09181f32c310335b004e1fe2438bb9ad3f0f"
+      },
+      "cleanup": {
+        "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+        "removed_pixels": 427,
+        "solidified_pixels": 910379,
+        "rgb_unchanged": true,
+        "alpha4_249_unchanged": true,
+        "canvas_unchanged": true
+      },
+      "export_transform": {
+        "crop_xyxy": [
+          82,
+          87,
+          2085,
+          615
+        ],
+        "padding_LTRB": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "dimensions": [
+          1002,
+          264
+        ],
+        "sampling": "premultiplied RGBA Lanczos; no tint"
+      },
+      "unity_tested_configuration": {
+        "filename": "UI-006_tab_inactive_v01.png",
+        "resource": "tab",
+        "dimensions": [
+          1002,
+          264
+        ],
+        "border_LBRT": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmap": false,
+        "compression": "Uncompressed",
+        "image": "Simple/preserveAspect"
+      },
+      "qa_report": "docs/art/ui-modular/reviews/UI_BATCH_NEW_2026_11_04.md",
+      "qa_evidence_manifest": "docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04/evidence_manifest.json"
+    },
+    {
+      "filename": "UI-007_modal_dialog_v01.png",
+      "stage": "REWORK",
+      "technical_verdict": "REWORK",
+      "restrictions": "Silhueta superior cortada pelo canvas: 42 pixels opacos no limite y=0. Reenviar fonte não cortada ou regenerar com margem; não reconstruída.",
+      "artistic_approval": "PENDING",
+      "integrated": false,
+      "master": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-007_modal_dialog_v01.png",
+        "sha256": "21b332c2b60dc01ff32f0e8862e5b9e3b02344b8a76defbd02b9b1010d219cc0",
+        "bytes": 1877271,
+        "dimensions": [
+          1816,
+          866
+        ],
+        "source_local": "art_working/ui_modular/blender_clean/UI-007_modal_dialog_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "tested_export": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-007_modal_dialog_v01.png",
+        "sha256": "50f998c8224eea8d06a5416b78aed033e119ad5564312f3d4380225bf5457b1c",
+        "bytes": 500707,
+        "dimensions": [
+          908,
+          433
+        ],
+        "source_local": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-007_modal_dialog_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "raw_preserved": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/raw/UI-007_modal_dialog_v01.png",
+        "sha256": "2178e31412dceac10eab76966f9ae7d3e4c3ad4978feb34c0369a43fe4f9a525",
+        "bytes": 2137210,
+        "dimensions": [
+          1816,
+          866
+        ],
+        "source_local": "art_working/ui_modular/raw_gpt/UI-007_modal_dialog_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "raw_local_record": {
+        "path": "art_working/ui_modular/raw_gpt/UI-007_modal_dialog_v01.png",
+        "bytes": 2137210,
+        "sha256": "2178e31412dceac10eab76966f9ae7d3e4c3ad4978feb34c0369a43fe4f9a525",
+        "dimensions": [
+          1816,
+          866
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "ad87d049f3310733bf8fd61595d917969d80f521174f41df4e116a984bd404c6"
+      },
+      "cleanup": {
+        "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+        "removed_pixels": 703,
+        "solidified_pixels": 1426716,
+        "rgb_unchanged": true,
+        "alpha4_249_unchanged": true,
+        "canvas_unchanged": true
+      },
+      "export_transform": {
+        "crop_xyxy": [
+          0,
+          0,
+          1816,
+          866
+        ],
+        "padding_LTRB": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "dimensions": [
+          908,
+          433
+        ],
+        "sampling": "premultiplied RGBA Lanczos; no tint"
+      },
+      "unity_tested_configuration": {
+        "filename": "UI-007_modal_dialog_v01.png",
+        "resource": "modal",
+        "dimensions": [
+          908,
+          433
+        ],
+        "border_LBRT": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmap": false,
+        "compression": "Uncompressed",
+        "image": "Simple/preserveAspect"
+      },
+      "qa_report": "docs/art/ui-modular/reviews/UI_BATCH_NEW_2026_11_04.md",
+      "qa_evidence_manifest": "docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04/evidence_manifest.json"
+    },
+    {
+      "filename": "UI-008_maid_card_lineup_minimal_v01.png",
+      "stage": "UNITY_QA",
+      "technical_verdict": "PASS restrito",
+      "restrictions": "LINEUP MINIMAL: PASS técnico em 150×206 e 0,62× (93×127,72), Suzu real/nome curto dinâmico. Nome pequeno/mais pesado no WebGL exige avaliação artística; nomes longos/outros portraits/tela inteira NOT RUN.",
+      "artistic_approval": "PENDING",
+      "integrated": false,
+      "master": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-008_maid_card_lineup_minimal_v01.png",
+        "sha256": "0f80760c6d37a5016924c3f74a7500c482a9dd618365fcfe556cbdb19fd1a43a",
+        "bytes": 891236,
+        "dimensions": [
+          1070,
+          1470
+        ],
+        "source_local": "art_working/ui_modular/blender_clean/UI-008_maid_card_lineup_minimal_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "tested_export": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-008_maid_card_lineup_minimal_v01.png",
+        "sha256": "0427a384664a16b3572e7657bd1ea8ebb8b7cfa7a20d8472b3a27e57e69a7155",
+        "bytes": 245985,
+        "dimensions": [
+          535,
+          735
+        ],
+        "source_local": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-008_maid_card_lineup_minimal_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "raw_preserved": null,
+      "raw_local_record": {
+        "path": "art_working/ui_modular/raw_gpt/UI-008_maid_card_lineup_minimal_v01.png",
+        "bytes": 997547,
+        "sha256": "ac79e9bc773327aa1eb320a703cde1a87c0f1e7156c962b3b6146805d13a5e11",
+        "dimensions": [
+          1070,
+          1470
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "11274e184b74ef0f550293c725f19783f1e142ba21fe6e661f5fce04ccc8b6e6"
+      },
+      "cleanup": {
+        "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+        "removed_pixels": 18135,
+        "solidified_pixels": 577772,
+        "rgb_unchanged": true,
+        "alpha4_249_unchanged": true,
+        "canvas_unchanged": true
+      },
+      "export_transform": {
+        "crop_xyxy": [
+          0,
+          0,
+          1070,
+          1470
+        ],
+        "padding_LTRB": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "dimensions": [
+          535,
+          735
+        ],
+        "sampling": "premultiplied RGBA Lanczos; no tint"
+      },
+      "unity_tested_configuration": {
+        "filename": "UI-008_maid_card_lineup_minimal_v01.png",
+        "resource": "minimal",
+        "dimensions": [
+          535,
+          735
+        ],
+        "border_LBRT": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmap": false,
+        "compression": "Uncompressed",
+        "image": "Simple/preserveAspect"
+      },
+      "qa_report": "docs/art/ui-modular/reviews/UI_BATCH_NEW_2026_11_04.md",
+      "qa_evidence_manifest": "docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04/evidence_manifest.json"
+    },
+    {
+      "filename": "UI-009_maid_card_detail_v01.png",
+      "stage": "REWORK",
+      "technical_verdict": "REWORK",
+      "restrictions": "Barras, sinais + e moedas pintados em áreas de dados; contradizem símbolos/dados separados Unity. Render diagnóstico não aprova composição.",
+      "artistic_approval": "PENDING",
+      "integrated": false,
+      "master": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-009_maid_card_detail_v01.png",
+        "sha256": "5970311d3d765da4ff19c63e42c5059be81103c58dca09416d8e61ea0fcfe9de",
+        "bytes": 2062993,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "source_local": "art_working/ui_modular/blender_clean/UI-009_maid_card_detail_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "tested_export": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-009_maid_card_detail_v01.png",
+        "sha256": "09ce4babf82a84578f833c2b5fa9f236dc036698862b79f04d35cc6115070e98",
+        "bytes": 511688,
+        "dimensions": [
+          768,
+          512
+        ],
+        "source_local": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-009_maid_card_detail_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "raw_preserved": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/raw/UI-009_maid_card_detail_v01.png",
+        "sha256": "2518aa27287dcee6ece45b33ca1a24d34e8a640c0f5d595235c9d28d97d3eb91",
+        "bytes": 2114758,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "source_local": "art_working/ui_modular/raw_gpt/UI-009_maid_card_detail_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "raw_local_record": {
+        "path": "art_working/ui_modular/raw_gpt/UI-009_maid_card_detail_v01.png",
+        "bytes": 2114758,
+        "sha256": "2518aa27287dcee6ece45b33ca1a24d34e8a640c0f5d595235c9d28d97d3eb91",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "94324f596eb712c4a9de801cfb0aba3d7bd18094a268f044949fd6d1e74cf4f0"
+      },
+      "cleanup": {
+        "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+        "removed_pixels": 127243,
+        "solidified_pixels": 1139135,
+        "rgb_unchanged": true,
+        "alpha4_249_unchanged": true,
+        "canvas_unchanged": true
+      },
+      "export_transform": {
+        "crop_xyxy": [
+          0,
+          0,
+          1536,
+          1024
+        ],
+        "padding_LTRB": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "dimensions": [
+          768,
+          512
+        ],
+        "sampling": "premultiplied RGBA Lanczos; no tint"
+      },
+      "unity_tested_configuration": {
+        "filename": "UI-009_maid_card_detail_v01.png",
+        "resource": "detail",
+        "dimensions": [
+          768,
+          512
+        ],
+        "border_LBRT": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmap": false,
+        "compression": "Uncompressed",
+        "image": "Simple/preserveAspect"
+      },
+      "qa_report": "docs/art/ui-modular/reviews/UI_BATCH_NEW_2026_11_04.md",
+      "qa_evidence_manifest": "docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04/evidence_manifest.json"
+    },
+    {
+      "filename": "UI-010_rarity_badge_common_v01.png",
+      "stage": "UNITY_QA",
+      "technical_verdict": "PASS restrito",
+      "restrictions": "Somente COMMON, Simple; 52,8×30,72 / 70,4×40,96 / 96,8×56,32. Outras raridades PENDING.",
+      "artistic_approval": "PENDING",
+      "integrated": false,
+      "master": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-010_rarity_badge_common_v01.png",
+        "sha256": "4a7cb48a3faac90a50f995d2c5448c749e83a3ba137eaa192613d7693158516f",
+        "bytes": 1704380,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "source_local": "art_working/ui_modular/blender_clean/UI-010_rarity_badge_common_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "tested_export": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-010_rarity_badge_common_v01.png",
+        "sha256": "9d67bfc86ba3547ce22688d767b2c9935973da680422140d31d3106a3d6206e1",
+        "bytes": 297254,
+        "dimensions": [
+          664,
+          384
+        ],
+        "source_local": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-010_rarity_badge_common_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "raw_preserved": null,
+      "raw_local_record": {
+        "path": "art_working/ui_modular/raw_gpt/UI-010_rarity_badge_common_v01.png",
+        "bytes": 1735801,
+        "sha256": "e4ef4d6e24e7156de6c23e2504d50771bb9cdbd7c9e03d90a57bedfb3ecbcefb",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "f20da8f9b410a9fc8e8459bf2416055d7fedaed8afafcfbdd3fe5a52fa8b1315"
+      },
+      "cleanup": {
+        "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+        "removed_pixels": 4187,
+        "solidified_pixels": 669844,
+        "rgb_unchanged": true,
+        "alpha4_249_unchanged": true,
+        "canvas_unchanged": true
+      },
+      "export_transform": {
+        "crop_xyxy": [
+          104,
+          128,
+          1431,
+          897
+        ],
+        "padding_LTRB": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "dimensions": [
+          664,
+          384
+        ],
+        "sampling": "premultiplied RGBA Lanczos; no tint"
+      },
+      "unity_tested_configuration": {
+        "filename": "UI-010_rarity_badge_common_v01.png",
+        "resource": "badge",
+        "dimensions": [
+          664,
+          384
+        ],
+        "border_LBRT": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmap": false,
+        "compression": "Uncompressed",
+        "image": "Simple/preserveAspect"
+      },
+      "qa_report": "docs/art/ui-modular/reviews/UI_BATCH_NEW_2026_11_04.md",
+      "qa_evidence_manifest": "docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04/evidence_manifest.json"
+    },
+    {
+      "filename": "UI-011_icon_book_v01.png",
+      "stage": "UNITY_QA",
+      "technical_verdict": "PASS restrito",
+      "restrictions": "BOOK: PASS restrito de silhueta em 32–44u; 24u foi renderizado, mas detalhes internos perdem leitura. Preferir 32–44u; simplificação depende do responsável se 24u for obrigatório. Demais ícones PENDING.",
+      "artistic_approval": "PENDING",
+      "integrated": false,
+      "master": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-011_icon_book_v01.png",
+        "sha256": "7055446d2982a937365475f88d9e1f0f4a2790c9a1fe13a24ef5772233a094c6",
+        "bytes": 815157,
+        "dimensions": [
+          1286,
+          1223
+        ],
+        "source_local": "art_working/ui_modular/blender_clean/UI-011_icon_book_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "tested_export": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-011_icon_book_v01.png",
+        "sha256": "7455b8f81f3c8d815c56cc58e27495c587d545c487a68c46b9de44311ada27c6",
+        "bytes": 212490,
+        "dimensions": [
+          512,
+          512
+        ],
+        "source_local": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-011_icon_book_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "raw_preserved": null,
+      "raw_local_record": {
+        "path": "art_working/ui_modular/raw_gpt/UI-011_icon_book_v01.png",
+        "bytes": 896818,
+        "sha256": "52fc52ea6f1597d772aff246340f3f73863189674cd5a5d2c49fc099f12f8bc1",
+        "dimensions": [
+          1286,
+          1223
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "a5f7fb1b2974c297af281432637e1cf94d9ddf26f796d27b2157b22a869ad39a"
+      },
+      "cleanup": {
+        "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+        "removed_pixels": 1324,
+        "solidified_pixels": 550068,
+        "rgb_unchanged": true,
+        "alpha4_249_unchanged": true,
+        "canvas_unchanged": true
+      },
+      "export_transform": {
+        "crop_xyxy": [
+          83,
+          316,
+          1169,
+          1010
+        ],
+        "padding_LTRB": [
+          0,
+          196,
+          0,
+          196
+        ],
+        "dimensions": [
+          512,
+          512
+        ],
+        "sampling": "premultiplied RGBA Lanczos; no tint"
+      },
+      "unity_tested_configuration": {
+        "filename": "UI-011_icon_book_v01.png",
+        "resource": "book",
+        "dimensions": [
+          512,
+          512
+        ],
+        "border_LBRT": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmap": false,
+        "compression": "Uncompressed",
+        "image": "Simple/preserveAspect"
+      },
+      "qa_report": "docs/art/ui-modular/reviews/UI_BATCH_NEW_2026_11_04.md",
+      "qa_evidence_manifest": "docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04/evidence_manifest.json"
+    },
+    {
+      "filename": "UI-012_menu_background_v01.png",
+      "stage": "UNITY_QA",
+      "technical_verdict": "PASS restrito",
+      "restrictions": "Background uniforme cover em 16:9 e 16:10; crop central sem esticar. Overlays de teste não são layout aprovado; contraste/tela final dependem de composição.",
+      "artistic_approval": "PENDING",
+      "integrated": false,
+      "master": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-012_menu_background_v01.png",
+        "sha256": "d079d353925245c9e8c7e2891e69d40e19b47678808241fce9e618b67c18c22d",
+        "bytes": 2490243,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "source_local": "art_working/ui_modular/blender_clean/UI-012_menu_background_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "tested_export": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-012_menu_background_v01.png",
+        "sha256": "d079d353925245c9e8c7e2891e69d40e19b47678808241fce9e618b67c18c22d",
+        "bytes": 2490243,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "source_local": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-012_menu_background_v01.png",
+        "storage": "shared byte-identical PNG; see master path"
+      },
+      "raw_preserved": null,
+      "raw_local_record": {
+        "path": "art_working/ui_modular/raw_gpt/UI-012_menu_background_v01.png",
+        "bytes": 2490243,
+        "sha256": "d079d353925245c9e8c7e2891e69d40e19b47678808241fce9e618b67c18c22d",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "pixel_sha256": "45dba9cf88bd33e5b49628890c3ccc8485476e4bb8f15a49e5b2139d12ee3dd5"
+      },
+      "cleanup": {
+        "operation": "byte-identical copy; no cleanup needed",
+        "removed_pixels": 0,
+        "solidified_pixels": 0,
+        "rgb_unchanged": true,
+        "alpha4_249_unchanged": true,
+        "canvas_unchanged": true
+      },
+      "export_transform": {
+        "crop_xyxy": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "padding_LTRB": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sampling": "premultiplied RGBA Lanczos; no tint"
+      },
+      "unity_tested_configuration": {
+        "filename": "UI-012_menu_background_v01.png",
+        "resource": "menu",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "border_LBRT": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmap": false,
+        "compression": "Uncompressed",
+        "image": "Simple/preserveAspect"
+      },
+      "qa_report": "docs/art/ui-modular/reviews/UI_BATCH_NEW_2026_11_04.md",
+      "qa_evidence_manifest": "docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04/evidence_manifest.json"
+    },
+    {
+      "filename": "UI-019_dialog_panel_v01.png",
+      "stage": "UNITY_QA",
+      "technical_verdict": "PASS restrito",
+      "restrictions": "PANEL, Sliced em 1000×170, texto multiline dinâmico; TAIL e outros contextos PENDING/NOT RUN.",
+      "artistic_approval": "PENDING",
+      "integrated": false,
+      "master": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-019_dialog_panel_v01.png",
+        "sha256": "631e6c8724b064be52f122fa19324f796a18d30fa0d7ed272dd73b6b2358db9b",
+        "bytes": 1703241,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "source_local": "art_working/ui_modular/blender_clean/UI-019_dialog_panel_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "tested_export": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-019_dialog_panel_v01.png",
+        "sha256": "894f6eca6ddc4ebaa9a8eb078a571b4fa3768af73015c99bcb858a93a41f25f8",
+        "bytes": 455521,
+        "dimensions": [
+          1086,
+          362
+        ],
+        "source_local": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-019_dialog_panel_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "raw_preserved": null,
+      "raw_local_record": {
+        "path": "art_working/ui_modular/raw_gpt/UI-019_dialog_panel_v01.png",
+        "bytes": 1951327,
+        "sha256": "aaf40d388f8077cc62d54f2455c753a871168f1418fbd3ca4998e4d6cf28683c",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "fa0a3a9b08967626fc40655688d980348bf4ebdab2313811fcac18a0945b9991"
+      },
+      "cleanup": {
+        "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+        "removed_pixels": 780,
+        "solidified_pixels": 1342836,
+        "rgb_unchanged": true,
+        "alpha4_249_unchanged": true,
+        "canvas_unchanged": true
+      },
+      "export_transform": {
+        "crop_xyxy": [
+          0,
+          0,
+          2172,
+          724
+        ],
+        "padding_LTRB": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "dimensions": [
+          1086,
+          362
+        ],
+        "sampling": "premultiplied RGBA Lanczos; no tint"
+      },
+      "unity_tested_configuration": {
+        "filename": "UI-019_dialog_panel_v01.png",
+        "resource": "dialog",
+        "dimensions": [
+          1086,
+          362
+        ],
+        "border_LBRT": [
+          120,
+          80,
+          120,
+          80
+        ],
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmap": false,
+        "compression": "Uncompressed",
+        "image": "Sliced"
+      },
+      "qa_report": "docs/art/ui-modular/reviews/UI_BATCH_NEW_2026_11_04.md",
+      "qa_evidence_manifest": "docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04/evidence_manifest.json"
+    },
+    {
+      "filename": "UI-022_floor_tile_warm_oak_v01.png",
+      "stage": "REWORK",
+      "technical_verdict": "REWORK",
+      "restrictions": "Repetição não seamless: MAE bordas X=3,437/Y=7,097 versus vizinhos 1,439/1,485; seam Y≈4,78× baseline. Não mesclado/recolorido.",
+      "artistic_approval": "PENDING",
+      "integrated": false,
+      "master": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-022_floor_tile_warm_oak_v01.png",
+        "sha256": "1258bda075f2b6f641b972c2805d990ba7d64162e6b0f2f4d5767b43ef3636d8",
+        "bytes": 1794600,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "source_local": "art_working/ui_modular/blender_clean/UI-022_floor_tile_warm_oak_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "tested_export": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-022_floor_tile_warm_oak_v01.png",
+        "sha256": "1258bda075f2b6f641b972c2805d990ba7d64162e6b0f2f4d5767b43ef3636d8",
+        "bytes": 1794600,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "source_local": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-022_floor_tile_warm_oak_v01.png",
+        "storage": "shared byte-identical PNG; see master path"
+      },
+      "raw_preserved": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-022_floor_tile_warm_oak_v01.png",
+        "sha256": "1258bda075f2b6f641b972c2805d990ba7d64162e6b0f2f4d5767b43ef3636d8",
+        "bytes": 1794600,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "source_local": "art_working/ui_modular/raw_gpt/UI-022_floor_tile_warm_oak_v01.png",
+        "storage": "shared byte-identical PNG; see master path"
+      },
+      "raw_local_record": {
+        "path": "art_working/ui_modular/raw_gpt/UI-022_floor_tile_warm_oak_v01.png",
+        "bytes": 1794600,
+        "sha256": "1258bda075f2b6f641b972c2805d990ba7d64162e6b0f2f4d5767b43ef3636d8",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "pixel_sha256": "d735ffa1ca18b8a5bd2763b34a0495ba5b046483280b28ac3f06fc29c5e4c6fb"
+      },
+      "cleanup": {
+        "operation": "byte-identical copy; no cleanup needed",
+        "removed_pixels": 0,
+        "solidified_pixels": 0,
+        "rgb_unchanged": true,
+        "alpha4_249_unchanged": true,
+        "canvas_unchanged": true
+      },
+      "export_transform": {
+        "crop_xyxy": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "padding_LTRB": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "sampling": "premultiplied RGBA Lanczos; no tint"
+      },
+      "unity_tested_configuration": {
+        "filename": "UI-022_floor_tile_warm_oak_v01.png",
+        "resource": "floor",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "border_LBRT": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmap": false,
+        "compression": "Uncompressed",
+        "image": "Simple/preserveAspect"
+      },
+      "qa_report": "docs/art/ui-modular/reviews/UI_BATCH_NEW_2026_11_04.md",
+      "qa_evidence_manifest": "docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04/evidence_manifest.json"
+    },
+    {
+      "filename": "UI-023_wall_straight_v01.png",
+      "stage": "UNITY_QA",
+      "technical_verdict": "PASS render isolado",
+      "restrictions": "STRAIGHT, dois segmentos Simple; encaixe no grid, perspectiva/câmera/sorting de produção NOT RUN. Outras paredes PENDING.",
+      "artistic_approval": "PENDING",
+      "integrated": false,
+      "master": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-023_wall_straight_v01.png",
+        "sha256": "a270baf32d74c3e5fedaec45fa71d93f0478a4029849a9fcff98fbef34b230de",
+        "bytes": 1690320,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "source_local": "art_working/ui_modular/blender_clean/UI-023_wall_straight_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "tested_export": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-023_wall_straight_v01.png",
+        "sha256": "a1386274360804a6a2e82eb862c310938a50a4a301fc16c6732e23ad8f6cb855",
+        "bytes": 398260,
+        "dimensions": [
+          768,
+          512
+        ],
+        "source_local": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-023_wall_straight_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "raw_preserved": null,
+      "raw_local_record": {
+        "path": "art_working/ui_modular/raw_gpt/UI-023_wall_straight_v01.png",
+        "bytes": 1721823,
+        "sha256": "f750b156d3970ce15767e6f9e5b380b5c1ecaa80b04a8aaeac3e29e0901564cd",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "9fe17d903709e6f8854c20503fb2e1778342603f2465dc0e4244ec80ee1d755b"
+      },
+      "cleanup": {
+        "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+        "removed_pixels": 2632,
+        "solidified_pixels": 1377339,
+        "rgb_unchanged": true,
+        "alpha4_249_unchanged": true,
+        "canvas_unchanged": true
+      },
+      "export_transform": {
+        "crop_xyxy": [
+          0,
+          0,
+          1536,
+          1024
+        ],
+        "padding_LTRB": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "dimensions": [
+          768,
+          512
+        ],
+        "sampling": "premultiplied RGBA Lanczos; no tint"
+      },
+      "unity_tested_configuration": {
+        "filename": "UI-023_wall_straight_v01.png",
+        "resource": "wall",
+        "dimensions": [
+          768,
+          512
+        ],
+        "border_LBRT": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmap": false,
+        "compression": "Uncompressed",
+        "image": "Simple/preserveAspect"
+      },
+      "qa_report": "docs/art/ui-modular/reviews/UI_BATCH_NEW_2026_11_04.md",
+      "qa_evidence_manifest": "docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04/evidence_manifest.json"
+    },
+    {
+      "filename": "UI-025_rarity_card_frame_common_v01.png",
+      "stage": "UNITY_QA",
+      "technical_verdict": "PASS restrito",
+      "restrictions": "COMMON, Simple em 150×206, janela/máscara própria; IoU 97,44% contra janela da UI-008 detalhada, sem certificação de SpriteSwap direto. Outras raridades PENDING.",
+      "artistic_approval": "PENDING",
+      "integrated": false,
+      "master": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-025_rarity_card_frame_common_v01.png",
+        "sha256": "1d60c0b894120372a7afcb58bb6121f644e61a1157bf5f969603458caa703327",
+        "bytes": 1093767,
+        "dimensions": [
+          1070,
+          1470
+        ],
+        "source_local": "art_working/ui_modular/blender_clean/UI-025_rarity_card_frame_common_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "tested_export": {
+        "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-025_rarity_card_frame_common_v01.png",
+        "sha256": "f44b668e58611fbfc128d522a07829c81ef265ec0fd6c391aa6485e252a75804",
+        "bytes": 309860,
+        "dimensions": [
+          535,
+          735
+        ],
+        "source_local": "art_working/ui_modular/export_unity/BATCH_NEW_2026_11_04/UI-025_rarity_card_frame_common_v01.png",
+        "storage": "byte-identical copy"
+      },
+      "raw_preserved": null,
+      "raw_local_record": {
+        "path": "art_working/ui_modular/raw_gpt/UI-025_rarity_card_frame_common_v01.png",
+        "bytes": 1219541,
+        "sha256": "8d71ec54518d2591e1fcec1d99eb0a029dcde0cf3d870126394ad57c711ae373",
+        "dimensions": [
+          1070,
+          1470
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "64ddd0e1e231108f59ad45a38f37110d96f247f3e6d1bc6199019c86d534e16f"
+      },
+      "cleanup": {
+        "operation": "alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.",
+        "removed_pixels": 2392,
+        "solidified_pixels": 744617,
+        "rgb_unchanged": true,
+        "alpha4_249_unchanged": true,
+        "canvas_unchanged": true
+      },
+      "export_transform": {
+        "crop_xyxy": [
+          0,
+          0,
+          1070,
+          1470
+        ],
+        "padding_LTRB": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "dimensions": [
+          535,
+          735
+        ],
+        "sampling": "premultiplied RGBA Lanczos; no tint"
+      },
+      "unity_tested_configuration": {
+        "filename": "UI-025_rarity_card_frame_common_v01.png",
+        "resource": "rarityframe",
+        "dimensions": [
+          535,
+          735
+        ],
+        "border_LBRT": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmap": false,
+        "compression": "Uncompressed",
+        "image": "Simple/preserveAspect"
+      },
+      "qa_report": "docs/art/ui-modular/reviews/UI_BATCH_NEW_2026_11_04.md",
+      "qa_evidence_manifest": "docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04/evidence_manifest.json"
+    }
+  ],
+  "stored_pngs": [
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-005_button_secondary_normal_v01.png",
+      "sha256": "b1e18aa35f9edea77147be5e6f66836b6a8d89f5acdc5155b8e1849fb9c9b8ba",
+      "bytes": 1137274,
+      "dimensions": [
+        2172,
+        724
+      ],
+      "first_role": "CLEAN master"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-006_tab_inactive_v01.png",
+      "sha256": "8b4b093168b30a9da3db57066b39fa0f7101d57d6df9ff79b716229eccf17b5c",
+      "bytes": 1180465,
+      "dimensions": [
+        2172,
+        724
+      ],
+      "first_role": "CLEAN master"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-007_modal_dialog_v01.png",
+      "sha256": "21b332c2b60dc01ff32f0e8862e5b9e3b02344b8a76defbd02b9b1010d219cc0",
+      "bytes": 1877271,
+      "dimensions": [
+        1816,
+        866
+      ],
+      "first_role": "CLEAN master"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-008_maid_card_lineup_minimal_v01.png",
+      "sha256": "0f80760c6d37a5016924c3f74a7500c482a9dd618365fcfe556cbdb19fd1a43a",
+      "bytes": 891236,
+      "dimensions": [
+        1070,
+        1470
+      ],
+      "first_role": "CLEAN master"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-009_maid_card_detail_v01.png",
+      "sha256": "5970311d3d765da4ff19c63e42c5059be81103c58dca09416d8e61ea0fcfe9de",
+      "bytes": 2062993,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "first_role": "CLEAN master"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-010_rarity_badge_common_v01.png",
+      "sha256": "4a7cb48a3faac90a50f995d2c5448c749e83a3ba137eaa192613d7693158516f",
+      "bytes": 1704380,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "first_role": "CLEAN master"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-011_icon_book_v01.png",
+      "sha256": "7055446d2982a937365475f88d9e1f0f4a2790c9a1fe13a24ef5772233a094c6",
+      "bytes": 815157,
+      "dimensions": [
+        1286,
+        1223
+      ],
+      "first_role": "CLEAN master"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-012_menu_background_v01.png",
+      "sha256": "d079d353925245c9e8c7e2891e69d40e19b47678808241fce9e618b67c18c22d",
+      "bytes": 2490243,
+      "dimensions": [
+        1672,
+        941
+      ],
+      "first_role": "CLEAN master"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-019_dialog_panel_v01.png",
+      "sha256": "631e6c8724b064be52f122fa19324f796a18d30fa0d7ed272dd73b6b2358db9b",
+      "bytes": 1703241,
+      "dimensions": [
+        2172,
+        724
+      ],
+      "first_role": "CLEAN master"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-022_floor_tile_warm_oak_v01.png",
+      "sha256": "1258bda075f2b6f641b972c2805d990ba7d64162e6b0f2f4d5767b43ef3636d8",
+      "bytes": 1794600,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "first_role": "CLEAN master"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-023_wall_straight_v01.png",
+      "sha256": "a270baf32d74c3e5fedaec45fa71d93f0478a4029849a9fcff98fbef34b230de",
+      "bytes": 1690320,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "first_role": "CLEAN master"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/UI-025_rarity_card_frame_common_v01.png",
+      "sha256": "1d60c0b894120372a7afcb58bb6121f644e61a1157bf5f969603458caa703327",
+      "bytes": 1093767,
+      "dimensions": [
+        1070,
+        1470
+      ],
+      "first_role": "CLEAN master"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-005_button_secondary_normal_v01.png",
+      "sha256": "49fe2d82a4dbebaed2ca16ab457b6bec74848aa8e53d81fe2450bf00d5b07b98",
+      "bytes": 318425,
+      "dimensions": [
+        1059,
+        262
+      ],
+      "first_role": "tested export"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-006_tab_inactive_v01.png",
+      "sha256": "d79f4f76f02df177ae38679e8bae11b6dbc7c6e1bd7ec31f01f3d14e72f81ebb",
+      "bytes": 292423,
+      "dimensions": [
+        1002,
+        264
+      ],
+      "first_role": "tested export"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-007_modal_dialog_v01.png",
+      "sha256": "50f998c8224eea8d06a5416b78aed033e119ad5564312f3d4380225bf5457b1c",
+      "bytes": 500707,
+      "dimensions": [
+        908,
+        433
+      ],
+      "first_role": "tested export"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/raw/UI-007_modal_dialog_v01.png",
+      "sha256": "2178e31412dceac10eab76966f9ae7d3e4c3ad4978feb34c0369a43fe4f9a525",
+      "bytes": 2137210,
+      "dimensions": [
+        1816,
+        866
+      ],
+      "first_role": "REWORK RAW"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-008_maid_card_lineup_minimal_v01.png",
+      "sha256": "0427a384664a16b3572e7657bd1ea8ebb8b7cfa7a20d8472b3a27e57e69a7155",
+      "bytes": 245985,
+      "dimensions": [
+        535,
+        735
+      ],
+      "first_role": "tested export"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-009_maid_card_detail_v01.png",
+      "sha256": "09ce4babf82a84578f833c2b5fa9f236dc036698862b79f04d35cc6115070e98",
+      "bytes": 511688,
+      "dimensions": [
+        768,
+        512
+      ],
+      "first_role": "tested export"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/raw/UI-009_maid_card_detail_v01.png",
+      "sha256": "2518aa27287dcee6ece45b33ca1a24d34e8a640c0f5d595235c9d28d97d3eb91",
+      "bytes": 2114758,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "first_role": "REWORK RAW"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-010_rarity_badge_common_v01.png",
+      "sha256": "9d67bfc86ba3547ce22688d767b2c9935973da680422140d31d3106a3d6206e1",
+      "bytes": 297254,
+      "dimensions": [
+        664,
+        384
+      ],
+      "first_role": "tested export"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-011_icon_book_v01.png",
+      "sha256": "7455b8f81f3c8d815c56cc58e27495c587d545c487a68c46b9de44311ada27c6",
+      "bytes": 212490,
+      "dimensions": [
+        512,
+        512
+      ],
+      "first_role": "tested export"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-019_dialog_panel_v01.png",
+      "sha256": "894f6eca6ddc4ebaa9a8eb078a571b4fa3768af73015c99bcb858a93a41f25f8",
+      "bytes": 455521,
+      "dimensions": [
+        1086,
+        362
+      ],
+      "first_role": "tested export"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-023_wall_straight_v01.png",
+      "sha256": "a1386274360804a6a2e82eb862c310938a50a4a301fc16c6732e23ad8f6cb855",
+      "bytes": 398260,
+      "dimensions": [
+        768,
+        512
+      ],
+      "first_role": "tested export"
+    },
+    {
+      "path": "docs/art/ui-modular/incoming/BATCH-2026-11-04/exports/UI-025_rarity_card_frame_common_v01.png",
+      "sha256": "f44b668e58611fbfc128d522a07829c81ef265ec0fd6c391aa6485e252a75804",
+      "bytes": 309860,
+      "dimensions": [
+        535,
+        735
+      ],
+      "first_role": "tested export"
+    }
+  ],
+  "corrected_prompts_commit": "e431c096374561976afbbdff88e0a81a5e038836",
+  "corrected_prompt_blob_sha256": {
+    "docs/art/ui-modular/prompts/07_MODAL_DIALOG.md": "9f1d7e3b407025c7be57e363ae7abf2960f9db9134424bed3aedfa2b5b7062e8",
+    "docs/art/ui-modular/prompts/09_MAID_CARD_DETAIL.md": "9fcf34245bde41b82390579047d915d03cf9d33f7a97ef9c3bf1944a726a7f6e",
+    "docs/art/ui-modular/prompts/22_FLOOR_TILE.md": "cd39c47f2c4da11091ae654fba9067043d6a046ed75ed6608290fbbe1e846e47"
+  }
+}

@@ -15,11 +15,11 @@
 
 - [01 — painel grande, um prompt](prompts/01_PANEL_LARGE.md), saída `UI-001_panel_large_v01.png`.
 - [04 — botão primário, duas famílias](prompts/04_BUTTON_PRIMARY.md), incluindo os quatro prompts ornamentais históricos e os quatro compactos (NORMAL e novos HOVER/PRESSED/DISABLED); nomes exatos clicáveis no índice.
-- [08 — Maid Card existente](prompts/08_MAID_CARD_COMPACT.md), `UI-008_maid_card_compact_v01.png` (APPROVED somente detalhado 150×206), e [novo frame simplificado de Escalação](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md), `UI-008_maid_card_lineup_minimal_v01.png` (PENDING).
+- [08 — Maid Card existente](prompts/08_MAID_CARD_COMPACT.md), `UI-008_maid_card_compact_v01.png` (APPROVED somente detalhado 150×206), e [novo frame simplificado de Escalação](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md), `UI-008_maid_card_lineup_minimal_v01.png` (gerado/UNITY_QA; aceite artístico PENDING).
 
 ### Decisão de produto UI-004 — duas famílias (03/11/2026)### Decisão de produto — duas apresentações de Maid Card (04/11/2026)
 
-- **Escalação a 0,62×:** gerar [**UI-008 LINEUP MINIMAL**](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md), `UI-008_maid_card_lineup_minimal_v01.png`, com janela transparente de portrait e faixa simples de nome. [Tutorial com anexos exatos](TUTORIAL.md#passo-3b--novo-maid-card-minimalista-para-escalação-duas-apresentações-aprovadas). **PENDING; não gerado nem integrado.**
+- **Escalação a 0,62×:** gerar [**UI-008 LINEUP MINIMAL**](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md), `UI-008_maid_card_lineup_minimal_v01.png`, com janela transparente de portrait e faixa simples de nome. [Tutorial com anexos exatos](TUTORIAL.md#passo-3b--novo-maid-card-minimalista-para-escalação-duas-apresentações-aprovadas). **PNG/CLEAN gerados, UNITY_QA; aprovação artística PENDING; não integrado.**
 - **Card mais detalhado:** preservar `UI-008_maid_card_compact_v01.png` já gerado e limpo localmente, aceito visualmente apenas em 150×206 pelo responsável após o QA da PR #44; **REWORK a 0,62×**. O UI-009 expandido é uma proposta futura, não um pré-requisito. A decisão de produto não aprova a nova LINEUP MINIMAL; o aceite do frame existente é uma decisão artística expressa posterior.
 - A mesma maid/dados/portrait são reutilizados em ambas as apresentações; Unity controla nome, indicadores e informações adicionais. Nenhuma cena ou lógica alterada nesta documentação.
 
@@ -54,3 +54,9 @@ Essas pastas usam `.gitkeep`. **Os prompts não geram PNGs automaticamente, e os
 **Publicados:** UI-001 e os seis masters/exports aprovados em 04/11/2026; [arquivos, hashes, proveniência e limites](approved/README.md). COMPACT NORMAL continua local, aprovado e não integrado.
 
 **Referência ART-01D:** preservar aconchego, molduras e visual novel; **não** reproduzir pixel art nem copiar personagens. Cenário e menus podem diferir em ornamentação, mantendo linguagem comum. O piloto deve passar nas resoluções 960×600 e 1280×720 antes de produção em escala.
+
+## Encerramento técnico e revisão artística (04/11/2026)
+
+- [Índice visual dos 12 PNGs individuais, exports testados e RAWs REWORK](incoming/BATCH-2026-11-04/README.md).
+- [Handoff final para Claude Code](HANDOFF_CLAUDE_CODE_2026_11_04.md): status das PRs #46/#47/#48, caminhos locais, hashes, limitações e próximas tarefas.
+- #47 aguarda revisão artística, sem auto-merge e sem integração. Os nove PASS técnicos não são APPROVED. UI-007/UI-009/UI-022 v01 continuam REWORK; v02 PENDING seguem os prompts já corrigidos na #48.

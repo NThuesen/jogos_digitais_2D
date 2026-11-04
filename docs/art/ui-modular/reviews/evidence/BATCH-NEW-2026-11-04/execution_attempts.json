@@ -1,0 +1,9 @@
+{
+  "editor_setup_first": "FAILED CS0104: ambiguous Screen in temporary harness; corrected to UnityEngine.Screen, no production changes",
+  "editor_setup_corrected": "PASS",
+  "editor_focused_test": "PASS 1 test, all 12 new candidates; not previous six",
+  "webgl_builds": 1,
+  "webgl_build": "Succeeded; errors=0",
+  "extensive_suites": "NOT RUN",
+  "old_assets_qa": "NOT RUN"
+}

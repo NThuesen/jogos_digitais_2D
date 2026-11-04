@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "decision_date": "2026-11-04",
+  "authority": "Decisao expressa do responsavel: Encerrar revisao artistica e iniciar integracao visual (04/11/2026)",
+  "integration_in_this_pr": false,
+  "assets": [
+    {
+      "filename": "UI-005_button_secondary_normal_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted",
+      "integrated": false,
+      "restrictions": "Secundario apenas; a Unity deve distinguir claramente o DISABLED (cor/alpha do texto, nao so a arte). Libera HOVER v02, PRESSED, DISABLED.",
+      "raw_repo": null,
+      "raw_sha256": "79cb555c31fb2728de35da1d18511409d5f97771460ef3f9f880ca44657a0444",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-005_button_secondary_normal_v01.png",
+        "sha256": "b1e18aa35f9edea77147be5e6f66836b6a8d89f5acdc5155b8e1849fb9c9b8ba"
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-005_button_secondary_normal_v01.png",
+        "sha256": "49fe2d82a4dbebaed2ca16ab457b6bec74848aa8e53d81fe2450bf00d5b07b98",
+        "note": "export testado"
+      },
+      "raw_local": "art_working/ui_modular/raw_gpt/UI-005_button_secondary_normal_v01.png",
+      "clean_sha256_audit": "b1e18aa35f9edea77147be5e6f66836b6a8d89f5acdc5155b8e1849fb9c9b8ba"
+    },
+    {
+      "filename": "UI-006_tab_inactive_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted",
+      "integrated": false,
+      "restrictions": "Somente Simple/preserveAspect (sem 9-slice). Libera ACTIVE e HOVER, com indicador persistente de aba selecionada na Unity.",
+      "raw_repo": null,
+      "raw_sha256": "f731e9e695902e86b8feaf07db6a0de02211ceb5c39bdf5c4ea805696ecf6a9b",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-006_tab_inactive_v01.png",
+        "sha256": "8b4b093168b30a9da3db57066b39fa0f7101d57d6df9ff79b716229eccf17b5c"
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-006_tab_inactive_v01.png",
+        "sha256": "d79f4f76f02df177ae38679e8bae11b6dbc7c6e1bd7ec31f01f3d14e72f81ebb",
+        "note": "export testado"
+      },
+      "raw_local": "art_working/ui_modular/raw_gpt/UI-006_tab_inactive_v01.png",
+      "clean_sha256_audit": "8b4b093168b30a9da3db57066b39fa0f7101d57d6df9ff79b716229eccf17b5c"
+    },
+    {
+      "filename": "UI-010_rarity_badge_common_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted",
+      "integrated": false,
+      "restrictions": "Somente Simple; completa a familia de 4 selos.",
+      "raw_repo": null,
+      "raw_sha256": "e4ef4d6e24e7156de6c23e2504d50771bb9cdbd7c9e03d90a57bedfb3ecbcefb",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-010_rarity_badge_common_v01.png",
+        "sha256": "4a7cb48a3faac90a50f995d2c5448c749e83a3ba137eaa192613d7693158516f"
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-010_rarity_badge_common_v01.png",
+        "sha256": "9d67bfc86ba3547ce22688d767b2c9935973da680422140d31d3106a3d6206e1",
+        "note": "export testado"
+      },
+      "raw_local": "art_working/ui_modular/raw_gpt/UI-010_rarity_badge_common_v01.png",
+      "clean_sha256_audit": "4a7cb48a3faac90a50f995d2c5448c749e83a3ba137eaa192613d7693158516f"
+    },
+    {
+      "filename": "UI-025_rarity_card_frame_common_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted",
+      "integrated": false,
+      "restrictions": "Area segura comum do retrato [120,172,950,789] (1070x1470); sem presumir SpriteSwap direto; mascara propria.",
+      "raw_repo": null,
+      "raw_sha256": "8d71ec54518d2591e1fcec1d99eb0a029dcde0cf3d870126394ad57c711ae373",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-025_rarity_card_frame_common_v01.png",
+        "sha256": "1d60c0b894120372a7afcb58bb6121f644e61a1157bf5f969603458caa703327"
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-025_rarity_card_frame_common_v01.png",
+        "sha256": "f44b668e58611fbfc128d522a07829c81ef265ec0fd6c391aa6485e252a75804",
+        "note": "export testado"
+      },
+      "raw_local": "art_working/ui_modular/raw_gpt/UI-025_rarity_card_frame_common_v01.png",
+      "clean_sha256_audit": "1d60c0b894120372a7afcb58bb6121f644e61a1157bf5f969603458caa703327"
+    },
+    {
+      "filename": "UI-019_dialog_panel_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted",
+      "integrated": false,
+      "restrictions": "9-slice 1000x170 testado; libera o TAIL sobreposto.",
+      "raw_repo": null,
+      "raw_sha256": "aaf40d388f8077cc62d54f2455c753a871168f1418fbd3ca4998e4d6cf28683c",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-019_dialog_panel_v01.png",
+        "sha256": "631e6c8724b064be52f122fa19324f796a18d30fa0d7ed272dd73b6b2358db9b"
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-019_dialog_panel_v01.png",
+        "sha256": "894f6eca6ddc4ebaa9a8eb078a571b4fa3768af73015c99bcb858a93a41f25f8",
+        "note": "export testado"
+      },
+      "raw_local": "art_working/ui_modular/raw_gpt/UI-019_dialog_panel_v01.png",
+      "clean_sha256_audit": "631e6c8724b064be52f122fa19324f796a18d30fa0d7ed272dd73b6b2358db9b"
+    },
+    {
+      "filename": "UI-011_icon_book_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted",
+      "integrated": false,
+      "restrictions": "Somente 32-44u; 24u nao homologado.",
+      "raw_repo": null,
+      "raw_sha256": "52fc52ea6f1597d772aff246340f3f73863189674cd5a5d2c49fc099f12f8bc1",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-011_icon_book_v01.png",
+        "sha256": "7055446d2982a937365475f88d9e1f0f4a2790c9a1fe13a24ef5772233a094c6"
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-011_icon_book_v01.png",
+        "sha256": "7455b8f81f3c8d815c56cc58e27495c587d545c487a68c46b9de44311ada27c6",
+        "note": "export testado"
+      },
+      "raw_local": "art_working/ui_modular/raw_gpt/UI-011_icon_book_v01.png",
+      "clean_sha256_audit": "7055446d2982a937365475f88d9e1f0f4a2790c9a1fe13a24ef5772233a094c6"
+    },
+    {
+      "filename": "UI-012_menu_background_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted",
+      "integrated": false,
+      "restrictions": "Somente como fundo de menu (cover 16:9/16:10).",
+      "raw_repo": null,
+      "raw_sha256": "d079d353925245c9e8c7e2891e69d40e19b47678808241fce9e618b67c18c22d",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-012_menu_background_v01.png",
+        "sha256": "d079d353925245c9e8c7e2891e69d40e19b47678808241fce9e618b67c18c22d"
+      },
+      "export": {
+        "path": null,
+        "note": "sem export reduzido: usar o master (full-size)"
+      },
+      "raw_local": "art_working/ui_modular/raw_gpt/UI-012_menu_background_v01.png",
+      "clean_sha256_audit": "d079d353925245c9e8c7e2891e69d40e19b47678808241fce9e618b67c18c22d"
+    },
+    {
+      "filename": "UI-008_maid_card_lineup_minimal_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted",
+      "integrated": false,
+      "restrictions": "Duas Maid Cards preservadas (compact + lineup minimal); nomes curtos; validar legibilidade na tela real.",
+      "raw_repo": null,
+      "raw_sha256": "ac79e9bc773327aa1eb320a703cde1a87c0f1e7156c962b3b6146805d13a5e11",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-008_maid_card_lineup_minimal_v01.png",
+        "sha256": "0f80760c6d37a5016924c3f74a7500c482a9dd618365fcfe556cbdb19fd1a43a"
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-008_maid_card_lineup_minimal_v01.png",
+        "sha256": "0427a384664a16b3572e7657bd1ea8ebb8b7cfa7a20d8472b3a27e57e69a7155",
+        "note": "export testado"
+      },
+      "raw_local": "art_working/ui_modular/raw_gpt/UI-008_maid_card_lineup_minimal_v01.png",
+      "clean_sha256_audit": "0f80760c6d37a5016924c3f74a7500c482a9dd618365fcfe556cbdb19fd1a43a"
+    }
+  ],
+  "rework": {
+    "UI-023_wall_straight_v01.png": "REWORK para uso como parede (le como painel/quadro); NAO integrar como cenario. Historico preservado em incoming."
+  },
+  "superseded": {
+    "UI-007_modal_dialog_v01.png": "REWORK superado pelo v02",
+    "UI-009_maid_card_detail_v01.png": "REWORK superado pelo v02",
+    "UI-022_floor_tile_warm_oak_v01.png": "REWORK superado pelo v03 tone34"
+  }
+}

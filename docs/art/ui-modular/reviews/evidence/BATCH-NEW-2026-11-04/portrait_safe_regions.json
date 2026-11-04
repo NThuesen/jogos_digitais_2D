@@ -1,0 +1,22 @@
+{
+  "UI-008_maid_card_lineup_minimal_v01.png": {
+    "safe_rect_xyxy": [
+      160,
+      230,
+      910,
+      1000
+    ],
+    "transparent_fraction": 0.9995411255411255,
+    "max_alpha": 255
+  },
+  "UI-025_rarity_card_frame_common_v01.png": {
+    "safe_rect_xyxy": [
+      165,
+      180,
+      905,
+      740
+    ],
+    "transparent_fraction": 0.9851809845559846,
+    "max_alpha": 255
+  }
+}

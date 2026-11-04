@@ -1,0 +1,828 @@
+{
+  "source_root": "/mnt/c/dev/PocketSlop-Games/jogos_digitais_2D",
+  "base_main": "53b7f965141871041b21e96a053eff4d0e7e4596",
+  "pr44": "MERGED",
+  "pr46": "OPEN, excluded from branch diff; approved historical hashes read only",
+  "raws": [
+    {
+      "filename": "UI-001_panel_large_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-001_panel_large_v01.png",
+        "bytes": 1953848,
+        "sha256": "d5631b7fd8901d49239dc43871801bcfff391878c6ce7552efb1aeb61fb7f22a",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "181c17715802902744b5312d504da0d6baf1f68d5577798941b8301a9bb6e45a"
+      },
+      "name_matches_manifest": true,
+      "already_audited": true,
+      "clean_before": {
+        "path": "art_working/ui_modular/blender_clean/UI-001_panel_large_v01.png",
+        "bytes": 1833033,
+        "sha256": "ba300ece650f18e8ef4e938aa84e9c9df3146396dc82a91ba4551306a9ee85f8",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "9ed8101ce37fabc33458ad3dfea85c7446e32e71532d31d6fd4bfba986fafcf3"
+      },
+      "exports_before": [],
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/01_PANEL_LARGE.md"
+    },
+    {
+      "filename": "UI-002_panel_medium_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-002_panel_medium_v01.png",
+        "bytes": 1463362,
+        "sha256": "a939d2bc990e56787fea85f0b543303ade489bddfbadb412a4c20a60a2288b16",
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "4ba1d74321a8929aeb9616a044217e940e6d3d1b18c450e367f21f5624d9cb3e"
+      },
+      "name_matches_manifest": true,
+      "already_audited": true,
+      "clean_before": {
+        "path": "art_working/ui_modular/blender_clean/UI-002_panel_medium_v01.png",
+        "bytes": 1228521,
+        "sha256": "00c44a34dca15be2cb61d994f05e32ec52775451bf80227bde5faa072683b2c9",
+        "dimensions": [
+          1356,
+          802
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "58dc81b4be2f6fa9b98476580004d4775fcd62a4c115dd27ae0ec2e42edfbc75"
+      },
+      "exports_before": [
+        {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/panel.png",
+          "sha256": "835e669e0658136409a1eba071f178e8c3c9c7426d462543eff5efc363fb6ff3",
+          "bytes": 322877,
+          "size": [
+            678,
+            401
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prior_approval": {
+        "source": "PR #46, owner express decision; PR remains open",
+        "status": "APPROVED",
+        "scope": "QA cases and restrictions only",
+        "qa_export": {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/panel.png",
+          "sha256": "835e669e0658136409a1eba071f178e8c3c9c7426d462543eff5efc363fb6ff3",
+          "bytes": 322877,
+          "size": [
+            678,
+            401
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "prompt": "docs/art/ui-modular/prompts/02_PANEL_MEDIUM.md"
+    },
+    {
+      "filename": "UI-003_panel_small_label_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-003_panel_small_label_v01.png",
+        "bytes": 1564433,
+        "sha256": "0775e22cfdfa766b25eafa68ec13cb819a961c5f63e6e02c367829bd80c1e3df",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "061bda4fa0ebe5269d2e79502d430ad65af6c710f11ef48f8b20fa8a07638777"
+      },
+      "name_matches_manifest": true,
+      "already_audited": true,
+      "clean_before": {
+        "path": "art_working/ui_modular/blender_clean/UI-003_panel_small_label_v01.png",
+        "bytes": 1392186,
+        "sha256": "0a79225c60c61541f34c1d34f3d45f7e0685917d5d9c82cd19b9fec534b31a27",
+        "dimensions": [
+          2170,
+          526
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "a22a60953838eff052d68c2d40c7c19f1b04a5fb471e8a6186e8c05a770dff77"
+      },
+      "exports_before": [
+        {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/label.png",
+          "sha256": "914fb6c5e19203861368ad29b009e7461ee6f4839e058f445a04f62311fec9e7",
+          "bytes": 374620,
+          "size": [
+            1085,
+            263
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prior_approval": {
+        "source": "PR #46, owner express decision; PR remains open",
+        "status": "APPROVED",
+        "scope": "QA cases and restrictions only",
+        "qa_export": {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/label.png",
+          "sha256": "914fb6c5e19203861368ad29b009e7461ee6f4839e058f445a04f62311fec9e7",
+          "bytes": 374620,
+          "size": [
+            1085,
+            263
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "prompt": "docs/art/ui-modular/prompts/03_PANEL_SMALL_LABEL.md"
+    },
+    {
+      "filename": "UI-004_button_primary_compact_disabled_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_disabled_v01.png",
+        "bytes": 728538,
+        "sha256": "5ddb38f5275dfda5b95eb4ae73d06e9df468c5400310d20900e4c73df4e0cb60",
+        "dimensions": [
+          2048,
+          375
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "4169fabe7dfce47794cf9ee33e08096a571cd951752a89e82a85e4946a0ad224"
+      },
+      "name_matches_manifest": true,
+      "already_audited": true,
+      "clean_before": null,
+      "exports_before": [
+        {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/disabled_v01.png",
+          "sha256": "eddc84e6dccec2d4ae9b28adefd9318ffacc5afc712c8680ea6d6b566603430b"
+        }
+      ],
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/variants/04_BUTTON_PRIMARY_COMPACT_DISABLED.md"
+    },
+    {
+      "filename": "UI-004_button_primary_compact_disabled_v02.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_disabled_v02.png",
+        "bytes": 1185854,
+        "sha256": "7d937f5757e7044f8184cf58dbf0d910405d5fce894c3eb45bf2b5f1e548d1fb",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "b9bde642e3a89b6d58164daf1c7e0021f9d67674b9b489afbc491fef8f695e17"
+      },
+      "name_matches_manifest": false,
+      "already_audited": true,
+      "clean_before": {
+        "path": "art_working/ui_modular/blender_clean/UI-004_button_primary_compact_disabled_v02.png",
+        "bytes": 941613,
+        "sha256": "3709ee3a696aa5b929a315fcacec31c2457736a068e34352bea11cd2dc51074d",
+        "dimensions": [
+          2176,
+          410
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "d47d43600e3a8d0816cd6f0a4cc065f276a5cb3589b138cecae7f7051839bfce"
+      },
+      "exports_before": [
+        {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/disabled.png",
+          "sha256": "be482f46bdb9479c476cdcf11cb6ac8a627ff0acbbacbdfde091614ded9d6c5a",
+          "bytes": 118118,
+          "size": [
+            768,
+            141
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prior_approval": {
+        "source": "PR #46, owner express decision; PR remains open",
+        "status": "APPROVED",
+        "scope": "QA cases and restrictions only",
+        "qa_export": {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/disabled.png",
+          "sha256": "be482f46bdb9479c476cdcf11cb6ac8a627ff0acbbacbdfde091614ded9d6c5a",
+          "bytes": 118118,
+          "size": [
+            768,
+            141
+          ],
+          "mode": "RGBA"
+        }
+      }
+    },
+    {
+      "filename": "UI-004_button_primary_compact_hover_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_hover_v01.png",
+        "bytes": 739613,
+        "sha256": "6c8dc92d2274419387301b7b1161920011032d9d0341256c935a694de718121c",
+        "dimensions": [
+          2048,
+          375
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "30479704683bcecc9c02634755fef1461530f9fd1486426bc6ff61c9c22b4f9e"
+      },
+      "name_matches_manifest": true,
+      "already_audited": true,
+      "clean_before": null,
+      "exports_before": [],
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/variants/04_BUTTON_PRIMARY_COMPACT_HOVER.md"
+    },
+    {
+      "filename": "UI-004_button_primary_compact_hover_v02.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_hover_v02.png",
+        "bytes": 1205847,
+        "sha256": "4beaadaf15870747b92f1bd8ea323d442e0b7e083d9ca8cba4e1730369ac6e6a",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "885de21be7297377fd12a5b8f97e879c8e5c1f8c7cc7b0eef79cc9df090e2fa5"
+      },
+      "name_matches_manifest": false,
+      "already_audited": true,
+      "clean_before": {
+        "path": "art_working/ui_modular/blender_clean/UI-004_button_primary_compact_hover_v02.png",
+        "bytes": 1006994,
+        "sha256": "c47a56f4f1a83c12eb9a64644a38a9dba66a55cefbb2d15e7913f3f88000d45e",
+        "dimensions": [
+          2176,
+          408
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "05b4681c105a300415f7e46659e9388d47713d643f1491f8082f085a3ffa195a"
+      },
+      "exports_before": [
+        {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/hover.png",
+          "sha256": "5ae7316ad06a835ee427474f3bd89fe474b48d508334ffa3dbef313d8078dcb2",
+          "bytes": 133214,
+          "size": [
+            768,
+            141
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prior_approval": {
+        "source": "PR #46, owner express decision; PR remains open",
+        "status": "APPROVED",
+        "scope": "QA cases and restrictions only",
+        "qa_export": {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/hover.png",
+          "sha256": "5ae7316ad06a835ee427474f3bd89fe474b48d508334ffa3dbef313d8078dcb2",
+          "bytes": 133214,
+          "size": [
+            768,
+            141
+          ],
+          "mode": "RGBA"
+        }
+      }
+    },
+    {
+      "filename": "UI-004_button_primary_compact_normal_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_normal_v01.png",
+        "bytes": 1093825,
+        "sha256": "72deadbfffbda54e1a6fc0a91a192916a42c7db91a9bc3cb769d9a80676e64b0",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "e5d8b164702f59ef7d319c679a283e2dc9323d039cf880dc03efae2e5b73dbf4"
+      },
+      "name_matches_manifest": true,
+      "already_audited": true,
+      "clean_before": {
+        "path": "art_working/ui_modular/blender_clean/UI-004_button_primary_compact_normal_v01.png",
+        "bytes": 908246,
+        "sha256": "c82d06142b3953a97b9654d8b7bf53e611679a6ffb4822a3b268dff239c17eb6",
+        "dimensions": [
+          2072,
+          380
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "645339e34ed5b2f0fd14adbf15fb4879808a0599451e0c370567c6838599c4a8"
+      },
+      "exports_before": [
+        {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/normal.png",
+          "sha256": "e69e548a1d67a9e23b89b4f3849046f1720fe61db03c87c384fd9893c82388f6"
+        }
+      ],
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/variants/04_BUTTON_PRIMARY_COMPACT_NORMAL.md"
+    },
+    {
+      "filename": "UI-004_button_primary_compact_pressed_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_pressed_v01.png",
+        "bytes": 745104,
+        "sha256": "291a26b50675ecce4670b77de3705a5f71a4eeffdf4d0b50734a58da910d038d",
+        "dimensions": [
+          2048,
+          375
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "f9bab16398f7253b7e72530ef33f06ad3394a92f416d77ffd071687f90e847fa"
+      },
+      "name_matches_manifest": true,
+      "already_audited": true,
+      "clean_before": null,
+      "exports_before": [
+        {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/pressed.png",
+          "sha256": "70ea100d92814aebdbfb0bc48e7facf5f6ac8311c9a19bfcadde0b75d7bf0c07",
+          "bytes": 130294,
+          "size": [
+            768,
+            141
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prior_approval": {
+        "source": "PR #46, owner express decision; PR remains open",
+        "status": "APPROVED",
+        "scope": "QA cases and restrictions only",
+        "qa_export": {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/pressed.png",
+          "sha256": "70ea100d92814aebdbfb0bc48e7facf5f6ac8311c9a19bfcadde0b75d7bf0c07",
+          "bytes": 130294,
+          "size": [
+            768,
+            141
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "prompt": "docs/art/ui-modular/prompts/variants/04_BUTTON_PRIMARY_COMPACT_PRESSED.md"
+    },
+    {
+      "filename": "UI-004_button_primary_normal_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-004_button_primary_normal_v01.png",
+        "bytes": 1487500,
+        "sha256": "91466ecc77f6bb1d6b30540883961c5b1d0babbce7e3d9b83c9aef059e98f2bf",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "fd85834c7aa94a12d8ca7ac9eee5341814b9207b7e0029624c3301aa6181fc87"
+      },
+      "name_matches_manifest": true,
+      "already_audited": true,
+      "clean_before": {
+        "path": "art_working/ui_modular/blender_clean/UI-004_button_primary_normal_v01.png",
+        "bytes": 1324109,
+        "sha256": "03b58c3e2b500b8a48311cd3b3c75c8551c79d599693176ad5b5da664aeb0446",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "987ad6be174d8dfea9365cb2e8d7f3eb880120c059cd22252ea05c996d3f4574"
+      },
+      "exports_before": [],
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/variants/04_BUTTON_PRIMARY_NORMAL.md"
+    },
+    {
+      "filename": "UI-005_button_secondary_normal_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-005_button_secondary_normal_v01.png",
+        "bytes": 1355926,
+        "sha256": "79cb555c31fb2728de35da1d18511409d5f97771460ef3f9f880ca44657a0444",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "a2a76ebd757a692438950ba1f911def9aab443c12784ca66917e471427acd997"
+      },
+      "name_matches_manifest": true,
+      "already_audited": false,
+      "clean_before": null,
+      "exports_before": [],
+      "processed_in_this_batch": true,
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/variants/05_BUTTON_SECONDARY_NORMAL.md"
+    },
+    {
+      "filename": "UI-006_tab_inactive_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-006_tab_inactive_v01.png",
+        "bytes": 1379601,
+        "sha256": "f731e9e695902e86b8feaf07db6a0de02211ceb5c39bdf5c4ea805696ecf6a9b",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "4dc0f9f284830b48baa3a295ea7e09181f32c310335b004e1fe2438bb9ad3f0f"
+      },
+      "name_matches_manifest": true,
+      "already_audited": false,
+      "clean_before": null,
+      "exports_before": [],
+      "processed_in_this_batch": true,
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/variants/06_TAB_INACTIVE.md"
+    },
+    {
+      "filename": "UI-007_modal_dialog_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-007_modal_dialog_v01.png",
+        "bytes": 2137210,
+        "sha256": "2178e31412dceac10eab76966f9ae7d3e4c3ad4978feb34c0369a43fe4f9a525",
+        "dimensions": [
+          1816,
+          866
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "ad87d049f3310733bf8fd61595d917969d80f521174f41df4e116a984bd404c6"
+      },
+      "name_matches_manifest": true,
+      "already_audited": false,
+      "clean_before": null,
+      "exports_before": [],
+      "processed_in_this_batch": true,
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/07_MODAL_DIALOG.md"
+    },
+    {
+      "filename": "UI-008_maid_card_compact_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-008_maid_card_compact_v01.png",
+        "bytes": 1303954,
+        "sha256": "c849093964090779adc92a83f9880fcc0e72de22622479f12b8917b733f118a2",
+        "dimensions": [
+          1070,
+          1470
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "e1ca0325ea0ec294918495595b1acb35c940f33ea689c3bfbe4041ac75ae3265"
+      },
+      "name_matches_manifest": true,
+      "already_audited": true,
+      "clean_before": {
+        "path": "art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png",
+        "bytes": 1138752,
+        "sha256": "74ea40f0b528580b4f809bd20a359bd1dbdacb02e4014f0d8ce0576676fb6342",
+        "dimensions": [
+          1070,
+          1470
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "f8ec54f058a05263ee0c03bc2e59b606336a44510a84bbc0685a3dacb417666c"
+      },
+      "exports_before": [
+        {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/card.png",
+          "sha256": "1a7bf6407c23cf037674d38b182efb5975e916a5ba3467fad7a6babbf1c4f203",
+          "bytes": 312243,
+          "size": [
+            535,
+            735
+          ],
+          "mode": "RGBA"
+        }
+      ],
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prior_approval": {
+        "source": "PR #46, owner express decision; PR remains open",
+        "status": "APPROVED",
+        "scope": "150x206 detailed only; REWORK at 0.62x",
+        "qa_export": {
+          "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/card.png",
+          "sha256": "1a7bf6407c23cf037674d38b182efb5975e916a5ba3467fad7a6babbf1c4f203",
+          "bytes": 312243,
+          "size": [
+            535,
+            735
+          ],
+          "mode": "RGBA"
+        }
+      },
+      "prompt": "docs/art/ui-modular/prompts/08_MAID_CARD_COMPACT.md"
+    },
+    {
+      "filename": "UI-008_maid_card_lineup_minimal_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-008_maid_card_lineup_minimal_v01.png",
+        "bytes": 997547,
+        "sha256": "ac79e9bc773327aa1eb320a703cde1a87c0f1e7156c962b3b6146805d13a5e11",
+        "dimensions": [
+          1070,
+          1470
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "11274e184b74ef0f550293c725f19783f1e142ba21fe6e661f5fce04ccc8b6e6"
+      },
+      "name_matches_manifest": true,
+      "already_audited": false,
+      "clean_before": null,
+      "exports_before": [],
+      "processed_in_this_batch": true,
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md"
+    },
+    {
+      "filename": "UI-009_maid_card_detail_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-009_maid_card_detail_v01.png",
+        "bytes": 2114758,
+        "sha256": "2518aa27287dcee6ece45b33ca1a24d34e8a640c0f5d595235c9d28d97d3eb91",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "94324f596eb712c4a9de801cfb0aba3d7bd18094a268f044949fd6d1e74cf4f0"
+      },
+      "name_matches_manifest": true,
+      "already_audited": false,
+      "clean_before": null,
+      "exports_before": [],
+      "processed_in_this_batch": true,
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/09_MAID_CARD_DETAIL.md"
+    },
+    {
+      "filename": "UI-010_rarity_badge_common_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-010_rarity_badge_common_v01.png",
+        "bytes": 1735801,
+        "sha256": "e4ef4d6e24e7156de6c23e2504d50771bb9cdbd7c9e03d90a57bedfb3ecbcefb",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "f20da8f9b410a9fc8e8459bf2416055d7fedaed8afafcfbdd3fe5a52fa8b1315"
+      },
+      "name_matches_manifest": true,
+      "already_audited": false,
+      "clean_before": null,
+      "exports_before": [],
+      "processed_in_this_batch": true,
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/variants/10_RARITY_BADGE_COMMON.md"
+    },
+    {
+      "filename": "UI-011_icon_book_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-011_icon_book_v01.png",
+        "bytes": 896818,
+        "sha256": "52fc52ea6f1597d772aff246340f3f73863189674cd5a5d2c49fc099f12f8bc1",
+        "dimensions": [
+          1286,
+          1223
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "a5f7fb1b2974c297af281432637e1cf94d9ddf26f796d27b2157b22a869ad39a"
+      },
+      "name_matches_manifest": true,
+      "already_audited": false,
+      "clean_before": null,
+      "exports_before": [],
+      "processed_in_this_batch": true,
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/variants/11_ICON_BOOK.md"
+    },
+    {
+      "filename": "UI-012_menu_background_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-012_menu_background_v01.png",
+        "bytes": 2490243,
+        "sha256": "d079d353925245c9e8c7e2891e69d40e19b47678808241fce9e618b67c18c22d",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "pixel_sha256": "45dba9cf88bd33e5b49628890c3ccc8485476e4bb8f15a49e5b2139d12ee3dd5"
+      },
+      "name_matches_manifest": true,
+      "already_audited": false,
+      "clean_before": null,
+      "exports_before": [],
+      "processed_in_this_batch": true,
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/12_MENU_BACKGROUND.md"
+    },
+    {
+      "filename": "UI-019_dialog_panel_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-019_dialog_panel_v01.png",
+        "bytes": 1951327,
+        "sha256": "aaf40d388f8077cc62d54f2455c753a871168f1418fbd3ca4998e4d6cf28683c",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "fa0a3a9b08967626fc40655688d980348bf4ebdab2313811fcac18a0945b9991"
+      },
+      "name_matches_manifest": true,
+      "already_audited": false,
+      "clean_before": null,
+      "exports_before": [],
+      "processed_in_this_batch": true,
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/variants/19_DIALOG_PANEL.md"
+    },
+    {
+      "filename": "UI-022_floor_tile_warm_oak_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-022_floor_tile_warm_oak_v01.png",
+        "bytes": 1794600,
+        "sha256": "1258bda075f2b6f641b972c2805d990ba7d64162e6b0f2f4d5767b43ef3636d8",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "pixel_sha256": "d735ffa1ca18b8a5bd2763b34a0495ba5b046483280b28ac3f06fc29c5e4c6fb"
+      },
+      "name_matches_manifest": true,
+      "already_audited": false,
+      "clean_before": null,
+      "exports_before": [],
+      "processed_in_this_batch": true,
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/22_FLOOR_TILE.md"
+    },
+    {
+      "filename": "UI-023_wall_straight_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-023_wall_straight_v01.png",
+        "bytes": 1721823,
+        "sha256": "f750b156d3970ce15767e6f9e5b380b5c1ecaa80b04a8aaeac3e29e0901564cd",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "9fe17d903709e6f8854c20503fb2e1778342603f2465dc0e4244ec80ee1d755b"
+      },
+      "name_matches_manifest": true,
+      "already_audited": false,
+      "clean_before": null,
+      "exports_before": [],
+      "processed_in_this_batch": true,
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/variants/23_WALL_STRAIGHT.md"
+    },
+    {
+      "filename": "UI-025_rarity_card_frame_common_v01.png",
+      "raw": {
+        "path": "art_working/ui_modular/raw_gpt/UI-025_rarity_card_frame_common_v01.png",
+        "bytes": 1219541,
+        "sha256": "8d71ec54518d2591e1fcec1d99eb0a029dcde0cf3d870126394ad57c711ae373",
+        "dimensions": [
+          1070,
+          1470
+        ],
+        "mode": "RGBA",
+        "pixel_sha256": "64ddd0e1e231108f59ad45a38f37110d96f247f3e6d1bc6199019c86d534e16f"
+      },
+      "name_matches_manifest": true,
+      "already_audited": false,
+      "clean_before": null,
+      "exports_before": [],
+      "processed_in_this_batch": true,
+      "duplicate_bytes": [],
+      "duplicate_pixels": [],
+      "prompt": "docs/art/ui-modular/prompts/variants/25_RARITY_CARD_FRAME_COMMON.md"
+    }
+  ],
+  "manifest_not_generated": [
+    "UI-004_button_primary_disabled_v01.png",
+    "UI-004_button_primary_hover_v01.png",
+    "UI-004_button_primary_pressed_v01.png",
+    "UI-005_button_secondary_disabled_v01.png",
+    "UI-005_button_secondary_hover_v01.png",
+    "UI-005_button_secondary_pressed_v01.png",
+    "UI-006_tab_active_v01.png",
+    "UI-006_tab_hover_v01.png",
+    "UI-010_rarity_badge_epic_v01.png",
+    "UI-010_rarity_badge_legendary_v01.png",
+    "UI-010_rarity_badge_rare_v01.png",
+    "UI-011_icon_cat_paw_v01.png",
+    "UI-011_icon_clock_v01.png",
+    "UI-011_icon_coin_v01.png",
+    "UI-011_icon_cup_v01.png",
+    "UI-011_icon_gear_v01.png",
+    "UI-011_icon_gift_v01.png",
+    "UI-011_icon_heart_v01.png",
+    "UI-011_icon_shop_bag_v01.png",
+    "UI-011_icon_star_v01.png",
+    "UI-013_restaurant_arch_detail_v01.png",
+    "UI-013_restaurant_arch_floor_v01.png",
+    "UI-013_restaurant_arch_walls_v01.png",
+    "UI-014_prop_decor_book_stack_v01.png",
+    "UI-014_prop_decor_cake_slice_v01.png",
+    "UI-014_prop_decor_coffee_grinder_v01.png",
+    "UI-014_prop_decor_hanging_plant_v01.png",
+    "UI-014_prop_decor_napkin_holder_v01.png",
+    "UI-014_prop_decor_pastry_plate_v01.png",
+    "UI-014_prop_decor_tea_cup_v01.png",
+    "UI-014_prop_decor_tea_jars_v01.png",
+    "UI-014_prop_decor_tea_kettle_v01.png",
+    "UI-014_prop_decor_wall_picture_v01.png",
+    "UI-015_top_bar_hud_v01.png",
+    "UI-016_bottom_strip_day_ui_v01.png",
+    "UI-017_shop_item_frame_v01.png",
+    "UI-018_balance_row_normal_v01.png",
+    "UI-018_balance_row_total_v01.png",
+    "UI-019_dialog_tail_v01.png",
+    "UI-020_logo_wordmark_v01.png",
+    "UI-021_maid_portrait_akari_neutral_v01.png",
+    "UI-021_maid_portrait_hina_neutral_v01.png",
+    "UI-021_maid_portrait_ichika_neutral_v01.png",
+    "UI-021_maid_portrait_kaede_neutral_v01.png",
+    "UI-021_maid_portrait_momo_neutral_v01.png",
+    "UI-021_maid_portrait_nene_neutral_v01.png",
+    "UI-021_maid_portrait_reina_neutral_v01.png",
+    "UI-021_maid_portrait_suzu_neutral_v01.png",
+    "UI-021_maid_portrait_yoru_neutral_v01.png",
+    "UI-023_wall_corner_left_v01.png",
+    "UI-023_wall_corner_right_v01.png",
+    "UI-023_wall_door_v01.png",
+    "UI-023_wall_window_v01.png",
+    "UI-024_placeable_bakery_v01.png",
+    "UI-024_placeable_cat_tower_v01.png",
+    "UI-024_placeable_chandelier_v01.png",
+    "UI-024_placeable_dessert_v01.png",
+    "UI-024_placeable_door_v01.png",
+    "UI-024_placeable_gothic_candelabra_v01.png",
+    "UI-024_placeable_gothic_mirror_v01.png",
+    "UI-024_placeable_koi_pond_v01.png",
+    "UI-024_placeable_lantern_sakura_v01.png",
+    "UI-024_placeable_planetarium_v01.png",
+    "UI-024_placeable_plant_v01.png",
+    "UI-024_placeable_rug_v01.png",
+    "UI-024_placeable_sakura_tree_v01.png",
+    "UI-024_placeable_showa_jukebox_v01.png",
+    "UI-024_placeable_showa_poster_v01.png",
+    "UI-024_placeable_stage_v01.png",
+    "UI-024_placeable_star_lamp_v01.png",
+    "UI-024_placeable_stool_v01.png",
+    "UI-024_placeable_stove_v01.png",
+    "UI-024_placeable_table_2_v01.png",
+    "UI-024_placeable_table_4_v01.png",
+    "UI-024_placeable_teabar_v01.png",
+    "UI-024_placeable_window_v01.png",
+    "UI-025_rarity_card_frame_epic_v01.png",
+    "UI-025_rarity_card_frame_legendary_v01.png",
+    "UI-025_rarity_card_frame_rare_v01.png"
+  ]
+}

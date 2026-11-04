@@ -1,0 +1,72 @@
+from pathlib import Path
+import json,hashlib,re,shutil
+from PIL import Image,ImageDraw,ImageFont
+import numpy as np
+from scipy import ndimage as ndi
+SOURCE=Path('/mnt/c/dev/PocketSlop-Games/jogos_digitais_2D');WORK=Path('/mnt/c/dev/PocketSlop-Games/ui-modular-new-batch');ART=SOURCE/'art_working/ui_modular';EVID=WORK/'docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04';EVID.mkdir(parents=True,exist_ok=True)
+assert not (EVID/'audit.json').exists(), 'Audit exists: choose fresh EVID/EXPORT paths to replay; never overwrite recorded evidence'
+EXPORT=ART/'export_unity/BATCH_NEW_2026_11_04';EXPORT.mkdir(exist_ok=True)
+OLD={'UI-001_panel_large_v01.png','UI-002_panel_medium_v01.png','UI-003_panel_small_label_v01.png','UI-004_button_primary_compact_normal_v01.png','UI-004_button_primary_compact_hover_v01.png','UI-004_button_primary_compact_hover_v02.png','UI-004_button_primary_compact_pressed_v01.png','UI-004_button_primary_compact_disabled_v01.png','UI-004_button_primary_compact_disabled_v02.png','UI-004_button_primary_normal_v01.png','UI-008_maid_card_compact_v01.png'}
+def info(p):
+ d=p.read_bytes()
+ with Image.open(p) as im:im.verify()
+ with Image.open(p) as im:im.load();return {'path':str(p.relative_to(SOURCE)) if p.is_relative_to(SOURCE) else str(p),'bytes':len(d),'sha256':hashlib.sha256(d).hexdigest(),'dimensions':list(im.size),'mode':im.mode,'pixel_sha256':hashlib.sha256(im.convert('RGBA').tobytes()).hexdigest()}
+def box(mask):
+ ys,xs=np.where(mask)
+ return [int(xs.min()),int(ys.min()),int(xs.max()+1),int(ys.max()+1)] if len(xs) else None
+def metrics(a):
+ al=a[:,:,3];rgb=a[:,:,:3];strong=al>=8;labels,n=ndi.label(al>0);sizes=np.bincount(labels.ravel());dist=ndi.distance_transform_edt(~strong)
+ center=al[al.shape[0]//3:al.shape[0]*2//3,al.shape[1]//3:al.shape[1]*2//3]
+ return {'canvas_aspect':a.shape[1]/a.shape[0], 'visible_aspect_alpha_gt128':(lambda b:(b[2]-b[0])/(b[3]-b[1]))(box(al>128)), 'bbox_alpha_gt0':box(al>0),'bbox_alpha_ge8':box(strong),'bbox_alpha_gt128':box(al>128),'alpha_counts':{'zero':int((al==0).sum()),'1_3':int(((al>0)&(al<=3)).sum()),'4_249':int(((al>=4)&(al<250)).sum()),'250_254':int(((al>=250)&(al<255)).sum()),'255':int((al==255).sum())},'components_alpha_gt0':int(n),'detached_alpha_le3_farther_than6px':int(((al>0)&(al<=3)&(dist>6)).sum()),'center_transparent_fraction':float((center==0).mean()),'edge_opaque_pixels':int((al[0]>128).sum()+(al[-1]>128).sum()+(al[:,0]>128).sum()+(al[:,-1]>128).sum()),'bright_semtransparent_pixels':int(((rgb.min(axis=2)>220)&(al>8)&(al<240)).sum()),'note':'Bright partial pixels are a halo heuristic, not automatic proof; cream fills and intentional shadows require visual inspection.'}
+def resize(im,size):return im.convert('RGBa').resize(size,Image.Resampling.LANCZOS).convert('RGBA')
+manifest_text=(WORK/'docs/art/ui-modular/OUTPUT_MANIFEST.md').read_text();manifest_names=set(re.findall(r'`(UI-\d{3}_[^`/]+\.png)`',manifest_text));raws=sorted(p for p in (ART/'raw_gpt').rglob('*') if p.suffix.lower()=='.png');rows=[];audits=[]
+existing={str(p.relative_to(SOURCE)):info(p) for p in (ART/'blender_clean').glob('*.png')}
+(EVID/'preexisting_clean_snapshot.json').write_text(json.dumps(existing,indent=2)+'\n')
+for p in raws:
+ try:
+  row={'filename':p.name,'raw':info(p),'name_matches_manifest':p.name in manifest_names,'already_audited':p.name in OLD,'clean_before':info(ART/'blender_clean'/p.name) if (ART/'blender_clean'/p.name).exists() else None,'exports_before':[info(q) for q in (ART/'export_unity').rglob(p.name)]}
+  if not row['already_audited']:
+   assert row['name_matches_manifest'],'Unknown name; requires mapping, no auto-rename'
+   im=Image.open(p).convert('RGBA');a=np.array(im);al=a[:,:,3];before=metrics(a);dist=ndi.distance_transform_edt(al<8);remove=(al>0)&(al<=3)&(dist>6);solid=(al>=250)&(al<255);c=a.copy();c[remove,3]=0;c[solid,3]=255
+   clean=ART/'blender_clean'/p.name
+   if clean.exists():
+    assert np.array_equal(np.asarray(Image.open(clean).convert('RGBA')),c),'Existing CLEAN provenance differs; refusing overwrite'
+    operation='existing CLEAN verified pixel-identical; no overwrite'
+   elif np.array_equal(c,a):shutil.copyfile(p,clean);operation='byte-identical copy; no cleanup needed'
+   else:Image.fromarray(c).save(clean);operation='alpha only: remove alpha1–3 >6px from alpha>=8; solidify alpha250–254. No RGB/canvas/geometry changes.'
+   actual=np.asarray(Image.open(clean).convert('RGBA'));assert np.array_equal(actual[:,:,:3],a[:,:,:3]);assert np.array_equal(actual[(al>=4)&(al<250),3],al[(al>=4)&(al<250)])
+   key=p.name[:6];out=EXPORT/p.name;ci=Image.fromarray(actual);crop=[0,0,ci.width,ci.height];padding=[0,0,0,0]
+   if key in ['UI-005','UI-006','UI-010','UI-011']:
+    bounds=box(actual[:,:,3]>=8);crop=[max(0,bounds[0]-8),max(0,bounds[1]-8),min(ci.width,bounds[2]+8),min(ci.height,bounds[3]+8)];ci=ci.crop(crop)
+   if key=='UI-011':
+    side=max(ci.size);padding=[(side-ci.width)//2,(side-ci.height)//2,side-ci.width-(side-ci.width)//2,side-ci.height-(side-ci.height)//2];square=Image.new('RGBA',(side,side));square.paste(ci,(padding[0],padding[1]));ci=square;size=(512,512)
+   elif key in ['UI-012','UI-022']:size=ci.size
+   else:size=(round(ci.width/2),round(ci.height/2))
+   if out.exists():raise RuntimeError('Export exists; refusing overwrite')
+   if size==ci.size and crop==[0,0,im.width,im.height]:shutil.copyfile(clean,out)
+   else:resize(ci,size).save(out)
+   audit={'filename':p.name,'raw':row['raw'],'clean':info(clean),'export':info(out),'before':before,'after':metrics(actual),'cleanup':{'operation':operation,'removed_pixels':int(remove.sum()),'solidified_pixels':int(solid.sum()),'rgb_unchanged':True,'alpha4_249_unchanged':True,'canvas_unchanged':True},'export_transform':{'crop_xyxy':crop,'padding_LTRB':padding,'dimensions':list(size),'sampling':'premultiplied RGBA Lanczos; no tint'},'status':'CLEAN','editor':'NOT RUN','webgl':'NOT RUN','artistic_approval':'PENDING','integrated':False}
+   if key=='UI-022':
+    rgb=actual[:,:,:3].astype(float);audit['repeat_seams']={'horizontal_mae_rgb':float(np.abs(rgb[:,0]-rgb[:,-1]).mean()),'vertical_mae_rgb':float(np.abs(rgb[0]-rgb[-1]).mean()),'adjacent_horizontal_mae_rgb':float(np.abs(rgb[:,1:]-rgb[:,:-1]).mean()),'adjacent_vertical_mae_rgb':float(np.abs(rgb[1:]-rgb[:-1]).mean())}
+   if key in ['UI-008','UI-009','UI-025']:
+    holemask=actual[:,:,3]==0;hl,hn=ndi.label(holemask);bd=set(np.unique(np.concatenate([hl[0],hl[-1],hl[:,0],hl[:,-1]])));holes=[]
+    for label in range(1,hn+1):
+     mask=hl==label;n=int(mask.sum())
+     if label not in bd and n>1000:holes.append({'pixels':n,'bbox':box(mask)})
+    audit['transparent_internal_windows']=holes
+   audits.append(audit);row['processed_in_this_batch']=True
+  rows.append(row)
+ except Exception as e:rows.append({'filename':p.name,'status':'BLOCKED','error':str(e)})
+for row in rows:
+ if 'raw' in row:row['duplicate_bytes']=[r['filename'] for r in rows if r is not row and r.get('raw',{}).get('sha256')==row['raw']['sha256']];row['duplicate_pixels']=[r['filename'] for r in rows if r is not row and r.get('raw',{}).get('pixel_sha256')==row['raw']['pixel_sha256']]
+missing=sorted(manifest_names-{p.name for p in raws})
+(EVID/'inventory.json').write_text(json.dumps({'source_root':str(SOURCE),'base_main':'53b7f965141871041b21e96a053eff4d0e7e4596','pr44':'MERGED','pr46':'OPEN, excluded from branch diff; approved historical hashes read only','raws':rows,'manifest_not_generated':missing},ensure_ascii=False,indent=2)+'\n');(EVID/'audit.json').write_text(json.dumps(audits,ensure_ascii=False,indent=2)+'\n')
+font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',13)
+for start in [0,6]:
+ sheet=Image.new('RGB',(1440,720),'#28232b');draw=ImageDraw.Draw(sheet)
+ for i,audit in enumerate(audits[start:start+6]):
+  im=Image.open(ART/'blender_clean'/audit['filename']).convert('RGBA');im.thumbnail((454,310));tile=Image.new('RGBA',im.size,'#8c7a89');tile.alpha_composite(im);x=(i%3)*480+(480-im.width)//2;y=(i//3)*360+35;sheet.paste(tile.convert('RGB'),(x,y));draw.text(((i%3)*480+5,(i//3)*360+8),audit['filename'],font=font,fill='white')
+ sheet.save(EVID/f'clean_contact_{start//6+1}.png')
+shutil.copyfile('/tmp/process_new_batch.py',EVID/'process_new_batch.py.txt')
+print(f'Inventory={len(raws)}, historical skipped={sum(r.get("already_audited",False) for r in rows)}, new CLEAN={len(audits)}, absent manifest={len(missing)}')
+for a in audits:print(a['filename'],a['clean']['dimensions'],a['export']['dimensions'],'removed',a['cleanup']['removed_pixels'],'solidified',a['cleanup']['solidified_pixels'],'holes',a.get('transparent_internal_windows',[]),'seams',a.get('repeat_seams',{}))

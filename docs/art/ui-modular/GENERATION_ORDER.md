@@ -1,6 +1,6 @@
 # Ordem de geração e aprovação (sem lotes)
 
-**Status vigente em 04/11/2026:** UI-001 e COMPACT NORMAL mantêm APPROVED. HOVER v02, PRESSED v01, DISABLED v02, UI-002 e UI-003 (com restrições) foram aprovados expressamente pelo responsável; UI-008 aceita somente em 150×206 detalhado, REWORK em 0,62×. [PNGs finais e handoff](approved/README.md). Nenhum integrado. LINEUP MINIMAL PENDING, não gerada. O objetivo é uma linguagem visual consistente, não completar 100 imagens por completude.
+**Status vigente em 04/11/2026:** UI-001 e COMPACT NORMAL mantêm APPROVED. HOVER v02, PRESSED v01, DISABLED v02, UI-002 e UI-003 (com restrições) foram aprovados expressamente pelo responsável; UI-008 aceita somente em 150×206 detalhado, REWORK em 0,62×. [PNGs finais e handoff](approved/README.md). Nenhum integrado. LINEUP MINIMAL já gerada/UNITY_QA, com aceite artístico PENDING. O objetivo é uma linguagem visual consistente, não completar 100 imagens por completude.
 
 ## Prioridade atual de correção — v02 após QA da PR #47
 
@@ -24,7 +24,7 @@ A decisão de produto estabelece duas linhas: ornamental grande (~260×88, arte 
 
 ## P0 — primeiro piloto (sequência originalmente documentada; mantida como histórico)## Nova prioridade — Maid Card minimalista da Escalação (04/11/2026)
 
-**Decisão aprovada:** duas apresentações para a mesma maid, sem duplicar dados. O UI-008 já gerado é aprovado expressamente para uso **detalhado somente em 150×206**, mas falhou visualmente na Escalação a 0,62×. Gerar agora **somente** [UI-008 LINEUP MINIMAL](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md) → `art_working/ui_modular/raw_gpt/UI-008_maid_card_lineup_minimal_v01.png` (**PENDING**).
+**Decisão aprovada:** duas apresentações para a mesma maid, sem duplicar dados. O UI-008 já gerado é aprovado expressamente para uso **detalhado somente em 150×206**, mas falhou visualmente na Escalação a 0,62×. A [UI-008 LINEUP MINIMAL](incoming/BATCH-2026-11-04/README.md) já foi gerada e testada em 0,62×; agora aguarda revisão artística, sem integração. Não regenerar apenas por causa da ordem histórica.
 
 **Anexos obrigatórios:** `art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png` (CLEAN local aprovado apenas em 150×206; [master publicado](approved/UI-008_maid_card_compact_v01.png)); `docs/roadmap/ui-01b/evidence/after_ES-2_escalacao_960x600.png`; `docs/art/ui-modular/approved/UI-001_panel_large_v01.png`. Opcionais: `Assets/_Game/Resources/Maids/suzu_walk.png` e `docs/art/maid-walk/evidence_illustrated/webgl_chrome_960x600.jpg`. [Tutorial detalhado](TUTORIAL.md#passo-3b--novo-maid-card-minimalista-para-escalação-duas-apresentações-aprovadas).
 

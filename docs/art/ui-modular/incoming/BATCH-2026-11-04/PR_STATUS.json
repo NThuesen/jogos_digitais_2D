@@ -1,0 +1,39 @@
+{
+  "queried_at_utc": "2026-11-04T19:37:51.175369+00:00",
+  "note": "Snapshot before the handoff commit. PR #47 will have a newer head after publishing these files; use its live head for subsequent work. No CI polling/watchers.",
+  "pull_requests": [
+    {
+      "number": 46,
+      "url": "https://github.com/NThuesen/jogos_digitais_2D/pull/46",
+      "state": "closed",
+      "merged": true,
+      "draft": false,
+      "base": "main",
+      "head": "2c681d64dcef446a7292adc72a37b03d60800a4e",
+      "merge_sha": "697bd2a1ad941efc29af5fbf84218ec9d19b09b1",
+      "auto_merge_requested": true
+    },
+    {
+      "number": 47,
+      "url": "https://github.com/NThuesen/jogos_digitais_2D/pull/47",
+      "state": "open",
+      "merged": false,
+      "draft": false,
+      "base": "main",
+      "head": "b995746593731934595732e1831efb354fe49b4e",
+      "merge_sha": null,
+      "auto_merge_requested": false
+    },
+    {
+      "number": 48,
+      "url": "https://github.com/NThuesen/jogos_digitais_2D/pull/48",
+      "state": "closed",
+      "merged": true,
+      "draft": false,
+      "base": "main",
+      "head": "79f0c05b8af511950bc8d9bc7deb2f062b88ed96",
+      "merge_sha": "e431c096374561976afbbdff88e0a81a5e038836",
+      "auto_merge_requested": true
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "Build/NewBatchQA.data": {
+    "bytes": 47351116,
+    "sha256": "91e9f11bef339e8bab84eb3fa6298ac5bf9a5a53a0eafb5068cf9aaf3bc6f893"
+  },
+  "Build/NewBatchQA.framework.js": {
+    "bytes": 691339,
+    "sha256": "408583c87643eb24b2cd05f7afd4e664a47d7174428f7b581331e6c8a26f3b5a"
+  },
+  "Build/NewBatchQA.loader.js": {
+    "bytes": 58618,
+    "sha256": "d6b4e073622736310636527f4de0222918033646293bcc3445336b002c3b3e06"
+  },
+  "Build/NewBatchQA.wasm": {
+    "bytes": 105879716,
+    "sha256": "623bafe50f11bdbff800ecd1fc027b9d41bed0f501e0d99f68f6400130ab88ef"
+  },
+  "Neko Maid Inc_BurstDebugInformation_DoNotShip/Data/Plugins/lib_burst_generated.txt": {
+    "bytes": 103187,
+    "sha256": "351519c9f15179e3e697d67f63456f5652f9b6d079c7c367e41f3c28fed4e6fc"
+  },
+  "index.html": {
+    "bytes": 726,
+    "sha256": "dd74ff75f4f439221c141cb8f6ac26f61384f4ee49fa92cc81c5a859fe260390"
+  }
+}

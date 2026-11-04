@@ -1,0 +1,38 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using NUnit.Framework;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.TestTools;
+using UnityEngine.UI;
+public sealed class ModularQaTests
+{
+ [Serializable]public sealed class PageResult{public string page;public int width,height,click_checks,raycast_checks;public string[] failures,facts;public string screenshot;}
+ [Serializable]public sealed class Results{public string environment="Unity Editor PlayMode, render textures, ExecuteEvents simulated pointer; not physical mouse";public List<PageResult> pages=new List<PageResult>();}
+ string Evidence=>Path.GetFullPath(Path.Combine(Application.dataPath,"../docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04"));
+ [UnityTest]public IEnumerator NewCandidatesOnly()
+ {
+  var results=new Results();int failures=0;
+  foreach(var size in new[]{new Vector2Int(960,600),new Vector2Int(1280,720)})
+  {
+   var root=new GameObject("New batch isolated QA");var view=root.AddComponent<ModularQaView>();view.Build(size.x,size.y,true);
+   for(int page=0;page<ModularQaView.Pages.Length;page++)
+   {
+    view.Show(page);for(int i=0;i<6;i++)yield return null;view.Inspect();var errors=new List<string>(view.Failures);int clicks=0,rays=0;
+    foreach(var b in view.Buttons)
+    {
+     var r=(RectTransform)b.transform;bool available=b.interactable;int baseline=view.Clicks;var ev=new PointerEventData(EventSystem.current){button=PointerEventData.InputButton.Left};
+     ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerDownHandler);ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerUpHandler);ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerClickHandler);if(view.Clicks!=baseline+(available?1:0))errors.Add("click availability "+b.name);clicks++;
+     b.interactable=false;int disabled=view.Clicks;ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerClickHandler);if(view.Clicks!=disabled)errors.Add("disabled accepted click "+b.name);clicks++;b.interactable=available;
+     foreach(float offset in new[]{0f,.6f}){var p=RectTransformUtility.WorldToScreenPoint(view.Camera,r.TransformPoint(new Vector3(offset*r.rect.width,0)));var hits=new List<RaycastResult>();view.Raycaster.Raycast(new PointerEventData(EventSystem.current){position=p},hits);if(hits.Exists(x=>x.gameObject==b.gameObject)!=(offset==0))errors.Add("raycast bounds "+b.name+" "+offset);rays++;}
+    }
+    string name="editor_"+ModularQaView.Pages[page]+"_"+size.x+"x"+size.y+".png";Capture(view.Camera,Path.Combine(Evidence,name));results.pages.Add(new PageResult{page=ModularQaView.Pages[page],width=size.x,height=size.y,click_checks=clicks,raycast_checks=rays,failures=errors.ToArray(),facts=view.Facts.ToArray(),screenshot=name});failures+=errors.Count;
+   }
+   var rt=view.Camera.targetTexture;UnityEngine.Object.Destroy(root);yield return null;rt.Release();UnityEngine.Object.Destroy(rt);
+  }
+  File.WriteAllText(Path.Combine(Evidence,"editor_results.json"),JsonUtility.ToJson(results,true));Assert.AreEqual(0,failures,"See per-page diagnostic evidence; all candidates were visited.");
+ }
+ static void Capture(Camera cam,string path){Canvas.ForceUpdateCanvases();cam.Render();var rt=cam.targetTexture;RenderTexture.active=rt;var tex=new Texture2D(rt.width,rt.height,TextureFormat.RGB24,false);tex.ReadPixels(new Rect(0,0,rt.width,rt.height),0,0);tex.Apply();RenderTexture.active=null;File.WriteAllBytes(path,tex.EncodeToPNG());UnityEngine.Object.Destroy(tex);}
+}

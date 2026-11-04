@@ -1,0 +1,33 @@
+from pathlib import Path
+import functools,http.server,threading,json,traceback
+from playwright.sync_api import sync_playwright
+ROOT=Path('/mnt/c/dev/PocketSlop-Games/ui-modular-new-batch');EVID=ROOT/'docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04'
+class Quiet(http.server.SimpleHTTPRequestHandler):
+ def log_message(self,*args):pass
+server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT/'Build/NewBatchQA')));threading.Thread(target=server.serve_forever,daemon=True).start()
+report={'environment':'Headless Chromium / SwiftShader; browser mouse automation, not physical mouse','windows':[]}
+try:
+ with sync_playwright() as pw:
+  browser=pw.chromium.launch(executable_path='/home/codexmae/.cache/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell',headless=True,args=['--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+  report['browser_version']=browser.version
+  for width,height in [(960,600),(1280,720)]:
+   page=browser.new_page(viewport={'width':width,'height':height},device_scale_factor=1);errors=[];console=[];window={'width':width,'height':height,'pages':[],'page_errors':errors,'console':console};report['windows'].append(window)
+   page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda m:console.append({'type':m.type,'text':m.text}) if m.type in ['warning','error'] else None)
+   page.goto(f'http://127.0.0.1:{server.server_port}/',wait_until='domcontentloaded');page.wait_for_function('window.modularQa && window.modularQa.ready',timeout=180000)
+   for index,key in enumerate(['controls','panels','lineup','detail','icons','background','environment']):
+    state=page.evaluate('window.modularQa')
+    if state['page']!=index:
+     nav=state['navigation'][index];page.mouse.click(nav['x'],nav['y']);page.wait_for_function('(n)=>window.modularQa.page===n',arg=index);page.wait_for_timeout(250)
+    state=page.evaluate('window.modularQa');checks=[]
+    for probe in state['probes']:
+     initial=page.evaluate('window.modularQa.clicks');page.mouse.click(probe['x'],probe['y']);page.wait_for_timeout(60);actual=page.evaluate('window.modularQa.clicks');checks.append({'label':probe['label'],'enabled':probe['enabled'],'expected_delta':int(probe['enabled']),'actual_delta':actual-initial,'passed':actual-initial==int(probe['enabled'])})
+    result={'page':key,'snapshot':page.evaluate('window.modularQa'),'mouse_clicks':checks}
+    if index in [0,2,5]:
+     name=f'webgl_{key}_{width}x{height}.png';page.screenshot(path=str(EVID/name));result['screenshot']=name
+    window['pages'].append(result)
+   page.close()
+  browser.close()
+ report['result']='PASS' if all(not w['page_errors'] and not any(x['type']=='error' for x in w['console']) and all(not p['snapshot']['failures'] and all(c['passed'] for c in p['mouse_clicks']) for p in w['pages']) for w in report['windows']) else 'FAIL'
+except Exception as e:report['result']='BLOCKED';report['exception']=str(e);report['traceback']=traceback.format_exc()
+finally:server.shutdown();(EVID/'webgl_results.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+print(report['result'])

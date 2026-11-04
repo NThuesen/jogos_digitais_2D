@@ -1,0 +1,242 @@
+[
+  {
+    "filename": "UI-005_button_secondary_normal_v01.png",
+    "resource": "secondary",
+    "dimensions": [
+      1059,
+      262
+    ],
+    "border_LBRT": [
+      190.62,
+      94.32,
+      190.62,
+      94.32
+    ],
+    "ppu": 100,
+    "filter": "Bilinear",
+    "wrap": "Clamp",
+    "mipmap": false,
+    "compression": "Uncompressed",
+    "image": "Sliced"
+  },
+  {
+    "filename": "UI-006_tab_inactive_v01.png",
+    "resource": "tab",
+    "dimensions": [
+      1002,
+      264
+    ],
+    "border_LBRT": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "ppu": 100,
+    "filter": "Bilinear",
+    "wrap": "Clamp",
+    "mipmap": false,
+    "compression": "Uncompressed",
+    "image": "Simple/preserveAspect"
+  },
+  {
+    "filename": "UI-007_modal_dialog_v01.png",
+    "resource": "modal",
+    "dimensions": [
+      908,
+      433
+    ],
+    "border_LBRT": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "ppu": 100,
+    "filter": "Bilinear",
+    "wrap": "Clamp",
+    "mipmap": false,
+    "compression": "Uncompressed",
+    "image": "Simple/preserveAspect"
+  },
+  {
+    "filename": "UI-008_maid_card_lineup_minimal_v01.png",
+    "resource": "minimal",
+    "dimensions": [
+      535,
+      735
+    ],
+    "border_LBRT": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "ppu": 100,
+    "filter": "Bilinear",
+    "wrap": "Clamp",
+    "mipmap": false,
+    "compression": "Uncompressed",
+    "image": "Simple/preserveAspect"
+  },
+  {
+    "filename": "UI-009_maid_card_detail_v01.png",
+    "resource": "detail",
+    "dimensions": [
+      768,
+      512
+    ],
+    "border_LBRT": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "ppu": 100,
+    "filter": "Bilinear",
+    "wrap": "Clamp",
+    "mipmap": false,
+    "compression": "Uncompressed",
+    "image": "Simple/preserveAspect"
+  },
+  {
+    "filename": "UI-010_rarity_badge_common_v01.png",
+    "resource": "badge",
+    "dimensions": [
+      664,
+      384
+    ],
+    "border_LBRT": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "ppu": 100,
+    "filter": "Bilinear",
+    "wrap": "Clamp",
+    "mipmap": false,
+    "compression": "Uncompressed",
+    "image": "Simple/preserveAspect"
+  },
+  {
+    "filename": "UI-011_icon_book_v01.png",
+    "resource": "book",
+    "dimensions": [
+      512,
+      512
+    ],
+    "border_LBRT": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "ppu": 100,
+    "filter": "Bilinear",
+    "wrap": "Clamp",
+    "mipmap": false,
+    "compression": "Uncompressed",
+    "image": "Simple/preserveAspect"
+  },
+  {
+    "filename": "UI-012_menu_background_v01.png",
+    "resource": "menu",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "border_LBRT": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "ppu": 100,
+    "filter": "Bilinear",
+    "wrap": "Clamp",
+    "mipmap": false,
+    "compression": "Uncompressed",
+    "image": "Simple/preserveAspect"
+  },
+  {
+    "filename": "UI-019_dialog_panel_v01.png",
+    "resource": "dialog",
+    "dimensions": [
+      1086,
+      362
+    ],
+    "border_LBRT": [
+      120,
+      80,
+      120,
+      80
+    ],
+    "ppu": 100,
+    "filter": "Bilinear",
+    "wrap": "Clamp",
+    "mipmap": false,
+    "compression": "Uncompressed",
+    "image": "Sliced"
+  },
+  {
+    "filename": "UI-022_floor_tile_warm_oak_v01.png",
+    "resource": "floor",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "border_LBRT": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "ppu": 100,
+    "filter": "Bilinear",
+    "wrap": "Clamp",
+    "mipmap": false,
+    "compression": "Uncompressed",
+    "image": "Simple/preserveAspect"
+  },
+  {
+    "filename": "UI-023_wall_straight_v01.png",
+    "resource": "wall",
+    "dimensions": [
+      768,
+      512
+    ],
+    "border_LBRT": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "ppu": 100,
+    "filter": "Bilinear",
+    "wrap": "Clamp",
+    "mipmap": false,
+    "compression": "Uncompressed",
+    "image": "Simple/preserveAspect"
+  },
+  {
+    "filename": "UI-025_rarity_card_frame_common_v01.png",
+    "resource": "rarityframe",
+    "dimensions": [
+      535,
+      735
+    ],
+    "border_LBRT": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "ppu": 100,
+    "filter": "Bilinear",
+    "wrap": "Clamp",
+    "mipmap": false,
+    "compression": "Uncompressed",
+    "image": "Simple/preserveAspect"
+  }
+]

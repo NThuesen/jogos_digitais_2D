@@ -1,0 +1,12 @@
+{
+  "operation": "CRLF to LF only; contents/results unchanged",
+  "files": [
+    {
+      "path": "editor_results.xml",
+      "source_bytes": 2491,
+      "source_sha256": "10b478bf60c6d949d425d0ea18d2a30cc66c6035c0fbf3e73bb22fb0705f33b7",
+      "archived_bytes": 2464,
+      "archived_sha256": "6877fbd906dfb84a7fdec7b5f5880702a37965092f3944a18675ddee29f5595c"
+    }
+  ]
+}
