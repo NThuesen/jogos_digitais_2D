@@ -1,0 +1,40 @@
+import sys,json,hashlib,shutil
+from pathlib import Path
+from PIL import Image,ImageDraw
+import numpy as np
+from scipy import ndimage as ndi
+SRC=Path('jogos_digitais_2D/art_working/ui_modular'); OUT=Path('ui-modular-b3/docs/art/ui-modular/incoming/BATCH-2026-11-04-B3'); (OUT/'raw').mkdir(parents=True,exist_ok=True)
+names=sorted(p.name for p in (SRC/'raw_gpt').glob('*.png') if p.name[:6] in('UI-011','UI-017','UI-018','UI-020') and 'book' not in p.name)
+def box(m):
+    ys,xs=np.where(m); return [int(xs.min()),int(ys.min()),int(xs.max()+1),int(ys.max()+1)]
+rep={}
+for n in names:
+    raw=SRC/'raw_gpt'/n; im=Image.open(raw); a=np.array(im.convert('RGBA')); al=a[...,3]; H,W=al.shape
+    strong=al>=8; dist=ndi.distance_transform_edt(~strong)
+    dust=(al>0)&(al<=3)&(dist>6)
+    b=box(al>=128) if (al>=128).any() else None
+    lab,k=ndi.label(al>=128); sz=np.bincount(lab.ravel())[1:]
+    # halo heuristic
+    rgb=a[...,:3]; halo=int(((rgb.min(2)>220)&(al>8)&(al<240)).sum())
+    # alpha within bbox holes
+    rep[n]=dict(size=[W,H],mode=im.mode,alpha_zero=float((al==0).mean().round(3)),a250_254=int(((al>=250)&(al<255)).sum()),a255=int((al==255).sum()),dust_to_remove=int(dust.sum()),
+      bbox128=b,margin_pct=[round(b[0]/W*100,1),round(b[1]/H*100,1),round((W-b[2])/W*100,1),round((H-b[3])/H*100,1)] if b else None,
+      edge_touch=int((al[0]>0).sum()+(al[-1]>0).sum()+(al[:,0]>0).sum()+(al[:,-1]>0).sum()),comps128=int(k),small_comps=[int(s) for s in sz if s<300][:8],halo_bright=halo,
+      aspect=round(W/H,3),bytes=raw.stat().st_size,sha=hashlib.sha256(raw.read_bytes()).hexdigest())
+    # CLEAN
+    clean=SRC/'blender_clean'/n; assert not clean.exists()
+    c=a.copy(); c[dust,3]=0; sol=(al>=250)&(al<255); c[sol,3]=255
+    if im.mode=='RGB' or (al==255).all(): shutil.copyfile(raw,clean); op='copy'
+    else: Image.fromarray(c).save(clean); op='alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified'
+    if not (im.mode=='RGB' or (al==255).all()):
+        r=np.array(Image.open(clean).convert('RGBA')); assert np.array_equal(r[...,:3],a[...,:3]); assert np.array_equal(r[(al>=4)&(al<250),3],al[(al>=4)&(al<250)])
+    shutil.copyfile(clean,OUT/n); shutil.copyfile(raw,OUT/'raw'/n)
+    rep[n].update(op=op,removed=int(dust.sum()),solidified=int(sol.sum()),clean_sha=hashlib.sha256(clean.read_bytes()).hexdigest())
+json.dump(rep,open(OUT/'clean_report.json','w'),indent=1)
+for n,r in rep.items(): print(n,r['size'],r['mode'],'zero',r['alpha_zero'],'margins',r['margin_pct'],'edge',r['edge_touch'],'dust',r['dust_to_remove'],'sol',r['solidified'],'comps',r['comps128'],'small',r['small_comps'][:4],'halo',r['halo_bright'])
+# contact sheet on 2 bgs
+sheet=Image.new('RGB',(1500,1000),(40,36,44)); d=ImageDraw.Draw(sheet)
+for i,n in enumerate(names):
+    im=Image.open(OUT/n).convert('RGBA'); t=Image.new('RGBA',im.size,(120,100,125,255) if i%2==0 else (250,248,240,255)); t.alpha_composite(im); t=t.convert('RGB'); t.thumbnail((360,300))
+    x=(i%4)*375+8; y=(i//4)*330+28; sheet.paste(t,(x,y)); d.text((x,y-18),n[:42],fill='white')
+sheet.save(sys.argv[1]+'/b3_contact.png')

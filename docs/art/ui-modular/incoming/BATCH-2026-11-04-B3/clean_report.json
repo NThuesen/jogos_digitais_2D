@@ -1,0 +1,506 @@
+{
+ "UI-011_icon_cat_paw_v01.png": {
+  "size": [
+   1254,
+   1254
+  ],
+  "mode": "RGBA",
+  "alpha_zero": 0.523,
+  "a250_254": 735877,
+  "a255": 683,
+  "dust_to_remove": 88,
+  "bbox128": [
+   130,
+   150,
+   1118,
+   1112
+  ],
+  "margin_pct": [
+   10.4,
+   12.0,
+   10.8,
+   11.3
+  ],
+  "edge_touch": 0,
+  "comps128": 1,
+  "small_comps": [],
+  "halo_bright": 0,
+  "aspect": 1.0,
+  "bytes": 1031843,
+  "sha": "b62e8ed76d332ceb03cdc76c8a7498634613d993d2a50d41ceb1d8d3d6a7158b",
+  "op": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+  "removed": 88,
+  "solidified": 735877,
+  "clean_sha": "ec18db072549538fd8836c33fbc33319e60ebc2678a7efab30054b848097ae26",
+  "export": {
+   "export_dims": [
+    512,
+    512
+   ],
+   "crop": "none; square pad to 1254; family-consistent scale",
+   "sha256": "1faac4771f2d2777b97ea1f91ada6ffd5cb5a64971ddbb9f11d18c9e5a98809c"
+  }
+ },
+ "UI-011_icon_clock_v01.png": {
+  "size": [
+   1254,
+   1254
+  ],
+  "mode": "RGBA",
+  "alpha_zero": 0.551,
+  "a250_254": 693139,
+  "a255": 632,
+  "dust_to_remove": 65,
+  "bbox128": [
+   154,
+   157,
+   1093,
+   1112
+  ],
+  "margin_pct": [
+   12.3,
+   12.5,
+   12.8,
+   11.3
+  ],
+  "edge_touch": 11,
+  "comps128": 1,
+  "small_comps": [],
+  "halo_bright": 0,
+  "aspect": 1.0,
+  "bytes": 1031404,
+  "sha": "130584e6b71ab33222a1166db34ec4bf042be1fe2f33561a8641765dac53eb2b",
+  "op": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+  "removed": 65,
+  "solidified": 693139,
+  "clean_sha": "159de709f4721b62277e31020c1cb58a29fcc6f82b90f2f8cb4e515f1a516400",
+  "export": {
+   "export_dims": [
+    512,
+    512
+   ],
+   "crop": "none; square pad to 1254; family-consistent scale",
+   "sha256": "06a30927845f23c3195523f58797455e48de4fca9c7884b9c6a80ae2f7e30c84"
+  }
+ },
+ "UI-011_icon_coin_v01.png": {
+  "size": [
+   1254,
+   1254
+  ],
+  "mode": "RGBA",
+  "alpha_zero": 0.578,
+  "a250_254": 648654,
+  "a255": 468,
+  "dust_to_remove": 2139,
+  "bbox128": [
+   176,
+   172,
+   1060,
+   1107
+  ],
+  "margin_pct": [
+   14.0,
+   13.7,
+   15.5,
+   11.7
+  ],
+  "edge_touch": 124,
+  "comps128": 1,
+  "small_comps": [],
+  "halo_bright": 0,
+  "aspect": 1.0,
+  "bytes": 952669,
+  "sha": "54b843049cd783ec18b0da1d92e34692e3e1313730477861ed53b47e95333246",
+  "op": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+  "removed": 2139,
+  "solidified": 648654,
+  "clean_sha": "a5cb67438dfb1d449fd64460699264db85bcf813e7e95f4172f10f09afdf63e6",
+  "export": {
+   "export_dims": [
+    512,
+    512
+   ],
+   "crop": "none; square pad to 1254; family-consistent scale",
+   "sha256": "264d56051ff5a5621c40010871af213b8900a9eadb7b3c18922c3bdf32cfe42a"
+  }
+ },
+ "UI-011_icon_cup_v01.png": {
+  "size": [
+   1254,
+   1254
+  ],
+  "mode": "RGBA",
+  "alpha_zero": 0.638,
+  "a250_254": 541606,
+  "a255": 1356,
+  "dust_to_remove": 5834,
+  "bbox128": [
+   191,
+   82,
+   1074,
+   1111
+  ],
+  "margin_pct": [
+   15.2,
+   6.5,
+   14.4,
+   11.4
+  ],
+  "edge_touch": 59,
+  "comps128": 1,
+  "small_comps": [],
+  "halo_bright": 0,
+  "aspect": 1.0,
+  "bytes": 824468,
+  "sha": "1ebc66f782625888a17e09c741a71111d6e67b20528831ca96b37eda97a092c4",
+  "op": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+  "removed": 5834,
+  "solidified": 541606,
+  "clean_sha": "7a1ffc1e7c92daf3a9db07e96a6c182b6bff6f9ba45ad586c1a68109e49f362b",
+  "export": {
+   "export_dims": [
+    512,
+    512
+   ],
+   "crop": "none; square pad to 1254; family-consistent scale",
+   "sha256": "7ed79de46698db41d98e920545f70f5fc405e4daef47b4bbce2346b7eb57ae14"
+  }
+ },
+ "UI-011_icon_gear_v01.png": {
+  "size": [
+   1254,
+   1254
+  ],
+  "mode": "RGBA",
+  "alpha_zero": 0.639,
+  "a250_254": 548148,
+  "a255": 1345,
+  "dust_to_remove": 915,
+  "bbox128": [
+   172,
+   167,
+   1078,
+   1107
+  ],
+  "margin_pct": [
+   13.7,
+   13.3,
+   14.0,
+   11.7
+  ],
+  "edge_touch": 26,
+  "comps128": 1,
+  "small_comps": [],
+  "halo_bright": 0,
+  "aspect": 1.0,
+  "bytes": 846787,
+  "sha": "b1a6c608775ad1e683ccb032ddab9d50a73b8b61a5c62f2f663dea8093977a75",
+  "op": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+  "removed": 915,
+  "solidified": 548148,
+  "clean_sha": "966057393c677e758c10d570d185783b7e3c841c2856b9d4ac197b667585193f",
+  "export": {
+   "export_dims": [
+    512,
+    512
+   ],
+   "crop": "none; square pad to 1254; family-consistent scale",
+   "sha256": "35cbc0fc730a86d6a696389c10326872157b4293f15b006c6a411a33d8280012"
+  }
+ },
+ "UI-011_icon_gift_v01.png": {
+  "size": [
+   1254,
+   1254
+  ],
+  "mode": "RGBA",
+  "alpha_zero": 0.554,
+  "a250_254": 686015,
+  "a255": 896,
+  "dust_to_remove": 146,
+  "bbox128": [
+   142,
+   144,
+   1090,
+   1109
+  ],
+  "margin_pct": [
+   11.3,
+   11.5,
+   13.1,
+   11.6
+  ],
+  "edge_touch": 23,
+  "comps128": 1,
+  "small_comps": [],
+  "halo_bright": 0,
+  "aspect": 1.0,
+  "bytes": 1040741,
+  "sha": "0d948aa37a47bc096e41be60f923a06b71a4b70b7ec3cfd77c95befd8eeae92e",
+  "op": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+  "removed": 146,
+  "solidified": 686015,
+  "clean_sha": "aca9456bf23bac3f1073eb631a00e284b8f206f7d0547e639b4bdf7504f6ed68",
+  "export": {
+   "export_dims": [
+    512,
+    512
+   ],
+   "crop": "none; square pad to 1254; family-consistent scale",
+   "sha256": "212828d066a6889cbf27ec0db30cca012173c21de36415a3fb040983f0db3002"
+  }
+ },
+ "UI-011_icon_heart_v01.png": {
+  "size": [
+   1261,
+   1247
+  ],
+  "mode": "RGBA",
+  "alpha_zero": 0.624,
+  "a250_254": 577745,
+  "a255": 802,
+  "dust_to_remove": 539,
+  "bbox128": [
+   147,
+   249,
+   1104,
+   1077
+  ],
+  "margin_pct": [
+   11.7,
+   20.0,
+   12.5,
+   13.6
+  ],
+  "edge_touch": 46,
+  "comps128": 1,
+  "small_comps": [],
+  "halo_bright": 0,
+  "aspect": 1.011,
+  "bytes": 842649,
+  "sha": "4f23c614e8a79d8668ec12aa352dcc9359258b10a0b388cbc966f1c00c33c45a",
+  "op": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+  "removed": 539,
+  "solidified": 577745,
+  "clean_sha": "f2458fd24cc7341d9ae93ce62f9709be824086de886a67cb5fc27f36abe2b483",
+  "export": {
+   "export_dims": [
+    512,
+    512
+   ],
+   "crop": "none; square pad to 1261; family-consistent scale",
+   "sha256": "746c959c29a23bfa9b8d38389f672250705ea171d1133cfffb4bf4eb947d2e67"
+  }
+ },
+ "UI-011_icon_shop_bag_v01.png": {
+  "size": [
+   1254,
+   1254
+  ],
+  "mode": "RGBA",
+  "alpha_zero": 0.632,
+  "a250_254": 566331,
+  "a255": 913,
+  "dust_to_remove": 62,
+  "bbox128": [
+   192,
+   202,
+   1059,
+   1076
+  ],
+  "margin_pct": [
+   15.3,
+   16.1,
+   15.6,
+   14.2
+  ],
+  "edge_touch": 8,
+  "comps128": 1,
+  "small_comps": [],
+  "halo_bright": 0,
+  "aspect": 1.0,
+  "bytes": 648746,
+  "sha": "305aa7904b41be422d0b8dcb795d8fc6ab785a7170ad6742c0722e80eb81a3b1",
+  "op": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+  "removed": 62,
+  "solidified": 566331,
+  "clean_sha": "7fa277d667a41032506a55b7cedcfbfb80d02f52760c03ac93784f1cca5962c3",
+  "export": {
+   "export_dims": [
+    512,
+    512
+   ],
+   "crop": "none; square pad to 1254; family-consistent scale",
+   "sha256": "55e5c144a407a12055f5076bda7de62180b6c582ae9f7f34c4b72668227b4681"
+  }
+ },
+ "UI-011_icon_star_v01.png": {
+  "size": [
+   1254,
+   1254
+  ],
+  "mode": "RGBA",
+  "alpha_zero": 0.646,
+  "a250_254": 542197,
+  "a255": 1198,
+  "dust_to_remove": 172,
+  "bbox128": [
+   140,
+   155,
+   1104,
+   1112
+  ],
+  "margin_pct": [
+   11.2,
+   12.4,
+   12.0,
+   11.3
+  ],
+  "edge_touch": 7,
+  "comps128": 1,
+  "small_comps": [],
+  "halo_bright": 0,
+  "aspect": 1.0,
+  "bytes": 756745,
+  "sha": "88564eedd45fcbf99767f105ca33ba68a860ddcebe4d79389eaffc5c18cb9c37",
+  "op": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+  "removed": 172,
+  "solidified": 542197,
+  "clean_sha": "4a356ffc28309f0c14b7fda6449c202441397b701d714b6881064c36f1bb5903",
+  "export": {
+   "export_dims": [
+    512,
+    512
+   ],
+   "crop": "none; square pad to 1254; family-consistent scale",
+   "sha256": "cc02eb69661c6cb6ed65c2d8fcba95f64c88b5b9c6f03a1069c64e52a926d9fd"
+  }
+ },
+ "UI-017_shop_item_frame_v01.png": {
+  "size": [
+   2172,
+   724
+  ],
+  "mode": "RGBA",
+  "alpha_zero": 0.575,
+  "a250_254": 624287,
+  "a255": 16,
+  "dust_to_remove": 8039,
+  "bbox128": [
+   39,
+   202,
+   2134,
+   506
+  ],
+  "margin_pct": [
+   1.8,
+   27.9,
+   1.7,
+   30.1
+  ],
+  "edge_touch": 2,
+  "comps128": 1,
+  "small_comps": [],
+  "halo_bright": 0,
+  "aspect": 3.0,
+  "bytes": 941230,
+  "sha": "f629549cbbd374e4e6f93cb0279d5a35da0f03cae9fb3daa161d8881c62c2ed9",
+  "op": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+  "removed": 8039,
+  "solidified": 624287,
+  "clean_sha": "08d2d3346e6e8e517c59e811b8d8fee4904e2ed2a2de38f1e5114cd629b6fb31",
+  "export": {
+   "export_dims": [
+    1058,
+    162
+   ],
+   "crop": "[28, 193, 2144, 517]",
+   "sha256": "82fbd3c5daabdb796f5c919f8c2ca632405b930cc0b35d6a1918e0a017372716"
+  }
+ },
+ "UI-018_balance_row_normal_v01.png": {
+  "size": [
+   2172,
+   724
+  ],
+  "mode": "RGBA",
+  "alpha_zero": 0.613,
+  "a250_254": 585453,
+  "a255": 1232,
+  "dust_to_remove": 2568,
+  "bbox128": [
+   13,
+   220,
+   2160,
+   499
+  ],
+  "margin_pct": [
+   0.6,
+   30.4,
+   0.6,
+   31.1
+  ],
+  "edge_touch": 142,
+  "comps128": 1,
+  "small_comps": [],
+  "halo_bright": 0,
+  "aspect": 3.0,
+  "bytes": 916409,
+  "sha": "7cf0ec6926aa15ab8767ebc94264ed3b497436f4882a8a3db020e65ca6d2d79a",
+  "op": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+  "removed": 2568,
+  "solidified": 585453,
+  "clean_sha": "33659e99af7d7bcbed49f8ab058b939308ccb6e9dbeddf8a61bf18b65206ba72",
+  "export": {
+   "export_dims": [
+    1082,
+    148
+   ],
+   "crop": "[4, 211, 2169, 508]",
+   "sha256": "b364b9dfea1e3ffd25f92ad385fdce8f2f021bc24400cc05f1e6bf16bb43c600"
+  }
+ },
+ "UI-020_logo_wordmark_v01.png": {
+  "size": [
+   1774,
+   887
+  ],
+  "mode": "RGBA",
+  "alpha_zero": 0.418,
+  "a250_254": 891440,
+  "a255": 954,
+  "dust_to_remove": 113,
+  "bbox128": [
+   25,
+   32,
+   1737,
+   859
+  ],
+  "margin_pct": [
+   1.4,
+   3.6,
+   2.1,
+   3.2
+  ],
+  "edge_touch": 0,
+  "comps128": 1,
+  "small_comps": [],
+  "halo_bright": 0,
+  "aspect": 2.0,
+  "bytes": 1686253,
+  "sha": "9bb4eff179232ddc6d905d9667cd69c47acacef25a79dfbd95cce13ec99884ca",
+  "op": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+  "removed": 113,
+  "solidified": 891440,
+  "clean_sha": "b9221c94a5820f016985707e58319d200941775db323886ff1c30a25f97dd79a",
+  "export": {
+   "export_dims": [
+    866,
+    422
+   ],
+   "crop": "[16, 23, 1747, 868]",
+   "sha256": "39e09b3959fd5a9759160a44d909672a7f26d0cc37877ed907954d29afb20dd0"
+  }
+ }
+}
