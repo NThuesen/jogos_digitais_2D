@@ -28,30 +28,89 @@ namespace Neko.Game.Ui
 
         protected override void Build()
         {
-            Scenery.Build(transform);
-
-            var logo = Logo.Build(transform, 0.92f);
-            UiKit.Anchor(logo, new Vector2(0.5f, 1f), new Vector2(0f, -22f));
-            Logo.Sway(logo);
+            var tagY = Backdrop() ? -292f : -330f;
+            var logo = WordmarkOrSign();
+            Logo.Sway(logo, -0.6f, 0.6f);
 
             var tagline = UiKit.Label(transform, Strings.Get("game.subtitle"), Typeface.Body,
-                Palette.WithAlpha(Palette.Cream, 0.78f));
-            UiKit.Anchor(tagline.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -330f));
+                Palette.WithAlpha(Palette.Cream, 0.9f));
+            UiKit.Anchor(tagline.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, tagY));
+            var tagShadow = tagline.gameObject.AddComponent<Shadow>();
+            tagShadow.effectColor = new Color(0f, 0f, 0f, 0.7f);
+            tagShadow.effectDistance = new Vector2(1.5f, -2f);
             tagline.rectTransform.sizeDelta = new Vector2(760f, 30f);
 
             Parade();
             Buttons();
 
             _records = UiKit.Label(transform, "", Typeface.Tiny,
-                Palette.WithAlpha(Palette.Cream, 0.6f), TextAnchor.LowerLeft);
+                Palette.WithAlpha(Palette.Cream, 0.92f), TextAnchor.LowerLeft);
             UiKit.Anchor(_records.rectTransform, new Vector2(0f, 0f), new Vector2(26f, 14f));
             _records.rectTransform.sizeDelta = new Vector2(480f, 92f);
 
             var credits = UiKit.Label(transform, Strings.Get("credits.body"), Typeface.Tiny,
-                Palette.WithAlpha(Palette.Cream, 0.45f), TextAnchor.LowerRight);
+                Palette.WithAlpha(Palette.Cream, 0.9f), TextAnchor.LowerRight);
             UiKit.Anchor(credits.rectTransform, new Vector2(1f, 1f), new Vector2(-18f, -14f));
             credits.rectTransform.sizeDelta = new Vector2(330f, 92f);
             credits.alignment = TextAnchor.UpperRight;
+
+            // Both corners sit on the illustrated café, so the small print gets a drop shadow.
+            foreach (var small in new[] { _records, credits })
+            {
+                var drop = small.gameObject.AddComponent<Shadow>();
+                drop.effectColor = new Color(0f, 0f, 0f, 0.75f);
+                drop.effectDistance = new Vector2(1f, -1.5f);
+            }
+        }
+
+        /// <summary>
+        /// The approved illustrated café (UI-012), cover-fitted behind everything; false when it
+        /// is missing and the procedural room is built instead. It is a menu backdrop only.
+        /// </summary>
+        private bool Backdrop()
+        {
+            var art = UiArt.Get("ui012_menu_background");
+            if (art == null)
+            {
+                Scenery.Build(transform);
+                return false;
+            }
+
+            var root = UiKit.Root("Scenery", transform);
+            root.SetAsFirstSibling();
+
+            var picture = new GameObject("Cafe", typeof(RectTransform)).AddComponent<Image>();
+            picture.transform.SetParent(root, false);
+            picture.sprite = art;
+            picture.raycastTarget = false;
+            var fit = picture.gameObject.AddComponent<AspectRatioFitter>();
+            fit.aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
+            fit.aspectRatio = art.rect.width / art.rect.height;
+
+            // A warm scrim: the café is bright, and the cream text and name plates above it
+            // are drawn by Unity and have to stay readable on every part of the picture.
+            var scrim = UiKit.Panel(root, Vector2.one * 100f, Palette.WithAlpha(Palette.Ink, 0.2f), 0f);
+            UiKit.Stretch(scrim);
+            scrim.GetComponent<Image>().raycastTarget = false;
+            UiArt.Shade(root, top: true, height: 230f, alpha: 0.88f);
+            UiArt.Shade(root, top: false, height: 270f, alpha: 0.85f);
+            return true;
+        }
+
+        /// <summary>The approved wordmark (UI-020) when present, the procedural sign otherwise.</summary>
+        private RectTransform WordmarkOrSign()
+        {
+            if (!UiArt.Has("ui020_logo_wordmark"))
+            {
+                var sign = Logo.Build(transform, 0.92f);
+                UiKit.Anchor(sign, new Vector2(0.5f, 1f), new Vector2(0f, -22f));
+                return sign;
+            }
+
+            // 520u is the size the wordmark was approved at over the menu background.
+            var mark = UiArt.Picture(transform, "ui020_logo_wordmark", new Vector2(520f, 253f));
+            UiKit.Anchor(mark.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -20f));
+            return mark.rectTransform;
         }
 
         /// <summary>
