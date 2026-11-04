@@ -1,0 +1,90 @@
+{
+  "art_working/ui_modular/blender_clean/UI-001_panel_large_v01.png": {
+    "path": "art_working/ui_modular/blender_clean/UI-001_panel_large_v01.png",
+    "bytes": 1833033,
+    "sha256": "ba300ece650f18e8ef4e938aa84e9c9df3146396dc82a91ba4551306a9ee85f8",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "pixel_sha256": "9ed8101ce37fabc33458ad3dfea85c7446e32e71532d31d6fd4bfba986fafcf3"
+  },
+  "art_working/ui_modular/blender_clean/UI-002_panel_medium_v01.png": {
+    "path": "art_working/ui_modular/blender_clean/UI-002_panel_medium_v01.png",
+    "bytes": 1228521,
+    "sha256": "00c44a34dca15be2cb61d994f05e32ec52775451bf80227bde5faa072683b2c9",
+    "dimensions": [
+      1356,
+      802
+    ],
+    "mode": "RGBA",
+    "pixel_sha256": "58dc81b4be2f6fa9b98476580004d4775fcd62a4c115dd27ae0ec2e42edfbc75"
+  },
+  "art_working/ui_modular/blender_clean/UI-003_panel_small_label_v01.png": {
+    "path": "art_working/ui_modular/blender_clean/UI-003_panel_small_label_v01.png",
+    "bytes": 1392186,
+    "sha256": "0a79225c60c61541f34c1d34f3d45f7e0685917d5d9c82cd19b9fec534b31a27",
+    "dimensions": [
+      2170,
+      526
+    ],
+    "mode": "RGBA",
+    "pixel_sha256": "a22a60953838eff052d68c2d40c7c19f1b04a5fb471e8a6186e8c05a770dff77"
+  },
+  "art_working/ui_modular/blender_clean/UI-004_button_primary_compact_disabled_v02.png": {
+    "path": "art_working/ui_modular/blender_clean/UI-004_button_primary_compact_disabled_v02.png",
+    "bytes": 941613,
+    "sha256": "3709ee3a696aa5b929a315fcacec31c2457736a068e34352bea11cd2dc51074d",
+    "dimensions": [
+      2176,
+      410
+    ],
+    "mode": "RGBA",
+    "pixel_sha256": "d47d43600e3a8d0816cd6f0a4cc065f276a5cb3589b138cecae7f7051839bfce"
+  },
+  "art_working/ui_modular/blender_clean/UI-004_button_primary_compact_hover_v02.png": {
+    "path": "art_working/ui_modular/blender_clean/UI-004_button_primary_compact_hover_v02.png",
+    "bytes": 1006994,
+    "sha256": "c47a56f4f1a83c12eb9a64644a38a9dba66a55cefbb2d15e7913f3f88000d45e",
+    "dimensions": [
+      2176,
+      408
+    ],
+    "mode": "RGBA",
+    "pixel_sha256": "05b4681c105a300415f7e46659e9388d47713d643f1491f8082f085a3ffa195a"
+  },
+  "art_working/ui_modular/blender_clean/UI-004_button_primary_compact_normal_v01.png": {
+    "path": "art_working/ui_modular/blender_clean/UI-004_button_primary_compact_normal_v01.png",
+    "bytes": 908246,
+    "sha256": "c82d06142b3953a97b9654d8b7bf53e611679a6ffb4822a3b268dff239c17eb6",
+    "dimensions": [
+      2072,
+      380
+    ],
+    "mode": "RGBA",
+    "pixel_sha256": "645339e34ed5b2f0fd14adbf15fb4879808a0599451e0c370567c6838599c4a8"
+  },
+  "art_working/ui_modular/blender_clean/UI-004_button_primary_normal_v01.png": {
+    "path": "art_working/ui_modular/blender_clean/UI-004_button_primary_normal_v01.png",
+    "bytes": 1324109,
+    "sha256": "03b58c3e2b500b8a48311cd3b3c75c8551c79d599693176ad5b5da664aeb0446",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "mode": "RGBA",
+    "pixel_sha256": "987ad6be174d8dfea9365cb2e8d7f3eb880120c059cd22252ea05c996d3f4574"
+  },
+  "art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png": {
+    "path": "art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png",
+    "bytes": 1138752,
+    "sha256": "74ea40f0b528580b4f809bd20a359bd1dbdacb02e4014f0d8ce0576676fb6342",
+    "dimensions": [
+      1070,
+      1470
+    ],
+    "mode": "RGBA",
+    "pixel_sha256": "f8ec54f058a05263ee0c03bc2e59b606336a44510a84bbc0685a3dacb417666c"
+  }
+}

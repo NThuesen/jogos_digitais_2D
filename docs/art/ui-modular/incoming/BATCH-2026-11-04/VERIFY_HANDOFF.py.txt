@@ -1,0 +1,40 @@
+from pathlib import Path
+import json,hashlib,re,struct,binascii,subprocess
+W=Path('/mnt/c/dev/PocketSlop-Games/ui-modular-new-batch');S=Path('/mnt/c/dev/PocketSlop-Games/jogos_digitais_2D');B=W/'docs/art/ui-modular';D=B/'incoming/BATCH-2026-11-04';E=B/'reviews/evidence/BATCH-NEW-2026-11-04';g=['git','-c','safe.directory='+str(W),'-c','core.filemode=false','-C',str(W)]
+m=json.loads((D/'PROVENANCE.json').read_text());assert len(m['assets'])==12 and len(m['stored_pngs'])==24;assert len({r['sha256'] for r in m['stored_pngs']})==24
+pngs=list(D.rglob('*.png'));assert len(pngs)==24
+for r in m['stored_pngs']:
+ p=W/r['path'];data=p.read_bytes();assert hashlib.sha256(data).hexdigest()==r['sha256'] and len(data)==r['bytes'];assert data[:8]==b'\x89PNG\r\n\x1a\n';assert list(struct.unpack('>II',data[16:24]))==r['dimensions'];offset=8;ended=False
+ while offset<len(data):
+  length=struct.unpack('>I',data[offset:offset+4])[0];tag=data[offset+4:offset+8];chunk=data[offset+8:offset+8+length];crc=struct.unpack('>I',data[offset+8+length:offset+12+length])[0];assert binascii.crc32(tag+chunk)&0xffffffff==crc;offset+=length+12
+  if tag==b'IEND':ended=True;break
+ assert ended and offset==len(data)
+for a in m['assets']:
+ assert a['artistic_approval']=='PENDING' and a['integrated']==False
+ for role in ['master','tested_export','raw_preserved']:
+  r=a[role]
+  if r:
+   repo=(W/r['path']).read_bytes();local=(S/r['source_local']).read_bytes();assert repo==local and hashlib.sha256(repo).hexdigest()==r['sha256'],(a['filename'],role)
+assert sum(a['stage']=='REWORK' for a in m['assets'])==3;assert sum(a['raw_preserved'] is not None for a in m['assets'])==3
+for r in json.loads((E/'preexisting_clean_snapshot.json').read_text()).values():assert hashlib.sha256((S/r['path']).read_bytes()).hexdigest()==r['sha256']
+for r in json.loads((E/'inventory.json').read_text())['raws']:assert hashlib.sha256((S/r['raw']['path']).read_bytes()).hexdigest()==r['raw']['sha256']
+# Preserve all historical QA evidence, including contact sheets and normalized text.
+for name,r in json.loads((E/'evidence_manifest.json').read_text()).items():
+ data=(E/name).read_bytes();assert len(data)==r['bytes'] and hashlib.sha256(data).hexdigest()==r['sha256'],name
+for p in D.glob('*.json'):json.loads(p.read_text())
+for path,h in m['corrected_prompt_blob_sha256'].items():
+ original=subprocess.check_output(g+['show','e431c096374561976afbbdff88e0a81a5e038836:'+path]);current=subprocess.check_output(g+['show',':'+path]);assert current==original and hashlib.sha256(current).hexdigest()==h,path
+# Approved artifacts and approval records must equal main exactly.
+assert not subprocess.check_output(g+['diff','--name-only','--cached','origin/main','--','docs/art/ui-modular/approved','docs/art/ui-modular/prompts'],text=True).strip()
+assert not subprocess.check_output(g+['diff','--name-only','HEAD','--','Assets','Data','ProjectSettings','Packages'],text=True).strip()
+links=0
+for p in [D/'README.md',B/'HANDOFF_CLAUDE_CODE_2026_11_04.md',B/'ASSET_REGISTRY.md',B/'OUTPUT_MANIFEST.md',B/'README.md',B/'GENERATION_ORDER.md',B/'TUTORIAL.md',B/'reviews/UI_BATCH_NEW_2026_11_04.md']:
+ text=p.read_text();assert not re.search(r'^(<<<<<<<|=======|>>>>>>>)',text,re.M),p
+ for link in re.findall(r'\]\(([^)]+)\)',text)+re.findall(r'<img[^>]*src="([^"]+)"',text):
+  if '://' in link or link.startswith('#'):continue
+  assert (p.parent/link.split('#')[0]).exists(),(p,link);links+=1
+out=(B/'OUTPUT_MANIFEST.md').read_text()
+for stem in ['UI-007_modal_dialog','UI-009_maid_card_detail','UI-022_floor_tile_warm_oak']:
+ v1=next(l for l in out.splitlines() if l.startswith('|') and '`'+stem+'_v01.png`' in l);v2=next(l for l in out.splitlines() if l.startswith('|') and '`'+stem+'_v02.png`' in l);assert 'REWORK' in v1 and 'PENDING' in v2 and 'APPROVED' not in v2;assert not (S/'art_working/ui_modular/raw_gpt'/(stem+'_v02.png')).exists()
+status=json.loads((D/'MANIFEST_STATUS.json').read_text());assert status['planned_filenames_including_versions']==105 and status['not_generated_count']==82
+print(f'PASS: 12 CLEANs/12 logical exports/3 logical RAWs, 24 unique PNGs with CRC/dimensions/hash/bytes; 23 RAWs and 8 old CLEANs unchanged; 61 historical evidence files unchanged; approved assets and corrected prompts exactly match main; 3 v01 REWORK/3 v02 PENDING; {links} local links/previews; no approvals or integration')

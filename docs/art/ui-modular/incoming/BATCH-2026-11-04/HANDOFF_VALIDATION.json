@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "scope": "File integrity, CRC, hashes, links and diff only; no Unity/WebGL/build/generation/test suites",
+  "clean_masters": 12,
+  "tested_exports_logical": 12,
+  "rework_raws_logical": 3,
+  "unique_pngs": 24,
+  "raw_local_files_unchanged": 23,
+  "previous_clean_local_files_unchanged": 8,
+  "historical_evidence_files_unchanged": 61,
+  "corrected_prompts_byte_identical_to_pr48": true,
+  "approved_artifacts_identical_to_main": true,
+  "new_artistic_approvals": 0,
+  "integration": false,
+  "manifest_filenames": 105,
+  "not_generated": 82,
+  "verifier": "VERIFY_HANDOFF.py.txt",
+  "verifier_environment": "Original local worktree paths declared at script top; adjust paths for another checkout. PNG data are only read, never transformed."
+}

@@ -1,0 +1,1 @@
+{"name":"ModularQa.Editor","includePlatforms":["Editor"],"references":["ModularQa.Runtime"]}

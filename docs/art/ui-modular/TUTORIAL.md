@@ -100,7 +100,7 @@ Cada um dos três prompts contém links reais para as referências **versionadas
 
 ## Passo 4 — Demais componentes sem adivinhações## Passo 3B — NOVO: Maid Card minimalista para Escalação (duas apresentações aprovadas)
 
-**Decisão 04/11/2026:** o frame já gerado `UI-008_maid_card_compact_v01.png` foi aceito visualmente apenas para apresentação **detalhada em 150×206**, mas não é legível universalmente a **0,62× (~93×128)**. O novo frame de Escalação é **outro PNG**, não um v02 da arte detalhada. O conceito de duas apresentações está aprovado; o frame existente foi aprovado com esse limite; LINEUP MINIMAL permanece PENDING e nenhum está integrado.
+**Decisão 04/11/2026:** o frame já gerado `UI-008_maid_card_compact_v01.png` foi aceito visualmente apenas para apresentação **detalhada em 150×206**, mas não é legível universalmente a **0,62× (~93×128)**. O novo frame de Escalação é **outro PNG**, não um v02 da arte detalhada. O conceito de duas apresentações está aprovado; o frame existente foi aprovado com esse limite; LINEUP MINIMAL já tem PNG/CLEAN e QA técnico, mas aprovação artística permanece PENDING; nenhum está integrado.
 
 1. Abra o [**PROMPT COMPLETO UI-008 LINEUP MINIMAL**](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md).
 2. **Anexe obrigatoriamente estes três arquivos reais**:

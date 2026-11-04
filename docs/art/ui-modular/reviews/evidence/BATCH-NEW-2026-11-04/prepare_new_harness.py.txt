@@ -1,0 +1,24 @@
+from pathlib import Path
+import json,shutil
+w=Path('/mnt/c/dev/PocketSlop-Games/ui-modular-new-batch');e=w/'docs/art/ui-modular/reviews/evidence/BATCH-NEW-2026-11-04';old=w/'docs/art/ui-modular/reviews/evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/harness';h=w/'Assets/_QA_NewBatch_Temp';assert not h.exists();h.mkdir()
+for d in ['Runtime','Editor','Tests']:
+ (h/d).mkdir()
+ for p in Path('/tmp/NewBatchHarness',d).glob('*.cs'):shutil.copyfile(p,h/d/p.name)
+ shutil.copyfile(old/d/('ModularQa.'+d+'.asmdef.txt'),h/d/('ModularQa.'+d+'.asmdef'))
+shutil.copyfile(old/'Runtime/ModularQaBootstrap.cs.txt',h/'Runtime/ModularQaBootstrap.cs')
+(h/'Resources/ModularQA').mkdir(parents=True)
+keys={'UI-005':'secondary','UI-006':'tab','UI-007':'modal','UI-008':'minimal','UI-009':'detail','UI-010':'badge','UI-011':'book','UI-012':'menu','UI-019':'dialog','UI-022':'floor','UI-023':'wall','UI-025':'rarityframe'}
+config=[]
+for a in json.loads((e/'audit.json').read_text()):
+ name=keys[a['filename'][:6]];src=Path('/mnt/c/dev/PocketSlop-Games/jogos_digitais_2D')/a['export']['path'];shutil.copyfile(src,h/'Resources/ModularQA'/f'{name}.png');width,height=a['export']['dimensions'];border=[width*.18,height*.36,width*.18,height*.36] if name=='secondary' else [120,80,120,80] if name=='dialog' else [0,0,0,0]
+ config.append({'filename':a['filename'],'resource':name,'dimensions':[width,height],'border_LBRT':border,'ppu':100,'filter':'Bilinear','wrap':'Clamp','mipmap':False,'compression':'Uncompressed','image':'Sliced' if name in ['secondary','dialog'] else 'Simple/preserveAspect'})
+(e/'unity_candidate_config.json').write_text(json.dumps(config,indent=2)+'\n')
+setup='''using UnityEditor;using UnityEngine;public static class ModularQaSetup{public static void Configure(){\n'''
+for c in config:
+ vals=','.join(str(float(v))+'f' for v in c['border_LBRT']);key=c['resource'];setup+='''{var im=(TextureImporter)AssetImporter.GetAtPath("Assets/_QA_NewBatch_Temp/Resources/ModularQA/'''+key+'''.png");im.textureType=TextureImporterType.Sprite;im.spriteImportMode=SpriteImportMode.Single;im.spritePixelsPerUnit=100;im.spriteBorder=new Vector4('''+vals+''');im.npotScale=TextureImporterNPOTScale.None;im.maxTextureSize=4096;im.mipmapEnabled=false;im.isReadable=false;im.alphaIsTransparency=true;im.textureCompression=TextureImporterCompression.Uncompressed;im.wrapMode=TextureWrapMode.Clamp;im.filterMode=FilterMode.Bilinear;var s=new TextureImporterSettings();im.ReadTextureSettings(s);s.spriteMeshType=SpriteMeshType.FullRect;im.SetTextureSettings(s);im.SaveAndReimport();}\n'''
+setup+='AssetDatabase.SaveAssets();}}';(h/'Editor/ModularQaSetup.cs').write_text(setup)
+# Keep a minimal isolated WebGL path ready. No build is launched by preparation.
+script=(old/'Editor/ModularQaBuild.cs.txt').read_text().replace('Assets/_QA_Modular_Temp','Assets/_QA_NewBatch_Temp').replace('Build/ModularQA','Build/NewBatchQA');(h/'Editor/ModularQaBuild.cs').write_text(script)
+(h/'Plugins').mkdir();shutil.copyfile(old/'Plugins/ModularQaBridge.jslib.txt',h/'Plugins/ModularQaBridge.jslib')
+(w/'Assets/WebGLTemplates/ModularQa').mkdir(parents=True,exist_ok=True);shutil.copyfile(old.parent/'webgl_template.html.txt',w/'Assets/WebGLTemplates/ModularQa/index.html')
+print('Prepared isolated fixture with 12 exports and seven family pages')

@@ -1,0 +1,28 @@
+{
+  "method": "Visual inspection of RAW/CLEAN proofs and source prompt; technical findings, not owner approval",
+  "findings": {
+    "UI-007_modal_dialog_v01.png": {
+      "verdict": "REWORK",
+      "reason": "Top central silhouette intersects source canvas: 42 opaque pixels at y=0. No missing pixels reconstructed; regenerate or recover uncropped source with transparent margin."
+    },
+    "UI-009_maid_card_detail_v01.png": {
+      "verdict": "REWORK",
+      "reason": "Baked stat bars, plus and coin symbols in data zones conflict with source requirement that typography/symbols/numbers be separate Unity content; no destructive erasure."
+    },
+    "UI-022_floor_tile_warm_oak_v01.png": {
+      "verdict": "REWORK",
+      "reason": "Source requested seamless repeat. Opposite-edge RGB MAE x=3.437,y=7.097 vs adjacent MAE x=1.439,y=1.485; horizontal seam at vertical repeat is ~4.78x baseline. 3x3 repeat evidence retained; no blending."
+    },
+    "UI-025_rarity_card_frame_common_v01.png": {
+      "verdict": "REVIEW",
+      "reason": "Portrait-window mask IoU 0.974369 vs existing detailed baseline in ROI x110..960,y130..800. Standalone composition needs its own geometry; not certified as drop-in SpriteSwap."
+    },
+    "UI-011_icon_book_v01.png": {
+      "verdict": "PASS restricted 32–44u; REVIEW at 24u",
+      "reason": "Native 960x600 Editor screenshot: internal marks lose readability at 24u. Prefer 32–44u; owner decides simplification if 24u is mandatory. No image redrawn.",
+      "evidence": "editor_icons_960x600.png"
+    }
+  },
+  "no_automatic_redraw": true,
+  "no_artistic_approval": true
+}
