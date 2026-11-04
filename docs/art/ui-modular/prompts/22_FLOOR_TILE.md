@@ -1,20 +1,20 @@
 # 22_FLOOR_TILE — prompt corrigido v02 (seamless real)
 
-**Próxima geração: \`UI-022_floor_tile_warm_oak_v02.png\` — PENDING.** \`UI-022_floor_tile_warm_oak_v01.png\` foi REWORK na PR #47 por falhar no mosaico 3×3: descontinuidade de bordas, principalmente vertical (Y). **Não use o v01 na Unity como material Repeat aprovado.**
+**Próxima geração: `UI-022_floor_tile_warm_oak_v02.png` — PENDING.** `UI-022_floor_tile_warm_oak_v01.png` foi REWORK na PR #47 por falhar no mosaico 3×3: descontinuidade de bordas, principalmente vertical (Y). **Não use o v01 na Unity como material Repeat aprovado.**
 
 ## 1. Anexos exatos para o GPT Web
 
 **Obrigatórios:**
 
-1. **\`UI-022_floor_tile_warm_oak_v01.png\`**, \`art_working/ui_modular/raw_gpt/UI-022_floor_tile_warm_oak_v01.png\` (**RAW local existente; REWORK**). **Somente** para a tonalidade da madeira; a distribuição de tábuas e as bordas NÃO são referência válida.
-2. **\`after_SL-1_salao_960x600.png\`**, [captura real](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/roadmap/ui-01b/evidence/after_SL-1_salao_960x600.png), \`docs/roadmap/ui-01b/evidence/after_SL-1_salao_960x600.png\`. Proporção de chão/câmera/cenário reais.
-3. **\`style_anchor_reference.png\`**, [referência histórica](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/art/art-01/D-pixel-cafe/reference/style_anchor_reference.png), \`docs/art/art-01/D-pixel-cafe/reference/style_anchor_reference.png\`. **Apenas** aconchego/cores; sem pixel art.
+1. **`UI-022_floor_tile_warm_oak_v01.png`**, `art_working/ui_modular/raw_gpt/UI-022_floor_tile_warm_oak_v01.png` (**RAW local existente; REWORK**). **Somente** para a tonalidade da madeira; a distribuição de tábuas e as bordas NÃO são referência válida.
+2. **`after_SL-1_salao_960x600.png`**, [captura real](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/roadmap/ui-01b/evidence/after_SL-1_salao_960x600.png), `docs/roadmap/ui-01b/evidence/after_SL-1_salao_960x600.png`. Proporção de chão/câmera/cenário reais.
+3. **`style_anchor_reference.png`**, [referência histórica](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/art/art-01/D-pixel-cafe/reference/style_anchor_reference.png), `docs/art/art-01/D-pixel-cafe/reference/style_anchor_reference.png`. **Apenas** aconchego/cores; sem pixel art.
 
-**Opcional:** \`UI-023_wall_straight_v01.png\`, \`art_working/ui_modular/blender_clean/UI-023_wall_straight_v01.png\` (**CLEAN local, candidato ainda não aprovado; contexto de material, NÃO padrão de tile**). Não confundir o screenshot do salão com a textura real a ser repetida.
+**Opcional:** `UI-023_wall_straight_v01.png`, `art_working/ui_modular/blender_clean/UI-023_wall_straight_v01.png` (**CLEAN local, candidato ainda não aprovado; contexto de material, NÃO padrão de tile**). Não confundir o screenshot do salão com a textura real a ser repetida.
 
 ## 2. Prompt completo — copie somente este bloco
 
-\`\`\`text
+```text
 PROJECT: Neko Maid Inc. Create exactly ONE new original seamless WARM OAK FLOOR TILE texture, v02, for a 2D URP orthographic cozy anime café game.
 
 CRITICAL REWORK: A previous square floor texture v01 appeared attractive in isolation but FAILED a 3x3 seamless-repeat test. Its plank directions and color patterns visibly break at opposite edges, especially TOP-to-BOTTOM. V02 must be a true 2D PERIODIC / TILEABLE texture, NOT just a square illustration that happens to contain floorboards.
@@ -34,14 +34,14 @@ TECHNICAL: one FULLY OPAQUE, perfectly square, flat 2D texture. No perspective, 
 VALIDATION TARGET: the SAME PNG tiled three times horizontally and vertically should form one calm uninterrupted oak field, with NO detectable seams. Prioritize exact periodic border continuity over decorative complexity. Note: a visual generation is a candidate, not a mathematical guarantee; the PNG must still be checked with a pixel/3x3 repeat audit before Unity integration.
 
 STRICT OUTPUT: EXACTLY ONE isolated seamless square tile, no example grid, no mockup, no contact sheet, no watermark. Intended filename UI-022_floor_tile_warm_oak_v02.png.
-\`\`\`
+```
 
 ## 3. Saída e gate
 
-- RAW novo: \`art_working/ui_modular/raw_gpt/UI-022_floor_tile_warm_oak_v02.png\`.
-- CLEAN se necessário: \`art_working/ui_modular/blender_clean/UI-022_floor_tile_warm_oak_v02.png\`.
-- APPROVED somente após revisão: \`art_working/ui_modular/approved/UI-022_floor_tile_warm_oak_v02.png\`.
-- Guardar \`UI-022_floor_tile_warm_oak_v01.png\` como REWORK histórico.
+- RAW novo: `art_working/ui_modular/raw_gpt/UI-022_floor_tile_warm_oak_v02.png`.
+- CLEAN se necessário: `art_working/ui_modular/blender_clean/UI-022_floor_tile_warm_oak_v02.png`.
+- APPROVED somente após revisão: `art_working/ui_modular/approved/UI-022_floor_tile_warm_oak_v02.png`.
+- Guardar `UI-022_floor_tile_warm_oak_v01.png` como REWORK histórico.
 
 **QA mínimo inegociável:** validar bordas opostas e mosaico repetido 3×3 em ambos os eixos ANTES de gastar uma build WebGL. Se ainda falhar, manter REWORK; considerar síntese periodicamente corrigida por ferramenta gráfica apenas após preservar o original e registrar a transformação.
 

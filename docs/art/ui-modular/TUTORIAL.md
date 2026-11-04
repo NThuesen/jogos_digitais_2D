@@ -88,9 +88,9 @@ Ao gerar as variantes, peça para manter **o mesmo contorno e tamanho da imagem 
 
 | Falha comprovada | Prompt corrigido para copiar | Obrigatórios (nomes exatos dos anexos reais) | Novo PNG a salvar |
 | --- | --- | --- | --- |
-| UI-007: topo do ornamento cortado no RAW | [07_MODAL_DIALOG.md](prompts/07_MODAL_DIALOG.md) | \`UI-007_modal_dialog_v01.png\` RAW local (referência negativa para crop), \`UI-001_panel_large_v01.png\` aprovado, \`after_DG-1_dialogo-confirmar-cancelar_960x600.png\` do Git | \`UI-007_modal_dialog_v02.png\` |
-| UI-009: barras, sinais + e moedas pintados | [09_MAID_CARD_DETAIL.md](prompts/09_MAID_CARD_DETAIL.md) | \`UI-008_maid_card_compact_v01.png\` CLEAN local (referência de família), \`UI-001_panel_large_v01.png\` aprovado, \`after_EL-2_elenco_960x600.png\` do Git | \`UI-009_maid_card_detail_v02.png\` |
-| UI-022: textura do piso não seamless em 3×3 | [22_FLOOR_TILE.md](prompts/22_FLOOR_TILE.md) | \`UI-022_floor_tile_warm_oak_v01.png\` RAW local (referência negativa de bordas), \`after_SL-1_salao_960x600.png\` do Git, \`style_anchor_reference.png\` do Git | \`UI-022_floor_tile_warm_oak_v02.png\` |
+| UI-007: topo do ornamento cortado no RAW | [07_MODAL_DIALOG.md](prompts/07_MODAL_DIALOG.md) | `UI-007_modal_dialog_v01.png` RAW local (referência negativa para crop), `UI-001_panel_large_v01.png` aprovado, `after_DG-1_dialogo-confirmar-cancelar_960x600.png` do Git | `UI-007_modal_dialog_v02.png` |
+| UI-009: barras, sinais + e moedas pintados | [09_MAID_CARD_DETAIL.md](prompts/09_MAID_CARD_DETAIL.md) | `UI-008_maid_card_compact_v01.png` CLEAN local (referência de família), `UI-001_panel_large_v01.png` aprovado, `after_EL-2_elenco_960x600.png` do Git | `UI-009_maid_card_detail_v02.png` |
+| UI-022: textura do piso não seamless em 3×3 | [22_FLOOR_TILE.md](prompts/22_FLOOR_TILE.md) | `UI-022_floor_tile_warm_oak_v01.png` RAW local (referência negativa de bordas), `after_SL-1_salao_960x600.png` do Git, `style_anchor_reference.png` do Git | `UI-022_floor_tile_warm_oak_v02.png` |
 
 Cada um dos três prompts contém links reais para as referências **versionadas**, caminho completo para o arquivo **local** que deve ser anexado, um único bloco inglês autossuficiente, nome RAW/CLEAN/APPROVED e QA mínimo de revisão. Quando não tiver o arquivo local, não inventar ou substituí-lo silenciosamente por miniatura; o prompt descreve se o anexo é recuperável ou opcional.
 

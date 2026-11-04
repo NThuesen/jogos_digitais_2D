@@ -1,22 +1,22 @@
 # 09_MAID_CARD_DETAIL — prompt corrigido v02 (sem dados pintados)
 
-**Próxima geração: \`UI-009_maid_card_detail_v02.png\` — PENDING e opcional.** \`UI-009_maid_card_detail_v01.png\` é **REWORK** no QA da PR #47: barras, sinais \`+\` e moedas foram pintados na arte onde a Unity precisa renderizar dados dinâmicos. A decisão de produto já aceita o **UI-008 existente em 150×206** como apresentação detalhada; este UI-009 é uma proposta de **frame expandido** adicional, não pré-requisito para o LINEUP MINIMAL.
+**Próxima geração: `UI-009_maid_card_detail_v02.png` — PENDING e opcional.** `UI-009_maid_card_detail_v01.png` é **REWORK** no QA da PR #47: barras, sinais `+` e moedas foram pintados na arte onde a Unity precisa renderizar dados dinâmicos. A decisão de produto já aceita o **UI-008 existente em 150×206** como apresentação detalhada; este UI-009 é uma proposta de **frame expandido** adicional, não pré-requisito para o LINEUP MINIMAL.
 
 ## 1. Anexos exatos a enviar ao GPT Web
 
 **Obrigatórios:**
 
-1. **\`UI-008_maid_card_compact_v01.png\`**, fonte visual limpa local \`art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png\` (já gerada; uso detalhado 150×206 aceito pelo responsável, registro/versionamento em PR #46). **Use para manter a família de moldura, não para copiar a ficha em escala menor.**
-2. **\`UI-001_panel_large_v01.png\`**, [PNG aprovado](../approved/UI-001_panel_large_v01.png), \`docs/art/ui-modular/approved/UI-001_panel_large_v01.png\`. Material/paleta aprovados.
-3. **\`after_EL-2_elenco_960x600.png\`**, [captura real](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/roadmap/ui-01a/evidence/after_EL-2_elenco_960x600.png), \`docs/roadmap/ui-01a/evidence/after_EL-2_elenco_960x600.png\`. Espaço/layout real, sem copiar a tela.
+1. **`UI-008_maid_card_compact_v01.png`**, fonte visual limpa local `art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png` (já gerada; uso detalhado 150×206 aceito pelo responsável, registro/versionamento em PR #46). **Use para manter a família de moldura, não para copiar a ficha em escala menor.**
+2. **`UI-001_panel_large_v01.png`**, [PNG aprovado](../approved/UI-001_panel_large_v01.png), `docs/art/ui-modular/approved/UI-001_panel_large_v01.png`. Material/paleta aprovados.
+3. **`after_EL-2_elenco_960x600.png`**, [captura real](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/roadmap/ui-01a/evidence/after_EL-2_elenco_960x600.png), `docs/roadmap/ui-01a/evidence/after_EL-2_elenco_960x600.png`. Espaço/layout real, sem copiar a tela.
 
-**Opcional:** \`suzu_walk.png\`, [sprite sheet real](https://github.com/NThuesen/jogos_digitais_2D/blob/main/Assets/_Game/Resources/Maids/suzu_walk.png), \`Assets/_Game/Resources/Maids/suzu_walk.png\`, apenas para confirmar estilo da personagem; **não desenhe Suzu dentro do frame**.
+**Opcional:** `suzu_walk.png`, [sprite sheet real](https://github.com/NThuesen/jogos_digitais_2D/blob/main/Assets/_Game/Resources/Maids/suzu_walk.png), `Assets/_Game/Resources/Maids/suzu_walk.png`, apenas para confirmar estilo da personagem; **não desenhe Suzu dentro do frame**.
 
-**Não anexe** \`UI-009_maid_card_detail_v01.png\` como referência principal; ele contém exatamente as barras, moedas e sinais que precisamos eliminar. Se o anexar para explicar o defeito, identifique-o explicitamente como **NEGATIVE REFERENCE / REWORK**, nunca como master de composição.
+**Não anexe** `UI-009_maid_card_detail_v01.png` como referência principal; ele contém exatamente as barras, moedas e sinais que precisamos eliminar. Se o anexar para explicar o defeito, identifique-o explicitamente como **NEGATIVE REFERENCE / REWORK**, nunca como master de composição.
 
 ## 2. Prompt completo — copie somente este bloco
 
-\`\`\`text
+```text
 PROJECT: Neko Maid Inc. Create exactly ONE original expanded MAID DETAIL CARD FRAME, version v02, for a cozy illustrated 2D anime café / ornamental visual-novel management game.
 
 REFERENCE HIERARCHY:
@@ -41,14 +41,14 @@ ART STYLE: polished cozy illustrated anime café / visual novel. Restrained rose
 TECHNICAL: one isolated PNG with real alpha exterior and genuinely transparent portrait cutout. Opaque warm-cream information safe zones. Full graphic visible; no clipping, fake checkerboard, watermark or external scene background. Image is a static modular sprite, not the final UI. Unity places portrait, labels, bars, numbers, icons, buttons, hitboxes, selection, hover, localization and data.
 
 STRICT OUTPUT: exactly ONE EMPTY expanded frame, no maid, no labels, no buttons, no bars, no fake game screenshot, no variants or contact sheet. Intended filename: UI-009_maid_card_detail_v02.png.
-\`\`\`
+```
 
 ## 3. Nome e critérios de aceite
 
-- RAW novo: \`art_working/ui_modular/raw_gpt/UI-009_maid_card_detail_v02.png\`.
-- CLEAN: \`art_working/ui_modular/blender_clean/UI-009_maid_card_detail_v02.png\`.
-- APPROVED somente com autorização: \`art_working/ui_modular/approved/UI-009_maid_card_detail_v02.png\`.
-- \`UI-009_maid_card_detail_v01.png\` permanece histórico REWORK; \`UI-008_maid_card_compact_v01.png\` não é substituído.
+- RAW novo: `art_working/ui_modular/raw_gpt/UI-009_maid_card_detail_v02.png`.
+- CLEAN: `art_working/ui_modular/blender_clean/UI-009_maid_card_detail_v02.png`.
+- APPROVED somente com autorização: `art_working/ui_modular/approved/UI-009_maid_card_detail_v02.png`.
+- `UI-009_maid_card_detail_v01.png` permanece histórico REWORK; `UI-008_maid_card_compact_v01.png` não é substituído.
 
 QA: verificar **ausência de qualquer dado/elemento de UI pintado**, transparência real do portrait, áreas creme para nomes longos, fidelidade 960×600/1280×720 e interação/números da Unity (quando usados). O novo UI-009 continua opcional.
 
