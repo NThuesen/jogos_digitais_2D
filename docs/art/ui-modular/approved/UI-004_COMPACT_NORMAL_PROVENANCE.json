@@ -1,0 +1,31 @@
+{
+  "filename": "UI-004_button_primary_compact_normal_v01.png",
+  "status": "APPROVED (decisao 03/11/2026, PR #42; documentado em reviews/UI-004_BUTTON_PRIMARY_COMPACT_NORMAL_V01.md)",
+  "raw_sha256": "72deadbfffbda54e1a6fc0a91a192916a42c7db91a9bc3cb769d9a80676e64b0",
+  "clean_sha256": "c82d06142b3953a97b9654d8b7bf53e611679a6ffb4822a3b268dff239c17eb6",
+  "clean_size": [
+    2072,
+    380
+  ],
+  "export": {
+    "path": "docs/art/ui-modular/approved/exports/UI-004_button_primary_compact_normal_v01.png",
+    "size": [
+      768,
+      141
+    ],
+    "sha256": "547ea47509b00cfb2f752b5a31d12578bb20231ce54b5adf9bce9319fa86c6fa",
+    "note": "Re-derivado do master aprovado (Lanczos premultiplicado, 2072x380 -> 768x141) porque o export original da PR #42 nao foi versionado; hash do master identico ao aprovado, nenhuma arte alterada."
+  },
+  "borders_master_LBRT": [
+    160,
+    110,
+    160,
+    110
+  ],
+  "borders_export_LBRT": [
+    59.305,
+    40.816,
+    59.305,
+    40.816
+  ]
+}
