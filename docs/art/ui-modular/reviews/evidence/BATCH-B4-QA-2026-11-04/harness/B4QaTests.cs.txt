@@ -1,0 +1,49 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using NUnit.Framework;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.TestTools;
+using UnityEngine.UI;
+public sealed class B4QaTests
+{
+ [Serializable]public sealed class PageResult{public string page;public int width,height,click_checks,raycast_checks;public string[] failures,facts;public string screenshot;}
+ [Serializable]public sealed class Results{public string environment="Unity Editor PlayMode, render textures, simulated pointer; not physical mouse; no WebGL";public List<PageResult> pages=new List<PageResult>();}
+ string Evidence=>Path.GetFullPath(Path.Combine(Application.dataPath,"../docs/art/ui-modular/reviews/evidence/BATCH-B4-QA-2026-11-04"));
+ [UnityTest]public IEnumerator B4Candidates()
+ {
+  Directory.CreateDirectory(Evidence);var results=new Results();int failures=0;
+  foreach(var size in new[]{new Vector2Int(960,600),new Vector2Int(1280,720)})
+  {
+   var root=new GameObject("B4 QA");var view=root.AddComponent<B4QaView>();view.Build(size.x,size.y);
+   for(int page=0;page<B4QaView.Pages.Length;page++)
+   {
+    view.Show(page);for(int i=0;i<6;i++)yield return null;view.Inspect();var errors=new List<string>(view.Failures);int clicks=0,rays=0;
+    foreach(var b in view.Buttons)
+    {
+     var r=(RectTransform)b.transform;bool available=b.interactable;int baseline=view.Clicks;var ev=new PointerEventData(EventSystem.current){button=PointerEventData.InputButton.Left};
+     ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerEnterHandler);
+     var img=b.targetGraphic as Image;
+     if(b.name.StartsWith("sec ")&&available){yield return null;if(img.overrideSprite==null||img.overrideSprite.name!="sec_hover")errors.Add("hover sprite swap "+(img.overrideSprite==null?"null":img.overrideSprite.name));}
+     ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerDownHandler);
+     if(b.name.StartsWith("sec ")&&available){yield return null;if(img.overrideSprite==null||img.overrideSprite.name!="sec_pressed")errors.Add("pressed sprite swap "+(img.overrideSprite==null?"null":img.overrideSprite.name));}
+     ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerUpHandler);ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerClickHandler);ExecuteEvents.Execute(b.gameObject,ev,ExecuteEvents.pointerExitHandler);
+     if(view.Clicks!=baseline+(available?1:0))errors.Add("click availability "+b.name);clicks++;
+     if(b.name.StartsWith("sec ")&&!available){yield return null;if(img.overrideSprite==null||img.overrideSprite.name!="sec_disabled")errors.Add("disabled sprite swap");}
+     foreach(float offset in new[]{0f,.8f})
+     {
+      var p=RectTransformUtility.WorldToScreenPoint(view.Camera,r.TransformPoint(new Vector3(offset*r.rect.width,0)));var hits=new List<RaycastResult>();view.Raycaster.Raycast(new PointerEventData(EventSystem.current){position=p},hits);
+      if(hits.Exists(x=>x.gameObject==b.gameObject||x.gameObject.transform.IsChildOf(b.transform))!=(offset==0)&&available)errors.Add("raycast "+b.name+" "+offset);rays++;
+     }
+    }
+    string name="editor_"+B4QaView.Pages[page]+"_"+size.x+"x"+size.y+".png";Capture(view.Camera,Path.Combine(Evidence,name));
+    results.pages.Add(new PageResult{page=B4QaView.Pages[page],width=size.x,height=size.y,click_checks=clicks,raycast_checks=rays,failures=errors.ToArray(),facts=view.Facts.ToArray(),screenshot=name});failures+=errors.Count;
+   }
+   var rt=view.Camera.targetTexture;UnityEngine.Object.Destroy(root);yield return null;rt.Release();UnityEngine.Object.Destroy(rt);
+  }
+  File.WriteAllText(Path.Combine(Evidence,"editor_results.json"),JsonUtility.ToJson(results,true));Assert.AreEqual(0,failures,"See evidence JSON");
+ }
+ static void Capture(Camera cam,string path){Canvas.ForceUpdateCanvases();cam.Render();var rt=cam.targetTexture;RenderTexture.active=rt;var tex=new Texture2D(rt.width,rt.height,TextureFormat.RGB24,false);tex.ReadPixels(new Rect(0,0,rt.width,rt.height),0,0);tex.Apply();RenderTexture.active=null;File.WriteAllBytes(path,tex.EncodeToPNG());UnityEngine.Object.Destroy(tex);}
+}

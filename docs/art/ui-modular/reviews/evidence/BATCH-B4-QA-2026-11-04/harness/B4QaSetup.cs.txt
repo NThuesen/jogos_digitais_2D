@@ -1,0 +1,21 @@
+using System.IO;
+using UnityEditor;
+using UnityEngine;
+public static class B4QaSetup
+{
+ public static void Configure()
+ {
+  foreach(var path in Directory.GetFiles("Assets/_QA_B4_Temp/Resources/ModularQA","*.png"))
+  {
+   var n=Path.GetFileNameWithoutExtension(path);var im=(TextureImporter)AssetImporter.GetAtPath(path.Replace('\\','/'));
+   im.GetSourceTextureWidthAndHeight(out int w,out int h);
+   Vector4 border=Vector4.zero;
+   if(n.StartsWith("sec_"))border=new Vector4(w*.18f,h*.36f,w*.18f,h*.36f);
+   else if(n=="panel")border=new Vector4(120,80,120,80);
+   else if(n=="shop2"||n=="total")border=new Vector4(85,45,85,45);
+   im.textureType=TextureImporterType.Sprite;im.spriteImportMode=SpriteImportMode.Single;im.spritePixelsPerUnit=100;im.spriteBorder=border;im.npotScale=TextureImporterNPOTScale.None;im.maxTextureSize=4096;im.mipmapEnabled=false;im.isReadable=false;im.alphaIsTransparency=true;im.textureCompression=TextureImporterCompression.Uncompressed;im.wrapMode=TextureWrapMode.Clamp;im.filterMode=FilterMode.Bilinear;
+   var s=new TextureImporterSettings();im.ReadTextureSettings(s);s.spriteMeshType=SpriteMeshType.FullRect;im.SetTextureSettings(s);im.SaveAndReimport();
+  }
+  AssetDatabase.SaveAssets();
+ }
+}

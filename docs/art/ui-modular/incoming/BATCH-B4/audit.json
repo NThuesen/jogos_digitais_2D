@@ -1,0 +1,1041 @@
+{
+ "UI-005_button_secondary_disabled_v01.png": {
+  "size": [
+   2172,
+   724
+  ],
+  "mode": "RGBA",
+  "bytes": 1318109,
+  "sha": "71cf9048628336e893f8feda55d926068c00dc6d6c524af08612bb6ca0135372",
+  "bbox128": [
+   36,
+   103,
+   2136,
+   611
+  ],
+  "vis": [
+   2100,
+   508
+  ],
+  "margin_pct": [
+   1.7,
+   14.2,
+   1.7,
+   15.6
+  ],
+  "edge_ge8": 0,
+  "edge_gt0": 0,
+  "dust": 389,
+  "solidify": 1008013,
+  "comps128": 1,
+  "windows": [
+   [
+    1401,
+    [
+     245,
+     101,
+     1645,
+     103
+    ]
+   ]
+  ],
+  "halo": 0,
+  "opaque255": 406,
+  "alpha_zero": 0.345,
+  "ref": "UI-005_button_secondary_normal_v01.png",
+  "ref_vis": [
+   2099,
+   507
+  ],
+  "vis_ratio_vs_ref": [
+   1.0,
+   1.002
+  ],
+  "aspect_vis": 4.134,
+  "aspect_ref": 4.14,
+  "silhouette_iou_vs_ref": 0.9992,
+  "mean_rgb": [
+   163.9,
+   140.1,
+   129.9
+  ],
+  "mean_rgb_ref": [
+   173.9,
+   144.1,
+   134.0
+  ],
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "cd77fdbf94cdbddc4902ddd3b3cdf5a7246125ec26ba7465ce2c2b876701d2ca",
+  "export": {
+   "dims": [
+    1059,
+    264
+   ],
+   "crop": [
+    27,
+    94,
+    2145,
+    621
+   ],
+   "sha": "a53894a6ef00b0d52f9d511b388dcd8bff82f052867b81981ba13c9d216e72fd"
+  }
+ },
+ "UI-005_button_secondary_hover_v01.png": {
+  "size": [
+   2172,
+   724
+  ],
+  "mode": "RGB",
+  "bytes": 1450610,
+  "sha": "c5f31d676b2aa3124a6d8370f130b7108e7dd6b3689df6eea30cbe6a8a60908d",
+  "bbox128": [
+   0,
+   0,
+   2172,
+   724
+  ],
+  "vis": [
+   2172,
+   724
+  ],
+  "margin_pct": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "edge_ge8": 5792,
+  "edge_gt0": 5792,
+  "dust": 0,
+  "solidify": 0,
+  "comps128": 1,
+  "windows": [],
+  "halo": 0,
+  "opaque255": 1572528,
+  "alpha_zero": 0.0,
+  "ref": "UI-005_button_secondary_normal_v01.png",
+  "ref_vis": [
+   2099,
+   507
+  ],
+  "vis_ratio_vs_ref": [
+   1.035,
+   1.428
+  ],
+  "aspect_vis": 3.0,
+  "aspect_ref": 4.14,
+  "silhouette_iou_vs_ref": 0.9533,
+  "mean_rgb": [
+   228.0,
+   197.8,
+   183.5
+  ],
+  "mean_rgb_ref": [
+   173.9,
+   144.1,
+   134.0
+  ],
+  "op": "NO CLEAN: opaque RGB with baked white/checker matte (REWORK); RAW only"
+ },
+ "UI-005_button_secondary_pressed_v01.png": {
+  "size": [
+   2172,
+   724
+  ],
+  "mode": "RGBA",
+  "bytes": 1388160,
+  "sha": "1af83942449ec2bbc82151c1818a0ea25058840a6f0ba5d0c972041a6c56428d",
+  "bbox128": [
+   38,
+   104,
+   2134,
+   610
+  ],
+  "vis": [
+   2096,
+   506
+  ],
+  "margin_pct": [
+   1.7,
+   14.4,
+   1.7,
+   15.7
+  ],
+  "edge_ge8": 0,
+  "edge_gt0": 0,
+  "dust": 219,
+  "solidify": 999099,
+  "comps128": 1,
+  "windows": [],
+  "halo": 0,
+  "opaque255": 299,
+  "alpha_zero": 0.349,
+  "ref": "UI-005_button_secondary_normal_v01.png",
+  "ref_vis": [
+   2099,
+   507
+  ],
+  "vis_ratio_vs_ref": [
+   0.999,
+   0.998
+  ],
+  "aspect_vis": 4.142,
+  "aspect_ref": 4.14,
+  "silhouette_iou_vs_ref": 0.9987,
+  "mean_rgb": [
+   169.6,
+   124.6,
+   109.6
+  ],
+  "mean_rgb_ref": [
+   173.9,
+   144.1,
+   134.0
+  ],
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "db80e52bde818d6b543cb6160991e31306e89c1636a347986ba597c1476b7390",
+  "export": {
+   "dims": [
+    1056,
+    262
+   ],
+   "crop": [
+    30,
+    95,
+    2143,
+    619
+   ],
+   "sha": "f7fb0934255ddc17346bca012ef36a77023a7f8b1b7b6cb8d4101eca316240f1"
+  }
+ },
+ "UI-006_tab_active_v01.png": {
+  "size": [
+   2172,
+   724
+  ],
+  "mode": "RGBA",
+  "bytes": 1257650,
+  "sha": "c8bc2b53d1f92ffe0b3c311d85d1a355de32224d46304cf4bef70df802cf4b40",
+  "bbox128": [
+   90,
+   94,
+   2081,
+   608
+  ],
+  "vis": [
+   1991,
+   514
+  ],
+  "margin_pct": [
+   4.1,
+   13.0,
+   4.2,
+   16.0
+  ],
+  "edge_ge8": 0,
+  "edge_gt0": 0,
+  "dust": 373,
+  "solidify": 928510,
+  "comps128": 1,
+  "windows": [],
+  "halo": 0,
+  "opaque255": 655,
+  "alpha_zero": 0.398,
+  "ref": "UI-006_tab_inactive_v01.png",
+  "ref_vis": [
+   1985,
+   510
+  ],
+  "vis_ratio_vs_ref": [
+   1.003,
+   1.008
+  ],
+  "aspect_vis": 3.874,
+  "aspect_ref": 3.892,
+  "silhouette_iou_vs_ref": 0.9961,
+  "mean_rgb": [
+   225.9,
+   177.5,
+   150.1
+  ],
+  "mean_rgb_ref": [
+   207.1,
+   165.8,
+   146.9
+  ],
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "55d09cecd6d33e7c792ba94a40214ba7a2031c0af81b045ee837d6dd7946834a",
+  "export": {
+   "dims": [
+    1004,
+    266
+   ],
+   "crop": [
+    81,
+    86,
+    2090,
+    617
+   ],
+   "sha": "43caf48781ce65991f7502a50dac4c093289be618c8de444d99c47607c560d6d"
+  }
+ },
+ "UI-006_tab_hover_v01.png": {
+  "size": [
+   2172,
+   724
+  ],
+  "mode": "RGBA",
+  "bytes": 1273874,
+  "sha": "a5f52cffad4ec1eadc64b97709cc7750f792a03300736efcdf204e1fb72c5a8d",
+  "bbox128": [
+   89,
+   95,
+   2079,
+   607
+  ],
+  "vis": [
+   1990,
+   512
+  ],
+  "margin_pct": [
+   4.1,
+   13.1,
+   4.3,
+   16.2
+  ],
+  "edge_ge8": 0,
+  "edge_gt0": 0,
+  "dust": 156,
+  "solidify": 917001,
+  "comps128": 1,
+  "windows": [
+   [
+    1921,
+    [
+     124,
+     608,
+     2045,
+     609
+    ]
+   ]
+  ],
+  "halo": 0,
+  "opaque255": 2140,
+  "alpha_zero": 0.401,
+  "ref": "UI-006_tab_inactive_v01.png",
+  "ref_vis": [
+   1985,
+   510
+  ],
+  "vis_ratio_vs_ref": [
+   1.003,
+   1.004
+  ],
+  "aspect_vis": 3.887,
+  "aspect_ref": 3.892,
+  "silhouette_iou_vs_ref": 0.9976,
+  "mean_rgb": [
+   222.9,
+   179.7,
+   155.1
+  ],
+  "mean_rgb_ref": [
+   207.1,
+   165.8,
+   146.9
+  ],
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "8fe2c870e27dceeeb4fc7d4b27bdf6c1ce5fb18a15eee95bf185e5d77eb7fd62",
+  "export": {
+   "dims": [
+    1004,
+    265
+   ],
+   "crop": [
+    80,
+    86,
+    2088,
+    616
+   ],
+   "sha": "3d6a545a47da324ad1cdd3edd52f65597e6b004be4d31f4624d777a6d3219d63"
+  }
+ },
+ "UI-010_rarity_badge_rare_v01.png": {
+  "size": [
+   2172,
+   724
+  ],
+  "mode": "RGBA",
+  "bytes": 1643326,
+  "sha": "0dbfa870d5b698a2ac5928601fa25dda1fcf911db4fc377fa3831f0156a812e8",
+  "bbox128": [
+   21,
+   5,
+   2150,
+   722
+  ],
+  "vis": [
+   2129,
+   717
+  ],
+  "margin_pct": [
+   1.0,
+   0.7,
+   1.0,
+   0.3
+  ],
+  "edge_ge8": 0,
+  "edge_gt0": 81,
+  "dust": 539,
+  "solidify": 1063088,
+  "comps128": 1,
+  "windows": [],
+  "halo": 0,
+  "opaque255": 1781,
+  "alpha_zero": 0.31,
+  "ref": "UI-010_rarity_badge_common_v01.png",
+  "ref_vis": [
+   1309,
+   753
+  ],
+  "vis_ratio_vs_ref": [
+   1.626,
+   0.952
+  ],
+  "aspect_vis": 2.969,
+  "aspect_ref": 1.738,
+  "silhouette_iou_vs_ref": 0.9281,
+  "mean_rgb": [
+   195.3,
+   180.3,
+   177.2
+  ],
+  "mean_rgb_ref": [
+   216.7,
+   171.6,
+   136.0
+  ],
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "12c5932a43feddd93bb666f2616be0e42504c58d84bf6df01d97aab3a708c58d",
+  "export": {
+   "dims": [
+    1073,
+    362
+   ],
+   "crop": [
+    12,
+    0,
+    2158,
+    724
+   ],
+   "sha": "bba525c9a97d34f2996b79bc08067959dc6873340387100e660bc18cd3344647"
+  }
+ },
+ "UI-010_rarity_badge_epic_v01.png": {
+  "size": [
+   1536,
+   1024
+  ],
+  "mode": "RGBA",
+  "bytes": 1640377,
+  "sha": "cea70f370100e3b11f76a58f294fd0a6e5d24101d3f46a042e3da221b09c9412",
+  "bbox128": [
+   110,
+   137,
+   1422,
+   888
+  ],
+  "vis": [
+   1312,
+   751
+  ],
+  "margin_pct": [
+   7.2,
+   13.4,
+   7.4,
+   13.3
+  ],
+  "edge_ge8": 0,
+  "edge_gt0": 0,
+  "dust": 222,
+  "solidify": 667825,
+  "comps128": 1,
+  "windows": [],
+  "halo": 0,
+  "opaque255": 0,
+  "alpha_zero": 0.567,
+  "ref": "UI-010_rarity_badge_common_v01.png",
+  "ref_vis": [
+   1309,
+   753
+  ],
+  "vis_ratio_vs_ref": [
+   1.002,
+   0.997
+  ],
+  "aspect_vis": 1.747,
+  "aspect_ref": 1.738,
+  "silhouette_iou_vs_ref": 0.9948,
+  "mean_rgb": [
+   216.9,
+   168.9,
+   156.5
+  ],
+  "mean_rgb_ref": [
+   216.7,
+   171.6,
+   136.0
+  ],
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "569c0bf966ebe2b36fe92dbfc9e767367a1a1cd5721700b32dd14f83cc8f9ba2",
+  "export": {
+   "dims": [
+    665,
+    384
+   ],
+   "crop": [
+    101,
+    128,
+    1431,
+    896
+   ],
+   "sha": "4b8d42b0112588000d289839b2223fb3427c170c4940d782fbc766f188feeb10"
+  }
+ },
+ "UI-010_rarity_badge_legendary_v01.png": {
+  "size": [
+   2172,
+   724
+  ],
+  "mode": "RGBA",
+  "bytes": 1480868,
+  "sha": "a402729a690545c2b9026a4e28e07b9e8e48ab3cdacc881977ece0f595fe582d",
+  "bbox128": [
+   123,
+   5,
+   2049,
+   717
+  ],
+  "vis": [
+   1926,
+   712
+  ],
+  "margin_pct": [
+   5.7,
+   0.7,
+   5.7,
+   1.0
+  ],
+  "edge_ge8": 0,
+  "edge_gt0": 82,
+  "dust": 655,
+  "solidify": 869400,
+  "comps128": 1,
+  "windows": [],
+  "halo": 0,
+  "opaque255": 1404,
+  "alpha_zero": 0.432,
+  "ref": "UI-010_rarity_badge_common_v01.png",
+  "ref_vis": [
+   1309,
+   753
+  ],
+  "vis_ratio_vs_ref": [
+   1.471,
+   0.946
+  ],
+  "aspect_vis": 2.705,
+  "aspect_ref": 1.738,
+  "silhouette_iou_vs_ref": 0.8797,
+  "mean_rgb": [
+   219.4,
+   164.3,
+   119.7
+  ],
+  "mean_rgb_ref": [
+   216.7,
+   171.6,
+   136.0
+  ],
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "21f39d4a07e7f7f693a0e05d3f191ab4c64c06e50536ce35a18dad12b15a9b99",
+  "export": {
+   "dims": [
+    972,
+    362
+   ],
+   "crop": [
+    114,
+    0,
+    2058,
+    724
+   ],
+   "sha": "1fd584853a0a3ba1e078fb78b9686e1a5bc9de60184e9e110af617b1d2e77e67"
+  }
+ },
+ "UI-017_shop_item_frame_v02.png": {
+  "size": [
+   2172,
+   724
+  ],
+  "mode": "RGBA",
+  "bytes": 983983,
+  "sha": "c7d739fec7f3967dba03bf796b859e0cb344221fd40c65499563838e1f320081",
+  "bbox128": [
+   37,
+   204,
+   2135,
+   501
+  ],
+  "vis": [
+   2098,
+   297
+  ],
+  "margin_pct": [
+   1.7,
+   28.2,
+   1.7,
+   30.8
+  ],
+  "edge_ge8": 0,
+  "edge_gt0": 0,
+  "dust": 7406,
+  "solidify": 609500,
+  "comps128": 1,
+  "windows": [],
+  "halo": 0,
+  "opaque255": 501,
+  "alpha_zero": 0.593,
+  "ref": "UI-017_shop_item_frame_v01.png",
+  "ref_vis": [
+   2095,
+   304
+  ],
+  "vis_ratio_vs_ref": [
+   1.001,
+   0.977
+  ],
+  "aspect_vis": 7.064,
+  "aspect_ref": 6.891,
+  "silhouette_iou_vs_ref": 0.9964,
+  "mean_rgb": [
+   229.0,
+   190.3,
+   161.7
+  ],
+  "mean_rgb_ref": [
+   228.6,
+   187.9,
+   158.8
+  ],
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "f46371c1ff2438d57195602e641e18174e08caf33f6749cbfc82e849767f3049",
+  "export": {
+   "dims": [
+    1059,
+    158
+   ],
+   "crop": [
+    27,
+    194,
+    2145,
+    510
+   ],
+   "sha": "f1b69db6ed2a8cff93234d16344a05b4e75390ea6974956fe54dd54f58de2035"
+  }
+ },
+ "UI-018_balance_row_total_v01.png": {
+  "size": [
+   2172,
+   724
+  ],
+  "mode": "RGBA",
+  "bytes": 880596,
+  "sha": "448470902927b3c9a9af47c3c70076dcdb2ae009ae6e9d501fb1a2a7b1d34f1b",
+  "bbox128": [
+   11,
+   215,
+   2161,
+   504
+  ],
+  "vis": [
+   2150,
+   289
+  ],
+  "margin_pct": [
+   0.5,
+   29.7,
+   0.5,
+   30.4
+  ],
+  "edge_ge8": 0,
+  "edge_gt0": 138,
+  "dust": 1861,
+  "solidify": 602805,
+  "comps128": 1,
+  "windows": [],
+  "halo": 0,
+  "opaque255": 26,
+  "alpha_zero": 0.597,
+  "ref": "UI-018_balance_row_normal_v01.png",
+  "ref_vis": [
+   2147,
+   279
+  ],
+  "vis_ratio_vs_ref": [
+   1.001,
+   1.036
+  ],
+  "aspect_vis": 7.439,
+  "aspect_ref": 7.695,
+  "silhouette_iou_vs_ref": 0.9993,
+  "mean_rgb": [
+   220.4,
+   172.9,
+   141.6
+  ],
+  "mean_rgb_ref": [
+   227.5,
+   179.0,
+   153.3
+  ],
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "f5b5f02f227e3fa9384c9f4b32646b226d1f4d9260512bfe64101d8093605dcb",
+  "export": {
+   "dims": [
+    1084,
+    154
+   ],
+   "crop": [
+    2,
+    204,
+    2170,
+    513
+   ],
+   "sha": "29c2f6eba4dd46b70f6e451585b18769ffb871c14eae316e57ddf46dcee11652"
+  }
+ },
+ "UI-019_dialog_tail_v01.png": {
+  "size": [
+   1536,
+   1024
+  ],
+  "mode": "RGBA",
+  "bytes": 880025,
+  "sha": "921655c6faee319aebb77d0905b2db82c830034636bdd294cce241cdc6d2c0b2",
+  "bbox128": [
+   468,
+   253,
+   972,
+   754
+  ],
+  "vis": [
+   504,
+   501
+  ],
+  "margin_pct": [
+   30.5,
+   24.7,
+   36.7,
+   26.4
+  ],
+  "edge_ge8": 0,
+  "edge_gt0": 0,
+  "dust": 47,
+  "solidify": 135360,
+  "comps128": 1,
+  "windows": [],
+  "halo": 0,
+  "opaque255": 0,
+  "alpha_zero": 0.91,
+  "ref": "UI-019_dialog_panel_v01.png",
+  "ref_vis": [
+   2116,
+   645
+  ],
+  "vis_ratio_vs_ref": [
+   0.238,
+   0.777
+  ],
+  "aspect_vis": 1.006,
+  "aspect_ref": 3.281,
+  "silhouette_iou_vs_ref": 0.5505,
+  "mean_rgb": [
+   206.7,
+   153.1,
+   131.5
+  ],
+  "mean_rgb_ref": [
+   230.6,
+   188.0,
+   160.6
+  ],
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "4bdf7faab8ad75bad03d6b1546e45a291697f97bd5b500fb276289cfb2bb4892",
+  "export": {
+   "dims": [
+    261,
+    260
+   ],
+   "crop": [
+    459,
+    244,
+    981,
+    763
+   ],
+   "sha": "769d60edda2c38a16bc66fb5d4d55d34172b571ed165a6cbe122fb3c5504a881"
+  }
+ },
+ "UI-025_rarity_card_frame_rare_v01.png": {
+  "size": [
+   1070,
+   1470
+  ],
+  "mode": "RGBA",
+  "bytes": 1226792,
+  "sha": "9a715c3bea6e8aedabdb886a549785eab67a79725f75063399a9d1cf06bb8a4c",
+  "bbox128": [
+   59,
+   26,
+   1012,
+   1414
+  ],
+  "vis": [
+   953,
+   1388
+  ],
+  "margin_pct": [
+   5.5,
+   1.8,
+   5.4,
+   3.8
+  ],
+  "edge_ge8": 0,
+  "edge_gt0": 0,
+  "dust": 1328,
+  "solidify": 751896,
+  "comps128": 1,
+  "windows": [
+   [
+    500683,
+    [
+     119,
+     129,
+     953,
+     791
+    ]
+   ]
+  ],
+  "halo": 3,
+  "opaque255": 604,
+  "alpha_zero": 0.489,
+  "ref": "UI-025_rarity_card_frame_common_v01.png",
+  "ref_vis": [
+   946,
+   1386
+  ],
+  "vis_ratio_vs_ref": [
+   1.007,
+   1.001
+  ],
+  "aspect_vis": 0.687,
+  "aspect_ref": 0.683,
+  "silhouette_iou_vs_ref": 0.9923,
+  "mean_rgb": [
+   196.3,
+   183.2,
+   173.2
+  ],
+  "mean_rgb_ref": [
+   219.2,
+   179.1,
+   153.3
+  ],
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "1f03e1c374a3040914d89f01068616f59bab66fc3ccf8fe38879d71d2794771f",
+  "export": {
+   "dims": [
+    535,
+    735
+   ],
+   "crop": [
+    0,
+    0,
+    1070,
+    1470
+   ],
+   "sha": "5841138f29e2997908a9cd253b9017d3f8c137a56682fb2beda537d941e6dfd5"
+  }
+ },
+ "UI-025_rarity_card_frame_epic_v01.png": {
+  "size": [
+   1070,
+   1470
+  ],
+  "mode": "RGBA",
+  "bytes": 1279177,
+  "sha": "842ff4a4bbd0899213f06c762cd58890a0caec79fa0f17e4fc1206b14c6cc884",
+  "bbox128": [
+   57,
+   26,
+   1014,
+   1428
+  ],
+  "vis": [
+   957,
+   1402
+  ],
+  "margin_pct": [
+   5.3,
+   1.8,
+   5.2,
+   2.9
+  ],
+  "edge_ge8": 0,
+  "edge_gt0": 0,
+  "dust": 3669,
+  "solidify": 782350,
+  "comps128": 1,
+  "windows": [
+   [
+    483373,
+    [
+     120,
+     147,
+     950,
+     789
+    ]
+   ],
+   [
+    1201,
+    [
+     55,
+     149,
+     57,
+     1349
+    ]
+   ]
+  ],
+  "halo": 35,
+  "opaque255": 1146,
+  "alpha_zero": 0.47,
+  "ref": "UI-025_rarity_card_frame_common_v01.png",
+  "ref_vis": [
+   946,
+   1386
+  ],
+  "vis_ratio_vs_ref": [
+   1.012,
+   1.012
+  ],
+  "aspect_vis": 0.683,
+  "aspect_ref": 0.683,
+  "silhouette_iou_vs_ref": 0.958,
+  "mean_rgb": [
+   210.1,
+   169.9,
+   167.9
+  ],
+  "mean_rgb_ref": [
+   219.2,
+   179.1,
+   153.3
+  ],
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "3e05c89140190e34c58c99647012a351985227819f256c96c89b524ce5513d22",
+  "export": {
+   "dims": [
+    535,
+    735
+   ],
+   "crop": [
+    0,
+    0,
+    1070,
+    1470
+   ],
+   "sha": "45a15adbc559ee2cbad89eb053212db4b2ed6b143054bc95be0e549f917136df"
+  }
+ },
+ "UI-025_rarity_card_frame_legendary_v01.png": {
+  "size": [
+   1070,
+   1470
+  ],
+  "mode": "RGBA",
+  "bytes": 1312892,
+  "sha": "0f499195448f08174ba0804c988d7f7d152256fc6dcdf188ed37f7c98795c0ad",
+  "bbox128": [
+   62,
+   9,
+   1009,
+   1418
+  ],
+  "vis": [
+   947,
+   1409
+  ],
+  "margin_pct": [
+   5.8,
+   0.6,
+   5.7,
+   3.5
+  ],
+  "edge_ge8": 0,
+  "edge_gt0": 27,
+  "dust": 6608,
+  "solidify": 764346,
+  "comps128": 1,
+  "windows": [
+   [
+    474759,
+    [
+     117,
+     172,
+     952,
+     790
+    ]
+   ]
+  ],
+  "halo": 1,
+  "opaque255": 805,
+  "alpha_zero": 0.475,
+  "ref": "UI-025_rarity_card_frame_common_v01.png",
+  "ref_vis": [
+   946,
+   1386
+  ],
+  "vis_ratio_vs_ref": [
+   1.001,
+   1.017
+  ],
+  "aspect_vis": 0.672,
+  "aspect_ref": 0.683,
+  "silhouette_iou_vs_ref": 0.9191,
+  "mean_rgb": [
+   221.1,
+   170.1,
+   135.3
+  ],
+  "mean_rgb_ref": [
+   219.2,
+   179.1,
+   153.3
+  ],
+  "op": "alpha-only: dust alpha1-3 >6px removed; alpha250-254 solidified",
+  "clean_sha": "ea21e03ac14a648b3bffcde111a20324e080191af88f556c84dd53d381f91a2d",
+  "export": {
+   "dims": [
+    535,
+    735
+   ],
+   "crop": [
+    0,
+    0,
+    1070,
+    1470
+   ],
+   "sha": "6309afc1452e6a78ddd37d74be0de9520c7d3b1eab62a5b4e772290a2fa6c2dd"
+  }
+ }
+}
