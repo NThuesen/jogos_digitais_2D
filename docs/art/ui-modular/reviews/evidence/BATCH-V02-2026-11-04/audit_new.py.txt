@@ -1,0 +1,57 @@
+import sys,json
+from PIL import Image
+import numpy as np
+from scipy import ndimage as ndi
+D='jogos_digitais_2D/art_working/ui_modular/raw_gpt/'
+def load(n): return np.array(Image.open(D+n+'.png').convert('RGBA'))
+def box(m):
+    ys,xs=np.where(m); return [int(xs.min()),int(ys.min()),int(xs.max()+1),int(ys.max()+1)]
+def hist(al): return {k:int(v) for k,v in dict(zero=(al==0).sum(),a1_3=((al>0)&(al<=3)).sum(),a4_249=((al>=4)&(al<250)).sum(),a250_254=((al>=250)&(al<255)).sum(),a255=(al==255).sum()).items()}
+# UI-007 v02
+a=load('UI-007_modal_dialog_v02'); al=a[...,3]; H,W=al.shape
+print('UI007 hist',hist(al))
+for t in (1,8,128,200): print(' bbox alpha>=%d'%t,box(al>=t))
+b=box(al>=128); print(' margins(>=128) T/L/B/R px',b[1],b[0],H-b[3],W-b[2],' pct',round(b[1]/H*100,1),round(b[0]/W*100,1),round((H-b[3])/H*100,1),round((W-b[2])/W*100,1))
+lab,n=ndi.label(al>0); sz=np.bincount(lab.ravel())[1:]; print(' components>0',n,'sizes top',sorted(sz)[-5:])
+strong=al>=8; dist=ndi.distance_transform_edt(~strong)
+print(' alpha1-3 detached >6px',int(((al>0)&(al<=3)&(dist>6)).sum()))
+lab2,n2=ndi.label(al>=8); s2=np.bincount(lab2.ravel())[1:]; print(' components>=8',n2,'small(<200px)',[(int(s),box(lab2==i+1)) for i,s in enumerate(s2) if s<200][:15])
+# red specks: alpha in 4..249 far from body
+body=ndi.binary_dilation(al>=128,iterations=6); far=(al>0)&~body
+print(' alpha>0 farther than 6px from alpha>=128 body:',int(far.sum())); 
+if far.sum(): l3,n3=ndi.label(far); print('  specks',n3,'max',np.bincount(l3.ravel())[1:].max(),'alpha max in them',int(al[far].max()))
+# ring halo: pixels at edge with partial alpha
+edge=(al>0)&(al<128); print(' partial edge px (<128)',int(edge.sum()))
+# interior alpha: is cream center opaque?
+cx=al[H//3:2*H//3,W//3:2*W//3]; print(' center alpha min/mean',int(cx.min()),round(float(cx.mean()),1))
+print(' alpha=255 count',int((al==255).sum()), 'alpha values of body mode',np.bincount(al[al>=128].ravel()).argmax())
+# UI009
+print()
+a=load('UI-009_maid_card_detail_v02'); al=a[...,3]; H,W=al.shape
+print('UI009 hist',hist(al)); 
+for t in (1,8,128): print(' bbox alpha>=%d'%t,box(al>=t))
+print(' left-edge alpha>0 rows',int((al[:,0]>0).sum()),' rows range',np.where(al[:,0]>0)[0][[0,-1]] if (al[:,0]>0).any() else None)
+rgb=a[...,:3].astype(int)
+ap=slice(140,720); ax=slice(80,540)
+print(' aperture region alpha mean',al[ap,ax].mean().round(1),' min',al[ap,ax].min(),' dark px(lum<60) frac in region',((rgb[ap,ax].mean(2)<60)).mean().round(3))
+holes=ndi.label(al==0); 
+lab,n=ndi.label(al==0); bd=set(np.unique(np.concatenate([lab[0],lab[-1],lab[:,0],lab[:,-1]])))
+print(' internal transparent windows >1000px:',[(int((lab==i).sum()),box(lab==i)) for i in range(1,n+1) if i not in bd and (lab==i).sum()>1000])
+print(' top smudge rows0-40 alpha mean by x-block',[round(float(al[0:40,x:x+256].mean()),0) for x in range(0,W,256)])
+# UI022
+print()
+a=load('UI-022_floor_tile_warm_oak_v03')[...,:3].astype(float)
+print('UI022 hMAE edge',np.abs(a[:,0]-a[:,-1]).mean().round(3),'vMAE edge',np.abs(a[0]-a[-1]).mean().round(3),'adjacent h',np.abs(a[:,1:]-a[:,:-1]).mean().round(3),'adjacent v',np.abs(a[1:]-a[:-1]).mean().round(3))
+print(' vseam/baseline',(np.abs(a[0]-a[-1]).mean()/np.abs(a[1:]-a[:-1]).mean()).round(2),' hseam/baseline',(np.abs(a[:,0]-a[:,-1]).mean()/np.abs(a[:,1:]-a[:,:-1]).mean()).round(2))
+# also compare wrap step to median of interior row steps
+dv=np.abs(a[1:]-a[:-1]).mean((1,2)); print(' interior row-step: median',np.median(dv).round(2),'max',dv.max().round(2),'at',int(dv.argmax()),' wrap step',np.abs(a[0]-a[-1]).mean().round(2))
+dh=np.abs(a[:,1:]-a[:,:-1]).mean((0,2)); print(' interior col-step: median',np.median(dh).round(2),'max',dh.max().round(2),' wrap step',np.abs(a[:,0]-a[:,-1]).mean().round(2))
+g=a.mean(2); rows=g.mean(1); idx=np.where(rows<np.percentile(rows,8))[0]; print(' groove rows (dark)',[int(i) for i in idx if True][:80])
+print(' mean RGB',a.mean((0,1)).round(1),' std lum',g.std().round(2))
+im=Image.open(D+'UI-022_floor_tile_warm_oak_v03.png').convert('RGB'); t=Image.new('RGB',(3072,3072))
+for i in range(3):
+  for j in range(3): t.paste(im,(i*1024,j*1024))
+t.resize((1536,1536),Image.LANCZOS).save(sys.argv[1]+'/floor_v03_3x3.png')
+c=Image.new('RGB',(1024,512))
+# wrap seam crop: stitch bottom half of tile above top half
+w=Image.new('RGB',(1024,400)); w.paste(im.crop((0,624,1024,1024)),(0,0)); w.save(sys.argv[1]+'/floor_v03_wrap_bottom.png')

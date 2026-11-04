@@ -145,8 +145,8 @@ Os [12 CLEAN masters e seus exports testados](incoming/BATCH-2026-11-04/README.m
 
 | Histórico preservado | Próxima tentativa (#48) | Estado da nova tentativa |
 | --- | --- | --- |
-| UI-007 v01 REWORK — topo cortado | `UI-007_modal_dialog_v02.png` | PENDING; PNG não gerado; QA NOT RUN |
-| UI-009 v01 REWORK — dados/símbolos pintados | `UI-009_maid_card_detail_v02.png` | PENDING; PNG não gerado; QA NOT RUN; opcional |
-| UI-022 v01 REWORK — continuidade do piso | `UI-022_floor_tile_warm_oak_v02.png` | PENDING; PNG não gerado; QA NOT RUN |
+| UI-007 v01 REWORK — topo cortado | `UI-007_modal_dialog_v02.png` | CLEAN + PASS técnico estático ([lote v02](incoming/BATCH-2026-11-04-V02/README.md)); aprovação PENDING; Editor/WebGL NOT RUN |
+| UI-009 v01 REWORK — dados/símbolos pintados | `UI-009_maid_card_detail_v02.png` | CLEAN + PASS técnico estático; aprovação PENDING; Editor/WebGL NOT RUN; opcional |
+| UI-022 v01 REWORK — continuidade do piso | `UI-022_floor_tile_warm_oak_v03.png` (entregue como v03; não há v02) | PASS seamless 3×3 estático; aprovação PENDING; Editor/WebGL NOT RUN |
 
 [Handoff para Claude Code](HANDOFF_CLAUDE_CODE_2026_11_04.md) reúne PRs, caminhos locais/versionados, hashes e próximas tarefas. QA PASS não constitui APPROVED; a #47 permanece aberta e sem auto-merge para revisão artística do responsável. A UI-008 detalhada mantém o aceite restrito a 150×206 e REWORK em 0,62×; LINEUP MINIMAL tem PNG e QA próprios, mas continua PENDING de aceite artístico.
