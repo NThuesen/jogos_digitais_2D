@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "decision_date": "2026-11-04",
+  "authority": "Decisao expressa do responsavel: Encerrar revisao artistica e iniciar integracao visual (04/11/2026)",
+  "integration_in_this_pr": false,
+  "assets": [
+    {
+      "filename": "UI-007_modal_dialog_v02.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted",
+      "integrated": false,
+      "restrictions": "Titulo abaixo do laco; autosize e truncamento conforme UI_TEXT_CONSTRAINTS_UI007_UI009_V02; sem 9-slice.",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-2026-11-04-V02/raw/UI-007_modal_dialog_v02.png",
+      "raw_sha256": "f0a5c10196ee38b4db32ceaf5c262876af7f164a00be59761eb10ddc74bd1a87",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-007_modal_dialog_v02.png",
+        "sha256": "2b20380f904a8f68f7ac94b7d4e7116dbdf41f4bfdd1b9a817cf78ccd2c38ca5"
+      },
+      "export": {
+        "path": null,
+        "note": "sem export reduzido: usar o master (full-size)"
+      },
+      "clean_sha256_report": "2b20380f904a8f68f7ac94b7d4e7116dbdf41f4bfdd1b9a817cf78ccd2c38ca5"
+    },
+    {
+      "filename": "UI-009_maid_card_detail_v02.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted",
+      "integrated": false,
+      "restrictions": "Card detalhado OPCIONAL; respeitar limites de texto e retrato; revalidar quando houver portraits dedicados.",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-2026-11-04-V02/raw/UI-009_maid_card_detail_v02.png",
+      "raw_sha256": "5535d2a590584ee8cd523b938ea7e7ba42890896f165a5166fab765601d48a5c",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-009_maid_card_detail_v02.png",
+        "sha256": "c812f267f1371bf33c5d4cf5178cab5af560db1fa8d5d1a140b0c0e894cbd6d0"
+      },
+      "export": {
+        "path": null,
+        "note": "sem export reduzido: usar o master (full-size)"
+      },
+      "clean_sha256_report": "c812f267f1371bf33c5d4cf5178cab5af560db1fa8d5d1a140b0c0e894cbd6d0"
+    },
+    {
+      "filename": "UI-022_floor_tile_warm_oak_v03_tone34.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted",
+      "integrated": false,
+      "restrictions": "Versao aprovada para uso do piso (variante nao destrutiva 34% do v03). RAW v03 original preservado.",
+      "raw_repo": null,
+      "raw_sha256": "fec2872bab7e181d4f2a409c3b4454e53936ddfe8d1232061eaffceacf6a95da",
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-022_floor_tile_warm_oak_v03_tone34.png",
+        "sha256": "42a4658f0fc1b641afddab670128686feff4ce817638b04c5cbc38300757fecb"
+      },
+      "export": {
+        "path": null,
+        "note": "sem export reduzido: usar o master (full-size)"
+      },
+      "clean_sha256_report": "fec2872bab7e181d4f2a409c3b4454e53936ddfe8d1232061eaffceacf6a95da",
+      "derived_from": "UI-022_floor_tile_warm_oak_v03.png (RAW/CLEAN v03 preserved unchanged in incoming)"
+    }
+  ],
+  "rework": {},
+  "superseded": {}
+}
