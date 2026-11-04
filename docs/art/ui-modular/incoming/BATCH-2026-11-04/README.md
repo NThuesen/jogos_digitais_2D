@@ -35,3 +35,7 @@ UI-007/UI-009/UI-022 v01 permanecem REWORK. Os [prompts corrigidos da PR #48](ht
 A Maid Card detalhada existente continua aprovada somente em 150×206, REWORK em 0,62×. A LINEUP MINIMAL desta pasta é outra apresentação: possui QA técnico em 0,62×, mas sua aprovação artística permanece PENDING; nome pequeno no WebGL exige revisão. Não reutilizar uma decisão como aprovação da outra.
 
 Os [contact sheets e capturas do QA](../../reviews/evidence/BATCH-NEW-2026-11-04/README.md) permanecem intactos. Esta publicação não integra assets em `Assets/` ou telas definitivas. Fontes RAW/CLEAN/exports locais não foram movidas, apagadas ou sobrescritas.
+
+## Verificação de integridade do handoff
+
+[Resultado e escopo](HANDOFF_VALIDATION.json) · [verificador somente leitura](VERIFY_HANDOFF.py.txt). O script usa os worktrees/caminhos locais declarados no topo; conferir ou ajustar esses caminhos em outro ambiente. Lê CRC, dimensões, bytes, SHA-256, links e diff, sem abrir Unity, reprocessar imagens ou gerar builds. SHA-256 integrais de cada papel estão em `PROVENANCE.json`.

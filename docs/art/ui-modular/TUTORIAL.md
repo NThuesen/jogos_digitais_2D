@@ -1,6 +1,6 @@
 # Tutorial de geração — anexos exatos, prompts prontos, nomes definidos
 
-**Você não precisa inventar nomes nem preencher `[STATE]`.** Cada arquivo em `prompts/` ou `prompts/variants/` traz **(1) anexos com nomes e links reais; (2) um bloco único pronto para copiar; (3) nome e pasta exatos do PNG final**. O [manifesto](OUTPUT_MANIFEST.md) contém os **100 nomes**. O UI-001 está aprovado e versionado; o NORMAL ornamental de UI-004 permaneceu REWORK; o COMPACT NORMAL foi gerado e validado na PR #42, com aprovação expressa do responsável, com registro APPROVED incorporado pela PR #42 (sem integração Unity). Os estados compactos HOVER/PRESSED/DISABLED são os próximos candidatos. O registro distingue prompts, PNGs disponíveis, aprovados e integrados.
+**Você não precisa inventar nomes nem preencher `[STATE]`.** Cada arquivo em `prompts/` ou `prompts/variants/` traz **(1) anexos com nomes e links reais; (2) um bloco único pronto para copiar; (3) nome e pasta exatos do PNG final**. O [manifesto](OUTPUT_MANIFEST.md) contém os **100 nomes**. O UI-001 está aprovado e versionado; o NORMAL ornamental de UI-004 permaneceu REWORK; o COMPACT NORMAL foi gerado e validado na PR #42, com aprovação expressa do responsável, com registro APPROVED incorporado pela PR #42 (sem integração Unity). HOVER v02, PRESSED v01, DISABLED v02, UI-002 e UI-003 (com restrições) agora APPROVED; UI-008 aceita somente em 150×206 detalhado, REWORK em 0,62×. [PNGs finais e handoff](approved/README.md). Não repetir geração/QA desses arquivos. O registro distingue prompts, PNGs disponíveis, aprovados e integrados.
 
 ## Passo zero — baixar as referências que já EXISTEM
 
@@ -33,7 +33,7 @@ Abra os links e **baixe o arquivo original**, depois anexe pelo ícone de imagem
 
 ## Passo 2 — Botão ornamental original: QUATRO estados planejados (histórico)
 
-**Este é o fluxo ornamental original, mantido para consulta; não o execute em lote.** O NORMAL ornamental v01 já foi gerado e reprovou como botão universal na [revisão UI-004](reviews/UI-004_BUTTON_PRIMARY_NORMAL_V01.md). Seus três estados restantes estão PENDING. **A próxima geração vigente é o COMPACT NORMAL, no Passo 2A abaixo.** Um prompt por estado, um PNG por resultado. Não mande quatro prompts juntos nem peça uma imagem com quatro botões. A ordem certa:
+**Este é o fluxo ornamental original, mantido para consulta; não o execute em lote.** O NORMAL ornamental v01 já foi gerado e reprovou como botão universal na [revisão UI-004](reviews/UI-004_BUTTON_PRIMARY_NORMAL_V01.md). Seus três estados restantes estão PENDING. **O COMPACT NORMAL e seus estados aprovados já foram produzidos; passos 2A/2B preservam o fluxo histórico.** Um prompt por estado, um PNG por resultado. Não mande quatro prompts juntos nem peça uma imagem com quatro botões. A ordem certa:
 
 | Ordem | Clique no prompt PRONTO | Anexe imagens reais e futuras como indicado | Salve com nome EXATO |
 | --- | --- | --- | --- |
@@ -60,6 +60,8 @@ Ao gerar as variantes, peça para manter **o mesmo contorno e tamanho da imagem 
 **Nome e status atualizados após geração:** `UI-004_button_primary_compact_normal_v01.png` — gerado e limpo localmente; QA da [PR #42](https://github.com/NThuesen/jogos_digitais_2D/pull/42) recomendou aprovação, confirmada pelo responsável. A aprovação formal consta da PR #42 integrada; o asset ainda não está INTEGRATED na Unity. [Manifesto de saídas](OUTPUT_MANIFEST.md).
 
 ## Passo 2B — Gerar HOVER, PRESSED e DISABLED do botão **compacto** aprovado
+
+**Histórico:** os estados HOVER v02, PRESSED v01 e DISABLED v02 já têm QA e aprovação expressa; não regenerar. HOVER v01 e DISABLED v01 preservam REWORK.
 
 **Não utilize os três prompts ornamentais originais** (`04_BUTTON_PRIMARY_HOVER/PRESSED/DISABLED.md`): eles pedem o botão antigo `UI-004_button_primary_normal_v01.png`, que continua em REWORK.
 
@@ -98,18 +100,18 @@ Cada um dos três prompts contém links reais para as referências **versionadas
 
 ## Passo 4 — Demais componentes sem adivinhações## Passo 3B — NOVO: Maid Card minimalista para Escalação (duas apresentações aprovadas)
 
-**Decisão 04/11/2026:** o frame já gerado `UI-008_maid_card_compact_v01.png` permanece candidato para apresentação **detalhada em 150×206**, mas não é legível universalmente a **0,62× (~93×128)**. O novo frame de Escalação é **outro PNG**, não um v02 da arte detalhada. O conceito de duas apresentações está aprovado; nenhum dos PNGs UI-008 foi aprovado ou integrado.
+**Decisão 04/11/2026:** o frame já gerado `UI-008_maid_card_compact_v01.png` foi aceito visualmente apenas para apresentação **detalhada em 150×206**, mas não é legível universalmente a **0,62× (~93×128)**. O novo frame de Escalação é **outro PNG**, não um v02 da arte detalhada. O conceito de duas apresentações está aprovado; o frame existente foi aprovado com esse limite; LINEUP MINIMAL já tem PNG/CLEAN e QA técnico, mas aprovação artística permanece PENDING; nenhum está integrado.
 
 1. Abra o [**PROMPT COMPLETO UI-008 LINEUP MINIMAL**](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md).
 2. **Anexe obrigatoriamente estes três arquivos reais**:
-   - `UI-008_maid_card_compact_v01.png` **CLEAN local** em `art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png` (ainda não aprovado; não está publicado no Git).
+   - `UI-008_maid_card_compact_v01.png` **CLEAN local** em `art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png` (aprovado apenas em 150×206; [master publicado idêntico ao CLEAN](approved/UI-008_maid_card_compact_v01.png)).
    - `after_ES-2_escalacao_960x600.png` em `docs/roadmap/ui-01b/evidence/after_ES-2_escalacao_960x600.png` ([baixar](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/roadmap/ui-01b/evidence/after_ES-2_escalacao_960x600.png)).
    - `UI-001_panel_large_v01.png` em `docs/art/ui-modular/approved/UI-001_panel_large_v01.png` ([baixar](approved/UI-001_panel_large_v01.png)).
 3. **Opcionais:** `suzu_walk.png` em `Assets/_Game/Resources/Maids/suzu_walk.png` e `webgl_chrome_960x600.jpg` em `docs/art/maid-walk/evidence_illustrated/webgl_chrome_960x600.jpg`. **Não** anexar `UI-009_maid_card_detail_v01.png`: ainda é futuro.
 4. Copie **somente o bloco `text` completo** do novo prompt e peça **UMA moldura vertical vazia**, com janela realmente transparente para portrait e faixa simples de nome, sem atributos/salário/maid/texto embutidos.
 5. Salve em `art_working/ui_modular/raw_gpt/UI-008_maid_card_lineup_minimal_v01.png`; nunca sobrescreva `UI-008_maid_card_compact_v01.png`. Após limpeza e revisão, Codex testa 150×206 e 0,62× em 960×600/1280×720; somente o responsável aprova.
 
-**Não é necessário gerar um UI-009 agora.** Ele permanece como possível card expandido de detalhes; o UI-008 já gerado é candidato detalhado restrito.
+**Não é necessário gerar um UI-009 agora.** Ele permanece como possível card expandido de detalhes; o UI-008 já gerado tem aceite visual detalhado restrito a 150×206.
 
 
 

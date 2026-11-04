@@ -1,0 +1,711 @@
+{
+  "schema_version": 1,
+  "decision_date": "2026-11-04",
+  "authority": "Explicit repository-owner approval in task: Aprovação artística e fechamento UI modular",
+  "qa_pr": 44,
+  "qa_head": "293ca72504e0da3d3682574926588dfd7908ad7a",
+  "qa_repeated": false,
+  "integration": "Not performed; versioned under docs/art/ui-modular/approved only, outside Assets",
+  "configuration_scope": "Unity configuration below applies to exports only, not full-size masters; no Unity importer metadata created",
+  "provenance_documents": [
+    "docs/art/ui-modular/reviews/UI_BATCH_002_003_008_COMPACT_STATES_V01.md",
+    "docs/art/ui-modular/reviews/evidence/BATCH-UI-002-003-008-004-STATES/UNITY-STATES/export_manifest.json",
+    "docs/art/ui-modular/reviews/evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/component_exports.json",
+    "docs/art/ui-modular/reviews/evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/disabled_v02_audit.json",
+    "docs/art/ui-modular/reviews/evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/final_export_manifest.json"
+  ],
+  "assets": [
+    {
+      "filename": "UI-004_button_primary_compact_hover_v02.png",
+      "status": "APPROVED",
+      "approval_scope": "QA cases and restrictions only",
+      "integrated": false,
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_hover_v02.png",
+        "sha256": "4beaadaf15870747b92f1bd8ea323d442e0b7e083d9ca8cba4e1730369ac6e6a",
+        "bytes": 1205847,
+        "size": [
+          2172,
+          724
+        ],
+        "mode": "RGBA"
+      },
+      "master_source_local": {
+        "path": "art_working/ui_modular/blender_clean/UI-004_button_primary_compact_hover_v02.png",
+        "sha256": "c47a56f4f1a83c12eb9a64644a38a9dba66a55cefbb2d15e7913f3f88000d45e",
+        "bytes": 1006994,
+        "size": [
+          2176,
+          408
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-004_button_primary_compact_hover_v02.png",
+        "sha256": "c47a56f4f1a83c12eb9a64644a38a9dba66a55cefbb2d15e7913f3f88000d45e",
+        "bytes": 1006994,
+        "size": [
+          2176,
+          408
+        ],
+        "mode": "RGBA"
+      },
+      "export_source_local": {
+        "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/hover.png",
+        "sha256": "5ae7316ad06a835ee427474f3bd89fe474b48d508334ffa3dbef313d8078dcb2",
+        "bytes": 133214,
+        "size": [
+          768,
+          141
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-004_button_primary_compact_hover_v02.png",
+        "sha256": "5ae7316ad06a835ee427474f3bd89fe474b48d508334ffa3dbef313d8078dcb2",
+        "bytes": 133214,
+        "size": [
+          768,
+          141
+        ],
+        "mode": "RGBA"
+      },
+      "master_note": "Existing CLEAN unchanged",
+      "export_transform": "Opaque-body registration; uniform end caps; horizontal center adjustment only; premultiplied bicubic 4x / Lanczos. Existing QA export copied byte-for-byte.",
+      "unity_validated_export_configuration": {
+        "texture_type": "Sprite",
+        "sprite_mode": "Single",
+        "mesh": "FullRect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot_scale": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT": [
+          59.30501930501931,
+          40.81578947368421,
+          59.30501930501931,
+          40.81578947368421
+        ],
+        "image_type": "Sliced",
+        "pixels_per_unit_multiplier": "141 / target_height",
+        "preserve_aspect": false
+      },
+      "limits": {
+        "sizes": [
+          [
+            120,
+            44
+          ],
+          [
+            150,
+            44
+          ],
+          [
+            230,
+            54
+          ]
+        ],
+        "text_font_sizes": [
+          18,
+          24
+        ],
+        "text_color": "#3A2A1A",
+        "states": "SpriteSwap without additional ColorTint; fixed hitbox, child art",
+        "resolutions": [
+          [
+            960,
+            600
+          ],
+          [
+            1280,
+            720
+          ]
+        ]
+      }
+    },
+    {
+      "filename": "UI-004_button_primary_compact_pressed_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "QA cases and restrictions only",
+      "integrated": false,
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_pressed_v01.png",
+        "sha256": "291a26b50675ecce4670b77de3705a5f71a4eeffdf4d0b50734a58da910d038d",
+        "bytes": 745104,
+        "size": [
+          2048,
+          375
+        ],
+        "mode": "RGBA"
+      },
+      "master_source_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_pressed_v01.png",
+        "sha256": "291a26b50675ecce4670b77de3705a5f71a4eeffdf4d0b50734a58da910d038d",
+        "bytes": 745104,
+        "size": [
+          2048,
+          375
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-004_button_primary_compact_pressed_v01.png",
+        "sha256": "291a26b50675ecce4670b77de3705a5f71a4eeffdf4d0b50734a58da910d038d",
+        "bytes": 745104,
+        "size": [
+          2048,
+          375
+        ],
+        "mode": "RGBA"
+      },
+      "export_source_local": {
+        "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/pressed.png",
+        "sha256": "70ea100d92814aebdbfb0bc48e7facf5f6ac8311c9a19bfcadde0b75d7bf0c07",
+        "bytes": 130294,
+        "size": [
+          768,
+          141
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-004_button_primary_compact_pressed_v01.png",
+        "sha256": "70ea100d92814aebdbfb0bc48e7facf5f6ac8311c9a19bfcadde0b75d7bf0c07",
+        "bytes": 130294,
+        "size": [
+          768,
+          141
+        ],
+        "mode": "RGBA"
+      },
+      "master_note": "RAW already technically clean; no duplicate CLEAN invented",
+      "export_transform": "Opaque-body registration; uniform end caps; horizontal center adjustment only; premultiplied bicubic 4x / Lanczos. Existing QA export copied byte-for-byte.",
+      "unity_validated_export_configuration": {
+        "texture_type": "Sprite",
+        "sprite_mode": "Single",
+        "mesh": "FullRect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot_scale": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT": [
+          59.30501930501931,
+          40.81578947368421,
+          59.30501930501931,
+          40.81578947368421
+        ],
+        "image_type": "Sliced",
+        "pixels_per_unit_multiplier": "141 / target_height",
+        "preserve_aspect": false
+      },
+      "limits": {
+        "sizes": [
+          [
+            120,
+            44
+          ],
+          [
+            150,
+            44
+          ],
+          [
+            230,
+            54
+          ]
+        ],
+        "text_font_sizes": [
+          18,
+          24
+        ],
+        "text_color": "#3A2A1A",
+        "states": "SpriteSwap without additional ColorTint; fixed hitbox, child art",
+        "resolutions": [
+          [
+            960,
+            600
+          ],
+          [
+            1280,
+            720
+          ]
+        ]
+      }
+    },
+    {
+      "filename": "UI-004_button_primary_compact_disabled_v02.png",
+      "status": "APPROVED",
+      "approval_scope": "QA cases and restrictions only",
+      "integrated": false,
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_disabled_v02.png",
+        "sha256": "7d937f5757e7044f8184cf58dbf0d910405d5fce894c3eb45bf2b5f1e548d1fb",
+        "bytes": 1185854,
+        "size": [
+          2172,
+          724
+        ],
+        "mode": "RGBA"
+      },
+      "master_source_local": {
+        "path": "art_working/ui_modular/blender_clean/UI-004_button_primary_compact_disabled_v02.png",
+        "sha256": "3709ee3a696aa5b929a315fcacec31c2457736a068e34352bea11cd2dc51074d",
+        "bytes": 941613,
+        "size": [
+          2176,
+          410
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-004_button_primary_compact_disabled_v02.png",
+        "sha256": "3709ee3a696aa5b929a315fcacec31c2457736a068e34352bea11cd2dc51074d",
+        "bytes": 941613,
+        "size": [
+          2176,
+          410
+        ],
+        "mode": "RGBA"
+      },
+      "export_source_local": {
+        "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/disabled.png",
+        "sha256": "be482f46bdb9479c476cdcf11cb6ac8a627ff0acbbacbdfde091614ded9d6c5a",
+        "bytes": 118118,
+        "size": [
+          768,
+          141
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-004_button_primary_compact_disabled_v02.png",
+        "sha256": "be482f46bdb9479c476cdcf11cb6ac8a627ff0acbbacbdfde091614ded9d6c5a",
+        "bytes": 118118,
+        "size": [
+          768,
+          141
+        ],
+        "mode": "RGBA"
+      },
+      "master_note": "Existing CLEAN unchanged",
+      "export_transform": "Opaque-body registration; uniform end caps; horizontal center adjustment only; premultiplied bicubic 4x / Lanczos. Existing QA export copied byte-for-byte.",
+      "unity_validated_export_configuration": {
+        "texture_type": "Sprite",
+        "sprite_mode": "Single",
+        "mesh": "FullRect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot_scale": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT": [
+          59.30501930501931,
+          40.81578947368421,
+          59.30501930501931,
+          40.81578947368421
+        ],
+        "image_type": "Sliced",
+        "pixels_per_unit_multiplier": "141 / target_height",
+        "preserve_aspect": false
+      },
+      "limits": {
+        "sizes": [
+          [
+            120,
+            44
+          ],
+          [
+            150,
+            44
+          ],
+          [
+            230,
+            54
+          ]
+        ],
+        "text_font_sizes": [
+          18,
+          24
+        ],
+        "text_color": "#3A2A1A",
+        "states": "SpriteSwap without additional ColorTint; fixed hitbox, child art",
+        "resolutions": [
+          [
+            960,
+            600
+          ],
+          [
+            1280,
+            720
+          ]
+        ]
+      }
+    },
+    {
+      "filename": "UI-002_panel_medium_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "QA cases and restrictions only",
+      "integrated": false,
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-002_panel_medium_v01.png",
+        "sha256": "a939d2bc990e56787fea85f0b543303ade489bddfbadb412a4c20a60a2288b16",
+        "bytes": 1463362,
+        "size": [
+          1448,
+          1086
+        ],
+        "mode": "RGBA"
+      },
+      "master_source_local": {
+        "path": "art_working/ui_modular/blender_clean/UI-002_panel_medium_v01.png",
+        "sha256": "00c44a34dca15be2cb61d994f05e32ec52775451bf80227bde5faa072683b2c9",
+        "bytes": 1228521,
+        "size": [
+          1356,
+          802
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-002_panel_medium_v01.png",
+        "sha256": "00c44a34dca15be2cb61d994f05e32ec52775451bf80227bde5faa072683b2c9",
+        "bytes": 1228521,
+        "size": [
+          1356,
+          802
+        ],
+        "mode": "RGBA"
+      },
+      "export_source_local": {
+        "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/panel.png",
+        "sha256": "835e669e0658136409a1eba071f178e8c3c9c7426d462543eff5efc363fb6ff3",
+        "bytes": 322877,
+        "size": [
+          678,
+          401
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-002_panel_medium_v01.png",
+        "sha256": "835e669e0658136409a1eba071f178e8c3c9c7426d462543eff5efc363fb6ff3",
+        "bytes": 322877,
+        "size": [
+          678,
+          401
+        ],
+        "mode": "RGBA"
+      },
+      "master_note": "Existing CLEAN unchanged",
+      "export_transform": "Exact half dimensions; premultiplied RGBA Lanczos. Existing QA export copied byte-for-byte.",
+      "unity_validated_export_configuration": {
+        "texture_type": "Sprite",
+        "sprite_mode": "Single",
+        "mesh": "FullRect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot_scale": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT": [
+          80,
+          75,
+          80,
+          75
+        ],
+        "image_type": "Sliced",
+        "pixels_per_unit_multiplier": 1.5,
+        "preserve_aspect": false
+      },
+      "limits": {
+        "sizes": [
+          [
+            330,
+            170
+          ],
+          [
+            380,
+            220
+          ],
+          [
+            330,
+            270
+          ]
+        ],
+        "content_margin_min_units": 45,
+        "text_font_sizes": [
+          18,
+          20
+        ],
+        "resolutions": [
+          [
+            960,
+            600
+          ],
+          [
+            1280,
+            720
+          ]
+        ]
+      }
+    },
+    {
+      "filename": "UI-003_panel_small_label_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "QA cases and restrictions only",
+      "integrated": false,
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-003_panel_small_label_v01.png",
+        "sha256": "0775e22cfdfa766b25eafa68ec13cb819a961c5f63e6e02c367829bd80c1e3df",
+        "bytes": 1564433,
+        "size": [
+          2172,
+          724
+        ],
+        "mode": "RGBA"
+      },
+      "master_source_local": {
+        "path": "art_working/ui_modular/blender_clean/UI-003_panel_small_label_v01.png",
+        "sha256": "0a79225c60c61541f34c1d34f3d45f7e0685917d5d9c82cd19b9fec534b31a27",
+        "bytes": 1392186,
+        "size": [
+          2170,
+          526
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-003_panel_small_label_v01.png",
+        "sha256": "0a79225c60c61541f34c1d34f3d45f7e0685917d5d9c82cd19b9fec534b31a27",
+        "bytes": 1392186,
+        "size": [
+          2170,
+          526
+        ],
+        "mode": "RGBA"
+      },
+      "export_source_local": {
+        "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/label.png",
+        "sha256": "914fb6c5e19203861368ad29b009e7461ee6f4839e058f445a04f62311fec9e7",
+        "bytes": 374620,
+        "size": [
+          1085,
+          263
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-003_panel_small_label_v01.png",
+        "sha256": "914fb6c5e19203861368ad29b009e7461ee6f4839e058f445a04f62311fec9e7",
+        "bytes": 374620,
+        "size": [
+          1085,
+          263
+        ],
+        "mode": "RGBA"
+      },
+      "master_note": "Existing CLEAN unchanged",
+      "export_transform": "Exact half dimensions; premultiplied RGBA Lanczos. Existing QA export copied byte-for-byte.",
+      "unity_validated_export_configuration": {
+        "texture_type": "Sprite",
+        "sprite_mode": "Single",
+        "mesh": "FullRect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot_scale": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT": [
+          160,
+          50,
+          160,
+          50
+        ],
+        "image_type": "Sliced",
+        "pixels_per_unit_multiplier": "263 / target_height",
+        "preserve_aspect": false
+      },
+      "limits": {
+        "cases": [
+          {
+            "size": [
+              180,
+              44
+            ],
+            "text": "Voltar"
+          },
+          {
+            "size": [
+              260,
+              54
+            ],
+            "text": "Escalação de hoje"
+          },
+          {
+            "size": [
+              360,
+              64
+            ],
+            "text": "Química"
+          }
+        ],
+        "text_font_size": 18,
+        "horizontal_margin_units": "160 * target_height / 263 + 6",
+        "restriction": "180x44 short title only; prefer height 54–64 when ornamental detail matters; no universal approval for long text or other sizes",
+        "resolutions": [
+          [
+            960,
+            600
+          ],
+          [
+            1280,
+            720
+          ]
+        ]
+      }
+    },
+    {
+      "filename": "UI-008_maid_card_compact_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "150x206 detailed only; REWORK at 0.62x",
+      "integrated": false,
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-008_maid_card_compact_v01.png",
+        "sha256": "c849093964090779adc92a83f9880fcc0e72de22622479f12b8917b733f118a2",
+        "bytes": 1303954,
+        "size": [
+          1070,
+          1470
+        ],
+        "mode": "RGBA"
+      },
+      "master_source_local": {
+        "path": "art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png",
+        "sha256": "74ea40f0b528580b4f809bd20a359bd1dbdacb02e4014f0d8ce0576676fb6342",
+        "bytes": 1138752,
+        "size": [
+          1070,
+          1470
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-008_maid_card_compact_v01.png",
+        "sha256": "74ea40f0b528580b4f809bd20a359bd1dbdacb02e4014f0d8ce0576676fb6342",
+        "bytes": 1138752,
+        "size": [
+          1070,
+          1470
+        ],
+        "mode": "RGBA"
+      },
+      "export_source_local": {
+        "path": "art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA/card.png",
+        "sha256": "1a7bf6407c23cf037674d38b182efb5975e916a5ba3467fad7a6babbf1c4f203",
+        "bytes": 312243,
+        "size": [
+          535,
+          735
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-008_maid_card_compact_v01.png",
+        "sha256": "1a7bf6407c23cf037674d38b182efb5975e916a5ba3467fad7a6babbf1c4f203",
+        "bytes": 312243,
+        "size": [
+          535,
+          735
+        ],
+        "mode": "RGBA"
+      },
+      "master_note": "Existing CLEAN unchanged",
+      "export_transform": "Exact half dimensions; premultiplied RGBA Lanczos. Existing QA export copied byte-for-byte.",
+      "unity_validated_export_configuration": {
+        "texture_type": "Sprite",
+        "sprite_mode": "Single",
+        "mesh": "FullRect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot_scale": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "image_type": "Simple",
+        "pixels_per_unit_multiplier": 1,
+        "preserve_aspect": true
+      },
+      "limits": {
+        "approved_size": [
+          150,
+          206
+        ],
+        "rework_scale": 0.62,
+        "rework_size": [
+          93,
+          127.72
+        ],
+        "restriction": "Detailed presentation at 150x206 only; reduced lineup use is NOT APPROVED; other scales/screens not validated",
+        "portrait_safe_window_master_xyxy": [
+          145,
+          185,
+          925,
+          795
+        ],
+        "portrait": "Separate dynamic portrait below frame, RectMask2D and preserveAspect; no new portrait",
+        "resolutions": [
+          [
+            960,
+            600
+          ],
+          [
+            1280,
+            720
+          ]
+        ]
+      }
+    }
+  ],
+  "lineup_minimal": {
+    "status": "PENDING",
+    "generated": false,
+    "qa": "NOT RUN",
+    "integrated": false
+  },
+  "preserved_rework": [
+    "UI-004_button_primary_normal_v01.png",
+    "UI-004_button_primary_compact_hover_v01.png",
+    "UI-004_button_primary_compact_disabled_v01.png",
+    "UI-008_maid_card_compact_v01.png at 0.62x"
+  ]
+}

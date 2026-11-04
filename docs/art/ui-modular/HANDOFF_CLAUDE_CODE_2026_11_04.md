@@ -96,3 +96,7 @@ O QA anterior foi 1 PlayMode direcionado em 960×600/1280×720 (cliques/raycast 
 2. Quando autorizado, produzir UI-007 v02 e UI-022 v02; UI-009 v02 é opcional. Usar prompts corrigidos e RAWs de referência, sem substituir v01. Depois inventariar/auditar somente arquivos novos, preservando hashes de fontes.
 3. Registrar decisões artísticas explícitas e, só após revisão do responsável, concluir o fluxo protegido da #47. **Não habilitar auto-merge agora.**
 4. Integração nas telas definitivas e QA de produção são tarefa separada: preservar controles/dados Unity, GUIDs, saves, gameplay, formatos e decisões das duas Maid Cards. Não usar este handoff como autorização de mudança de escopo ou publicação.
+
+## Manifesto reconciliado no encerramento
+
+O manifesto contém **105 nomes** (100 saídas-base + versões posteriores), 23 RAWs presentes e **82 nomes ainda não gerados**. O inventário histórico do QA listava 79 ausentes; as três v02 da #48 acrescentam três novas tentativas PENDING. [Lista atual por presença de arquivo](incoming/BATCH-2026-11-04/MANIFEST_STATUS.json). Não confundir os três v01 REWORK já existentes com suas novas v02 PENDING e não gerar o catálogo inteiro.
