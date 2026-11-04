@@ -14,5 +14,11 @@
   "project_settings": "Build finally restored original settings; git diff empty for Assets/_Game, ProjectSettings and Packages",
   "source_raws_and_cleans": "preserved; final hash validation required",
   "original_worktree": "not switched or edited; new local CLEAN/export outputs only, under ignored art_working",
-  "cache": "separate worktree Library remains ignored; original Library untouched"
+  "cache": "separate worktree Library remains ignored; original Library untouched",
+  "additional_tracked_generated_file_restored": {
+    "path": "Data/Plugins/lib_burst_generated.wasm",
+    "generated_sha256": "c22ac1f459ed532f85cdde2179b16e370711d4a84ea38913eb38dfb688da4cf0",
+    "restored_sha256": "7567a272f77575de8e2288d14a64c53388b0267b11eb00ff4d1e39712ce1f033",
+    "reason": "WebGL/Burst build rewrote tracked generated plugin; restored byte-for-byte from HEAD in isolated worktree after browser QA"
+  }
 }
