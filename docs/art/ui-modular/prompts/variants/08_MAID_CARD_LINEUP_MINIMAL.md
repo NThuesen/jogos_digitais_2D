@@ -1,12 +1,12 @@
 # UI-008 — Maid Card simplificado para Escalação (LINEUP MINIMAL)
 
-**Decisão de produto aprovada em 04/11/2026:** duas apresentações do mesmo personagem. O `UI-008_maid_card_compact_v01.png` já gerado é **candidato à apresentação detalhada em 150×206**, mas **REWORK para uso a 0,62×**. Este prompt cria **UMA NOVA moldura simplificada**, independente, para a escalação reduzida. Não substitui nem renomeia o RAW existente. **PENDING: imagem ainda não gerada, sem QA ou aprovação.**
+**Decisão de produto aprovada em 04/11/2026:** duas apresentações do mesmo personagem. O `UI-008_maid_card_compact_v01.png` já gerado é **aprovado expressamente apenas para apresentação detalhada em 150×206**, mas **REWORK para uso a 0,62×**. Este prompt cria **UMA NOVA moldura simplificada**, independente, para a escalação reduzida. Não substitui nem renomeia o RAW existente. **PENDING: imagem ainda não gerada, sem QA ou aprovação.**
 
 ## 1. Anexos exatos (anexar imagens reais, não somente links)
 
 **Obrigatórios — geometria, linguagem e contexto:**
 
-1. **`UI-008_maid_card_compact_v01.png` — CLEAN LOCAL**, caminho `art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png`. Este é o **frame existente**, auditado no lote da [PR #44](https://github.com/NThuesen/jogos_digitais_2D/pull/44); a arte é **candidata, NÃO APPROVED**. Use como referência de família visual, **não copie sua densidade de ornamentos, divisões de stats ou tipografia**. Não anexe um screenshot de miniatura no lugar do PNG.
+1. **`UI-008_maid_card_compact_v01.png` — CLEAN LOCAL**, caminho `art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png`. Este é o **frame existente**, auditado no lote da [PR #44](https://github.com/NThuesen/jogos_digitais_2D/pull/44); a arte está **APPROVED somente em 150×206**, com [master publicado idêntico ao CLEAN](../../approved/UI-008_maid_card_compact_v01.png). Use como referência de família visual, **não copie sua densidade de ornamentos, divisões de stats ou tipografia**. Não anexe um screenshot de miniatura no lugar do PNG.
 2. **`after_ES-2_escalacao_960x600.png`**, [arquivo real](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/roadmap/ui-01b/evidence/after_ES-2_escalacao_960x600.png), caminho `docs/roadmap/ui-01b/evidence/after_ES-2_escalacao_960x600.png`. Contexto de tela e espaço real, não copiar pixels.
 3. **`UI-001_panel_large_v01.png`**, [arte APPROVED](../../approved/UI-001_panel_large_v01.png), caminho `docs/art/ui-modular/approved/UI-001_panel_large_v01.png`. Referência de material/paleta; a geometria da card prevalece.
 
@@ -15,7 +15,7 @@
 4. **`suzu_walk.png`**, [sprite sheet real](https://github.com/NThuesen/jogos_digitais_2D/blob/main/Assets/_Game/Resources/Maids/suzu_walk.png), caminho `Assets/_Game/Resources/Maids/suzu_walk.png`. Identidade visual, **NÃO desenhar Suzu dentro da moldura**.
 5. **`webgl_chrome_960x600.jpg`**, [evidência real](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/art/maid-walk/evidence_illustrated/webgl_chrome_960x600.jpg), caminho `docs/art/maid-walk/evidence_illustrated/webgl_chrome_960x600.jpg`. Referência de contraste e estilo, não copiar UI.
 
-**Não anexar:** `UI-009_maid_card_detail_v01.png` (ainda não existe/aprovado), versões de HOVER/PRESSED dos botões, PNGs de portraits gerados, ou qualquer arte ornamental antiga como master. Se o CLEAN local não estiver disponível, **pare e recupere-o**; não invente que existe no Git.
+**Não anexar:** `UI-009_maid_card_detail_v01.png` (ainda não existe/aprovado), versões de HOVER/PRESSED dos botões, PNGs de portraits gerados, ou qualquer arte ornamental antiga como master. Se o CLEAN local não estiver disponível, use o master aprovado publicado e confira seu [hash no manifesto](../../approved/UI_MODULAR_SIX_APPROVAL_MANIFEST.json).
 
 ## 2. Prompt robusto para GPT Web — copie SOMENTE o bloco abaixo
 

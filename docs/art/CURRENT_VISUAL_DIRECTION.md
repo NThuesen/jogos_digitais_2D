@@ -44,9 +44,9 @@ A [style reference do estudo ART-01D](art-01/D-pixel-cafe/reference/style_anchor
 
 **APROVADO pelo responsável:** a **Escalação** deve usar uma apresentação **simplificada**, enquanto a apresentação **detalhada** preserva portrait e informações dinâmicas em contextos maiores. A mesma maid/dados alimentam ambas; **não** criar duas entidades, novos portraits ou alterar economia/saves.
 
-- **UI-008 existente:** `UI-008_maid_card_compact_v01.png` (RAW/CLEAN local; QA na [PR #44](https://github.com/NThuesen/jogos_digitais_2D/pull/44)) é **candidato visual restrito em 150×206** e **REWORK em 0,62×**. Não descartar nem renomear o arquivo. Não está APPROVED/INTEGRATED.
+- **UI-008 existente:** `UI-008_maid_card_compact_v01.png` (RAW/CLEAN local; QA na [PR #44](https://github.com/NThuesen/jogos_digitais_2D/pull/44)) teve **aceite artístico expresso apenas em 150×206 detalhado** e **REWORK em 0,62×**. Não descartar nem renomear o arquivo. Está APPROVED somente nesse limite, não INTEGRATED; [PNGs finais e proveniência](ui-modular/approved/README.md).
 - **Novo frame simplificado de Escalação:** `UI-008_maid_card_lineup_minimal_v01.png` (**PENDING, não gerado**), [prompt específico](ui-modular/prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md). Na referência atual 150×206, a Escalação usa 0,62× (~93×128). Moldura com janela transparente de portrait, faixa simples de nome e no máximo espaço para indicador Unity; sem salary/stats/traits dentro da mini-card. Outras informações ficam em componentes dinâmicos fora dela.
-- **UI-009:** `UI-009_maid_card_detail_v01.png` segue **PENDING**, como possível frame expandido de detalhes. Não é pré-requisito para criar o frame simplificado; não confundir com o UI-008 existente, que já pode servir de candidato detalhado em 150×206.
+- **UI-009:** `UI-009_maid_card_detail_v01.png` segue **PENDING**, como possível frame expandido de detalhes. Não é pré-requisito para criar o frame simplificado; não confundir com o UI-008 existente, que tem aceite detalhado restrito a 150×206.
 - **Integração:** somente após aprovação visual/QA específicos; definir layout/posição do indicador e conteúdo externo em tarefa posterior. Reutilizar dados e sprites, preservar seleção, interação, localização e máscaras. Não integrar automaticamente em outras telas de `MaidCard.Build`.
 
 Esta decisão aprova **o conceito de duas apresentações**, não aprova PNG novo, nem autoriza mudanças de tela/código nesta atualização documental.
@@ -73,3 +73,5 @@ Esta decisão aprova **o conceito de duas apresentações**, não aprova PNG nov
 3. **Abas são peças independentes** (UI-006); não reutilizar o ornamental de forma universal. Não produzir HOVER/PRESSED/DISABLED compactos antes de aprovar NORMAL. Unity continua responsável por textos, preços, controle, interação e estados.
 
 Esta decisão substitui **somente a pendência sobre dividir as famílias** registrada na revisão histórica de UI-004. Não reclassifica aquele asset como `APPROVED`, não altera a arte atual de nenhuma tela e não modifica economia, gameplay, saves ou identidades das maids.
+
+**Aprovação artística posterior — 04/11/2026:** HOVER v02, PRESSED v01, DISABLED v02, UI-002 e UI-003 (respeitando tamanho/texto do QA) aprovados expressamente pelo responsável. UI-008 aceita somente em 150×206 detalhado, REWORK em 0,62×; LINEUP MINIMAL PENDING. [Registro e arquivos aprovados](ui-modular/approved/README.md). Nenhuma integração ou autorização de mudança em telas nesta etapa.
