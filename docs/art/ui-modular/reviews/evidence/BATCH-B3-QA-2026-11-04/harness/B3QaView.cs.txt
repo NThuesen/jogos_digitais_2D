@@ -1,0 +1,74 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using Neko.Game.Art;
+using Neko.Game.Ui;
+public sealed class B3QaView:MonoBehaviour
+{
+ public Canvas Canvas;public Camera Camera;public GraphicRaycaster Raycaster;public int Clicks;
+ public readonly List<Button> Buttons=new List<Button>();public readonly List<Text> Content=new List<Text>();public readonly List<string> Failures=new List<string>();public readonly List<string> Facts=new List<string>();
+ RectTransform pageRoot;Color Ink=new Color(.23f,.16f,.10f);public static readonly string[] Pages={"icons","rows","logo"};
+ static readonly string[] Icons={"cat_paw","clock","coin","cup","gear","gift","heart","shop_bag","star"};
+ public void Build(int width,int height)
+ {
+  UiKit.Sprites=new SpriteFactory();var cg=new GameObject("QA Camera");cg.transform.SetParent(transform);Camera=cg.AddComponent<Camera>();Camera.orthographic=true;Camera.transform.position=new Vector3(0,0,-10);Camera.clearFlags=CameraClearFlags.SolidColor;Camera.backgroundColor=new Color(.18f,.14f,.18f);Camera.targetTexture=new RenderTexture(width,height,24,RenderTextureFormat.ARGB32);
+  var g=new GameObject("Canvas",typeof(RectTransform));g.transform.SetParent(transform);Canvas=g.AddComponent<Canvas>();Canvas.renderMode=RenderMode.ScreenSpaceCamera;Canvas.worldCamera=Camera;Canvas.planeDistance=5;var sc=g.AddComponent<CanvasScaler>();sc.uiScaleMode=CanvasScaler.ScaleMode.ScaleWithScreenSize;sc.referenceResolution=new Vector2(1280,720);sc.matchWidthOrHeight=1;Raycaster=g.AddComponent<GraphicRaycaster>();UiKit.EnsureEventSystem();
+ }
+ Sprite Load(string n)=>Resources.Load<Sprite>("ModularQA/"+n);
+ RectTransform Rect(Transform p,string name,Vector2 size,Vector2 pos){var r=new GameObject(name,typeof(RectTransform)).GetComponent<RectTransform>();r.SetParent(p,false);r.sizeDelta=size;r.anchoredPosition=pos;return r;}
+ Image Solid(Transform p,Vector2 size,Vector2 pos,Color c){var r=Rect(p,"solid",size,pos);var im=r.gameObject.AddComponent<Image>();im.color=c;im.raycastTarget=false;return im;}
+ Image Art(Transform p,Sprite s,Vector2 size,Vector2 pos,float mult=0){var r=Rect(p,s==null?"art":s.name,size,pos);var im=r.gameObject.AddComponent<Image>();im.sprite=s;if(mult>0){im.type=Image.Type.Sliced;im.pixelsPerUnitMultiplier=mult;}else im.preserveAspect=true;im.raycastTarget=false;return im;}
+ Text Label(Transform p,string text,Vector2 size,Vector2 pos,int font=18,bool content=false,bool light=false,TextAnchor anchor=TextAnchor.MiddleCenter){var t=UiKit.Label(p,text,font,light?new Color(.98f,.90f,.77f):Ink,bold:true);t.rectTransform.sizeDelta=size;t.rectTransform.anchoredPosition=pos;t.horizontalOverflow=HorizontalWrapMode.Wrap;t.verticalOverflow=VerticalWrapMode.Truncate;t.alignment=anchor;t.raycastTarget=false;if(content)Content.Add(t);return t;}
+ Button Native(Transform p,string text,Vector2 size,Vector2 pos){var r=Rect(p,text,size,pos);var im=r.gameObject.AddComponent<Image>();im.color=new Color(.62f,.36f,.27f);var b=r.gameObject.AddComponent<Button>();b.targetGraphic=im;b.transition=Selectable.Transition.None;Label(r,text,size,Vector2.zero,14,true,true);b.onClick.AddListener(()=>Clicks++);Buttons.Add(b);return b;}
+ public void Show(int page)
+ {
+  if(pageRoot!=null){pageRoot.gameObject.SetActive(false);Destroy(pageRoot.gameObject);}Buttons.Clear();Content.Clear();Facts.Clear();Failures.Clear();pageRoot=Rect(Canvas.transform,"Page "+page,new Vector2(1120,630),Vector2.zero);
+  switch(page){case 0:IconsPage();break;case 1:Rows();break;case 2:Logo();break;}
+  Label(pageRoot,"QA lote B3 | "+Pages[page]+" | isolado, sem integração",new Vector2(1060,30),new Vector2(0,310),20,false,true);
+ }
+ void IconsPage()
+ {
+  Solid(pageRoot,new Vector2(1060,250),new Vector2(0,150),new Color(.96f,.89f,.78f));Solid(pageRoot,new Vector2(1060,250),new Vector2(0,-120),new Color(.14f,.11f,.15f));
+  for(int i=0;i<9;i++){float x=(i-4)*112;int[] sz={24,32,44};for(int k=0;k<3;k++){Art(pageRoot,Load("icon_"+Icons[i]),new Vector2(sz[k],sz[k]),new Vector2(x+(k-1)*34-0,(k==0?220:k==1?160:90)));Art(pageRoot,Load("icon_"+Icons[i]),new Vector2(sz[k],sz[k]),new Vector2(x+(k-1)*34,(k==0?-50:k==1?-110:-190)));}Label(pageRoot,Icons[i],new Vector2(108,20),new Vector2(x,40),12,false,false);}
+  Label(pageRoot,"24 / 32 / 44 u sobre creme (cima) e escuro (baixo); Simple/preserveAspect",new Vector2(1000,26),new Vector2(0,-265),16,false,true);
+  Facts.Add("Icons Simple preserveAspect; exports 512x512 uncropped for family-consistent scale");
+ }
+ // map a source x (export px) through a 9-slice to output units from the left edge
+ float MapX(float src,float srcW,float w,float border,float mult){float b=border/mult;if(src<=border)return src/mult;if(src>=srcW-border)return w-(srcW-src)/mult;return b+(src-border)/(srcW-2*border)*(w-2*b);}
+ void ShopRow(float y,float w,string name,string desc,string owned,string tag,string icon)
+ {
+  float h=62,srcW=1058,srcH=162,mult=srcH/h;var row=Rect(pageRoot,"shop row",new Vector2(w,h),new Vector2(0,y));Art(row,Load("shop"),new Vector2(w,h),Vector2.zero,mult);
+  float left=-w/2;float ix=left+MapX(118,srcW,w,85,mult);Art(row,Load("icon_"+icon),new Vector2(34,34),new Vector2(ix,0));
+  float tx=left+MapX(200,srcW,w,85,mult)+10;float tw=w-(tx-left)-150;
+  Label(row,name,new Vector2(tw,20),new Vector2(tx-left-w/2+tw/2+left+w/2-0,10),15,true,false,TextAnchor.MiddleLeft).rectTransform.anchoredPosition=new Vector2(tx+tw/2,10);
+  Label(row,desc,new Vector2(tw,18),new Vector2(tx+tw/2,-10),12,true,false,TextAnchor.MiddleLeft);
+  Label(row,owned,new Vector2(60,20),new Vector2(w/2-165,0),14,true);
+  Native(row,"Comprar",new Vector2(100,34),new Vector2(w/2-70,0));
+  Label(pageRoot,tag,new Vector2(w,20),new Vector2(0,y-42),13,false,true);Facts.Add(tag+" row="+w+"x"+h+" mult="+mult.ToString("0.###")+" icon_x="+ix.ToString("0.#")+" text_x="+tx.ToString("0.#")+" text_w="+tw.ToString("0.#"));
+ }
+ void Balance(float y,float w,float h,string value,string tag)
+ {
+  float srcW=1082,srcH=148,mult=srcH/h;var row=Rect(pageRoot,"balance row",new Vector2(w,h),new Vector2(0,y));Art(row,Load("balance"),new Vector2(w,h),Vector2.zero,mult);
+  float left=-w/2;float p0=left+MapX(660,srcW,w,85,mult),p1=left+MapX(1005,srcW,w,85,mult);
+  Label(row,"Saldo",new Vector2(120,h*.6f),new Vector2(left+MapX(250,srcW,w,85,mult)+30,0),15,true);
+  Label(row,value,new Vector2(p1-p0-8,h*.55f),new Vector2((p0+p1)/2,0),16,true);
+  Label(pageRoot,tag,new Vector2(w,20),new Vector2(0,y-h/2-14),13,false,true);Facts.Add(tag+" "+w+"x"+h+" mult="+mult.ToString("0.###")+" pill_w="+(p1-p0).ToString("0.#"));
+ }
+ void Rows()
+ {
+  Solid(pageRoot,new Vector2(1100,560),new Vector2(0,-5),new Color(.86f,.80f,.72f));
+  ShopRow(215,850,"Mesa para 2","Duas cadeiras acolchoadas, estilo café","×3","UI-017 850×62 (referência Unity)","gift");
+  ShopRow(130,850,"Conjunto de uniforme sazonal bordado com laço","Descrição longa para testar truncamento do texto dinâmico","×12","UI-017 texto longo","shop_bag");
+  ShopRow(45,560,"Bancada de doces","Vitrine refrigerada","×0","UI-017 560×62 (estreita)","cup");
+  Balance(-55,380,46,"12.500 ¥","UI-018 380×46");Balance(-125,520,54,"1.234.567 ¥","UI-018 520×54 número grande");Balance(-195,300,40,"12.500 ¥","UI-018 300×40 pequena");
+ }
+ void Logo()
+ {
+  float vw=Camera.targetTexture.width/Canvas.scaleFactor;float w=Mathf.Max(vw,720f*1672/941);Art(pageRoot,Load("menu"),new Vector2(w,w*941/1672),Vector2.zero).transform.SetAsFirstSibling();
+  Art(pageRoot,Load("logo"),new Vector2(520,253),new Vector2(0,150));
+  for(int i=0;i<3;i++)Native(pageRoot,new[]{"Continuar","Novo jogo","Opções"}[i],new Vector2(230,50),new Vector2(0,-30-i*66));
+  Art(pageRoot,Load("logo"),new Vector2(200,97),new Vector2(-420,-250));Label(pageRoot,"logo 200u",new Vector2(160,20),new Vector2(-420,-310),12,false,true);
+  Facts.Add("Logo Simple preserveAspect 520u and 200u over UI-012 cover; exact text read visually");
+ }
+ public void Inspect(){Canvas.ForceUpdateCanvases();Failures.Clear();foreach(var t in Content){bool fit=t.preferredWidth<=t.rectTransform.rect.width+.5f&&t.preferredHeight<=t.rectTransform.rect.height+.5f;Facts.Add("TEXT "+t.text.Replace("\n","|")+" font="+t.fontSize+" rect="+t.rectTransform.rect.size+" preferred="+t.preferredWidth+"x"+t.preferredHeight+" fits="+fit);if(!fit)Failures.Add(t.text);}}
+}

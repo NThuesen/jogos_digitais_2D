@@ -1,0 +1,17 @@
+using UnityEditor;
+using UnityEngine;
+public static class B3QaSetup
+{
+ static void Sprite(string n,Vector4 border)
+ {
+  var im=(TextureImporter)AssetImporter.GetAtPath("Assets/_QA_B3_Temp/Resources/ModularQA/"+n+".png");
+  im.textureType=TextureImporterType.Sprite;im.spriteImportMode=SpriteImportMode.Single;im.spritePixelsPerUnit=100;im.spriteBorder=border;im.npotScale=TextureImporterNPOTScale.None;im.maxTextureSize=4096;im.mipmapEnabled=false;im.isReadable=false;im.alphaIsTransparency=true;im.textureCompression=TextureImporterCompression.Uncompressed;im.wrapMode=TextureWrapMode.Clamp;im.filterMode=FilterMode.Bilinear;
+  var s=new TextureImporterSettings();im.ReadTextureSettings(s);s.spriteMeshType=SpriteMeshType.FullRect;im.SetTextureSettings(s);im.SaveAndReimport();
+ }
+ public static void Configure()
+ {
+  foreach(var k in new[]{"cat_paw","clock","coin","cup","gear","gift","heart","shop_bag","star"})Sprite("icon_"+k,Vector4.zero);
+  Sprite("shop",new Vector4(85,45,85,45));Sprite("balance",new Vector4(85,45,85,45));Sprite("logo",Vector4.zero);Sprite("menu",Vector4.zero);
+  AssetDatabase.SaveAssets();
+ }
+}
