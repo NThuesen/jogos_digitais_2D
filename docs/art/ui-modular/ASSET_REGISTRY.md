@@ -1,6 +1,6 @@
 # Registro de produção — assets modulares
 
-**Assets aprovados: UI-001 e UI-004 COMPACT NORMAL v01 (`APPROVED`, ambos ainda não `INTEGRATED`). O PNG do compacto permanece local; somente o UI-001 está publicado como asset aprovado.** **[OUTPUT_MANIFEST.md](OUTPUT_MANIFEST.md) lista individualmente as 99 saídas com o nome exato e o prompt específico; esta tabela agrupa as 25 famílias.** Estado padrão: `PENDING`. Um prompt existente **não** equivale a PNG disponível. Atualize esta tabela somente com arquivos e validações realmente existentes.
+**Assets aprovados: UI-001 e UI-004 COMPACT NORMAL v01 (`APPROVED`, ambos ainda não `INTEGRATED`). O PNG do compacto permanece local; somente o UI-001 está publicado como asset aprovado.** **[OUTPUT_MANIFEST.md](OUTPUT_MANIFEST.md) lista individualmente as 100 saídas com o nome exato e o prompt específico; esta tabela agrupa as 25 famílias.** Estado padrão: `PENDING`. Um prompt existente **não** equivale a PNG disponível. Atualize esta tabela somente com arquivos e validações realmente existentes.
 
 | ID | Peça / prompt | Estado | Raw local | PNG limpo local | Versão aprovada / PR | Unity / QA |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -12,7 +12,8 @@
 | UI-005 | [05_BUTTON_SECONDARY](prompts/05_BUTTON_SECONDARY.md) | PENDING | — | — | — | NOT RUN |
 | UI-006 | [06_TABS_SET](prompts/06_TABS_SET.md) | PENDING | — | — | — | NOT RUN |
 | UI-007 | [07_MODAL_DIALOG](prompts/07_MODAL_DIALOG.md) | PENDING | — | — | — | NOT RUN |
-| UI-008 | [08_MAID_CARD_COMPACT](prompts/08_MAID_CARD_COMPACT.md) | REWORK | `raw_gpt/UI-008_maid_card_compact_v01.png` (local ignorado) | `blender_clean/UI-008_maid_card_compact_v01.png` (1070×1470, local ignorado) | Não aprovado | Editor: transparência/Suzu/texto PASS; visual REWORK em 0,62× por leitura pequena/densidade. 150×206 candidato visual restrito; WebGL PASS técnico seção 11 — [lote](reviews/UI_BATCH_002_003_008_COMPACT_STATES_V01.md) |
+| UI-008 (frame existente) | [08_MAID_CARD_COMPACT](prompts/08_MAID_CARD_COMPACT.md) | **UNITY_QA / REWORK em 0,62×** | `raw_gpt/UI-008_maid_card_compact_v01.png` (local ignorado) | `blender_clean/UI-008_maid_card_compact_v01.png` (1070×1470, local ignorado) | Não aprovado | PR #44: Editor/WebGL PASS técnico, candidato visual em 150×206; ilegível em 0,62×; sem integração |
+| UI-008 LINEUP MINIMAL (novo) | [08_MAID_CARD_LINEUP_MINIMAL](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md) | **PENDING** | — | — | — | Nova apresentação simplificada aprovada como conceito; PNG não gerado, QA NOT RUN |
 | UI-009 | [09_MAID_CARD_DETAIL](prompts/09_MAID_CARD_DETAIL.md) | PENDING | — | — | — | NOT RUN |
 | UI-010 | [10_RARITY_BADGES](prompts/10_RARITY_BADGES.md) | PENDING | — | — | — | NOT RUN |
 | UI-011 | [11_ICON_PACK](prompts/11_ICON_PACK.md) | PENDING | — | — | — | NOT RUN |
@@ -75,7 +76,7 @@
 
 ## UI-004 COMPACT — estados HOVER, PRESSED e DISABLED
 
-**Atualização Unity direcionada:** HOVER v02 **UNITY_QA — PASS**, PRESSED v01 **UNITY_QA — PASS**, DISABLED v01 **REWORK visual** (funcional PASS). Aguarda decisão do responsável; nenhum estado APPROVED/INTEGRATED. Export comum768×141 e configuração do NORMAL testados em120×44/150×44/230×54 a960×600/1280×720, fundos claros/escuros. Interação simulada Editor, sem mouse físico ou WebGL. DISABLED parece disponível sem styling complementar; aprovação não recomendada ainda. [Resultados e evidências novas](reviews/UI_BATCH_002_003_008_COMPACT_STATES_V01.md#8-qa-unity--estados-compact).
+**Checkpoint histórico — QA Editor dos estados, anterior à continuação WebGL:** HOVER v02 **UNITY_QA — PASS**, PRESSED v01 **UNITY_QA — PASS**, DISABLED v01 **REWORK visual** (funcional PASS). Aguarda decisão do responsável; nenhum estado APPROVED/INTEGRATED. Export comum768×141 e configuração do NORMAL testados em120×44/150×44/230×54 a960×600/1280×720, fundos claros/escuros. Interação simulada Editor, sem mouse físico ou WebGL. DISABLED parece disponível sem styling complementar; aprovação não recomendada ainda. [Resultados e evidências novas](reviews/UI_BATCH_002_003_008_COMPACT_STATES_V01.md#8-qa-unity--estados-compact).
 
 ### Checkpoint anterior — auditoria estática de PNG
 
@@ -112,3 +113,5 @@ As classificações e NOT RUN abaixo descrevem o checkpoint estático; o resulta
 ## Continuação PR #44 — WebGL consolidado
 
 Uma build temporária, Chromium/SwiftShader 960×600/1280×720: HOVER v02, PRESSED v01, DISABLED v02, UI-002/003 PASS nos casos medidos. UI-008 transparência/recorte/dados PASS, **REWORK visual para 0,62×**, candidato visual restrito 150×206. Mouse automatizado, não físico; zero erros de página/console, warning FSR software documentado. Texto WebGL mais pesado que Editor, principalmente na card pequena. Build/harness/configuração temporários removidos. [Evidências, limites e decisões pendentes](reviews/UI_BATCH_002_003_008_COMPACT_STATES_V01.md#11-p2--webgl-consolidado-e-fechamento). Nenhuma nova aprovação/integração; NORMAL/UI-001 aprovados e ornamental REWORK preservados.
+
+**Consolidação após a PR #45:** as duas apresentações de Maid Card permanecem distintas: o frame existente mantém PASS técnico Editor/WebGL, candidato visual em 150×206 e REWORK em 0,62×; LINEUP MINIMAL permanece PENDING, conceito aprovado, PNG não gerado e QA NOT RUN. A decisão de apresentação não aprova a arte do frame existente. HOVER v02, PRESSED v01, DISABLED v02 e UI-002 têm PASS Editor/WebGL; UI-003 tem PASS restrito aos tamanhos/textos testados. Os cinco candidatos aguardam aprovação artística explícita; todos os seis assets continuam sem integração.

@@ -1,6 +1,6 @@
-# OUTPUT_MANIFEST — 99 saídas com nomes fixos
+# OUTPUT_MANIFEST — 100 saídas com nomes fixos
 
-**99 saídas planejadas**, incluindo COMPACT NORMAL e seus três estados de interação. Situação real: UI-001 APPROVED (não integrado); NORMAL ornamental REWORK; COMPACT NORMAL gerado/QA PASS na PR #42 e aprovado pelo responsável, com registro APPROVED na PR #42 integrada, ainda não INTEGRATED; HOVER/PRESSED/DISABLED compactos ainda PENDING. O manifesto reserva nomes, não publica automaticamente os PNGs. Cada linha corresponde a 1 imagem isolada e a 1 prompt pronto. **Não peça para gerar tudo de uma vez.**
+**100 saídas planejadas**, incluindo COMPACT NORMAL e seus três estados de interação. Situação real: UI-001 APPROVED (não integrado); NORMAL ornamental REWORK; COMPACT NORMAL gerado/QA PASS na PR #42 e aprovado pelo responsável, com registro APPROVED na PR #42 integrada, ainda não INTEGRATED; HOVER/PRESSED/DISABLED compactos ainda PENDING. O manifesto reserva nomes, não publica automaticamente os PNGs. Cada linha corresponde a 1 imagem isolada e a 1 prompt pronto. **Não peça para gerar tudo de uma vez.**
 
 - Abra o prompt, baixe e anexe os PNGs reais listados nele, copie só o bloco indicado.
 - Quando terminar, **renomeie o download** com o nome exato abaixo e coloque em `art_working/ui_modular/raw_gpt/`.
@@ -28,7 +28,8 @@
 | [`06_TAB_HOVER.md`](prompts/variants/06_TAB_HOVER.md) | `UI-006_tab_hover_v01.png` | `art_working/ui_modular/raw_gpt/UI-006_tab_hover_v01.png` | PENDING |
 | [`06_TAB_INACTIVE.md`](prompts/variants/06_TAB_INACTIVE.md) | `UI-006_tab_inactive_v01.png` | `art_working/ui_modular/raw_gpt/UI-006_tab_inactive_v01.png` | PENDING |
 | [`07_MODAL_DIALOG.md`](prompts/07_MODAL_DIALOG.md) | `UI-007_modal_dialog_v01.png` | `art_working/ui_modular/raw_gpt/UI-007_modal_dialog_v01.png` | PENDING |
-| [`08_MAID_CARD_COMPACT.md`](prompts/08_MAID_CARD_COMPACT.md) | `UI-008_maid_card_compact_v01.png` | `art_working/ui_modular/raw_gpt/UI-008_maid_card_compact_v01.png` | PENDING |
+| [`08_MAID_CARD_COMPACT.md`](prompts/08_MAID_CARD_COMPACT.md) | `UI-008_maid_card_compact_v01.png` | `art_working/ui_modular/raw_gpt/UI-008_maid_card_compact_v01.png` | RAW/CLEAN local; QA PR #44: 150×206 candidato detalhado, 0,62× REWORK; não aprovado |
+| [`08_MAID_CARD_LINEUP_MINIMAL.md`](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md) | `UI-008_maid_card_lineup_minimal_v01.png` | `art_working/ui_modular/raw_gpt/UI-008_maid_card_lineup_minimal_v01.png` | PENDING — nova moldura simplificada de Escalação, ainda não gerada |
 | [`09_MAID_CARD_DETAIL.md`](prompts/09_MAID_CARD_DETAIL.md) | `UI-009_maid_card_detail_v01.png` | `art_working/ui_modular/raw_gpt/UI-009_maid_card_detail_v01.png` | PENDING |
 | [`10_RARITY_BADGE_COMMON.md`](prompts/variants/10_RARITY_BADGE_COMMON.md) | `UI-010_rarity_badge_common_v01.png` | `art_working/ui_modular/raw_gpt/UI-010_rarity_badge_common_v01.png` | PENDING |
 | [`10_RARITY_BADGE_EPIC.md`](prompts/variants/10_RARITY_BADGE_EPIC.md) | `UI-010_rarity_badge_epic_v01.png` | `art_working/ui_modular/raw_gpt/UI-010_rarity_badge_epic_v01.png` | PENDING |

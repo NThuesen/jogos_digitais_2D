@@ -1,6 +1,6 @@
 # Tutorial de geração — anexos exatos, prompts prontos, nomes definidos
 
-**Você não precisa inventar nomes nem preencher `[STATE]`.** Cada arquivo em `prompts/` ou `prompts/variants/` traz **(1) anexos com nomes e links reais; (2) um bloco único pronto para copiar; (3) nome e pasta exatos do PNG final**. O [manifesto](OUTPUT_MANIFEST.md) contém os **99 nomes**. O UI-001 está aprovado e versionado; o NORMAL ornamental de UI-004 permaneceu REWORK; o COMPACT NORMAL foi gerado e validado na PR #42, com aprovação expressa do responsável, com registro APPROVED incorporado pela PR #42 (sem integração Unity). Os estados compactos HOVER/PRESSED/DISABLED são os próximos candidatos. O registro distingue prompts, PNGs disponíveis, aprovados e integrados.
+**Você não precisa inventar nomes nem preencher `[STATE]`.** Cada arquivo em `prompts/` ou `prompts/variants/` traz **(1) anexos com nomes e links reais; (2) um bloco único pronto para copiar; (3) nome e pasta exatos do PNG final**. O [manifesto](OUTPUT_MANIFEST.md) contém os **100 nomes**. O UI-001 está aprovado e versionado; o NORMAL ornamental de UI-004 permaneceu REWORK; o COMPACT NORMAL foi gerado e validado na PR #42, com aprovação expressa do responsável, com registro APPROVED incorporado pela PR #42 (sem integração Unity). Os estados compactos HOVER/PRESSED/DISABLED são os próximos candidatos. O registro distingue prompts, PNGs disponíveis, aprovados e integrados.
 
 ## Passo zero — baixar as referências que já EXISTEM
 
@@ -82,7 +82,22 @@ Ao gerar as variantes, peça para manter **o mesmo contorno e tamanho da imagem 
 4. Salve como **`UI-008_maid_card_compact_v01.png`** em `raw_gpt/`, depois `blender_clean/` e `approved/` quando cabível.
 5. Teste na Unity com Suzu real atrás da moldura e textos dinâmicos em 960×600 e 1280×720. A geração de portraits é outro gate.
 
-## Passo 4 — Demais componentes sem adivinhações
+## Passo 4 — Demais componentes sem adivinhações## Passo 3B — NOVO: Maid Card minimalista para Escalação (duas apresentações aprovadas)
+
+**Decisão 04/11/2026:** o frame já gerado `UI-008_maid_card_compact_v01.png` permanece candidato para apresentação **detalhada em 150×206**, mas não é legível universalmente a **0,62× (~93×128)**. O novo frame de Escalação é **outro PNG**, não um v02 da arte detalhada. O conceito de duas apresentações está aprovado; nenhum dos PNGs UI-008 foi aprovado ou integrado.
+
+1. Abra o [**PROMPT COMPLETO UI-008 LINEUP MINIMAL**](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md).
+2. **Anexe obrigatoriamente estes três arquivos reais**:
+   - `UI-008_maid_card_compact_v01.png` **CLEAN local** em `art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png` (ainda não aprovado; não está publicado no Git).
+   - `after_ES-2_escalacao_960x600.png` em `docs/roadmap/ui-01b/evidence/after_ES-2_escalacao_960x600.png` ([baixar](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/roadmap/ui-01b/evidence/after_ES-2_escalacao_960x600.png)).
+   - `UI-001_panel_large_v01.png` em `docs/art/ui-modular/approved/UI-001_panel_large_v01.png` ([baixar](approved/UI-001_panel_large_v01.png)).
+3. **Opcionais:** `suzu_walk.png` em `Assets/_Game/Resources/Maids/suzu_walk.png` e `webgl_chrome_960x600.jpg` em `docs/art/maid-walk/evidence_illustrated/webgl_chrome_960x600.jpg`. **Não** anexar `UI-009_maid_card_detail_v01.png`: ainda é futuro.
+4. Copie **somente o bloco `text` completo** do novo prompt e peça **UMA moldura vertical vazia**, com janela realmente transparente para portrait e faixa simples de nome, sem atributos/salário/maid/texto embutidos.
+5. Salve em `art_working/ui_modular/raw_gpt/UI-008_maid_card_lineup_minimal_v01.png`; nunca sobrescreva `UI-008_maid_card_compact_v01.png`. Após limpeza e revisão, Codex testa 150×206 e 0,62× em 960×600/1280×720; somente o responsável aprova.
+
+**Não é necessário gerar um UI-009 agora.** Ele permanece como possível card expandido de detalhes; o UI-008 já gerado é candidato detalhado restrito.
+
+
 
 - [**Botões secundários**](prompts/05_BUTTON_SECONDARY.md): quatro prompts distintos, quatro nomes fixos.
 - [**Abas**](prompts/06_TABS_SET.md): três prompts, três PNGs, não uma prancha.
@@ -91,7 +106,7 @@ Ao gerar as variantes, peça para manter **o mesmo contorno e tamanho da imagem 
 - [**Arquitetura**](prompts/13_RESTAURANT_BACKGROUND.md), [**props decorativos**](prompts/14_RESTAURANT_PROPS_SET.md), [**paredes**](prompts/23_WALL_SEGMENT.md) e [**placeables reais da Unity**](prompts/24_FURNITURE_SINGLE.md): cada subarquivo tem nome próprio, anexos e destino.
 - [**Portraits das nove maids**](prompts/21_MAID_PORTRAIT.md): somente após aprovação específica; cada prompt já indica o PNG real `*_walk.png` e a evidência visual de sua maid.
 
-Não é obrigatório gerar todas as 99 imagens. Elas estão **documentadas de antemão** para você poder escolher sem reescrever prompt ou nome.
+Não é obrigatório gerar todas as 100 imagens. Elas estão **documentadas de antemão** para você poder escolher sem reescrever prompt ou nome.
 
 ## Como salvar e tratar transparência
 

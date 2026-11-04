@@ -29,7 +29,7 @@ Todos os seis passaram `Pillow.verify()` e decodificação completa: **PNG RGBA8
 | --- | --- | --- | --- | --- |
 | `UI-002_panel_medium_v01` | 1,463,362 | `a939d2bc990e56787fea85f0b543303ade489bddfbadb412a4c20a60a2288b16` | 1,228,521 | `00c44a34dca15be2cb61d994f05e32ec52775451bf80227bde5faa072683b2c9` |
 | `UI-003_panel_small_label_v01` | 1,564,433 | `0775e22cfdfa766b25eafa68ec13cb819a961c5f63e6e02c367829bd80c1e3df` | 1,392,186 | `0a79225c60c61541f34c1d34f3d45f7e0685917d5d9c82cd19b9fec534b31a27` |
-| `UI-008_maid_card_compact_v01` | 1,303,954 | `c849093964090779adc92a83f9880fcc0e72de 22622479f12b8917b733f118a2` | 1,138,752 | `74ea40f0b528580b4f809bd20a359bd1dbdacb02e4014f0d8ce0576676fb6342` |
+| `UI-008_maid_card_compact_v01` | 1,303,954 | `c849093964090779adc92a83f9880fcc0e72de22622479f12b8917b733f118a2` | 1,138,752 | `74ea40f0b528580b4f809bd20a359bd1dbdacb02e4014f0d8ce0576676fb6342` |
 | `UI-004_button_primary_compact_hover_v01` | 739,613 | `6c8dc92d2274419387301b7b1161920011032d9d0341256c935a694de718121c` | — | Não gerado / RAW inalterado |
 | `UI-004_button_primary_compact_pressed_v01` | 745,104 | `291a26b50675ecce4670b77de3705a5f71a4eeffdf4d0b50734a58da910d038d` | — | Não gerado / RAW inalterado |
 | `UI-004_button_primary_compact_disabled_v01` | 728,538 | `5ddb38f5275dfda5b95eb4ae73d06e9df468c5400310d20900e4c73df4e0cb60` | — | Não gerado / RAW inalterado |
@@ -325,4 +325,22 @@ As seis capturas WebGL foram comparadas com as seis Editor: sem diferença visua
 
 **Limpeza do ambiente concluída:** build140 MiB, cena, harness, imports e template temporários removidos. PlayerSettings restaurado; três linhas de batching WebGL serializadas automaticamente foram inspecionadas e revertidas ao HEAD inicial. Nenhum arquivo de código/cena/configuração de produção permanece alterado. RAWs, CLEANs e exports candidatos locais preservados; somente documentação, provas e fontes como texto versionadas. [Hashes finais dos exports](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/final_export_manifest.json) prevalecem sobre o checkpoint de cópia de masters; [hashes das imagens de evidência](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/evidence_manifest.json), [vereditos](evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP/verdict.json).
 
-**Pendências do responsável:** aprovar/reprovar HOVER v02, PRESSED v01, DISABLED v02, UI-002 e UI-003 com seus limites; decidir uso mínimo/apresentação da UI-008 antes de autorizar integração universal ou nova geração. Não há necessidade demonstrada de DISABLED v03. Aprovar esta documentação não integra PNGs nem autoriza mudanças de layout/telas. **NOT RUN:** mouse físico, GPU física/performance/memória residente, compressão de bloco, Firefox/Safari, teclado/gamepad/foco/drag-cancel, telas completas/scroll/save/regras de compra e escalas não listadas. QA extensos anteriores não repetidos. Sem merge/auto-merge.
+**Pendências do responsável:** aprovar/reprovar HOVER v02, PRESSED v01, DISABLED v02, UI-002 e UI-003 com seus limites; decidir o aceite artístico e o uso restrito do frame UI-008 existente em 150×206. A PR #45 já estabeleceu duas apresentações: o frame existente e a nova LINEUP MINIMAL (conceito aprovado, variante PENDING, PNG não gerado e QA NOT RUN); essa decisão não aprova a arte existente nem integra qualquer variante. Não há necessidade demonstrada de DISABLED v03. Aprovar esta documentação não integra PNGs nem autoriza mudanças de layout/telas. **NOT RUN:** mouse físico, GPU física/performance/memória residente, compressão de bloco, Firefox/Safari, teclado/gamepad/foco/drag-cancel, telas completas/scroll/save/regras de compra e escalas não listadas. QA extensos anteriores não repetidos. O fechamento documental da PR #44 foi autorizado pelo responsável; aprovação artística e integração continuam pendentes.
+
+
+## 12. Fechamento documental após a PR #45
+
+Sincronização com a main preserva integralmente a decisão das duas apresentações de Maid Card e os arquivos da PR #45. Nenhuma geração, build ou nova execução Unity/WebGL nesta etapa.
+
+| Asset | Veredito consolidado existente | Aprovação artística / integração |
+| --- | --- | --- |
+| HOVER v02 | PASS Editor/WebGL | Pendente / não integrado |
+| PRESSED v01 | PASS Editor/WebGL | Pendente / não integrado |
+| DISABLED v02 | PASS Editor/WebGL | Pendente / não integrado |
+| UI-002 | PASS Editor/WebGL | Pendente / não integrado |
+| UI-003 | PASS Editor/WebGL com restrições de tamanho/texto da seção 9 | Pendente / não integrado |
+| UI-008 existente | PASS técnico Editor/WebGL; candidato visual em 150×206; REWORK em 0,62× | Pendente / não integrado |
+
+**UI-008 LINEUP MINIMAL:** variante nova PENDING, conceito aprovado pela PR #45; PNG ainda não gerado, QA NOT RUN. Não herda o QA do frame existente. Os cinco candidatos acima não são APPROVED por terem QA PASS. O merge documental não equivale a aprovação artística ou integração.
+
+**Validação documental do fechamento — PASS:** 31 evidências conferidas por bytes/SHA-256 nos quatro manifestos; JSON/XML/fontes Python como texto válidos; verificador FOLLOWUP existente passou, incluindo hashes de RAW/CLEAN/exports locais, resultados Editor/WebGL arquivados, links e remoção de temporários. Links do registro, relatório e READMEs do lote válidos. SHA-256 RAW da UI-008 corrigido no texto para coincidir com o registro de auditoria. **NOT RUN nesta etapa:** Unity, WebGL, geração e builds; os resultados técnicos acima são os já existentes.
