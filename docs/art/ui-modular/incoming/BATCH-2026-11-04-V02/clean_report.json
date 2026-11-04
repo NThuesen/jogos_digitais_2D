@@ -40,5 +40,15 @@
     "operation": "byte-identical copy; opaque RGB, no cleanup needed",
     "removed_alpha1_3_pixels": 0,
     "solidified_pixels": 0
+  },
+  "UI-022_floor_tile_warm_oak_v03_tone34.png": {
+    "derived_from": "UI-022_floor_tile_warm_oak_v03.png (raw/CLEAN unchanged)",
+    "operation": "per-pixel sRGB blend 34% of (0.72,0.58,0.46) over RGB; no resampling, no geometry change; seamless/periodicity preserved",
+    "sha256": "42a4658f0fc1b641afddab670128686feff4ce817638b04c5cbc38300757fecb",
+    "bytes": 873267,
+    "dimensions": [
+      1024,
+      1024
+    ]
   }
 }
