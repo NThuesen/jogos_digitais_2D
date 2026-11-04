@@ -4,7 +4,7 @@
 
 Base main `53b7f965141871041b21e96a053eff4d0e7e4596` (merge protegido da PR #44). A PR #46 permanece independente; sua branch/arquivos não foram alterados. Este lote usa worktree/branch `qa/ui-modular-new-batch` a partir da main, sem duplicar o diff #44/#46. Os hashes históricos/aprovações expressas foram consultados para excluir os seis candidatos já validados e preservar suas decisões; não se usa ausência na main para reprocessá-los.
 
-**23 RAWs encontrados; 11 históricos preservados, 12 novos processados.** Nenhum nome incorreto, duplicado byte a byte/pixels ou candidato BLOCKED no inventário. HOVER/DISABLED v01/v02 são versões históricas distintas, não duplicatas a apagar. Nenhum RAW alterado, CLEAN anterior sobrescrito, nova aprovação artística ou integração. Os 12 CLEANs/exports novos continuam locais/ignorados; somente relatório, métricas, provas e fontes reproduzíveis como texto são versionados. Esta PR exige revisão do responsável e **não tem merge/auto-merge solicitado**.
+**23 RAWs encontrados; 11 históricos preservados, 12 novos processados.** Nenhum nome incorreto, duplicado byte a byte/pixels ou candidato BLOCKED no inventário. HOVER/DISABLED v01/v02 são versões históricas distintas, não duplicatas a apagar. Nenhum RAW alterado, CLEAN anterior sobrescrito, nova aprovação artística ou integração. No checkpoint original do QA, os 12 CLEANs/exports eram locais/ignorados. No handoff posterior solicitado pelo responsável, [os PNGs individuais passaram a ser publicados em incoming](../incoming/BATCH-2026-11-04/README.md), com [proveniência e hashes](../incoming/BATCH-2026-11-04/PROVENANCE.json); as fontes locais continuam preservadas. Esta PR exige revisão do responsável e **não tem merge/auto-merge solicitado**.
 
 ## Inventário RAW → CLEAN → export
 
@@ -200,3 +200,9 @@ Os scripts de processamento, preparação, runner e navegador estão em `evidenc
 **PASS:** 23 RAWs e 8 CLEANs anteriores intactos por hash; 12 CLEANs/exports novos verificados por SHA-256/bytes/dimensões, RGB/canvas e política exata de alpha; JSON/XML/Python e PNGs válidos; links e diff conferidos. Build, cena, harness e template temporários removidos; [registro](evidence/BATCH-NEW-2026-11-04/cleanup.json). Nenhuma diferença em Assets/_Game, ProjectSettings ou Packages após o finally do builder. RAW/CLEAN/export locais preservados.
 
 Textos de evidência usam LF para que hashes coincidam no Git e no checkout; somente finais de linha do XML/fontes eventualmente CRLF foram normalizados, sem mudar valores, resultados ou código. [Registro de normalização](evidence/BATCH-NEW-2026-11-04/evidence_text_normalization.json) mantém hashes/bytes de origem e destino dos textos afetados. Não confundir a formatação portátil com reexecução ou alteração de resultados.
+
+## Publicação individual e handoff posterior ao QA
+
+[Índice visual individual](../incoming/BATCH-2026-11-04/README.md): 12 CLEAN masters, 10 exports distintos e 2 RAWs distintos, todos cópias byte a byte dos arquivos já auditados. UI-012 export = CLEAN; UI-022 RAW = CLEAN = export, logo esses papéis usam um único PNG para evitar duplicação. Os três RAWs REWORK estão disponíveis para novas tentativas. Não houve processamento de pixels, geração, build ou reexecução de Editor/WebGL nesta publicação.
+
+Os prompts v02 de UI-007/UI-009/UI-022 da #48 foram preservados sem reescrita; v01 REWORK e v02 PENDING estão reconciliados no manifesto. [Handoff para Claude Code](../HANDOFF_CLAUDE_CODE_2026_11_04.md). Nenhum dos nove candidatos PASS técnico foi promovido a APPROVED e a #47 permanece aberta, sem auto-merge.

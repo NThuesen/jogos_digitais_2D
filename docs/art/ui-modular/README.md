@@ -54,3 +54,9 @@ Essas pastas usam `.gitkeep`. **Os prompts não geram PNGs automaticamente, e os
 **Exceção:** `docs/art/ui-modular/approved/UI-001_panel_large_v01.png` está versionado (APPROVED, não integrado).
 
 **Referência ART-01D:** preservar aconchego, molduras e visual novel; **não** reproduzir pixel art nem copiar personagens. Cenário e menus podem diferir em ornamentação, mantendo linguagem comum. O piloto deve passar nas resoluções 960×600 e 1280×720 antes de produção em escala.
+
+## Encerramento técnico e revisão artística (04/11/2026)
+
+- [Índice visual dos 12 PNGs individuais, exports testados e RAWs REWORK](incoming/BATCH-2026-11-04/README.md).
+- [Handoff final para Claude Code](HANDOFF_CLAUDE_CODE_2026_11_04.md): status das PRs #46/#47/#48, caminhos locais, hashes, limitações e próximas tarefas.
+- #47 aguarda revisão artística, sem auto-merge e sem integração. Os nove PASS técnicos não são APPROVED. UI-007/UI-009/UI-022 v01 continuam REWORK; v02 PENDING seguem os prompts já corrigidos na #48.

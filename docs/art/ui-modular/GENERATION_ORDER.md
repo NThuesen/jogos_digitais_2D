@@ -2,6 +2,10 @@
 
 **Status do fluxo em 03/11/2026:** UI-001 APPROVED (não integrado); UI-004 ornamental NORMAL v01 REWORK; UI-004 COMPACT NORMAL gerado, limpo, com QA PASS na PR #42 e aprovado pelo responsável (registro APPROVED na PR #42 integrada, ainda não INTEGRATED); HOVER/PRESSED/DISABLED ornamentais e compactos ainda não gerados. O objetivo é uma linguagem visual consistente, não completar 100 imagens por completude. Cada link vai para **um prompt executável**, sem `[STATE]` a preencher.
 
+## Prioridade atual de correção — v02 após QA da PR #47
+
+**Novos prompts já corrigidos in-place**: [UI-007 modal completo sem corte](prompts/07_MODAL_DIALOG.md) → `UI-007_modal_dialog_v02.png`; [UI-009 detalhe sem barras/símbolos pintados](prompts/09_MAID_CARD_DETAIL.md) → `UI-009_maid_card_detail_v02.png` (**opcional**, pois UI-008 detalhado já existe); [UI-022 piso seamless](prompts/22_FLOOR_TILE.md) → `UI-022_floor_tile_warm_oak_v02.png`. Os anexos reais e respectivos caminhos estão nos prompts e no [tutorial](TUTORIAL.md#atualização-de-04112026--prompts-corrigidos-após-qa-da-pr-47). Preserve v01 REWORK; v02 não gerados e não aprovados. Não integrar antes de novo QA. O restante da ordem abaixo é histórico/planejado, não instrução para regerar os assets já auditados.
+
 ## Prioridade atual — estados da UI-004 compacta
 
 **NORMAL compacto já foi gerado e validado na [PR #42](https://github.com/NThuesen/jogos_digitais_2D/pull/42), com aprovação do responsável.** Próximas imagens candidatas são **COMPACT HOVER**, **COMPACT PRESSED** e **COMPACT DISABLED**, nessa ordem, cada qual com prompt próprio e um único PNG. [Tutorial e anexos](TUTORIAL.md#passo-2b--gerar-hover-pressed-e-disabled-do-botão-compacto-aprovado).
