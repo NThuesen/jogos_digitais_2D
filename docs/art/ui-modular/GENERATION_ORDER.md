@@ -1,8 +1,11 @@
 # Ordem de geração e aprovação (sem lotes)
 
-**Status do fluxo em 03/11/2026:** UI-001 APPROVED (não integrado); UI-004 ornamental NORMAL v01 REWORK; UI-004 COMPACT NORMAL gerado, limpo, com QA PASS na PR #42 e aprovado pelo responsável (registro APPROVED na PR #42 integrada, ainda não INTEGRATED); HOVER/PRESSED/DISABLED ornamentais e compactos ainda não gerados. O objetivo é uma linguagem visual consistente, não completar 100 imagens por completude. Cada link vai para **um prompt executável**, sem `[STATE]` a preencher.
+**Status vigente em 04/11/2026:** UI-001 e COMPACT NORMAL mantêm APPROVED. HOVER v02, PRESSED v01, DISABLED v02, UI-002 e UI-003 (com restrições) foram aprovados expressamente pelo responsável; UI-008 aceita somente em 150×206 detalhado, REWORK em 0,62×. [PNGs finais e handoff](approved/README.md). Nenhum integrado. LINEUP MINIMAL PENDING, não gerada. O objetivo é uma linguagem visual consistente, não completar 100 imagens por completude.
 
-## Prioridade atual — estados da UI-004 compacta
+
+## Histórico de geração — estados da UI-004 compacta
+
+**Checkpoint anterior às aprovações de 04/11/2026; sequência abaixo mantida como histórico, não regenerar os estados aprovados.**
 
 **NORMAL compacto já foi gerado e validado na [PR #42](https://github.com/NThuesen/jogos_digitais_2D/pull/42), com aprovação do responsável.** Próximas imagens candidatas são **COMPACT HOVER**, **COMPACT PRESSED** e **COMPACT DISABLED**, nessa ordem, cada qual com prompt próprio e um único PNG. [Tutorial e anexos](TUTORIAL.md#passo-2b--gerar-hover-pressed-e-disabled-do-botão-compacto-aprovado).
 
@@ -18,11 +21,11 @@ A decisão de produto estabelece duas linhas: ornamental grande (~260×88, arte 
 
 ## P0 — primeiro piloto (sequência originalmente documentada; mantida como histórico)## Nova prioridade — Maid Card minimalista da Escalação (04/11/2026)
 
-**Decisão aprovada:** duas apresentações para a mesma maid, sem duplicar dados. O UI-008 já gerado é candidato **detalhado** em 150×206, mas falhou visualmente na Escalação a 0,62×. Gerar agora **somente** [UI-008 LINEUP MINIMAL](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md) → `art_working/ui_modular/raw_gpt/UI-008_maid_card_lineup_minimal_v01.png` (**PENDING**).
+**Decisão aprovada:** duas apresentações para a mesma maid, sem duplicar dados. O UI-008 já gerado é aprovado expressamente para uso **detalhado somente em 150×206**, mas falhou visualmente na Escalação a 0,62×. Gerar agora **somente** [UI-008 LINEUP MINIMAL](prompts/variants/08_MAID_CARD_LINEUP_MINIMAL.md) → `art_working/ui_modular/raw_gpt/UI-008_maid_card_lineup_minimal_v01.png` (**PENDING**).
 
-**Anexos obrigatórios:** `art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png` (CLEAN local, não aprovado); `docs/roadmap/ui-01b/evidence/after_ES-2_escalacao_960x600.png`; `docs/art/ui-modular/approved/UI-001_panel_large_v01.png`. Opcionais: `Assets/_Game/Resources/Maids/suzu_walk.png` e `docs/art/maid-walk/evidence_illustrated/webgl_chrome_960x600.jpg`. [Tutorial detalhado](TUTORIAL.md#passo-3b--novo-maid-card-minimalista-para-escalação-duas-apresentações-aprovadas).
+**Anexos obrigatórios:** `art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png` (CLEAN local aprovado apenas em 150×206; [master publicado](approved/UI-008_maid_card_compact_v01.png)); `docs/roadmap/ui-01b/evidence/after_ES-2_escalacao_960x600.png`; `docs/art/ui-modular/approved/UI-001_panel_large_v01.png`. Opcionais: `Assets/_Game/Resources/Maids/suzu_walk.png` e `docs/art/maid-walk/evidence_illustrated/webgl_chrome_960x600.jpg`. [Tutorial detalhado](TUTORIAL.md#passo-3b--novo-maid-card-minimalista-para-escalação-duas-apresentações-aprovadas).
 
-**UI-009** (frame expandido) continua PENDING e não bloqueia esta etapa. UI-008 atual não é descartado, renomeado ou aprovado automaticamente. Nenhuma integração antes do QA/decisão.
+**UI-009** (frame expandido) continua PENDING e não bloqueia esta etapa. UI-008 atual não é descartado nem renomeado; seu aceite artístico explícito é restrito a 150×206. Nenhuma integração antes do QA/decisão.
 
 
 

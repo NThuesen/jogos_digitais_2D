@@ -4,7 +4,9 @@
 
 Base: `98688920fc6ea5595eadfb7becd8d07d6fe78302` (main remota, inclui prompts da PR #43); branch `qa/ui-modular-batch-six`. Inspeção em 03/11/2026. A skill de modificação segura e o fluxo branch→PR foram reaproveitados; nenhuma memória canônica alterada.
 
-**Resultado atual (seções 9–11): HOVER v02/PRESSED v01/DISABLED v02/UI-002/UI-003 candidatos à aprovação, com limites; UI-008 REWORK para uso universal em 0,62×.** O lote v01 abaixo mantém seus resultados históricos, inclusive HOVER v01/DISABLED v01 REWORK. Nenhum novo asset aprovado.
+**Checkpoint do QA anterior à aprovação artística (seções 9–11): HOVER v02/PRESSED v01/DISABLED v02/UI-002/UI-003 candidatos à aprovação, com limites; UI-008 REWORK para uso universal em 0,62×.** O lote v01 abaixo mantém seus resultados históricos, inclusive HOVER v01/DISABLED v01 REWORK. Nenhum novo asset aprovado.
+
+**Decisão artística posterior em 04/11/2026:** ver [seção 13](#13-aprovação-artística-expressa-do-responsável). O QA abaixo e suas pendências históricas foram preservados; a aprovação não integra assets.
 
 ## 1. Resultado consolidado — checkpoint estático histórico
 
@@ -344,3 +346,15 @@ Sincronização com a main preserva integralmente a decisão das duas apresenta�
 **UI-008 LINEUP MINIMAL:** variante nova PENDING, conceito aprovado pela PR #45; PNG ainda não gerado, QA NOT RUN. Não herda o QA do frame existente. Os cinco candidatos acima não são APPROVED por terem QA PASS. O merge documental não equivale a aprovação artística ou integração.
 
 **Validação documental do fechamento — PASS:** 31 evidências conferidas por bytes/SHA-256 nos quatro manifestos; JSON/XML/fontes Python como texto válidos; verificador FOLLOWUP existente passou, incluindo hashes de RAW/CLEAN/exports locais, resultados Editor/WebGL arquivados, links e remoção de temporários. Links do registro, relatório e READMEs do lote válidos. SHA-256 RAW da UI-008 corrigido no texto para coincidir com o registro de auditoria. **NOT RUN nesta etapa:** Unity, WebGL, geração e builds; os resultados técnicos acima são os já existentes.
+
+## 13. Aprovação artística expressa do responsável
+
+Em 04/11/2026, após os resultados existentes da PR #44, o responsável **APROVOU visualmente** HOVER v02, PRESSED v01, DISABLED v02, UI-002 v01 e UI-003 v01. A aprovação da UI-003 respeita as restrições documentadas de tamanho/texto: fonte 18, 180×44 com título curto (“Voltar”), 260×54 com “Escalação de hoje” e 360×64 com “Química”; preferir 54–64u quando o detalhe ornamental importar, sem aceite universal para textos longos em 180×44.
+
+O responsável **aceitou visualmente UI-008 v01 somente para uso detalhado em 150×206**. O uso reduzido a 0,62× na Escalação continua **REWORK e não aprovado**; outras escalas/telas não foram homologadas. A apresentação LINEUP MINIMAL da PR #45 permanece **PENDING**, PNG não gerado, QA NOT RUN.
+
+[Handoff dos PNGs finais](../approved/README.md) e [manifesto com hashes e proveniência](../approved/UI_MODULAR_SIX_APPROVAL_MANIFEST.json): seis masters aprovados e seis exports já validados, copiados byte a byte dos arquivos locais existentes. PRESSED v01 usa RAW já limpo, sem criar um CLEAN fictício. Configurações Unity testadas são registradas para os exports; não há novos importers ou integração. Nenhum RAW, CLEAN, export local, versão antiga, manifesto de evidência ou histórico REWORK foi sobrescrito. UI-001 e NORMAL compacto mantêm aprovação anterior; ornamental, HOVER v01 e DISABLED v01 mantêm REWORK.
+
+Aprovação artística, QA técnico e integração permanecem distintos. **Nenhum asset INTEGRATED.** Editor/WebGL/builds e geração **NOT RUN nesta etapa**, por escopo expresso; os PASS técnicos são os já registrados, com os mesmos limites. Integração e QA em telas definitivas são tarefa separada.
+
+**Validação do registro artístico — PASS:** arquivos/hashes/proveniência, 12 PNGs copiados sem alteração, 31 evidências históricas intactas, links locais e diff documental; detalhes no [handoff](../approved/README.md#validação-deste-fechamento). **NOT RUN:** Editor/WebGL/builds/geração; não necessários para cópia byte a byte dos arquivos testados e registro da decisão.

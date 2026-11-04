@@ -1,9 +1,9 @@
 # 08_MAID_CARD_COMPACT — pronto para copiar, sem campos variáveis
 
-> **ATUALIZAÇÃO 04/11/2026 — PROMPT HISTÓRICO.** O `UI-008_maid_card_compact_v01.png` já foi gerado e limpo localmente. QA Editor/WebGL na PR #44: **candidato visual em 150×206**, **REWORK em 0,62× (~93×128)**. **Não regenerar esta arte para resolver a Escalação:** a nova decisão de produto estabelece um frame simplificado separado. Use [**08_MAID_CARD_LINEUP_MINIMAL.md**](variants/08_MAID_CARD_LINEUP_MINIMAL.md), com anexos reais e prompt robusto. O PNG existente não está aprovado/integrado.
+> **ATUALIZAÇÃO 04/11/2026 — PROMPT HISTÓRICO.** O `UI-008_maid_card_compact_v01.png` já foi gerado e limpo localmente. QA técnico Editor/WebGL na PR #44 PASS; decisão posterior do responsável: **aceite artístico expresso somente em 150×206 detalhado**, **REWORK em 0,62× (~93×128)**. **Não regenerar esta arte para resolver a Escalação:** a nova decisão de produto estabelece um frame simplificado separado. Use [**08_MAID_CARD_LINEUP_MINIMAL.md**](variants/08_MAID_CARD_LINEUP_MINIMAL.md), com anexos reais e prompt robusto. O PNG existente está APPROVED apenas nesse tamanho, sem integração; [master publicado](../approved/UI-008_maid_card_compact_v01.png).
 
 
-**Ainda não gerado/aprovado.** Saída: `UI-008_maid_card_compact_v01.png`.
+**Gerado e aprovado somente em 150×206 detalhado; REWORK em 0,62×; não INTEGRATED.** Saída: `UI-008_maid_card_compact_v01.png`.
 
 ## 1. Anexe ao ChatGPT estes arquivos EXATOS do repositório
 
