@@ -39,15 +39,15 @@
 | [`10_RARITY_BADGE_LEGENDARY.md`](prompts/variants/10_RARITY_BADGE_LEGENDARY.md) | `UI-010_rarity_badge_legendary_v01.png` | `art_working/ui_modular/raw_gpt/UI-010_rarity_badge_legendary_v01.png` | PENDING |
 | [`10_RARITY_BADGE_RARE.md`](prompts/variants/10_RARITY_BADGE_RARE.md) | `UI-010_rarity_badge_rare_v01.png` | `art_working/ui_modular/raw_gpt/UI-010_rarity_badge_rare_v01.png` | PENDING |
 | [`11_ICON_BOOK.md`](prompts/variants/11_ICON_BOOK.md) | `UI-011_icon_book_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_book_v01.png` | PENDING |
-| [`11_ICON_CAT_PAW.md`](prompts/variants/11_ICON_CAT_PAW.md) | `UI-011_icon_cat_paw_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_cat_paw_v01.png` | PENDING |
-| [`11_ICON_CLOCK.md`](prompts/variants/11_ICON_CLOCK.md) | `UI-011_icon_clock_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_clock_v01.png` | PENDING |
-| [`11_ICON_COIN.md`](prompts/variants/11_ICON_COIN.md) | `UI-011_icon_coin_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_coin_v01.png` | PENDING |
-| [`11_ICON_CUP.md`](prompts/variants/11_ICON_CUP.md) | `UI-011_icon_cup_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_cup_v01.png` | PENDING |
-| [`11_ICON_GEAR.md`](prompts/variants/11_ICON_GEAR.md) | `UI-011_icon_gear_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_gear_v01.png` | PENDING |
-| [`11_ICON_GIFT.md`](prompts/variants/11_ICON_GIFT.md) | `UI-011_icon_gift_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_gift_v01.png` | PENDING |
-| [`11_ICON_HEART.md`](prompts/variants/11_ICON_HEART.md) | `UI-011_icon_heart_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_heart_v01.png` | PENDING |
-| [`11_ICON_SHOP_BAG.md`](prompts/variants/11_ICON_SHOP_BAG.md) | `UI-011_icon_shop_bag_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_shop_bag_v01.png` | PENDING |
-| [`11_ICON_STAR.md`](prompts/variants/11_ICON_STAR.md) | `UI-011_icon_star_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_star_v01.png` | PENDING |
+| [`11_ICON_CAT_PAW.md`](prompts/variants/11_ICON_CAT_PAW.md) | `UI-011_icon_cat_paw_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_cat_paw_v01.png` | APPROVED — [manifesto B3](approved/UI_MODULAR_B3_APPROVAL_MANIFEST.json); não INTEGRATED |
+| [`11_ICON_CLOCK.md`](prompts/variants/11_ICON_CLOCK.md) | `UI-011_icon_clock_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_clock_v01.png` | APPROVED restrito (32–44u) — [manifesto B3](approved/UI_MODULAR_B3_APPROVAL_MANIFEST.json); não INTEGRATED |
+| [`11_ICON_COIN.md`](prompts/variants/11_ICON_COIN.md) | `UI-011_icon_coin_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_coin_v01.png` | APPROVED (grão de café = moeda) — [manifesto B3](approved/UI_MODULAR_B3_APPROVAL_MANIFEST.json); não INTEGRATED |
+| [`11_ICON_CUP.md`](prompts/variants/11_ICON_CUP.md) | `UI-011_icon_cup_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_cup_v01.png` | APPROVED (vapor não exigido a 24u) — [manifesto B3](approved/UI_MODULAR_B3_APPROVAL_MANIFEST.json); não INTEGRATED |
+| [`11_ICON_GEAR.md`](prompts/variants/11_ICON_GEAR.md) | `UI-011_icon_gear_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_gear_v01.png` | APPROVED restrito (32–44u) — [manifesto B3](approved/UI_MODULAR_B3_APPROVAL_MANIFEST.json); não INTEGRATED |
+| [`11_ICON_GIFT.md`](prompts/variants/11_ICON_GIFT.md) | `UI-011_icon_gift_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_gift_v01.png` | APPROVED — [manifesto B3](approved/UI_MODULAR_B3_APPROVAL_MANIFEST.json); não INTEGRATED |
+| [`11_ICON_HEART.md`](prompts/variants/11_ICON_HEART.md) | `UI-011_icon_heart_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_heart_v01.png` | APPROVED (padding quadrado no export) — [manifesto B3](approved/UI_MODULAR_B3_APPROVAL_MANIFEST.json); não INTEGRATED |
+| [`11_ICON_SHOP_BAG.md`](prompts/variants/11_ICON_SHOP_BAG.md) | `UI-011_icon_shop_bag_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_shop_bag_v01.png` | APPROVED — [manifesto B3](approved/UI_MODULAR_B3_APPROVAL_MANIFEST.json); não INTEGRATED |
+| [`11_ICON_STAR.md`](prompts/variants/11_ICON_STAR.md) | `UI-011_icon_star_v01.png` | `art_working/ui_modular/raw_gpt/UI-011_icon_star_v01.png` | APPROVED (tom vivo aceito) — [manifesto B3](approved/UI_MODULAR_B3_APPROVAL_MANIFEST.json); não INTEGRATED |
 | [`12_MENU_BACKGROUND.md`](prompts/12_MENU_BACKGROUND.md) | `UI-012_menu_background_v01.png` | `art_working/ui_modular/raw_gpt/UI-012_menu_background_v01.png` | PENDING |
 | [`13_RESTAURANT_ARCH_DETAIL.md`](prompts/variants/13_RESTAURANT_ARCH_DETAIL.md) | `UI-013_restaurant_arch_detail_v01.png` | `art_working/ui_modular/raw_gpt/UI-013_restaurant_arch_detail_v01.png` | PENDING |
 | [`13_RESTAURANT_ARCH_FLOOR.md`](prompts/variants/13_RESTAURANT_ARCH_FLOOR.md) | `UI-013_restaurant_arch_floor_v01.png` | `art_working/ui_modular/raw_gpt/UI-013_restaurant_arch_floor_v01.png` | PENDING |
@@ -64,12 +64,12 @@
 | [`14_PROP_DECOR_WALL_PICTURE.md`](prompts/variants/14_PROP_DECOR_WALL_PICTURE.md) | `UI-014_prop_decor_wall_picture_v01.png` | `art_working/ui_modular/raw_gpt/UI-014_prop_decor_wall_picture_v01.png` | PENDING |
 | [`15_TOP_BAR_HUD.md`](prompts/15_TOP_BAR_HUD.md) | `UI-015_top_bar_hud_v01.png` | `art_working/ui_modular/raw_gpt/UI-015_top_bar_hud_v01.png` | PENDING |
 | [`16_BOTTOM_STRIP_DAY_UI.md`](prompts/16_BOTTOM_STRIP_DAY_UI.md) | `UI-016_bottom_strip_day_ui_v01.png` | `art_working/ui_modular/raw_gpt/UI-016_bottom_strip_day_ui_v01.png` | PENDING |
-| [`17_SHOP_ITEM_FRAME.md`](prompts/17_SHOP_ITEM_FRAME.md) | `UI-017_shop_item_frame_v01.png` | `art_working/ui_modular/raw_gpt/UI-017_shop_item_frame_v01.png` | PENDING |
-| [`18_BALANCE_ROW_NORMAL.md`](prompts/variants/18_BALANCE_ROW_NORMAL.md) | `UI-018_balance_row_normal_v01.png` | `art_working/ui_modular/raw_gpt/UI-018_balance_row_normal_v01.png` | PENDING |
+| [`17_SHOP_ITEM_FRAME.md`](prompts/17_SHOP_ITEM_FRAME.md) | `UI-017_shop_item_frame_v01.png` | `art_working/ui_modular/raw_gpt/UI-017_shop_item_frame_v01.png` | PENDING — QA PASS restrito; condição "sempre com ícone" não satisfeita (Loja real tem linhas sem ícone); recomendar v02 |
+| [`18_BALANCE_ROW_NORMAL.md`](prompts/variants/18_BALANCE_ROW_NORMAL.md) | `UI-018_balance_row_normal_v01.png` | `art_working/ui_modular/raw_gpt/UI-018_balance_row_normal_v01.png` | APPROVED restrito (só NORMAL, cápsula fixa; 380×46/520×54/300×40) — [manifesto B3](approved/UI_MODULAR_B3_APPROVAL_MANIFEST.json); não INTEGRATED |
 | [`18_BALANCE_ROW_TOTAL.md`](prompts/variants/18_BALANCE_ROW_TOTAL.md) | `UI-018_balance_row_total_v01.png` | `art_working/ui_modular/raw_gpt/UI-018_balance_row_total_v01.png` | PENDING |
 | [`19_DIALOG_PANEL.md`](prompts/variants/19_DIALOG_PANEL.md) | `UI-019_dialog_panel_v01.png` | `art_working/ui_modular/raw_gpt/UI-019_dialog_panel_v01.png` | PENDING |
 | [`19_DIALOG_TAIL.md`](prompts/variants/19_DIALOG_TAIL.md) | `UI-019_dialog_tail_v01.png` | `art_working/ui_modular/raw_gpt/UI-019_dialog_tail_v01.png` | PENDING |
-| [`20_LOGO_WORDMARK.md`](prompts/20_LOGO_WORDMARK.md) | `UI-020_logo_wordmark_v01.png` | `art_working/ui_modular/raw_gpt/UI-020_logo_wordmark_v01.png` | PENDING |
+| [`20_LOGO_WORDMARK.md`](prompts/20_LOGO_WORDMARK.md) | `UI-020_logo_wordmark_v01.png` | `art_working/ui_modular/raw_gpt/UI-020_logo_wordmark_v01.png` | APPROVED restrito (520u/200u sobre UI-012; outros contextos a validar) — [manifesto B3](approved/UI_MODULAR_B3_APPROVAL_MANIFEST.json); não INTEGRATED |
 | [`21_MAID_PORTRAIT_AKARI.md`](prompts/variants/21_MAID_PORTRAIT_AKARI.md) | `UI-021_maid_portrait_akari_neutral_v01.png` | `art_working/ui_modular/raw_gpt/UI-021_maid_portrait_akari_neutral_v01.png` | PENDING |
 | [`21_MAID_PORTRAIT_HINA.md`](prompts/variants/21_MAID_PORTRAIT_HINA.md) | `UI-021_maid_portrait_hina_neutral_v01.png` | `art_working/ui_modular/raw_gpt/UI-021_maid_portrait_hina_neutral_v01.png` | PENDING |
 | [`21_MAID_PORTRAIT_ICHIKA.md`](prompts/variants/21_MAID_PORTRAIT_ICHIKA.md) | `UI-021_maid_portrait_ichika_neutral_v01.png` | `art_working/ui_modular/raw_gpt/UI-021_maid_portrait_ichika_neutral_v01.png` | PENDING |

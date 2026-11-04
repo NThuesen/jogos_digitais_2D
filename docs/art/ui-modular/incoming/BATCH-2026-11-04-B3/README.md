@@ -1,6 +1,6 @@
 # BATCH-2026-11-04-B3 — 12 PNGs novos (PENDING)
 
-Aprovação artística **PENDING**; não integrados. Relatório: [UI_BATCH_B3_2026_11_04.md](../../reviews/UI_BATCH_B3_2026_11_04.md). CLEANs nesta pasta, RAWs em `raw/`, exports testados em `exports/`, hashes em [clean_report.json](clean_report.json).
+**Decisão de 04/11/2026:** UI-011 (9 ícones), UI-018 NORMAL e UI-020 **APPROVED com restrições** (cópias em [`approved/`](../../approved/B3_README.md)); **UI-017 PENDING, recomendar v02**. Nenhum INTEGRATED. A tabela abaixo é o veredito técnico original. Relatório: [UI_BATCH_B3_2026_11_04.md](../../reviews/UI_BATCH_B3_2026_11_04.md). CLEANs nesta pasta, RAWs em `raw/`, exports testados em `exports/`, hashes em [clean_report.json](clean_report.json).
 
 | CLEAN | Veredito técnico |
 | --- | --- |

@@ -47,6 +47,10 @@ Decisão expressa do responsável, posterior ao QA da PR #44. As cinco aprovaç�
 | [UI-008 v01](approved/UI-008_maid_card_compact_v01.png) | APPROVED somente 150×206 detalhado | PASS técnico; aceite visual restrito. **REWORK em 0,62×**, não aprovado para Escalação reduzida |
 | UI-008 LINEUP MINIMAL | PENDING | Ainda não gerada; QA NOT RUN; não herda aprovação da card existente |
 
+## Aprovação artística B3 — 04/11/2026 (PR #50)
+
+**APPROVED, não INTEGRATED:** UI-011 CAT_PAW, CLOCK, COIN, CUP, GEAR, GIFT, HEART, SHOP_BAG, STAR; UI-018 BALANCE ROW NORMAL (restrito); UI-020 LOGO WORDMARK (restrito). **UI-017 PENDING** — a Loja real tem linhas sem ícone (Equipamento/Presente); recomendar v02. Restrições, hashes e configuração Unity (somente exports): [README B3](approved/B3_README.md) e [manifesto](approved/UI_MODULAR_B3_APPROVAL_MANIFEST.json); decisão em [UI_B3_APPROVAL](reviews/UI_B3_APPROVAL_2026_11_04.md). QA Editor 960×600/1280×720 reutilizado; **WebGL NOT RUN**.
+
 ## Histórico anterior à aprovação expressa
 
 As menções a “candidato”, “não aprovado” e “pendente do responsável” nas fichas/checkpoints abaixo descrevem o estado anterior à decisão acima; não revogam as aprovações vigentes. QA PASS, aprovação artística e integração são etapas distintas. Nenhuma evidência técnica anterior foi alterada.

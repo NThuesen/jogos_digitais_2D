@@ -1,0 +1,680 @@
+{
+  "schema_version": 1,
+  "decision_date": "2026-11-04",
+  "authority": "Explicit repository-owner approval in task: Aprovacao artistica e fechamento do lote B3 | PR #50",
+  "qa_pr": 50,
+  "qa_repeated": false,
+  "qa_scope": "Unity Editor PlayMode batchmode (6000.5.9f1), 960x600 and 1280x720, simulated pointer; evidence docs/art/ui-modular/reviews/evidence/BATCH-B3-QA-2026-11-04/. WebGL NOT RUN; no physical mouse/GPU.",
+  "integration": "Not performed; versioned under docs/art/ui-modular/approved only, outside Assets",
+  "configuration_scope": "Unity configuration applies to exports only, not full-size masters; no importer metadata created",
+  "pending": [
+    {
+      "filename": "UI-017_shop_item_frame_v01.png",
+      "status": "PENDING",
+      "reason": "Real Shop (ShopScreen.cs) has rows without icon (Equipment and Gift tabs); fixed painted icon reserve + divider would be empty. Recommend v02."
+    }
+  ],
+  "assets": [
+    {
+      "filename": "UI-011_icon_cat_paw_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Sem restricoes adicionais; ver README B3 (icones preferencialmente >=32u).",
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-011_icon_cat_paw_v01.png",
+        "sha256": "b62e8ed76d332ceb03cdc76c8a7498634613d993d2a50d41ceb1d8d3d6a7158b",
+        "bytes": 1031843,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-011_icon_cat_paw_v01.png",
+        "sha256": "ec18db072549538fd8836c33fbc33319e60ebc2678a7efab30054b848097ae26",
+        "bytes": 890413,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-011_icon_cat_paw_v01.png",
+        "sha256": "1faac4771f2d2777b97ea1f91ada6ffd5cb5a64971ddbb9f11d18c9e5a98809c",
+        "bytes": 180930,
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "transform": "none; square pad to 1254; family-consistent scale"
+      },
+      "cleanup": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+      "unity_config_export_only": {
+        "texture_type": "Sprite (2D and UI)",
+        "sprite_mode": "Single",
+        "mesh_type": "Full Rect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "image_type": "Simple, preserveAspect"
+      }
+    },
+    {
+      "filename": "UI-011_icon_clock_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Uso preferencial 32-44u; detalhes internos a 24u NAO homologados.",
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-011_icon_clock_v01.png",
+        "sha256": "130584e6b71ab33222a1166db34ec4bf042be1fe2f33561a8641765dac53eb2b",
+        "bytes": 1031404,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-011_icon_clock_v01.png",
+        "sha256": "159de709f4721b62277e31020c1cb58a29fcc6f82b90f2f8cb4e515f1a516400",
+        "bytes": 932576,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-011_icon_clock_v01.png",
+        "sha256": "06a30927845f23c3195523f58797455e48de4fca9c7884b9c6a80ae2f7e30c84",
+        "bytes": 196759,
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "transform": "none; square pad to 1254; family-consistent scale"
+      },
+      "cleanup": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+      "unity_config_export_only": {
+        "texture_type": "Sprite (2D and UI)",
+        "sprite_mode": "Single",
+        "mesh_type": "Full Rect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "image_type": "Simple, preserveAspect"
+      }
+    },
+    {
+      "filename": "UI-011_icon_coin_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "O grao de cafe gravado representa a moeda do jogo (aprovado).",
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-011_icon_coin_v01.png",
+        "sha256": "54b843049cd783ec18b0da1d92e34692e3e1313730477861ed53b47e95333246",
+        "bytes": 952669,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-011_icon_coin_v01.png",
+        "sha256": "a5cb67438dfb1d449fd64460699264db85bcf813e7e95f4172f10f09afdf63e6",
+        "bytes": 848756,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-011_icon_coin_v01.png",
+        "sha256": "264d56051ff5a5621c40010871af213b8900a9eadb7b3c18922c3bdf32cfe42a",
+        "bytes": 168905,
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "transform": "none; square pad to 1254; family-consistent scale"
+      },
+      "cleanup": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+      "unity_config_export_only": {
+        "texture_type": "Sprite (2D and UI)",
+        "sprite_mode": "Single",
+        "mesh_type": "Full Rect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "image_type": "Simple, preserveAspect"
+      }
+    },
+    {
+      "filename": "UI-011_icon_cup_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Vapor nao precisa estar visivel a 24u.",
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-011_icon_cup_v01.png",
+        "sha256": "1ebc66f782625888a17e09c741a71111d6e67b20528831ca96b37eda97a092c4",
+        "bytes": 824468,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-011_icon_cup_v01.png",
+        "sha256": "7a1ffc1e7c92daf3a9db07e96a6c182b6bff6f9ba45ad586c1a68109e49f362b",
+        "bytes": 743029,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-011_icon_cup_v01.png",
+        "sha256": "7ed79de46698db41d98e920545f70f5fc405e4daef47b4bbce2346b7eb57ae14",
+        "bytes": 164094,
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "transform": "none; square pad to 1254; family-consistent scale"
+      },
+      "cleanup": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+      "unity_config_export_only": {
+        "texture_type": "Sprite (2D and UI)",
+        "sprite_mode": "Single",
+        "mesh_type": "Full Rect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "image_type": "Simple, preserveAspect"
+      }
+    },
+    {
+      "filename": "UI-011_icon_gear_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Uso preferencial 32-44u; detalhes internos a 24u NAO homologados.",
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-011_icon_gear_v01.png",
+        "sha256": "b1a6c608775ad1e683ccb032ddab9d50a73b8b61a5c62f2f663dea8093977a75",
+        "bytes": 846787,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-011_icon_gear_v01.png",
+        "sha256": "966057393c677e758c10d570d185783b7e3c841c2856b9d4ac197b667585193f",
+        "bytes": 760114,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-011_icon_gear_v01.png",
+        "sha256": "35cbc0fc730a86d6a696389c10326872157b4293f15b006c6a411a33d8280012",
+        "bytes": 158431,
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "transform": "none; square pad to 1254; family-consistent scale"
+      },
+      "cleanup": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+      "unity_config_export_only": {
+        "texture_type": "Sprite (2D and UI)",
+        "sprite_mode": "Single",
+        "mesh_type": "Full Rect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "image_type": "Simple, preserveAspect"
+      }
+    },
+    {
+      "filename": "UI-011_icon_gift_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Sem restricoes adicionais; ver README B3 (icones preferencialmente >=32u).",
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-011_icon_gift_v01.png",
+        "sha256": "0d948aa37a47bc096e41be60f923a06b71a4b70b7ec3cfd77c95befd8eeae92e",
+        "bytes": 1040741,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-011_icon_gift_v01.png",
+        "sha256": "aca9456bf23bac3f1073eb631a00e284b8f206f7d0547e639b4bdf7504f6ed68",
+        "bytes": 967076,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-011_icon_gift_v01.png",
+        "sha256": "212828d066a6889cbf27ec0db30cca012173c21de36415a3fb040983f0db3002",
+        "bytes": 203924,
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "transform": "none; square pad to 1254; family-consistent scale"
+      },
+      "cleanup": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+      "unity_config_export_only": {
+        "texture_type": "Sprite (2D and UI)",
+        "sprite_mode": "Single",
+        "mesh_type": "Full Rect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "image_type": "Simple, preserveAspect"
+      }
+    },
+    {
+      "filename": "UI-011_icon_heart_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Preservar padding quadrado no export (canvas master 1261x1247; export 512x512 centralizado).",
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-011_icon_heart_v01.png",
+        "sha256": "4f23c614e8a79d8668ec12aa352dcc9359258b10a0b388cbc966f1c00c33c45a",
+        "bytes": 842649,
+        "size": [
+          1261,
+          1247
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-011_icon_heart_v01.png",
+        "sha256": "f2458fd24cc7341d9ae93ce62f9709be824086de886a67cb5fc27f36abe2b483",
+        "bytes": 735258,
+        "size": [
+          1261,
+          1247
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-011_icon_heart_v01.png",
+        "sha256": "746c959c29a23bfa9b8d38389f672250705ea171d1133cfffb4bf4eb947d2e67",
+        "bytes": 150074,
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "transform": "none; square pad to 1261; family-consistent scale"
+      },
+      "cleanup": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+      "unity_config_export_only": {
+        "texture_type": "Sprite (2D and UI)",
+        "sprite_mode": "Single",
+        "mesh_type": "Full Rect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "image_type": "Simple, preserveAspect"
+      }
+    },
+    {
+      "filename": "UI-011_icon_shop_bag_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Sem restricoes adicionais; ver README B3 (icones preferencialmente >=32u).",
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-011_icon_shop_bag_v01.png",
+        "sha256": "305aa7904b41be422d0b8dcb795d8fc6ab785a7170ad6742c0722e80eb81a3b1",
+        "bytes": 648746,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-011_icon_shop_bag_v01.png",
+        "sha256": "7fa277d667a41032506a55b7cedcfbfb80d02f52760c03ac93784f1cca5962c3",
+        "bytes": 546883,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-011_icon_shop_bag_v01.png",
+        "sha256": "55e5c144a407a12055f5076bda7de62180b6c582ae9f7f34c4b72668227b4681",
+        "bytes": 128364,
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "transform": "none; square pad to 1254; family-consistent scale"
+      },
+      "cleanup": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+      "unity_config_export_only": {
+        "texture_type": "Sprite (2D and UI)",
+        "sprite_mode": "Single",
+        "mesh_type": "Full Rect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "image_type": "Simple, preserveAspect"
+      }
+    },
+    {
+      "filename": "UI-011_icon_star_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Tonalidade mais viva aceita.",
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-011_icon_star_v01.png",
+        "sha256": "88564eedd45fcbf99767f105ca33ba68a860ddcebe4d79389eaffc5c18cb9c37",
+        "bytes": 756745,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-011_icon_star_v01.png",
+        "sha256": "4a356ffc28309f0c14b7fda6449c202441397b701d714b6881064c36f1bb5903",
+        "bytes": 650673,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-011_icon_star_v01.png",
+        "sha256": "cc02eb69661c6cb6ed65c2d8fcba95f64c88b5b9c6f03a1069c64e52a926d9fd",
+        "bytes": 133419,
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "transform": "none; square pad to 1254; family-consistent scale"
+      },
+      "cleanup": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+      "unity_config_export_only": {
+        "texture_type": "Sprite (2D and UI)",
+        "sprite_mode": "Single",
+        "mesh_type": "Full Rect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "image_type": "Simple, preserveAspect"
+      }
+    },
+    {
+      "filename": "UI-018_balance_row_normal_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Somente NORMAL e a capsula fixa de valor a direita; testado 380x46, 520x54, 300x40; outras variantes (TOTAL etc.) e tamanhos NAO inferidos.",
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-018_balance_row_normal_v01.png",
+        "sha256": "7cf0ec6926aa15ab8767ebc94264ed3b497436f4882a8a3db020e65ca6d2d79a",
+        "bytes": 916409,
+        "size": [
+          2172,
+          724
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-018_balance_row_normal_v01.png",
+        "sha256": "33659e99af7d7bcbed49f8ab058b939308ccb6e9dbeddf8a61bf18b65206ba72",
+        "bytes": 807507,
+        "size": [
+          2172,
+          724
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-018_balance_row_normal_v01.png",
+        "sha256": "b364b9dfea1e3ffd25f92ad385fdce8f2f021bc24400cc05f1e6bf16bb43c600",
+        "bytes": 213959,
+        "size": [
+          1082,
+          148
+        ],
+        "mode": "RGBA",
+        "transform": "[4, 211, 2169, 508]"
+      },
+      "cleanup": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+      "unity_config_export_only": {
+        "texture_type": "Sprite (2D and UI)",
+        "sprite_mode": "Single",
+        "mesh_type": "Full Rect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT_px": [
+          85,
+          45,
+          85,
+          45
+        ],
+        "image_type": "Sliced",
+        "pixels_per_unit_multiplier": "export_height(148)/rendered_height"
+      }
+    },
+    {
+      "filename": "UI-020_logo_wordmark_v01.png",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Aprovado visualmente apenas em 520u e 200u sobre UI-012 cover, 960x600/1280x720; outros contextos/fundos exigem validacao futura.",
+      "raw_local": {
+        "path": "art_working/ui_modular/raw_gpt/UI-020_logo_wordmark_v01.png",
+        "sha256": "9bb4eff179232ddc6d905d9667cd69c47acacef25a79dfbd95cce13ec99884ca",
+        "bytes": 1686253,
+        "size": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      },
+      "master_versioned": {
+        "path": "docs/art/ui-modular/approved/UI-020_logo_wordmark_v01.png",
+        "sha256": "b9221c94a5820f016985707e58319d200941775db323886ff1c30a25f97dd79a",
+        "bytes": 1629314,
+        "size": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      },
+      "export_versioned": {
+        "path": "docs/art/ui-modular/approved/exports/UI-020_logo_wordmark_v01.png",
+        "sha256": "39e09b3959fd5a9759160a44d909672a7f26d0cc37877ed907954d29afb20dd0",
+        "bytes": 450949,
+        "size": [
+          866,
+          422
+        ],
+        "mode": "RGBA",
+        "transform": "[16, 23, 1747, 868]"
+      },
+      "cleanup": "alpha-only: dust alpha1-3>6px removed; alpha250-254 solidified",
+      "unity_config_export_only": {
+        "texture_type": "Sprite (2D and UI)",
+        "sprite_mode": "Single",
+        "mesh_type": "Full Rect",
+        "ppu": 100,
+        "filter": "Bilinear",
+        "wrap": "Clamp",
+        "mipmaps": false,
+        "compression": "Uncompressed",
+        "alpha_is_transparency": true,
+        "npot": "None",
+        "max_texture_size": 4096,
+        "read_write": false,
+        "border_LBRT_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "image_type": "Simple, preserveAspect"
+      }
+    }
+  ]
+}
