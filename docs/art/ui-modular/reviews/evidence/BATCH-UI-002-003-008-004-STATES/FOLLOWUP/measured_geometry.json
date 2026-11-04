@@ -1,0 +1,44 @@
+{
+  "UI-002_panel_medium_v01": {
+    "size": [
+      1356,
+      802
+    ],
+    "vertical_cuts": [
+      160,
+      1196
+    ],
+    "horizontal_cuts": [
+      150,
+      652
+    ]
+  },
+  "UI-003_panel_small_label_v01": {
+    "size": [
+      2170,
+      526
+    ],
+    "vertical_cuts": [
+      320,
+      1850
+    ],
+    "horizontal_cuts": [
+      100,
+      426
+    ]
+  },
+  "UI-008_maid_card_compact_v01": {
+    "size": [
+      1070,
+      1470
+    ],
+    "vertical_cuts": [
+      145,
+      925
+    ],
+    "horizontal_cuts": [
+      185,
+      795
+    ]
+  }
+}

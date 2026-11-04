@@ -1,0 +1,109 @@
+PAGE 0 (960, 600) scale=0,8333333 textFailures=0
+button 0/0 Voltar
+button 0/1 900 ¥
+button 0/2 Confirmar
+button 1/0 Voltar
+button 1/1 900 ¥
+button 1/2 Confirmar
+button 2/0 Voltar
+button 2/1 900 ¥
+button 2/2 Confirmar
+TEXT Voltar size=18 rect=(74.95, 27.64) preferred=48x19,2 fits=True
+TEXT 900 ¥ size=18 rect=(104.95, 27.64) preferred=43,2x19,2 fits=True
+TEXT Confirmar size=24 rect=(176.53, 34.38) preferred=109,2x25,2 fits=True
+TEXT Voltar size=18 rect=(74.95, 27.64) preferred=48x19,2 fits=True
+TEXT 900 ¥ size=18 rect=(104.95, 27.64) preferred=43,2x19,2 fits=True
+TEXT Confirmar size=24 rect=(176.53, 34.38) preferred=109,2x25,2 fits=True
+TEXT Voltar size=18 rect=(74.95, 27.64) preferred=48x19,2 fits=True
+TEXT 900 ¥ size=18 rect=(104.95, 27.64) preferred=43,2x19,2 fits=True
+TEXT Confirmar size=24 rect=(176.53, 34.38) preferred=109,2x25,2 fits=True
+DISABLED_V02_PASS size=(120.00, 44.00) vertices=36
+DISABLED_V02_PASS size=(150.00, 44.00) vertices=36
+DISABLED_V02_PASS size=(230.00, 54.00) vertices=36
+PAGE 1 (960, 600) scale=0,8333333 textFailures=0
+TEXT Escalação de hoje size=20 rect=(240.00, 28.00) preferred=166,8x20,4 fits=True
+TEXT Suzu|Salário 18 ¥|Química 75 / 100 size=18 rect=(240.00, 88.00) preferred=134,4x57,60001 fits=True
+TEXT Escalação de hoje size=20 rect=(290.00, 28.00) preferred=166,8x20,4 fits=True
+TEXT Suzu|Salário 18 ¥|Química 75 / 100 size=18 rect=(290.00, 88.00) preferred=134,4x57,60001 fits=True
+TEXT Escalação de hoje size=20 rect=(240.00, 28.00) preferred=166,8x20,4 fits=True
+TEXT Suzu|Salário 18 ¥|Química 75 / 100 size=18 rect=(240.00, 88.00) preferred=134,4x57,60001 fits=True
+TEXT Voltar size=18 rect=(114.46, 25.52) preferred=48x19,2 fits=True
+TEXT Escalação de hoje size=18 rect=(182.30, 31.32) preferred=150x19,2 fits=True
+TEXT Química size=18 rect=(270.13, 37.12) preferred=67,2x19,2 fits=True
+PAGE 2 (960, 600) scale=0,8333333 textFailures=0
+Suzu resource=Maids/suzu_walk idle=6 rect=(x:0.00, y:252.00, width:156.00, height:252.00)
+TEXT Suzu size=20 rect=(105.00, 25.00) preferred=46,8x20,4 fits=True
+TEXT 32 size=15 rect=(27.00, 20.00) preferred=16,8x16,8 fits=True
+TEXT SAL size=9 rect=(27.00, 13.00) preferred=16,8x8,400001 fits=True
+TEXT 14 size=15 rect=(27.00, 20.00) preferred=16,8x16,8 fits=True
+TEXT COZ size=9 rect=(27.00, 13.00) preferred=16,8x8,400001 fits=True
+TEXT 24 size=15 rect=(27.00, 20.00) preferred=16,8x16,8 fits=True
+TEXT CHA size=9 rect=(27.00, 13.00) preferred=18x8,400001 fits=True
+TEXT 18 size=15 rect=(27.00, 20.00) preferred=16,8x16,8 fits=True
+TEXT FÔL size=9 rect=(27.00, 13.00) preferred=15,6x8,400001 fits=True
+TEXT 18 ¥ size=12 rect=(100.00, 17.00) preferred=21,6x12 fits=True
+TEXT Suzu size=12 rect=(65.10, 15.50) preferred=27,6x12 fits=True
+TEXT 32 size=9 rect=(16.74, 12.40) preferred=9,600001x8,400001 fits=True
+TEXT SAL size=6 rect=(16.74, 8.06) preferred=9,600001x6 fits=True
+TEXT 14 size=9 rect=(16.74, 12.40) preferred=9,600001x8,400001 fits=True
+TEXT COZ size=6 rect=(16.74, 8.06) preferred=9,600001x6 fits=True
+TEXT 24 size=9 rect=(16.74, 12.40) preferred=9,600001x8,400001 fits=True
+TEXT CHA size=6 rect=(16.74, 8.06) preferred=10,8x6 fits=True
+TEXT 18 size=9 rect=(16.74, 12.40) preferred=9,600001x8,400001 fits=True
+TEXT FÔL size=6 rect=(16.74, 8.06) preferred=8,400001x6 fits=True
+TEXT 18 ¥ size=7 rect=(62.00, 10.54) preferred=12x7,200001 fits=True
+PAGE 0 (1280, 720) scale=1 textFailures=0
+button 0/0 Voltar
+button 0/1 900 ¥
+button 0/2 Confirmar
+button 1/0 Voltar
+button 1/1 900 ¥
+button 1/2 Confirmar
+button 2/0 Voltar
+button 2/1 900 ¥
+button 2/2 Confirmar
+TEXT Voltar size=18 rect=(74.95, 27.64) preferred=51x20 fits=True
+TEXT 900 ¥ size=18 rect=(104.95, 27.64) preferred=45x20 fits=True
+TEXT Confirmar size=24 rect=(176.53, 34.38) preferred=114x27 fits=True
+TEXT Voltar size=18 rect=(74.95, 27.64) preferred=51x20 fits=True
+TEXT 900 ¥ size=18 rect=(104.95, 27.64) preferred=45x20 fits=True
+TEXT Confirmar size=24 rect=(176.53, 34.38) preferred=114x27 fits=True
+TEXT Voltar size=18 rect=(74.95, 27.64) preferred=51x20 fits=True
+TEXT 900 ¥ size=18 rect=(104.95, 27.64) preferred=45x20 fits=True
+TEXT Confirmar size=24 rect=(176.53, 34.38) preferred=114x27 fits=True
+DISABLED_V02_PASS size=(120.00, 44.00) vertices=36
+DISABLED_V02_PASS size=(150.00, 44.00) vertices=36
+DISABLED_V02_PASS size=(230.00, 54.00) vertices=36
+PAGE 1 (1280, 720) scale=1 textFailures=0
+TEXT Escalação de hoje size=20 rect=(240.00, 28.00) preferred=173x22 fits=True
+TEXT Suzu|Salário 18 ¥|Química 75 / 100 size=18 rect=(240.00, 88.00) preferred=141x62 fits=True
+TEXT Escalação de hoje size=20 rect=(290.00, 28.00) preferred=173x22 fits=True
+TEXT Suzu|Salário 18 ¥|Química 75 / 100 size=18 rect=(290.00, 88.00) preferred=141x62 fits=True
+TEXT Escalação de hoje size=20 rect=(240.00, 28.00) preferred=173x22 fits=True
+TEXT Suzu|Salário 18 ¥|Química 75 / 100 size=18 rect=(240.00, 88.00) preferred=141x62 fits=True
+TEXT Voltar size=18 rect=(114.46, 25.52) preferred=51x20 fits=True
+TEXT Escalação de hoje size=18 rect=(182.30, 31.32) preferred=156x20 fits=True
+TEXT Química size=18 rect=(270.13, 37.12) preferred=71x20 fits=True
+PAGE 2 (1280, 720) scale=1 textFailures=0
+Suzu resource=Maids/suzu_walk idle=6 rect=(x:0.00, y:252.00, width:156.00, height:252.00)
+TEXT Suzu size=20 rect=(105.00, 25.00) preferred=47x22 fits=True
+TEXT 32 size=15 rect=(27.00, 20.00) preferred=16x17 fits=True
+TEXT SAL size=9 rect=(27.00, 13.00) preferred=19x10 fits=True
+TEXT 14 size=15 rect=(27.00, 20.00) preferred=16x17 fits=True
+TEXT COZ size=9 rect=(27.00, 13.00) preferred=20x10 fits=True
+TEXT 24 size=15 rect=(27.00, 20.00) preferred=16x17 fits=True
+TEXT CHA size=9 rect=(27.00, 13.00) preferred=21x10 fits=True
+TEXT 18 size=15 rect=(27.00, 20.00) preferred=16x17 fits=True
+TEXT FÔL size=9 rect=(27.00, 13.00) preferred=19x10 fits=True
+TEXT 18 ¥ size=12 rect=(100.00, 17.00) preferred=24x14 fits=True
+TEXT Suzu size=12 rect=(65.10, 15.50) preferred=28x14 fits=True
+TEXT 32 size=9 rect=(16.74, 12.40) preferred=10x10 fits=True
+TEXT SAL size=6 rect=(16.74, 8.06) preferred=12x6 fits=True
+TEXT 14 size=9 rect=(16.74, 12.40) preferred=10x10 fits=True
+TEXT COZ size=6 rect=(16.74, 8.06) preferred=13x6 fits=True
+TEXT 24 size=9 rect=(16.74, 12.40) preferred=10x10 fits=True
+TEXT CHA size=6 rect=(16.74, 8.06) preferred=12x6 fits=True
+TEXT 18 size=9 rect=(16.74, 12.40) preferred=10x10 fits=True
+TEXT FÔL size=6 rect=(16.74, 8.06) preferred=13x6 fits=True
+TEXT 18 ¥ size=7 rect=(62.00, 10.54) preferred=14x7 fits=True
+TOTAL sequences=6 state_mesh_checks=18 raycasts=90

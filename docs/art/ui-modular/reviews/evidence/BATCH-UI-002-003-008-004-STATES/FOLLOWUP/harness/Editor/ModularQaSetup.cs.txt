@@ -1,0 +1,15 @@
+using UnityEditor;
+using UnityEngine;
+public static class ModularQaSetup
+{
+ public static void Configure()
+ {
+  foreach(string name in new[]{"normal","hover","pressed","disabled","disabled_v01","panel","label","card","reference"})
+  {
+   var p="Assets/_QA_Modular_Temp/Resources/ModularQA/"+name+".png";var im=(TextureImporter)AssetImporter.GetAtPath(p);im.textureType=TextureImporterType.Sprite;im.spriteImportMode=SpriteImportMode.Single;im.spritePixelsPerUnit=100;
+   im.spriteBorder=name=="panel"?new Vector4(80,75,80,75):name=="label"?new Vector4(160,50,160,50):name=="card"||name=="reference"?Vector4.zero:new Vector4(160f*768/2072,110f*141/380,160f*768/2072,110f*141/380);
+   im.npotScale=TextureImporterNPOTScale.None;im.maxTextureSize=4096;im.mipmapEnabled=false;im.isReadable=false;im.alphaIsTransparency=true;im.textureCompression=TextureImporterCompression.Uncompressed;im.wrapMode=TextureWrapMode.Clamp;im.filterMode=FilterMode.Bilinear;
+   var s=new TextureImporterSettings();im.ReadTextureSettings(s);s.spriteMeshType=SpriteMeshType.FullRect;im.SetTextureSettings(s);im.SaveAndReimport();
+  }
+ }
+}

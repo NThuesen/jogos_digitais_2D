@@ -1,0 +1,26 @@
+{
+  "UI-002_panel_medium_v01_raw_clean_proof.png": {
+    "bytes": 361678,
+    "sha256": "3dfffc591db59e1b43705cd9e16d19315412474da5213f9b68d1a6a560fcd076"
+  },
+  "UI-003_panel_small_label_v01_raw_clean_proof.png": {
+    "bytes": 358649,
+    "sha256": "f3582dd8f45747ea66a3b1665a382e151917f3ac4793e5fe651d9364131cb0a2"
+  },
+  "UI-008_maid_card_compact_v01_raw_clean_proof.png": {
+    "bytes": 159446,
+    "sha256": "5ac92039c95ba472a8a9f898b9208974a1dc197fb384172448939a52bfbc893b"
+  },
+  "frames_style_comparison.png": {
+    "bytes": 322029,
+    "sha256": "878200872a8f5e6182c408cf0916f4173f2eceefacca36518e4ac16f76879042"
+  },
+  "states_mattes.png": {
+    "bytes": 128116,
+    "sha256": "bb4cfcb1068549782e056cce1cfd89b99ceefe078ae3ff1cc295e513f58c3b78"
+  },
+  "states_raster_comparison.png": {
+    "bytes": 140930,
+    "sha256": "75c04968f93d81dacff0ec180540ec6661f3ee648c3f9044bc41d6c283971786"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "UI-002_panel_medium_v01": {
+    "status": "CLEAN",
+    "ready_for_unity_qa": true,
+    "reason": "Sim — painel, conteúdo creme e faixas preservados."
+  },
+  "UI-003_panel_small_label_v01": {
+    "status": "CLEAN",
+    "ready_for_unity_qa": true,
+    "reason": "Sim — label ornamentado; validar leitura pequena e limites de slice próprios."
+  },
+  "UI-008_maid_card_compact_v01": {
+    "status": "CLEAN",
+    "ready_for_unity_qa": true,
+    "reason": "Sim — janela transparente e zonas de texto sólidas; validar escala da card."
+  },
+  "UI-004_button_primary_compact_hover_v01": {
+    "status": "REWORK",
+    "ready_for_unity_qa": false,
+    "reason": "Não recomendado ainda — diferença de hover fraca no parecer estático."
+  },
+  "UI-004_button_primary_compact_pressed_v01": {
+    "status": "CLEAN",
+    "ready_for_unity_qa": true,
+    "reason": "Sim, condicionado ao export/import comum com NORMAL e teste da percepção de pressão."
+  },
+  "UI-004_button_primary_compact_disabled_v01": {
+    "status": "CLEAN",
+    "ready_for_unity_qa": true,
+    "reason": "Sim, condicionado ao export/import comum e teste combinado com texto/tint nativo."
+  }
+}

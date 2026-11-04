@@ -1,0 +1,20 @@
+from pathlib import Path
+from PIL import Image
+import numpy as np,json,hashlib
+root=Path.cwd();ev=root/'docs/art/ui-modular/reviews/evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP';out=root/'art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA'
+r={'contrast_method':'RGB screenshot median of clear face sample versus darkest label pixel near center. Point estimate, not whole-glyph certification.','contrast':[],'export_face_comparison':{}}
+def lum(v):
+ v=np.asarray(v,dtype=float)/255;v=np.where(v<=.04045,v/12.92,((v+.055)/1.055)**2.4);return v@np.array([.2126,.7152,.0722])
+for w,h in [(960,600),(1280,720)]:
+ a=np.array(Image.open(ev/f'editor_disabled_{w}x{h}.png'));s=h/720
+ for col,name in enumerate(['normal','disabled_v01','disabled_v02']):
+  for row,(bw,bh) in enumerate([(120,44),(150,44),(230,54)]):
+   x=w/2+(col-1)*340*s;y=h/2-(180-row*160)*s
+   face=a[round(y-bh*s*.32):round(y-bh*s*.22),round(x-bw*s*.2):round(x+bw*s*.2)].reshape(-1,3);text=a[round(y-bh*s*.2):round(y+bh*s*.2),round(x-bw*s*.25):round(x+bw*s*.25)].reshape(-1,3)
+   bg=np.median(face,axis=0);fg=text[np.argmin(lum(text))];r['contrast'].append({'viewport':[w,h],'state':name,'size':[bw,bh],'face_rgb':bg.tolist(),'text_rgb':fg.tolist(),'estimate':float((lum(bg)+.05)/(lum(fg)+.05))})
+n=np.array(Image.open(out/'normal.png')).astype(float)
+for name in ['disabled_v01','disabled']:
+ a=np.array(Image.open(out/(name+'.png'))).astype(float);delta=a[30:111,90:678,:3]-n[30:111,90:678,:3];r['export_face_comparison'][name]={'RGB_mean_delta':delta.mean(axis=(0,1)).tolist(),'Y_mean_delta':float((delta@[.2126,.7152,.0722]).mean())}
+for key in ['panel','label','card']:
+ p=out/(key+'.png');im=Image.open(p);r.setdefault('memory_RGBA32_no_mips',{})[key]={'size':im.size,'bytes':im.width*im.height*4,'MiB':im.width*im.height*4/1048576}
+(ev/'followup_measurements.json').write_text(json.dumps(r,indent=2)+'\n');print('Contrasts',min(x['estimate'] for x in r['contrast']),max(x['estimate'] for x in r['contrast']));print(r['export_face_comparison'])

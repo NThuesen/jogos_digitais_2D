@@ -1,0 +1,35 @@
+from pathlib import Path
+import json,hashlib
+import numpy as np
+from PIL import Image,ImageDraw
+from scipy import ndimage as nd
+root=Path.cwd();ev=root/'docs/art/ui-modular/reviews/evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP';ev.mkdir(exist_ok=True);out=root/'art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA';out.mkdir(exist_ok=True)
+raw=root/'art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_disabled_v02.png';clean=root/'art_working/ui_modular/blender_clean/UI-004_button_primary_compact_disabled_v02.png'
+a=np.array(Image.open(raw));al=a[:,:,3];lab,n=nd.label(al>0);counts=np.bincount(lab.ravel());counts[0]=0;det=(lab>0)&(lab!=counts.argmax());dist=nd.distance_transform_edt(al<20);rm=(al>0)&(al<=8)&((det&(dist>2))|(dist>8));c=a.copy();c[:,:,3][rm]=0;c[:,:,3][al>=250]=255
+ys,xs=np.where(c[:,:,3]>0);b=[int(xs.min()),int(ys.min()),int(xs.max()+1),int(ys.max()+1)];crop=[max(0,b[0]-2),max(0,b[1]-2),min(a.shape[1],b[2]+2),min(a.shape[0],b[3]+2)];pad=[max(0,2-b[0]),max(0,2-b[1]),max(0,b[2]+2-a.shape[1]),max(0,b[3]+2-a.shape[0])];trim=np.pad(c[crop[1]:crop[3],crop[0]:crop[2]],((pad[1],pad[3]),(pad[0],pad[2]),(0,0)));Image.fromarray(trim).save(clean)
+assert np.array_equal(c[:,:,:3],a[:,:,:3]);assert np.array_equal(c[:,:,3][(al>=9)&(al<250)],al[(al>=9)&(al<250)])
+report={'path':str(raw.relative_to(root)),'bytes':raw.stat().st_size,'sha256':hashlib.sha256(raw.read_bytes()).hexdigest(),'mode':'RGBA','size':list(Image.open(raw).size),'alpha_histogram':{str(k):int(v) for k,v in zip(*np.unique(al,return_counts=True))},'components4':n,'bbox_gt0':[int(np.where(al>0)[1].min()),int(np.where(al>0)[0].min()),int(np.where(al>0)[1].max()+1),int(np.where(al>0)[0].max()+1)]};report['clean']={'path':str(clean.relative_to(root)),'size':[trim.shape[1],trim.shape[0]],'sha256':hashlib.sha256(clean.read_bytes()).hexdigest(),'bytes':clean.stat().st_size,'crop':crop,'padding_LTRB':pad,'removed_pixels':int(rm.sum()),'removed_max_alpha':int(al[rm].max()),'solidified_250_254':int(((al>=250)&(al<255)).sum()),'retained_RGB_changes':0,'alpha9_249_changes':0}
+# Reuse common exporter algorithm; only the new DISABLED is resampled. Existing exports copied byte-identically.
+old=root/'art_working/ui_modular/export_unity/UI-004_STATES_QA'
+for name in ['normal','hover','pressed']:(out/(name+'.png')).write_bytes((old/(name+'.png')).read_bytes())
+(out/'disabled_v01.png').write_bytes((old/'disabled.png').read_bytes())
+normal=np.array(Image.open(out/'normal.png'))
+def bbox(m):
+ y,x=np.where(m);return [int(x.min()),int(y.min()),int(x.max()+1),int(y.max()+1)]
+refbox=bbox(normal[:,:,3]>128);sb=bbox(trim[:,:,3]>128);W,H=768,141;B=160*W/2072;scale=(refbox[3]-refbox[1])/(sb[3]-sb[1]);tx=refbox[0]-sb[0]*scale;ty=refbox[1]-sb[1]*scale;txr=refbox[2]-sb[2]*scale;S=4;cuts=[0,round(B*S),round((W-B)*S),W*S];mesh=[]
+for i in range(3):
+ x0,x1=cuts[i]/S,cuts[i+1]/S;sx0=(x0-tx)/scale if i==0 else (B-tx)/scale if i==1 else (x0-txr)/scale;sx1=(x1-tx)/scale if i==0 else (W-B-txr)/scale if i==1 else (x1-txr)/scale
+ mesh.append(((cuts[i],0,cuts[i+1],H*S),(sx0,-ty/scale,sx0,(H-ty)/scale,sx1,(H-ty)/scale,sx1,-ty/scale)))
+Image.fromarray(trim).transform((W*S,H*S),Image.Transform.MESH,mesh,Image.Resampling.BICUBIC,fillcolor=(0,0,0,0)).resize((W,H),Image.Resampling.LANCZOS).save(out/'disabled.png')
+d=np.array(Image.open(out/'disabled.png'));m=d[:,:,3]>128;nm=normal[:,:,3]>128
+report['export']={'size':[W,H],'body_bbox':bbox(m),'body_iou_normal':float((m&nm).sum()/(m|nm).sum()),'uniform_cap_scale':scale,'translation_left_right_y':[tx,txr,ty],'center_band_only_horizontal_stretch':True,'sha256':hashlib.sha256((out/'disabled.png').read_bytes()).hexdigest()}
+# Existing CLEANs copied, no reprocessing.
+for key,source in [('panel','UI-002_panel_medium_v01'),('label','UI-003_panel_small_label_v01'),('card','UI-008_maid_card_compact_v01')]:
+ p=root/'art_working/ui_modular/blender_clean'/f'{source}.png';(out/(key+'.png')).write_bytes(p.read_bytes())
+(out/'reference.png').write_bytes((root/'docs/art/ui-modular/approved/UI-001_panel_large_v01.png').read_bytes())
+report['local_exports']={p.name:{'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'size':Image.open(p).size} for p in out.glob('*.png')};(ev/'disabled_v02_audit.json').write_text(json.dumps(report,indent=2)+'\n')
+proof=Image.new('RGB',(1000,420));draw=ImageDraw.Draw(proof);rawcrop=np.pad(a[crop[1]:crop[3],crop[0]:crop[2]],((pad[1],pad[3]),(pad[0],pad[2]),(0,0)))
+for row,bg in enumerate([(248,236,216),(26,20,30),(255,0,255)]):
+ for col,arr in enumerate([rawcrop,trim]):
+  tile=Image.new('RGBA',(500,140),bg+(255,));im=Image.fromarray(arr);im.thumbnail((480,100));tile.alpha_composite(im,((500-im.width)//2,30));proof.paste(tile.convert('RGB'),(col*500,row*140));draw.text((col*500+8,row*140+5),'RAW v02 mesmo recorte' if col==0 else 'CLEAN v02',fill='white' if row==1 else 'black')
+proof.save(ev/'disabled_raw_clean.png');print(json.dumps(report['clean']));print(json.dumps(report['export']))

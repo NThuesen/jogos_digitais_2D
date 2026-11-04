@@ -1,0 +1,17 @@
+using UnityEditor;
+using UnityEngine;
+public static class Ui004StatesSetup
+{
+    public static void Configure()
+    {
+        foreach(var name in new[]{"normal","hover","pressed","disabled"})
+        {
+            var path="Assets/_QA_UI004States_Temp/Textures/"+name+".png";
+            var imp=(TextureImporter)AssetImporter.GetAtPath(path);imp.textureType=TextureImporterType.Sprite;imp.spriteImportMode=SpriteImportMode.Single;
+            imp.spritePixelsPerUnit=100;imp.spriteBorder=new Vector4(160f*768/2072,110f*141/380,160f*768/2072,110f*141/380);
+            imp.npotScale=TextureImporterNPOTScale.None;imp.maxTextureSize=1024;imp.mipmapEnabled=false;imp.isReadable=false;
+            imp.alphaIsTransparency=true;imp.textureCompression=TextureImporterCompression.Uncompressed;imp.wrapMode=TextureWrapMode.Clamp;imp.filterMode=FilterMode.Bilinear;
+            var settings=new TextureImporterSettings();imp.ReadTextureSettings(settings);settings.spriteMeshType=SpriteMeshType.FullRect;imp.SetTextureSettings(settings);imp.SaveAndReimport();
+        }
+    }
+}

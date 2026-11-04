@@ -1,0 +1,37 @@
+from pathlib import Path
+import json,hashlib,math
+import numpy as np
+from PIL import Image,ImageDraw,ImageFont
+ROOT=Path(__file__).resolve().parents[7];OUT=Path(__file__).resolve().parent
+LOCAL=ROOT/'art_working/ui_modular/export_unity/UI-004_STATES_QA'
+FONT=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',14)
+phases=['normal','hover','pressed','up-hover','normal','disabled','restored']
+strip=Image.new('RGB',(1330,220),(53,38,49));draw=ImageDraw.Draw(strip)
+report={'input':'real Unity RenderTexture crops; same Button/position/price; events simulated','animation_note':'presentation hold times, not measured latency; lossless WebP zoom2x of real frames','windows':{},'contrast':{}}
+for row,size in enumerate(['960x600','1280x720']):
+ frames=[];sources={}
+ for col,phase in enumerate(phases):
+  p=LOCAL/f'frame_{phase}_{size}.png';im=Image.open(p).convert('RGB');sources[phase]=im
+  strip.paste(im,(col*190+(190-im.width)//2,row*110+30));draw.text((col*190+5,row*110+5),size+' '+phase,font=FONT,fill=(244,227,208))
+  zoom=im.resize((im.width*2,im.height*2),Image.Resampling.NEAREST);canvas=Image.new('RGB',(zoom.width,zoom.height+28),(53,38,49));canvas.paste(zoom,(0,28));ImageDraw.Draw(canvas).text((5,5),phase+' | Unity crop 2x',font=FONT,fill=(244,227,208));frames.append(canvas)
+ frames[0].save(OUT/f'unity_transition_{size}.webp',save_all=True,append_images=frames[1:],duration=[550,550,400,400,550,700,550],loop=0,lossless=True,quality=100,method=6)
+ eq=lambda a,b:bool(np.array_equal(np.array(sources[a]),np.array(sources[b])))
+ report['windows'][size]={'normal_restored_rgb_identical':eq('normal','restored'),'hover_up_hover_rgb_identical':eq('hover','up-hover'),'source_crop_dimensions':list(sources['normal'].size)}
+strip.save(OUT/'unity_transition_contact.png')
+def lum(c):
+ c=np.asarray(c,dtype=float)/255;c=np.where(c<=.04045,c/12.92,((c+.055)/1.055)**2.4);return c@[.2126,.7152,.0722]
+for width,height in [(960,600),(1280,720)]:
+ scale=height/720
+ for light in [False,True]:
+  im=np.array(Image.open(OUT/f'unity_states_{"light" if light else "dark"}_{width}x{height}.png'))
+  for col,state in enumerate(['normal','hover','pressed','disabled']):
+   for row in range(4):
+    x=width/2+(-420+col*280)*scale;y=height/2-(175-row*120)*scale
+    bg=im[round(y+(15 if row==3 else 11)*scale):round(y+(17 if row==3 else 13)*scale)+1,round(x-10*scale):round(x+10*scale)+1]
+    median=np.median(bg,axis=(0,1));text=im[round(y-7*scale):round(y+7*scale)+1,round(x-20*scale):round(x+20*scale)+1,:3];l=lum(text);fg=text.reshape(-1,3)[int(l.argmin())]
+    ratio=float((max(lum(median),lum(fg))+.05)/(min(lum(median),lum(fg))+.05))
+    report['contrast'][f'{width}x{height}/{"light" if light else "dark"}/{state}/row{row}']={'face_sample_median_rgb':median.tolist(),'darkest_text_sample_rgb':fg.tolist(),'contrast_peak_sample':ratio}
+(OUT/'frame_analysis.json').write_text(json.dumps(report,indent=2)+'\n')
+print('frame return invariance',report['windows'])
+for s in ['normal','hover','pressed','disabled']:
+ values=[v['contrast_peak_sample'] for k,v in report['contrast'].items() if '/'+s+'/' in k];print(s,'contrast sample min/max',min(values),max(values))

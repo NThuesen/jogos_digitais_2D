@@ -1,0 +1,37 @@
+from pathlib import Path
+import http.server,threading,json,functools,traceback
+from playwright.sync_api import sync_playwright
+ROOT=Path.cwd();EVID=ROOT/'docs/art/ui-modular/reviews/evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP'
+class Quiet(http.server.SimpleHTTPRequestHandler):
+ def log_message(self,*args):pass
+server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT/'Build/ModularQA')));threading.Thread(target=server.serve_forever,daemon=True).start()
+report={'environment':'Headless Chromium / SwiftShader; browser mouse automation, not physical mouse','windows':[]}
+try:
+ with sync_playwright() as pw:
+  browser=pw.chromium.launch(executable_path='/home/codexmae/.cache/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell',headless=True,args=['--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+  report['browser_version']=browser.version
+  for width,height in [(960,600),(1280,720)]:
+   page=browser.new_page(viewport={'width':width,'height':height},device_scale_factor=1);errors=[];console=[]
+   page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda m:console.append({'type':m.type,'text':m.text}) if m.type in ['warning','error'] else None)
+   page.goto(f'http://127.0.0.1:{server.server_port}/',wait_until='domcontentloaded');page.wait_for_function('window.modularQa && window.modularQa.ready',timeout=180000)
+   initial=page.evaluate('window.modularQa');assert(initial['width'],initial['height'])==(width,height);assert not initial['failures'],initial['failures'];results=[]
+   for i,p in enumerate(initial['probes']):
+    before=page.evaluate('window.modularQa.clicks');page.mouse.move(p['x'],p['y']);page.wait_for_timeout(150);hover=page.evaluate(f'window.modularQa.probes[{i}]');assert hover['state']==('hover' if p['enabled'] else 'disabled_v01' if i in [3,4,5] else 'disabled'),hover
+    page.mouse.down();page.wait_for_timeout(150);down=page.evaluate(f'window.modularQa.probes[{i}]');assert down['state']==('pressed' if p['enabled'] else hover['state']);assert page.evaluate('window.modularQa.clicks')==before
+    page.mouse.up();page.wait_for_timeout(200);after=page.evaluate('window.modularQa.clicks');assert after==before+(1 if p['enabled'] else 0)
+    for q in [hover,down]:assert (q['x'],q['y'],q['width'],q['height'])==(p['x'],p['y'],p['width'],p['height'])
+    page.mouse.move(2,2);page.wait_for_timeout(100);restored=page.evaluate(f'window.modularQa.probes[{i}]');assert restored['state']==p['state']
+    results.append({'index':i,'label':p['label'],'enabled':p['enabled'],'hover':hover['state'],'down':down['state'],'restored':restored['state'],'click_delta':after-before,'geometry_unchanged':True})
+   pages=[]
+   for num,name in [(0,'disabled'),(1,'panels_labels'),(2,'cards')]:
+    if num:
+     nav=page.evaluate(f'window.modularQa.navigation[{num}]');page.mouse.click(nav['x'],nav['y']);page.wait_for_function(f'window.modularQa.page=={num}');page.wait_for_timeout(300)
+    snap=page.evaluate('window.modularQa');assert not snap['failures'],snap['failures'];page.mouse.move(2,2);page.wait_for_timeout(120);page.screenshot(path=str(EVID/f'webgl_{name}_{width}x{height}.png'));pages.append(snap)
+   assert not errors,errors
+   report['windows'].append({'viewport':[width,height],'renderer':initial['renderer'],'interaction':results,'pages':pages,'page_errors':errors,'console':console,'result':'PASS'});print('PASS WebGL',width,height,flush=True);page.close()
+  browser.close()
+ report['result']='PASS'
+except Exception:
+ report['result']='FAIL';report['exception']=traceback.format_exc();raise
+finally:
+ (EVID/'webgl_qa.json').write_text(json.dumps(report,indent=2)+'\n');server.shutdown()

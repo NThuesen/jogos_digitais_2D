@@ -1,0 +1,41 @@
+{
+  "scope": "targeted native Button SpriteSwap in Unity Editor; no additional ColorTint, no hitbox punch; not final game integration",
+  "technical": {
+    "result": "PASS",
+    "selected_playmode_harnesses": 1,
+    "state_mesh_checks": 512,
+    "baseline_vertex_count": 36,
+    "raycast_samples": 6656,
+    "enabled_clicks": 64,
+    "disabled_attempts_blocked": 64,
+    "text_fit_failures": 0
+  },
+  "states": {
+    "HOVER_v02": {
+      "technical": "PASS",
+      "visual": "PASS",
+      "overall": "PASS",
+      "approval_recommendation": "Recommend owner approval only for tested common export/configuration; not automatically APPROVED"
+    },
+    "PRESSED_v01": {
+      "technical": "PASS",
+      "visual": "PASS",
+      "overall": "PASS",
+      "approval_recommendation": "Recommend owner approval in tested configuration; darkening is modest but clear on HOVER->PRESSED"
+    },
+    "DISABLED_v01": {
+      "technical": "PASS",
+      "visual": "REWORK",
+      "overall": "REWORK",
+      "approval_recommendation": "Do not approve standalone SpriteSwap appearance yet: too close to NORMAL; choose art revision or explicitly approved complementary disabled styling, then targeted QA"
+    }
+  },
+  "not_run": [
+    "physical mouse",
+    "input-module click eligibility/drag cancel",
+    "keyboard/gamepad/focus",
+    "WebGL/builds/new browser run",
+    "final Shop/menu integration",
+    "production gameplay and previous broad QA suites"
+  ]
+}

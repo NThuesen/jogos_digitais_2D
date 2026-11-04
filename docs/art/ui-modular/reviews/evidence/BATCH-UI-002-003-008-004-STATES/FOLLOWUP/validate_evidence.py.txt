@@ -1,0 +1,20 @@
+from pathlib import Path
+import hashlib,json,ast,re,xml.etree.ElementTree as ET
+root=Path.cwd();ev=root/'docs/art/ui-modular/reviews/evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP'
+for p in ev.rglob('*.json'):json.loads(p.read_text())
+for p in ev.glob('*.py.txt'):ast.parse(p.read_text(),filename=str(p))
+x=ET.parse(ev/'editor_results.xml').getroot();assert x.attrib['passed']=='1' and x.attrib['failed']=='0'
+r=json.loads((ev/'webgl_qa.json').read_text());assert r['result']=='PASS' and len(r['windows'])==2
+for w in r['windows']:assert not w['page_errors'] and not any(x['type']=='error' for x in w['console']);assert len(w['pages'])==3
+for name,v in json.loads((ev/'evidence_manifest.json').read_text()).items():assert hashlib.sha256((ev/name).read_bytes()).hexdigest()==v['sha256']
+out=root/'art_working/ui_modular/export_unity/UI_MODULAR_CONSOLIDATED_QA'
+for name,v in json.loads((ev/'final_export_manifest.json').read_text()).items():assert hashlib.sha256((out/name).read_bytes()).hexdigest()==v['sha256']
+old=root/'art_working/ui_modular/export_unity/UI-004_STATES_QA'
+for n in ['normal','hover','pressed']:assert (out/(n+'.png')).read_bytes()==(old/(n+'.png')).read_bytes()
+expected={'raw_gpt/UI-004_button_primary_compact_disabled_v02.png':'7d937f5757e7044f8184cf58dbf0d910405d5fce894c3eb45bf2b5f1e548d1fb','blender_clean/UI-004_button_primary_compact_disabled_v02.png':'3709ee3a696aa5b929a315fcacec31c2457736a068e34352bea11cd2dc51074d','blender_clean/UI-004_button_primary_compact_normal_v01.png':'c82d06142b3953a97b9654d8b7bf53e611679a6ffb4822a3b268dff239c17eb6','blender_clean/UI-002_panel_medium_v01.png':'00c44a34dca15be2cb61d994f05e32ec52775451bf80227bde5faa072683b2c9','blender_clean/UI-003_panel_small_label_v01.png':'0a79225c60c61541f34c1d34f3d45f7e0685917d5d9c82cd19b9fec534b31a27','blender_clean/UI-008_maid_card_compact_v01.png':'74ea40f0b528580b4f809bd20a359bd1dbdacb02e4014f0d8ce0576676fb6342'}
+for n,h in expected.items():assert hashlib.sha256((root/'art_working/ui_modular'/n).read_bytes()).hexdigest()==h,n
+for p in [root/'docs/art/ui-modular/ASSET_REGISTRY.md',root/'docs/art/ui-modular/reviews/UI_BATCH_002_003_008_COMPACT_STATES_V01.md']:
+ for link in re.findall(r'\]\(([^)]+)\)',p.read_text()):
+  if '://' not in link and not link.startswith('#'):assert (p.parent/link.split('#')[0]).exists(),(p,link)
+assert not (root/'Build/ModularQA').exists() and not (root/'Assets/_QA_Modular_Temp').exists()
+print('PASS: JSON/Python/XML, two WebGL sessions, evidence/export hashes, preserved source hashes, links, temporary cleanup')

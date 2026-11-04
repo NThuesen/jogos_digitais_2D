@@ -1,0 +1,11 @@
+from pathlib import Path
+from PIL import Image,ImageDraw
+import numpy as np,json
+out=Path('docs/art/ui-modular/reviews/evidence/BATCH-UI-002-003-008-004-STATES/FOLLOWUP')
+records={}
+for stem,lines in [('UI-002_panel_medium_v01',([160,1196],[150,652])),('UI-003_panel_small_label_v01',([320,1850],[100,426])),('UI-008_maid_card_compact_v01',([145,925],[185,795]))]:
+ p=Path('art_working/ui_modular/blender_clean')/(stem+'.png');im=Image.open(p);a=np.array(im);proof=Image.new('RGBA',im.size,'#352631');proof.alpha_composite(im);proof=proof.convert('RGB');d=ImageDraw.Draw(proof)
+ for x in lines[0]:d.line((x,0,x,im.height),fill='#00ffff',width=3)
+ for y in lines[1]:d.line((0,y,im.width,y),fill='#00ffff',width=3)
+ proof.thumbnail((850,650));proof.save(out/(stem+'_geometry.png'));records[stem]={'size':im.size,'vertical_cuts':lines[0],'horizontal_cuts':lines[1]}
+(out/'measured_geometry.json').write_text(json.dumps(records,indent=2)+'\n')

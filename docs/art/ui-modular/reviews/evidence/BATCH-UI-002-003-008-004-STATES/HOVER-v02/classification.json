@@ -1,0 +1,9 @@
+{
+  "asset": "UI-004_button_primary_compact_hover_v02.png",
+  "status": "CLEAN",
+  "approved": false,
+  "integrated": false,
+  "ready_for_unity_qa": true,
+  "reason": "Stronger hover rim visible at120x44/150x44 in static raster; preserve warm identity. Small geometric drift remains: verify alignment/common export in Unity before approval.",
+  "previous_version": "v01 remains REWORK; historical results unchanged"
+}

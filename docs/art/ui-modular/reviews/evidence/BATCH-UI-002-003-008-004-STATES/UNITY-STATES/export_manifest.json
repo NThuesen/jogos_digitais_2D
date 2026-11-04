@@ -1,0 +1,173 @@
+{
+  "scope": "local common QA exports, no source modification, no Unity integration",
+  "normal_export_source": "art_working/ui_modular/export_unity/UI-004_COMPACT_QA/candidate_768.png",
+  "normal_export_sha256": "e69e548a1d67a9e23b89b4f3849046f1720fe61db03c87c384fd9893c82388f6",
+  "common_dimensions": [
+    768,
+    141
+  ],
+  "border_LBRT": [
+    59.30501930501931,
+    40.81578947368421,
+    59.30501930501931,
+    40.81578947368421
+  ],
+  "ppu": 100,
+  "inputs": {
+    "normal": {
+      "path": "art_working/ui_modular/blender_clean/UI-004_button_primary_compact_normal_v01.png",
+      "sha256": "c82d06142b3953a97b9654d8b7bf53e611679a6ffb4822a3b268dff239c17eb6",
+      "dimensions": [
+        2072,
+        380
+      ],
+      "opaque_bbox": [
+        10,
+        6,
+        2059,
+        373
+      ]
+    },
+    "hover": {
+      "path": "art_working/ui_modular/blender_clean/UI-004_button_primary_compact_hover_v02.png",
+      "sha256": "c47a56f4f1a83c12eb9a64644a38a9dba66a55cefbb2d15e7913f3f88000d45e",
+      "dimensions": [
+        2176,
+        408
+      ],
+      "opaque_bbox": [
+        10,
+        5,
+        2166,
+        397
+      ]
+    },
+    "pressed": {
+      "path": "art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_pressed_v01.png",
+      "sha256": "291a26b50675ecce4670b77de3705a5f71a4eeffdf4d0b50734a58da910d038d",
+      "dimensions": [
+        2048,
+        375
+      ],
+      "opaque_bbox": [
+        10,
+        6,
+        2036,
+        369
+      ]
+    },
+    "disabled": {
+      "path": "art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_disabled_v01.png",
+      "sha256": "5ddb38f5275dfda5b95eb4ae73d06e9df468c5400310d20900e4c73df4e0cb60",
+      "dimensions": [
+        2048,
+        375
+      ],
+      "opaque_bbox": [
+        10,
+        6,
+        2036,
+        369
+      ]
+    }
+  },
+  "exports": {
+    "normal": {
+      "path": "art_working/ui_modular/export_unity/UI-004_STATES_QA/normal.png",
+      "sha256": "e69e548a1d67a9e23b89b4f3849046f1720fe61db03c87c384fd9893c82388f6",
+      "opaque_bbox": [
+        4,
+        2,
+        763,
+        138
+      ],
+      "mask_iou_normal": 1.0,
+      "mask_xor_pixels": 0,
+      "body_centroid_xy": [
+        382.9348341000294,
+        69.54277185083684
+      ],
+      "transform": {
+        "method": "byte-identical copy of approved QA export"
+      }
+    },
+    "hover": {
+      "path": "art_working/ui_modular/export_unity/UI-004_STATES_QA/hover.png",
+      "sha256": "5ae7316ad06a835ee427474f3bd89fe474b48d508334ffa3dbef313d8078dcb2",
+      "opaque_bbox": [
+        4,
+        2,
+        763,
+        138
+      ],
+      "mask_iou_normal": 0.9992072036801409,
+      "mask_xor_pixels": 81,
+      "body_centroid_xy": [
+        382.9755703356875,
+        69.54997110364486
+      ],
+      "transform": {
+        "method": "opaque-body registration + 3 horizontal bands; uniform end caps; bicubic4x/Lanczos downsample",
+        "uniform_cap_scale_xy": 0.3469387755102041,
+        "left_translation_x": 0.5306122448979593,
+        "right_translation_x": 11.530612244897952,
+        "translation_y": 0.26530612244897966,
+        "target_cap_width": 59.30501930501931,
+        "source_alpha_replaced": false,
+        "colors_tinted": false
+      }
+    },
+    "pressed": {
+      "path": "art_working/ui_modular/export_unity/UI-004_STATES_QA/pressed.png",
+      "sha256": "70ea100d92814aebdbfb0bc48e7facf5f6ac8311c9a19bfcadde0b75d7bf0c07",
+      "opaque_bbox": [
+        4,
+        2,
+        763,
+        138
+      ],
+      "mask_iou_normal": 0.999324674816243,
+      "mask_xor_pixels": 69,
+      "body_centroid_xy": [
+        382.8802824488037,
+        69.51331446423849
+      ],
+      "transform": {
+        "method": "opaque-body registration + 3 horizontal bands; uniform end caps; bicubic4x/Lanczos downsample",
+        "uniform_cap_scale_xy": 0.3746556473829201,
+        "left_translation_x": 0.2534435261707988,
+        "right_translation_x": 0.20110192837466911,
+        "translation_y": -0.24793388429752072,
+        "target_cap_width": 59.30501930501931,
+        "source_alpha_replaced": false,
+        "colors_tinted": false
+      }
+    },
+    "disabled": {
+      "path": "art_working/ui_modular/export_unity/UI-004_STATES_QA/disabled.png",
+      "sha256": "eddc84e6dccec2d4ae9b28adefd9318ffacc5afc712c8680ea6d6b566603430b",
+      "opaque_bbox": [
+        4,
+        2,
+        763,
+        138
+      ],
+      "mask_iou_normal": 0.999324674816243,
+      "mask_xor_pixels": 69,
+      "body_centroid_xy": [
+        382.8802824488037,
+        69.51331446423849
+      ],
+      "transform": {
+        "method": "opaque-body registration + 3 horizontal bands; uniform end caps; bicubic4x/Lanczos downsample",
+        "uniform_cap_scale_xy": 0.3746556473829201,
+        "left_translation_x": 0.2534435261707988,
+        "right_translation_x": 0.20110192837466911,
+        "translation_y": -0.24793388429752072,
+        "target_cap_width": 59.30501930501931,
+        "source_alpha_replaced": false,
+        "colors_tinted": false
+      }
+    }
+  }
+}

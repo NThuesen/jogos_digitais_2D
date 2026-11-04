@@ -1,0 +1,32 @@
+{
+  "panel": {
+    "source": "art_working/ui_modular/blender_clean/UI-002_panel_medium_v01.png",
+    "source_sha256": "00c44a34dca15be2cb61d994f05e32ec52775451bf80227bde5faa072683b2c9",
+    "target": [
+      678,
+      401
+    ],
+    "sha256": "835e669e0658136409a1eba071f178e8c3c9c7426d462543eff5efc363fb6ff3",
+    "operation": "exact half dimensions, Pillow premultiplied RGBA Lanczos; source untouched"
+  },
+  "label": {
+    "source": "art_working/ui_modular/blender_clean/UI-003_panel_small_label_v01.png",
+    "source_sha256": "0a79225c60c61541f34c1d34f3d45f7e0685917d5d9c82cd19b9fec534b31a27",
+    "target": [
+      1085,
+      263
+    ],
+    "sha256": "914fb6c5e19203861368ad29b009e7461ee6f4839e058f445a04f62311fec9e7",
+    "operation": "exact half dimensions, Pillow premultiplied RGBA Lanczos; source untouched"
+  },
+  "card": {
+    "source": "art_working/ui_modular/blender_clean/UI-008_maid_card_compact_v01.png",
+    "source_sha256": "74ea40f0b528580b4f809bd20a359bd1dbdacb02e4014f0d8ce0576676fb6342",
+    "target": [
+      535,
+      735
+    ],
+    "sha256": "1a7bf6407c23cf037674d38b182efb5975e916a5ba3467fad7a6babbf1c4f203",
+    "operation": "exact half dimensions, Pillow premultiplied RGBA Lanczos; source untouched"
+  }
+}

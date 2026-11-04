@@ -1,0 +1,10 @@
+{
+  "normal_v01_v02_native_sizes.png": {
+    "bytes": 95624,
+    "sha256": "343114ca117722c98373c754af53dd1fb64924dade97f52ab2413d8a264f4133"
+  },
+  "v02_raw_clean_mattes.png": {
+    "bytes": 252866,
+    "sha256": "11ca653702970e4dd8c8cc5c1504b42cc9d8117ca9d2741ef88d88952a8cf184"
+  }
+}

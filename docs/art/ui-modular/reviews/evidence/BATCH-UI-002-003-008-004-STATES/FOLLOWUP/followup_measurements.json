@@ -1,0 +1,445 @@
+{
+  "contrast_method": "RGB screenshot median of clear face sample versus darkest label pixel near center. Point estimate, not whole-glyph certification.",
+  "contrast": [
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "state": "normal",
+      "size": [
+        120,
+        44
+      ],
+      "face_rgb": [
+        249.0,
+        216.0,
+        181.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 10.168696106970245
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "state": "normal",
+      "size": [
+        150,
+        44
+      ],
+      "face_rgb": [
+        249.0,
+        217.0,
+        181.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 10.236058021727613
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "state": "normal",
+      "size": [
+        230,
+        54
+      ],
+      "face_rgb": [
+        249.0,
+        217.0,
+        181.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 10.236058021727613
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "state": "disabled_v01",
+      "size": [
+        120,
+        44
+      ],
+      "face_rgb": [
+        246.0,
+        215.0,
+        180.5
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 10.027379378037862
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "state": "disabled_v01",
+      "size": [
+        150,
+        44
+      ],
+      "face_rgb": [
+        246.0,
+        215.0,
+        181.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 10.030064940457054
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "state": "disabled_v01",
+      "size": [
+        230,
+        54
+      ],
+      "face_rgb": [
+        246.0,
+        215.0,
+        181.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 10.030064940457054
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "state": "disabled_v02",
+      "size": [
+        120,
+        44
+      ],
+      "face_rgb": [
+        199.0,
+        180.0,
+        163.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 6.871379538748615
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "state": "disabled_v02",
+      "size": [
+        150,
+        44
+      ],
+      "face_rgb": [
+        199.5,
+        180.0,
+        163.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 6.880358595884843
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "state": "disabled_v02",
+      "size": [
+        230,
+        54
+      ],
+      "face_rgb": [
+        199.0,
+        180.0,
+        163.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 6.871379538748615
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "state": "normal",
+      "size": [
+        120,
+        44
+      ],
+      "face_rgb": [
+        249.0,
+        216.0,
+        181.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 10.168696106970245
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "state": "normal",
+      "size": [
+        150,
+        44
+      ],
+      "face_rgb": [
+        249.0,
+        216.0,
+        181.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 10.168696106970245
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "state": "normal",
+      "size": [
+        230,
+        54
+      ],
+      "face_rgb": [
+        249.0,
+        217.0,
+        181.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 10.236058021727613
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "state": "disabled_v01",
+      "size": [
+        120,
+        44
+      ],
+      "face_rgb": [
+        246.0,
+        215.0,
+        181.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 10.030064940457054
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "state": "disabled_v01",
+      "size": [
+        150,
+        44
+      ],
+      "face_rgb": [
+        246.0,
+        215.0,
+        181.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 10.030064940457054
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "state": "disabled_v01",
+      "size": [
+        230,
+        54
+      ],
+      "face_rgb": [
+        246.0,
+        215.0,
+        181.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 10.030064940457054
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "state": "disabled_v02",
+      "size": [
+        120,
+        44
+      ],
+      "face_rgb": [
+        199.0,
+        180.0,
+        163.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 6.871379538748615
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "state": "disabled_v02",
+      "size": [
+        150,
+        44
+      ],
+      "face_rgb": [
+        199.0,
+        180.0,
+        163.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 6.871379538748615
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "state": "disabled_v02",
+      "size": [
+        230,
+        54
+      ],
+      "face_rgb": [
+        199.0,
+        180.0,
+        163.0
+      ],
+      "text_rgb": [
+        58,
+        42,
+        26
+      ],
+      "estimate": 6.871379538748615
+    }
+  ],
+  "export_face_comparison": {
+    "disabled_v01": {
+      "RGB_mean_delta": [
+        -2.4991601578903166,
+        -1.5131015369110608,
+        -0.5116108171663727
+      ],
+      "Y_mean_delta": -1.6504299697656841
+    },
+    "disabled": {
+      "RGB_mean_delta": [
+        -45.16588981271521,
+        -36.14331905601747,
+        -18.575900730662635
+      ],
+      "Y_mean_delta": -36.79314999580079
+    }
+  },
+  "memory_RGBA32_no_mips": {
+    "panel": {
+      "size": [
+        678,
+        401
+      ],
+      "bytes": 1087512,
+      "MiB": 1.0371322631835938
+    },
+    "label": {
+      "size": [
+        1085,
+        263
+      ],
+      "bytes": 1141420,
+      "MiB": 1.0885429382324219
+    },
+    "card": {
+      "size": [
+        535,
+        735
+      ],
+      "bytes": 1572900,
+      "MiB": 1.5000343322753906
+    }
+  }
+}

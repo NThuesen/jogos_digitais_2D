@@ -1,0 +1,203 @@
+{
+  "method": "Button rectangle border region excluding central 80% width/70% height; inspect captures for text/platform differences separately.",
+  "samples": [
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "column": 0,
+      "row": 0,
+      "border_pixels": 1600,
+      "RGB_MAE": 1.2864583333333333,
+      "RGB_max": 8.0
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "column": 0,
+      "row": 1,
+      "border_pixels": 2125,
+      "RGB_MAE": 1.0989803921568628,
+      "RGB_max": 10.0
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "column": 0,
+      "row": 2,
+      "border_pixels": 3821,
+      "RGB_MAE": 0.9770566169414638,
+      "RGB_max": 7.0
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "column": 1,
+      "row": 0,
+      "border_pixels": 1600,
+      "RGB_MAE": 1.1514583333333333,
+      "RGB_max": 15.0
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "column": 1,
+      "row": 1,
+      "border_pixels": 2088,
+      "RGB_MAE": 1.326947637292465,
+      "RGB_max": 10.0
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "column": 1,
+      "row": 2,
+      "border_pixels": 3866,
+      "RGB_MAE": 1.0035350922572857,
+      "RGB_max": 9.0
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "column": 2,
+      "row": 0,
+      "border_pixels": 1600,
+      "RGB_MAE": 0.8189583333333333,
+      "RGB_max": 7.0
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "column": 2,
+      "row": 1,
+      "border_pixels": 2125,
+      "RGB_MAE": 0.8345098039215686,
+      "RGB_max": 7.0
+    },
+    {
+      "viewport": [
+        960,
+        600
+      ],
+      "column": 2,
+      "row": 2,
+      "border_pixels": 3821,
+      "RGB_MAE": 0.893396144115851,
+      "RGB_max": 6.0
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "column": 0,
+      "row": 0,
+      "border_pixels": 2400,
+      "RGB_MAE": 0.8831944444444444,
+      "RGB_max": 5.0
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "column": 0,
+      "row": 1,
+      "border_pixels": 3000,
+      "RGB_MAE": 0.9062222222222223,
+      "RGB_max": 5.0
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "column": 0,
+      "row": 2,
+      "border_pixels": 5428,
+      "RGB_MAE": 0.8609678211741587,
+      "RGB_max": 5.0
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "column": 1,
+      "row": 0,
+      "border_pixels": 2400,
+      "RGB_MAE": 0.89875,
+      "RGB_max": 5.0
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "column": 1,
+      "row": 1,
+      "border_pixels": 3000,
+      "RGB_MAE": 0.9216666666666666,
+      "RGB_max": 5.0
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "column": 1,
+      "row": 2,
+      "border_pixels": 5428,
+      "RGB_MAE": 0.9202898550724637,
+      "RGB_max": 5.0
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "column": 2,
+      "row": 0,
+      "border_pixels": 2400,
+      "RGB_MAE": 0.6563888888888889,
+      "RGB_max": 4.0
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "column": 2,
+      "row": 1,
+      "border_pixels": 3000,
+      "RGB_MAE": 0.6901111111111111,
+      "RGB_max": 4.0
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "column": 2,
+      "row": 2,
+      "border_pixels": 5428,
+      "RGB_MAE": 0.7927413411938099,
+      "RGB_max": 5.0
+    }
+  ]
+}

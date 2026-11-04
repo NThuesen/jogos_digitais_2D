@@ -1,0 +1,43 @@
+"""Create local QA exports only. Keep approved NORMAL bytes; register state body height/edges.
+Uniform sampling at end caps; only horizontal straight center band stretches. No alpha locking/tint.
+"""
+from pathlib import Path
+import hashlib,json,platform
+import numpy as np
+from PIL import Image
+import PIL
+ROOT=Path(__file__).resolve().parents[7];EVID=Path(__file__).resolve().parent
+OUT=ROOT/'art_working/ui_modular/export_unity/UI-004_STATES_QA';OUT.mkdir(parents=True,exist_ok=True)
+paths={'normal':ROOT/'art_working/ui_modular/blender_clean/UI-004_button_primary_compact_normal_v01.png','hover':ROOT/'art_working/ui_modular/blender_clean/UI-004_button_primary_compact_hover_v02.png','pressed':ROOT/'art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_pressed_v01.png','disabled':ROOT/'art_working/ui_modular/raw_gpt/UI-004_button_primary_compact_disabled_v01.png'}
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def box(mask):
+ y,x=np.where(mask);return [int(x.min()),int(y.min()),int(x.max()+1),int(y.max()+1)]
+normal_existing=ROOT/'art_working/ui_modular/export_unity/UI-004_COMPACT_QA/candidate_768.png'
+assert Image.open(normal_existing).size==(768,141)
+# Existing approved QA NORMAL export is copied without rerender/reencode.
+normal_path=OUT/'normal.png';normal_path.write_bytes(normal_existing.read_bytes());normal=np.array(Image.open(normal_path));refbox=box(normal[:,:,3]>128)
+W,H=768,141;B=160*W/2072;T=110*H/380
+report={'scope':'local common QA exports, no source modification, no Unity integration','normal_export_source':str(normal_existing.relative_to(ROOT)),'normal_export_sha256':sha(normal_existing),'common_dimensions':[W,H],'border_LBRT':[B,T,B,T],'ppu':100,'inputs':{},'exports':{}}
+# Registration uses alpha>128 bbox of each state. End-cap scale is uniform X/Y; center alone stretches.
+for name,p in paths.items():
+ a=np.array(Image.open(p));sb=box(a[:,:,3]>128);report['inputs'][name]={'path':str(p.relative_to(ROOT)),'sha256':sha(p),'dimensions':list(Image.open(p).size),'opaque_bbox':sb}
+ if name=='normal':result=normal;transform={'method':'byte-identical copy of approved QA export'}
+ else:
+  scale=(refbox[3]-refbox[1])/(sb[3]-sb[1]);tx=refbox[0]-sb[0]*scale;ty=refbox[1]-sb[1]*scale;txr=refbox[2]-sb[2]*scale
+  super_sample=4;cut1=round(B*super_sample);cut2=round((W-B)*super_sample);cuts=[0,cut1,cut2,W*super_sample]
+  mesh=[]
+  def lx(x):return (x-tx)/scale
+  def rx(x):return (x-txr)/scale
+  def sy(y):return (y-ty)/scale
+  for i in range(3):
+   x0,x1=cuts[i]/super_sample,cuts[i+1]/super_sample
+   sx0=lx(x0) if i==0 else lx(B) if i==1 else rx(x0)
+   sx1=lx(x1) if i==0 else rx(W-B) if i==1 else rx(x1)
+   mesh.append(((cuts[i],0,cuts[i+1],H*super_sample),(sx0,sy(0),sx0,sy(H),sx1,sy(H),sx1,sy(0))))
+  im=Image.fromarray(a).transform((W*super_sample,H*super_sample),Image.Transform.MESH,mesh,Image.Resampling.BICUBIC,fillcolor=(0,0,0,0)).resize((W,H),Image.Resampling.LANCZOS)
+  im.save(OUT/(name+'.png'));result=np.array(im)
+  transform={'method':'opaque-body registration + 3 horizontal bands; uniform end caps; bicubic4x/Lanczos downsample','uniform_cap_scale_xy':scale,'left_translation_x':tx,'right_translation_x':txr,'translation_y':ty,'target_cap_width':B,'source_alpha_replaced':False,'colors_tinted':False}
+ mask=result[:,:,3]>128;rm=normal[:,:,3]>128
+ report['exports'][name]={'path':str((OUT/(name+'.png')).relative_to(ROOT)),'sha256':sha(OUT/(name+'.png')),'opaque_bbox':box(mask),'mask_iou_normal':float((mask&rm).sum()/(mask|rm).sum()),'mask_xor_pixels':int((mask^rm).sum()),'body_centroid_xy':list(map(float,np.array(np.where(mask)).mean(axis=1)[::-1])),'transform':transform}
+for name,p in paths.items():assert sha(p)==report['inputs'][name]['sha256']
+(EVID/'export_manifest.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

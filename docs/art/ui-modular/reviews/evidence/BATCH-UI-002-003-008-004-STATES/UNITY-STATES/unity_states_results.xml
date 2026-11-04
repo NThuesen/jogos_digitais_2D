@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-03 23:22:11Z" end-time="2026-11-03 23:22:14Z" duration="2,1130666">
+  <test-suite type="TestSuite" id="1099" name="Neko Maid Inc" fullname="Neko Maid Inc" runstate="Runnable" testcasecount="77" result="Passed" start-time="2026-11-03 23:22:11Z" end-time="2026-11-03 23:22:14Z" duration="2.113067" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1095" name="Ui004.States.Qa.Tests.dll" fullname="C:/dev/PocketSlop-Games/jogos_digitais_2D/Library/ScriptAssemblies/Ui004.States.Qa.Tests.dll" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-03 23:22:11Z" end-time="2026-11-03 23:22:14Z" duration="2.104203" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="2856" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1093" name="Ui004StatesTests" fullname="Ui004StatesTests" classname="Ui004StatesTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-03 23:22:11Z" end-time="2026-11-03 23:22:14Z" duration="2.102487" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1094" name="Transitions" fullname="Ui004StatesTests.Transitions" methodname="Transitions" classname="Ui004StatesTests" runstate="Runnable" seed="1488973517" result="Passed" start-time="2026-11-03 23:22:11Z" end-time="2026-11-03 23:22:13Z" duration="2.092128" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Saving results to: C:/Users/nicho/AppData/LocalLow/SlipperyZlope Games/Neko Maid Inc\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
