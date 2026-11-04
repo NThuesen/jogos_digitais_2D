@@ -12,7 +12,15 @@ Decisões expressas do responsável ("Fechamento artístico do lote B4" e "Encer
 | UI-019 TAIL | APPROVED restrito | [m](UI-019_dialog_tail_v01.png) / [e](exports/UI-019_dialog_tail_v01.png) | Sobreposta ao painel |
 | UI-025 RARE / EPIC / LEGENDARY | APPROVED restrito | [r](UI-025_rarity_card_frame_rare_v01.png) [e](UI-025_rarity_card_frame_epic_v01.png) [l](UI-025_rarity_card_frame_legendary_v01.png) | Área segura comum do retrato [120,172,950,789] (1070×1470); **sem SpriteSwap direto presumido**; EPIC: fenda transparente 2 px×~1200 px em x≈55–57 (já no UI-008 aprovado) |
 
-**Aceitos visualmente, CONDICIONAIS (não aprovados formalmente):** UI-005 HOVER v02 (`incoming/BATCH-B4/v02/`), PRESSED e DISABLED dependem do **NORMAL da #47**; UI-006 ACTIVE e HOVER dependem do **INACTIVE da #47** e exigem indicador persistente de aba selecionada na Unity.
+**Estados liberados em 04/11/2026** (baselines NORMAL/INACTIVE aprovados na #47):
+
+| Asset | Estado | Master / export | Restrição |
+| --- | --- | --- | --- |
+| UI-005_button_secondary_hover_v02.png | APPROVED restrito | [m](UI-005_button_secondary_hover_v02.png) / [e](exports/UI-005_button_secondary_hover_v02.png) | Aprovado apos o NORMAL (#47). Realce sutil vs NORMAL; distinguir DISABLED na Unity. |
+| UI-005_button_secondary_pressed_v01.png | APPROVED restrito | [m](UI-005_button_secondary_pressed_v01.png) / [e](exports/UI-005_button_secondary_pressed_v01.png) | Aprovado apos o NORMAL (#47). |
+| UI-005_button_secondary_disabled_v01.png | APPROVED restrito | [m](UI-005_button_secondary_disabled_v01.png) / [e](exports/UI-005_button_secondary_disabled_v01.png) | Aprovado apos o NORMAL (#47); a Unity deve distinguir claramente o DISABLED (texto/alpha). |
+| UI-006_tab_active_v01.png | APPROVED restrito | [m](UI-006_tab_active_v01.png) / [e](exports/UI-006_tab_active_v01.png) | Aprovado apos o INACTIVE (#47); Simple/preserveAspect; indicador persistente de aba selecionada na Unity. |
+| UI-006_tab_hover_v01.png | APPROVED restrito | [m](UI-006_tab_hover_v01.png) / [e](exports/UI-006_tab_hover_v01.png) | Aprovado apos o INACTIVE (#47); Simple/preserveAspect; quase igual ao ACTIVE: nao usar como unico indicador de selecao. |
 
 **Superados (preservados, não usar):** UI-010 RARE/LEGENDARY v01 e UI-005 HOVER v01 (REWORK).
 

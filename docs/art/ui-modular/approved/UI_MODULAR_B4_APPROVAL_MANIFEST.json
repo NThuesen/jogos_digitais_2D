@@ -305,48 +305,167 @@
           1470
         ]
       }
-    }
-  ],
-  "conditional": [
+    },
     {
       "filename": "UI-005_button_secondary_hover_v02.png",
-      "status": "ACCEPTED_VISUALLY_CONDITIONAL",
-      "depends_on": "UI-005 NORMAL (PENDING, PR #47)",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Aprovado apos o NORMAL (#47). Realce sutil vs NORMAL; distinguir DISABLED na Unity.",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/v02/raw/UI-005_button_secondary_hover_v02.png",
       "raw_sha256": "989c53486ed50f3e71fd19e0a0d62a9e0d223fc882edb1b69d26a46449e093ab",
       "clean_sha256": "0fbacd0d8c1a25e5dd79ba721543f3ae67a4039c2c869e2cc314a5881cbd16cd",
-      "path": "docs/art/ui-modular/incoming/BATCH-B4/v02/UI-005_button_secondary_hover_v02.png"
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-005_button_secondary_hover_v02.png",
+        "sha256": "0fbacd0d8c1a25e5dd79ba721543f3ae67a4039c2c869e2cc314a5881cbd16cd",
+        "size": [
+          2172,
+          724
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-005_button_secondary_hover_v02.png",
+        "sha256": "c70296433bfcb17c5ae948c7968f8b4cc2b1d260953264ab14a2b779caf278e7",
+        "dims": [
+          1060,
+          264
+        ],
+        "crop": [
+          26,
+          93,
+          2146,
+          620
+        ]
+      }
     },
     {
       "filename": "UI-005_button_secondary_pressed_v01.png",
-      "status": "ACCEPTED_VISUALLY_CONDITIONAL",
-      "depends_on": "UI-005 NORMAL (PENDING, PR #47)",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Aprovado apos o NORMAL (#47).",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/raw/UI-005_button_secondary_pressed_v01.png",
       "raw_sha256": "1af83942449ec2bbc82151c1818a0ea25058840a6f0ba5d0c972041a6c56428d",
       "clean_sha256": "db80e52bde818d6b543cb6160991e31306e89c1636a347986ba597c1476b7390",
-      "path": "docs/art/ui-modular/incoming/BATCH-B4/UI-005_button_secondary_pressed_v01.png"
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-005_button_secondary_pressed_v01.png",
+        "sha256": "db80e52bde818d6b543cb6160991e31306e89c1636a347986ba597c1476b7390",
+        "size": [
+          2172,
+          724
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-005_button_secondary_pressed_v01.png",
+        "sha256": "f7fb0934255ddc17346bca012ef36a77023a7f8b1b7b6cb8d4101eca316240f1",
+        "dims": [
+          1056,
+          262
+        ],
+        "crop": [
+          30,
+          95,
+          2143,
+          619
+        ]
+      }
     },
     {
       "filename": "UI-005_button_secondary_disabled_v01.png",
-      "status": "ACCEPTED_VISUALLY_CONDITIONAL",
-      "depends_on": "UI-005 NORMAL (PENDING, PR #47)",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Aprovado apos o NORMAL (#47); a Unity deve distinguir claramente o DISABLED (texto/alpha).",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/raw/UI-005_button_secondary_disabled_v01.png",
       "raw_sha256": "71cf9048628336e893f8feda55d926068c00dc6d6c524af08612bb6ca0135372",
       "clean_sha256": "cd77fdbf94cdbddc4902ddd3b3cdf5a7246125ec26ba7465ce2c2b876701d2ca",
-      "path": "docs/art/ui-modular/incoming/BATCH-B4/UI-005_button_secondary_disabled_v01.png"
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-005_button_secondary_disabled_v01.png",
+        "sha256": "cd77fdbf94cdbddc4902ddd3b3cdf5a7246125ec26ba7465ce2c2b876701d2ca",
+        "size": [
+          2172,
+          724
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-005_button_secondary_disabled_v01.png",
+        "sha256": "a53894a6ef00b0d52f9d511b388dcd8bff82f052867b81981ba13c9d216e72fd",
+        "dims": [
+          1059,
+          264
+        ],
+        "crop": [
+          27,
+          94,
+          2145,
+          621
+        ]
+      }
     },
     {
       "filename": "UI-006_tab_active_v01.png",
-      "status": "ACCEPTED_VISUALLY_CONDITIONAL",
-      "depends_on": "UI-006 INACTIVE (PENDING, PR #47); Unity deve mostrar indicador persistente de aba selecionada",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Aprovado apos o INACTIVE (#47); Simple/preserveAspect; indicador persistente de aba selecionada na Unity.",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/raw/UI-006_tab_active_v01.png",
       "raw_sha256": "c8bc2b53d1f92ffe0b3c311d85d1a355de32224d46304cf4bef70df802cf4b40",
       "clean_sha256": "55d09cecd6d33e7c792ba94a40214ba7a2031c0af81b045ee837d6dd7946834a",
-      "path": "docs/art/ui-modular/incoming/BATCH-B4/UI-006_tab_active_v01.png"
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-006_tab_active_v01.png",
+        "sha256": "55d09cecd6d33e7c792ba94a40214ba7a2031c0af81b045ee837d6dd7946834a",
+        "size": [
+          2172,
+          724
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-006_tab_active_v01.png",
+        "sha256": "43caf48781ce65991f7502a50dac4c093289be618c8de444d99c47607c560d6d",
+        "dims": [
+          1004,
+          266
+        ],
+        "crop": [
+          81,
+          86,
+          2090,
+          617
+        ]
+      }
     },
     {
       "filename": "UI-006_tab_hover_v01.png",
-      "status": "ACCEPTED_VISUALLY_CONDITIONAL",
-      "depends_on": "UI-006 INACTIVE (PENDING, PR #47)",
+      "status": "APPROVED",
+      "approval_scope": "restricted; see restrictions",
+      "integrated": false,
+      "restrictions": "Aprovado apos o INACTIVE (#47); Simple/preserveAspect; quase igual ao ACTIVE: nao usar como unico indicador de selecao.",
+      "raw_repo": "docs/art/ui-modular/incoming/BATCH-B4/raw/UI-006_tab_hover_v01.png",
       "raw_sha256": "a5f52cffad4ec1eadc64b97709cc7750f792a03300736efcdf204e1fb72c5a8d",
       "clean_sha256": "8fe2c870e27dceeeb4fc7d4b27bdf6c1ce5fb18a15eee95bf185e5d77eb7fd62",
-      "path": "docs/art/ui-modular/incoming/BATCH-B4/UI-006_tab_hover_v01.png"
+      "master": {
+        "path": "docs/art/ui-modular/approved/UI-006_tab_hover_v01.png",
+        "sha256": "8fe2c870e27dceeeb4fc7d4b27bdf6c1ce5fb18a15eee95bf185e5d77eb7fd62",
+        "size": [
+          2172,
+          724
+        ]
+      },
+      "export": {
+        "path": "docs/art/ui-modular/approved/exports/UI-006_tab_hover_v01.png",
+        "sha256": "3d6a545a47da324ad1cdd3edd52f65597e6b004be4d31f4624d777a6d3219d63",
+        "dims": [
+          1004,
+          265
+        ],
+        "crop": [
+          80,
+          86,
+          2088,
+          616
+        ]
+      }
     }
-  ]
+  ],
+  "note": "Estados UI-005/UI-006 aprovados em 04/11/2026 apos aprovacao dos baselines NORMAL/INACTIVE (PR #47, ja na main)."
 }
