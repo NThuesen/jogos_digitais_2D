@@ -175,6 +175,10 @@ namespace Neko.Game.Core
 
             var bust = Ui.Add<BustScreen>();
             bust.OnRestart = () => ErrorBoundary.Guard("recomeçar", NewGame);
+
+            // Presentation showcase of the nine authored maids: F8 on the menu, nothing links to it.
+            var showcase = Ui.Add<ShowcaseScreen>();
+            showcase.OnBack = () => Ui.Show<MenuScreen>();
         }
 
         private void BuildInput()
@@ -392,6 +396,12 @@ namespace Neko.Game.Core
         private void Update()
         {
             Tween.TickAll();
+
+            var keyboard = UnityEngine.InputSystem.Keyboard.current;
+            if (keyboard != null && keyboard.f8Key.wasPressedThisFrame && Ui.Current is MenuScreen)
+            {
+                Ui.Show<ShowcaseScreen>();
+            }
 
             if (State.Current != AppState.Shift) return;
 

@@ -66,5 +66,41 @@
  "icon_cat_paw.png": {
   "source": "docs/art/ui-modular/approved/exports/UI-011_icon_cat_paw_v01.png",
   "sha256": "1faac4771f2d2777b97ea1f91ada6ffd5cb5a64971ddbb9f11d18c9e5a98809c"
+ },
+ "card_common.png": {
+  "source": "docs/art/ui-modular/approved/exports/UI-008_maid_card_compact_v01.png",
+  "sha256": "1a7bf6407c23cf037674d38b182efb5975e916a5ba3467fad7a6babbf1c4f203"
+ },
+ "card_rare.png": {
+  "source": "docs/art/ui-modular/approved/exports/UI-025_rarity_card_frame_rare_v01.png",
+  "sha256": "5841138f29e2997908a9cd253b9017d3f8c137a56682fb2beda537d941e6dfd5"
+ },
+ "card_epic.png": {
+  "source": "docs/art/ui-modular/approved/exports/UI-025_rarity_card_frame_epic_v01.png",
+  "sha256": "45a15adbc559ee2cbad89eb053212db4b2ed6b143054bc95be0e549f917136df"
+ },
+ "card_legendary.png": {
+  "source": "docs/art/ui-modular/approved/exports/UI-025_rarity_card_frame_legendary_v01.png",
+  "sha256": "6309afc1452e6a78ddd37d74be0de9520c7d3b1eab62a5b4e772290a2fa6c2dd"
+ },
+ "card_minimal.png": {
+  "source": "docs/art/ui-modular/approved/exports/UI-008_maid_card_lineup_minimal_v01.png",
+  "sha256": "0427a384664a16b3572e7657bd1ea8ebb8b7cfa7a20d8472b3a27e57e69a7155"
+ },
+ "badge_common.png": {
+  "source": "docs/art/ui-modular/approved/exports/UI-010_rarity_badge_common_v01.png",
+  "sha256": "9d67bfc86ba3547ce22688d767b2c9935973da680422140d31d3106a3d6206e1"
+ },
+ "badge_rare.png": {
+  "source": "docs/art/ui-modular/approved/exports/UI-010_rarity_badge_rare_v02.png",
+  "sha256": "138c7ae134953b1be9f47af2ab99a0c6be5dcfd5dae5f2682fc997a69b657992"
+ },
+ "badge_epic.png": {
+  "source": "docs/art/ui-modular/approved/exports/UI-010_rarity_badge_epic_v01.png",
+  "sha256": "4b8d42b0112588000d289839b2223fb3427c170c4940d782fbc766f188feeb10"
+ },
+ "badge_legendary.png": {
+  "source": "docs/art/ui-modular/approved/exports/UI-010_rarity_badge_legendary_v02.png",
+  "sha256": "9ff83912f3fd13576f34a51859a36e12fc0ffbcafd5523cd54edd54b47d12d2f"
  }
 }

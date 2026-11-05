@@ -155,6 +155,15 @@ namespace Neko.Tests.Game
                 "Assets/_Game/Resources/UiArt/ui012_menu_background.png",
                 "Assets/_Game/Resources/UiArt/ui017_shop_row.png",
                 "Assets/_Game/Resources/UiArt/ui020_logo_wordmark.png",
+                "Assets/_Game/Resources/UiArt/card_common.png",
+                "Assets/_Game/Resources/UiArt/card_rare.png",
+                "Assets/_Game/Resources/UiArt/card_epic.png",
+                "Assets/_Game/Resources/UiArt/card_legendary.png",
+                "Assets/_Game/Resources/UiArt/card_minimal.png",
+                "Assets/_Game/Resources/UiArt/badge_common.png",
+                "Assets/_Game/Resources/UiArt/badge_rare.png",
+                "Assets/_Game/Resources/UiArt/badge_epic.png",
+                "Assets/_Game/Resources/UiArt/badge_legendary.png",
             },
                 expected.Keys);
 
