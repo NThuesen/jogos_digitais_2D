@@ -79,10 +79,15 @@ namespace Neko.Tests.PlayMode
 
             var portraits = GameRoot.Instance.Ui.Get<RosterScreen>().GetComponentsInChildren<Image>(true)
                 .Where(i => i.name == "Portrait" && i.transform.parent.name == "Window").ToList();
-            Assert.IsTrue(portraits.Any(p => p.sprite != null && p.sprite.name == "suzu_portrait"),
-                "Suzu is drawn from her own sheet");
-            Assert.AreEqual(1, portraits.Where(p => p.sprite != null && p.sprite.name.EndsWith("_portrait"))
-                .Select(p => p.sprite.name).Distinct().Count(), "nobody else is given an authored face");
+            // An authored face is the premium portrait (Resources/MaidPortraits, "<id>_head") or, for a
+            // character without one, the crop of her walk sheet ("<id>_portrait"); either way only the
+            // identified maid gets it.
+            bool Authored(Image p) => p.sprite != null &&
+                                      (p.sprite.name.EndsWith("_portrait") || p.sprite.name.EndsWith("_head"));
+            Assert.IsTrue(portraits.Any(p => p.sprite != null && p.sprite.name == "suzu_head"),
+                "Suzu is drawn with her own premium portrait");
+            Assert.AreEqual(1, portraits.Where(Authored).Select(p => p.sprite.name).Distinct().Count(),
+                "nobody else is given an authored face");
         }
 
         [UnityTest]
