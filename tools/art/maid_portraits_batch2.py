@@ -100,7 +100,52 @@ def sheet(entries, path, cols, title):
     img.save(path, optimize=True)
 
 
+def process_one(name, ver):
+    """Incremental: one maid at one RAW version, written as <name>_v0N_* so earlier versions stay untouched."""
+    arch = NEW[name][0]
+    src = RAW_DIR / f"UI-021_maid_portrait_{name}_neutral_v{ver:02d}.png"
+    raw = Image.open(src)
+    full, specks, ghosts = prep.clean(raw)
+    W, H = full.size
+    arr = np.zeros((H + 2 * prep.PAD, W + 2 * prep.PAD, 4), np.uint8)
+    arr[prep.PAD:prep.PAD + H, prep.PAD:prep.PAD + W] = np.array(full)
+    canvas = Image.fromarray(prep.bleed(arr), "RGBA")
+    x0, y0, x1, y1 = prep.head_box(full)
+    head = canvas.crop((x0 + prep.PAD, y0 + prep.PAD, x1 + prep.PAD, y1 + prep.PAD)).resize((192, 157), Image.LANCZOS)
+    al = head.getchannel("A")
+    head = head.convert("RGB").filter(ImageFilter.UnsharpMask(radius=0.8, percent=35, threshold=2))
+    head.putalpha(al)
+    dw = max(W, int(round(H * 0.75))); dh = max(int(round(dw / 0.75)), H); dw = int(round(dh * 0.75))
+    det = Image.new("RGBA", (dw, dh)); det.paste(full, ((dw - W) // 2, dh - H)); det = det.resize((480, 641), Image.LANCZOS)
+    tag = f"{name}_v{ver:02d}"
+    files = {"clean": OUT / f"{tag}_clean.png", "head": OUT / "derived" / f"{tag}_head_192.png",
+             "detail": OUT / "derived" / f"{tag}_detail_480.png"}
+    full.save(files["clean"], optimize=True); head.save(files["head"], optimize=True); det.save(files["detail"], optimize=True)
+    entry = {
+        "archetype": arch,
+        "raw": {"file": src.name, "sha256": sha(src), "size": list(raw.size)},
+        "clean": {"size": [W, H], "sha256": sha(files["clean"]), "specks_removed": specks, "grey_ghosts_removed": ghosts},
+        "head_192x157": {"sha256": sha(files["head"]), "box": [x0, y0, x1, y1]},
+        "detail_480x641": {"sha256": sha(files["detail"])},
+        "status": "NOT_REVIEWED",
+    }
+    mpath = OUT / "MANIFEST_batch2.json"
+    manifest = json.loads(mpath.read_text(encoding="utf-8"))
+    manifest[tag] = entry
+    mpath.write_text(json.dumps(manifest, indent=1), encoding="utf-8")
+    apath = OUT / "audit_batch2.json"
+    report = json.loads(apath.read_text(encoding="utf-8"))
+    report[tag] = {"raw_audit": audit(raw, full), "features": features(full)}
+    apath.write_text(json.dumps(report, indent=1), encoding="utf-8")
+    print(tag, raw.size, "->", full.size, "specks", specks, "ghosts", ghosts, "head box", (x0, y0, x1, y1))
+
+
 def main():
+    if len(sys.argv) > 1:  # e.g.  maid_portraits_batch2.py nonoka:2
+        for arg in sys.argv[1:]:
+            n, v = arg.split(":")
+            process_one(n, int(v))
+        return
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "derived").mkdir(exist_ok=True)
     manifest, report, cleans = {}, {}, {}

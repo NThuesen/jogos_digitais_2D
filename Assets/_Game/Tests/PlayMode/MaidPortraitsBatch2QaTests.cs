@@ -33,6 +33,7 @@ namespace Neko.Tests.PlayMode
         {
             new[] { "Mikan", "Yuki", "Kurumi", "Nonoka", "Kaguya" },
             new[] { "Mizuki", "Himari", "Anzu", "Kasumi" },
+            new[] { "Nonoka" }, // group 2: the approved v02 (Scottish Fold ears), incremental QA
         };
 
         // The nine are not in the walk catalog or the MaidCatalog yet (no animations): the test gives them
@@ -47,7 +48,7 @@ namespace Neko.Tests.PlayMode
         private static readonly Rarity[] Rarities =
             { Rarity.Rare, Rarity.Epic, Rarity.Common, Rarity.Legendary, Rarity.Epic };
 
-        private static readonly int[] GroupIndexes = { 0, 1 };
+        private static readonly int[] GroupIndexes = { 0, 1, 2 };
 
         [TearDown]
         public void Restore()
@@ -156,8 +157,9 @@ namespace Neko.Tests.PlayMode
             var details = new Dictionary<string, Sprite>();
             foreach (var name in names)
             {
-                heads[name] = Load(name.ToLowerInvariant() + "_head_192.png");
-                details[name] = Load(name.ToLowerInvariant() + "_detail_480.png");
+                var version = group == 2 ? "_v02" : "";
+                heads[name] = Load(name.ToLowerInvariant() + version + "_head_192.png");
+                details[name] = Load(name.ToLowerInvariant() + version + "_detail_480.png");
                 Assert.IsNull(MaidAnimCatalog.Identify(builder.MaidNamed(name)), name + " must stay a procedural maid: no identity is released");
             }
 
@@ -212,7 +214,7 @@ namespace Neko.Tests.PlayMode
                 var small = CardOf(name, MaidCard.Width * 0.72f);
                 if (small != null) BigDetail(small, builder.MaidNamed(name), details[name]);
                 else Assert.IsNotNull(GameObject.Find("Detail Portrait " + name), name + " has no detail portrait");
-                yield return Shots("detail_" + name.ToLowerInvariant());
+                yield return Shots("detail_" + name.ToLowerInvariant() + (group == 2 ? "_v02" : ""));
             }
         }
     }

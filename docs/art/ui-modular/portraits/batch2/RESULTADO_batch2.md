@@ -1,6 +1,6 @@
 # UI-021 — segundo lote (nove novas maids): CLEAN, derivados e QA
 
-Estado: **NÃO REVISADO pelo dono** (nenhum APPROVED aqui). Não integrado em produção, nenhuma identidade liberada no `MaidCatalog`, sem WebGL: faltam as animações de caminhada.
+Estado: **os nove APPROVED pelo dono** (Nonoka na v02; a v01 fica preservada como SUPERSEDED). Não integrado em produção, nenhuma identidade liberada no `MaidCatalog`, sem WebGL: faltam as animações de caminhada.
 
 Pipeline: o mesmo de `maid_portraits_prepare.py` (`clean()` e `head_box()` reutilizados sem alteração) via `tools/art/maid_portraits_batch2.py`. RAWs só lidos (ficam em `art_working/ui_modular/raw_gpt/`, ignorado pelo git; SHA-256 em `MANIFEST_batch2.json`). Derivados 192x157 e 480x641 em `derived/` (fora de `Assets`, nada vai para o build). Auditoria numérica em `audit_batch2.json`.
 
@@ -44,3 +44,22 @@ Nenhum REWORK: rosto, olhos, penteado e silhueta de cada uma são distintos das 
 
 ## QA no Editor
 Harness existente (`MaidPortraitsQaTests`) copiado em `MaidPortraitsBatch2QaTests`: maids procedurais comuns com o nome e o arquétipo projetados, sem identidade, só com o sprite do `Portrait` trocado. 2/2 passam; Escalação, Elenco e detalhe legíveis em 960x600 e 1280x720, sem cortes novos. Não rodei outros testes (nenhum código de produção mudou).
+
+## Atualização: Nonoka v02 (aprovada artisticamente pelo dono)
+Correção só das orelhas: de caídas (cachorro) para orelhas de gato Scottish Fold compactas; resto do desenho preservado. RAW v02 (1086x1448 RGBA, `UI-021_maid_portrait_nonoka_neutral_v02.png`, SHA-256 em `MANIFEST_batch2.json`, chave `nonoka_v02`) processado pelo mesmo pipeline (`python tools/art/maid_portraits_batch2.py nonoka:2`): CLEAN 985x1458, 54 fragmentos removidos, sem fantasmas; topo com 5 px de ar (igual à v01) e orelhas inteiras dentro da tela. A v01 (RAW, CLEAN, derivados, hash) continua intacta. Comparativos: `nonoka_v01_vs_v02_top.png`, `nonoka_v01_vs_v02_heads.png`.
+
+QA incremental no Editor (só a Nonoka, grupo 2 do harness, 960x600 e 1280x720): 1/1 passou; capturas `qa/g2_*` e `qa/detail_nonoka_v02_*`. Os outros oito não foram reexecutados.
+
+| Maid | Status | Restrições |
+|---|---|---|
+| Mikan | APPROVED | mão acenando encostada na borda direita do card |
+| Yuki | APPROVED | |
+| Kurumi | APPROVED | |
+| Nonoka | APPROVED (v02) | nenhuma; v01 SUPERSEDED |
+| Kaguya | APPROVED | |
+| Mizuki | APPROVED | |
+| Himari | APPROVED | cabelo coral próximo de Mikan/Anzu |
+| Anzu | APPROVED | cabelo âmbar próximo de Mikan/Himari |
+| Kasumi | APPROVED | |
+
+Continua não integrado: nenhuma identidade liberada no `MaidCatalog`, sem animações de caminhada.

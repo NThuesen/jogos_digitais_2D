@@ -30,7 +30,9 @@
   "detail_480x641": {
    "sha256": "83a816c505725a1495258352c0fa5be8983c644ccfc9a4d78280bcc8dcf307ac"
   },
-  "status": "NOT_REVIEWED"
+  "status": "APPROVED",
+  "restrictions": "m\u00e3o acenando encostada na borda direita do card; pose de aceno",
+  "approved_by": "owner"
  },
  "yuki": {
   "archetype": "Kuudere",
@@ -63,7 +65,9 @@
   "detail_480x641": {
    "sha256": "77db3c767f5b4e9fab573c0fb1db538f14ec240b60652207dfeb42a93084243b"
   },
-  "status": "NOT_REVIEWED"
+  "status": "APPROVED",
+  "restrictions": "none",
+  "approved_by": "owner"
  },
  "kurumi": {
   "archetype": "Tsundere",
@@ -96,7 +100,9 @@
   "detail_480x641": {
    "sha256": "a73f86bbf93d0c2b2a72348428e2481343c80f4d530e32cbc6b1bd4f04370b03"
   },
-  "status": "NOT_REVIEWED"
+  "status": "APPROVED",
+  "restrictions": "none",
+  "approved_by": "owner"
  },
  "nonoka": {
   "archetype": "Dojikko",
@@ -129,7 +135,9 @@
   "detail_480x641": {
    "sha256": "2db20c82184da3335ff620d06632a01b45b1ecfe60266bf76d0344bee68e9912"
   },
-  "status": "NOT_REVIEWED"
+  "status": "SUPERSEDED",
+  "superseded_by": "nonoka_v02",
+  "restrictions": "orelhas ca\u00eddas (leem como cachorro); substitu\u00edda pela v02"
  },
  "kaguya": {
   "archetype": "Ojousama",
@@ -162,7 +170,9 @@
   "detail_480x641": {
    "sha256": "21194962f03c3df4ea8f03c354d053ea90998a4fc6545deac520a73e5c355252"
   },
-  "status": "NOT_REVIEWED"
+  "status": "APPROVED",
+  "restrictions": "none",
+  "approved_by": "owner"
  },
  "mizuki": {
   "archetype": "Oneesan",
@@ -195,7 +205,9 @@
   "detail_480x641": {
    "sha256": "db580cb0d4c54164bc19d3ef51bd020e9a930f508c34ca3b62ce4a38f32c33fe"
   },
-  "status": "NOT_REVIEWED"
+  "status": "APPROVED",
+  "restrictions": "none",
+  "approved_by": "owner"
  },
  "himari": {
   "archetype": "Idol",
@@ -228,7 +240,9 @@
   "detail_480x641": {
    "sha256": "ad5f6d5d9c4c360ae2188ff061e7d783c75ff53c4b5b2565ecd1a3d1be71a70c"
   },
-  "status": "NOT_REVIEWED"
+  "status": "APPROVED",
+  "restrictions": "cabelo laranja/coral pr\u00f3ximo de Mikan e Anzu (aceito)",
+  "approved_by": "owner"
  },
  "anzu": {
   "archetype": "Gourmand",
@@ -261,7 +275,9 @@
   "detail_480x641": {
    "sha256": "6a7d8ba1de1a8693e882cd09da9138586e81ceaa27cc928373ec04f32d3cd8f3"
   },
-  "status": "NOT_REVIEWED"
+  "status": "APPROVED",
+  "restrictions": "cabelo laranja/\u00e2mbar pr\u00f3ximo de Mikan e Himari (aceito)",
+  "approved_by": "owner"
  },
  "kasumi": {
   "archetype": "Mukuchi",
@@ -294,6 +310,44 @@
   "detail_480x641": {
    "sha256": "5d89eafbb5ff9ab719310fa1e72fa744d97ed0438bd2c3a9f3fe085b3942406f"
   },
-  "status": "NOT_REVIEWED"
+  "status": "APPROVED",
+  "restrictions": "none",
+  "approved_by": "owner"
+ },
+ "nonoka_v02": {
+  "archetype": "Dojikko",
+  "raw": {
+   "file": "UI-021_maid_portrait_nonoka_neutral_v02.png",
+   "sha256": "f3b8dcf1dc679b23052e89cc0ba166b6526404c1744a4422c9f20ac71d965d25",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    985,
+    1458
+   ],
+   "sha256": "bec85a74592c48d439b79147b5e2a8a034752c1975f5779f28d12fbc9a24f538",
+   "specks_removed": 54,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "e6db6cbc9fecc240fcf6e915125772c2c1edeb15120ff012ab08627eb0ca5b49",
+   "box": [
+    34,
+    -65,
+    1030,
+    751
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "becb91f9cdf4faeb240c370f4860e3fcc8509f00b326abcf28d2229ba70cee42"
+  },
+  "status": "APPROVED",
+  "restrictions": "none",
+  "approved_by": "owner",
+  "replaces": "nonoka (v01, preservada)"
  }
 }
