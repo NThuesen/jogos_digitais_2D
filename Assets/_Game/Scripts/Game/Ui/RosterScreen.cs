@@ -43,9 +43,10 @@ namespace Neko.Game.Ui
             UiKit.Anchor(_header.rectTransform, new Vector2(1f, 1f), new Vector2(-170f, -26f));
             _header.rectTransform.sizeDelta = new Vector2(460f, 32f);
 
-            Scenery.PlankAt(transform, Strings.Get("dialog.back"), new Vector2(120f, 44f),
-                new Vector2(1f, 1f), new Vector2(-26f, -18f), () => OnBack?.Invoke(),
-                Typeface.Small);
+            // The back control is the approved secondary button (UI-005), as on the shop.
+            var back = UiArt.StateButton(transform, Strings.Get("dialog.back"), new Vector2(120f, 44f),
+                () => OnBack?.Invoke(), "btn2", Typeface.Small);
+            UiKit.Anchor(back.GetComponent<RectTransform>(), new Vector2(1f, 1f), new Vector2(-26f, -18f));
 
             // 600 wide: the detail plaque starts 630 from the left at the 960x600 canvas (1152 wide),
             // and the grid ends at 622. At 700 it ran 92 units under the plaque.

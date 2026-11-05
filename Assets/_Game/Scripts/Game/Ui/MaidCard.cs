@@ -26,6 +26,11 @@ namespace Neko.Game.Ui
         public static RectTransform Build(Transform parent, Maid maid, float scale = 1f,
             bool showSalary = true, Role? playingAs = null, bool exact = false)
         {
+            if (ArtReady())
+            {
+                return BuildArt(parent, maid, scale, showSalary, playingAs);
+            }
+
             var size = new Vector2(Width * scale, Height * scale);
             var rarity = maid != null ? maid.Card : null;
             var frame = rarity != null ? Palette.Hex(rarity.TintHex) : Palette.Wall;
@@ -166,6 +171,162 @@ namespace Neko.Game.Ui
                 dot.raycastTarget = false;
                 dot.sprite = UiKit.Sprites.Get(new ShapeSpec(ShapeId.Star, Logo.Brass), 32);
             }
+        }
+
+        // ---- Approved art (UI-008 compact / lineup minimal, UI-025 frames, UI-010 badges) -------
+        // The frames are plain sprites drawn over the portrait: no 9-slice, text stays Unity's.
+        // Below MinimalBelow the card is the LINEUP MINIMAL (portrait and name only); the compact
+        // frame was approved at 150x206 and is used from 0.72x up, never below.
+
+        private const float MinimalBelow = 0.7f;
+
+        // Fractions of the card (x, y from the top, width, height) measured on the 535x735 exports.
+        private static readonly Rect CompactWindow = new Rect(0.1355f, 0.126f, 0.729f, 0.415f);
+        private static readonly Rect MinimalWindow = new Rect(0.1495f, 0.156f, 0.701f, 0.524f);
+        private static readonly Rect CompactName = new Rect(0.14f, 0.566f, 0.72f, 0.098f);
+        private static readonly Rect MinimalName = new Rect(0.12f, 0.768f, 0.76f, 0.168f);
+        private static readonly Rect CompactKind = new Rect(0.12f, 0.684f, 0.76f, 0.05f);
+        private static readonly Rect CompactKindLeft = new Rect(0.12f, 0.684f, 0.38f, 0.05f);
+        private static readonly Rect CompactSalaryRight = new Rect(0.5f, 0.684f, 0.38f, 0.05f);
+        private static readonly Rect CompactStats = new Rect(0.12f, 0.738f, 0.76f, 0.17f);
+
+        private static readonly string[] ArtNames =
+        {
+            "card_common", "card_rare", "card_epic", "card_legendary", "card_minimal",
+            "badge_common", "badge_rare", "badge_epic", "badge_legendary",
+        };
+
+        private static bool ArtReady() => UiArt.Has(ArtNames);
+
+        private static string Key(Rarity rarity) => rarity.ToString().ToLowerInvariant();
+
+        /// <summary>Anchors a rect to a fraction of its parent: x, y from the top, width, height.</summary>
+        private static void Place(RectTransform rect, Rect fraction)
+        {
+            rect.anchorMin = new Vector2(fraction.x, 1f - fraction.y - fraction.height);
+            rect.anchorMax = new Vector2(fraction.x + fraction.width, 1f - fraction.y);
+            rect.offsetMin = rect.offsetMax = Vector2.zero;
+        }
+
+        private static RectTransform BuildArt(Transform parent, Maid maid, float scale, bool showSalary,
+            Role? playingAs)
+        {
+            var minimal = maid == null || scale < MinimalBelow;
+            var size = new Vector2(Width * scale, Height * scale);
+
+            // The root is only the hit area (clear, still a raycast target): the frame sits above
+            // the portrait, so it cannot be the root's own sprite.
+            var root = UiKit.Panel(parent, size, new Color(1f, 1f, 1f, 0f), 0.14f, true);
+            root.gameObject.name = maid != null ? "Card " + maid.Name : "Card";
+
+            var window = minimal ? MinimalWindow : CompactWindow;
+            var clip = new GameObject("Window", typeof(RectTransform)).AddComponent<RectMask2D>();
+            var clipRect = (RectTransform)clip.transform;
+            clipRect.SetParent(root, false);
+            Place(clipRect, window);
+
+            if (maid != null)
+            {
+                var wash = new GameObject("Wash", typeof(RectTransform)).AddComponent<Image>();
+                wash.transform.SetParent(clipRect, false);
+                wash.color = Palette.WithAlpha(Palette.ForArchetype(maid.Archetype), 0.3f);
+                wash.raycastTarget = false;
+                UiKit.Stretch(wash.rectTransform);
+
+                var portrait = new GameObject("Portrait", typeof(RectTransform)).AddComponent<Image>();
+                portrait.transform.SetParent(clipRect, false);
+                portrait.preserveAspect = true;
+                portrait.raycastTarget = false;
+                portrait.sprite = UiKit.Sprites.Layered(MaidSpriteBuilder.Layers(maid, MaidPose.Idle),
+                    MaidSpriteBuilder.CacheKey(maid, MaidPose.Idle), 128);
+                UiKit.Stretch(portrait.rectTransform);
+            }
+
+            var frame = new GameObject("Frame", typeof(RectTransform)).AddComponent<Image>();
+            frame.transform.SetParent(root, false);
+            frame.sprite = UiArt.Get(minimal ? "card_minimal" : "card_" + Key(maid.Rarity));
+            frame.raycastTarget = false;
+            frame.color = maid == null ? new Color(1f, 1f, 1f, 0.55f) : Color.white;
+            UiKit.Stretch(frame.rectTransform);
+
+            if (maid == null)
+            {
+                var empty = UiKit.Label(root, Strings.Get("lineup.empty"), Typeface.Small, Palette.TextDim);
+                Place(empty.rectTransform, MinimalWindow);
+                return root;
+            }
+
+            // Rarity is the frame on the compact card; the minimal frame has one look, so the
+            // gem badge (also on the compact card) is what tells the rarities apart there.
+            var badge = new GameObject("Rarity", typeof(RectTransform)).AddComponent<Image>();
+            badge.transform.SetParent(root, false);
+            badge.sprite = UiArt.Get("badge_" + Key(maid.Rarity));
+            badge.preserveAspect = true;
+            badge.raycastTarget = false;
+            var badgeWidth = size.x * 0.3f;
+            badge.rectTransform.sizeDelta = new Vector2(badgeWidth, badgeWidth * 0.58f);
+            UiKit.Anchor(badge.rectTransform, new Vector2(1f, 1f),
+                new Vector2(-(1f - window.xMax) * size.x - 2f * scale, -window.y * size.y - 2f * scale));
+
+            // Her natural position: bottom-left of the portrait; red when she plays elsewhere.
+            var wrong = playingAs.HasValue && playingAs.Value != maid.NaturalRole;
+            var tab = UiKit.Panel(root, new Vector2(size.x * 0.4f, 17f * scale),
+                wrong ? Palette.Alarm : Logo.Brass, 0.45f, true);
+            tab.GetComponent<Image>().raycastTarget = false;
+            tab.anchorMin = tab.anchorMax = new Vector2(0f, 1f);
+            tab.pivot = new Vector2(0f, 0f);
+            tab.anchoredPosition = new Vector2(window.x * size.x + 3f * scale,
+                -window.yMax * size.y + 3f * scale);
+            var role = UiKit.Label(tab, RoleTable.For(maid.NaturalRole).DisplayName,
+                Mathf.RoundToInt(11f * scale), Palette.Hex("#3A2A1A"), bold: true);
+            UiKit.Stretch(role.rectTransform, 1f);
+
+            var name = UiKit.Label(root, maid.Name, Mathf.RoundToInt((minimal ? 17f : 18f) * scale),
+                Palette.Text, bold: true);
+            Place(name.rectTransform, minimal ? MinimalName : CompactName);
+            name.resizeTextForBestFit = true;
+            name.resizeTextMinSize = 6;
+            name.resizeTextMaxSize = name.fontSize;
+
+            if (minimal) return root;
+
+            // Archetype and wage share one line when the wage is shown; each keeps its own box.
+            var small = Mathf.Max(7, Mathf.RoundToInt(10f * scale));
+            var kind = UiKit.Label(root, maid.Profile.DisplayName, small,
+                Palette.ForArchetype(maid.Archetype),
+                showSalary ? TextAnchor.MiddleLeft : TextAnchor.MiddleCenter);
+            Place(kind.rectTransform, showSalary ? CompactKindLeft : CompactKind);
+
+            var stats = maid.Total;
+            var row = new GameObject("Stats", typeof(RectTransform)).GetComponent<RectTransform>();
+            row.SetParent(root, false);
+            Place(row, CompactStats);
+            ArtPip(row, 0, "SAL", stats.Serve, scale);
+            ArtPip(row, 1, "COZ", stats.Cook, scale);
+            ArtPip(row, 2, "CHA", stats.Charm, scale);
+            ArtPip(row, 3, "FÔL", stats.Stamina, scale);
+
+            if (showSalary)
+            {
+                var salary = UiKit.Label(root,
+                    Strings.Get("roster.salary") + " " + Strings.Money(maid.Salary), small,
+                    Palette.TextDim, TextAnchor.MiddleRight);
+                Place(salary.rectTransform, CompactSalaryRight);
+            }
+
+            return root;
+        }
+
+        /// <summary>One stat: the number over its caption, each in its own band so they never overlap.</summary>
+        private static void ArtPip(RectTransform row, int index, string caption, int value, float scale)
+        {
+            var number = UiKit.Label(row, value.ToString(), Mathf.Max(8, Mathf.RoundToInt(15f * scale)),
+                Palette.Text, bold: true);
+            Place(number.rectTransform, new Rect(index * 0.25f, 0f, 0.25f, 0.56f));
+
+            var label = UiKit.Label(row, caption, Mathf.Max(6, Mathf.RoundToInt(8f * scale)),
+                Palette.TextDim);
+            Place(label.rectTransform, new Rect(index * 0.25f, 0.62f, 0.25f, 0.38f));
         }
     }
 }

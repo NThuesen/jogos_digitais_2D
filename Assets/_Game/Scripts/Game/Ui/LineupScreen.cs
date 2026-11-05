@@ -47,9 +47,10 @@ namespace Neko.Game.Ui
                 Palette.Cream, 5f);
             UiKit.Anchor(title, new Vector2(0f, 1f), new Vector2(26f, -18f));
 
-            Scenery.PlankAt(transform, Strings.Get("dialog.back"), new Vector2(120f, 46f),
-                new Vector2(1f, 1f), new Vector2(-26f, -18f), () => OnBack?.Invoke(),
-                Typeface.Small);
+            // The back control is the approved secondary button (UI-005), as on the shop.
+            var back = UiArt.StateButton(transform, Strings.Get("dialog.back"), new Vector2(120f, 44f),
+                () => OnBack?.Invoke(), "btn2", Typeface.Small);
+            UiKit.Anchor(back.GetComponent<RectTransform>(), new Vector2(1f, 1f), new Vector2(-26f, -18f));
 
             ChemistryPanel();
 
