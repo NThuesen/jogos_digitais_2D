@@ -14,4 +14,6 @@ Pipeline: `tools/art/maid_portraits_prepare.py` (RAWs intactos, SHA-256 de tudo 
 | Ichika | PASS COM RESTRIÇÕES | topo do chapéu de chef toca a borda do RAW (~2 px); mancha cinza semitransparente atrás dele removida no CLEAN |
 | Yoru | PASS | franja cobre um olho (desenho, igual ao sprite de caminhada) |
 
+**Status: os nove APPROVED pelo dono** (Suzu e Ichika com as restrições técnicas acima; sem v04 nem regeneração). RAWs, CLEANs, derivados e hashes preservados em `MANIFEST.json`.
+
 Nenhum REWORK. Identidade conferida contra cada `*_walk.png` (cabelo, olhos, acessórios, uniforme).

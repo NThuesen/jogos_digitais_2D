@@ -28,7 +28,10 @@
   },
   "detail_480x641": {
    "sha256": "8550a8012ee966d2664727f349c0a66f7fdf15e44314128e6a4ebe0a3650a45c"
-  }
+  },
+  "status": "APPROVED",
+  "restrictions": "ponta da orelha direita achatada na borda superior do RAW",
+  "approved_by": "owner"
  },
  "hina": {
   "raw": {
@@ -59,7 +62,10 @@
   },
   "detail_480x641": {
    "sha256": "a42570b4a1b58e9d870ca83c17bb89a86bf72f885ad272864f6033d935dc1747"
-  }
+  },
+  "status": "APPROVED",
+  "restrictions": "none",
+  "approved_by": "owner"
  },
  "akari": {
   "raw": {
@@ -90,7 +96,10 @@
   },
   "detail_480x641": {
    "sha256": "331a0b151c5101c18e5117fef73206fbdf88c09c2e5c89acafa487c06ea23cf8"
-  }
+  },
+  "status": "APPROVED",
+  "restrictions": "none",
+  "approved_by": "owner"
  },
  "momo": {
   "raw": {
@@ -121,7 +130,10 @@
   },
   "detail_480x641": {
    "sha256": "def4e9cd12579dbcf3cca6c6da0ed80e92c7c49c378f17fa8c0714ad47defaaf"
-  }
+  },
+  "status": "APPROVED",
+  "restrictions": "none",
+  "approved_by": "owner"
  },
  "reina": {
   "raw": {
@@ -152,7 +164,10 @@
   },
   "detail_480x641": {
    "sha256": "6b924941b8ecfd3cca43e3c349172aa555f72cedc37fe50c989f8ba9bff9cb09"
-  }
+  },
+  "status": "APPROVED",
+  "restrictions": "none",
+  "approved_by": "owner"
  },
  "kaede": {
   "raw": {
@@ -183,7 +198,10 @@
   },
   "detail_480x641": {
    "sha256": "9f93ba8c0e40cf01709263649d5ed912531ac29063daf186912d2bb560209b34"
-  }
+  },
+  "status": "APPROVED",
+  "restrictions": "none",
+  "approved_by": "owner"
  },
  "nene": {
   "raw": {
@@ -214,7 +232,10 @@
   },
   "detail_480x641": {
    "sha256": "7709f54d676091696d1bb514144aa658c45c28bd4f3f85317f71f80a01f9981e"
-  }
+  },
+  "status": "APPROVED",
+  "restrictions": "none",
+  "approved_by": "owner"
  },
  "ichika": {
   "raw": {
@@ -245,7 +266,10 @@
   },
   "detail_480x641": {
    "sha256": "8d368093797b9fb18947b8b99600872b2626d7b320591f2ccaf6335a2a1bcdca"
-  }
+  },
+  "status": "APPROVED",
+  "restrictions": "topo do chapeu de chef toca a borda do RAW (~2 px)",
+  "approved_by": "owner"
  },
  "yoru": {
   "raw": {
@@ -276,6 +300,9 @@
   },
   "detail_480x641": {
    "sha256": "0675e1fdf6ba67322d8e89cb14796d77675c957855973c6227d0eafa1b3d3f4e"
-  }
+  },
+  "status": "APPROVED",
+  "restrictions": "none",
+  "approved_by": "owner"
  }
 }
