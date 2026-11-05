@@ -173,7 +173,7 @@ namespace Neko.Tests.PlayMode.Layout
             private static TextGenerator _generator;
 
             /// <summary>
-            /// A maid's name, the numbered fallback included: the closed maid catalog,
+            /// A maid's name: the widest name of the closed maid catalog,
             /// read by reflection, and each of its names as <see cref="Numbered"/> numbers it. The
             /// pick is the widest pool name + " 31", for example "Kaede 31". Measured as the card's
             /// name label, <see cref="CardNameSize"/>, bold.
