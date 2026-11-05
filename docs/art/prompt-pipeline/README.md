@@ -1,4 +1,6 @@
-# Pipeline de arte v2 — nove maids com o mesmo estilo chibi da Hina
+# Pipeline de arte v2 — histórico das nove maids originais
+
+> **NOVA PRODUÇÃO DAS 18 MAIDS:** [Pipeline V3 com chibi anime ilustrado e vídeo](v3/README.md). Os prompts antigos de pixel art não são mais o padrão artístico.
 
 > **PROMPT HISTÓRICO DE PRODUÇÃO — não define mais o estilo de runtime.** Este texto documenta as imagens/vídeos que deram origem às nove maids. Desde o [ART-04](../maid-walk/README.md), o jogo usa **sprites anime 2D ilustrados**, sem quantização para pixel art. A [decisão atual](../CURRENT_VISUAL_DIRECTION.md) prevalece; preserve os frames originais e não gere novamente personagens para forçar pixelização. Para novas imagens, é preciso revisar estes prompts explicitamente em tarefa futura.
 
