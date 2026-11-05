@@ -1,4 +1,4 @@
-# UI-021 — Catálogo de retratos premium (9 existentes + onda 2 de 9)
+# UI-021 — Catálogo de retratos premium (27 identidades em três ondas)
 
 Os nove retratos originais (Suzu, Hina, Akari, Momo, Reina, Kaede, Nene, Ichika e Yoru) foram produzidos e aprovados; ver [manifesto com SHA-256](../portraits/MANIFEST.json) e [integração](../portraits/integration/). **Não regenerá-los.**
 
@@ -19,6 +19,24 @@ Os nove arquivos abaixo são **prompts completos de design v01**. Seus PNGs aind
 | Kasumi | Mukuchi | [Kasumi](variants/21_MAID_PORTRAIT_KASUMI.md) | `UI-021_maid_portrait_kasumi_neutral_v01.png` |
 
 **Uso:** abra o prompt individual → baixe e anexe suas referências reais → copie só o bloco `text` → gere uma imagem PNG de cada vez → renomeie e salve em `art_working/ui_modular/raw_gpt/`. Faça uma revisão piloto de Mikan, Yuki e Kaguya antes de produzir as outras seis. Ao iterar, use `_v02.png` sem substituir a v01. Estas maids não têm `*_walk.png` ainda: o retrato aprovado será a âncora do futuro sprite animado.
+
+## Final wave: nine more planned maids (brings the art catalog to 27)
+
+**These nine design prompts are ready.** Portrait generation, visual review, walk animation and final release remain pending.
+
+| Name | Archetype | Prompt | Planned RAW basename |
+|---|---|---|---|
+| Hibari | Genki | [Hibari](variants/21_MAID_PORTRAIT_HIBARI.md) | `UI-021_maid_portrait_hibari_neutral_v01.png` |
+| Seira | Kuudere | [Seira](variants/21_MAID_PORTRAIT_SEIRA.md) | `UI-021_maid_portrait_seira_neutral_v01.png` |
+| Ruri | Tsundere | [Ruri](variants/21_MAID_PORTRAIT_RURI.md) | `UI-021_maid_portrait_ruri_neutral_v01.png` |
+| Chiyo | Dojikko | [Chiyo](variants/21_MAID_PORTRAIT_CHIYO.md) | `UI-021_maid_portrait_chiyo_neutral_v01.png` |
+| Shiori | Ojousama | [Shiori](variants/21_MAID_PORTRAIT_SHIORI.md) | `UI-021_maid_portrait_shiori_neutral_v01.png` |
+| Tsubaki | Oneesan | [Tsubaki](variants/21_MAID_PORTRAIT_TSUBAKI.md) | `UI-021_maid_portrait_tsubaki_neutral_v01.png` |
+| Mirai | Idol | [Mirai](variants/21_MAID_PORTRAIT_MIRAI.md) | `UI-021_maid_portrait_mirai_neutral_v01.png` |
+| Kinako | Gourmand | [Kinako](variants/21_MAID_PORTRAIT_KINAKO.md) | `UI-021_maid_portrait_kinako_neutral_v01.png` |
+| Mayu | Mukuchi | [Mayu](variants/21_MAID_PORTRAIT_MAYU.md) | `UI-021_maid_portrait_mayu_neutral_v01.png` |
+
+For this final wave attach the approved nine originals AND a contact sheet of the **actual generated second wave**, not just their descriptions, before generating. Start with Hibari, Shiori and Mayu; confirm no clashes before generating the remaining six. The second-wave RAWs are local and not presumed approved simply because they were generated.
 
 ## Nove retratos originais (histórico — já produzidos)
 
