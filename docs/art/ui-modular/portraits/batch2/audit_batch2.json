@@ -1,0 +1,605 @@
+{
+ "mikan": {
+  "raw_audit": {
+   "raw_size": [
+    1086,
+    1448
+   ],
+   "mode": "RGBA",
+   "bbox": [
+    8,
+    4,
+    1071,
+    1448
+   ],
+   "margins_px": {
+    "left": 8,
+    "top": 4,
+    "right": 15,
+    "bottom": 0
+   },
+   "edge_opaque_share": {
+    "top": 0.0,
+    "bottom": 0.8858,
+    "left": 0.0,
+    "right": 0.0
+   },
+   "components": 77,
+   "largest_components": [
+    1055693,
+    4,
+    3,
+    3
+   ],
+   "small_components_lt120": 76,
+   "semi_transparent_share": 0.0329,
+   "invisible_pixels_with_colour": 1661
+  },
+  "features": {
+   "hair_rgb": [
+    222,
+    136,
+    94
+   ],
+   "skin_rgb": [
+    240,
+    196,
+    171
+   ],
+   "width_over_height": 0.736,
+   "shoulder_over_head_width": 1.15
+  }
+ },
+ "yuki": {
+  "raw_audit": {
+   "raw_size": [
+    1086,
+    1448
+   ],
+   "mode": "RGBA",
+   "bbox": [
+    5,
+    7,
+    1074,
+    1448
+   ],
+   "margins_px": {
+    "left": 5,
+    "top": 7,
+    "right": 12,
+    "bottom": 0
+   },
+   "edge_opaque_share": {
+    "top": 0.0,
+    "bottom": 0.8867,
+    "left": 0.0,
+    "right": 0.0
+   },
+   "components": 28,
+   "largest_components": [
+    1100714,
+    5,
+    2,
+    2
+   ],
+   "small_components_lt120": 27,
+   "semi_transparent_share": 0.0214,
+   "invisible_pixels_with_colour": 565
+  },
+  "features": {
+   "hair_rgb": [
+    211,
+    188,
+    191
+   ],
+   "skin_rgb": [
+    237,
+    211,
+    210
+   ],
+   "width_over_height": 0.742,
+   "shoulder_over_head_width": 1.512
+  }
+ },
+ "kurumi": {
+  "raw_audit": {
+   "raw_size": [
+    1086,
+    1448
+   ],
+   "mode": "RGBA",
+   "bbox": [
+    0,
+    11,
+    1040,
+    1448
+   ],
+   "margins_px": {
+    "left": 0,
+    "top": 11,
+    "right": 46,
+    "bottom": 0
+   },
+   "edge_opaque_share": {
+    "top": 0.0,
+    "bottom": 0.9006,
+    "left": 0.0007,
+    "right": 0.0
+   },
+   "components": 54,
+   "largest_components": [
+    1070051,
+    10,
+    5,
+    3
+   ],
+   "small_components_lt120": 53,
+   "semi_transparent_share": 0.025,
+   "invisible_pixels_with_colour": 1725
+  },
+  "features": {
+   "hair_rgb": [
+    119,
+    102,
+    86
+   ],
+   "skin_rgb": [
+    239,
+    189,
+    164
+   ],
+   "width_over_height": 0.724,
+   "shoulder_over_head_width": 0.844
+  }
+ },
+ "nonoka": {
+  "raw_audit": {
+   "raw_size": [
+    1086,
+    1448
+   ],
+   "mode": "RGBA",
+   "bbox": [
+    47,
+    5,
+    998,
+    1448
+   ],
+   "margins_px": {
+    "left": 47,
+    "top": 5,
+    "right": 88,
+    "bottom": 0
+   },
+   "edge_opaque_share": {
+    "top": 0.0,
+    "bottom": 0.86,
+    "left": 0.0,
+    "right": 0.0
+   },
+   "components": 22,
+   "largest_components": [
+    915277,
+    3,
+    3,
+    1
+   ],
+   "small_components_lt120": 21,
+   "semi_transparent_share": 0.0216,
+   "invisible_pixels_with_colour": 1158
+  },
+  "features": {
+   "hair_rgb": [
+    208,
+    156,
+    166
+   ],
+   "skin_rgb": [
+    233,
+    183,
+    190
+   ],
+   "width_over_height": 0.659,
+   "shoulder_over_head_width": 1.181
+  }
+ },
+ "kaguya": {
+  "raw_audit": {
+   "raw_size": [
+    1086,
+    1448
+   ],
+   "mode": "RGBA",
+   "bbox": [
+    20,
+    6,
+    1074,
+    1448
+   ],
+   "margins_px": {
+    "left": 20,
+    "top": 6,
+    "right": 12,
+    "bottom": 0
+   },
+   "edge_opaque_share": {
+    "top": 0.0,
+    "bottom": 0.872,
+    "left": 0.0,
+    "right": 0.0
+   },
+   "components": 25,
+   "largest_components": [
+    1049511,
+    3,
+    3,
+    3
+   ],
+   "small_components_lt120": 24,
+   "semi_transparent_share": 0.018,
+   "invisible_pixels_with_colour": 1227
+  },
+  "features": {
+   "hair_rgb": [
+    133,
+    103,
+    107
+   ],
+   "skin_rgb": [
+    242,
+    202,
+    184
+   ],
+   "width_over_height": 0.731,
+   "shoulder_over_head_width": 1.588
+  }
+ },
+ "mizuki": {
+  "raw_audit": {
+   "raw_size": [
+    1086,
+    1448
+   ],
+   "mode": "RGBA",
+   "bbox": [
+    4,
+    3,
+    1039,
+    1448
+   ],
+   "margins_px": {
+    "left": 4,
+    "top": 3,
+    "right": 47,
+    "bottom": 0
+   },
+   "edge_opaque_share": {
+    "top": 0.0,
+    "bottom": 0.861,
+    "left": 0.0,
+    "right": 0.0
+   },
+   "components": 71,
+   "largest_components": [
+    1033724,
+    3,
+    2,
+    2
+   ],
+   "small_components_lt120": 70,
+   "semi_transparent_share": 0.0203,
+   "invisible_pixels_with_colour": 1160
+  },
+  "features": {
+   "hair_rgb": [
+    153,
+    91,
+    83
+   ],
+   "skin_rgb": [
+    229,
+    185,
+    163
+   ],
+   "width_over_height": 0.716,
+   "shoulder_over_head_width": 1.796
+  }
+ },
+ "himari": {
+  "raw_audit": {
+   "raw_size": [
+    1086,
+    1448
+   ],
+   "mode": "RGBA",
+   "bbox": [
+    28,
+    8,
+    1006,
+    1448
+   ],
+   "margins_px": {
+    "left": 28,
+    "top": 8,
+    "right": 80,
+    "bottom": 0
+   },
+   "edge_opaque_share": {
+    "top": 0.0,
+    "bottom": 0.861,
+    "left": 0.0,
+    "right": 0.0
+   },
+   "components": 57,
+   "largest_components": [
+    1020495,
+    4,
+    3,
+    2
+   ],
+   "small_components_lt120": 56,
+   "semi_transparent_share": 0.0275,
+   "invisible_pixels_with_colour": 1199
+  },
+  "features": {
+   "hair_rgb": [
+    210,
+    134,
+    112
+   ],
+   "skin_rgb": [
+    239,
+    193,
+    167
+   ],
+   "width_over_height": 0.679,
+   "shoulder_over_head_width": 1.394
+  }
+ },
+ "anzu": {
+  "raw_audit": {
+   "raw_size": [
+    1086,
+    1448
+   ],
+   "mode": "RGBA",
+   "bbox": [
+    1,
+    4,
+    1049,
+    1448
+   ],
+   "margins_px": {
+    "left": 1,
+    "top": 4,
+    "right": 37,
+    "bottom": 0
+   },
+   "edge_opaque_share": {
+    "top": 0.0,
+    "bottom": 0.965,
+    "left": 0.0,
+    "right": 0.0
+   },
+   "components": 50,
+   "largest_components": [
+    1033346,
+    2,
+    2,
+    2
+   ],
+   "small_components_lt120": 49,
+   "semi_transparent_share": 0.0208,
+   "invisible_pixels_with_colour": 1196
+  },
+  "features": {
+   "hair_rgb": [
+    211,
+    136,
+    110
+   ],
+   "skin_rgb": [
+    236,
+    190,
+    166
+   ],
+   "width_over_height": 0.726,
+   "shoulder_over_head_width": 1.211
+  }
+ },
+ "kasumi": {
+  "raw_audit": {
+   "raw_size": [
+    1086,
+    1448
+   ],
+   "mode": "RGBA",
+   "bbox": [
+    61,
+    13,
+    1004,
+    1448
+   ],
+   "margins_px": {
+    "left": 61,
+    "top": 13,
+    "right": 82,
+    "bottom": 0
+   },
+   "edge_opaque_share": {
+    "top": 0.0,
+    "bottom": 0.8444,
+    "left": 0.0,
+    "right": 0.0
+   },
+   "components": 14,
+   "largest_components": [
+    877128,
+    12,
+    5,
+    5
+   ],
+   "small_components_lt120": 13,
+   "semi_transparent_share": 0.0244,
+   "invisible_pixels_with_colour": 906
+  },
+  "features": {
+   "hair_rgb": [
+    155,
+    124,
+    128
+   ],
+   "skin_rgb": [
+    228,
+    176,
+    157
+   ],
+   "width_over_height": 0.657,
+   "shoulder_over_head_width": 1.297
+  }
+ },
+ "suzu": {
+  "features": {
+   "hair_rgb": [
+    185,
+    167,
+    143
+   ],
+   "skin_rgb": [
+    228,
+    207,
+    179
+   ],
+   "width_over_height": 0.738,
+   "shoulder_over_head_width": 1.207
+  }
+ },
+ "hina": {
+  "features": {
+   "hair_rgb": [
+    117,
+    101,
+    139
+   ],
+   "skin_rgb": [
+    245,
+    212,
+    203
+   ],
+   "width_over_height": 0.707,
+   "shoulder_over_head_width": 1.359
+  }
+ },
+ "akari": {
+  "features": {
+   "hair_rgb": [
+    187,
+    86,
+    89
+   ],
+   "skin_rgb": [
+    245,
+    200,
+    182
+   ],
+   "width_over_height": 0.681,
+   "shoulder_over_head_width": 0.957
+  }
+ },
+ "momo": {
+  "features": {
+   "hair_rgb": [
+    232,
+    155,
+    147
+   ],
+   "skin_rgb": [
+    247,
+    201,
+    186
+   ],
+   "width_over_height": 0.695,
+   "shoulder_over_head_width": 1.222
+  }
+ },
+ "reina": {
+  "features": {
+   "hair_rgb": [
+    220,
+    163,
+    151
+   ],
+   "skin_rgb": [
+    240,
+    192,
+    173
+   ],
+   "width_over_height": 0.674,
+   "shoulder_over_head_width": 1.125
+  }
+ },
+ "kaede": {
+  "features": {
+   "hair_rgb": [
+    170,
+    110,
+    93
+   ],
+   "skin_rgb": [
+    249,
+    208,
+    187
+   ],
+   "width_over_height": 0.681,
+   "shoulder_over_head_width": 1.43
+  }
+ },
+ "nene": {
+  "features": {
+   "hair_rgb": [
+    221,
+    137,
+    151
+   ],
+   "skin_rgb": [
+    245,
+    206,
+    198
+   ],
+   "width_over_height": 0.66,
+   "shoulder_over_head_width": 0.996
+  }
+ },
+ "ichika": {
+  "features": {
+   "hair_rgb": [
+    177,
+    123,
+    115
+   ],
+   "skin_rgb": [
+    241,
+    199,
+    182
+   ],
+   "width_over_height": 0.724,
+   "shoulder_over_head_width": 1.305
+  }
+ },
+ "yoru": {
+  "features": {
+   "hair_rgb": [
+    148,
+    100,
+    136
+   ],
+   "skin_rgb": [
+    244,
+    201,
+    191
+   ],
+   "width_over_height": 0.702,
+   "shoulder_over_head_width": 1.684
+  }
+ }
+}

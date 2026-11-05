@@ -1,0 +1,299 @@
+{
+ "mikan": {
+  "archetype": "Genki",
+  "raw": {
+   "file": "UI-021_maid_portrait_mikan_neutral_v01.png",
+   "sha256": "780668c6edd50ab81feebda359932bc2393a5515261bc8a87a4e0d63f99f7ed8",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    1088,
+    1458
+   ],
+   "sha256": "f27a3cbee3be7717b1a53f9c5d106044c4c21e56084279b8f6adfa60fd65d819",
+   "specks_removed": 111,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "9b10def9b4caa3dfa9ae0d5701d832acd87bb00845619a5cb5a42a90f4ef7830",
+   "box": [
+    -78,
+    -65,
+    1047,
+    857
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "83a816c505725a1495258352c0fa5be8983c644ccfc9a4d78280bcc8dcf307ac"
+  },
+  "status": "NOT_REVIEWED"
+ },
+ "yuki": {
+  "archetype": "Kuudere",
+  "raw": {
+   "file": "UI-021_maid_portrait_yuki_neutral_v01.png",
+   "sha256": "5e9b1ac4c548fd04c95f299b75dab4c02a05084387ba7927bd976ad443c13549",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    1095,
+    1454
+   ],
+   "sha256": "cbbe850df37b3bbe49aef140c08f09fdf1c0a7c3b6365fdf8a5b352883dc2d86",
+   "specks_removed": 34,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "96264718c395007b0c9424a7b9c96a5e0b4a2214d4a0ece3a4ac6ebc5ad54209",
+   "box": [
+    47,
+    -65,
+    1040,
+    749
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "77db3c767f5b4e9fab573c0fb1db538f14ec240b60652207dfeb42a93084243b"
+  },
+  "status": "NOT_REVIEWED"
+ },
+ "kurumi": {
+  "archetype": "Tsundere",
+  "raw": {
+   "file": "UI-021_maid_portrait_kurumi_neutral_v01.png",
+   "sha256": "8952f8ec5f57a0785c30b1390bea996948deff3aa07a20b775c582d06f2bc506",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    1065,
+    1450
+   ],
+   "sha256": "981791b0a0e6ac075ffc3e5df60e5711e6c0d7fae03f253fbba067d2ec4289b4",
+   "specks_removed": 75,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "e409265436f1faea8456dc80d1a7cc3e422d7106320521cfdbc98d101257650b",
+   "box": [
+    23,
+    -65,
+    1093,
+    812
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "a73f86bbf93d0c2b2a72348428e2481343c80f4d530e32cbc6b1bd4f04370b03"
+  },
+  "status": "NOT_REVIEWED"
+ },
+ "nonoka": {
+  "archetype": "Dojikko",
+  "raw": {
+   "file": "UI-021_maid_portrait_nonoka_neutral_v01.png",
+   "sha256": "28859f8f20fc4a9a085b7d542a3fcbde7cdd06065fbc05f247f5a622fafea460",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    977,
+    1458
+   ],
+   "sha256": "50cf6fdd260fd580ddcc0be718ee11dd3c6c64eb6e74fe3b0ca1f3389db1afc9",
+   "specks_removed": 44,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "e9888da09205f99de99272b2d0064f983ee89cb96b3dad793e1916d0bfb8de09",
+   "box": [
+    29,
+    -65,
+    1025,
+    751
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "2db20c82184da3335ff620d06632a01b45b1ecfe60266bf76d0344bee68e9912"
+  },
+  "status": "NOT_REVIEWED"
+ },
+ "kaguya": {
+  "archetype": "Ojousama",
+  "raw": {
+   "file": "UI-021_maid_portrait_kaguya_neutral_v01.png",
+   "sha256": "e3c19273af38e7ff33b227081a400de743cee345ffd18cdd416ccb6bcfb6ed30",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    1080,
+    1455
+   ],
+   "sha256": "6d692669781d7ebbc207146c34921a418c1f3d623f8dfac15e8c5d86df2fb123",
+   "specks_removed": 26,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "10b0c8657cf3b989699c865fd1cc6ffb649e8b2bd56f6f65e577971d8dcc80e2",
+   "box": [
+    56,
+    -65,
+    1049,
+    749
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "21194962f03c3df4ea8f03c354d053ea90998a4fc6545deac520a73e5c355252"
+  },
+  "status": "NOT_REVIEWED"
+ },
+ "mizuki": {
+  "archetype": "Oneesan",
+  "raw": {
+   "file": "UI-021_maid_portrait_mizuki_neutral_v01.png",
+   "sha256": "97b93a754a59b58dfcb106bb5951a5ba116514b3d2a369f4b2b33928bf1c51fe",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    1063,
+    1460
+   ],
+   "sha256": "07f8f68dbc789a9eb471824670d7ff6cc8102f0dbd188ad258aa2db24a31c466",
+   "specks_removed": 92,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "e7702eb1070dc13e29a2773ae57d3e708e701aa8e1b9c5f67150e34fbfc137cc",
+   "box": [
+    42,
+    -65,
+    1039,
+    752
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "db580cb0d4c54164bc19d3ef51bd020e9a930f508c34ca3b62ce4a38f32c33fe"
+  },
+  "status": "NOT_REVIEWED"
+ },
+ "himari": {
+  "archetype": "Idol",
+  "raw": {
+   "file": "UI-021_maid_portrait_himari_neutral_v01.png",
+   "sha256": "dd34e1e495294e6afcf8e96b3b62fe82c36caeb16065359825afc46d5e7d69d5",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    1004,
+    1453
+   ],
+   "sha256": "4745874347ba4db59012ae869a7776838160131ba8b1f1ac622a8cd10932b074",
+   "specks_removed": 79,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "c264ddc30dc82d7f4467659b38ce6fbc29fbd830347aae544a9a225d68ec52f5",
+   "box": [
+    -2,
+    -65,
+    990,
+    748
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "ad5f6d5d9c4c360ae2188ff061e7d783c75ff53c4b5b2565ecd1a3d1be71a70c"
+  },
+  "status": "NOT_REVIEWED"
+ },
+ "anzu": {
+  "archetype": "Gourmand",
+  "raw": {
+   "file": "UI-021_maid_portrait_anzu_neutral_v01.png",
+   "sha256": "3becc3bbc0df52a2c36fa27ad1d8bafdfd63a9f8e9ebe9201078851ea0df2d91",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    1074,
+    1457
+   ],
+   "sha256": "3a803aa58d9089c7b279b3ca51930c652ce41296406736edc7f528ba9c607ebb",
+   "specks_removed": 62,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "9ed0e57357184b2a3544350b19ca757e4a3def7bc22f220d2d9ae8dbfb8c11d4",
+   "box": [
+    45,
+    -65,
+    1039,
+    750
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "6a7d8ba1de1a8693e882cd09da9138586e81ceaa27cc928373ec04f32d3cd8f3"
+  },
+  "status": "NOT_REVIEWED"
+ },
+ "kasumi": {
+  "archetype": "Mukuchi",
+  "raw": {
+   "file": "UI-021_maid_portrait_kasumi_neutral_v01.png",
+   "sha256": "bdf8edffdb7b5f116c73222cacd57bd722f86a741cd19c197b5fe5ef56f33919",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    970,
+    1448
+   ],
+   "sha256": "0e0c70ce06200341d0208a5c2763cfda87a800727c316d124cba9eee800d54bd",
+   "specks_removed": 28,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "4506e3a66028ab644f89bf1dccea503acaaa418a3dea01fb775af3e656770440",
+   "box": [
+    0,
+    -65,
+    988,
+    745
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "5d89eafbb5ff9ab719310fa1e72fa744d97ed0438bd2c3a9f3fe085b3942406f"
+  },
+  "status": "NOT_REVIEWED"
+ }
+}
