@@ -30,12 +30,12 @@ FINAL CHECK: It must look unequivocally like Mayu from IMAGE A at a new FULL BOD
 
 **Save:** `art_working/27_mayu/step1_chibi/27_mayu_step1_chibi_v01.png`. Approve visually before Step 2.
 
-## STEP 2 — right-facing WALK START still (image)
+## STEP 2 — right-facing WALK START still (image · safe framing v02)
 
 Attach **A = Mayu STEP 1 approved chibi**; optional B = her own portrait for checking facial identity. Copy this block ALONE.
 
 ```text
-NEKO MAID INC. — MAYU — RIGHT-FACING 2D WALK-IN-PLACE START FRAME V01
+NEKO MAID INC. — MAYU — RIGHT-FACING 2D WALK-IN-PLACE START FRAME V02
 
 EDIT the approved full-body Mayu chibi in IMAGE A into exactly ONE SINGLE right-facing side/three-quarter WALK START still for extracting Unity sprite frames. IMAGE A is ABSOLUTE for actual hairstyle, facial structure, skin, clothing, accessories, ears, tail and outline quality; optional image B is her own premium portrait for identity checking. Never turn this into a new character, a sprite sheet or historical pixel art.
 
@@ -44,14 +44,20 @@ Special warning: Keep both eyes visible and iris sides correct; hood is behind t
 
 Correct right-facing locomotion: turn face, eyes, shoulders, torso, hips, knees and shoes toward SCREEN RIGHT at a genuine 65–75-degree side/three-quarter angle relative to front. One shoe clearly supports her weight slightly ahead, rear shoe is preparing to swing, opposing arm swing, physically sensible leg separation. Avoid front-facing upper body with sideways legs, crossed catwalk steps, running, tiptoe shuffling, moonwalking, idle dancing or wave. Hands free, all original accessories in their own original anatomical sides; do not mirror features.
 
-Frame composition: one LANDSCAPE 16:9 fixed view (1920x1080 if available), character centered at ~70–82% frame height, feet and ears/tail/hair not clipped; empty lateral space to permit animation. Torso/character root stays at fixed screen X; later the Unity engine handles world movement.
+MANDATORY COMPOSITION — FRAME THE CAMERA WIDE FIRST, THEN KEEP THE CHARACTER SMALL:
+- Output a true 16:9 landscape canvas (1920x1080 if possible). FIRST fill the full canvas with the requested pure opaque chroma background. THEN place the unchanged full-body character inside it, smaller than a portrait, at approximately 70–74% of the TOTAL FRAME HEIGHT, NEVER more than 75%. Do not enlarge her to fill the image.
+- HARD MEASURABLE MARGINS ON FINAL OUTPUT: Keep at least 13% of the entire canvas HEIGHT completely EMPTY above the highest character pixel (including ponytail/ahoge/cat ears) AND 13% completely EMPTY below the lowest shoe sole. At 1080 px high this means ~140 px uninterrupted solid chroma ABOVE the hairstyle and ~140 px BELOW the feet. Both are mandatory simultaneously, not interchangeable.
+- Keep the torso/root near horizontal centre X=50%. Fit ALL non-background pixels, including tail, widest hair, swinging arm and hands, between X=18% and X=82% of the final canvas width: at least 18% unbroken empty chroma at LEFT and RIGHT. This is an animation source with space for future motion, NOT a cropped character close-up.
+- Keep the two soles level on an IMAGINARY contact plane within the safe zone; no visible ground line, shadow or floor. If needed, uniformly SCALE DOWN the WHOLE CHIBI instead of cutting ears, hair, tail, hands or legs, or changing her original proportions and clothing. Keep her 2D art faithful to IMAGE A.
+- NEVER zoom in, fill the frame, move her head against the top edge, or push shoes against the bottom edge. Prioritize the extra plain background over a larger face.
+FINAL OUTPUT CHECK BEFORE RENDER: If any part of her body or accessory enters the top/bottom 13% bands or left/right 18% bands, or the full height exceeds 75% of the final 16:9 canvas, this output is INCORRECT. Recompose with MORE background and a SMALLER character, while keeping the walking pose and identity intact.
 
 Background EXACT TARGET: completely uniform OPAQUE #00FF00 pure chroma, edge-to-edge, with no gradient, floor, cast shadow, horizon, glow, checkerboard, texture, objects, text or other figures. Confirm actual chroma pixels and contrast to the real sprite colors before proceeding; the text hex is not a guarantee of real output.
 
 Output exactly ONE still, not a video, not several views, not an animation strip. Same artistically polished 2D anime-chibi Mayu from image A.
 ```
 
-**Save:** `art_working/27_mayu/step2_walkstart/27_mayu_step2_walkstart_v01_green.png`. Approve pose & chroma before Step 3.
+**Save:** `art_working/27_mayu/step2_walkstart/27_mayu_step2_walkstart_v02_green.png`. Approve the pose, output-safe margins and chroma before Step 3. Preserve any generated v01 file as historical RAW; use v02 for new videos.
 
 ## STEP 3 — image-to-video WALK IN PLACE (Flow / Tencent / equivalent)
 
