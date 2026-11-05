@@ -1,12 +1,16 @@
 using System.Collections;
 using System.IO;
+using System;
 using System.Linq;
+using System.Text;
 using Neko.Game.Core;
 using Neko.Game.Ui;
 using Neko.Game.View;
 using Neko.Sim.Core;
 using Neko.Sim.Economy;
 using Neko.Sim.Maids;
+using Neko.Sim.Save;
+using Neko.Sim.Team;
 using Neko.Tests.PlayMode.Layout;
 using NUnit.Framework;
 using UnityEngine;
@@ -118,7 +122,7 @@ namespace Neko.Tests.PlayMode
             yield return SessionFactory.ToDay();
             for (var i = 0; i < 80; i++) yield return null;
 
-            var views = Object.FindObjectsByType<MaidView>(FindObjectsInactive.Exclude);
+            var views = UnityEngine.Object.FindObjectsByType<MaidView>(FindObjectsInactive.Exclude);
             Assert.GreaterOrEqual(views.Length, 3);
             foreach (var view in views)
             {
@@ -128,6 +132,57 @@ namespace Neko.Tests.PlayMode
             }
 
             yield return Shots("6_salao_dia");
+        }
+        // The save format before identities: one field less on each maid line, checksum recomputed.
+        private static string AsPreIdentitySave(string payload)
+        {
+            var parts = payload.Split(':');
+            var body = Encoding.UTF8.GetString(Convert.FromBase64String(parts[1]));
+            var old = string.Join("\n", body.Split('\n').Select(line =>
+                line.StartsWith("maid=", StringComparison.Ordinal) ? line.Substring(0, line.LastIndexOf('|')) : line));
+            var hash = 2166136261u;
+            foreach (var c in old)
+            {
+                hash ^= c;
+                hash *= 16777619u;
+            }
+
+            return parts[0] + ":" + Convert.ToBase64String(Encoding.UTF8.GetBytes(old)) + ":" +
+                   hash.ToString("x8", System.Globalization.CultureInfo.InvariantCulture);
+        }
+
+        [UnityTest]
+        public IEnumerator AnOldSaveWithLegacyMaidsLoadsWithEveryoneAndOnlyTheCatalogOnesAreIllustrated()
+        {
+            var source = SessionFactory.NewProfile(0x1234u, 4).Profile;
+            source.Maids.Clear();
+            source.Lineup.Clear();
+            source.Maids.Add(new Maid { Id = 1, Name = "Suzu", Archetype = Archetype.Genki, Level = 6, Xp = 120, Rarity = Rarity.Rare, NaturalRole = Role.Floor });
+            source.Maids.Add(new Maid { Id = 2, Name = "Mina", Archetype = Archetype.Idol, Level = 3, Bond = 2, NaturalRole = Role.Floor });
+            source.Maids.Add(new Maid { Id = 3, Name = "Aoi", Archetype = Archetype.Gourmand, Level = 2, NaturalRole = Role.Kitchen });
+            source.NextMaidId = 4;
+
+            var loaded = SaveCodec.Decode(AsPreIdentitySave(SaveCodec.Encode(source)));
+            Assert.AreEqual(LoadStatus.Ok, loaded.Status, loaded.Message);
+            var profile = loaded.Profile;
+            Assert.AreEqual(3, profile.Maids.Count, "nobody is lost");
+            Assert.AreEqual("suzu", profile.Maids[0].IdentityId);
+            Assert.AreEqual(6, profile.Maids[0].Level);
+            Assert.IsTrue(profile.Maids[1].IsLegacy);
+            Assert.IsTrue(profile.Maids[2].IsLegacy);
+            Assert.AreEqual("Mina", profile.Maids[1].Name);
+            Assert.AreEqual(2, profile.Maids[1].Bond);
+
+            yield return SessionFactory.Boot(profile);
+            yield return SessionFactory.ToHub();
+            yield return SessionFactory.ToRoster();
+            yield return SessionFactory.Settle();
+
+            var cards = GameRoot.Instance.Ui.Get<RosterScreen>().GetComponentsInChildren<Image>(true)
+                .Where(i => i.name == "Portrait" && i.transform.parent.name == "Window").ToList();
+            Assert.AreEqual(3, cards.Count, "the legacy maids are still on screen");
+            Assert.AreEqual(1, cards.Count(c => c.sprite != null && c.sprite.name.EndsWith("_head")),
+                "only the recognised catalog maid wears an illustrated portrait");
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using Neko.Sim.Core;
 using Neko.Sim.Economy;
 using Neko.Sim.Maids;
+using Neko.Sim.Progress;
 using Neko.Sim.Save;
 using Neko.Sim.Team;
 using NUnit.Framework;
@@ -335,6 +336,66 @@ namespace Neko.Tests.EditMode.Sim
             Assert.IsTrue(maids[2].IsLegacy);
             Assert.AreEqual("Mina", maids[2].Name);
             Assert.AreEqual(2, maids[2].Bond);
+        }
+
+        [Test]
+        public void AFullRosterConvertsACardOfAFreeIdentityAndDoesNotAddHer()
+        {
+            var profile = Rich(5u);
+            var cap = profile.Unlocks.RosterCap;
+            foreach (var identity in MaidCatalog.FreeReleased(profile.Maids).Take(cap - profile.Maids.Count))
+            {
+                profile.Add(Maid.Create(profile.NextMaidId++, identity));
+            }
+
+            Assert.AreEqual(cap, profile.Maids.Count);
+            Assert.Greater(MaidCatalog.FreeReleased(profile.Maids).Count, 0, "someone is still free, only the roster is full");
+            var open = Lootbox.Open(profile, "box_gold", new Rng(8u));
+
+            Assert.AreEqual(cap, profile.Maids.Count);
+            foreach (var card in open.Cards)
+            {
+                Assert.IsTrue(card.Duplicate);
+                Assert.AreEqual(card.Maid.Severance, card.PointsBack);
+            }
+        }
+
+        [Test]
+        public void AnEquippedIdentityKeepsHerGearAndHerIdentityThroughASave()
+        {
+            var profile = Rich(6u);
+            var maid = profile.Maids[0];
+            var item = EquipmentCatalog.All.First();
+            maid.Gear[(int)item.Slot] = item;
+
+            var loaded = SaveCodec.Decode(SaveCodec.Encode(profile));
+            Assert.AreEqual(LoadStatus.Ok, loaded.Status, loaded.Message);
+            var back = loaded.Profile.Maids[0];
+            Assert.AreEqual(maid.IdentityId, back.IdentityId);
+            Assert.AreSame(item, back.Gear[(int)item.Slot]);
+        }
+
+        [Test]
+        public void AnOldSaveWithGearKeepsItOnLegacyAndRecognisedMaidsAlike()
+        {
+            var profile = Profile.NewGame(2u);
+            var item = EquipmentCatalog.All.First();
+            profile.Maids.Clear();
+            profile.Lineup.Clear();
+            var named = new Maid { Id = 1, Name = "Hina", Archetype = Archetype.Kuudere, Level = 4 };
+            var legacy = new Maid { Id = 2, Name = "Aoi", Archetype = Archetype.Genki, Level = 5 };
+            named.Gear[(int)item.Slot] = item;
+            legacy.Gear[(int)item.Slot] = item;
+            profile.Maids.Add(named);
+            profile.Maids.Add(legacy);
+            profile.NextMaidId = 3;
+
+            var loaded = SaveCodec.Decode(AsPreIdentitySave(SaveCodec.Encode(profile)));
+            Assert.AreEqual(LoadStatus.Ok, loaded.Status, loaded.Message);
+            Assert.AreEqual("hina", loaded.Profile.Maids[0].IdentityId);
+            Assert.IsTrue(loaded.Profile.Maids[1].IsLegacy);
+            Assert.AreSame(item, loaded.Profile.Maids[0].Gear[(int)item.Slot]);
+            Assert.AreSame(item, loaded.Profile.Maids[1].Gear[(int)item.Slot]);
         }
 
         [Test]

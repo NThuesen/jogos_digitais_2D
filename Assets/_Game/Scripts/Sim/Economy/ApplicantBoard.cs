@@ -50,7 +50,7 @@ namespace Neko.Sim.Economy
         /// Draws up to three candidates, each a different released identity that is not on
         /// <paramref name="roster"/>. With fewer than three free identities the board is shorter.
         /// </summary>
-        public void Refresh(Rng rng, int cafeLevel, int nextMaidId, IEnumerable<Maid> roster = null)
+        public void Refresh(Rng rng, int cafeLevel, int nextMaidId, IEnumerable<Maid> roster)
         {
             _slots.Clear();
 
