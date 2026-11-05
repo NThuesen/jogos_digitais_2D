@@ -39,6 +39,17 @@ art_working/
   09_yoru/step4_blender/walk_x/frames/
 ```
 
+**As 18 novas maids (V3)** têm as pastas preparadas, só com `.gitkeep`, de `10_mikan` a `27_mayu` (ordem: Mikan, Yuki, Kurumi, Nonoka, Kaguya, Mizuki, Himari, Anzu, Kasumi, Hibari, Seira, Ruri, Chiyo, Shiori, Tsubaki, Mirai, Kinako, Mayu), cada uma com:
+
+```text
+art_working/NN_nome/step1_chibi/            # chibi full-body aprovado
+art_working/NN_nome/step2_walkstart/        # imagem walk start 16:9 em chroma
+art_working/NN_nome/step3_video/            # vídeo do Tencent/Flow
+art_working/NN_nome/step4_blender/walk_x/frames/   # PNGs numerados exportados do Blender
+```
+
+Nomes de arquivo e gates: [V3](../docs/art/prompt-pipeline/v3/README.md). As nove originais mantêm só `step4_blender`. Estas pastas **não** liberam nenhuma maid: `tools/art/maid_walk/maids.json` já as reconhece, mas processar uma sheet e liberar a identidade no `MaidCatalog` devem acontecer juntas, em uma PR com QA.
+
 **Os PNGs mostrados são exemplos de nomes e ainda não existem.** Somente os nove diretórios de destino e respectivos `.gitkeep` ficam no GitHub inicialmente. Para outras animações, crie uma pasta **irmã** de `walk_x/`, por exemplo `idle/frames/`, `carry/frames/`, `walk_y/frames/`. Não misture idle e caminhada, maids diferentes, ou tentativas de vídeo diferentes na mesma sequência. Para uma nova tentativa, use uma subpasta separada como `walk_x_v02/frames/` ou limpe somente arquivos brutos daquela tentativa após backup; **não apague fontes sem confirmar**.
 
 ## Tutorial — vídeo do Tencent → imagens PNG do Blender
