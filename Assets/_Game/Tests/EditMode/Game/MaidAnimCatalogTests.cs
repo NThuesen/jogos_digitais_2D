@@ -23,8 +23,8 @@ namespace Neko.Tests.EditMode.Game
         [TearDown]
         public void Teardown() => _factory.Clear();
 
-        private static Maid Maid(string name, Archetype archetype) =>
-            new Maid { Id = 1, Name = name, Archetype = archetype };
+        private static Maid Maid(string name, Archetype archetype, string identityId = null) =>
+            new Maid { Id = 1, Name = name, Archetype = archetype, IdentityId = identityId };
 
         [Test]
         public void TheCatalogListsEveryIntegratedMaidAndNoOtherOne()
@@ -33,28 +33,51 @@ namespace Neko.Tests.EditMode.Game
         }
 
         [Test]
-        public void ANameAndArchetypePairIsNeededAndIsNeverConfusedWithAnotherMaid()
+        public void OnlyTheIdentityPicksTheArtAndNameAndArchetypeNeverDo()
         {
             foreach (var entry in MaidAnimCatalog.All)
             {
-                Assert.AreSame(entry, MaidAnimCatalog.Resolve(Maid(entry.name, entry.ArchetypeValue)));
-                var other = entry.ArchetypeValue == Archetype.Genki ? Archetype.Kuudere : Archetype.Genki;
-                Assert.IsNull(MaidAnimCatalog.Resolve(Maid(entry.name, other)), entry.name + " from another draw");
+                Assert.AreSame(entry, MaidAnimCatalog.Resolve(Maid(entry.name, entry.ArchetypeValue, entry.id)));
+
+                // The same name and archetype without the identity is a legacy maid: no borrowed face.
+                Assert.IsNull(MaidAnimCatalog.Resolve(Maid(entry.name, entry.ArchetypeValue)), entry.name + " legacy");
             }
 
             Assert.IsNull(MaidAnimCatalog.Resolve(Maid("Mina", Archetype.Genki)));
+            Assert.IsNull(MaidAnimCatalog.Resolve(Maid("Mina", Archetype.Genki, "mikan")), "a planned identity has no sheet yet");
             Assert.IsNull(MaidAnimCatalog.Resolve(null));
         }
 
         [Test]
-        public void AnyEquipmentKeepsTheLayeredLookSoGearStaysVisible()
+        public void EveryReleasedIdentityHasItsWalkSheetAndNoPlannedOneIsShown()
+        {
+            foreach (var identity in MaidCatalog.All)
+            {
+                var entry = MaidAnimCatalog.ById(identity.Id);
+                if (identity.Released)
+                {
+                    Assert.IsNotNull(entry, identity.Id + " is released without a walk cycle");
+                    Assert.AreEqual(identity.Name, entry.name, identity.Id);
+                    Assert.AreEqual(identity.Archetype, entry.ArchetypeValue, identity.Id);
+                    Assert.IsNotNull(Resources.Load<Sprite>("MaidPortraits/" + identity.Id + "_head"), identity.Id + " head portrait");
+                    Assert.IsNotNull(Resources.Load<Sprite>("MaidPortraits/" + identity.Id + "_detail"), identity.Id + " detail portrait");
+                }
+                else
+                {
+                    Assert.IsNull(entry, identity.Id + " is planned but already has a walk entry: release it in the catalog");
+                }
+            }
+        }
+
+        [Test]
+        public void EquipmentNoLongerSendsAnIllustratedMaidBackToTheProceduralFigure()
         {
             foreach (var entry in MaidAnimCatalog.All)
             {
-                var maid = Maid(entry.name, entry.ArchetypeValue);
+                var maid = Maid(entry.name, entry.ArchetypeValue, entry.id);
                 maid.Gear[0] = new Equipment("x", "x", GearSlot.Outfit, Stats.Zero,
                     Neko.Sim.Core.ThemeTag.None, 0, 1, "Apron", "FF0000");
-                Assert.IsNull(MaidAnimCatalog.Resolve(maid), entry.name);
+                Assert.AreSame(entry, MaidAnimCatalog.Resolve(maid), entry.name);
             }
         }
 

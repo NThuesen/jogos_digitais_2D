@@ -42,28 +42,28 @@ namespace Neko.Sim.Economy
     {
         public const int Slots = 3;
 
-        private static readonly string[] Names =
-        {
-            "Mina", "Yuki", "Rina", "Suzu", "Kaede", "Nana", "Hoshi", "Chiyo", "Momo", "Aoi",
-            "Rei", "Sora", "Hana", "Kiki", "Tama", "Nori", "Mio", "Shiro", "Kuro", "Umi",
-        };
-
         private readonly List<Applicant> _slots = new List<Applicant>();
 
         public IReadOnlyList<Applicant> Candidates => _slots;
 
-        public void Refresh(Rng rng, int cafeLevel, int nextMaidId)
+        /// <summary>
+        /// Draws up to three candidates, each a different released identity that is not on
+        /// <paramref name="roster"/>. With fewer than three free identities the board is shorter.
+        /// </summary>
+        public void Refresh(Rng rng, int cafeLevel, int nextMaidId, IEnumerable<Maid> roster = null)
         {
             _slots.Clear();
 
-            for (var i = 0; i < Slots; i++)
+            var free = MaidCatalog.FreeReleased(roster);
+            for (var i = 0; i < Slots && free.Count > 0; i++)
             {
-                var archetype = rng.Pick(ArchetypeTable.All).Kind;
+                var identity = rng.Pick(free);
+                free.Remove(identity);
 
                 // Candidates arrive a little below the café they are applying to, so hiring
                 // is never a shortcut past levelling the maids already on the roster.
                 var level = Curves.ClampInt(rng.RangeInt(1, 2 + cafeLevel / 2), 1, Maid.MaxLevel);
-                var maid = Maid.Create(nextMaidId + i, rng.Pick(Names), archetype, level);
+                var maid = Maid.Create(nextMaidId + i, identity, level);
 
                 _slots.Add(new Applicant { Maid = maid, Price = PriceOf(maid) });
             }
@@ -83,6 +83,11 @@ namespace Neko.Sim.Economy
 
             var applicant = _slots[slotIndex];
             if (applicant == null) return HireResult.No("Essa vaga já foi preenchida.");
+
+            if (profile.HasIdentity(applicant.Maid.IdentityId))
+            {
+                return HireResult.No(applicant.Maid.Name + " já está no elenco.");
+            }
 
             if (profile.Maids.Count >= profile.Unlocks.RosterCap)
             {

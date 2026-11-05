@@ -59,11 +59,13 @@ namespace Neko.Tests.PlayMode
             // A single identity goes to a floor maid, who walks the most.
             var floor = profile.Maids.FirstOrDefault(m => m.NaturalRole == Role.Floor);
             var pool = profile.Maids.OrderBy(m => m == floor ? 0 : 1).ToList();
+            foreach (var maid in pool) maid.IdentityId = null; // identities are handed out below, once each
             for (var i = 0; i < ids.Length && i < pool.Count; i++)
             {
                 var entry = MaidAnimCatalog.ById(ids[i]);
                 pool[i].Name = entry.name;
                 pool[i].Archetype = entry.ArchetypeValue;
+                pool[i].IdentityId = entry.id;
             }
 
             // The draw may already have produced a "Kaede" of her own; she would be a second one.
@@ -193,7 +195,7 @@ namespace Neko.Tests.PlayMode
             worker.Maid.Gear[0] = new Equipment("fixture", "fixture", GearSlot.Outfit,
                 Stats.Zero, Neko.Sim.Core.ThemeTag.None, 0, 1, "Apron", "FF0000");
             view.Bind(worker);
-            Assert.IsFalse(IsSheetFrame(Body(view).sprite, id), "a geared maid keeps the layered look");
+            Assert.IsTrue(IsSheetFrame(Body(view).sprite, id), "gear is shown in the interface, not by sending her back to the layered figure");
             worker.Maid.Gear[0] = null;
             view.Bind(worker);
             Assert.IsTrue(IsSheetFrame(Body(view).sprite, id));
@@ -205,7 +207,7 @@ namespace Neko.Tests.PlayMode
         {
             yield return Begin("hina");
             var view = ViewOf("hina");
-            view.Worker.Maid.Archetype = Archetype.Genki; // a Hina of another draw, not the designed one
+            view.Worker.Maid.IdentityId = null; // a legacy maid of an old save: no identity, no authored art
             view.Bind(view.Worker);
             foreach (var id in Ids) Assert.IsFalse(IsSheetFrame(Body(view).sprite, id));
             yield return null;

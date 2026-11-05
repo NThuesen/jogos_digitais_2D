@@ -835,12 +835,19 @@ namespace Neko.Tests.PlayMode.Layout
             var maid = Lootbox.Mint(Profile, rarity, _rng);
             maid.Name = name;
 
+            // A crafted maid is a catalog maid only when her name and archetype are exactly a released
+            // identity's (so a test can ask for "Suzu"); any other name is a legacy maid, never a
+            // borrowed face.
+            maid.IdentityId = null;
+
             if (archetype.HasValue)
             {
                 maid.Archetype = archetype.Value;
                 maid.NaturalRole = RoleTable.NaturalFor(archetype.Value);
                 maid.Base = RarityTable.RollStats(rarity, archetype.Value, _rng);
             }
+
+            maid.IdentityId = MaidCatalog.FindReleased(name, maid.Archetype)?.Id;
 
             maid.Traits.Clear();
             if (traits != null) maid.Traits.AddRange(traits);

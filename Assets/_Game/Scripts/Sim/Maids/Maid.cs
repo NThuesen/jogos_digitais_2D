@@ -26,6 +26,14 @@ namespace Neko.Sim.Maids
         private float _mood = 1f;
 
         public int Id;
+
+        /// <summary>
+        /// Her <see cref="MaidIdentity"/> (its stable slug), or null for a maid from a save written
+        /// before identities existed that matches none. Portraits and animations are keyed by
+        /// this, never by name or archetype.
+        /// </summary>
+        public string IdentityId;
+
         public string Name;
         public Archetype Archetype;
         public int Level = 1;
@@ -63,6 +71,9 @@ namespace Neko.Sim.Maids
             get => _mood;
             set => _mood = Curves.Clamp01(value);
         }
+
+        /// <summary>True for a maid with no catalog identity (old saves only).</summary>
+        public bool IsLegacy => string.IsNullOrEmpty(IdentityId);
 
         public ArchetypeProfile Profile => ArchetypeTable.For(Archetype);
 
@@ -113,6 +124,14 @@ namespace Neko.Sim.Maids
         public Stats BondBonus => Stats.Uniform(Bond * StatsPerBondLevel);
 
         public Stats Total => Base.Plus(GearBonus).Plus(SetBonus).Plus(BondBonus).Clamped();
+
+        /// <summary>A maid of a catalog identity: name, archetype and natural role are the identity's.</summary>
+        public static Maid Create(int id, MaidIdentity identity, int level = 1)
+        {
+            var maid = Create(id, identity.Name, identity.Archetype, level);
+            maid.IdentityId = identity.Id;
+            return maid;
+        }
 
         public static Maid Create(int id, string name, Archetype archetype, int level = 1)
         {

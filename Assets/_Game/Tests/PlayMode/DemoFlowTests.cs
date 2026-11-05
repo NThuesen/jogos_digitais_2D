@@ -65,14 +65,15 @@ namespace Neko.Tests.PlayMode
             var suzu = profile.Maids.First(m => m.Name == "Hana");
             suzu.Name = "Suzu";
             suzu.Archetype = Archetype.Genki;
+            suzu.IdentityId = "suzu";
             var impostor = profile.Maids.First(m => m.Name == "Rei");
             impostor.Name = "Suzu";                  // right name...
-            impostor.Archetype = Archetype.Tsundere; // ...wrong archetype: Akari's, not hers
+            impostor.Archetype = Archetype.Tsundere; // ...wrong archetype, and no identity: a legacy maid
             suzu.Gear[0] = EquipmentCatalog.ById("head_sakura");
 
             Assert.IsNotNull(MaidAnimCatalog.Identify(suzu), "gear does not change who she is");
-            Assert.IsNull(MaidAnimCatalog.Resolve(suzu), "the walking figure still falls back with gear");
-            Assert.IsNull(MaidAnimCatalog.Identify(impostor), "name alone is never enough");
+            Assert.IsNotNull(MaidAnimCatalog.Resolve(suzu), "gear no longer sends her back to the procedural figure");
+            Assert.IsNull(MaidAnimCatalog.Identify(impostor), "a name is never enough, only the identity");
 
             yield return SessionFactory.ToRoster();
             yield return SessionFactory.Settle();

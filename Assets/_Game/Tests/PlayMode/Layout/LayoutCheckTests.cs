@@ -703,7 +703,7 @@ namespace Neko.Tests.PlayMode.Layout
         /// <summary>
         /// The value providers of <see cref="SessionFactory"/> pick from the game's tables: every
         /// Longest provider ranks its candidates widest first, and the longest maid name is the
-        /// numbered fallback.
+        /// widest name of the closed catalog.
         /// </summary>
         /// <remarks>
         /// Calls every provider once and logs its pick, width and runner-up, then the Large_Values
@@ -750,10 +750,10 @@ namespace Neko.Tests.PlayMode.Layout
                       SessionFactory.LargeValues.RosterHeader(8, 8, SessionFactory.LargeValues.DayAmount) + ", dismiss plank " +
                       SessionFactory.LargeValues.DismissPlank(SessionFactory.LargeValues.Severance));
 
-            if (!maidName.Text.EndsWith(" 31", StringComparison.Ordinal))
+            if (!System.Linq.Enumerable.Any(Neko.Sim.Maids.MaidCatalog.All, identity => identity.Name == maidName.Text))
             {
-                failures.Add(maidName.Field + " picked \"" + maidName.Text + "\", which is not the numbered fallback " +
-                             "(a pool name and \" 31\")");
+                failures.Add(maidName.Field + " picked \"" + maidName.Text + "\", which is not a name of the closed " +
+                             "maid catalog (boxes no longer number names)");
             }
 
             if (failures.Count > 0)

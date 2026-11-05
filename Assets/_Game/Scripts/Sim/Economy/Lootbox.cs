@@ -59,13 +59,6 @@ namespace Neko.Sim.Economy
     /// </remarks>
     public static class Lootbox
     {
-        private static readonly string[] Names =
-        {
-            "Mina", "Yuki", "Rina", "Suzu", "Kaede", "Nana", "Hoshi", "Chiyo", "Momo", "Aoi",
-            "Rei", "Sora", "Hana", "Kiki", "Tama", "Nori", "Mio", "Shiro", "Kuro", "Umi",
-            "Hina", "Sumi", "Yuzu", "Kana", "Riko", "Nagi", "Emi", "Saya", "Toko", "Mei",
-        };
-
         private static readonly BoxDef[] Boxes =
         {
             new BoxDef
@@ -144,11 +137,12 @@ namespace Neko.Sim.Economy
             {
                 var rarity = RollRarity(box, rng);
                 var card = Mint(profile, rarity, rng);
+                var alreadyHers = profile.HasIdentity(card.IdentityId);
 
                 // Over the roster cap she is converted on the spot rather than lost. A box
                 // that silently ate a Legendary because the squad was full would be the
                 // single worst thing this system could do to somebody.
-                if (profile.Maids.Count >= profile.Unlocks.RosterCap)
+                if (alreadyHers || profile.Maids.Count >= profile.Unlocks.RosterCap)
                 {
                     var back = RarityTable.For(rarity).SeverancePoints;
                     profile.Wallet.AddPoints(back);
@@ -174,27 +168,14 @@ namespace Neko.Sim.Economy
         /// like a bug long before it looks like a coincidence. Falls back to a numbered name
         /// once the pool is exhausted rather than looping forever.
         /// </remarks>
-        private static string PickName(Profile profile, Rng rng)
+        /// <summary>
+        /// A released identity she does not have yet; when she has them all, any released one, which
+        /// makes the card a duplicate (converted exactly as a card over the roster cap is).
+        /// </summary>
+        private static MaidIdentity PickIdentity(Profile profile, Rng rng)
         {
-            if (profile == null) return rng.Pick(Names);
-
-            var free = new List<string>();
-            for (var i = 0; i < Names.Length; i++)
-            {
-                var taken = false;
-                for (var m = 0; m < profile.Maids.Count; m++)
-                {
-                    if (profile.Maids[m].Name != Names[i]) continue;
-                    taken = true;
-                    break;
-                }
-
-                if (!taken) free.Add(Names[i]);
-            }
-
-            return free.Count > 0
-                ? rng.Pick(free)
-                : rng.Pick(Names) + " " + (profile.Maids.Count + 1);
+            var free = MaidCatalog.FreeReleased(profile?.Maids);
+            return free.Count > 0 ? rng.Pick(free) : rng.Pick(MaidCatalog.Released);
         }
 
         public static Rarity RollRarity(BoxDef box, Rng rng)
@@ -213,13 +194,17 @@ namespace Neko.Sim.Economy
         }
 
         /// <summary>Rolls a whole new card: personality, stats, tags and traits.</summary>
-        public static Maid Mint(Profile profile, Rarity rarity, Rng rng)
+        public static Maid Mint(Profile profile, Rarity rarity, Rng rng) =>
+            Mint(profile, rarity, rng, PickIdentity(profile, rng));
+
+        /// <summary>A card of the given identity: everything but who she is is rolled as always.</summary>
+        public static Maid Mint(Profile profile, Rarity rarity, Rng rng, MaidIdentity identity)
         {
-            var archetype = rng.Pick(ArchetypeTable.All).Kind;
+            var archetype = identity.Archetype;
             var id = profile?.NextMaidId ?? 1;
             if (profile != null) profile.NextMaidId++;
 
-            var maid = Maid.Create(id, PickName(profile, rng), archetype);
+            var maid = Maid.Create(id, identity);
             maid.Rarity = rarity;
             maid.Base = RarityTable.RollStats(rarity, archetype, rng);
             maid.House = ChemistryTags.RollHouse(rng);

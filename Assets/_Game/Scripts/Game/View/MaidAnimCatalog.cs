@@ -11,9 +11,10 @@ namespace Neko.Game.View
     /// <remarks>
     /// The data is <c>Resources/Maids/maid_walk_catalog.json</c>, written by
     /// <c>tools/art/maid_walk/maid_walk.py</c> from measurements of each sequence, so the
-    /// numbers cannot drift from the sheets. Nothing here is saved: who gets which art is decided
-    /// by name and archetype, a stand-in until a maid carries a visual id of her own. A maid
-    /// whose pair is not in the catalog, or who wears gear, keeps the procedural figure.
+    /// numbers cannot drift from the sheets. Who gets which art is decided by the maid's
+    /// <see cref="Maid.IdentityId"/> alone (the entry <c>id</c> is the identity slug), never by name
+    /// or archetype. Only a legacy maid (an old save's maid with no identity) keeps the procedural
+    /// figure; gear no longer changes the figure of an authored maid.
     /// </remarks>
     public static class MaidAnimCatalog
     {
@@ -64,39 +65,13 @@ namespace Neko.Game.View
         }
 
         /// <summary>
-        /// The entry for this maid, or null. Name and archetype must both match, so another
-        /// "Hina" from the draw keeps the procedural look. Equipment is drawn as layers of the
-        /// procedural figure, which a flat picture has no equivalent for, so any gear also
-        /// returns null and the pillar that gear is visible survives.
+        /// The walk entry for this maid, or null. Equipment is shown in the interface instead of
+        /// as layers, so it does not send an authored maid back to the procedural figure.
         /// </summary>
-        public static Entry Resolve(Maid maid)
-        {
-            var match = Identify(maid);
-            if (match == null) return null;
+        public static Entry Resolve(Maid maid) => Identify(maid);
 
-            for (var i = 0; i < maid.Gear.Length; i++)
-            {
-                if (maid.Gear[i] != null) return null;
-            }
-
-            return match;
-        }
-
-        /// <summary>
-        /// Which authored character she is, by name and archetype alone. Gear is ignored: the card
-        /// portrait does not change with what she wears (the walking figure still does).
-        /// </summary>
-        public static Entry Identify(Maid maid)
-        {
-            if (maid == null) return null;
-
-            foreach (var entry in All)
-            {
-                if (entry.name == maid.Name && entry.ArchetypeValue == maid.Archetype) return entry;
-            }
-
-            return null;
-        }
+        /// <summary>Which authored character she is: the entry whose id is her identity, else null.</summary>
+        public static Entry Identify(Maid maid) => maid == null ? null : ById(maid.IdentityId);
 
         /// <summary>The frames, or null when the sheet is missing or does not match the catalog.</summary>
         public static Sprite[] Load(SpriteFactory sprites, Entry entry) =>
