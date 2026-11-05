@@ -28,7 +28,7 @@
 **Referências:** cada ficha vincula o CLEAN aprovado da segunda onda (na PR [#61](https://github.com/NThuesen/jogos_digitais_2D/pull/61); Nonoka é V02), e exige o retrato REAL aprovado no caso da última onda, que ainda pode estar apenas no `raw_gpt/` local. Nenhuma imagem da última onda deve ser considerada aprovada apenas porque seu prompt existe. Prioridade absoluta: **PNG de identidade aprovado > especificações textuais históricas**.
 
 1. **Prompt 1 (GPT imagem):** Anexe **A = retrato premium aprovado daquela maid**, **B opcional = sprite chibi ilustrado atual ou piloto Mikan V3 aprovado apenas como ESTILO**. Gere UMA imagem vertical full-body 2D anime-chibi. Não copiar rosto da B, não criar pixel art.
-2. **Prompt 2 (GPT imagem):** Anexe **A = CHIBI full-body aprovado**, B opcional = próprio retrato. Gere UMA imagem 16:9 horizontal com passo genuíno para DIREITA e chroma sólido `#00FF00` ou `#0000FF` especificado na ficha. Não gerar um sheet.
+2. **Prompt 2 V02 (GPT imagem, enquadramento obrigatório):** Anexe **A = CHIBI full-body aprovado**, B opcional = próprio retrato. Gere UMA imagem 16:9 horizontal com passo genuíno para DIREITA e chroma sólido `#00FF00` ou `#0000FF`. O personagem completo, do fio mais alto até as solas, deve ocupar **aproximadamente 70–74% da altura e nunca mais que 75%**. Exigir **≥13% de chroma vazio tanto ACIMA quanto ABAIXO**, e **≥18% de fundo livre de cada lado**. O teste Mikan Step 2 V01 ficou grande demais, por isso a V02 exige enquadramento mais aberto. Não ampliar para preencher a imagem, não cortar pelo/orelhas/pés, não gerar sheet.
 3. **Prompt 3 (Flow/Tencent/IA vídeo):** Anexe **SÓ a imagem Walk Start aprovada**, selecione 16:9, cole o prompt de vídeo da ficha. Dois passos alternados, caminhar NO LUGAR, câmera absolutamente fixa, personagem inteira, sem foot sliding e sem alterações de rosto/roupa. Não assuma que a ferramenta oferece um loop perfeito nem que o chroma hex sai exato.
 4. **Blender:** assista o vídeo inteiro, escolha um trecho real de ciclo coerente, exporte PNGs numerados com FPS real, identifique/rejeite moonwalk e chroma contaminado. Siga o procedimento [art_working/README.md](../../../../art_working/README.md); remover chroma requer processamento explícito — salvar RGBA não o remove.
 
@@ -37,7 +37,7 @@
 **Nome/pastas:** números `10` a `27` indicam apenas ordem de produção, não IdentityId persistido. Exemplo:
 ```text
 art_working/10_mikan/step1_chibi/10_mikan_step1_chibi_v01.png
-art_working/10_mikan/step2_walkstart/10_mikan_step2_walkstart_v01_blue.png
+art_working/10_mikan/step2_walkstart/10_mikan_step2_walkstart_v02_blue.png
 art_working/10_mikan/step3_video/10_mikan_step3_walk_v01.mp4
 art_working/10_mikan/step4_blender/walk_x/frames/frame_0001.png
 ```
