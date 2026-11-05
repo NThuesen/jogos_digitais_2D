@@ -1,0 +1,281 @@
+{
+ "suzu": {
+  "raw": {
+   "file": "UI-021_maid_portrait_suzu_neutral_v03.png",
+   "sha256": "3635e43925da14bf2e43b46044d9e1eed0f6028017f5dc825cb3cefb983354a8",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    1094,
+    1460
+   ],
+   "sha256": "e4665d398ba6d69f57a5414873e4f751ec914787d513a162b59c117062b356a5",
+   "specks_removed": 69,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "d90ccec1dc103369df9c6b5c97d709af8db9fbac2787cc700b6946eeefa46a9b",
+   "box": [
+    40,
+    -65,
+    1037,
+    752
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "8550a8012ee966d2664727f349c0a66f7fdf15e44314128e6a4ebe0a3650a45c"
+  }
+ },
+ "hina": {
+  "raw": {
+   "file": "UI-021_maid_portrait_hina_neutral_v01.png",
+   "sha256": "930a1d8b67f8f24151d0085e4ae4a5f01aaf9562dd0d6c61d50cb823019cf27b",
+   "size": [
+    1122,
+    1402
+   ]
+  },
+  "clean": {
+   "size": [
+    1005,
+    1397
+   ],
+   "sha256": "4c5ff8ce0666a5fe3cd6c7b972a84b616c395e9e9799eaa0461d6157d546a0b1",
+   "specks_removed": 48,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "7740feed27c36bb142f39bf0ebf49949800eb813fdb3c13168b0b40375fae29c",
+   "box": [
+    59,
+    -62,
+    1013,
+    720
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "a42570b4a1b58e9d870ca83c17bb89a86bf72f885ad272864f6033d935dc1747"
+  }
+ },
+ "akari": {
+  "raw": {
+   "file": "UI-021_maid_portrait_akari_neutral_v01.png",
+   "sha256": "4eefab02f8272aef16030d07161ca50c41a9fe51f3f837b398dd24905b7bf094",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    1009,
+    1456
+   ],
+   "sha256": "9c5244ae6f8f5c8b2713143a7349e34b0d73dd8c1b1e5374371d772f9b624271",
+   "specks_removed": 84,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "7bd0c288acf868dbb04f4d2df70b36df240963f1e3719e81bedc850bfc4b1020",
+   "box": [
+    9,
+    -65,
+    1003,
+    750
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "331a0b151c5101c18e5117fef73206fbdf88c09c2e5c89acafa487c06ea23cf8"
+  }
+ },
+ "momo": {
+  "raw": {
+   "file": "UI-021_maid_portrait_momo_neutral_v01.png",
+   "sha256": "ecfc741908fb2dce1c096b2cd6e8df552c3cbd370578caa69f478d17acc4d26b",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    1028,
+    1458
+   ],
+   "sha256": "615b220e6d6cbfc350db16317f778a2ae10f0f87de5d8ea734b0e8e164e5c25d",
+   "specks_removed": 42,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "17eacc684d38a109a5c1bf5c8174a0dcd45a3f22bdd85ef7b43ea3a4f1a76826",
+   "box": [
+    37,
+    -65,
+    1033,
+    751
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "def4e9cd12579dbcf3cca6c6da0ed80e92c7c49c378f17fa8c0714ad47defaaf"
+  }
+ },
+ "reina": {
+  "raw": {
+   "file": "UI-021_maid_portrait_reina_neutral_v01.png",
+   "sha256": "1c495b63b96e615105b801d38b7baa32c7e61271db7e0ecd150acc5b0123b30a",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    994,
+    1448
+   ],
+   "sha256": "ceb371b39c8bc621de4e31b45a20389229c54aa44f470bccedefbc86b7828602",
+   "specks_removed": 62,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "ca261c716b692b4a58633c25bff660212b8c0f147ae49c6a9bccddd16edb6369",
+   "box": [
+    29,
+    -65,
+    1017,
+    745
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "6b924941b8ecfd3cca43e3c349172aa555f72cedc37fe50c989f8ba9bff9cb09"
+  }
+ },
+ "kaede": {
+  "raw": {
+   "file": "UI-021_maid_portrait_kaede_neutral_v01.png",
+   "sha256": "224f10446f722bc8c51857a38c43471151e9fc6fb30058f69dcb18d8fd1e0373",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    1010,
+    1459
+   ],
+   "sha256": "4edb7e49c02c6585b992f15a169a305ff05ecd2b11399df27ceca2bc6cb273fd",
+   "specks_removed": 35,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "8e2120e1aa31b6de46eceddc7fd70acd57cdac758b5f07ce30fb7485eff2526c",
+   "box": [
+    27,
+    -65,
+    1024,
+    752
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "9f93ba8c0e40cf01709263649d5ed912531ac29063daf186912d2bb560209b34"
+  }
+ },
+ "nene": {
+  "raw": {
+   "file": "UI-021_maid_portrait_nene_neutral_v01.png",
+   "sha256": "f47277d274c51871468e529b6481f700266fba7400ae30b3b988c090a4c6da41",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    977,
+    1455
+   ],
+   "sha256": "d7335dc74eee016884bb8222e488da41242138ae2e75b85a3a5abadfc50fc140",
+   "specks_removed": 121,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "76365fd3d9f7599260be56de51abe2867df0fa0d321fc797fb67d4d128df0fa1",
+   "box": [
+    45,
+    -65,
+    1038,
+    749
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "7709f54d676091696d1bb514144aa658c45c28bd4f3f85317f71f80a01f9981e"
+  }
+ },
+ "ichika": {
+  "raw": {
+   "file": "UI-021_maid_portrait_ichika_neutral_v01.png",
+   "sha256": "3c0b8578c7b26e94f26018d37897e1f56d4f5b57ab756fffc8189a44df1d2143",
+   "size": [
+    1122,
+    1402
+   ]
+  },
+  "clean": {
+   "size": [
+    1041,
+    1414
+   ],
+   "sha256": "b101597d2c7e3a4f4342459c3f41ceefebbdc4a3bab508ed1213c1d5fb0d58ac",
+   "specks_removed": 67,
+   "grey_ghosts_removed": 1
+  },
+  "head_192x157": {
+   "sha256": "40931dad831ffa245b5c808242eeb41b2a6f586b7a875c41e18743b1905aa6be",
+   "box": [
+    25,
+    -63,
+    990,
+    728
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "8d368093797b9fb18947b8b99600872b2626d7b320591f2ccaf6335a2a1bcdca"
+  }
+ },
+ "yoru": {
+  "raw": {
+   "file": "UI-021_maid_portrait_yoru_neutral_v01.png",
+   "sha256": "970021c78eb89b17d08691082791e21f0326545cf6c6adef531d872da1775b3b",
+   "size": [
+    1086,
+    1448
+   ]
+  },
+  "clean": {
+   "size": [
+    1038,
+    1455
+   ],
+   "sha256": "6786b17742dc854b56523fc1e1ea06f08e140bb7f62752a4854445ab81a0eb7d",
+   "specks_removed": 53,
+   "grey_ghosts_removed": 0
+  },
+  "head_192x157": {
+   "sha256": "544b699a018492cbc379a39b9293f7e3da08c58410f2c1e2dd7d564ebeea591d",
+   "box": [
+    37,
+    -65,
+    1030,
+    749
+   ]
+  },
+  "detail_480x641": {
+   "sha256": "0675e1fdf6ba67322d8e89cb14796d77675c957855973c6227d0eafa1b3d3f4e"
+  }
+ }
+}

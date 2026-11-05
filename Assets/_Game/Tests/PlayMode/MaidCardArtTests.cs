@@ -15,11 +15,24 @@ namespace Neko.Tests.PlayMode
     public sealed class MaidCardArtTests
     {
         private GameObject _canvas;
+        private Neko.Game.Art.SpriteFactory _ownSprites;
+
+        // UiKit.Sprites is a static that only UiRoot sets, so run alone these tests had none
+        // and failed in UiKit.Panel; they only passed after another test had booted the game.
+        [SetUp]
+        public void GiveUiKitItsSprites()
+        {
+            if (UiKit.Sprites != null) return;
+
+            _ownSprites = new Neko.Game.Art.SpriteFactory();
+            UiKit.Sprites = _ownSprites;
+        }
 
         [TearDown]
         public void Cleanup()
         {
             if (_canvas != null) UnityEngine.Object.DestroyImmediate(_canvas);
+            if (_ownSprites != null && UiKit.Sprites == _ownSprites) UiKit.Sprites = null;
         }
 
         private static Maid MaidOf(Rarity rarity)
