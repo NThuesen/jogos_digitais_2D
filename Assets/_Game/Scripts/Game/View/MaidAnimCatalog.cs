@@ -71,18 +71,7 @@ namespace Neko.Game.View
         /// </summary>
         public static Entry Resolve(Maid maid)
         {
-            if (maid == null) return null;
-
-            Entry match = null;
-            foreach (var entry in All)
-            {
-                if (entry.name == maid.Name && entry.ArchetypeValue == maid.Archetype)
-                {
-                    match = entry;
-                    break;
-                }
-            }
-
+            var match = Identify(maid);
             if (match == null) return null;
 
             for (var i = 0; i < maid.Gear.Length; i++)
@@ -91,6 +80,22 @@ namespace Neko.Game.View
             }
 
             return match;
+        }
+
+        /// <summary>
+        /// Which authored character she is, by name and archetype alone. Gear is ignored: the card
+        /// portrait does not change with what she wears (the walking figure still does).
+        /// </summary>
+        public static Entry Identify(Maid maid)
+        {
+            if (maid == null) return null;
+
+            foreach (var entry in All)
+            {
+                if (entry.name == maid.Name && entry.ArchetypeValue == maid.Archetype) return entry;
+            }
+
+            return null;
         }
 
         /// <summary>The frames, or null when the sheet is missing or does not match the catalog.</summary>

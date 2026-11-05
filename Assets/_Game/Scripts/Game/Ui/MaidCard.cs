@@ -180,6 +180,9 @@ namespace Neko.Game.Ui
 
         private const float MinimalBelow = 0.7f;
 
+        /// <summary>Share of the portrait window kept free at the bottom for tab and badge.</summary>
+        private const float StripFraction = 0.2f;
+
         // Fractions of the card (x, y from the top, width, height) measured on the 535x735 exports.
         private static readonly Rect CompactWindow = new Rect(0.1355f, 0.126f, 0.729f, 0.415f);
         private static readonly Rect MinimalWindow = new Rect(0.1495f, 0.156f, 0.701f, 0.524f);
@@ -237,9 +240,13 @@ namespace Neko.Game.Ui
                 portrait.transform.SetParent(clipRect, false);
                 portrait.preserveAspect = true;
                 portrait.raycastTarget = false;
-                portrait.sprite = UiKit.Sprites.Layered(MaidSpriteBuilder.Layers(maid, MaidPose.Idle),
+                portrait.sprite = AuthoredPortrait(maid) ?? UiKit.Sprites.Layered(
+                    MaidSpriteBuilder.Layers(maid, MaidPose.Idle),
                     MaidSpriteBuilder.CacheKey(maid, MaidPose.Idle), 128);
                 UiKit.Stretch(portrait.rectTransform);
+                // The bottom strip of the window belongs to the position tab and the rarity badge,
+                // so neither covers the character.
+                portrait.rectTransform.anchorMin = new Vector2(0f, StripFraction);
             }
 
             var frame = new GameObject("Frame", typeof(RectTransform)).AddComponent<Image>();
@@ -258,28 +265,33 @@ namespace Neko.Game.Ui
 
             // Rarity is the frame on the compact card; the minimal frame has one look, so the
             // gem badge (also on the compact card) is what tells the rarities apart there.
+            var stripHeight = window.height * size.y * StripFraction;
             var badge = new GameObject("Rarity", typeof(RectTransform)).AddComponent<Image>();
             badge.transform.SetParent(root, false);
             badge.sprite = UiArt.Get("badge_" + Key(maid.Rarity));
             badge.preserveAspect = true;
             badge.raycastTarget = false;
-            var badgeWidth = size.x * 0.3f;
-            badge.rectTransform.sizeDelta = new Vector2(badgeWidth, badgeWidth * 0.58f);
-            UiKit.Anchor(badge.rectTransform, new Vector2(1f, 1f),
-                new Vector2(-(1f - window.xMax) * size.x - 2f * scale, -window.y * size.y - 2f * scale));
+            badge.rectTransform.sizeDelta = new Vector2(stripHeight * 1.75f, stripHeight);
+            UiKit.Anchor(badge.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 0f));
+            badge.rectTransform.pivot = new Vector2(1f, 0f);
+            badge.rectTransform.anchoredPosition = new Vector2(window.xMax * size.x - 2f * scale,
+                -window.yMax * size.y + 1f * scale);
 
-            // Her natural position: bottom-left of the portrait; red when she plays elsewhere.
+            // Her natural position, bottom-left of the window; red when she plays elsewhere.
             var wrong = playingAs.HasValue && playingAs.Value != maid.NaturalRole;
-            var tab = UiKit.Panel(root, new Vector2(size.x * 0.4f, 17f * scale),
+            var tab = UiKit.Panel(root, new Vector2(window.width * size.x * 0.48f, stripHeight),
                 wrong ? Palette.Alarm : Logo.Brass, 0.45f, true);
             tab.GetComponent<Image>().raycastTarget = false;
             tab.anchorMin = tab.anchorMax = new Vector2(0f, 1f);
             tab.pivot = new Vector2(0f, 0f);
-            tab.anchoredPosition = new Vector2(window.x * size.x + 3f * scale,
-                -window.yMax * size.y + 3f * scale);
+            tab.anchoredPosition = new Vector2(window.x * size.x + 2f * scale,
+                -window.yMax * size.y + 1f * scale);
             var role = UiKit.Label(tab, RoleTable.For(maid.NaturalRole).DisplayName,
-                Mathf.RoundToInt(11f * scale), Palette.Hex("#3A2A1A"), bold: true);
+                Mathf.Max(8, Mathf.RoundToInt(11f * scale)), Palette.Hex("#3A2A1A"), bold: true);
             UiKit.Stretch(role.rectTransform, 1f);
+            role.resizeTextForBestFit = true;
+            role.resizeTextMinSize = 6;
+            role.resizeTextMaxSize = role.fontSize;
 
             var name = UiKit.Label(root, maid.Name, Mathf.RoundToInt((minimal ? 17f : 18f) * scale),
                 Palette.Text, bold: true);
@@ -291,10 +303,11 @@ namespace Neko.Game.Ui
             if (minimal) return root;
 
             // Archetype and wage share one line when the wage is shown; each keeps its own box.
-            var small = Mathf.Max(7, Mathf.RoundToInt(10f * scale));
+            var small = Mathf.Max(8, Mathf.RoundToInt(10f * scale));
+            // Darkened: the archetype colours are tuned for dark panels, and this one is cream.
             var kind = UiKit.Label(root, maid.Profile.DisplayName, small,
-                Palette.ForArchetype(maid.Archetype),
-                showSalary ? TextAnchor.MiddleLeft : TextAnchor.MiddleCenter);
+                Palette.Darken(Palette.ForArchetype(maid.Archetype), 0.35f),
+                showSalary ? TextAnchor.MiddleLeft : TextAnchor.MiddleCenter, bold: true);
             Place(kind.rectTransform, showSalary ? CompactKindLeft : CompactKind);
 
             var stats = maid.Total;
@@ -310,7 +323,7 @@ namespace Neko.Game.Ui
             {
                 var salary = UiKit.Label(root,
                     Strings.Get("roster.salary") + " " + Strings.Money(maid.Salary), small,
-                    Palette.TextDim, TextAnchor.MiddleRight);
+                    Palette.Text, TextAnchor.MiddleRight, bold: true);
                 Place(salary.rectTransform, CompactSalaryRight);
             }
 
@@ -320,13 +333,41 @@ namespace Neko.Game.Ui
         /// <summary>One stat: the number over its caption, each in its own band so they never overlap.</summary>
         private static void ArtPip(RectTransform row, int index, string caption, int value, float scale)
         {
-            var number = UiKit.Label(row, value.ToString(), Mathf.Max(8, Mathf.RoundToInt(15f * scale)),
+            var number = UiKit.Label(row, value.ToString(), Mathf.Max(9, Mathf.RoundToInt(15f * scale)),
                 Palette.Text, bold: true);
             Place(number.rectTransform, new Rect(index * 0.25f, 0f, 0.25f, 0.56f));
 
-            var label = UiKit.Label(row, caption, Mathf.Max(6, Mathf.RoundToInt(8f * scale)),
+            var label = UiKit.Label(row, caption, Mathf.Max(7, Mathf.RoundToInt(8f * scale)),
                 Palette.TextDim);
             Place(label.rectTransform, new Rect(index * 0.25f, 0.62f, 0.25f, 0.38f));
+        }
+
+        private static readonly System.Collections.Generic.Dictionary<string, Sprite> Portraits =
+            new System.Collections.Generic.Dictionary<string, Sprite>();
+
+        /// <summary>
+        /// The authored character's resting frame, cropped to head and torso, or null when this
+        /// maid is not one of the nine (the procedural figure is used then). It is a crop of the
+        /// existing walk sheet: no new image, and never another maid's face under this name.
+        /// </summary>
+        private static Sprite AuthoredPortrait(Maid maid)
+        {
+            var entry = MaidAnimCatalog.Identify(maid);
+            if (entry == null) return null;
+            if (Portraits.TryGetValue(entry.id, out var cached) && cached != null) return cached;
+
+            var frames = MaidAnimCatalog.Load(UiKit.Sprites, entry);
+            if (frames == null || entry.idle_frame >= frames.Length) return null;
+
+            var cell = frames[entry.idle_frame];
+            var rect = cell.rect;
+            var crop = new Rect(rect.x, rect.y + rect.height * 0.36f, rect.width, rect.height * 0.64f);
+            var sprite = Sprite.Create(cell.texture, crop, new Vector2(0.5f, 0.5f), cell.pixelsPerUnit, 0,
+                SpriteMeshType.FullRect);
+            sprite.name = entry.id + "_portrait";
+            sprite.hideFlags = HideFlags.HideAndDontSave;
+            Portraits[entry.id] = sprite;
+            return sprite;
         }
     }
 }
