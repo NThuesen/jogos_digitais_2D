@@ -112,14 +112,26 @@ namespace Neko.Game.Ui
             var column = UiKit.Column(_detail, 7f, 16f);
             UiKit.Stretch(column);
 
-            var head = UiKit.Row(column, 12f);
-            head.sizeDelta = new Vector2(460f, 160f);
+            // With a premium portrait the head row shows her large (3:4) beside the facts; a maid
+            // without one keeps the compact card.
+            var portrait = MaidPortraits.Detail(maid);
+            var head = UiKit.Row(column, portrait != null ? 10f : 12f);
+            head.sizeDelta = new Vector2(460f, portrait != null ? DetailPortraitHeight : 160f);
 
-            MaidCard.Build(head, maid, 0.72f, showSalary: false,
-                playingAs: Session.Profile.Lineup.RoleOf(maid.Id), exact: true);
+            if (portrait != null)
+            {
+                DetailPortrait(head, maid, portrait);
+            }
+            else
+            {
+                MaidCard.Build(head, maid, 0.72f, showSalary: false,
+                    playingAs: Session.Profile.Lineup.RoleOf(maid.Id), exact: true);
+            }
 
             var facts = UiKit.Column(head, 3f, 0f);
-            facts.sizeDelta = new Vector2(310f, 155f);
+            facts.sizeDelta = portrait != null
+                ? new Vector2(300f, DetailPortraitHeight - 4f)
+                : new Vector2(310f, 155f);
 
             Fact(facts, "roster.rarity", maid.Card.DisplayName, Palette.Hex(maid.Card.TintHex));
             Fact(facts, "lineup.natural", RoleTable.For(maid.NaturalRole).DisplayName, Logo.Brass);
@@ -158,6 +170,33 @@ namespace Neko.Game.Ui
                         Session.Touch();
                         Refresh();
                     }, Strings.Get("dialog.no")), Typeface.Small, Palette.Alarm);
+        }
+
+        private const float DetailPortraitHeight = 200f;
+        private const float DetailPortraitWidth = 150f;
+
+        /// <summary>
+        /// The large premium portrait in a frame of her rarity colour over a wash of her accent.
+        /// The picture keeps its 3:4 proportion and never takes clicks.
+        /// </summary>
+        private static void DetailPortrait(Transform parent, Maid maid, Sprite sprite)
+        {
+            var frame = UiKit.Panel(parent, new Vector2(DetailPortraitWidth, DetailPortraitHeight),
+                Palette.Hex(maid.Card.TintHex), 0.08f, true);
+            frame.gameObject.name = "Detail Portrait " + maid.Name;
+            frame.GetComponent<Image>().raycastTarget = false;
+
+            var inner = UiKit.Panel(frame, new Vector2(DetailPortraitWidth - 6f, DetailPortraitHeight - 6f),
+                Palette.WithAlpha(Palette.ForArchetype(maid.Archetype), 0.55f), 0.06f, true);
+            UiKit.Anchor(inner, new Vector2(0.5f, 0.5f), Vector2.zero);
+            inner.GetComponent<Image>().raycastTarget = false;
+
+            var picture = new GameObject("Portrait", typeof(RectTransform)).AddComponent<Image>();
+            picture.transform.SetParent(inner, false);
+            picture.sprite = sprite;
+            picture.preserveAspect = true;
+            picture.raycastTarget = false;
+            UiKit.Stretch(picture.rectTransform);
         }
 
         private static void Fact(Transform parent, string key, string value, Color colour,

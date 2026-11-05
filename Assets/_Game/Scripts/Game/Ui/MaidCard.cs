@@ -346,12 +346,15 @@ namespace Neko.Game.Ui
             new System.Collections.Generic.Dictionary<string, Sprite>();
 
         /// <summary>
-        /// The authored character's resting frame, cropped to head and torso, or null when this
+        /// The premium portrait (UI-021) of the authored character, else her resting frame, cropped to head and torso, or null when this
         /// maid is not one of the nine (the procedural figure is used then). It is a crop of the
         /// existing walk sheet: no new image, and never another maid's face under this name.
         /// </summary>
         private static Sprite AuthoredPortrait(Maid maid)
         {
+            var premium = MaidPortraits.Head(maid);
+            if (premium != null) return premium;
+
             var entry = MaidAnimCatalog.Identify(maid);
             if (entry == null) return null;
             if (Portraits.TryGetValue(entry.id, out var cached) && cached != null) return cached;

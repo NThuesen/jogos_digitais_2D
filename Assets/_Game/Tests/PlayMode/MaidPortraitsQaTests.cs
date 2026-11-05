@@ -205,9 +205,11 @@ namespace Neko.Tests.PlayMode
                 CardOf(name, MaidCard.Width * 0.82f).GetComponent<Button>().onClick.Invoke();
                 yield return Frames();
 
+                // Since the integration the real detail panel already shows her large portrait
+                // (PremiumPortraitsTests); the prototype only replaces the compact card of the old one.
                 var small = CardOf(name, MaidCard.Width * 0.72f);
-                Assert.IsNotNull(small, name + " did not become the selected maid in the detail panel");
-                BigDetail(small, builder.MaidNamed(name), details[name]);
+                if (small != null) BigDetail(small, builder.MaidNamed(name), details[name]);
+                else Assert.IsNotNull(GameObject.Find("Detail Portrait " + name), name + " has no detail portrait");
                 yield return Shots("detail_" + name.ToLowerInvariant());
             }
         }

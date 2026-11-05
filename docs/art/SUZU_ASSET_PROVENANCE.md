@@ -71,3 +71,51 @@ non-readable). The ART-03 pixel-art sheets are commit `37b0f3f` and `maid_walk.p
 ## Modular UI art (UI integration)
 
 The `Assets/_Game/Resources/UiArt/*.png` files are owner-approved UI sprites copied byte-for-byte from `docs/art/ui-modular/approved/`; each source path and hash is in `Assets/_Game/Resources/UiArt/SOURCES.json`. Their hashes are in the allowlist block above, which `DocsTests` checks.
+
+## Premium maid portraits (UI-021)
+
+The nine owner-approved portraits (APPROVED, with the Suzu and Ichika edge notes in
+`docs/art/ui-modular/portraits/RESULTADO.md`). `Resources/MaidPortraits/<id>_head.png` (192x157, Maid Cards)
+and `<id>_detail.png` (480x641, Elenco detail) are byte-for-byte the derivatives of
+`tools/art/maid_portraits_prepare.py`, whose SHA-256 with the RAW and CLEAN hashes is in
+`docs/art/ui-modular/portraits/MANIFEST.json`. The same bytes stay under `Tests/PlayMode/QaArt` for the QA test.
+No new image was generated for the integration.
+
+```text
+d90ccec1dc103369df9c6b5c97d709af8db9fbac2787cc700b6946eeefa46a9b  Assets/_Game/Resources/MaidPortraits/suzu_head.png
+d90ccec1dc103369df9c6b5c97d709af8db9fbac2787cc700b6946eeefa46a9b  Assets/_Game/Tests/PlayMode/QaArt/suzu_head_192.png
+8550a8012ee966d2664727f349c0a66f7fdf15e44314128e6a4ebe0a3650a45c  Assets/_Game/Resources/MaidPortraits/suzu_detail.png
+8550a8012ee966d2664727f349c0a66f7fdf15e44314128e6a4ebe0a3650a45c  Assets/_Game/Tests/PlayMode/QaArt/suzu_detail_480.png
+7740feed27c36bb142f39bf0ebf49949800eb813fdb3c13168b0b40375fae29c  Assets/_Game/Resources/MaidPortraits/hina_head.png
+7740feed27c36bb142f39bf0ebf49949800eb813fdb3c13168b0b40375fae29c  Assets/_Game/Tests/PlayMode/QaArt/hina_head_192.png
+a42570b4a1b58e9d870ca83c17bb89a86bf72f885ad272864f6033d935dc1747  Assets/_Game/Resources/MaidPortraits/hina_detail.png
+a42570b4a1b58e9d870ca83c17bb89a86bf72f885ad272864f6033d935dc1747  Assets/_Game/Tests/PlayMode/QaArt/hina_detail_480.png
+7bd0c288acf868dbb04f4d2df70b36df240963f1e3719e81bedc850bfc4b1020  Assets/_Game/Resources/MaidPortraits/akari_head.png
+7bd0c288acf868dbb04f4d2df70b36df240963f1e3719e81bedc850bfc4b1020  Assets/_Game/Tests/PlayMode/QaArt/akari_head_192.png
+331a0b151c5101c18e5117fef73206fbdf88c09c2e5c89acafa487c06ea23cf8  Assets/_Game/Resources/MaidPortraits/akari_detail.png
+331a0b151c5101c18e5117fef73206fbdf88c09c2e5c89acafa487c06ea23cf8  Assets/_Game/Tests/PlayMode/QaArt/akari_detail_480.png
+17eacc684d38a109a5c1bf5c8174a0dcd45a3f22bdd85ef7b43ea3a4f1a76826  Assets/_Game/Resources/MaidPortraits/momo_head.png
+17eacc684d38a109a5c1bf5c8174a0dcd45a3f22bdd85ef7b43ea3a4f1a76826  Assets/_Game/Tests/PlayMode/QaArt/momo_head_192.png
+def4e9cd12579dbcf3cca6c6da0ed80e92c7c49c378f17fa8c0714ad47defaaf  Assets/_Game/Resources/MaidPortraits/momo_detail.png
+def4e9cd12579dbcf3cca6c6da0ed80e92c7c49c378f17fa8c0714ad47defaaf  Assets/_Game/Tests/PlayMode/QaArt/momo_detail_480.png
+ca261c716b692b4a58633c25bff660212b8c0f147ae49c6a9bccddd16edb6369  Assets/_Game/Resources/MaidPortraits/reina_head.png
+ca261c716b692b4a58633c25bff660212b8c0f147ae49c6a9bccddd16edb6369  Assets/_Game/Tests/PlayMode/QaArt/reina_head_192.png
+6b924941b8ecfd3cca43e3c349172aa555f72cedc37fe50c989f8ba9bff9cb09  Assets/_Game/Resources/MaidPortraits/reina_detail.png
+6b924941b8ecfd3cca43e3c349172aa555f72cedc37fe50c989f8ba9bff9cb09  Assets/_Game/Tests/PlayMode/QaArt/reina_detail_480.png
+8e2120e1aa31b6de46eceddc7fd70acd57cdac758b5f07ce30fb7485eff2526c  Assets/_Game/Resources/MaidPortraits/kaede_head.png
+8e2120e1aa31b6de46eceddc7fd70acd57cdac758b5f07ce30fb7485eff2526c  Assets/_Game/Tests/PlayMode/QaArt/kaede_head_192.png
+9f93ba8c0e40cf01709263649d5ed912531ac29063daf186912d2bb560209b34  Assets/_Game/Resources/MaidPortraits/kaede_detail.png
+9f93ba8c0e40cf01709263649d5ed912531ac29063daf186912d2bb560209b34  Assets/_Game/Tests/PlayMode/QaArt/kaede_detail_480.png
+76365fd3d9f7599260be56de51abe2867df0fa0d321fc797fb67d4d128df0fa1  Assets/_Game/Resources/MaidPortraits/nene_head.png
+76365fd3d9f7599260be56de51abe2867df0fa0d321fc797fb67d4d128df0fa1  Assets/_Game/Tests/PlayMode/QaArt/nene_head_192.png
+7709f54d676091696d1bb514144aa658c45c28bd4f3f85317f71f80a01f9981e  Assets/_Game/Resources/MaidPortraits/nene_detail.png
+7709f54d676091696d1bb514144aa658c45c28bd4f3f85317f71f80a01f9981e  Assets/_Game/Tests/PlayMode/QaArt/nene_detail_480.png
+40931dad831ffa245b5c808242eeb41b2a6f586b7a875c41e18743b1905aa6be  Assets/_Game/Resources/MaidPortraits/ichika_head.png
+40931dad831ffa245b5c808242eeb41b2a6f586b7a875c41e18743b1905aa6be  Assets/_Game/Tests/PlayMode/QaArt/ichika_head_192.png
+8d368093797b9fb18947b8b99600872b2626d7b320591f2ccaf6335a2a1bcdca  Assets/_Game/Resources/MaidPortraits/ichika_detail.png
+8d368093797b9fb18947b8b99600872b2626d7b320591f2ccaf6335a2a1bcdca  Assets/_Game/Tests/PlayMode/QaArt/ichika_detail_480.png
+544b699a018492cbc379a39b9293f7e3da08c58410f2c1e2dd7d564ebeea591d  Assets/_Game/Resources/MaidPortraits/yoru_head.png
+544b699a018492cbc379a39b9293f7e3da08c58410f2c1e2dd7d564ebeea591d  Assets/_Game/Tests/PlayMode/QaArt/yoru_head_192.png
+0675e1fdf6ba67322d8e89cb14796d77675c957855973c6227d0eafa1b3d3f4e  Assets/_Game/Resources/MaidPortraits/yoru_detail.png
+0675e1fdf6ba67322d8e89cb14796d77675c957855973c6227d0eafa1b3d3f4e  Assets/_Game/Tests/PlayMode/QaArt/yoru_detail_480.png
+```
