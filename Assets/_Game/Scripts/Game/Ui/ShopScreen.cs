@@ -21,6 +21,9 @@ namespace Neko.Game.Ui
 
         private RectTransform _list;
         private Text _money;
+        private Image _coin;
+        private readonly List<(Button Button, ShopItemKind Kind)> _tabs =
+            new List<(Button, ShopItemKind)>();
         private ShopItemKind _tab = ShopItemKind.Placeable;
 
         public GameSession Session;
@@ -38,9 +41,18 @@ namespace Neko.Game.Ui
             UiKit.Anchor(_money.rectTransform, new Vector2(1f, 1f), new Vector2(-170f, -26f));
             _money.rectTransform.sizeDelta = new Vector2(260f, 40f);
 
-            Scenery.PlankAt(transform, Strings.Get("dialog.back"), new Vector2(120f, 44f),
-                new Vector2(1f, 1f), new Vector2(-26f, -18f), () => OnBack?.Invoke(),
-                Typeface.Small);
+            // The back control is the approved secondary button (UI-005 NORMAL/HOVER/PRESSED/DISABLED).
+            var back = UiArt.StateButton(transform, Strings.Get("dialog.back"), new Vector2(120f, 44f),
+                () => OnBack?.Invoke(), "btn2", Typeface.Small);
+            UiKit.Anchor(back.GetComponent<RectTransform>(), new Vector2(1f, 1f), new Vector2(-26f, -18f));
+
+            _coin = UiArt.Has("icon_coin")
+                ? UiArt.Picture(transform, "icon_coin", new Vector2(34f, 34f))
+                : null;
+            if (_coin != null)
+            {
+                UiKit.Anchor(_coin.rectTransform, new Vector2(1f, 1f), new Vector2(-300f, -26f));
+            }
 
             var tabs = UiKit.Row(transform, 10f);
             UiKit.Anchor(tabs, new Vector2(0.5f, 1f), new Vector2(0f, -82f));
@@ -56,11 +68,12 @@ namespace Neko.Game.Ui
 
         private void Tab(Transform parent, string key, ShopItemKind kind)
         {
-            Scenery.Plank(parent, Strings.Get(key), new Vector2(210f, 44f), () =>
+            var tab = UiArt.Tab(parent, Strings.Get(key), new Vector2(210f, 44f), () =>
             {
                 _tab = kind;
                 Refresh();
             }, Typeface.Small);
+            _tabs.Add((tab, kind));
         }
 
         public override void Refresh()
@@ -74,6 +87,12 @@ namespace Neko.Game.Ui
 
             _rows.Clear();
             _money.text = Strings.Money(Session.Profile.Wallet.Money);
+            PlaceCoin();
+
+            for (var i = 0; i < _tabs.Count; i++)
+            {
+                UiArt.SetSelected(_tabs[i].Button, _tabs[i].Kind == _tab);
+            }
 
             foreach (var item in Shop.StockFor(Session.Profile.CafeLevel))
             {
@@ -82,12 +101,35 @@ namespace Neko.Game.Ui
             }
         }
 
+        /// <summary>Keeps the coin icon just left of the right-aligned amount, whatever its width.</summary>
+        private void PlaceCoin()
+        {
+            if (_coin == null) return;
+
+            // Both pivots are top-right, so the coin's right edge sits a few units left of the text.
+            var money = _money.rectTransform.anchoredPosition;
+            _coin.rectTransform.anchoredPosition = new Vector2(
+                money.x - _money.preferredWidth - 8f, money.y - 3f);
+        }
+
         private void BuildRow(ShopItem item)
         {
             var affordable = Session.Profile.Wallet.CanAfford(item.Price);
             var row = UiKit.Panel(_list, new Vector2(850f, 62f),
                 Palette.WithAlpha(affordable ? Palette.Panel : Palette.Wall, 0.92f), 0.2f, exact: true);
             _rows.Add(row.gameObject);
+
+            // One universal frame (UI-017 v02, 9-sliced) for all three tabs. The state tint stays
+            // in Unity: a row the player cannot afford is dimmed instead of recoloured.
+            var frame = UiArt.Get("ui017_shop_row");
+            if (frame != null)
+            {
+                var skin = row.GetComponent<Image>();
+                skin.sprite = frame;
+                skin.type = Image.Type.Sliced;
+                skin.pixelsPerUnitMultiplier = frame.rect.height / 62f;
+                skin.color = affordable ? Color.white : new Color(0.78f, 0.74f, 0.72f, 1f);
+            }
 
             // Furniture shows the piece itself. The panel is 9-sliced, so the row's drawn edge is its
             // rect edge (-425). The text moves right past the icon and keeps its right edge.
@@ -103,6 +145,16 @@ namespace Neko.Game.Ui
                 icon.sprite = UiKit.Sprites.Furniture(def, def.Width, def.Height);
                 icon.preserveAspect = true;
                 indent = 118f;
+            }
+            else
+            {
+                var badge = item.Kind == ShopItemKind.Gift ? "icon_gift" : "icon_cat_paw";
+                if (UiArt.Has(badge))
+                {
+                    var icon = UiArt.Picture(row, badge, new Vector2(40f, 40f));
+                    icon.rectTransform.anchoredPosition = new Vector2(-352f, 0f);
+                    indent = 80f;
+                }
             }
 
             var name = UiKit.Label(row, item.DisplayName, Typeface.Body, Palette.Text,
@@ -125,13 +177,16 @@ namespace Neko.Game.Ui
                 stock.rectTransform.anchoredPosition = new Vector2(165f, 14f);
             }
 
-            var buy = Scenery.Plank(row, Strings.Money(item.Price), new Vector2(150f, 44f),
-                () => Buy(item), Typeface.Small, affordable ? Logo.Brass : Logo.Board);
+            var buy = UiArt.StateButton(row, Strings.Money(item.Price), new Vector2(150f, 44f),
+                () => Buy(item), "btn1", Typeface.Small);
 
             UiKit.Anchor(buy.GetComponent<RectTransform>(), new Vector2(1f, 0.5f),
                 new Vector2(-10f, 0f));
             buy.interactable = affordable;
-            if (affordable) buy.GetComponentInChildren<Text>().color = Palette.Hex("#3A2A1A");
+            // DISABLED must read as disabled in Unity too, not only in the art: dim, cooler text.
+            buy.GetComponentInChildren<Text>().color = affordable
+                ? Palette.Hex("#3A2A1A")
+                : new Color(0.42f, 0.38f, 0.36f, 0.75f);
         }
 
         private int Owned(ShopItem item)
