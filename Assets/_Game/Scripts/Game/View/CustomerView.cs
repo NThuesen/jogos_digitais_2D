@@ -33,6 +33,8 @@ namespace Neko.Game.View
         private SpriteRenderer _bubbleIcon;
         private SpriteRenderer _patience;
         private float _wobble;
+        private CustomerState? _bubbleState;
+        private Recipe _bubbleDish;
         private CustomerState _lastState = CustomerState.Queueing;
 
         public Customer Customer { get; private set; }
@@ -54,6 +56,8 @@ namespace Neko.Game.View
             bubble.transform.localPosition = new Vector3(0.30f, 0.56f, 0f);
             bubble.transform.localScale = Vector3.one * 0.38f;
             view._bubble = bubble.AddComponent<SpriteRenderer>();
+            view._bubble.sprite = sprites.Get(
+                new ShapeSpec(ShapeId.Circle, Palette.Wall, Palette.Ink, 0.1f));
 
             var icon = new GameObject("Icon");
             icon.transform.SetParent(bubble.transform, false);
@@ -76,6 +80,8 @@ namespace Neko.Game.View
         public void Bind(Customer customer)
         {
             Customer = customer;
+            _bubbleState = null;
+            _bubbleDish = null;
             _body.sprite = _sprites.Layered(Layers(customer), "customer:" + customer.Kind, 128);
 
             transform.localScale = Vector3.zero;
@@ -131,14 +137,17 @@ namespace Neko.Game.View
             _bubbleIcon.enabled = wants;
             if (!wants) return;
 
-            // Wall rather than panel: the palest dish on the menu is warm milk, and on a
-            // near-white bubble it drew as nothing at all.
-            _bubble.sprite = _sprites.Get(
-                new ShapeSpec(ShapeId.Circle, Palette.Wall, Palette.Ink, 0.1f));
-
-            var icon = IconFor();
-            _bubbleIcon.sprite = icon.sprite;
-            _bubbleIcon.color = icon.tint;
+            // Cache-key formatting allocates even on a SpriteFactory cache hit. Only
+            // resolve the icon when its inputs change; motion and patience still sync each frame.
+            var dish = Customer.Order?.NextDish;
+            if (_bubbleState != Customer.State || !ReferenceEquals(_bubbleDish, dish))
+            {
+                var icon = IconFor();
+                _bubbleIcon.sprite = icon.sprite;
+                _bubbleIcon.color = icon.tint;
+                _bubbleState = Customer.State;
+                _bubbleDish = dish;
+            }
 
             // Bobs. A still bubble reads as scenery.
             _bubble.transform.localPosition = new Vector3(0.34f,
