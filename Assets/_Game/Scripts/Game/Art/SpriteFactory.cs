@@ -89,7 +89,8 @@ namespace Neko.Game.Art
                 hideFlags = HideFlags.HideAndDontSave,
             };
             texture.SetPixels32(pixels);
-            texture.Apply(false, false);
+            // Editor visual QA samples generated alpha; players only need the GPU copy.
+            texture.Apply(false, !Application.isEditor);
 
             // 100 pixels per unit is the canvas scaler's reference, so the border is 1:1 on screen.
             var sprite = Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f),
@@ -155,8 +156,8 @@ namespace Neko.Game.Art
             }
 
             var texture = Resources.Load<Texture2D>(resource);
-            if (texture == null || texture.width != columns * cellWidth ||
-                texture.height != rows * cellHeight)
+            if (texture == null || !SheetDimensionMatches(texture.width, columns * cellWidth) ||
+                !SheetDimensionMatches(texture.height, rows * cellHeight))
             {
                 _sheets[resource] = null;
                 return null;
@@ -176,6 +177,12 @@ namespace Neko.Game.Art
             _sheets[resource] = frames;
             return frames;
         }
+
+        // WebGL builds pad the top/right with transparent pixels for DXT mip chains.
+        // The catalog still describes the original frame grid; no frame is rescaled.
+        private static bool SheetDimensionMatches(int actual, int expected) =>
+            actual == expected || (Application.platform == RuntimePlatform.WebGLPlayer &&
+                                   actual == Mathf.NextPowerOfTwo(expected));
 
         /// <summary>A flat rectangle. Panels, bars and the floor are all this.</summary>
         public Sprite Solid(Color colour)
@@ -250,7 +257,8 @@ namespace Neko.Game.Art
             };
 
             texture.SetPixels32(pixels);
-            texture.Apply(false, false);
+            // Editor visual QA samples generated alpha; players only need the GPU copy.
+            texture.Apply(false, !Application.isEditor);
 
             var sprite = Sprite.Create(texture, new Rect(0, 0, width, height), pivot,
                 pixelsPerUnit, 0, SpriteMeshType.FullRect);
