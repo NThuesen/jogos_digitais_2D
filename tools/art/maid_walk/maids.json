@@ -158,12 +158,14 @@
       "id": "mirai",
       "name": "Mirai",
       "archetype": "Idol",
+      "matte_cut": 110,
       "folder": "25_mirai/step4_blender/walk_x/frames"
     },
     {
       "id": "kinako",
       "name": "Kinako",
       "archetype": "Gourmand",
+      "matte_cut": 110,
       "folder": "26_kinako/step4_blender/walk_x/frames"
     },
     {

@@ -350,6 +350,8 @@ def run(m, write):
     stride = max(seps)
     noslide = round(speed * n / ref_ppu, 3) if speed else 0.0
     cols = 6
+    while cols * 1 < n and ((n + cols - 1) // cols) * ch > 2048:  # keep the sheet within the 2048 px import limit
+        cols += 1
     rows = (n + cols - 1) // cols
     cadence = m.get("cadence_fps", CADENCE_FPS)
     upc = round(n * BASE_WALK_SPEED / cadence, 2)

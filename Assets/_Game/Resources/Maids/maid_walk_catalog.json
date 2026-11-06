@@ -631,6 +631,131 @@
    "body_offset_y": -0.58,
    "carried_offset_y": -0.04,
    "source": "docs/art/maid-walk/shiori/manifest.json"
+  },
+  {
+   "id": "tsubaki",
+   "name": "Tsubaki",
+   "archetype": "Oneesan",
+   "resource": "Maids/tsubaki_walk",
+   "frames": 24,
+   "columns": 6,
+   "rows": 4,
+   "cell": [
+    152,
+    252
+   ],
+   "pixels_per_unit": 184.615,
+   "idle_frame": 23,
+   "rest_frames": [
+    0,
+    1,
+    2,
+    14,
+    15,
+    23
+   ],
+   "units_per_cycle": 1.76,
+   "body_offset_y": -0.58,
+   "carried_offset_y": -0.04,
+   "source": "docs/art/maid-walk/tsubaki/manifest.json"
+  },
+  {
+   "id": "mirai",
+   "name": "Mirai",
+   "archetype": "Idol",
+   "resource": "Maids/mirai_walk",
+   "frames": 25,
+   "columns": 6,
+   "rows": 5,
+   "cell": [
+    152,
+    252
+   ],
+   "pixels_per_unit": 184.615,
+   "idle_frame": 15,
+   "rest_frames": [
+    5,
+    6,
+    7,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+   ],
+   "units_per_cycle": 1.83,
+   "body_offset_y": -0.58,
+   "carried_offset_y": -0.04,
+   "source": "docs/art/maid-walk/mirai/manifest.json"
+  },
+  {
+   "id": "kinako",
+   "name": "Kinako",
+   "archetype": "Gourmand",
+   "resource": "Maids/kinako_walk",
+   "frames": 49,
+   "columns": 7,
+   "rows": 7,
+   "cell": [
+    156,
+    252
+   ],
+   "pixels_per_unit": 184.615,
+   "idle_frame": 9,
+   "rest_frames": [
+    0,
+    1,
+    9,
+    11,
+    12,
+    13,
+    22,
+    23,
+    24,
+    25,
+    35,
+    36,
+    37,
+    46,
+    47,
+    48
+   ],
+   "units_per_cycle": 3.59,
+   "body_offset_y": -0.58,
+   "carried_offset_y": -0.04,
+   "source": "docs/art/maid-walk/kinako/manifest.json"
+  },
+  {
+   "id": "mayu",
+   "name": "Mayu",
+   "archetype": "Mukuchi",
+   "resource": "Maids/mayu_walk",
+   "frames": 42,
+   "columns": 6,
+   "rows": 7,
+   "cell": [
+    176,
+    252
+   ],
+   "pixels_per_unit": 184.615,
+   "idle_frame": 15,
+   "rest_frames": [
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    24,
+    39,
+    40
+   ],
+   "units_per_cycle": 3.08,
+   "body_offset_y": -0.58,
+   "carried_offset_y": -0.04,
+   "source": "docs/art/maid-walk/mayu/manifest.json"
   }
  ]
 }

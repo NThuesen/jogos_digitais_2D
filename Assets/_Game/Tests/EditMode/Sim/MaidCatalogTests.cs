@@ -19,11 +19,9 @@ namespace Neko.Tests.EditMode.Sim
             {
                 "suzu", "mikan", "hibari", "hina", "yuki", "seira", "akari", "kurumi", "ruri",
                 "momo", "nonoka", "chiyo", "reina", "kaguya", "shiori", "kaede", "mizuki",
-                "nene", "himari", "ichika", "anzu", "yoru", "kasumi",
+                "tsubaki", "nene", "himari", "mirai", "ichika", "anzu", "kinako", "yoru", "kasumi",
+                "mayu",
             };
-
-        // Planned until their walk frames are exported and processed (portraits exist already).
-        private static readonly string[] PlannedIds = { "tsubaki", "mirai", "kinako", "mayu" };
 
         private static Profile Rich(uint seed, int cafeLevel = 10)
         {
@@ -52,18 +50,23 @@ namespace Neko.Tests.EditMode.Sim
             foreach (Archetype archetype in Enum.GetValues(typeof(Archetype)))
             {
                 Assert.AreEqual(3, MaidCatalog.All.Count(i => i.Archetype == archetype), archetype.ToString());
-                Assert.GreaterOrEqual(MaidCatalog.Released.Count(i => i.Archetype == archetype), 2, archetype + " released");
+                Assert.AreEqual(3, MaidCatalog.Released.Count(i => i.Archetype == archetype), archetype + " released");
             }
         }
 
         [Test]
-        public void OnlyMaidsWithPortraitAndWalkAreReleasedAndTheRestArePlanned()
+        public void EveryMaidIsReleasedAndAPlannedIdentityIsNeverDrawnOrRecognised()
         {
             CollectionAssert.AreEqual(ReleasedIds, MaidCatalog.Released.Select(i => i.Id).ToArray());
-            CollectionAssert.AreEquivalent(PlannedIds, MaidCatalog.All.Where(i => !i.Released).Select(i => i.Id).ToArray());
-            Assert.IsNull(MaidCatalog.FindReleased("Mayu", Archetype.Mukuchi), "planned is never drawn or recognised");
+            Assert.AreEqual(27, MaidCatalog.Released.Count);
+            Assert.AreEqual(0, MaidCatalog.All.Count(i => !i.Released), "no identity is left planned");
+            Assert.AreSame(MaidCatalog.ById("mayu"), MaidCatalog.FindReleased("Mayu", Archetype.Mukuchi));
             Assert.AreSame(MaidCatalog.ById("suzu"), MaidCatalog.FindReleased("Suzu", Archetype.Genki));
             Assert.IsNull(MaidCatalog.FindReleased("Suzu", Archetype.Tsundere), "name alone is not an identity");
+
+            // The Planned status still means "never shown": the flag, not the catalog, carries it.
+            var reserved = new MaidIdentity("reserva", "Reserva", Archetype.Genki, IdentityStatus.Planned);
+            Assert.IsFalse(reserved.Released);
         }
 
         [Test]
