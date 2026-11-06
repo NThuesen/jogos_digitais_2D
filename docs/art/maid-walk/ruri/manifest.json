@@ -1,0 +1,104 @@
+{
+ "id": "ruri",
+ "name": "Ruri",
+ "frames_found": 25,
+ "folder": "21_ruri/step4_blender/walk_x/frames",
+ "numbering": [
+  157,
+  181
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 1,
+ "matte_px": 134680,
+ "chroma_px": 0,
+ "height_mean": 860.8,
+ "height_range": [
+  857,
+  865
+ ],
+ "cx_std": 2.9,
+ "drift_x": 10.0,
+ "drift_y": 7,
+ "step_diff_mean": 0.0712,
+ "wrap_diff": 0.0893,
+ "loop_ratio": 1.4,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.1354,
+ "loop_trim": [
+  0,
+  24
+ ],
+ "loop_ratio_before_trim": 1.25,
+ "source_frame_numbers": [
+  157,
+  181
+ ],
+ "units_per_cycle": 1.83,
+ "slide_factor": 3.4,
+ "cell": [
+  152,
+  252
+ ],
+ "scale": 0.2788,
+ "frames": 25,
+ "columns": 6,
+ "rows": 5,
+ "idle_frame": 3,
+ "rest_frames": [
+  3,
+  4,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20
+ ],
+ "foot_speed_px_per_frame": 1.99,
+ "max_foot_separation_px": 30.8,
+ "noslide_units_per_cycle": 0.538,
+ "status": "NEEDS_PROCESSING",
+ "note": "faint matte removed",
+ "resource": "Maids/ruri_walk",
+ "sheet_sha256": "ae411eedc8463edfb38e9240c478faf2c3d979f914db53fe43160fd3342be9ae",
+ "source_sha256": {
+  ".gitignore0157.png": "6c279090a9aa20a411e0467d2d80d49f37eb80eb822bf378fc1ca21640eae2f3",
+  ".gitignore0158.png": "a7c606fc4713159959c428d4cd8b596951fe756858cc9326104c403019f803c9",
+  ".gitignore0159.png": "e444c69ec05646888be3a33f9c5559d1fa5f9493ad4b9d693ecfdc9b9cefdab5",
+  ".gitignore0160.png": "8826fca1d345492bef728ec50e04a7bbfb7b541a3558a868f249c4bab45b3a9f",
+  ".gitignore0161.png": "f30eb31b9c822edc69624eba9bb42297e9d75572e8cce4534df63c2fda72b33f",
+  ".gitignore0162.png": "650faa8271e12f6253b9f91c71b85337c853044ee15f3ec645c26d0ac06dc624",
+  ".gitignore0163.png": "dc55688267da2004070915cf3d5f6eea08e4d44dfd79eac30b5f58710f52fa93",
+  ".gitignore0164.png": "fae857df2c843e1b85d1b7db66f3a699dea9aee2006fda71796e5891e1f7b3d4",
+  ".gitignore0165.png": "c08b087f7e980d061d8ea3b40e83014912d1baa0b82d7c403838d2192999ed9c",
+  ".gitignore0166.png": "7bd174c3317e4c86dd157366b9ffda778b426418e8a36f51f27542a0fb0ac78f",
+  ".gitignore0167.png": "29ccfd3c75d70898c50917f9109b476e400dfd7653a7a5180642a2fef0bfc1f4",
+  ".gitignore0168.png": "40b30df3a79efcb827ff784e2d279e2dbdc698ee5b5d4c642f462f8371892c40",
+  ".gitignore0169.png": "57e79fcf869e5e6535016d0f27ef3b897805b3e73cd0cd8933a1489fafffa0f3",
+  ".gitignore0170.png": "fa55880ea54f38b5afc23c2083df53e42182537e201765f0b65566fc71716ada",
+  ".gitignore0171.png": "e4c51797d6809b338b0715e4435ba0bac105c8788c13be8f3d2c9a258bea9c4d",
+  ".gitignore0172.png": "015b0b2ec9ff281fc8443e0dcd4f439ea2c9eb414f004f6632d2443fb3d48236",
+  ".gitignore0173.png": "53c1d79f18568cc1668fb52d0a0f7e41995a17ffe214aefe18cc5aaa22ce5c33",
+  ".gitignore0174.png": "c6f029894557a06f866b7f6a18b2d61148efb56632baee2bfb4452903d92a29c",
+  ".gitignore0175.png": "a653f6f294bce524d7d262da42ebde12bde4c7d0049ead93cebbabe277cbca54",
+  ".gitignore0176.png": "d2a87be016e18def5ba9da1a01a61a31d77c7090346407ed0960de9c5a02274b",
+  ".gitignore0177.png": "92c18426a19ef0605544d7e04ab5e2b695f1965ffb392f6e5704c565c5439985",
+  ".gitignore0178.png": "33db6a6c482e17f1403b007478eed83c83bfbe9d227778a6805836521ad1e2e5",
+  ".gitignore0179.png": "f47655dccca0bf9b882cb9aa121f42a5414bf8368f1cc07e3585982c9c7a96ef",
+  ".gitignore0180.png": "c91934429f973a9628c6d69032e33643ec8c98b610fc23c0a618a5e3b202b715",
+  ".gitignore0181.png": "be4de06c06cb6227d592d9217744e28238467603fe2c8098741c0bf8cef64ba4"
+ },
+ "parameters": {
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
+ }
+}

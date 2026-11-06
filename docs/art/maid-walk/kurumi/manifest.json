@@ -64,7 +64,7 @@
  "noslide_units_per_cycle": 0.772,
  "status": "NEEDS_PROCESSING",
  "note": "faint matte removed",
- "staged_sheet": "docs/art/maid-walk/kurumi/kurumi_walk.png",
+ "resource": "Maids/kurumi_walk",
  "sheet_sha256": "f8d59ef0cbc1ff34c9d35fa135cce47617b293a6a3686d8297f7c24c71080376",
  "source_sha256": {
   ".gitignore0009.png": "63d1f1e4d72ec75945a1af9207d75380d3ac1bb7cd811d6bfa9500b501fe5b44",

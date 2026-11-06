@@ -63,7 +63,7 @@
  "noslide_units_per_cycle": 0.671,
  "status": "NEEDS_PROCESSING",
  "note": "faint matte removed",
- "staged_sheet": "docs/art/maid-walk/mikan/mikan_walk.png",
+ "resource": "Maids/mikan_walk",
  "sheet_sha256": "0c818fc62aeba30ae367cfc42fe800337fe2f6395796612dc58e687f2d43faea",
  "source_sha256": {
   ".gitignore0077.png": "8097b7dd183433690d3338f6b3e0ad3ef5b0d099f83495559aaab3820bb7c0bc",

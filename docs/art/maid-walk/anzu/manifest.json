@@ -63,7 +63,7 @@
  "noslide_units_per_cycle": 0.65,
  "status": "NEEDS_PROCESSING",
  "note": "faint matte removed",
- "staged_sheet": "docs/art/maid-walk/anzu/anzu_walk.png",
+ "resource": "Maids/anzu_walk",
  "sheet_sha256": "e27616cae6da7d734996d57f0bacede96802733ef2fa8cf7b9640dbd0259a9eb",
  "source_sha256": {
   ".gitignore0103.png": "cd93b79ad1ae63a624df895af579926d389b12261a8236502285c98328492adf",

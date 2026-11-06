@@ -138,12 +138,14 @@
       "id": "chiyo",
       "name": "Chiyo",
       "archetype": "Dojikko",
+      "matte_cut": 110,
       "folder": "22_chiyo/step4_blender/walk_x/frames"
     },
     {
       "id": "shiori",
       "name": "Shiori",
       "archetype": "Ojousama",
+      "matte_cut": 110,
       "folder": "23_shiori/step4_blender/walk_x/frames"
     },
     {

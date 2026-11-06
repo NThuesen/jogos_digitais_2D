@@ -60,7 +60,7 @@
  "noslide_units_per_cycle": 0.433,
  "status": "NEEDS_PROCESSING",
  "note": "faint matte removed; trimmed to source frames 67-83 to close the loop",
- "staged_sheet": "docs/art/maid-walk/kasumi/kasumi_walk.png",
+ "resource": "Maids/kasumi_walk",
  "sheet_sha256": "326f70e4780037a93f0c547f082d867e1a95cdd6461e82041e6e95673d2ae052",
  "source_sha256": {
   ".gitignore0067.png": "9e666bc0667d6c513a2461149edebab02fb41001884a4e84fd859abeaef4f097",

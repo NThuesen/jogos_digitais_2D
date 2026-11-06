@@ -68,7 +68,7 @@
  "noslide_units_per_cycle": 0.578,
  "status": "NEEDS_PROCESSING",
  "note": "faint matte removed; 9 specks removed",
- "staged_sheet": "docs/art/maid-walk/mizuki/mizuki_walk.png",
+ "resource": "Maids/mizuki_walk",
  "sheet_sha256": "88396cb9db6dbaf5e5e0fbd153a2ac0a8a368f2125c52218b496703f426ea6bd",
  "source_sha256": {
   ".gitignore0146.png": "6662361c574bb03828ee1d86332c7fbec7179c2400c515b4be8206f1fe56ba26",

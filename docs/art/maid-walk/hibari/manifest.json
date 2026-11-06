@@ -60,7 +60,7 @@
  "noslide_units_per_cycle": 0.647,
  "status": "NEEDS_PROCESSING",
  "note": "faint matte removed",
- "staged_sheet": "docs/art/maid-walk/hibari/hibari_walk.png",
+ "resource": "Maids/hibari_walk",
  "sheet_sha256": "30bd81f5b9b0eca781784ac181920fd0bb27e036ba13f4ba5f639ed3d8d7f0a0",
  "source_sha256": {
   ".gitignore0110.png": "a2400f4f16783fdc3d308bf811fde4cb85a354ee4255518c2045f9ab3c40f2e6",

@@ -63,7 +63,7 @@
  "noslide_units_per_cycle": 0.729,
  "status": "NEEDS_PROCESSING",
  "note": "faint matte removed",
- "staged_sheet": "docs/art/maid-walk/himari/himari_walk.png",
+ "resource": "Maids/himari_walk",
  "sheet_sha256": "1a5be37337637c0e1b25381c721fc2926b0f473416905296b4b5489ec02ca235",
  "source_sha256": {
   ".gitignore0139.png": "40bd7383b3e094a754e307771460549de43387c67bfa7c16250b915a69779a97",

@@ -1,0 +1,102 @@
+{
+ "id": "chiyo",
+ "name": "Chiyo",
+ "frames_found": 26,
+ "folder": "22_chiyo/step4_blender/walk_x/frames",
+ "numbering": [
+  43,
+  68
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 3,
+ "matte_px": 453105,
+ "chroma_px": 0,
+ "height_mean": 815.3,
+ "height_range": [
+  809,
+  823
+ ],
+ "cx_std": 3.1,
+ "drift_x": 10.0,
+ "drift_y": 9,
+ "step_diff_mean": 0.0693,
+ "wrap_diff": 0.0932,
+ "loop_ratio": 1.38,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.1045,
+ "loop_trim": [
+  0,
+  25
+ ],
+ "loop_ratio_before_trim": 1.34,
+ "source_frame_numbers": [
+  43,
+  68
+ ],
+ "units_per_cycle": 1.91,
+ "slide_factor": 3.3,
+ "cell": [
+  164,
+  252
+ ],
+ "scale": 0.29437,
+ "frames": 26,
+ "columns": 6,
+ "rows": 5,
+ "idle_frame": 18,
+ "rest_frames": [
+  7,
+  8,
+  18,
+  19,
+  20
+ ],
+ "foot_speed_px_per_frame": 2.04,
+ "max_foot_separation_px": 33.6,
+ "noslide_units_per_cycle": 0.575,
+ "status": "NEEDS_PROCESSING",
+ "note": "faint matte removed",
+ "resource": "Maids/chiyo_walk",
+ "sheet_sha256": "81dacc6d530d08a1163c2a3aba66b7267f4faa9b5adf626c12e18e07e0ef8e44",
+ "source_sha256": {
+  ".gitignore0043.png": "2c533daa1ae52127fd58cf8ee4932849e2665f383ef70faf88030c711f977b53",
+  ".gitignore0044.png": "66acdab1872aba069452ec67fd66e7bc9de549e0e295d13e7b786b8075074d19",
+  ".gitignore0045.png": "10e92a89590c04dedc9a506f9652fd0371d3a6a6b8e001e27cd332ab0e5230d7",
+  ".gitignore0046.png": "491bdc5c3321e45849eded59dfa2d5a2c46394457aba957656b088a92a12b2ef",
+  ".gitignore0047.png": "e6faf45ef64cb93042cd1422b331089ba0138bd9ad5b10d2b0eeccdd3aa7cea0",
+  ".gitignore0048.png": "3b036541888971eb414bdf1bc73e4e470a050bfc629f4088c4495ad8747c79b8",
+  ".gitignore0049.png": "1972c7ef71fe65f9537731aa79ac1c1c43128b25301f51ba4df864760d756b7d",
+  ".gitignore0050.png": "8a8a53f2edc516ea40ae7f9ac88ebba0b73604275eebf0bdbe7460da04aae2a8",
+  ".gitignore0051.png": "8fa0aa46ff81ccf5517a78d92e4d112d295a39be0f6030f9247a38e533b96eff",
+  ".gitignore0052.png": "b3a02a190342468284bfd10dd1bea3c6ea411543911c94b348e6faa58ed9ee52",
+  ".gitignore0053.png": "1ef372017beec98bd81413344a67515c4680cb8563a9bdf17fee3687f6df9e4a",
+  ".gitignore0054.png": "d3917ca7542e3595a03309c64b8bfcc24e1fa37f8e857b4475ef0217f0a416ad",
+  ".gitignore0055.png": "2713725fbb9edb5553361d1c5fc5703424b3d56487435c3de3578f7756ef0bf1",
+  ".gitignore0056.png": "1f637f177d09ddaae23f500706c38404550143c71fa32967ec8b8f9154717c9e",
+  ".gitignore0057.png": "09b69d4aac594d790d01e141feee006cff372d330c37c7ddc5dd354d3f8e8a99",
+  ".gitignore0058.png": "caeab51df83a332948d4c62844c84cb21ee4634dd3d01910271d2b3dc1ef5b0d",
+  ".gitignore0059.png": "9cb357f75971a09c9cf188fffae8a7f026faf2c6a080245c5ede18016be174d8",
+  ".gitignore0060.png": "0039219f0ff456c7f1db0fcd47da3009a009f900bb5e3f7cb78a44e15b590c78",
+  ".gitignore0061.png": "bcbff05efa9ed82c7851d4a1f6efb06055914b97fc1e78a961e56ffc9683f10a",
+  ".gitignore0062.png": "d00d7af1c03e3a4df5a53a75453a1490bc7478e6a921b854ab922e7fcb63dbd7",
+  ".gitignore0063.png": "78169a73adc59664ff6ff44e3b8acc56a8c74c8e9caf9e92da9c3221645a30ea",
+  ".gitignore0064.png": "9be7dc2dc2d2019136f0f9e24f84b52a3dfb5124825ec987ba907017bf07424c",
+  ".gitignore0065.png": "81fe227e047674efabd83714d923b5ce3fad161549a196802c14b4bac7c4d6e2",
+  ".gitignore0066.png": "2ec74be4c5ce58ab7ebb5b0e79b2494eea8ce53b245578a2113ca74ab5f2db99",
+  ".gitignore0067.png": "97012aa0267aee2f55949eeabe4487555c02b7f39b4274f828e40473d7eb3ee1",
+  ".gitignore0068.png": "75ae26f394919218b410fe1a68104fe9a2cb1ab36c93345fbd8c73b1a3368dc8"
+ },
+ "parameters": {
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
+ }
+}

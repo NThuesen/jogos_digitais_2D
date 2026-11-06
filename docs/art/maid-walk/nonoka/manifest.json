@@ -61,7 +61,7 @@
  "noslide_units_per_cycle": 0.934,
  "status": "NEEDS_PROCESSING",
  "note": "faint matte removed; 10 specks removed",
- "staged_sheet": "docs/art/maid-walk/nonoka/nonoka_walk.png",
+ "resource": "Maids/nonoka_walk",
  "sheet_sha256": "6bb710b66b5cda5ccd1f8fb26d04a89d550a3229c728aa824f8164eb9ebb6c2f",
  "source_sha256": {
   ".gitignore0044.png": "62b7041614c59a678121743c627d0c9a7e81f3bf12337a5f6125c03134b3acac",

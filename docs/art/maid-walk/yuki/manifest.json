@@ -62,7 +62,7 @@
  "noslide_units_per_cycle": 0.698,
  "status": "NEEDS_PROCESSING",
  "note": "faint matte removed; 6 specks removed",
- "staged_sheet": "docs/art/maid-walk/yuki/yuki_walk.png",
+ "resource": "Maids/yuki_walk",
  "sheet_sha256": "39e6936ad833d857bf35fb6a1f7b3a5d330b515df7105cb877e73d7ba7ef79f8",
  "source_sha256": {
   ".gitignore0077.png": "bcc5f454713f01938e21a8bd8399b44ce8b3530192bae9d28ed716f8be86b2f7",
