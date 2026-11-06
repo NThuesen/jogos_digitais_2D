@@ -20,8 +20,8 @@ namespace Neko.Game.Ui
     public sealed class ShowcaseScreen : Screen
     {
         private const float Fps = 12f;
-        private const float Spacing = 150f;
-        private const int Columns = 8;
+        private const float Spacing = 124f;
+        private const int Columns = 9;
         private const float RowPitch = 196f;
         private const float WalkerScale = 0.5f;
 
@@ -52,7 +52,7 @@ namespace Neko.Game.Ui
             UiKit.Anchor(back.GetComponent<RectTransform>(), new Vector2(1f, 1f), new Vector2(-26f, -18f));
 
             var entries = MaidAnimCatalog.All;
-            // A grid of up to eight a row: 23 authored maids no longer fit on one line.
+            // A grid of nine a row: 27 authored maids are three full rows of nine.
             var rows = (entries.Length + Columns - 1) / Columns;
             for (var i = 0; i < entries.Length; i++)
             {

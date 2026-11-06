@@ -242,6 +242,18 @@ namespace Neko.Tests.Game
                 "Assets/_Game/Resources/Maids/shiori_walk.png",
                 "Assets/_Game/Resources/MaidPortraits/shiori_head.png",
                 "Assets/_Game/Resources/MaidPortraits/shiori_detail.png",
+                "Assets/_Game/Resources/Maids/tsubaki_walk.png",
+                "Assets/_Game/Resources/MaidPortraits/tsubaki_head.png",
+                "Assets/_Game/Resources/MaidPortraits/tsubaki_detail.png",
+                "Assets/_Game/Resources/Maids/mirai_walk.png",
+                "Assets/_Game/Resources/MaidPortraits/mirai_head.png",
+                "Assets/_Game/Resources/MaidPortraits/mirai_detail.png",
+                "Assets/_Game/Resources/Maids/kinako_walk.png",
+                "Assets/_Game/Resources/MaidPortraits/kinako_head.png",
+                "Assets/_Game/Resources/MaidPortraits/kinako_detail.png",
+                "Assets/_Game/Resources/Maids/mayu_walk.png",
+                "Assets/_Game/Resources/MaidPortraits/mayu_head.png",
+                "Assets/_Game/Resources/MaidPortraits/mayu_detail.png",
             },
                 expected.Keys);
 
