@@ -26,10 +26,15 @@ Processo: `python tools/art/maid_walk/maid_walk.py process --only <ids>` (grava 
 Nenhuma ficou em REWORK. Valores exatos de cada uma: `docs/art/maid-walk/<id>/manifest.json`.
 
 ## Integração
-- Retratos (`_head`/`_detail`) vêm dos derivados de `docs/art/ui-modular/portraits/batch2/` (Nonoka usa v02) e `batch3/` (Hibari, Seira, Ruri, Chiyo, Shiori). Os retratos do lote 3 não tinham aprovação formal registrada; foram usados por já estarem derivados e aceitos no fluxo, **revise**.
+- Retratos (`_head`/`_detail`) vêm dos derivados de `docs/art/ui-modular/portraits/batch2/` (Nonoka usa v02) e `batch3/` (Hibari, Seira, Ruri, Chiyo, Shiori). Os retratos do lote 3 foram **aprovados artisticamente pelo dono** (06/11/2026) para Hibari, Seira, Ruri, Chiyo e Shiori, mantendo as restrições documentadas.
 - `MaidCatalog`: as 14 passaram de Planned a liberadas (23 no total); restam Planned Tsubaki, Mirai, Kinako e Mayu (sem frames de caminhada).
 - Sheets carregam sob demanda (Resources); orçamento de textura do teste subiu de 12 para 32 Mpx (~29 Mpx medidos).
 - Proveniência SHA-256 e allowlist de `DocsTests` atualizadas (42 arquivos).
+
+## Aprovações do dono (06/11/2026)
+- Aprovadas artisticamente: Hibari, Seira, Ruri, Chiyo e Shiori (retrato e caminhada).
+- Aceitas provisoriamente, **sem regenerar agora**: Mizuki (deslizamento 5,1) e Kasumi (17 frames úteis).
+- Exceção de mantenedor concedida para as alterações revisadas em `DocsTests`, `MaidCatalogTests`, `MaidAnimCatalogTests`, `DemoFlowTests`, `MaidPortraitsBatch2QaTests` e `MaidPortraitsBatch3QaTests`.
 
 ## Restrições
 Mizuki (patinação) e Kasumi (movimento curto) são as duas a observar em jogo. Ver `docs/art/BACKLOG_ART.md`.

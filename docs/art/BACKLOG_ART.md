@@ -23,10 +23,12 @@ Para liberar as quatro que faltam: exportar os frames, `python tools/art/maid_wa
 
 ## Qualidade das caminhadas (restrições conhecidas)
 
-- **Mizuki:** passos curtos para a distância (deslize 5,1, acima das originais). Se patinar no jogo, refazer com passos mais largos.
-- **Kasumi:** só 17 frames úteis (trecho 67–83): movimento mais curto.
+- **Mizuki (aceita provisoriamente pelo dono; não regenerar agora):** passos curtos para a distância (deslize 5,1, acima das originais). Se patinar no jogo, refazer com passos mais largos.
+- **Kasumi (aceita provisoriamente; não regenerar agora):** só 17 frames úteis (trecho 67–83): movimento mais curto.
 - **Himari, Chiyo, Shiori:** o export trouxe matte translúcido; resolvido com `matte_cut` por maid em `tools/art/maid_walk/maids.json`. Nos próximos exports: Film → Transparent, sem sky/world.
 - **Kaguya:** refeita; ciclo fecha (1,15) e perfil lateral constante.
 
-## Custos
+## Custos e pendências técnicas
+- **Otimização de texturas WebGL (pendente):** o build subiu de ~36 MB para 103,5 MB (data 97 MB) porque as 23 sheets vão em RGBA32 com mipmaps sem compressão (~224 MB descomprimidas se todas residentes; a vitrine F8 é o pior caso). Pico de GPU não medido. Antes de publicar: avaliar DXT5/ASTC por sheet, desligar mipmaps nas sheets, reduzir `height_px` ou descarregar sheets fora de uso; medir no navegador.
+- **Elenco 3/2 (preexistente):** a partida nova começa com 3 maids e o Elenco mostra "3 / 2" (teto do café nível 1 = 2). Não introduzido pela PR #66; decidir se o time inicial ou o teto muda, sem alterar a economia sem a regra do GDD.
 - 23 sheets de caminhada somam ~29 Mpx (eram ~10 Mpx para nove); só é carregada a sheet das maids na tela. O build WebGL guarda as texturas sem compressão; se o tamanho/memória incomodarem, o primeiro ajuste é comprimir as sheets (DXT5) ou reduzir `height_px` por maid.
