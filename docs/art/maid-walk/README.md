@@ -2,6 +2,8 @@
 
 Nine maids walk with authored sheets in the real shift: Suzu (new frames), Hina, Akari, Momo, Reina, Kaede, Nene, Ichika and Yoru. Details, per-maid QA and limits: [INVENTORY.md](INVENTORY.md).
 
+**Update:** the catalog is now 27/27 authored maids (the other 18 were added in PRs #66 and the final batch). Per-maid QA for those 18 is in [BATCH_10_19_STAGED.md](BATCH_10_19_STAGED.md) and in each `<id>/manifest.json`.
+
 ## Architecture
 - `tools/art/maid_walk/maids.json` — roster and per-maid parameters; `maid_walk.py audit|process` — reproducible pipeline (clean, chroma key, loop trim, foot/axis anchor, one resample, palette, pack, rest-frame and idle detection, manifest with source SHA-256).
 - Output: `Assets/_Game/Resources/Maids/<id>_walk.png` (+ `maid_walk_catalog.json`, the single source of the numbers). Raw frames never enter `Assets/`.

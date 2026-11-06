@@ -1,4 +1,4 @@
-# Caminhadas das maids 10–23: processadas e INTEGRADAS (rodada noturna)
+# Caminhadas das maids 10–27: processadas e INTEGRADAS
 
 Este arquivo começou como o registro das dez primeiras caminhadas "staged" (PR #66) e agora cobre as 14 maids processadas e liberadas no jogo: Mikan, Yuki, Kurumi, Nonoka, Kaguya (refeita), Mizuki, Himari, Anzu, Kasumi, Hibari, Seira, Ruri, Chiyo e Shiori.
 
@@ -25,9 +25,22 @@ Processo: `python tools/art/maid_walk/maid_walk.py process --only <ids>` (grava 
 
 Nenhuma ficou em REWORK. Valores exatos de cada uma: `docs/art/maid-walk/<id>/manifest.json`.
 
+## Lote final: Tsubaki, Mirai, Kinako, Mayu (24–27)
+
+Mesmo processo (`process --only tsubaki,mirai,kinako,mayu`), sheets com as configurações vigentes (DXT5 e overrides WebGL da PR #67, idênticas às das 23 anteriores). Frames originais intactos.
+
+| Maid | Frames (usados/achados) | Numeração | Alpha / matte | Loop | Deslize | Classificação |
+|---|---|---|---|---|---|---|
+| Tsubaki | 24/24 | 111–134 | alpha limpo | fecha (1,37) | 2,5 | PASS |
+| Mirai | 25/25 | 60–84 | matte translúcido (alpha ≈ 49–57): `matte_cut` 110 | fecha (1,93, no limite) | 3,3 | PASS COM RESTRIÇÕES (possível soluço leve na emenda do loop) |
+| Kinako | 49/49 | 31–79 (sheet 7×7) | matte translúcido (alpha ≈ 52–57): `matte_cut` 110 | fecha (0,90) | 2,9 | PASS (poucos fragmentos minúsculos perto dos pés em 1 quadro) |
+| Mayu | 42/45 | 0–44, usados 3–44 | matte muito fraco removido pelo corte padrão | fecha (1,22) após o corte | 4,2 | PASS (deslize dentro da faixa das originais, 2,3–4,6) |
+
+Nenhuma em REWORK; as quatro foram liberadas, e o catálogo ficou com **27 Released / 0 Planned**. Os retratos vêm de `portraits/batch3/derived/`.
+
 ## Integração
 - Retratos (`_head`/`_detail`) vêm dos derivados de `docs/art/ui-modular/portraits/batch2/` (Nonoka usa v02) e `batch3/` (Hibari, Seira, Ruri, Chiyo, Shiori). Os retratos do lote 3 foram **aprovados artisticamente pelo dono** (06/11/2026) para Hibari, Seira, Ruri, Chiyo e Shiori, mantendo as restrições documentadas.
-- `MaidCatalog`: as 14 passaram de Planned a liberadas (23 no total); restam Planned Tsubaki, Mirai, Kinako e Mayu (sem frames de caminhada).
+- `MaidCatalog`: as 14 passaram de Planned a liberadas (23 no total); com o lote final (24–27) o catálogo chegou a 27 liberadas.
 - Sheets carregam sob demanda (Resources); orçamento de textura do teste subiu de 12 para 30 Mpx (~29 Mpx medidos).
 - Proveniência SHA-256 e allowlist de `DocsTests` atualizadas (42 arquivos).
 
