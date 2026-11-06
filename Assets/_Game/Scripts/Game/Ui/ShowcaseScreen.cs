@@ -9,7 +9,7 @@ using UnityEngine.UI;
 namespace Neko.Game.Ui
 {
     /// <summary>
-    /// A showcase of the nine authored maids, for presentations: their walk cycles from the
+    /// A showcase of the authored maids, for presentations: their walk cycles from the
     /// existing sheets, each with her name and archetype.
     /// </summary>
     /// <remarks>
@@ -20,7 +20,10 @@ namespace Neko.Game.Ui
     public sealed class ShowcaseScreen : Screen
     {
         private const float Fps = 12f;
-        private const float Spacing = 126f;
+        private const float Spacing = 150f;
+        private const int Columns = 8;
+        private const float RowPitch = 196f;
+        private const float WalkerScale = 0.5f;
 
         private readonly List<(Image Image, Sprite[] Frames)> _walkers = new List<(Image, Sprite[])>();
 
@@ -49,10 +52,15 @@ namespace Neko.Game.Ui
             UiKit.Anchor(back.GetComponent<RectTransform>(), new Vector2(1f, 1f), new Vector2(-26f, -18f));
 
             var entries = MaidAnimCatalog.All;
-            var first = -(entries.Length - 1) * 0.5f * Spacing;
+            // A grid of up to eight a row: 23 authored maids no longer fit on one line.
+            var rows = (entries.Length + Columns - 1) / Columns;
             for (var i = 0; i < entries.Length; i++)
             {
-                Walker(entries[i], first + i * Spacing);
+                var row = i / Columns;
+                var inRow = Mathf.Min(Columns, entries.Length - row * Columns);
+                var x = (i % Columns - (inRow - 1) * 0.5f) * Spacing;
+                var y = 170f - row * RowPitch + (3 - rows) * RowPitch * 0.5f;
+                Walker(entries[i], x, y);
             }
         }
 
@@ -81,14 +89,14 @@ namespace Neko.Game.Ui
             scrim.GetComponent<Image>().raycastTarget = false;
         }
 
-        private void Walker(MaidAnimCatalog.Entry entry, float x)
+        private void Walker(MaidAnimCatalog.Entry entry, float x, float y)
         {
             var frames = MaidAnimCatalog.Load(UiKit.Sprites, entry);
-            var scale = 0.8f;
+            var scale = WalkerScale;
 
             var plate = UiKit.Panel(transform, new Vector2(Spacing - 10f, 56f),
                 Palette.WithAlpha(Palette.Panel, 0.94f), 0.35f, true);
-            Centre(plate, x, -150f);
+            Centre(plate, x, y - entry.CellHeight * scale * 0.5f - 34f);
             plate.GetComponent<Image>().raycastTarget = false;
 
             var name = UiKit.Label(plate, entry.name, Typeface.Body, Palette.Text, bold: true);
@@ -105,7 +113,7 @@ namespace Neko.Game.Ui
             picture.raycastTarget = false;
             picture.sprite = frames[0];
             picture.rectTransform.sizeDelta = new Vector2(entry.CellWidth * scale, entry.CellHeight * scale);
-            Centre(picture.rectTransform, x, 0f);
+            Centre(picture.rectTransform, x, y);
             _walkers.Add((picture, frames));
         }
 

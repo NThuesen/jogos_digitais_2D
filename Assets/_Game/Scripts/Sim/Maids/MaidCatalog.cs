@@ -44,6 +44,8 @@ namespace Neko.Sim.Maids
     /// <remarks>
     /// Releasing a planned maid is a one-word change here, and only once her portrait and walk
     /// cycle exist (a test in the game assembly fails for a released identity without them).
+    /// Today 23 are released; Tsubaki, Mirai, Kinako and Mayu stay planned until their walk
+    /// frames are exported and processed.
     /// Nothing outside this class invents a name or pairs one with an archetype.
     /// </remarks>
     public static class MaidCatalog
@@ -57,39 +59,39 @@ namespace Neko.Sim.Maids
         private static readonly MaidIdentity[] Entries =
         {
             Out("suzu", "Suzu", Archetype.Genki),
-            Planned("mikan", "Mikan", Archetype.Genki),
-            Planned("hibari", "Hibari", Archetype.Genki),
+            Out("mikan", "Mikan", Archetype.Genki),
+            Out("hibari", "Hibari", Archetype.Genki),
 
             Out("hina", "Hina", Archetype.Kuudere),
-            Planned("yuki", "Yuki", Archetype.Kuudere),
-            Planned("seira", "Seira", Archetype.Kuudere),
+            Out("yuki", "Yuki", Archetype.Kuudere),
+            Out("seira", "Seira", Archetype.Kuudere),
 
             Out("akari", "Akari", Archetype.Tsundere),
-            Planned("kurumi", "Kurumi", Archetype.Tsundere),
-            Planned("ruri", "Ruri", Archetype.Tsundere),
+            Out("kurumi", "Kurumi", Archetype.Tsundere),
+            Out("ruri", "Ruri", Archetype.Tsundere),
 
             Out("momo", "Momo", Archetype.Dojikko),
-            Planned("nonoka", "Nonoka", Archetype.Dojikko),
-            Planned("chiyo", "Chiyo", Archetype.Dojikko),
+            Out("nonoka", "Nonoka", Archetype.Dojikko),
+            Out("chiyo", "Chiyo", Archetype.Dojikko),
 
             Out("reina", "Reina", Archetype.Ojousama),
-            Planned("kaguya", "Kaguya", Archetype.Ojousama),
-            Planned("shiori", "Shiori", Archetype.Ojousama),
+            Out("kaguya", "Kaguya", Archetype.Ojousama),
+            Out("shiori", "Shiori", Archetype.Ojousama),
 
             Out("kaede", "Kaede", Archetype.Oneesan),
-            Planned("mizuki", "Mizuki", Archetype.Oneesan),
+            Out("mizuki", "Mizuki", Archetype.Oneesan),
             Planned("tsubaki", "Tsubaki", Archetype.Oneesan),
 
             Out("nene", "Nene", Archetype.Idol),
-            Planned("himari", "Himari", Archetype.Idol),
+            Out("himari", "Himari", Archetype.Idol),
             Planned("mirai", "Mirai", Archetype.Idol),
 
             Out("ichika", "Ichika", Archetype.Gourmand),
-            Planned("anzu", "Anzu", Archetype.Gourmand),
+            Out("anzu", "Anzu", Archetype.Gourmand),
             Planned("kinako", "Kinako", Archetype.Gourmand),
 
             Out("yoru", "Yoru", Archetype.Mukuchi),
-            Planned("kasumi", "Kasumi", Archetype.Mukuchi),
+            Out("kasumi", "Kasumi", Archetype.Mukuchi),
             Planned("mayu", "Mayu", Archetype.Mukuchi),
         };
 

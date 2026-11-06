@@ -16,7 +16,14 @@ namespace Neko.Tests.EditMode.Sim
     public sealed class MaidCatalogTests
     {
         private static readonly string[] ReleasedIds =
-            { "suzu", "hina", "akari", "momo", "reina", "kaede", "nene", "ichika", "yoru" };
+            {
+                "suzu", "mikan", "hibari", "hina", "yuki", "seira", "akari", "kurumi", "ruri",
+                "momo", "nonoka", "chiyo", "reina", "kaguya", "shiori", "kaede", "mizuki",
+                "nene", "himari", "ichika", "anzu", "yoru", "kasumi",
+            };
+
+        // Planned until their walk frames are exported and processed (portraits exist already).
+        private static readonly string[] PlannedIds = { "tsubaki", "mirai", "kinako", "mayu" };
 
         private static Profile Rich(uint seed, int cafeLevel = 10)
         {
@@ -45,16 +52,16 @@ namespace Neko.Tests.EditMode.Sim
             foreach (Archetype archetype in Enum.GetValues(typeof(Archetype)))
             {
                 Assert.AreEqual(3, MaidCatalog.All.Count(i => i.Archetype == archetype), archetype.ToString());
-                Assert.AreEqual(1, MaidCatalog.Released.Count(i => i.Archetype == archetype), archetype + " released");
+                Assert.GreaterOrEqual(MaidCatalog.Released.Count(i => i.Archetype == archetype), 2, archetype + " released");
             }
         }
 
         [Test]
-        public void OnlyTheNineIllustratedMaidsAreReleasedAndTheOtherEighteenArePlanned()
+        public void OnlyMaidsWithPortraitAndWalkAreReleasedAndTheRestArePlanned()
         {
             CollectionAssert.AreEqual(ReleasedIds, MaidCatalog.Released.Select(i => i.Id).ToArray());
-            Assert.AreEqual(18, MaidCatalog.All.Count(i => i.Status == IdentityStatus.Planned));
-            Assert.IsNull(MaidCatalog.FindReleased("Mikan", Archetype.Genki), "planned is never drawn or recognised");
+            CollectionAssert.AreEquivalent(PlannedIds, MaidCatalog.All.Where(i => !i.Released).Select(i => i.Id).ToArray());
+            Assert.IsNull(MaidCatalog.FindReleased("Mayu", Archetype.Mukuchi), "planned is never drawn or recognised");
             Assert.AreSame(MaidCatalog.ById("suzu"), MaidCatalog.FindReleased("Suzu", Archetype.Genki));
             Assert.IsNull(MaidCatalog.FindReleased("Suzu", Archetype.Tsundere), "name alone is not an identity");
         }
@@ -129,7 +136,7 @@ namespace Neko.Tests.EditMode.Sim
 
                 var ids = profile.Maids.Select(m => m.IdentityId).ToList();
                 Assert.AreEqual(ids.Count, ids.Distinct().Count(), "seed " + seed);
-                Assert.LessOrEqual(profile.Maids.Count, 9);
+                Assert.LessOrEqual(profile.Maids.Count, ReleasedIds.Length);
             }
         }
 
@@ -142,11 +149,11 @@ namespace Neko.Tests.EditMode.Sim
                 profile.Add(Maid.Create(profile.NextMaidId++, identity));
             }
 
-            Assert.AreEqual(9, profile.Maids.Count);
+            Assert.AreEqual(ReleasedIds.Length, profile.Maids.Count);
             var before = profile.Wallet.Points;
             var open = Lootbox.Open(profile, "box_gold", new Rng(11u));
 
-            Assert.AreEqual(9, profile.Maids.Count, "a duplicate is never added");
+            Assert.AreEqual(ReleasedIds.Length, profile.Maids.Count, "a duplicate is never added");
             Assert.AreEqual(3, open.Cards.Count);
             foreach (var card in open.Cards)
             {
