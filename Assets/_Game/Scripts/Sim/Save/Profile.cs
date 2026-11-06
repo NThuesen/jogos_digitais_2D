@@ -101,17 +101,16 @@ namespace Neko.Sim.Save
         /// <summary>A starting card guaranteed to belong in the position it is rolled for.</summary>
         private static Maid Opener(Profile profile, Role role, Rng rng)
         {
-            var candidates = new List<Archetype>();
-            foreach (var archetype in ArchetypeTable.All)
+            // A released identity whose archetype plays this position and who is not here yet.
+            var candidates = new List<MaidIdentity>();
+            foreach (var identity in MaidCatalog.FreeReleased(profile.Maids))
             {
-                if (RoleTable.NaturalFor(archetype.Kind) == role) candidates.Add(archetype.Kind);
+                if (RoleTable.NaturalFor(identity.Archetype) == role) candidates.Add(identity);
             }
 
-            var kind = candidates.Count > 0 ? rng.Pick(candidates) : Archetype.Genki;
-            var maid = Lootbox.Mint(profile, Rarity.Common, rng);
-            maid.Archetype = kind;
+            var chosen = candidates.Count > 0 ? rng.Pick(candidates) : rng.Pick(MaidCatalog.Released);
+            var maid = Lootbox.Mint(profile, Rarity.Common, rng, chosen);
             maid.NaturalRole = role;
-            maid.Base = RarityTable.RollStats(Rarity.Common, kind, rng);
             return maid;
         }
 
@@ -141,9 +140,26 @@ namespace Neko.Sim.Save
         public TeamChemistry Chemistry() =>
             Team.Chemistry.Evaluate(Lineup, Maids, CafeTheme);
 
+        /// <summary>Whether a maid of this catalog identity is on the roster (null and "" never are).</summary>
+        public bool HasIdentity(string identityId)
+        {
+            if (string.IsNullOrEmpty(identityId)) return false;
+
+            for (var i = 0; i < Maids.Count; i++)
+            {
+                if (Maids[i].IdentityId == identityId) return true;
+            }
+
+            return false;
+        }
+
         public void Add(Maid maid)
         {
             if (maid == null) return;
+
+            // The same identity is never on the roster twice; the sources of maids (boxes,
+            // hiring, the opener) already pick free ones, this is the backstop.
+            if (HasIdentity(maid.IdentityId)) return;
 
             Maids.Add(maid);
             MaidProgression.RefreshSetBonus(maid);

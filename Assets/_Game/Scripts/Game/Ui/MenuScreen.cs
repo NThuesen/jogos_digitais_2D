@@ -133,6 +133,21 @@ namespace Neko.Game.Ui
             return mark.rectTransform;
         }
 
+        /// <summary>The standing frame of the first released maid of this archetype.</summary>
+        private static Sprite Authored(Archetype archetype)
+        {
+            foreach (var identity in MaidCatalog.Released)
+            {
+                if (identity.Archetype != archetype) continue;
+
+                var entry = MaidAnimCatalog.ById(identity.Id);
+                var frames = entry == null ? null : MaidAnimCatalog.Load(UiKit.Sprites, entry);
+                if (frames != null && entry.idle_frame < frames.Length) return frames[entry.idle_frame];
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// Three archetypes standing on the floorboards under the sign.
         /// </summary>
@@ -156,7 +171,6 @@ namespace Neko.Game.Ui
             for (var i = 0; i < cast.Length; i++)
             {
                 var (archetype, role) = cast[i];
-                var maid = Maid.Create(0, "", archetype);
 
                 var column = UiKit.Column(row, 2f, 0f);
                 column.sizeDelta = new Vector2(190f, 210f);
@@ -167,9 +181,7 @@ namespace Neko.Game.Ui
                 image.rectTransform.sizeDelta = new Vector2(170f, 170f);
                 image.preserveAspect = true;
                 image.raycastTarget = false;
-                image.sprite = UiKit.Sprites.Layered(
-                    MaidSpriteBuilder.Layers(maid, MaidPose.Idle),
-                    MaidSpriteBuilder.CacheKey(maid, MaidPose.Idle), 128);
+                image.sprite = Authored(archetype);
 
                 var plate = UiKit.Panel(column, new Vector2(132f, 26f),
                     Palette.WithAlpha(Logo.BoardDeep, 0.85f), 0.5f);

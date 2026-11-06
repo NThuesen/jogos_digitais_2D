@@ -116,7 +116,7 @@ namespace Neko.Game.Ui
             // without one keeps the compact card.
             var portrait = MaidPortraits.Detail(maid);
             var head = UiKit.Row(column, portrait != null ? 10f : 12f);
-            head.sizeDelta = new Vector2(460f, portrait != null ? DetailPortraitHeight : 160f);
+            head.sizeDelta = new Vector2(460f, DetailPortraitHeight);
 
             if (portrait != null)
             {
@@ -129,9 +129,7 @@ namespace Neko.Game.Ui
             }
 
             var facts = UiKit.Column(head, 3f, 0f);
-            facts.sizeDelta = portrait != null
-                ? new Vector2(300f, DetailPortraitHeight - 4f)
-                : new Vector2(310f, 155f);
+            facts.sizeDelta = new Vector2(portrait != null ? 300f : 310f, DetailPortraitHeight - 4f);
 
             Fact(facts, "roster.rarity", maid.Card.DisplayName, Palette.Hex(maid.Card.TintHex));
             Fact(facts, "lineup.natural", RoleTable.For(maid.NaturalRole).DisplayName, Logo.Brass);
@@ -139,6 +137,7 @@ namespace Neko.Game.Ui
             Fact(facts, "roster.level", maid.Level + " / " + Maid.MaxLevel, Palette.Text);
             Fact(facts, "roster.tags", string.Join(" · ", ChemistryTags.Describe(maid)),
                 Palette.TextDim, 2);
+            Fact(facts, "roster.gear", WornText(maid), Palette.TextDim, 2);
 
             Stat(column, "roster.serve", maid.Total.Serve);
             Stat(column, "roster.cook", maid.Total.Cook);
@@ -197,6 +196,21 @@ namespace Neko.Game.Ui
             picture.preserveAspect = true;
             picture.raycastTarget = false;
             UiKit.Stretch(picture.rectTransform);
+        }
+
+        /// <summary>
+        /// What she wears. Equipment still counts for stats and set bonuses; it is shown here, in the
+        /// interface, rather than as layers over her illustrated figure.
+        /// </summary>
+        private static string WornText(Maid maid)
+        {
+            var worn = new List<string>();
+            for (var i = 0; i < maid.Gear.Length; i++)
+            {
+                if (maid.Gear[i] != null) worn.Add(maid.Gear[i].DisplayName);
+            }
+
+            return worn.Count > 0 ? string.Join(" · ", worn) : Strings.Get("roster.empty");
         }
 
         private static void Fact(Transform parent, string key, string value, Color colour,

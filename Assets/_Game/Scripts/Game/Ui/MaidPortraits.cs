@@ -9,10 +9,10 @@ namespace Neko.Game.Ui
     /// The premium illustrated portraits (UI-021) of the nine authored maids.
     /// </summary>
     /// <remarks>
-    /// A portrait is used only for a maid whose name <b>and</b> archetype are those of a catalog
-    /// entry (<see cref="MaidAnimCatalog.Identify"/>), so a procedurally named maid never wears
-    /// somebody else's face. Everything returns null when there is no portrait, and the callers
-    /// keep their existing fallback. Pure skin: nothing here reads or writes the profile.
+    /// A portrait is keyed by the maid's <see cref="Maid.IdentityId"/> (<see cref="MaidAnimCatalog.Identify"/>),
+    /// so nobody ever wears somebody else's face. Everything returns null when there is no portrait
+    /// (a legacy maid), and the callers keep their existing fallback. Pure skin: nothing here reads
+    /// or writes the profile.
     /// </remarks>
     public static class MaidPortraits
     {

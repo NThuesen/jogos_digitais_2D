@@ -212,6 +212,7 @@ namespace Neko.Sim.Save
                 ((int)maid.House).ToString(Invariant),
                 ((int)maid.Origin).ToString(Invariant),
                 string.Join(",", traits),
+                maid.IdentityId ?? "",
             });
         }
 
@@ -306,6 +307,10 @@ namespace Neko.Sim.Save
                     {
                         var maid = ReadMaid(value);
                         if (maid == null) return null;
+
+                        // One of each identity: a save that somehow has two keeps the first as her
+                        // and the second as a legacy maid, losing nothing.
+                        if (profile.HasIdentity(maid.IdentityId)) maid.IdentityId = null;
                         profile.Maids.Add(maid);
                         break;
                     }
@@ -428,6 +433,19 @@ namespace Neko.Sim.Save
                 {
                     maid.Traits.Add((TraitId)int.Parse(trait, Invariant));
                 }
+            }
+
+            // Her identity. A save written before identities existed has no such field: its maids
+            // keep their names and progress, and one that is exactly a released maid (name and
+            // archetype) is recognised as her. A present-but-empty field is a legacy maid on purpose.
+            if (parts.Length > 16)
+            {
+                var identity = MaidCatalog.ById(parts[16]);
+                maid.IdentityId = identity != null && identity.Archetype == maid.Archetype ? identity.Id : null;
+            }
+            else
+            {
+                maid.IdentityId = MaidCatalog.FindReleased(maid.Name, maid.Archetype)?.Id;
             }
 
             // Derived, never stored: a set bonus saved out of step with the gear that earns it

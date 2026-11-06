@@ -168,12 +168,12 @@ namespace Neko.Tests.PlayMode.Layout
             public const int CardPositionSize = 12;
 
             /// <summary>The private name pool of <c>Lootbox</c>, which <c>Lootbox.PickName</c> draws from.</summary>
-            public const string NamePoolField = "Names";
+            public const string NamePoolField = "Names"; // historical: the pool is now MaidCatalog
 
             private static TextGenerator _generator;
 
             /// <summary>
-            /// A maid's name, the numbered fallback included: the private <c>Lootbox</c> name pool,
+            /// A maid's name: the widest name of the closed maid catalog,
             /// read by reflection, and each of its names as <see cref="Numbered"/> numbers it. The
             /// pick is the widest pool name + " 31", for example "Kaede 31". Measured as the card's
             /// name label, <see cref="CardNameSize"/>, bold.
@@ -181,9 +181,7 @@ namespace Neko.Tests.PlayMode.Layout
             public static LongestPick<string> MaidName()
             {
                 var pool = NamePool("MaidName");
-                var candidates = new List<string>(pool);
-                foreach (var name in pool) candidates.Add(Numbered(name, pool.Count));
-                return Widest("MaidName", candidates, name => name, CardNameSize, true);
+                return Widest("MaidName", pool, name => name, CardNameSize, true);
             }
 
             /// <summary>
@@ -390,16 +388,13 @@ namespace Neko.Tests.PlayMode.Layout
                 return _generator.GetPreferredWidth(text, settings);
             }
 
-            /// <summary>The private <c>Lootbox</c> name pool, through <see cref="RequireMember{T}"/>.</summary>
+            /// <summary>The closed maid catalog, through <see cref="RequireMember{T}"/>.</summary>
             private static List<string> NamePool(string field)
             {
-                var member = RequireMember<FieldInfo>(typeof(Lootbox), NamePoolField, BindingFlags.NonPublic | BindingFlags.Static);
-                var pool = member.GetValue(null) as IEnumerable<string>;
-                Assert.IsTrue(pool != null,
-                    "SessionFactory.Longest." + field + ": " + typeof(Lootbox).FullName + "." + NamePoolField +
-                    " holds no names, so there is no maid name to pick");
-
-                return new List<string>(pool);
+                var pool = new List<string>();
+                foreach (var identity in Neko.Sim.Maids.MaidCatalog.All) pool.Add(identity.Name);
+                Assert.IsTrue(pool.Count > 0, "SessionFactory.Longest." + field + ": the catalog holds no names");
+                return pool;
             }
 
             /// <summary>Every <c>ThemeTag</c> but None, in enum order.</summary>
