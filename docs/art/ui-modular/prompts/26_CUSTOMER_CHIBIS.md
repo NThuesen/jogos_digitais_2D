@@ -1,4 +1,4 @@
-# 26 — Clientes (7 tipos): chibis ilustrados para substituir o procedural
+# 26 — Clientes (7 tipos, 8 designs): chibis ilustrados para substituir o procedural
 
 **Status:** PROMPTS apenas (escopo decidido: **8 clientes**, cada um com base + caminhada + sentado; ver [auditoria](../../CUSTOMERS_DISHES_AUDIT.md)); nenhuma imagem gerada, nada importado. Hoje os clientes são figuras procedurais (`CustomerView` + `SpriteFactory`) ao lado de maids ilustradas, o maior desencontro visual que sobrou no Salão. Os tipos vêm de `CustomerType` (`Sim/Service/CustomerTable.cs`): Regular, Student, Salaryman, Cat, Otaku, Critic, Vip. Os clientes são desenhados a 72 % do tamanho das maids (`CustomerView.CustomerScale`), então precisam ler bem a ~85–95 px de altura.
 
@@ -53,5 +53,70 @@ Same illustrated anime-chibi finish, 2.8–3.1 heads tall, transparent backgroun
 ```
 Saída: `UI-026_customer_<tipo>_seated_v01.png`. Para o Cat: pose de gato sentado de frente para a mesa.
 
-## Caminhada (por cliente)
-Seguir o fluxo já usado para as maids em `docs/art/prompt-pipeline/v3/` (frame inicial, vídeo, Blender, processamento), com célula de ≈ 96 px de altura. Nada de caminhada será gerado antes da aprovação do design base.
+## Caminhada (por cliente) — dois prompts: PNG inicial → MP4 no Google Flow
+
+Use **estes dois blocos em sequência**, depois de aprovar o chibi base. Eles se aplicam aos **8 designs visuais** (7 CustomerType + Regular B), sem precisar trocar texto nem preencher placeholders: **a identidade vem sempre da imagem anexada**. O Cat é um gato real e precisa andar em quatro patas.
+
+**Importante:** o STEP 2 gera **PNG 16:9 com fundo CHROMA OPACO**, não PNG com alpha. O STEP 3 recebe **somente** esse PNG no Flow e gera MP4, cujo fundo será removido depois. Evite colocar a imagem chibi 3:4 diretamente no Flow: ela não garante perfil ou margens adequadas. A pose sentada é **outra imagem**, criada separadamente na seção anterior.
+
+- Chroma padrão: **azul puro `#0000FF`**. Se o cliente tiver detalhes azul puro que poderiam desaparecer na remoção de fundo, substitua `#0000FF` por **`#00FF00`** nos **dois prompts** antes de usar. Não escolha cor presente no personagem.
+- A imagem original aprovada determina rosto, corpo, roupa, acessórios, paleta e acabamento. Não inventar outra aparência no WALK START. **A foto anexada deve ser apenas a do próprio cliente**, sem referências de outros personagens.
+- Objetivo de enquadramento igual ao [V3 das maids](../../prompt-pipeline/v3/README.md): personagem de **70–74% da altura, máximo 75%**; **≥13%** vazio acima/abaixo e **≥18%** vazio à esquerda/direita. Necessário para não cortar cabelo, bolsa, mãos e sapatos ao animar. A célula final do spritesheet (~96 px de altura) será derivada **após** o vídeo; não é a resolução do STEP 2.
+
+### STEP 2 — gerar uma imagem PNG pronta para animação
+
+**Na ferramenta de imagens:** anexar **A = chibi base aprovado** (exemplo: `UI-026_customer_regular_v01.png`). Pedir **uma imagem PNG 16:9** (idealmente 1920×1080). Copiar este bloco inteiro:
+
+```text
+NEKO MAID INC. — CUSTOMER — RIGHT-FACING WALK START — IMAGE TO IMAGE V01
+
+Using the single approved full-body illustrated chibi customer in IMAGE A as ABSOLUTE character identity reference, create EXACTLY ONE new full-body STILL image of the SAME customer, now in a technically correct right-facing WALK START pose for later image-to-video animation and 2D Unity sprites.
+
+IDENTITY LOCK: Retain the exact approved face, eyes, hairstyle and hair accessories, skin or fur, body proportions, outfit, shoes, tote bag/backpack/other accessories, accent colors, clean colored outlines and soft cel-shading. Preserve the original side of every asymmetric detail; never mirror or redesign the customer. If this is the human Regular with a tote bag, keep the same bag attached to the same shoulder; don't make it float. Do not introduce a maid outfit, apron, catgirl ears, new accessories or another character.
+
+PROFILE AND GAIT: Rotate the WHOLE body into a STRICT FULL SIDE PROFILE, facing SCREEN RIGHT, approximately 85–90 degrees away from front view. The face, shoulders, torso, hips, knees and shoes ALL face right, consistently. For a human customer: show a real mid-stride/contact pose, one foot ahead supporting weight and the other slightly trailing, visible separation of the shoes, natural opposing arm swing, free hands, believable body balance. Not a frontal face with sideways legs, not a neutral stand, not a runway pose, dancing or running. If IMAGE A is the REAL CAT customer, preserve realistic feline FOUR-PAW anatomy and create a side-on cat walking contact pose instead, NEVER a bipedal catgirl.
+
+WIDE FRAME COMPOSITION IS MANDATORY: Real 16:9 landscape (1920x1080 when possible). Place the customer/root at horizontal center, X=50%. Character height from the highest hair, ear or accessory to the lowest shoe/paw: approximately 70–74% of the TOTAL image height, NEVER above 75%. Leave AT LEAST 13% of TOTAL image height as completely empty background ABOVE the highest pixel AND 13% BELOW the lowest pixel. Leave AT LEAST 18% empty background on EACH SIDE, including the tote, hair and all props. Keep a constant imaginary foot-contact plane inside the safe area. If needed, SCALE DOWN THE ENTIRE CHARACTER uniformly, instead of cropping or stretching any part.
+
+BACKGROUND: Flat, perfectly uniform, solid OPAQUE PURE #0000FF chroma blue across the ENTIRE frame. No alpha transparency, gradients, floor, shadows, horizon, highlights, checkerboard, objects, text, UI or other characters. No chroma spill on the drawing.
+
+STYLE: High-quality original illustrated Japanese 2D anime chibi, consistent with IMAGE A, NOT pixel art, 3D, photoreal or plastic CGI. Preserve the character at full-body scale with crisp silhouettes.
+
+OUTPUT: Exactly ONE horizontal 16:9 PNG still. NOT a video, NOT multiple poses, NOT a spritesheet. Before rendering, ensure strict right-facing profile, original identity, BOTH shoes/paws visible, and all safety margins.
+```
+
+**Salvar, exemplo Regular:** `art_working/customers/regular/step2_walkstart/regular_step2_walkstart_v01_blue.png`. Para outro cliente, usar a pasta `art_working/customers/<id>/step2_walkstart/` com seu slug: `regular_b`, `student`, `salaryman`, `cat`, `otaku`, `critic`, `vip`. Para chroma verde, mudar sufixo para `_green.png`. **Verificar PNG e aprovar perfil/margens antes do vídeo.**
+
+### STEP 3 — Google Flow, transformar o PNG em MP4 de caminhada
+
+**No Flow:** usar modo imagem→vídeo, anexar **apenas o PNG aprovado do STEP 2**, escolher **16:9**. Se houver opção de duração, preferir clipe contínuo de 6–8 segundos. Não pressupor alpha verdadeiro ou loop perfeito. Copiar somente este bloco:
+
+```text
+NEKO MAID INC. — CUSTOMER — RIGHT-FACING WALK IN PLACE — IMAGE TO VIDEO V01
+
+Animate ONLY the customer shown in the supplied approved WALK-START IMAGE into a clean, natural, technically usable RIGHT-FACING 2D WALK-IN-PLACE cycle for Unity sprite frame extraction.
+
+ABSOLUTE VISUAL LOCK: The image is the unchangeable reference for this exact customer's face, hair, eyes, clothes, shoes, skin/fur, bag/accessories, color palette, outlines, proportions, silhouette and illustrated 2D cel shading. Preserve every distinctive asymmetrical feature on the same side. The customer MUST stay in strict SIDE PROFILE facing SCREEN RIGHT throughout ALL frames. NEVER turn toward the camera, reverse, flip, re-design, change facial structure, add extra limbs, alter clothes, lose a bag or morph accessories.
+
+REAL WALK CYCLE: Show one complete pair of ALTERNATING left/right steps with natural rhythm, ideally repeated smoothly. Feet visibly alternate between contact, lift and swing; knees and ankles bend correctly. Supporting foot travels smoothly backward relative to the stationary torso while the opposite leg swings forward; steps are long enough to convey real walking. Add modest opposing arm swing, subtle hair and clothing movement, a gently swaying tote bag that remains attached to its original shoulder, and slight natural body bob. No skating, moonwalk, tiny shuffles, feet stuck together, both legs swinging at once, crossing legs, marching, dancing, running, jumping, floating or instantaneous pose changes. If this is the REAL CAT customer, animate a believable FOUR-PAW feline walk, alternating front/hind paws naturally with a small tail sway; NEVER a human walk or catgirl.
+
+WALK IN PLACE ONLY: Keep the character's torso/root fixed at SAME horizontal screen X as in the input. Do NOT travel across the picture. Unity will move the character through the room later. Foot contact should look coherent relative to the torso. Keep the entire character at the source image scale, fully inside the safe margins in all frames.
+
+CAMERA: Absolutely fixed and locked, 16:9. NO zoom, crop, camera pan, tilt, orbit, tracking, cuts, parallax, reframing or changing perspective. No change of body orientation or size.
+
+BACKGROUND: Retain exactly the same solid OPAQUE PURE #0000FF chroma blue from the source image in every frame, with no gradient, shadow, floor, horizon, decorations, checkerboard, new objects, text, vignette or particles. Avoid blue halos/spill and background flicker. Do not pretend the MP4 has alpha.
+
+STYLE: Stable hand-illustrated 2D anime-chibi, soft cel shading and colored linework; no pixel art, 3D or CGI. Prioritize consistent character identity, clear alternating foot contacts and clean usable frames over cinematic movement. Try to end near the starting walk pose, but DO NOT abruptly snap to force a loop: a usable loop segment will be manually chosen from the video in Blender.
+
+OUTPUT: ONE uninterrupted horizontal 16:9 image-to-video MP4 showing a right-facing walk IN PLACE.
+```
+
+**Salvar, exemplo Regular:** `art_working/customers/regular/step3_video/regular_step3_walk_v01.mp4` (ou extensão real exportada).
+
+### STEP 4 — selecionar frames no Blender (não confundir com os prompts)
+
+1. Assistir ao MP4 inteiro e selecionar **somente um trecho de ciclo coerente**, com alternância e perfil lateral estável; descartar take com rotação para câmera, deslizamento extremo, cortes ou deformações.
+2. Remover o chroma explicitamente no Blender. Exportar como PNG RGBA **não apaga automaticamente** o fundo azul/verde.
+3. Exportar PNGs numerados preservando FPS/ordem em `art_working/customers/<id>/step4_blender/walk_x/frames/`. **Nunca apagar os arquivos originais.**
+4. Criar pipeline/configuração de **clientes separado de `maids.json`**, visando células de aproximadamente 96 px de altura, e medir memória/qualidade após a otimização WebGL da PR #67. QA visual em 960×600 e 1280×720 antes de integrar ao jogo.
+
