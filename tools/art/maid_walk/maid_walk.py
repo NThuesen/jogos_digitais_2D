@@ -428,6 +428,9 @@ def main():
     args = ap.parse_args()
     only = [s for s in args.only.split(",") if s]
     cfg, maids = load_config(only, args.style)
+    unknown = [i for i in only if i not in {m["id"] for m in cfg["maids"]}]
+    if unknown:
+        raise SystemExit("unknown maid id(s) in --only: " + ", ".join(unknown))
     pixel = maids and maids[0]["style"] == "pixel"
     pv = dict(z=2, resample=Image.NEAREST) if pixel else dict(z=1, resample=Image.BICUBIC)
     write = args.cmd == "process"

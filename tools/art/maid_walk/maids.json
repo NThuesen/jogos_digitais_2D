@@ -60,6 +60,114 @@
       "name": "Yoru",
       "archetype": "Mukuchi",
       "folder": "09_yoru/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "mikan",
+      "name": "Mikan",
+      "archetype": "Genki",
+      "folder": "10_mikan/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "yuki",
+      "name": "Yuki",
+      "archetype": "Kuudere",
+      "folder": "11_yuki/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "kurumi",
+      "name": "Kurumi",
+      "archetype": "Tsundere",
+      "folder": "12_kurumi/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "nonoka",
+      "name": "Nonoka",
+      "archetype": "Dojikko",
+      "folder": "13_nonoka/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "kaguya",
+      "name": "Kaguya",
+      "archetype": "Ojousama",
+      "folder": "14_kaguya/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "mizuki",
+      "name": "Mizuki",
+      "archetype": "Oneesan",
+      "folder": "15_mizuki/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "himari",
+      "name": "Himari",
+      "archetype": "Idol",
+      "folder": "16_himari/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "anzu",
+      "name": "Anzu",
+      "archetype": "Gourmand",
+      "folder": "17_anzu/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "kasumi",
+      "name": "Kasumi",
+      "archetype": "Mukuchi",
+      "folder": "18_kasumi/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "hibari",
+      "name": "Hibari",
+      "archetype": "Genki",
+      "folder": "19_hibari/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "seira",
+      "name": "Seira",
+      "archetype": "Kuudere",
+      "folder": "20_seira/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "ruri",
+      "name": "Ruri",
+      "archetype": "Tsundere",
+      "folder": "21_ruri/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "chiyo",
+      "name": "Chiyo",
+      "archetype": "Dojikko",
+      "folder": "22_chiyo/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "shiori",
+      "name": "Shiori",
+      "archetype": "Ojousama",
+      "folder": "23_shiori/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "tsubaki",
+      "name": "Tsubaki",
+      "archetype": "Oneesan",
+      "folder": "24_tsubaki/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "mirai",
+      "name": "Mirai",
+      "archetype": "Idol",
+      "folder": "25_mirai/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "kinako",
+      "name": "Kinako",
+      "archetype": "Gourmand",
+      "folder": "26_kinako/step4_blender/walk_x/frames"
+    },
+    {
+      "id": "mayu",
+      "name": "Mayu",
+      "archetype": "Mukuchi",
+      "folder": "27_mayu/step4_blender/walk_x/frames"
     }
   ],
   "legacy": [
