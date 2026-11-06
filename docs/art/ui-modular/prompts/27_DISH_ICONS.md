@@ -1,10 +1,10 @@
 # 27 — Pratos e bebidas (14 receitas): ícones ilustrados
 
-**Status:** PROMPTS apenas; nenhuma imagem gerada, nada importado. Hoje cada receita é uma forma geométrica colorida (`Recipe.ShapeId` + `ColorHex` em `Sim/Service/RecipeBook.cs`): um círculo, uma cápsula, uma estrela. Estes ícones substituem esses placeholders nos balões de pedido, nas bandejas e nos cartões de receita.
+**Status:** PROMPTS apenas; nenhuma imagem gerada, nada importado. Hoje cada receita é uma forma geométrica colorida (`Recipe.ShapeId` + `TintHex` em `Sim/Service/RecipeBook.cs`): um círculo, uma cápsula, uma estrela. Estes ícones substituem esses placeholders no balão de pedido (único uso atual; bandejas e cartões de receita não existem hoje, mas devem servir a eles no futuro). Ver [auditoria](../../CUSTOMERS_DISHES_AUDIT.md).
 
 **Anexos:** **A (obrigatório, ESTILO)** = `art_working/ui_modular/raw_gpt/UI-011_icon_cup_v01.png` (ou outro ícone `UI-011_*` aprovado) para espessura de contorno e acabamento. B opcional = `UI-011_icon_coin_v01.png`.
 
-**Saída:** um PNG por receita, transparente, 512×512, em `art_working/ui_modular/raw_gpt/` como `UI-027_dish_<id>_v01.png` (ids na tabela). Sem texto nem preço no desenho.
+**Saída:** um PNG por receita, transparente, 512×512 (será derivado para 128×128 na integração; o balão é pequeno), em `art_working/ui_modular/raw_gpt/` como `UI-027_dish_<id>_v01.png` (ids na tabela). Sem texto nem preço no desenho.
 
 ## Prompt-base (copie UM bloco inteiro, trocando `[PRATO]`)
 
