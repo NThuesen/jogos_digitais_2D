@@ -121,7 +121,7 @@ namespace Neko.Tests.EditMode.Game
             long pixels = 0;
             foreach (var entry in MaidAnimCatalog.All)
                 pixels += Resources.Load<Texture2D>(entry.resource).width * Resources.Load<Texture2D>(entry.resource).height;
-            Assert.Less(pixels, 32L * 1000 * 1000, "the walk sheets must stay under 32 Mpx for 23 maids (about 29 Mpx measured; it was 12 Mpx for nine). This caps pixels, not memory: the WebGL build stores them uncompressed with mipmaps, and a sheet is only loaded when that maid is drawn");
+            Assert.Less(pixels, 30L * 1000 * 1000, "the walk sheets must stay under 30 Mpx for 23 maids (about 29 Mpx measured; it was 12 Mpx for nine). This caps pixels, not memory: the WebGL build stores them uncompressed with mipmaps, and a sheet is only loaded when that maid is drawn");
         }
 
         [Test]

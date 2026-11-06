@@ -33,7 +33,7 @@ namespace Neko.Game.Ui
         {
             Cafe();
 
-            var title = UiKit.TrackedLabel(transform, "AS NOVE MAIDS", Typeface.Heading, Palette.Cream, 5f);
+            var title = UiKit.TrackedLabel(transform, "MAIDS AUTORAIS", Typeface.Heading, Palette.Cream, 5f);
             UiKit.Anchor(title, new Vector2(0f, 1f), new Vector2(26f, -18f));
 
             var shade = UiKit.Panel(transform, new Vector2(560f, 34f),
