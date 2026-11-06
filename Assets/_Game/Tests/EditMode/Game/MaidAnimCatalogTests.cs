@@ -13,7 +13,11 @@ namespace Neko.Tests.EditMode.Game
     public sealed class MaidAnimCatalogTests
     {
         private static readonly string[] Expected =
-            { "suzu", "hina", "akari", "momo", "reina", "kaede", "nene", "ichika", "yoru" };
+            {
+                "suzu", "hina", "akari", "momo", "reina", "kaede", "nene", "ichika", "yoru",
+                "mikan", "yuki", "kurumi", "nonoka", "kaguya", "mizuki", "himari", "anzu", "kasumi",
+                "hibari", "seira", "ruri", "chiyo", "shiori",
+            };
 
         private SpriteFactory _factory;
 
@@ -44,7 +48,7 @@ namespace Neko.Tests.EditMode.Game
             }
 
             Assert.IsNull(MaidAnimCatalog.Resolve(Maid("Mina", Archetype.Genki)));
-            Assert.IsNull(MaidAnimCatalog.Resolve(Maid("Mina", Archetype.Genki, "mikan")), "a planned identity has no sheet yet");
+            Assert.IsNull(MaidAnimCatalog.Resolve(Maid("Mayu", Archetype.Mukuchi, "mayu")), "a planned identity has no sheet yet");
             Assert.IsNull(MaidAnimCatalog.Resolve(null));
         }
 
@@ -117,7 +121,7 @@ namespace Neko.Tests.EditMode.Game
             long pixels = 0;
             foreach (var entry in MaidAnimCatalog.All)
                 pixels += Resources.Load<Texture2D>(entry.resource).width * Resources.Load<Texture2D>(entry.resource).height;
-            Assert.Less(pixels, 12L * 1000 * 1000, "the walk sheets must stay under 12 Mpx for nine maids (about 10 Mpx measured). This caps pixels, not memory: the current WebGL build stores them uncompressed with mipmaps, about 50.8 MB in the build report");
+            Assert.Less(pixels, 30L * 1000 * 1000, "the walk sheets must stay under 30 Mpx for 23 maids (about 29 Mpx measured; it was 12 Mpx for nine). This caps pixels, not memory: the WebGL build stores them uncompressed with mipmaps, and a sheet is only loaded when that maid is drawn");
         }
 
         [Test]

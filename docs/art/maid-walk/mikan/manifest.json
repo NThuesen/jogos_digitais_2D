@@ -1,0 +1,103 @@
+{
+ "id": "mikan",
+ "name": "Mikan",
+ "frames_found": 25,
+ "folder": "10_mikan/step4_blender/walk_x/frames",
+ "numbering": [
+  77,
+  101
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 5,
+ "matte_px": 377348,
+ "chroma_px": 0,
+ "height_mean": 880.6,
+ "height_range": [
+  872,
+  889
+ ],
+ "cx_std": 4.2,
+ "drift_x": 15.0,
+ "drift_y": 9,
+ "step_diff_mean": 0.0797,
+ "wrap_diff": 0.115,
+ "loop_ratio": 1.42,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.1153,
+ "loop_trim": [
+  0,
+  24
+ ],
+ "loop_ratio_before_trim": 1.44,
+ "source_frame_numbers": [
+  77,
+  101
+ ],
+ "units_per_cycle": 1.83,
+ "slide_factor": 2.7,
+ "cell": [
+  172,
+  252
+ ],
+ "scale": 0.27253,
+ "frames": 25,
+ "columns": 6,
+ "rows": 5,
+ "idle_frame": 20,
+ "rest_frames": [
+  9,
+  10,
+  11,
+  12,
+  20,
+  21,
+  22
+ ],
+ "foot_speed_px_per_frame": 2.48,
+ "max_foot_separation_px": 31.5,
+ "noslide_units_per_cycle": 0.671,
+ "status": "NEEDS_PROCESSING",
+ "note": "faint matte removed",
+ "resource": "Maids/mikan_walk",
+ "sheet_sha256": "0c818fc62aeba30ae367cfc42fe800337fe2f6395796612dc58e687f2d43faea",
+ "source_sha256": {
+  ".gitignore0077.png": "8097b7dd183433690d3338f6b3e0ad3ef5b0d099f83495559aaab3820bb7c0bc",
+  ".gitignore0078.png": "4343d5e1ddfb2c7a5809554664fb91ce24972d0017c9e127b38a730149f5233d",
+  ".gitignore0079.png": "ca91e21b2898e88d1a036a9f215ad4267e7e9e4e21d19755e31d12303fd939f5",
+  ".gitignore0080.png": "28bdd7cecf77cd17c984e7417f60ff7c45fc1a9d00edae1a787e47b145051ea7",
+  ".gitignore0081.png": "d90408467917e3e8658025e8875d5c838a22f3edf30f11604574ac4845613759",
+  ".gitignore0082.png": "0be267dd2a29ff6ec88ad4141b038b87d668fcb80bb5fe41441e016508835332",
+  ".gitignore0083.png": "bd597b0dd513581810903fe2e4fdd799cc72dc188a778e3c4eee304905553f16",
+  ".gitignore0084.png": "34160291ff80a250fc93e2dc16dd3b53660e7c763f877b5d232d289f67b857b4",
+  ".gitignore0085.png": "bfaef0e5b861668f7ab2a4dad3f9d62e8058c63e4744b79820fe8db544a50d15",
+  ".gitignore0086.png": "97b770fef3546e2da3aa03c204ef80af5378ab2419b492383c2c60bfd4d67559",
+  ".gitignore0087.png": "a5b233a6f753ac3f9b780349be5e2c1c024d996c55db856be3a8b8c374caa6c8",
+  ".gitignore0088.png": "ba1cfeb164127490e49f28239fc071db9f92bbb8578ea695f408e5eec9ff4ac3",
+  ".gitignore0089.png": "b85f1a4e7b887e143dc67127a67ad8f79c7aed3c71c9cddf3717391e4ef9b11d",
+  ".gitignore0090.png": "eeebc3caf6f38941a0379081ae80ed1b8dbb55412cea406ee874ea00e0ed9b65",
+  ".gitignore0091.png": "d4c0de1940579d807177fe8e54d693e1a1f4e96a513a16826eacc5f2f282fede",
+  ".gitignore0092.png": "7dbc4539284b86ea52a7ac7df0046480084a3f168adc28b8d47a4c4d4d2d45d0",
+  ".gitignore0093.png": "95326a7196cd28cb09e44d8631c204a102ceb265d822adc983133a9a6bc1fde8",
+  ".gitignore0094.png": "4c622bf7ff7ca043dd1de5b70e0ae599fe44051b5de11712a2863a45ac54e4f4",
+  ".gitignore0095.png": "47a6d2c4242bf089da184797fe97a181d83cf61ee49032e4bc23e7b04cc5e522",
+  ".gitignore0096.png": "9ce150f62e9ff9c820b1e228388642dc1d534bb4db5954cd45eeb13927a05f7e",
+  ".gitignore0097.png": "eefa6dc1c8bae713323876da97e2ae4f404a7a1eff875536e44a7074359b2141",
+  ".gitignore0098.png": "211225ca0b78be1284b54d2534609e9c1c22ea48685e08bbf1afdfefb552b788",
+  ".gitignore0099.png": "705be7d0484453bc9e9af51684091463ddcc8a84bfe1b4da1dde1193a341fadb",
+  ".gitignore0100.png": "eabbc694922587b019574e9790c44114cbbea2faa6ae62abd50eb312efb7fee7",
+  ".gitignore0101.png": "1ed7d6252697abc46685f61fff641079223a817cb79abadf30cb0edaf8311c51"
+ },
+ "parameters": {
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
+ }
+}

@@ -81,14 +81,14 @@ def key_green(rgba):
     return out, int(bg.sum())
 
 
-def clean(rgba, chroma):
+def clean(rgba, chroma, matte_cut=40):
     info = {}
     if chroma == "green":
         rgba, n = key_green(rgba)
         info["chroma_px"] = n
     a = rgba[..., 3]
-    info["matte_px"] = int(((a > 0) & (a < 40)).sum())
-    a[a < 40] = 0  # faint matte box some exports keep around the figure
+    info["matte_px"] = int(((a > 0) & (a < matte_cut)).sum())
+    a[a < matte_cut] = 0  # faint matte box some exports keep around the figure (per maid: "matte_cut" in maids.json)
     lab, n = nd.label(a >= SOLID, structure=np.ones((3, 3)))
     sizes = nd.sum(a >= SOLID, lab, range(1, n + 1))
     specks = 0
@@ -239,7 +239,7 @@ def run(m, write):
     cleaned, specks, mattes, chromas = [], 0, 0, 0
     for f in raw:
         f = f.copy()
-        f, info = clean(f, chroma)
+        f, info = clean(f, chroma, m.get("matte_cut", 40))
         cleaned.append(f)
         specks += info["specks"]
         mattes = max(mattes, info["matte_px"])
@@ -425,6 +425,9 @@ def main():
     ap.add_argument("cmd", choices=["audit", "process"])
     ap.add_argument("--only", default="")
     ap.add_argument("--style", choices=["illustrated", "pixel"], help="default: the style named in maids.json")
+    ap.add_argument("--stage", action="store_true",
+                    help="process only: write the sheet next to the manifest in docs/art/maid-walk/<id>/ and leave "
+                         "Assets/ (Resources, the walk catalog, .meta) untouched: nothing ships until the maid is released")
     args = ap.parse_args()
     only = [s for s in args.only.split(",") if s]
     cfg, maids = load_config(only, args.style)
@@ -448,10 +451,14 @@ def main():
         if res["status"] != "REJECTED" and m.get("pack", True):
             sheet = pack(cells, res["columns"], res["rows"], res["cell"][0], res["cell"][1])
             if write:
-                os.makedirs(OUT_RES, exist_ok=True)
-                sheet_path = os.path.join(OUT_RES, m["id"] + "_walk.png")
+                out_dir = os.path.join(OUT_DOCS, m["id"]) if args.stage else OUT_RES
+                os.makedirs(out_dir, exist_ok=True)
+                sheet_path = os.path.join(out_dir, m["id"] + "_walk.png")
                 sheet.save(sheet_path, optimize=True)
-                res["resource"] = "Maids/" + m["id"] + "_walk"
+                if args.stage:
+                    res["staged_sheet"] = "docs/art/maid-walk/%s/%s_walk.png" % (m["id"], m["id"])
+                else:
+                    res["resource"] = "Maids/" + m["id"] + "_walk"
                 res["sheet_sha256"] = sha256(sheet_path)
                 res["source_sha256"] = {os.path.basename(p): sha256(p) for p in prepare(m)}
                 res["parameters"] = {k: m[k] for k in ("height_px", "colors", "style", "pad_px", "pixels_per_unit", "world_height")}
@@ -463,7 +470,7 @@ def main():
                     json.dump(res, f, indent=1)
         results.append(res)
         print(json.dumps({k: res[k] for k in res if k not in ("source_sha256",)}), flush=True)
-    if write:
+    if write and not args.stage:
         # Merge into the existing catalog: entries of maids not processed this run stay untouched.
         cat_path = os.path.join(OUT_RES, "maid_walk_catalog.json")
         existing = {}
@@ -486,7 +493,7 @@ def main():
         with open(cat_path, "w", encoding="utf8", newline="\n") as f:
             json.dump({"maids": entries}, f, indent=1)
             f.write("\n")
-    if write:
+    if write and not args.stage:
         # Only the sheets processed in this run: a `--only` run never touches another maid's asset or .meta.
         for r in results:
             if r.get("resource"):

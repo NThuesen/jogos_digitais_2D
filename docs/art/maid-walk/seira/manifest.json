@@ -1,0 +1,104 @@
+{
+ "id": "seira",
+ "name": "Seira",
+ "frames_found": 26,
+ "folder": "20_seira/step4_blender/walk_x/frames",
+ "numbering": [
+  116,
+  141
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 1,
+ "matte_px": 275492,
+ "chroma_px": 0,
+ "height_mean": 808.0,
+ "height_range": [
+  800,
+  816
+ ],
+ "cx_std": 3.2,
+ "drift_x": 11.0,
+ "drift_y": 11,
+ "step_diff_mean": 0.0773,
+ "wrap_diff": 0.0152,
+ "loop_ratio": 0.21,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.115,
+ "loop_trim": [
+  0,
+  25
+ ],
+ "loop_ratio_before_trim": 0.2,
+ "source_frame_numbers": [
+  116,
+  141
+ ],
+ "units_per_cycle": 1.91,
+ "slide_factor": 3.0,
+ "cell": [
+  152,
+  252
+ ],
+ "scale": 0.29702,
+ "frames": 26,
+ "columns": 6,
+ "rows": 5,
+ "idle_frame": 8,
+ "rest_frames": [
+  0,
+  8,
+  9,
+  10,
+  23,
+  24,
+  25
+ ],
+ "foot_speed_px_per_frame": 2.24,
+ "max_foot_separation_px": 32.6,
+ "noslide_units_per_cycle": 0.631,
+ "status": "NEEDS_PROCESSING",
+ "note": "faint matte removed",
+ "resource": "Maids/seira_walk",
+ "sheet_sha256": "9e3f113f7311090a1da5e6103e0854cfa46e901d39ebcbfd45c04717bc510a13",
+ "source_sha256": {
+  ".gitignore0116.png": "5409e33b345a13b517548bb51444b235d8e8dc9295723733fe998ff5a0dc8b25",
+  ".gitignore0117.png": "882f9c7d5bd82d02df54bcf56661193d08b9c6ac588021510b312f4e6996924c",
+  ".gitignore0118.png": "b7020252c23c2a703169ef616448eccbc2e9267a9585bf36da9e916e48edeadf",
+  ".gitignore0119.png": "1fbe51cf2f60741a3a0439a05f7ad2da95f20b096b4cae1c70e57bb9a04e300e",
+  ".gitignore0120.png": "17a1ef7669a3c9c6f164e831ac784be87344a125b76f668953b23d7acfe7f873",
+  ".gitignore0121.png": "9c0c37051377039540131ed7caeb5129671b93860429c097663dd4505ea77eaf",
+  ".gitignore0122.png": "a3cb0fb3619d896974dbd7093a063c9ff67498ecab23cac6fb12874f180b8381",
+  ".gitignore0123.png": "cd92bed764e34c16c0cc86bd68350b54a3708676b2299c943cd324444a1d0b6b",
+  ".gitignore0124.png": "fcb8a46aa8127f0256970c657e362e310828bec4ce9e1733242c5ce738b98f8a",
+  ".gitignore0125.png": "4b0c33e1882088d91c23cb20dd85135d1aa6c3dda6a570246310818b577d1ff0",
+  ".gitignore0126.png": "129a610c95d2db5dd938fdd05aad9b1dd31ef9611a4b647369da5af5fc727b2c",
+  ".gitignore0127.png": "ecf0fca659f0abc46faf8ba50b30fa1d6e86fbef2a4bed7c1690a0b183082ecd",
+  ".gitignore0128.png": "315a793a21142abd9be1712c5ed2453cc9d908a48619e11e3470950a69b0b74b",
+  ".gitignore0129.png": "9ce0d0a263696ab5150b3c62fbadc09b53631d74aa4db8f0190f09fe95b411da",
+  ".gitignore0130.png": "2ee6f8593d46257af209d2d2b8fc776332c1b9b1ca99e6e16d0d30f8a813c4fd",
+  ".gitignore0131.png": "9835640d58e79f1cb1dd0d3c0ff46edce9160bfdc3374e878b29ac38f857fd02",
+  ".gitignore0132.png": "b7aaad3c13e9c7b6c60242f348ee496545217ff76d7606758fbe980e8ebc5fcf",
+  ".gitignore0133.png": "3426d60b449b44ea38b840a37e28259d189262061f7035aaf1815992628fe0da",
+  ".gitignore0134.png": "8df67c82ec252cdb975e052453f95dfd1fc6d7ef2030dd7e3b96349c6300eb03",
+  ".gitignore0135.png": "f160d84e4de0b8d663071a70890013c5aa277a07dbf8d75d0715d4e5139257db",
+  ".gitignore0136.png": "c4f985d1fcb96e6ea48ee1b018033424314607c09b64c879f6483e8a13daf5da",
+  ".gitignore0137.png": "320f5f8220d3551926723a7acd9b50bb343a015282792c3785ad15afdddfbf49",
+  ".gitignore0138.png": "eb200d60017018e8fd3c0b5595e82a40f4d4c0d8e23c518444604f046368bfc0",
+  ".gitignore0139.png": "17f7f75fa29c39d6b1d5c2d67ed1788c8c79fd1baa81fc7495e7e9cdff8877f6",
+  ".gitignore0140.png": "231b1de4182f4990480f9fa5bedd3e3d7bd7be5a5b1e87aff54c34769d0920a3",
+  ".gitignore0141.png": "1e539b50864be390a7fedf6b4ce7131c9e15e6ce7fd2d17251861fed52626d31"
+ },
+ "parameters": {
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
+ }
+}

@@ -92,7 +92,7 @@ namespace Neko.Tests.PlayMode
         }
 
         [UnityTest]
-        public IEnumerator TheShowcaseShowsTheNineAuthoredMaidsAndChangesNothing()
+        public IEnumerator TheShowcaseShowsEveryAuthoredMaidAndChangesNothing()
         {
             var builder = SessionFactory.NewProfile(13u, 1).WithDay(1).WithMoney(100);
             yield return SessionFactory.Boot(builder.Build());
@@ -105,8 +105,8 @@ namespace Neko.Tests.PlayMode
 
             var screen = GameRoot.Instance.Ui.Get<ShowcaseScreen>();
             var walkers = screen.GetComponentsInChildren<Image>(true).Where(i => i.name.StartsWith("Walker ")).ToList();
-            Assert.AreEqual(9, walkers.Count);
-            foreach (var name in new[] { "Suzu", "Hina", "Akari", "Momo", "Reina", "Kaede", "Nene", "Ichika", "Yoru" })
+            Assert.AreEqual(MaidAnimCatalog.All.Length, walkers.Count);
+            foreach (var name in MaidAnimCatalog.All.Select(e => e.name))
             {
                 Assert.IsTrue(walkers.Any(w => w.name == "Walker " + name), name);
                 Assert.IsTrue(screen.GetComponentsInChildren<Text>(true).Any(t => t.text == name), name + " label");

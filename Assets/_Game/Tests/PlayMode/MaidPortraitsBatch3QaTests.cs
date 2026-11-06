@@ -158,7 +158,9 @@ namespace Neko.Tests.PlayMode
             {
                 heads[name] = Load(name.ToLowerInvariant() + "_head_192.png");
                 details[name] = Load(name.ToLowerInvariant() + "_detail_480.png");
-                Assert.IsNull(MaidAnimCatalog.Identify(builder.MaidNamed(name)), name + " must stay a procedural maid: no identity is released");
+                // An identity is attached only to a released maid (by exact name + archetype); a planned one stays legacy.
+                Assert.AreEqual(MaidCatalog.FindReleased(name, Archetypes[name]) != null,
+                    MaidAnimCatalog.Identify(builder.MaidNamed(name)) != null, name);
             }
 
             var tag = "g" + group;

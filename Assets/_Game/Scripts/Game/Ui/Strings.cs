@@ -181,7 +181,7 @@ namespace Neko.Game.Ui
                 { "settings.sfx", "Efeitos" },
 
                 { "credits.body",
-                    "Neko Maid Inc. As nove caminhadas das maids usam sprites originais anime 2D ilustrados. " +
+                    "Neko Maid Inc. As caminhadas das maids autorais usam sprites originais anime 2D ilustrados. " +
                     "Os demais gráficos são procedurais e o áudio é sintetizado. " +
                     "Não há assets de terceiros." },
             };
