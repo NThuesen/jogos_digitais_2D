@@ -28,7 +28,7 @@ Nenhuma ficou em REWORK. Valores exatos de cada uma: `docs/art/maid-walk/<id>/ma
 ## Integração
 - Retratos (`_head`/`_detail`) vêm dos derivados de `docs/art/ui-modular/portraits/batch2/` (Nonoka usa v02) e `batch3/` (Hibari, Seira, Ruri, Chiyo, Shiori). Os retratos do lote 3 foram **aprovados artisticamente pelo dono** (06/11/2026) para Hibari, Seira, Ruri, Chiyo e Shiori, mantendo as restrições documentadas.
 - `MaidCatalog`: as 14 passaram de Planned a liberadas (23 no total); restam Planned Tsubaki, Mirai, Kinako e Mayu (sem frames de caminhada).
-- Sheets carregam sob demanda (Resources); orçamento de textura do teste subiu de 12 para 32 Mpx (~29 Mpx medidos).
+- Sheets carregam sob demanda (Resources); orçamento de textura do teste subiu de 12 para 30 Mpx (~29 Mpx medidos).
 - Proveniência SHA-256 e allowlist de `DocsTests` atualizadas (42 arquivos).
 
 ## Aprovações do dono (06/11/2026)
