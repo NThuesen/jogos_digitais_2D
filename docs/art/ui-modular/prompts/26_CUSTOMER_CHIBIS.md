@@ -38,8 +38,8 @@ Output exactly ONE PNG.
 
 Após gerar: ver `docs/art/ui-modular/OUTPUT_MANIFEST.md` para o nome exato e pedir a revisão do dono antes de qualquer CLEAN.
 
-## 8º cliente (decisão pendente do dono)
-Padrão recomendado: **Regular B**, uma segunda aparência do tipo mais frequente (peso 10), mesma regra de acento `#A89078`, outro cabelo/roupa (por exemplo, jovem de jaqueta e fone de ouvido). Nome do arquivo: `UI-026_customer_regular_b_v01.png`. Usar o prompt-base com `[TIPO]` = "Everyday regular, alternate look: ...".
+## 8º cliente — Regular B (aprovado em 2026-11-06)
+**Regular B** é a segunda aparência do tipo mais frequente (peso 10), com o mesmo acento `#A89078`, mas cabelo, roupa e silhueta claramente distintos de Regular A. Exemplo: jovem de jaqueta curta e fones de ouvido, sem mochila de estudante, boné de salaryman nem acessórios de otaku. Nome do arquivo: `UI-026_customer_regular_b_v01.png`. Usar o prompt-base com `[TIPO]` = "Everyday regular, alternate look: young adult, short contrasting haircut, casual short jacket, headphones around neck, friendly relaxed expression; visually distinct from Regular A.". A escolha entre Regular A/B será somente visual e determinística no runtime, sem novo `CustomerType`.
 
 ## Sentado (um por cliente, a partir do design aprovado)
 Anexo A = o design base aprovado do próprio cliente (identidade); anexo B opcional = imagem de uma cadeira de café. Mesmo estilo, mesma paleta.
