@@ -6,12 +6,9 @@
 |---|---|---|---|---|
 | 01–09 | Suzu, Hina, Akari, Momo, Reina, Kaede, Nene, Ichika, Yoru | aprovado | aprovada | sim |
 | 10–23 | Mikan, Yuki, Kurumi, Nonoka (v02), Kaguya, Mizuki, Himari, Anzu, Kasumi, Hibari, Seira, Ruri, Chiyo, Shiori | aprovado/em uso | processada (ver `maid-walk/BATCH_10_19_STAGED.md` e manifestos) | **sim, liberadas** |
-| 24 | Tsubaki | pronto (lote final) | **falta** exportar frames do Blender em `art_working/24_tsubaki/…/frames/` | não (Planned) |
-| 25 | Mirai | pronto | **falta** | não (Planned) |
-| 26 | Kinako | pronto | **falta** | não (Planned) |
-| 27 | Mayu | pronto | **falta** | não (Planned) |
+| 24–27 | Tsubaki, Mirai, Kinako, Mayu | aprovado (lote 3) | processada (lote final; ver `maid-walk/BATCH_10_19_STAGED.md`) | **sim, liberadas: 27/27** |
 
-Para liberar as quatro que faltam: exportar os frames, `python tools/art/maid_walk/maid_walk.py process --only tsubaki,mirai,kinako,mayu`, trocar `Planned` por `Out` no `MaidCatalog`, copiar `*_head/_detail` dos derivados de `docs/art/ui-modular/portraits/batch3/derived/` para `Resources/MaidPortraits`, e atualizar a allowlist/proveniência (`DocsTests` e `SUZU_ASSET_PROVENANCE.md`) como na PR da rodada noturna.
+Catálogo completo: 27 identidades autorais liberadas, nenhuma Planned. Para uma maid futura: reservar com `Planned`, exportar frames, `process --only <id>`, copiar `*_head/_detail`, `Out(...)`, atualizar allowlist/proveniência.
 
 ## Procedural que ainda aparece no jogo (prioridade)
 
