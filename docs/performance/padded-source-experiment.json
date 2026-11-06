@@ -1,0 +1,212 @@
+{
+  "sheets": [
+    {
+      "id": "suzu",
+      "width": 1024,
+      "height": 1024,
+      "frames": 15,
+      "cells": 18,
+      "png_bytes": 959911,
+      "sha256": "beead87a436dcbfae09e0fd6d027962b435524b54cbb23d1e47a12fb1bbfba6a"
+    },
+    {
+      "id": "hina",
+      "width": 1024,
+      "height": 2048,
+      "frames": 35,
+      "cells": 36,
+      "png_bytes": 1934586,
+      "sha256": "55e9235d2f1ab04d190674a4c8c35ee2805c4c32fef225f503783e8c32d6bb1b"
+    },
+    {
+      "id": "akari",
+      "width": 2048,
+      "height": 1024,
+      "frames": 24,
+      "cells": 24,
+      "png_bytes": 1784508,
+      "sha256": "9ef7224c9688474773c1e3165aec5bb42cf313773fabff49e8a15492b2132013"
+    },
+    {
+      "id": "momo",
+      "width": 1024,
+      "height": 1024,
+      "frames": 20,
+      "cells": 24,
+      "png_bytes": 1213829,
+      "sha256": "176dd848c85c3c23058e0a0bbd4a6c19c0e210077ba0c6f7e085e9657b6c1669"
+    },
+    {
+      "id": "reina",
+      "width": 1024,
+      "height": 2048,
+      "frames": 33,
+      "cells": 36,
+      "png_bytes": 2288547,
+      "sha256": "58a9f7e424f901805c4d9d40ef67d8dc26a095d110b69a92b6501bfd82475fa4"
+    },
+    {
+      "id": "kaede",
+      "width": 1024,
+      "height": 1024,
+      "frames": 17,
+      "cells": 18,
+      "png_bytes": 1093063,
+      "sha256": "df94eb2bb1bedd3bed1f07bdb189149c03fc25996fe37b8134762d434dcd4d0b"
+    },
+    {
+      "id": "nene",
+      "width": 1024,
+      "height": 2048,
+      "frames": 25,
+      "cells": 30,
+      "png_bytes": 1596724,
+      "sha256": "5da891fefc642b74cab2ead45708a04ee8d476d2d61a81259fcb9f1c44468c17"
+    },
+    {
+      "id": "ichika",
+      "width": 1024,
+      "height": 1024,
+      "frames": 24,
+      "cells": 24,
+      "png_bytes": 1541820,
+      "sha256": "723068c520eadeaa298de211fa76680daf0014bf2bf42b48d80c99f75f899b7f"
+    },
+    {
+      "id": "yoru",
+      "width": 2048,
+      "height": 2048,
+      "frames": 34,
+      "cells": 36,
+      "png_bytes": 2385707,
+      "sha256": "3de031f9a91dcd5ee75d400be3800d968b5190d0bf23d17ff2f21817749f6a9a"
+    },
+    {
+      "id": "mikan",
+      "width": 2048,
+      "height": 2048,
+      "frames": 25,
+      "cells": 30,
+      "png_bytes": 2025712,
+      "sha256": "a2240d3993761cf353c92e3312f4feab0b053317c8f9526bcf898ffed29f0ef7"
+    },
+    {
+      "id": "yuki",
+      "width": 2048,
+      "height": 2048,
+      "frames": 27,
+      "cells": 30,
+      "png_bytes": 2119651,
+      "sha256": "22c87a692da65a3255c61221d69dc8bfbfe98ce64c1544ddd8a1e5338c7787ce"
+    },
+    {
+      "id": "kurumi",
+      "width": 1024,
+      "height": 2048,
+      "frames": 37,
+      "cells": 42,
+      "png_bytes": 2707651,
+      "sha256": "2c25eb5ffa5d8b07d5a4cc51ac073fc05ba07fbf9d6b25ab813cd3867478f233"
+    },
+    {
+      "id": "nonoka",
+      "width": 1024,
+      "height": 2048,
+      "frames": 34,
+      "cells": 36,
+      "png_bytes": 2267930,
+      "sha256": "b0088e1181b0187c51f9385c64b53b643f976a46d6a7a7a1112d2c1c1e5a7fd4"
+    },
+    {
+      "id": "kaguya",
+      "width": 1024,
+      "height": 2048,
+      "frames": 28,
+      "cells": 30,
+      "png_bytes": 1870993,
+      "sha256": "2117435e9a8ffba23d4553558041143576c4aa845261ec64a4155cbb35826e1d"
+    },
+    {
+      "id": "mizuki",
+      "width": 2048,
+      "height": 2048,
+      "frames": 40,
+      "cells": 42,
+      "png_bytes": 2784792,
+      "sha256": "7bf40175da0a6db91b6e9cab697383aa61d98ac2da139d0db07cd55236c2f187"
+    },
+    {
+      "id": "himari",
+      "width": 1024,
+      "height": 2048,
+      "frames": 26,
+      "cells": 30,
+      "png_bytes": 1819452,
+      "sha256": "2b65cfe641ef3c455d68496dce80676992a9a54069ff158b4f46e1d967df3952"
+    },
+    {
+      "id": "anzu",
+      "width": 1024,
+      "height": 2048,
+      "frames": 30,
+      "cells": 30,
+      "png_bytes": 2072073,
+      "sha256": "958cef790de1c4c448d79414dbb47bcdd17fbf1160482c01f79ec5a7054656a0"
+    },
+    {
+      "id": "kasumi",
+      "width": 1024,
+      "height": 1024,
+      "frames": 17,
+      "cells": 18,
+      "png_bytes": 1124970,
+      "sha256": "e181db54f689b84595245078bd26b295b9671c2f23ad3f107d8170fdb0e7ef04"
+    },
+    {
+      "id": "hibari",
+      "width": 1024,
+      "height": 2048,
+      "frames": 25,
+      "cells": 30,
+      "png_bytes": 1538449,
+      "sha256": "d3ee2786dbb3122b4c4fc4c188f1e59dc02f88bdf649cfd0c9b46df6a4fefe35"
+    },
+    {
+      "id": "seira",
+      "width": 1024,
+      "height": 2048,
+      "frames": 26,
+      "cells": 30,
+      "png_bytes": 1702391,
+      "sha256": "d3eecc03157592478866eaaf71be94e1d3e0564c9d2c055df53f6ad287526c6f"
+    },
+    {
+      "id": "ruri",
+      "width": 1024,
+      "height": 2048,
+      "frames": 25,
+      "cells": 30,
+      "png_bytes": 1871151,
+      "sha256": "940e90502643c27a44e11c4524fb66eb882a0b1a9c76578fa4767d3f0a971f57"
+    },
+    {
+      "id": "chiyo",
+      "width": 1024,
+      "height": 2048,
+      "frames": 26,
+      "cells": 30,
+      "png_bytes": 1801129,
+      "sha256": "0715804ccc7f738ad57ee6a5c60bfac58039599ff44c08508d8c4ab907cf8573"
+    },
+    {
+      "id": "shiori",
+      "width": 1024,
+      "height": 2048,
+      "frames": 37,
+      "cells": 42,
+      "png_bytes": 2525647,
+      "sha256": "729c5c5567e229331a068f2b017f64fbcba867437295c7b294abb902fcdb33e6"
+    }
+  ],
+  "pixels": 51380224
+}

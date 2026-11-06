@@ -1,0 +1,4 @@
+Succeeded
+C:/dev/PocketSlop-Games/jogos_digitais_2D/Build/WebGL
+Build bytes: 63722143
+Packed walk bytes (not GPU residency): 68510580

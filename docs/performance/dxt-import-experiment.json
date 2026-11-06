@@ -1,0 +1,260 @@
+{
+    "unity": "6000.5.9f1",
+    "target": "WebGL",
+    "walkNativeBytes": 338750535,
+    "textures": [
+        {
+            "id": "suzu",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 936,
+            "height": 756,
+            "mipmaps": 10,
+            "nativeBytes": 8560117,
+            "readable": false
+        },
+        {
+            "id": "hina",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 912,
+            "height": 1512,
+            "mipmaps": 11,
+            "nativeBytes": 16859429,
+            "readable": false
+        },
+        {
+            "id": "akari",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 1032,
+            "height": 1008,
+            "mipmaps": 11,
+            "nativeBytes": 12692805,
+            "readable": false
+        },
+        {
+            "id": "momo",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 864,
+            "height": 1008,
+            "mipmaps": 10,
+            "nativeBytes": 10216857,
+            "readable": false
+        },
+        {
+            "id": "reina",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 1008,
+            "height": 1512,
+            "mipmaps": 11,
+            "nativeBytes": 17632437,
+            "readable": false
+        },
+        {
+            "id": "kaede",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 936,
+            "height": 756,
+            "mipmaps": 10,
+            "nativeBytes": 8559093,
+            "readable": false
+        },
+        {
+            "id": "nene",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 888,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 12914961,
+            "readable": false
+        },
+        {
+            "id": "ichika",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 912,
+            "height": 1008,
+            "mipmaps": 10,
+            "nativeBytes": 11261297,
+            "readable": false
+        },
+        {
+            "id": "yoru",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 1128,
+            "height": 1512,
+            "mipmaps": 11,
+            "nativeBytes": 19779625,
+            "readable": false
+        },
+        {
+            "id": "mikan",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 1032,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 15857009,
+            "readable": false
+        },
+        {
+            "id": "yuki",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 1152,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 16655345,
+            "readable": false
+        },
+        {
+            "id": "kurumi",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 1008,
+            "height": 1764,
+            "mipmaps": 11,
+            "nativeBytes": 20428773,
+            "readable": false
+        },
+        {
+            "id": "nonoka",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 1008,
+            "height": 1512,
+            "mipmaps": 11,
+            "nativeBytes": 17632437,
+            "readable": false
+        },
+        {
+            "id": "kaguya",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 1008,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 14704529,
+            "readable": false
+        },
+        {
+            "id": "mizuki",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 1128,
+            "height": 1764,
+            "mipmaps": 11,
+            "nativeBytes": 22933813,
+            "readable": false
+        },
+        {
+            "id": "himari",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 1008,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 14704529,
+            "readable": false
+        },
+        {
+            "id": "anzu",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 936,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 14220649,
+            "readable": false
+        },
+        {
+            "id": "kasumi",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 840,
+            "height": 756,
+            "mipmaps": 10,
+            "nativeBytes": 7582265,
+            "readable": false
+        },
+        {
+            "id": "hibari",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 888,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 12914961,
+            "readable": false
+        },
+        {
+            "id": "seira",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 912,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 14059537,
+            "readable": false
+        },
+        {
+            "id": "ruri",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 912,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 14059537,
+            "readable": false
+        },
+        {
+            "id": "chiyo",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 984,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 14543105,
+            "readable": false
+        },
+        {
+            "id": "shiori",
+            "format": "RGBA32",
+            "importerFormat": "DXT5",
+            "overridden": true,
+            "width": 960,
+            "height": 1764,
+            "mipmaps": 11,
+            "nativeBytes": 19977425,
+            "readable": false
+        }
+    ]
+}

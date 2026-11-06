@@ -1,0 +1,41 @@
+[
+  {
+    "suite": "EditMode",
+    "result": "Passed",
+    "cases": 349,
+    "results": {
+      "Passed": 349,
+      "Failed": 0,
+      "Skipped": 0,
+      "Inconclusive": 0
+    },
+    "source": "Logs/tests-EditMode.xml",
+    "sha256": "5970fa1de3151b1de4aa04019d54ece0d7c7ffc2fa354e2c72966a298840b7b2"
+  },
+  {
+    "suite": "PlayMode",
+    "result": "Passed",
+    "cases": 97,
+    "results": {
+      "Passed": 97,
+      "Failed": 0,
+      "Skipped": 0,
+      "Inconclusive": 0
+    },
+    "source": "Logs/tests-PlayMode.xml",
+    "sha256": "2234feb8ededa0798df6913d7461fe33ac1517e4e837fe4462a4daeda12f87d3"
+  },
+  {
+    "suite": "simtest",
+    "result": "Passed",
+    "cases": 278,
+    "results": {
+      "Passed": 278,
+      "Failed": 0,
+      "Skipped": 0,
+      "Inconclusive": 0
+    },
+    "source": "Logs/performance-sim-final.xml",
+    "sha256": "237f53bd04d91c83f04a1020b71939e394bf43659656d39ae71dc2941523bdec"
+  }
+]

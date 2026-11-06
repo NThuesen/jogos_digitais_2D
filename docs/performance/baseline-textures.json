@@ -1,0 +1,214 @@
+{
+    "unity": "6000.5.9f1",
+    "target": "WebGL",
+    "walkNativeBytes": 153190800,
+    "textures": [
+        {
+            "id": "suzu",
+            "format": "RGBA32",
+            "width": 936,
+            "height": 756,
+            "mipmaps": 10,
+            "nativeBytes": 3774260,
+            "readable": false
+        },
+        {
+            "id": "hina",
+            "format": "RGBA32",
+            "width": 912,
+            "height": 1512,
+            "mipmaps": 11,
+            "nativeBytes": 7354932,
+            "readable": false
+        },
+        {
+            "id": "akari",
+            "format": "RGBA32",
+            "width": 1032,
+            "height": 1008,
+            "mipmaps": 11,
+            "nativeBytes": 5548628,
+            "readable": false
+        },
+        {
+            "id": "momo",
+            "format": "RGBA32",
+            "width": 864,
+            "height": 1008,
+            "mipmaps": 10,
+            "nativeBytes": 4645592,
+            "readable": false
+        },
+        {
+            "id": "reina",
+            "format": "RGBA32",
+            "width": 1008,
+            "height": 1512,
+            "mipmaps": 11,
+            "nativeBytes": 8128964,
+            "readable": false
+        },
+        {
+            "id": "kaede",
+            "format": "RGBA32",
+            "width": 936,
+            "height": 756,
+            "mipmaps": 10,
+            "nativeBytes": 3774260,
+            "readable": false
+        },
+        {
+            "id": "nene",
+            "format": "RGBA32",
+            "width": 888,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 5967392,
+            "readable": false
+        },
+        {
+            "id": "ichika",
+            "format": "RGBA32",
+            "width": 912,
+            "height": 1008,
+            "mipmaps": 10,
+            "nativeBytes": 4903600,
+            "readable": false
+        },
+        {
+            "id": "yoru",
+            "format": "RGBA32",
+            "width": 1128,
+            "height": 1512,
+            "mipmaps": 11,
+            "nativeBytes": 9096504,
+            "readable": false
+        },
+        {
+            "id": "mikan",
+            "format": "RGBA32",
+            "width": 1032,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 6935168,
+            "readable": false
+        },
+        {
+            "id": "yuki",
+            "format": "RGBA32",
+            "width": 1152,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 7741696,
+            "readable": false
+        },
+        {
+            "id": "kurumi",
+            "format": "RGBA32",
+            "width": 1008,
+            "height": 1764,
+            "mipmaps": 11,
+            "nativeBytes": 9483508,
+            "readable": false
+        },
+        {
+            "id": "nonoka",
+            "format": "RGBA32",
+            "width": 1008,
+            "height": 1512,
+            "mipmaps": 11,
+            "nativeBytes": 8128964,
+            "readable": false
+        },
+        {
+            "id": "kaguya",
+            "format": "RGBA32",
+            "width": 1008,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 6773920,
+            "readable": false
+        },
+        {
+            "id": "mizuki",
+            "format": "RGBA32",
+            "width": 1128,
+            "height": 1764,
+            "mipmaps": 11,
+            "nativeBytes": 10612292,
+            "readable": false
+        },
+        {
+            "id": "himari",
+            "format": "RGBA32",
+            "width": 1008,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 6773920,
+            "readable": false
+        },
+        {
+            "id": "anzu",
+            "format": "RGBA32",
+            "width": 936,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 6290040,
+            "readable": false
+        },
+        {
+            "id": "kasumi",
+            "format": "RGBA32",
+            "width": 840,
+            "height": 756,
+            "mipmaps": 10,
+            "nativeBytes": 3387256,
+            "readable": false
+        },
+        {
+            "id": "hibari",
+            "format": "RGBA32",
+            "width": 888,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 5967392,
+            "readable": false
+        },
+        {
+            "id": "seira",
+            "format": "RGBA32",
+            "width": 912,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 6128928,
+            "readable": false
+        },
+        {
+            "id": "ruri",
+            "format": "RGBA32",
+            "width": 912,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 6128928,
+            "readable": false
+        },
+        {
+            "id": "chiyo",
+            "format": "RGBA32",
+            "width": 984,
+            "height": 1260,
+            "mipmaps": 11,
+            "nativeBytes": 6612496,
+            "readable": false
+        },
+        {
+            "id": "shiori",
+            "format": "RGBA32",
+            "width": 960,
+            "height": 1764,
+            "mipmaps": 11,
+            "nativeBytes": 9032160,
+            "readable": false
+        }
+    ]
+}

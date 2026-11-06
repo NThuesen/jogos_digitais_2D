@@ -1,0 +1,762 @@
+{
+  "ready": {
+    "ready": 4550.399999976158,
+    "start": 16.799999952316284,
+    "heap": 171501215
+  },
+  "sample": {
+    "frames": 300,
+    "mean": 8.290666666746136,
+    "max": 9.099999999998545,
+    "p95": 8.5,
+    "jsHeap": 172464731
+  },
+  "gl": {
+    "extensions": [
+      "EXT_clip_control",
+      "EXT_color_buffer_float",
+      "EXT_color_buffer_half_float",
+      "EXT_conservative_depth",
+      "EXT_depth_clamp",
+      "EXT_disjoint_timer_query_webgl2",
+      "EXT_float_blend",
+      "EXT_polygon_offset_clamp",
+      "EXT_render_snorm",
+      "EXT_texture_compression_bptc",
+      "EXT_texture_compression_rgtc",
+      "EXT_texture_filter_anisotropic",
+      "EXT_texture_mirror_clamp_to_edge",
+      "EXT_texture_norm16",
+      "KHR_parallel_shader_compile",
+      "NV_shader_noperspective_interpolation",
+      "OES_draw_buffers_indexed",
+      "OES_sample_variables",
+      "OES_shader_multisample_interpolation",
+      "OES_texture_float_linear",
+      "OVR_multiview2",
+      "WEBGL_blend_func_extended",
+      "WEBGL_clip_cull_distance",
+      "WEBGL_compressed_texture_s3tc",
+      "WEBGL_compressed_texture_s3tc_srgb",
+      "WEBGL_debug_renderer_info",
+      "WEBGL_debug_shaders",
+      "WEBGL_lose_context",
+      "WEBGL_multi_draw",
+      "WEBGL_polygon_mode",
+      "WEBGL_provoking_vertex",
+      "WEBGL_stencil_texturing"
+    ],
+    "renderer": "WebKit WebGL"
+  },
+  "compressedUploads": [
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 4,
+      "height": 4
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 4,
+      "height": 4
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 4,
+      "height": 4
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "storage": true,
+      "levels": 3,
+      "format": 32856,
+      "width": 4,
+      "height": 4
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 4,
+      "height": 4
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 4,
+      "height": 4
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 256,
+      "height": 2
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 34842,
+      "width": 1024,
+      "height": 1
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 33322,
+      "width": 256,
+      "height": 64
+    },
+    {
+      "storage": true,
+      "levels": 12,
+      "format": 33779,
+      "width": 2048,
+      "height": 1024
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 33777,
+      "width": 256,
+      "height": 128
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32849,
+      "width": 160,
+      "height": 560
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32849,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 96,
+      "height": 96
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 2,
+      "height": 64
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 866,
+      "height": 422
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 26,
+      "height": 26
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 1008,
+      "height": 1512
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 96,
+      "height": 96
+    },
+    {
+      "storage": true,
+      "levels": 10,
+      "format": 32856,
+      "width": 936,
+      "height": 756
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 1128,
+      "height": 1512
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 768,
+      "height": 141
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 768,
+      "height": 141
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 768,
+      "height": 141
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 768,
+      "height": 141
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 1059,
+      "height": 262
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 1060,
+      "height": 264
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 1056,
+      "height": 262
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 1059,
+      "height": 264
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 36012,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 35898,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 35898,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 36013,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 32856,
+      "width": 30,
+      "height": 30
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 912,
+      "height": 1512
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 1032,
+      "height": 1008
+    },
+    {
+      "storage": true,
+      "levels": 10,
+      "format": 32856,
+      "width": 864,
+      "height": 1008
+    },
+    {
+      "storage": true,
+      "levels": 10,
+      "format": 32856,
+      "width": 936,
+      "height": 756
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 888,
+      "height": 1260
+    },
+    {
+      "storage": true,
+      "levels": 10,
+      "format": 32856,
+      "width": 912,
+      "height": 1008
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 1032,
+      "height": 1260
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 1152,
+      "height": 1260
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 1008,
+      "height": 1764
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 1008,
+      "height": 1512
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 1008,
+      "height": 1260
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 1128,
+      "height": 1764
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 1008,
+      "height": 1260
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 936,
+      "height": 1260
+    },
+    {
+      "storage": true,
+      "levels": 10,
+      "format": 32856,
+      "width": 840,
+      "height": 756
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 888,
+      "height": 1260
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 912,
+      "height": 1260
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 912,
+      "height": 1260
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 984,
+      "height": 1260
+    },
+    {
+      "storage": true,
+      "levels": 11,
+      "format": 32856,
+      "width": 960,
+      "height": 1764
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 35898,
+      "width": 960,
+      "height": 600
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 35898,
+      "width": 960,
+      "height": 600
+    },
+    {
+      "storage": true,
+      "levels": 1,
+      "format": 36013,
+      "width": 960,
+      "height": 600
+    }
+  ],
+  "logs": [
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "You can reduce startup time if you configure your web server to add \"Content-Encoding: gzip\" response header when serving \"Build/WebGL_baseline.framework.js.unityweb\" file."
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "You can reduce startup time if you configure your web server to add \"Content-Encoding: gzip\" response header when serving \"Build/WebGL_baseline.wasm.unityweb\" file."
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "You can reduce startup time if you configure your web server to add \"Content-Encoding: gzip\" response header when serving \"Build/WebGL_baseline.data.unityweb\" file."
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "[UnityCache] 'http://127.0.0.1:8765/baseline/Build/WebGL_baseline.data.unityweb' successfully downloaded and stored in the browser cache"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "[UnityMemory] Configuration Parameters - Can be set up in boot.config\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-bucket-allocator-granularity=16\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-bucket-allocator-bucket-count=8\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-bucket-allocator-block-size=4194304\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-bucket-allocator-block-count=1\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-main-allocator-block-size=16777216\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-thread-allocator-block-size=16777216\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-main-allocator-mimalloc-enabled=0\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-gfx-main-allocator-block-size=16777216\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-gfx-thread-allocator-block-size=16777216\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-cache-allocator-block-size=4194304\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-typetree-allocator-block-size=2097152\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-profiler-bucket-allocator-granularity=16\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-profiler-bucket-allocator-bucket-count=8\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-profiler-bucket-allocator-block-size=4194304\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-profiler-bucket-allocator-block-count=1\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-profiler-allocator-block-size=16777216\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-profiler-editor-allocator-block-size=1048576\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-temp-allocator-size-main=4194304\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-job-temp-allocator-block-size=2097152\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-job-temp-allocator-block-size-background=1048576\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-job-temp-allocator-reduction-small-platforms=262144\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-temp-allocator-size-background-worker=32768\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-allocator-temp-initial-block-size-main=262144\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-allocator-temp-initial-block-size-worker=262144\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-temp-allocator-size-audio-worker=65536\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "    \"memorysetup-remapper-allocator-initial-capacity=32768\"\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "CodeReloadManager initialized\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "Input System module state changed to: Initialized.\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "[Physics::Module] Initialized fallback backend.\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "[Physics::Module] Id: 0xdecafbad\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "Loading player data from data.unity3d\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "Initialize engine version: 6000.5.9f1 (b57deb96f08d)\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "Creating WebGL 2.0 context."
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "Renderer: WebKit WebGL\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "Vendor:   WebKit\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "Version:  OpenGL ES 3.0 (WebGL 2.0 (OpenGL ES 3.0 Chromium))\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "GLES:     3\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": " EXT_clip_control EXT_color_buffer_float EXT_color_buffer_half_float EXT_conservative_depth EXT_depth_clamp EXT_disjoint_timer_query_webgl2 EXT_float_blend EXT_polygon_offset_clamp EXT_texture_compression_bptc EXT_texture_compression_rgtc EXT_texture_filter_anisotropic EXT_texture_norm16 KHR_parallel_shader_compile NV_shader_noperspective_interpolation OES_texture_float_linear WEBGL_blend_func_extended WEBGL_clip_cull_distance WEBGL_compressed_texture_s3tc WEBGL_compressed_texture_s3tc_srgb WEBGL_debug_renderer_info WEBGL_debug_shaders WEBGL_lose_context WEBGL_multi_draw WEBGL_polygon_mode GL_EXT_clip_control GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_depth_clamp GL_EXT_disjoint_timer_query_webgl2 GL_EXT_float_blend GL_EXT_polygon_offset_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_rgtc GL_EXT_texture_filter_anisotropic GL_EXT_texture_norm16 GL_KHR_parallel_shader_compile GL_NV_shader_noperspective_interpolation GL_OES_texture_float_linear GL\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "_WEBGL_blend_func_extended GL_WEBGL_clip_cull_distance GL_WEBGL_compressed_texture_s3tc GL_WEBGL_compressed_texture_s3tc_srgb GL_WEBGL_debug_renderer_info GL_WEBGL_debug_shaders GL_WEBGL_lose_context GL_WEBGL_multi_draw GL_WEBGL_polygon_mode\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "OPENGL LOG: Creating OpenGL ES 3.0 graphics device ; Context level  <OpenGL ES 3.0> ; Context handle 1\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "[Physics::Module] Selected backend.\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "[Physics::Module] Name: PhysX\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "[Physics::Module] Id: 0xf2b8ea05\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "[Physics::Module] SDK Version: 4.1.2\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "[Physics::Module] Integration Version: 1.0.0\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "[Physics::Module] Threading Mode: Single-Threaded\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "Input System initialize...\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "UnloadTime: 3.599999 ms\n"
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "Trying to get length of sound which is not loaded yet."
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "log",
+      "text": "Trying to get metadata of sound which is not loaded."
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "type": "warning",
+      "text": "Shader 'Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling' is not supported (in 'Blit FSR Upscaling'). PostProcessing render passes will not execute.\n"
+    }
+  ]
+}

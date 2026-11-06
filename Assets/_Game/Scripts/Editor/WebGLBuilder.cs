@@ -57,7 +57,9 @@ namespace Neko.Game.Editor
 
         public static BuildReport Run() => Run(Output);
 
-        public static BuildReport Run(string output)
+        public static BuildReport Run(string output) => Run(output, true);
+
+        internal static BuildReport Run(string output, bool optimizeWalkTextures)
         {
             Directory.CreateDirectory(output);
 
@@ -82,10 +84,18 @@ namespace Neko.Game.Editor
                 locationPathName = output,
                 target = BuildTarget.WebGL,
                 targetGroup = BuildTargetGroup.WebGL,
+                // Explicit desktop target matching the BC3 importer overrides.
+                subtarget = (int)(optimizeWalkTextures ? WebGLTextureSubtarget.DXT : WebGLTextureSubtarget.Generic),
                 options = BuildOptions.None,
             };
 
-            return BuildPipeline.BuildPlayer(options);
+            if (!optimizeWalkTextures) return BuildPipeline.BuildPlayer(options);
+
+            using (var textures = new WebGLWalkTextures())
+            {
+                textures.Prepare();
+                return BuildPipeline.BuildPlayer(options);
+            }
         }
     }
 }
