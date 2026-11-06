@@ -101,6 +101,7 @@
       "id": "himari",
       "name": "Himari",
       "archetype": "Idol",
+      "matte_cut": 110,
       "folder": "16_himari/step4_blender/walk_x/frames"
     },
     {

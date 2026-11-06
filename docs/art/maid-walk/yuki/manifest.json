@@ -1,0 +1,104 @@
+{
+ "id": "yuki",
+ "name": "Yuki",
+ "frames_found": 27,
+ "folder": "11_yuki/step4_blender/walk_x/frames",
+ "numbering": [
+  77,
+  103
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 6,
+ "matte_px": 307074,
+ "chroma_px": 0,
+ "height_mean": 875.5,
+ "height_range": [
+  871,
+  879
+ ],
+ "cx_std": 5.8,
+ "drift_x": 22.0,
+ "drift_y": 5,
+ "step_diff_mean": 0.0617,
+ "wrap_diff": 0.0327,
+ "loop_ratio": 0.61,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.0917,
+ "loop_trim": [
+  0,
+  26
+ ],
+ "loop_ratio_before_trim": 0.53,
+ "source_frame_numbers": [
+  77,
+  103
+ ],
+ "units_per_cycle": 1.98,
+ "slide_factor": 2.8,
+ "cell": [
+  192,
+  252
+ ],
+ "scale": 0.27412,
+ "frames": 27,
+ "columns": 6,
+ "rows": 5,
+ "idle_frame": 21,
+ "rest_frames": [
+  9,
+  10,
+  11,
+  21,
+  22,
+  23
+ ],
+ "foot_speed_px_per_frame": 2.39,
+ "max_foot_separation_px": 32.9,
+ "noslide_units_per_cycle": 0.698,
+ "status": "NEEDS_PROCESSING",
+ "note": "faint matte removed; 6 specks removed",
+ "staged_sheet": "docs/art/maid-walk/yuki/yuki_walk.png",
+ "sheet_sha256": "39e6936ad833d857bf35fb6a1f7b3a5d330b515df7105cb877e73d7ba7ef79f8",
+ "source_sha256": {
+  ".gitignore0077.png": "bcc5f454713f01938e21a8bd8399b44ce8b3530192bae9d28ed716f8be86b2f7",
+  ".gitignore0078.png": "c03f9cec3fc0dd7f7ce7f92fccba6581135b1e8e5977182b9e3de590a2513026",
+  ".gitignore0079.png": "89da1572263cbc3eeaae5947bf7636d35f9b63e5f21b780bb7eb07ad98e21d32",
+  ".gitignore0080.png": "e448b7ea31b2327f5599999cb0c2e5f754d36e46bd593281cced03d36793f7e0",
+  ".gitignore0081.png": "4df94ff290c807a0b267fc217cb06cfc83d590b39d82a6f63b4909f22299520c",
+  ".gitignore0082.png": "ce6bda13c8762c73174f5475c504c1a0a640d0292eb6b360533bd6efd477f889",
+  ".gitignore0083.png": "46e98b9106946689ad51b313e8c87f2de64db010fc24ccfff4d35f2accf72646",
+  ".gitignore0084.png": "ca0c9aab30c33e98f2230a286ac6dfd096047c0a1de633a636ca936d89c72f16",
+  ".gitignore0085.png": "6c78a55a35ae46e8750cdcd27abbe755edfb5338915e01e116ea8e5169a19d2c",
+  ".gitignore0086.png": "950a41a813616c3e851e2fd62a4ba3290a1edfe85f9946b4a2397898ede0b998",
+  ".gitignore0087.png": "2411d987c5356900f7708568a8aa2a5e8fd2a02aed721ee666759d36849dc04d",
+  ".gitignore0088.png": "f2236e8c0d58fa9e405099ef78a56bcaf34b57cc551d71b38e2564919c1bc847",
+  ".gitignore0089.png": "70e0fe31ac10f811e0bd161a9e05af0e212006e4cb4f707daf5d1cdd9e4f1b81",
+  ".gitignore0090.png": "f921445667e91e5a94b41479e4086f63659dda714c76180a2b15013edea53c91",
+  ".gitignore0091.png": "387f37cd29fc94fc5a65486561893f92bcc420c302b871c7ee65b4327c6df126",
+  ".gitignore0092.png": "8713db4a36720e6bdb5909ac4a67387c1eac9c0e10cdc71a6393d4d13d0af292",
+  ".gitignore0093.png": "2b2b971e02094a15e91a307c495fc929252bd8f0685a0ea0bb9c015e334ff5b5",
+  ".gitignore0094.png": "8563bfee3a6594c219e38c409275f76c8fb0e9040a3c032e4f977f4ac479d43d",
+  ".gitignore0095.png": "904b63ba69b7c8cd7324ac651686410b796097a6c831380493a3ca54d9bb7051",
+  ".gitignore0096.png": "29bb355b5dfcfff47434f9f50925639a07592f42cea24ee0d928d484f23aa39c",
+  ".gitignore0097.png": "a6320769bbb8054f2d427d40b2a5c82f150d3f26799b960642472167780467c4",
+  ".gitignore0098.png": "16167d7655017ecfe7b6679a85815da15ae6b70d81141e85b160d71c1d0c3a1a",
+  ".gitignore0099.png": "a2e4f4fe2d75b5adc1236e11d3444639d69017202e4c4a6858f43d9bb8159044",
+  ".gitignore0100.png": "b5ae5d6c3dbf661090776c02ab64ff7032e3d3b915333ffbf818753047d70628",
+  ".gitignore0101.png": "8727e18b4dbee0640771720e0ac39ff5e722a578051ad28ccd141eed30c61a0f",
+  ".gitignore0102.png": "196e9feaef56144c76b7a80b9c337d8f6a790b67fd261064aa8c8872dadae0e8",
+  ".gitignore0103.png": "13cf6e9f3ffe204558018f10c8467db23e9d762817af9cbd9a8bf64c907eaf77"
+ },
+ "parameters": {
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
+ }
+}

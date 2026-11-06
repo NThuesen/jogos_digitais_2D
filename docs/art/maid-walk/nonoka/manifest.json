@@ -1,0 +1,110 @@
+{
+ "id": "nonoka",
+ "name": "Nonoka",
+ "frames_found": 34,
+ "folder": "13_nonoka/step4_blender/walk_x/frames",
+ "numbering": [
+  44,
+  77
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 10,
+ "matte_px": 232303,
+ "chroma_px": 0,
+ "height_mean": 799.6,
+ "height_range": [
+  793,
+  805
+ ],
+ "cx_std": 2.8,
+ "drift_x": 10.0,
+ "drift_y": 8,
+ "step_diff_mean": 0.0665,
+ "wrap_diff": 0.0224,
+ "loop_ratio": 0.36,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.1191,
+ "loop_trim": [
+  0,
+  33
+ ],
+ "loop_ratio_before_trim": 0.34,
+ "source_frame_numbers": [
+  44,
+  77
+ ],
+ "units_per_cycle": 2.49,
+ "slide_factor": 2.7,
+ "cell": [
+  168,
+  252
+ ],
+ "scale": 0.30015,
+ "frames": 34,
+ "columns": 6,
+ "rows": 6,
+ "idle_frame": 28,
+ "rest_frames": [
+  1,
+  20,
+  21,
+  22,
+  28
+ ],
+ "foot_speed_px_per_frame": 2.53,
+ "max_foot_separation_px": 37.3,
+ "noslide_units_per_cycle": 0.934,
+ "status": "NEEDS_PROCESSING",
+ "note": "faint matte removed; 10 specks removed",
+ "staged_sheet": "docs/art/maid-walk/nonoka/nonoka_walk.png",
+ "sheet_sha256": "6bb710b66b5cda5ccd1f8fb26d04a89d550a3229c728aa824f8164eb9ebb6c2f",
+ "source_sha256": {
+  ".gitignore0044.png": "62b7041614c59a678121743c627d0c9a7e81f3bf12337a5f6125c03134b3acac",
+  ".gitignore0045.png": "6879cec112d1ea1d08df8632f9db81f71e78fb36295f8d16d3093e83f1eab333",
+  ".gitignore0046.png": "fc13eb0b326e42c2d7ad4b83a7dbe1b6d3b2718c0da6049e2c1d20c0ea803680",
+  ".gitignore0047.png": "c197666574c1a3fabc34a682417391000f18f996e8115e6db9ecd164b912c7c2",
+  ".gitignore0048.png": "f5dd503c4e2d53127c8e1e6dbd4bcf1d0ff40caf76c816cf9aa535578cc688e8",
+  ".gitignore0049.png": "45a120e87712420dc8b59531d557bf50651c1dc9bd66dd585f1e3d4eee677c06",
+  ".gitignore0050.png": "0fe2f5bb8bd007c913e58e10df944f65505dfd3f396a58af4cb7e00fc34a7317",
+  ".gitignore0051.png": "3f9f44f2bfd6619d439e558157026aebb6203c090d61e3604dd11929f659ce2a",
+  ".gitignore0052.png": "9aa73bb645801939dbc6513a7de87d9f7deedba14705768a69be27e62c6f6f54",
+  ".gitignore0053.png": "f08d7362b97014f3243c6d2b674ffa012b96fe2bf62f9d3b1743342c751ce3c0",
+  ".gitignore0054.png": "20659363bd1d86030c4392122e5b67b77378806f1696c38c9851be01fa3fc21f",
+  ".gitignore0055.png": "f3c1f0e845b2adcfa07d04310c806cfcd00785c0cbc225ddb183c110131c128f",
+  ".gitignore0056.png": "708976f8735bff556d980816cb88e11e79551d3c625e266f41c28bf48443a105",
+  ".gitignore0057.png": "2563a7f047e5ad34af31428bd73e21d71d6e906b3cfdf6561a9dc6ce58f1e991",
+  ".gitignore0058.png": "cfe1a579913b3956f9e4702b7b95c230a7987173b88620d4bac5d2807b0caa18",
+  ".gitignore0059.png": "483ba26af2415185bbdab87be037a0c534e01c78cb8c74fda6e890585772778a",
+  ".gitignore0060.png": "93e66556fba25ca56f87918f2b8e421a84595936a1e7cf8d15b9c44edbf273ac",
+  ".gitignore0061.png": "ed192f97c25b43c0321dd17b0a40b56e1bb2d6257cfc849475ee1ca394048aad",
+  ".gitignore0062.png": "8f284cea85847d361e24fb478c78aa98ef8dd56757031ae74a6eff40bb7ad667",
+  ".gitignore0063.png": "6574434b5d46f8dcceee920c99f4d33136b3289f51fa7486a4aec86872ca05b1",
+  ".gitignore0064.png": "1f7275d882a47066906dd0e7d225393df5a01fa925780132ee63fb92a8909340",
+  ".gitignore0065.png": "5ce6ea635476c94f24909ee6b4843168c7f2d2e4edb55d11d7230fc9f7d8ae7a",
+  ".gitignore0066.png": "b601dd915aeaf9a54d8fe2c7bfcde157d2b342ae54a17717543ab52e970548de",
+  ".gitignore0067.png": "e07c727d7e78e2927e77c21aba895710b013cd803f0198edd5add465625d6476",
+  ".gitignore0068.png": "6b9d05a5e4f4ff7ff9d7cc57349d954af215a9888f81b12c6bfcae92bb80777c",
+  ".gitignore0069.png": "2aa17497c7eca0ff92c738b61a6e60b08ed2f2067e2fe9a3796a93e8e885a42a",
+  ".gitignore0070.png": "69b3434c59ab96ae10b3c0ccd558b41767e7eb0b7466a0e206ac0a6e36c33dc2",
+  ".gitignore0071.png": "d8b4f2d9b89cdd23ea4ae5c266ccd11630503c8e31cf2fd5d4213996c488560b",
+  ".gitignore0072.png": "3d80787185e888eba776f7abe2eba20467e570a37ee672bd6559329bafecb371",
+  ".gitignore0073.png": "0a5afc181da9e9f2affbf742021e2b5450bb3cfaa547d16009b9f85123d680e2",
+  ".gitignore0074.png": "a0d8ec62b64fd2e0a7713c682d3fff8baf2c9fe8469a63fc0af8d0be0faeb110",
+  ".gitignore0075.png": "cbc7d84612a64d49271d28e30eefcac9cc81127a1b6a1afdbe7cd7ce4055aef4",
+  ".gitignore0076.png": "bd4e390eb3c81feb993d212d553efcf70a4074c71108598df29be6be5d43f8f9",
+  ".gitignore0077.png": "244d86e484662be658f34e1aba0820363512693f789d5d6306b167443daf5ec0"
+ },
+ "parameters": {
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
+ }
+}

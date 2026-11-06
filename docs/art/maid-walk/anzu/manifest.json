@@ -1,0 +1,108 @@
+{
+ "id": "anzu",
+ "name": "Anzu",
+ "frames_found": 30,
+ "folder": "17_anzu/step4_blender/walk_x/frames",
+ "numbering": [
+  103,
+  132
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 0,
+ "matte_px": 275292,
+ "chroma_px": 0,
+ "height_mean": 914.1,
+ "height_range": [
+  906,
+  923
+ ],
+ "cx_std": 5.1,
+ "drift_x": 18.0,
+ "drift_y": 9,
+ "step_diff_mean": 0.0575,
+ "wrap_diff": 0.0413,
+ "loop_ratio": 0.68,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.0907,
+ "loop_trim": [
+  0,
+  29
+ ],
+ "loop_ratio_before_trim": 0.72,
+ "source_frame_numbers": [
+  103,
+  132
+ ],
+ "units_per_cycle": 2.2,
+ "slide_factor": 3.4,
+ "cell": [
+  156,
+  252
+ ],
+ "scale": 0.26254,
+ "frames": 30,
+ "columns": 6,
+ "rows": 5,
+ "idle_frame": 16,
+ "rest_frames": [
+  1,
+  2,
+  3,
+  4,
+  16,
+  17,
+  18
+ ],
+ "foot_speed_px_per_frame": 2.0,
+ "max_foot_separation_px": 33.7,
+ "noslide_units_per_cycle": 0.65,
+ "status": "NEEDS_PROCESSING",
+ "note": "faint matte removed",
+ "staged_sheet": "docs/art/maid-walk/anzu/anzu_walk.png",
+ "sheet_sha256": "e27616cae6da7d734996d57f0bacede96802733ef2fa8cf7b9640dbd0259a9eb",
+ "source_sha256": {
+  ".gitignore0103.png": "cd93b79ad1ae63a624df895af579926d389b12261a8236502285c98328492adf",
+  ".gitignore0104.png": "7518e8d7e7fbe3880df09eb2d39799de8a5a98059b5c319a64a2398dc62c1b39",
+  ".gitignore0105.png": "a99d7afee080cdfa5414bbd8fc515a669ff3da7653d20b563c31ccb9111db484",
+  ".gitignore0106.png": "180546395c5d44a61f74ed0b4863b89373c3780bb3e7387888885d213b010849",
+  ".gitignore0107.png": "a1c35162f1ba7cfb512eedcdd1e0b1ac20daba45dc0cf60e4923294898949dbd",
+  ".gitignore0108.png": "9ace49dd21ad0bc529cdfbaca4b0b2230150f79d64df4c274905cba40ca12450",
+  ".gitignore0109.png": "845fdf12e1fd4f6cd542719dc1ae32120b4c8587aeb95bf270155d16eab5bcae",
+  ".gitignore0110.png": "4a70501716f51368c221bc2c45a8184210ed3e720de4a8b179cd29a86422e193",
+  ".gitignore0111.png": "ebc1627f762210acf8d79d5067e355ca18fbe8589cc5c330a1aeb2f402cc0a3a",
+  ".gitignore0112.png": "765f1781e02ece40a4648b70f0618b78d594d346368f0a7489788ffc8e5210a1",
+  ".gitignore0113.png": "d290585b10b91d64847454f9e51a5d196cbd9997876620999998d69abd76383f",
+  ".gitignore0114.png": "a162b92738f68ee41cae9652ea2d187866c7664908b94b3449d9f3e8bed12511",
+  ".gitignore0115.png": "dcf8bc65d765129052059668b380d953f2790c8ae9dccb7c4d72bbd6dc5a6277",
+  ".gitignore0116.png": "0d6713a16118d83bb5804b98769101feef81543d3ec92e7a81255b6ff4484d3a",
+  ".gitignore0117.png": "8d5e7156d262fdf9627f89a4622d9ac133ea1ec926699757a1538783186757f1",
+  ".gitignore0118.png": "f5bbf89ade9ff12b5b7cc73b763fc1ab1334ba651a24ef98a05eae6887e54728",
+  ".gitignore0119.png": "c9e2968bb288698ea97e3d92363b58c1aa4b6c20eee93b721e14fe972a191205",
+  ".gitignore0120.png": "a4fb1bbddb22c7e4ff667c38905cf2d8cd91bc44d69f8c1529ede2f661004c75",
+  ".gitignore0121.png": "d9a3a2567797ba05da3fdb153538490961be5d4a75d0944369accad9da2a45dc",
+  ".gitignore0122.png": "6c4c0b43152718ecf852d0d74d0dbdf98c3fd55a517a43eeeef23790d4650071",
+  ".gitignore0123.png": "5290b1bdfa545540793c734bc076fb126e56294be630f62b44145b55464d9346",
+  ".gitignore0124.png": "1286560def8bb5c5d6d8b03a280f5446d96b4f25d445724795a4db29788160bb",
+  ".gitignore0125.png": "a21e33fcf680bb1c1a4a61fff751e1b274689d82244870e4994c856918e8d387",
+  ".gitignore0126.png": "d548f47b79a9cb712b8b7942fee4eee238b8d9860c029de6ba191ce2024aa760",
+  ".gitignore0127.png": "99fe1f0ffa393d5cf5e472c0507a5efbac416ec4f19cbe41563061d43dd9a440",
+  ".gitignore0128.png": "63b40cacc846b2301221b23de01db884f67d0d92f21773d1561d718eda66e868",
+  ".gitignore0129.png": "ab7160c4edfc1a37343648bfd84d5abad7d7f04ced5c17b2d1d6d0076c84a4a5",
+  ".gitignore0130.png": "77242d5986bb28d720239d038e273792ce728ecbf62b91af7301af2558620703",
+  ".gitignore0131.png": "1e337680cd40b53ef5e07f56d76be40479a659b271c04e288b4083a2e13771fa",
+  ".gitignore0132.png": "b27acab19d0ece25f7dc0a6f7f32164b021b797b38930b6efd9bb77f98f83091"
+ },
+ "parameters": {
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
+ }
+}
