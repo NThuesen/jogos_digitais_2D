@@ -15,8 +15,8 @@ Para liberar as quatro que faltam: exportar os frames, `python tools/art/maid_wa
 
 ## Procedural que ainda aparece no jogo (prioridade)
 
-1. **Clientes** (`CustomerView`): figuras procedurais ao lado de maids ilustradas. Prompts: `ui-modular/prompts/26_CUSTOMER_CHIBIS.md` (7 tipos).
-2. **Pratos e bebidas** (`Recipe.ShapeId`/`ColorHex`): formas geométricas nos balões e bandejas. Prompts: `ui-modular/prompts/27_DISH_ICONS.md` (14 receitas).
+1. **Clientes** (`CustomerView`): figuras procedurais, um sprite estático por tipo, sem estado sentado e sem caminhada. **Escopo decidido: 8 clientes chibi** (7 tipos + 1 variante de Regular), cada um com design base + sheet de caminhada + sprite sentado. Auditoria e plano: [`CUSTOMERS_DISHES_AUDIT.md`](CUSTOMERS_DISHES_AUDIT.md). Prompts: `ui-modular/prompts/26_CUSTOMER_CHIBIS.md`.
+2. **Pratos e bebidas** (`Recipe.ShapeId`/`TintHex`): 14 receitas, formas geométricas só no balão de pedido (único uso atual). **Escopo decidido: 1 ícone ilustrado por receita**, estático, transparente, derivado a 128×128. Ver a auditoria acima. Prompts: `ui-modular/prompts/27_DISH_ICONS.md`.
 3. **Salão e móveis** (`RoomView`, `SpriteFactory.Furniture`): pixel/procedural contra maids ilustradas. Prompts já existem e esperam geração: `13_RESTAURANT_BACKGROUND`, `14_RESTAURANT_PROPS_SET`, `22_FLOOR_TILE`, `23_WALL_SEGMENT`, `24_FURNITURE_SINGLE` (23 móveis em `variants/`).
 4. **Equipamento visível** nas maids ilustradas: hoje só aparece na UI (regra do catálogo); overlays por peça exigem arte nova (não há prompt ainda; depende de decidir o método: camadas sobre a sheet ou sheets por conjunto).
 5. **HUD/UI restantes** (`15_TOP_BAR_HUD`, `16_BOTTOM_STRIP_DAY_UI`, `17_SHOP_ITEM_FRAME`, `18_BALANCE_ROW_FRAME`, `19_DIALOG_BALLOON`, `25_RARITY_CARD_FRAME`): prompts existem; ver `ui-modular/OUTPUT_MANIFEST.md` para o que já foi aprovado/integrado.
