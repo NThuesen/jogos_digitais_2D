@@ -131,4 +131,4 @@ O ganho comprovado de armazenamento e o ganho localizado de CPU justificam estas
 
 ## 9. Git
 
-Base `6c1c54d`, branch `perf/webgl-textures-runtime`. Implementação: `9282abf` (compressão/padding/cópia CPU) e `cf599be` (cache de ícones e teste). As ferramentas e evidências estão no commit de auditoria desta PR. Link da PR acrescentado após sua criação. Sem publicação, merge ou auto-merge.
+Base `6c1c54d`, branch `perf/webgl-textures-runtime`. Implementação: `9282abf` (compressão/padding/cópia CPU) e `cf599be` (cache de ícones e teste). Ferramentas/evidências: `9553e83`. PR consolidada: [#67](https://github.com/NThuesen/jogos_digitais_2D/pull/67). Sem publicação, merge ou auto-merge.
