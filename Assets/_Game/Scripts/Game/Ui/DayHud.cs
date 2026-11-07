@@ -9,12 +9,13 @@ using UnityEngine.UI;
 namespace Neko.Game.Ui
 {
     /// <summary>
-    /// What the player sees while the day runs itself.
+    /// What the player sees while the day runs.
     /// </summary>
     /// <remarks>
-    /// There is nothing to press that affects the café. Speed and skip, and that is all — the
-    /// day belongs to the lineup. Saying so out loud at the bottom of the screen is the only
-    /// way a player used to clicking will stop looking for the thing to click.
+    /// The lineup still plays the day, but the owner has hands: seat a party, take an order,
+    /// clear a table, stop a dish on the golden mark, calm a table. Those are taps on the room
+    /// itself, not buttons here, so this screen only keeps the clock, the till, the speed and
+    /// skip controls, the combo the taps build, and a line saying what can be tapped.
     /// </remarks>
     public sealed class DayHud : Screen
     {
@@ -22,6 +23,9 @@ namespace Neko.Game.Ui
         private Text _till;
         private Text _tally;
         private Text _closing;
+        private Text _combo;
+        private Text _comboTip;
+        private Text _hint;
         private RectTransform _strip;
         private readonly System.Collections.Generic.List<GameObject> _chips =
             new System.Collections.Generic.List<GameObject>();
@@ -60,6 +64,19 @@ namespace Neko.Game.Ui
             Scenery.Plank(speeds, "»", new Vector2(56f, 44f), () => OnSkip?.Invoke(),
                 Typeface.Body, Logo.Brass);
 
+            // The owner's combo: a run of helpful taps that lifts tips. Only drawn while it lasts.
+            _combo = UiKit.Label(transform, "", Typeface.Heading, Logo.Brass, bold: true);
+            UiKit.Anchor(_combo.rectTransform, new Vector2(0f, 1f), new Vector2(20f, -14f));
+            _combo.rectTransform.sizeDelta = new Vector2(170f, 38f);
+            _combo.alignment = TextAnchor.MiddleLeft;
+            _combo.gameObject.SetActive(false);
+
+            _comboTip = UiKit.Label(transform, "", Typeface.Tiny, Palette.Cream);
+            UiKit.Anchor(_comboTip.rectTransform, new Vector2(0f, 1f), new Vector2(20f, -50f));
+            _comboTip.rectTransform.sizeDelta = new Vector2(170f, 20f);
+            _comboTip.alignment = TextAnchor.MiddleLeft;
+            _comboTip.gameObject.SetActive(false);
+
             _closing = UiKit.Label(transform, Strings.Get("day.closing"), Typeface.Title,
                 Palette.Alarm, bold: true);
             UiKit.Anchor(_closing.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0f, 140f));
@@ -70,16 +87,61 @@ namespace Neko.Game.Ui
             UiKit.Anchor(_strip, new Vector2(0f, 0f), new Vector2(16f, 46f));
             _strip.sizeDelta = new Vector2(1100f, 76f);
 
-            var hint = UiKit.Label(transform, Strings.Get("day.watching"), Typeface.Small,
+            _hint = UiKit.Label(transform, Strings.Get("day.watching"), Typeface.Small,
                 Palette.WithAlpha(Palette.Cream, 0.7f));
-            UiKit.Anchor(hint.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 14f));
-            hint.rectTransform.sizeDelta = new Vector2(820f, 26f);
+            UiKit.Anchor(_hint.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 14f));
+            _hint.rectTransform.sizeDelta = new Vector2(820f, 26f);
         }
 
         private void Speed(Transform parent, string label, float scale)
         {
             Scenery.Plank(parent, label, new Vector2(56f, 44f), () => OnSpeed?.Invoke(scale),
                 Typeface.Small);
+        }
+
+        private bool _hintUrgent;
+
+        /// <summary>
+        /// The one thing worth tapping right now, in order of how fast it goes stale: a dish on
+        /// its mark, a table with a hand up, a party at the door, a dirty table, an upset party.
+        /// </summary>
+        private string HintKey()
+        {
+            _hintUrgent = false;
+            if (Shift == null || Shift.Finished) return "day.watching";
+
+            foreach (var ticket in Shift.Tickets)
+            {
+                var progress = Shift.CookProgressOf(ticket);
+                if (progress >= Sim.Shift.Shift.PerfectMin && progress <= Sim.Shift.Shift.PerfectMax)
+                {
+                    _hintUrgent = true;
+                    return "hint.stove";
+                }
+            }
+
+            var greet = false;
+            var upset = false;
+            foreach (var customer in Shift.Customers)
+            {
+                if (customer.State == Sim.Service.CustomerState.Ordering)
+                {
+                    _hintUrgent = true;
+                    return "hint.order";
+                }
+
+                if (customer.State == Sim.Service.CustomerState.Queueing) greet = true;
+                else if (customer.DrainsPatience && !customer.Profile.NeverImpatient && customer.Patience < 0.5f) upset = true;
+            }
+
+            if (greet) return "hint.greet";
+
+            foreach (var seat in Shift.Seats)
+            {
+                if (seat.Dirty) return "hint.clean";
+            }
+
+            return upset ? "hint.pamper" : "day.watching";
         }
 
         /// <summary>One chip per maid on the card, with her position and her mood.</summary>
@@ -134,6 +196,19 @@ namespace Neko.Game.Ui
                           Strings.Get("day.angry") + " " + Shift.LeftAngry;
 
             _closing.gameObject.SetActive(Shift.ClosingTime && !Shift.Finished);
+
+            _hint.text = Strings.Get(HintKey());
+            _hint.color = Palette.WithAlpha(Palette.Cream, _hintUrgent ? 1f : 0.7f);
+
+            var combo = Shift.Combo;
+            _combo.gameObject.SetActive(combo > 0 && !Shift.Finished);
+            _comboTip.gameObject.SetActive(combo > 0 && !Shift.Finished);
+            if (combo > 0)
+            {
+                _combo.text = Strings.Get("day.combo") + " x" + combo +
+                              (combo >= Sim.Shift.Shift.ComboCap ? " " + Strings.Get("day.combo.max") : "");
+                _comboTip.text = Strings.Get("day.tips") + " +" + Mathf.RoundToInt(Shift.ComboTipBonus * 100f) + "%";
+            }
         }
     }
 

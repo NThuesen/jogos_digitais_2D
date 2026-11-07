@@ -48,6 +48,15 @@ namespace Neko.Sim.Shift
         /// </remarks>
         public float Satisfaction;
 
+        /// <summary>Times the player helped on the floor (seat, order, clean, perfect dish, pamper).</summary>
+        public int Assists;
+
+        /// <summary>Dishes finished on the golden mark of the kitchen gauge.</summary>
+        public int PerfectDishes;
+
+        /// <summary>The longest run of helpful taps in a row.</summary>
+        public int BestCombo;
+
         /// <summary>XP earned, by maid id.</summary>
         public readonly Dictionary<int, int> XpByMaid = new Dictionary<int, int>();
 
