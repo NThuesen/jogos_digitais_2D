@@ -38,7 +38,7 @@ namespace Neko.Game.Core
         public const float ShiftBottomInset = 128f;
 
         /// <summary>Tiles above the top row that a standing maid's head occupies.</summary>
-        public const float HeadRoom = 0.8f;
+        public const float HeadRoom = 1.9f;
 
         /// <summary>Tiles below the bottom row kept for feet and the room frame.</summary>
         public const float FootRoom = 0.3f;
