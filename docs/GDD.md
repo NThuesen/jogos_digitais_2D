@@ -302,6 +302,28 @@ inteiro roda em milissegundos num teste e 200 dias semeados cabem numa asserçã
 | Fichas pagam qualidade, não volume | dia corrido rende menos ficha que dia tranquilo |
 | Nenhum nível desbloqueia nada | percorre os dez |
 
+### 10.1 A curva do dinheiro (ECON-02)
+
+O baseline ECON-01A mostrou que **nenhuma** empresa passava do dia 4: o aluguel (144) era 73%
+do custo fixo e o salão atendia 2 clientes em 17. Medido com `tools/econ-balance` (40 empresas,
+40 dias, escalação natural, sem compras), o resultado depois do ajuste:
+
+| Estilo de jogo | Dia 1 (lucro) | Dia 7 | Dia 20 | Sobreviventes (dia 40) |
+| --- | ---: | ---: | ---: | ---: |
+| Parado (nenhum toque) | −68 | 18/40 vivos | 0/40 | 0 |
+| Casual (toca a cada 1,2 s, acerta metade das faixas) | −16 | +28/dia, nível 1,4 | +51/dia, nível 2,2 | 35/40 |
+| Atento (robô perfeito) | +19 | +179/dia, nível 1,7 | +261/dia, nível 2,7 | 40/40 |
+
+Ajustes: aluguel `40 + 1,2/tile` (era `60 + 2,4/tile`: 82 no salão inicial, antes 144);
+reputação por cliente feliz ×3 (nível 2 em ~10 dias de jogo casual); velocidade de cozinha com
+base `0,8 +` cozinha (era `0,6 +`); Kuudere ganha cozinha ×1,2 (era o pior cozinheiro sem
+compensação). Fichas: +1 por prato na faixa dourada e um bônus de combo (a partir de 5 passos).
+Deixar o café sozinho continua possível, mas é uma sangria lenta — não uma sentença de dia 4.
+
+Dos três cozinheiros, nenhum rende mais de 1,35× do outro no mesmo dia (teste
+`NoKitchenArchetypeIsAnOutlier`). Elencos com Ojou-sama na recepção ainda são os mais difíceis
+de sustentar (atraem VIP de 22 s num salão de 4 mesas): é uma escolha, não um beco sem saída.
+
 ## 11. Gerenciamento de estados e erros
 
 - **Máquina de estados explícita**: Boot → Menu → Empresa → Dia → Balanço, com as transições

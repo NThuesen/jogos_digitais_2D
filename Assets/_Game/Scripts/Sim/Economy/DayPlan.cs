@@ -49,7 +49,7 @@ namespace Neko.Sim.Economy
         {
             if (result == null || result.Impossible) return 0;
 
-            var earned = (int)Math.Round(result.Served * result.Satisfaction * 2f);
+            var earned = (int)Math.Round(result.Served * result.Satisfaction * 3f);
             return Math.Max(0, earned - result.LeftAngry);
         }
 

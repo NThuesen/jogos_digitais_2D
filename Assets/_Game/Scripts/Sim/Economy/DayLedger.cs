@@ -57,6 +57,12 @@ namespace Neko.Sim.Economy
         public int TurnedAway;
         public int DishesCooked;
 
+        /// <summary>Dishes the owner stopped on the golden mark.</summary>
+        public int PerfectDishes;
+
+        /// <summary>The owner's longest run of helpful taps.</summary>
+        public int BestCombo;
+
         /// <summary>Nought to one. What the fichas were paid on.</summary>
         public float Satisfaction;
 

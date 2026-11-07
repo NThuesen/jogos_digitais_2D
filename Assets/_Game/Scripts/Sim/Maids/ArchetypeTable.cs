@@ -40,6 +40,7 @@ namespace Neko.Sim.Maids
                 GrowthWeights = new Stats(2, 5, 1, 2),
                 MoveMultiplier = 0.8f,
                 NeverFumbles = true,
+                CookMultiplier = 1.2f,
                 AccentHex = "#6BAED0",
                 SilhouetteTell = "straight bob, half-lidded eyes",
                 Flavour = "Nunca derruba nada. Nunca tem pressa. Nunca comenta.",
