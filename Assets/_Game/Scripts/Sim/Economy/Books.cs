@@ -19,10 +19,10 @@ namespace Neko.Sim.Economy
     public static class Books
     {
         /// <summary>Daily rent, before the room's size is taken into account.</summary>
-        public const int BaseRent = 60;
+        public const int BaseRent = 40;
 
         /// <summary>Added per tile of floor. A bigger café is a bigger bill.</summary>
-        public const float RentPerTile = 2.4f;
+        public const float RentPerTile = 1.2f;
 
         /// <summary>What a dish costs to make, as a fraction of what it sells for.</summary>
         public const float IngredientFraction = 0.22f;
@@ -35,6 +35,12 @@ namespace Neko.Sim.Economy
 
         /// <summary>A whole day without a single mistake is worth going for.</summary>
         public const int FlawlessDayBonus = 15;
+
+        /// <summary>One chip per dish stopped on the mark: the owner's skill pays in chips.</summary>
+        public const int PointsPerPerfectDish = 1;
+
+        /// <summary>A long combo is worth a few chips on top.</summary>
+        public const int ComboChipThreshold = 5;
 
         /// <summary>Below this many days of fixed costs in the bank, the game says so.</summary>
         public const int WarningDays = 2;
@@ -91,6 +97,8 @@ namespace Neko.Sim.Economy
                 ledger.LeftAngry = result.LeftAngry;
                 ledger.TurnedAway = result.TurnedAway;
                 ledger.DishesCooked = result.DishesCooked;
+                ledger.PerfectDishes = result.PerfectDishes;
+                ledger.BestCombo = result.BestCombo;
                 ledger.Satisfaction = result.Satisfaction;
                 ledger.ChemistryScore = result.ChemistryScore;
                 ledger.FailureReason = result.FailureReason;
@@ -130,6 +138,10 @@ namespace Neko.Sim.Economy
             {
                 points += FlawlessDayBonus;
             }
+
+            points += ledger.PerfectDishes * PointsPerPerfectDish;
+            var combo = Math.Min(ledger.BestCombo, Shift.Shift.ComboCap);
+            if (combo >= ComboChipThreshold) points += combo - ComboChipThreshold + 2;
 
             if (profile != null)
             {

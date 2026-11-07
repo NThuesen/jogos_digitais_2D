@@ -62,7 +62,7 @@ namespace Neko.Sim.Maids
             var move = BaseWalkSpeed * profile.MoveMultiplier * (0.7f + 0.6f * serve) * common;
             var greet = profile.GreetMultiplier * (0.6f + 0.9f * serve) * common;
             var serveSpeed = profile.ServeMultiplier * (0.6f + 0.9f * serve) * common;
-            var cookSpeed = profile.CookMultiplier * (0.6f + 1.0f * cook) * common;
+            var cookSpeed = profile.CookMultiplier * (0.8f + 1.0f * cook) * common;
 
             var effectiveCharm = charm;
             if (profile.CharmDoublesAtStation && moment.AtStation) effectiveCharm *= 2f;
