@@ -135,7 +135,7 @@ namespace Neko.Game.View
             var left = cell.X - GaugeWidth * 0.5f;
             gauge.Root.transform.position = new Vector3(cell.X, y, 0f);
 
-            var inZone = progress >= Sim.Shift.Shift.PerfectMin;
+            var inZone = progress >= Sim.Shift.Shift.PerfectMin && progress <= Sim.Shift.Shift.PerfectMax;
             var zoneMid = (Sim.Shift.Shift.PerfectMin + Sim.Shift.Shift.PerfectMax) * 0.5f;
             var zoneWidth = Sim.Shift.Shift.PerfectMax - Sim.Shift.Shift.PerfectMin;
 

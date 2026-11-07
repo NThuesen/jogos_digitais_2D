@@ -226,6 +226,73 @@ namespace Neko.Tests.Sim
             Assert.AreEqual(TicketState.Cooking, ticket.State);
         }
 
+        /// <summary>A dish being cooked, with its progress pinned to a chosen value.</summary>
+        private static (Shift shift, Ticket ticket) DishAt(float progress)
+        {
+            var shift = NewShift(5u, 0.5f);
+            RunUntil(shift, s => s.Tickets.Any(t => s.CookProgressOf(t) > 0.05f));
+            var ticket = shift.Tickets.First(t => shift.CookProgressOf(t) > 0.05f);
+            var worker = shift.Workers.First(w => w.Claimed != null && w.Claimed.Kind == TaskKind.Cook &&
+                                                  w.Claimed.TargetId == ticket.Id);
+            worker.Progress = progress;
+            return (shift, ticket);
+        }
+
+        [Test]
+        public void TheGoldenMarkIncludesBothItsEdges()
+        {
+            foreach (var edge in new[] { Shift.PerfectMin, Shift.PerfectMin + 0.001f, Shift.PerfectMax - 0.001f, Shift.PerfectMax })
+            {
+                var (shift, ticket) = DishAt(edge);
+                Assert.AreEqual(AssistResult.Done, shift.TryPerfectCook(ticket.Id), "progress " + edge);
+                Assert.AreEqual(1, shift.PerfectDishes);
+            }
+        }
+
+        [Test]
+        public void JustBeforeTheMarkIsTooEarlyAndJustAfterItIsTooLate()
+        {
+            var (early, earlyTicket) = DishAt(Shift.PerfectMin - 0.001f);
+            Assert.AreEqual(AssistResult.TooEarly, early.TryPerfectCook(earlyTicket.Id));
+            Assert.AreEqual(0, early.PerfectDishes);
+
+            var (late, lateTicket) = DishAt(Shift.PerfectMax + 0.001f);
+            Assert.AreEqual(AssistResult.TooLate, late.TryPerfectCook(lateTicket.Id));
+            Assert.AreEqual(0, late.PerfectDishes);
+            Assert.AreEqual(TicketState.Cooking, lateTicket.State, "a late tap does not finish the dish");
+        }
+
+        [Test]
+        public void ALateTapCostsNothingNotEvenTheCombo()
+        {
+            var (shift, ticket) = DishAt(Shift.PerfectMax + 0.02f);
+            RunUntil(shift, s => s.Customers.Any(c => c.State == CustomerState.Queueing), 3f);
+            var greeted = shift.Customers.Where(c => c.State == CustomerState.Queueing).ToList();
+            foreach (var c in greeted) shift.TryGreet(c.Id);
+            var combo = shift.Combo;
+            var spend = shift.CustomerById(ticket.CustomerId).SpendBonus;
+
+            Assert.AreEqual(AssistResult.TooLate, shift.TryPerfectCook(ticket.Id));
+            Assert.AreEqual(combo, shift.Combo);
+            Assert.AreEqual(spend, shift.CustomerById(ticket.CustomerId).SpendBonus, 1e-6f);
+        }
+
+        [Test]
+        public void TheComboStopsAtTheCapSoTheScreenMatchesThePay()
+        {
+            var shift = NewShift(5u, 0.9f);
+            for (var t = 0f; t < 90f && !shift.Finished; t += Step)
+            {
+                shift.Tick(Step);
+                Assist(shift);
+                Assert.LessOrEqual(shift.Combo, Shift.ComboCap);
+            }
+
+            Assert.LessOrEqual(shift.BestCombo, Shift.ComboCap);
+            Assert.AreEqual(Shift.ComboCap, shift.BestCombo, "a busy attentive day reaches the cap");
+            Assert.AreEqual(Shift.ComboCap * Shift.ComboTipPerStep, shift.ComboTipBonus, 1e-6f);
+        }
+
         [Test]
         public void PamperingCalmsATableOnceThenRecharges()
         {

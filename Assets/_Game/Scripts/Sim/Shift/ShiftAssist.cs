@@ -17,6 +17,9 @@ namespace Neko.Sim.Shift
         /// <summary>Tapped the kitchen gauge before the golden mark: the dish slows down.</summary>
         TooEarly,
 
+        /// <summary>Tapped after the golden mark: the dish is about to finish by itself, no bonus.</summary>
+        TooLate,
+
         /// <summary>The same help is still recharging, or the owner's hands are busy.</summary>
         Cooldown,
 
@@ -100,7 +103,8 @@ namespace Neko.Sim.Shift
         {
             if (busy) OwnerBusyRemaining = OwnerActionSeconds;
             Assists++;
-            Combo++;
+            // The combo stops at the cap, so what the screen shows is what the tips pay.
+            Combo = Math.Min(Combo + 1, ComboCap);
             if (Combo > BestCombo) BestCombo = Combo;
             _comboTimer = ComboWindowSeconds;
         }
@@ -233,6 +237,10 @@ namespace Neko.Sim.Shift
 
             var progress = worker.Progress;
             var station = ticket.StationIndex >= 0 ? _stations[ticket.StationIndex].Cell : Grid.Door;
+
+            // After the mark the dish finishes on its own a moment later: nothing to gain, and
+            // nothing to lose, so the combo is left alone.
+            if (progress > PerfectMax) return AssistResult.TooLate;
 
             if (progress < PerfectMin)
             {

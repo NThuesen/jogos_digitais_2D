@@ -112,7 +112,8 @@ namespace Neko.Game.Ui
 
             foreach (var ticket in Shift.Tickets)
             {
-                if (Shift.CookProgressOf(ticket) >= Sim.Shift.Shift.PerfectMin)
+                var progress = Shift.CookProgressOf(ticket);
+                if (progress >= Sim.Shift.Shift.PerfectMin && progress <= Sim.Shift.Shift.PerfectMax)
                 {
                     _hintUrgent = true;
                     return "hint.stove";
@@ -204,7 +205,8 @@ namespace Neko.Game.Ui
             _comboTip.gameObject.SetActive(combo > 0 && !Shift.Finished);
             if (combo > 0)
             {
-                _combo.text = Strings.Get("day.combo") + " x" + combo;
+                _combo.text = Strings.Get("day.combo") + " x" + combo +
+                              (combo >= Sim.Shift.Shift.ComboCap ? " " + Strings.Get("day.combo.max") : "");
                 _comboTip.text = Strings.Get("day.tips") + " +" + Mathf.RoundToInt(Shift.ComboTipBonus * 100f) + "%";
             }
         }
