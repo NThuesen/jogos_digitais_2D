@@ -72,3 +72,9 @@ Desktop.ini
 # Unity's crash-recovery scene dump, written by batch-mode runs
 /Assets/_Recovery/
 /Assets/_Recovery.meta
+
+# ECON-02 harness output
+/tools/.econ-bin-*/
+/tools/econ-balance/obj/
+/tools/econ-balance/bin/
+!/tools/econ-balance/EconBalance.csproj
