@@ -12,13 +12,13 @@ Neko Maid Inc.
 
 ## Tagline (short description, 120 caracteres)
 
-Você não atende ninguém. Você escala quem atende — e depois assiste.
+Você escala o time — e, com o café aberto, mete a mão na massa.
 
 ## Classificação
 
 - **Gênero:** Simulation
 - **Tags:** `management`, `cafe`, `card-collecting`, `gacha`, `cute`, `2d`, `unity`,
-  `webgl`, `singleplayer`, `no-input-gameplay`
+  `webgl`, `singleplayer`
 - **Plataforma:** HTML5 (roda no navegador, nada para instalar)
 - **Entrada:** mouse apenas
 - **Resolução:** 1280×720, desktop
@@ -30,16 +30,17 @@ Você não atende ninguém. Você escala quem atende — e depois assiste.
 
 ### Um café de maids-gato administrado como uma empresa
 
-Neko Maid Inc. é um jogo de **escalação**. Não existe nada para clicar enquanto o café está
-aberto: a única coisa que decide se o dia foi bom é quem você pôs em cada posição antes de
-abrir a porta.
+Neko Maid Inc. é um jogo de **escalação**. O que mais pesa é quem você põe em cada posição
+antes de abrir a porta — mas, com o café aberto, você ajuda: senta quem chegou, anota pedido,
+limpa mesa, para o prato na faixa dourada do fogão e acalma quem está impaciente. Um dia sem
+nenhum toque continua sendo um dia válido; os toques só somam.
 
-O dia tem quatro passos, e você só age em dois deles.
+O dia tem quatro passos.
 
 1. **Escalar.** Cinco posições — Recepção, Salão, Cozinha, Palco e Gerência. Cada maid tem
    uma posição natural; fora dela ela perde um terço da eficiência e erra quase o dobro.
-2. **Abrir o dia.** As portas abrem e o jogo assume.
-3. **Assistir.** Os clientes entram, pedem, esperam, elogiam ou vão embora. Você olha.
+2. **Abrir o dia.** As portas abrem e o time começa a trabalhar.
+3. **Ajudar.** Os clientes entram, pedem, esperam, elogiam ou vão embora. Você toca para sentar, anotar, limpar, parar o prato no ponto e acalmar.
 4. **Ler o balanço.** Entrou, saiu, o que deu errado, e o que sobrou no caixa.
 
 Depois disso é a loja, as caixas, e o dia seguinte.

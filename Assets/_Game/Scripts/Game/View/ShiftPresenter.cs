@@ -230,6 +230,17 @@ namespace Neko.Game.View
             _effects.Clear();
         }
 
+        /// <summary>Where a customer is drawn right now, or the door when it has no view yet.</summary>
+        public Vector2 WorldPositionOf(Customer customer)
+        {
+            if (customer != null && _customers.TryGetValue(customer.Id, out var view) && view != null)
+            {
+                return view.transform.position;
+            }
+
+            return new Vector2(0f, 0f);
+        }
+
         /// <summary>
         /// The owner's tap on the floor, in world coordinates. Picks the nearest thing that can
         /// be helped with: the kitchen gauge, a party, or a dirty table.
