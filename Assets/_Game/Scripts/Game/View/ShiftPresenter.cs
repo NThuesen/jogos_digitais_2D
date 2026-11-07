@@ -32,6 +32,7 @@ namespace Neko.Game.View
         private AudioDirector _audio;
         private MusicDirector _music;
         private CameraRig _camera;
+        private AssistHints _hints;
         private bool _rushMusic;
 
         /// <summary>The finish has been announced. Set once per day, cleared on the next.</summary>
@@ -50,6 +51,9 @@ namespace Neko.Game.View
             _audio = audio;
             _music = music;
             _camera = camera;
+
+            _hints = GetComponent<AssistHints>() ?? gameObject.AddComponent<AssistHints>();
+            _hints.Bind(sprites);
         }
 
         public void Begin(Sim.Shift.Shift shift)
@@ -59,6 +63,7 @@ namespace Neko.Game.View
             _rushMusic = false;
             _reported = false;
 
+            _hints?.Begin(shift);
             _room.Build(shift.Grid);
             _room.SetFlowOverlay(false);
             _music.Play(MusicBed.ShiftCalm);
@@ -225,6 +230,88 @@ namespace Neko.Game.View
             _effects.Clear();
         }
 
+        /// <summary>
+        /// The owner's tap on the floor, in world coordinates. Picks the nearest thing that can
+        /// be helped with: the kitchen gauge, a party, or a dirty table.
+        /// </summary>
+        public AssistResult HandleClick(Vector2 world)
+        {
+            if (Shift == null || Shift.Finished) return AssistResult.Rejected;
+
+            const float reach = 0.85f;
+            var bestDistance = float.MaxValue;
+            Func<AssistResult> act = null;
+            var origin = new Vector3(world.x, world.y, 0f);
+
+            foreach (var ticket in Shift.Tickets)
+            {
+                if (ticket.StationIndex < 0 || Shift.CookProgressOf(ticket) <= 0.01f) continue;
+
+                var cell = Shift.Stations[ticket.StationIndex].Cell;
+                // The stove wins ties: its gauge is the only thing here that is on a clock.
+                var d = Vector2.Distance(world, new Vector2(cell.X, cell.Y + 0.4f)) - 0.35f;
+                if (d >= reach || d >= bestDistance) continue;
+
+                bestDistance = d;
+                var id = ticket.Id;
+                act = () => Shift.TryPerfectCook(id);
+            }
+
+            foreach (var pair in _customers)
+            {
+                var view = pair.Value;
+                if (view == null || view.Customer == null) continue;
+
+                var d = Vector2.Distance(world, new Vector2(view.transform.position.x, view.transform.position.y));
+                if (d >= reach || d >= bestDistance) continue;
+
+                bestDistance = d;
+                var customer = view.Customer;
+                switch (customer.State)
+                {
+                    case CustomerState.Queueing:
+                        act = () => Shift.TryGreet(customer.Id);
+                        break;
+                    case CustomerState.Ordering:
+                        act = () => Shift.TryTakeOrder(customer.Id);
+                        break;
+                    default:
+                        act = () => Shift.TryPamper(customer.Id);
+                        break;
+                }
+            }
+
+            foreach (var seat in Shift.Seats)
+            {
+                if (!seat.Dirty) continue;
+
+                var d = Vector2.Distance(world, new Vector2(seat.Cell.X, seat.Cell.Y + 0.35f));
+                if (d >= reach || d >= bestDistance) continue;
+
+                bestDistance = d;
+                var index = seat.Index;
+                act = () => Shift.TryClean(index);
+            }
+
+            if (act == null) return AssistResult.Rejected;
+
+            var result = act();
+            switch (result)
+            {
+                case AssistResult.Cooldown:
+                    _effects.Number(origin, Ui.Strings.Get("assist.busy"), Palette.TextDim);
+                    break;
+                case AssistResult.NoSeat:
+                    _effects.Number(origin, Ui.Strings.Get("assist.noseat"), Palette.Alarm);
+                    break;
+                case AssistResult.Done:
+                    if (Shift.Combo >= 2) _effects.Number(origin + Vector3.up * 0.4f, "x" + Shift.Combo, Palette.Focus);
+                    break;
+            }
+
+            return result;
+        }
+
         private void DrainEvents()
         {
             while (Shift.Events.Count > 0)
@@ -322,6 +409,21 @@ namespace Neko.Game.View
                     _camera.Shake(0.05f, 0.3f);
                     break;
 
+                case ShiftEventKind.Pampered:
+                    _effects.Hearts(at, 5);
+                    _effects.Number(at, Ui.Strings.Get("assist.pampered"), Palette.InnerEar);
+                    break;
+
+                case ShiftEventKind.PerfectDish:
+                    _effects.Sparkles(at, 8);
+                    _effects.Number(at, Ui.Strings.Get("assist.perfect"), Palette.Focus);
+                    break;
+
+                case ShiftEventKind.TapMissed:
+                    _effects.Number(at, Ui.Strings.Get("assist.early"), Palette.Alarm);
+                    _camera.Shake(0.04f, 0.12f);
+                    break;
+
                 case ShiftEventKind.TicketQueued:
                     break;
 
@@ -334,6 +436,7 @@ namespace Neko.Game.View
 
         private void ClearViews()
         {
+            _hints?.Clear();
             foreach (var view in _customers.Values)
             {
                 if (view != null) Destroy(view.gameObject);

@@ -32,6 +32,7 @@ namespace Neko.Game.View
         private SpriteRenderer _bubble;
         private SpriteRenderer _bubbleIcon;
         private SpriteRenderer _patience;
+        private SpriteRenderer _cue;
         private float _wobble;
         private CustomerState? _bubbleState;
         private Recipe _bubbleDish;
@@ -72,6 +73,14 @@ namespace Neko.Game.View
             patience.transform.localPosition = new Vector3(0f, -0.46f, 0f);
             view._patience = patience.AddComponent<SpriteRenderer>();
             view._patience.sprite = sprites.Solid(Color.white);
+
+            // The owner can help this party: a ring that pulses while there is something to tap.
+            var cue = new GameObject("Cue");
+            cue.transform.SetParent(go.transform, false);
+            cue.transform.localPosition = new Vector3(0f, 0.04f, 0f);
+            view._cue = cue.AddComponent<SpriteRenderer>();
+            view._cue.sprite = sprites.Get(new ShapeSpec(ShapeId.Ring, Palette.Focus, detail: 0.14f));
+            view._cue.enabled = false;
 
             view.Bind(customer);
             return view;
@@ -119,11 +128,31 @@ namespace Neko.Game.View
 
             SyncBubble();
             SyncPatienceBar(patience);
+            SyncCue(patience);
 
             if (_lastState == Customer.State) return;
 
             _lastState = Customer.State;
             Tween.Punch(transform, 0.14f, 0.2f);
+        }
+
+        /// <summary>
+        /// A ring around a party the owner can do something for: seat them, take the order, or
+        /// calm them down. Gold for a job, pink for a table running out of patience.
+        /// </summary>
+        private void SyncCue(float patience)
+        {
+            var job = Customer.State == CustomerState.Queueing || Customer.State == CustomerState.Ordering;
+            var upset = !job && Customer.DrainsPatience && !Customer.Profile.NeverImpatient &&
+                        patience < 0.5f;
+
+            _cue.enabled = job || upset;
+            if (!_cue.enabled) return;
+
+            var pulse = 1f + 0.08f * Mathf.Sin(_wobble * 1.5f + Customer.Id);
+            _cue.transform.localScale = Vector3.one * (1.05f * pulse);
+            _cue.color = upset ? Palette.InnerEar : Palette.Focus;
+            Core.Layers.Apply(_cue, Core.Layers.Fx, transform.position.y + 0.05f);
         }
 
         private void SyncBubble()

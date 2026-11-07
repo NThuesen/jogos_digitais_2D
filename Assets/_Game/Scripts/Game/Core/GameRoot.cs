@@ -379,6 +379,13 @@ namespace Neko.Game.Core
 
         private void OnClick(Vector2 screen)
         {
+            // The owner's hands on the floor while a day runs.
+            if (State.Current == AppState.Shift)
+            {
+                Presenter.HandleClick(Camera.ScreenToWorld(screen));
+                return;
+            }
+
             if (!(Ui.Current is HallScreen hall)) return;
 
             var world = Camera.ScreenToWorld(screen);
