@@ -14,7 +14,7 @@ namespace Neko.Game.View
     /// a hundred and seventeen tiles and the editor changes it a few times a minute; a diff
     /// would be more code than the thing it saves.
     /// </remarks>
-    public sealed class RoomView : MonoBehaviour
+    public sealed partial class RoomView : MonoBehaviour
     {
         private readonly List<GameObject> _built = new List<GameObject>();
         private readonly List<SpriteRenderer> _flowTiles = new List<SpriteRenderer>();
@@ -31,6 +31,7 @@ namespace Neko.Game.View
             Clear();
             if (grid == null) return;
 
+            BuildAmbience(grid);
             BuildFloor(grid);
             BuildDoor(grid);
 
@@ -48,8 +49,9 @@ namespace Neko.Game.View
 
         private void BuildFloor(CafeGrid grid)
         {
-            var plain = _sprites.Solid(Palette.Lighten(Palette.Wood, 0.18f));
+            var plain = _sprites.Solid(Palette.Lighten(Palette.Wood, 0.10f));
             var alternate = _sprites.Solid(Palette.Wood);
+            var joint = _sprites.Solid(Palette.WithAlpha(Palette.Shadow, 0.28f));
 
             // A skirting line around the floor. One rectangle, and the room has walls.
             var surround = Make("Walls", new Vector3((grid.Width - 1) * 0.5f,
@@ -66,6 +68,11 @@ namespace Neko.Game.View
                     var tile = Make("Tile", new Vector3(x, y, 0f),
                         (x + y) % 2 == 0 ? plain : alternate, Layers.Floor, y);
                     tile.transform.localScale = Vector3.one;
+
+                    // A plank joint, staggered row to row, so the boards read as boards.
+                    var seam = Make("Seam", new Vector3(x + ((y & 1) == 0 ? 0.5f : 0f), y, 0f), joint,
+                        Layers.Floor, y - 0.01f);
+                    seam.transform.localScale = new Vector3(0.025f, 0.98f, 1f);
 
                     var overlay = Make("Flow", new Vector3(x, y, 0f), _sprites.Solid(Color.white),
                         Layers.Rug, y);

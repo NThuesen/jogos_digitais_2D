@@ -66,13 +66,13 @@ namespace Neko.Game.Ui
 
             // The owner's combo: a run of helpful taps that lifts tips. Only drawn while it lasts.
             _combo = UiKit.Label(transform, "", Typeface.Heading, Logo.Brass, bold: true);
-            UiKit.Anchor(_combo.rectTransform, new Vector2(0f, 1f), new Vector2(20f, -14f));
-            _combo.rectTransform.sizeDelta = new Vector2(170f, 38f);
+            UiKit.Anchor(_combo.rectTransform, new Vector2(0f, 0.5f), new Vector2(20f, 30f));
+            _combo.rectTransform.sizeDelta = new Vector2(260f, 38f);
             _combo.alignment = TextAnchor.MiddleLeft;
             _combo.gameObject.SetActive(false);
 
             _comboTip = UiKit.Label(transform, "", Typeface.Tiny, Palette.Cream);
-            UiKit.Anchor(_comboTip.rectTransform, new Vector2(0f, 1f), new Vector2(20f, -50f));
+            UiKit.Anchor(_comboTip.rectTransform, new Vector2(0f, 0.5f), new Vector2(20f, -4f));
             _comboTip.rectTransform.sizeDelta = new Vector2(170f, 20f);
             _comboTip.alignment = TextAnchor.MiddleLeft;
             _comboTip.gameObject.SetActive(false);

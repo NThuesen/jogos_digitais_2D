@@ -17,7 +17,7 @@ namespace Neko.Game.Ui
             {
                 // Identity
                 { "game.title", "Neko Maid Inc." },
-                { "game.subtitle", "escale suas maids. o dia corre sozinho." },
+                { "game.subtitle", "escale suas maids. depois, mão na massa." },
 
                 // Menu
                 { "menu.play", "Abrir a empresa" },
@@ -76,8 +76,8 @@ namespace Neko.Game.Ui
                 { "day.clock", "Relógio" },
                 { "day.till", "Caixa do dia" },
                 { "day.served", "Atendidos" },
-                { "day.wrong", "Pedidos errados" },
-                { "day.angry", "Foram embora" },
+                { "day.wrong", "Erros" },
+                { "day.angry", "Saíram" },
                 { "day.closing", "Fechando!" },
                 { "day.speed", "Velocidade" },
                 { "day.skip", "Pular para o fim" },
