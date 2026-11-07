@@ -33,6 +33,15 @@ namespace Neko.Sim.Shift
         EncoreUsed,
         ClosingTime,
         ShiftEnded,
+
+        /// <summary>The player calmed a customer down.</summary>
+        Pampered,
+
+        /// <summary>The player stopped a dish on the golden mark.</summary>
+        PerfectDish,
+
+        /// <summary>The player tapped the gauge too early.</summary>
+        TapMissed,
     }
 
     /// <summary>One thing that just happened, with enough to draw and play it.</summary>

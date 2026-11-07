@@ -169,6 +169,18 @@ namespace Neko.Game.Audio
                     Play(SoundId.LevelUp, 0.4f);
                     break;
 
+                case ShiftEventKind.Pampered:
+                    Play(SoundId.Heart, 0.6f);
+                    break;
+
+                case ShiftEventKind.PerfectDish:
+                    Play(SoundId.LevelUp, 0.55f);
+                    break;
+
+                case ShiftEventKind.TapMissed:
+                    Play(SoundId.UiTick, 0.5f);
+                    break;
+
                 case ShiftEventKind.WrongOrder:
                     Play(SoundId.AngryPuff, 0.7f);
                     Play(SoundId.Drop, 0.4f);

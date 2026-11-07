@@ -21,7 +21,7 @@ namespace Neko.Sim.Shift
     /// No UnityEngine anywhere in here, and everything random goes through <see cref="Rng"/>,
     /// for the same reason.
     /// </remarks>
-    public sealed class Shift : ITaskContext
+    public sealed partial class Shift : ITaskContext
     {
         public const float GreetSeconds = 1.6f;
         public const float TakeOrderSeconds = 2.0f;
@@ -240,6 +240,7 @@ namespace Neko.Sim.Shift
             if (Finished || dt <= 0f) return;
 
             _elapsed += dt;
+            AdvanceAssist(dt);
             AdvanceClock(dt);
             if (!ClosingTime) SpawnArrivals(dt);
             AdvanceCustomers(dt);
@@ -386,7 +387,7 @@ namespace Neko.Sim.Shift
             }
 
             var tipRate = Metrics.TipMultiplier * customer.ServeTipMultiplier - 1f +
-                          ManagementTipBonus();
+                          ManagementTipBonus() + ComboTipBonus;
 
             // A party who waited to the end of their patience pays for the food and almost
             // nothing on top; one who was looked after tips properly.
@@ -1197,6 +1198,9 @@ namespace Neko.Sim.Shift
                 ChemistryScore = _setup.Chemistry.Score,
                 Satisfaction = Satisfaction,
                 FailureReason = failureReason,
+                Assists = Assists,
+                PerfectDishes = PerfectDishes,
+                BestCombo = BestCombo,
             };
 
             foreach (var pair in _pendingXp) _result.XpByMaid[pair.Key] = pair.Value;
