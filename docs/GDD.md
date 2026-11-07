@@ -55,9 +55,9 @@ só somam.
 - **Mão levantada** (anel dourado): toque para anotar o pedido.
 - **Prato sujo** sobre a mesa: toque para limpar e liberar o lugar.
 - **Fogão**: um medidor mostra o cozimento; tocar na faixa dourada (72–95%) entrega o prato
-  na hora, sem queimar, e o cliente gasta 10% a mais. Tocar cedo atrasa o prato e quebra o combo.
+  na hora, sem queimar, e o cliente gasta 10% a mais. Tocar cedo atrasa o prato e quebra o combo; tocar depois de 95% não rende bônus (o prato sai sozinho, sem custo).
 - **Cliente impaciente**: toque para acalmar (+20% de paciência, recarga de 10 s).
-- **Combo**: toques úteis em sequência (janela de 6 s, máximo 10) somam +1% de gorjeta cada.
+- **Combo**: toques úteis em sequência (janela de 6 s; o contador para em 10, que é o que a tela mostra) somam +1% de gorjeta cada.
 - Cada ajuda ocupa as mãos do dono por 2 s (exceto o prato no ponto), para que um jogador
   muito rápido não substitua a equipe inteira.
 
