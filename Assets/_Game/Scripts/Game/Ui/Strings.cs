@@ -17,7 +17,7 @@ namespace Neko.Game.Ui
             {
                 // Identity
                 { "game.title", "Neko Maid Inc." },
-                { "game.subtitle", "escale suas maids. o dia corre sozinho." },
+                { "game.subtitle", "escale suas maids. depois, mão na massa." },
 
                 // Menu
                 { "menu.play", "Abrir a empresa" },
