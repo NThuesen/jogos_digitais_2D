@@ -13,7 +13,7 @@ namespace Neko.Game.View
     public sealed partial class RoomView
     {
         private const float WallHeight = 4.2f;
-        private const float Reach = 12f;
+        private const float Reach = 8f;
 
         private static readonly Color Paper = Palette.Hex("#F3DCD2");
         private static readonly Color PaperStripe = Palette.Hex("#EBCDC4");
@@ -75,14 +75,16 @@ namespace Neko.Game.View
                     Layers.Floor, 37.9f);
             }
 
-            // Windows, evenly spaced over the room's width.
-            var windows = Mathf.Max(2, Mathf.RoundToInt(grid.Width / 3.2f));
-            var spacing = grid.Width / windows;
+            // Windows along the whole wall. The shift HUD's plaque covers the middle of the screen,
+            // so the ones that matter are the ones either side of it: the wall is dressed edge to
+            // edge instead of asking the camera to back away from the room.
+            var windows = Mathf.Max(2, Mathf.RoundToInt(span / 3.4f));
+            var spacing = span / windows;
             for (var i = 0; i < windows; i++)
             {
-                var x = left + spacing * (i + 0.5f);
+                var x = left - Reach + spacing * (i + 0.5f);
                 BuildWindow(x, wallBottom + 1.32f);
-                BuildPool(grid, x, i);
+                if (x > left && x < left + grid.Width) BuildPool(grid, x, i);
             }
 
             BuildWallDecor(grid, wallBottom);
@@ -116,7 +118,7 @@ namespace Neko.Game.View
         private void BuildPool(CafeGrid grid, float x, int index)
         {
             var pool = Piece("Pool", new Vector3(x - 0.3f, grid.Height - 1.4f, 0f),
-                new ShapeSpec(ShapeId.Circle, Palette.WithAlpha(new Color(1f, 0.96f, 0.82f), 0.16f)),
+                new ShapeSpec(ShapeId.Circle, Palette.WithAlpha(new Color(1f, 0.96f, 0.82f), 0.07f)),
                 new Vector2(2.8f, 1.9f), Layers.Rug, grid.Height + 0.2f);
             pool.sortingOrder -= index;
         }
@@ -155,11 +157,12 @@ namespace Neko.Game.View
 
         private void BuildLamps(CafeGrid grid, float wallBottom)
         {
-            var lamps = Mathf.Max(2, Mathf.RoundToInt(grid.Width / 3.2f));
-            var spacing = grid.Width / lamps;
+            var span = Reach * 2f + grid.Width;
+            var lamps = Mathf.Max(2, Mathf.RoundToInt(span / 3.4f));
+            var spacing = span / lamps;
             for (var i = 1; i < lamps; i++)
             {
-                var x = -0.5f + spacing * i;
+                var x = -0.5f - Reach + spacing * i;
                 var top = wallBottom + 2.05f;
 
                 Block("Cord", x, top - 0.2f, 0.03f, 0.4f, Palette.Ink, Layers.Floor, 36.9f);
@@ -168,8 +171,8 @@ namespace Neko.Game.View
                         Palette.Darken(Palette.Focus, 0.3f), 0.05f), new Vector2(0.46f, 0.46f),
                     Layers.Floor, 36.8f);
                 Piece("LampGlow", new Vector3(x, top - 0.65f, 0f),
-                    new ShapeSpec(ShapeId.Circle, Palette.WithAlpha(Palette.Focus, 0.2f)),
-                    new Vector2(2.6f, 2.6f), Layers.Floor, 36.7f);
+                    new ShapeSpec(ShapeId.Circle, Palette.WithAlpha(Palette.Focus, 0.12f)),
+                    new Vector2(1.5f, 1.5f), Layers.Floor, 36.7f);
             }
         }
     }

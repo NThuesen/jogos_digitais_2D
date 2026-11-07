@@ -41,6 +41,20 @@ namespace Neko.Tests.PlayMode
 
             // Nothing in the room may be a collider or a script: it is paint, not behaviour.
             Assert.AreEqual(0, room.GetComponentsInChildren<Collider2D>().Length);
+
+            // And dressing the wall must not shrink the people: the camera frames the room exactly
+            // as it did before the wall existed (0.8 tiles of head room above the top row).
+            const float originalHeadRoom = 0.8f;
+            var grid = root.Presenter.Shift.Grid;
+            var low = CameraRig.ShiftBottomInset / 720f;
+            var high = 1f - CameraRig.ShiftTopInset / 720f;
+            var top = grid.Height - 0.5f + originalHeadRoom;
+            var bottom = -0.5f - CameraRig.FootRoom;
+            var heightFit = (top - bottom) / (2f * (high - low));
+            var camera = root.Camera.Camera;
+
+            Assert.LessOrEqual(camera.orthographicSize, Mathf.Max(heightFit, (grid.Width + CameraRig.Margin * 2f) * 0.5f / CameraRig.NarrowestAspect) + 0.01f,
+                "the camera is further away than it was before the wall");
         }
     }
 }
