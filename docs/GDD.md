@@ -320,6 +320,12 @@ base `0,8 +` cozinha (era `0,6 +`); Kuudere ganha cozinha ×1,2 (era o pior cozi
 compensação). Fichas: +1 por prato na faixa dourada e um bônus de combo (a partir de 5 passos).
 Deixar o café sozinho continua possível, mas é uma sangria lenta — não uma sentença de dia 4.
 
+**Limite conhecido (ver [ECON-02](economy/econ-02/README.md)):** a tabela acima é sem compras. Com
+um jogador que investe (caixas, contratação, móveis) a expansão hoje não se paga — no nível 1,
+cada mesa extra *reduz* a receita porque a demanda cresce com os lugares e o time é o mesmo — e
+quebra mais que jogar sem comprar nada. Corrigir isso é decisão de design (ECON-02b), não foi
+resolvido aqui.
+
 Dos três cozinheiros, nenhum rende mais de 1,35× do outro no mesmo dia (teste
 `NoKitchenArchetypeIsAnOutlier`). Elencos com Ojou-sama na recepção ainda são os mais difíceis
 de sustentar (atraem VIP de 22 s num salão de 4 mesas): é uma escolha, não um beco sem saída.

@@ -1,0 +1,204 @@
+
+Compilação com êxito.
+    0 Aviso(s)
+    0 Erro(s)
+
+Tempo Decorrido 00:00:01.37
+[cap=base]
+== style=idle invest=True seeds=40 bankrupt=40
+day  1: alive  40/40  rev   135 profit   -61 lvl 1,0 cash    359 maids 3,0 wages   54 seats  4,0 chips   18 taps    0
+day  2: alive  40/40  rev   136 profit   -93 lvl 1,0 cash    266 maids 3,0 wages   56 seats  4,0 chips   18 taps    0
+day  3: alive  39/40  rev   163 profit   -64 lvl 1,0 cash    202 maids 3,0 wages   56 seats  4,0 chips   20 taps    0
+day  5: alive  28/40  rev   171 profit   -57 lvl 1,0 cash     88 maids 3,0 wages   59 seats  4,0 chips   22 taps    0
+day  7: alive   7/40  rev   156 profit   -84 lvl 1,0 cash     18 maids 3,0 wages   61 seats  4,0 chips   19 taps    0
+day 10: alive   1/40  rev   116 profit  -121 lvl 1,0 cash     62 maids 3,0 wages   63 seats  4,0 chips   16 taps    0
+day 15: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+day 20: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+day 30: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+day 40: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+[cap=base]
+== style=idle invest=False seeds=40 bankrupt=40
+day  1: alive  40/40  rev   130 profit   -68 lvl 1,0 cash    532 maids 3,0 wages   54 seats  4,0 chips   47 taps    0
+day  2: alive  40/40  rev   124 profit   -96 lvl 1,0 cash    436 maids 3,0 wages   56 seats  4,0 chips   48 taps    0
+day  3: alive  40/40  rev   129 profit   -92 lvl 1,0 cash    343 maids 3,0 wages   56 seats  4,0 chips   49 taps    0
+day  5: alive  39/40  rev   138 profit   -86 lvl 1,0 cash    173 maids 3,0 wages   59 seats  4,0 chips   51 taps    0
+day  7: alive  18/40  rev   136 profit   -94 lvl 1,0 cash     68 maids 3,0 wages   61 seats  4,0 chips   56 taps    0
+day 10: alive   3/40  rev   157 profit   -63 lvl 1,2 cash      1 maids 3,0 wages   63 seats  4,0 chips   78 taps    0
+day 15: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+day 20: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+day 30: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+day 40: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+[cap=base]
+== style=lazy invest=True seeds=40 bankrupt=33
+day  1: alive  40/40  rev   148 profit   -48 lvl 1,0 cash    372 maids 3,0 wages   54 seats  4,0 chips   19 taps   10
+day  2: alive  40/40  rev   216 profit   -28 lvl 1,0 cash    343 maids 3,0 wages   55 seats  4,0 chips   22 taps   18
+day  3: alive  40/40  rev   219 profit   -22 lvl 1,0 cash    321 maids 3,0 wages   56 seats  4,0 chips   26 taps   18
+day  5: alive  38/40  rev   252 profit     0 lvl 1,0 cash    306 maids 3,0 wages   59 seats  4,0 chips   27 taps   19
+day  7: alive  35/40  rev   269 profit    10 lvl 1,1 cash    345 maids 3,0 wages   61 seats  4,0 chips   32 taps   19
+day 10: alive  31/40  rev   272 profit    -9 lvl 1,5 cash    322 maids 3,0 wages   63 seats  4,0 chips   29 taps   20
+day 15: alive  24/40  rev   306 profit     3 lvl 1,9 cash    462 maids 3,0 wages   67 seats  4,0 chips   30 taps   21
+day 20: alive  20/40  rev   356 profit    32 lvl 2,0 cash    658 maids 3,0 wages   70 seats  4,0 chips   34 taps   22
+day 30: alive  17/40  rev   316 profit   -31 lvl 2,4 cash    669 maids 3,2 wages   83 seats  4,8 chips   31 taps   24
+day 40: alive   7/40  rev   305 profit   -85 lvl 2,7 cash    535 maids 3,6 wages   96 seats  6,9 chips   30 taps   27
+[cap=base]
+== style=lazy invest=False seeds=40 bankrupt=33
+day  1: alive  40/40  rev   154 profit   -44 lvl 1,0 cash    556 maids 3,0 wages   54 seats  4,0 chips   50 taps   10
+day  2: alive  40/40  rev   172 profit   -62 lvl 1,0 cash    494 maids 3,0 wages   55 seats  4,0 chips   53 taps   17
+day  3: alive  40/40  rev   203 profit   -37 lvl 1,0 cash    457 maids 3,0 wages   56 seats  4,0 chips   59 taps   18
+day  5: alive  40/40  rev   202 profit   -39 lvl 1,0 cash    379 maids 3,0 wages   59 seats  4,0 chips   70 taps   18
+day  7: alive  36/40  rev   219 profit   -31 lvl 1,1 cash    310 maids 3,0 wages   61 seats  4,0 chips   82 taps   18
+day 10: alive  30/40  rev   254 profit   -10 lvl 1,3 cash    311 maids 3,0 wages   63 seats  4,0 chips  104 taps   19
+day 15: alive  21/40  rev   272 profit   -23 lvl 1,7 cash    339 maids 3,0 wages   67 seats  4,0 chips  141 taps   20
+day 20: alive  16/40  rev   310 profit    -1 lvl 1,9 cash    474 maids 3,0 wages   69 seats  4,0 chips  174 taps   21
+day 30: alive  13/40  rev   324 profit   -10 lvl 2,1 cash    385 maids 3,0 wages   76 seats  4,0 chips  230 taps   22
+day 40: alive   7/40  rev   291 profit   -32 lvl 2,1 cash    768 maids 3,0 wages   81 seats  4,0 chips  285 taps   21
+[cap=base]
+== style=casual invest=True seeds=40 bankrupt=21
+day  1: alive  40/40  rev   170 profit   -27 lvl 1,0 cash    393 maids 3,0 wages   54 seats  4,0 chips   21 taps   15
+day  2: alive  40/40  rev   306 profit    48 lvl 1,0 cash    440 maids 3,0 wages   55 seats  4,0 chips   34 taps   32
+day  3: alive  40/40  rev   298 profit    44 lvl 1,0 cash    480 maids 3,0 wages   56 seats  4,0 chips   38 taps   31
+day  5: alive  40/40  rev   288 profit    24 lvl 1,1 cash    485 maids 3,0 wages   59 seats  4,0 chips   34 taps   31
+day  7: alive  40/40  rev   350 profit    66 lvl 1,4 cash    569 maids 3,0 wages   61 seats  4,0 chips   35 taps   33
+day 10: alive  40/40  rev   381 profit    68 lvl 1,8 cash    774 maids 3,0 wages   63 seats  4,0 chips   36 taps   35
+day 15: alive  40/40  rev   360 profit    32 lvl 2,0 cash   1052 maids 3,0 wages   67 seats  4,0 chips   34 taps   37
+day 20: alive  40/40  rev   411 profit    69 lvl 2,2 cash   1252 maids 3,2 wages   73 seats  4,8 chips   33 taps   38
+day 30: alive  34/40  rev   348 profit   -26 lvl 2,7 cash   1089 maids 3,6 wages   88 seats  7,8 chips   32 taps   45
+day 40: alive  19/40  rev   321 profit   -36 lvl 2,6 cash    926 maids 3,6 wages   95 seats  9,4 chips   34 taps   47
+[cap=base]
+== style=casual invest=False seeds=40 bankrupt=3
+day  1: alive  40/40  rev   171 profit   -23 lvl 1,0 cash    577 maids 3,0 wages   54 seats  4,0 chips   54 taps   15
+day  2: alive  40/40  rev   246 profit    -3 lvl 1,0 cash    573 maids 3,0 wages   55 seats  4,0 chips   64 taps   30
+day  3: alive  40/40  rev   246 profit    -6 lvl 1,0 cash    567 maids 3,0 wages   56 seats  4,0 chips   75 taps   30
+day  5: alive  40/40  rev   261 profit     7 lvl 1,1 cash    584 maids 3,0 wages   58 seats  4,0 chips   98 taps   30
+day  7: alive  40/40  rev   282 profit    10 lvl 1,3 cash    604 maids 3,0 wages   61 seats  4,0 chips  119 taps   31
+day 10: alive  39/40  rev   294 profit    13 lvl 1,6 cash    658 maids 3,0 wages   63 seats  4,0 chips  151 taps   32
+day 15: alive  39/40  rev   373 profit    57 lvl 1,9 cash    942 maids 3,0 wages   66 seats  4,0 chips  213 taps   36
+day 20: alive  37/40  rev   372 profit    41 lvl 2,1 cash   1193 maids 3,0 wages   70 seats  4,0 chips  270 taps   35
+day 30: alive  37/40  rev   432 profit    80 lvl 2,4 cash   1924 maids 3,0 wages   76 seats  4,0 chips  382 taps   36
+day 40: alive  37/40  rev   460 profit    83 lvl 2,7 cash   2897 maids 3,0 wages   82 seats  4,0 chips  500 taps   38
+[cap=base]
+== style=pro invest=True seeds=40 bankrupt=6
+day  1: alive  40/40  rev   199 profit     9 lvl 1,0 cash    429 maids 3,0 wages   54 seats  4,0 chips   30 taps   19
+day  2: alive  40/40  rev   435 profit   165 lvl 1,0 cash    589 maids 3,0 wages   55 seats  4,0 chips   49 taps   48
+day  3: alive  40/40  rev   443 profit   165 lvl 1,1 cash    668 maids 3,0 wages   56 seats  4,0 chips   48 taps   50
+day  5: alive  40/40  rev   514 profit   211 lvl 1,6 cash   1012 maids 3,0 wages   58 seats  4,0 chips   51 taps   51
+day  7: alive  40/40  rev   558 profit   231 lvl 1,9 cash   1449 maids 3,0 wages   62 seats  4,0 chips   46 taps   53
+day 10: alive  40/40  rev   563 profit   218 lvl 2,1 cash   2161 maids 3,1 wages   65 seats  4,2 chips   46 taps   55
+day 15: alive  40/40  rev   630 profit   224 lvl 2,6 cash   2860 maids 3,6 wages   80 seats  8,0 chips   47 taps   68
+day 20: alive  40/40  rev   468 profit    70 lvl 2,8 cash   2975 maids 3,8 wages   90 seats 11,9 chips   43 taps   72
+day 30: alive  40/40  rev   445 profit    32 lvl 3,0 cash   3513 maids 4,0 wages  104 seats 14,8 chips   43 taps   77
+day 40: alive  34/40  rev   379 profit   -40 lvl 3,1 cash   3949 maids 4,1 wages  114 seats 15,7 chips   41 taps   78
+[cap=base]
+== style=pro invest=False seeds=40 bankrupt=0
+day  1: alive  40/40  rev   206 profit    19 lvl 1,0 cash    619 maids 3,0 wages   54 seats  4,0 chips   62 taps   19
+day  2: alive  40/40  rev   364 profit   106 lvl 1,0 cash    725 maids 3,0 wages   55 seats  4,0 chips   84 taps   46
+day  3: alive  40/40  rev   382 profit   120 lvl 1,0 cash    845 maids 3,0 wages   56 seats  4,0 chips  109 taps   46
+day  5: alive  40/40  rev   417 profit   141 lvl 1,4 cash   1105 maids 3,0 wages   58 seats  4,0 chips  157 taps   47
+day  7: alive  40/40  rev   485 profit   179 lvl 1,7 cash   1461 maids 3,0 wages   61 seats  4,0 chips  207 taps   50
+day 10: alive  40/40  rev   573 profit   237 lvl 2,0 cash   2090 maids 3,0 wages   63 seats  4,0 chips  285 taps   52
+day 15: alive  40/40  rev   626 profit   260 lvl 2,5 cash   3357 maids 3,0 wages   67 seats  4,0 chips  411 taps   56
+day 20: alive  40/40  rev   640 profit   261 lvl 2,7 cash   4638 maids 3,0 wages   70 seats  4,0 chips  537 taps   58
+day 30: alive  40/40  rev   771 profit   361 lvl 3,1 cash   7783 maids 3,0 wages   78 seats  4,0 chips  800 taps   63
+day 40: alive  40/40  rev   774 profit   340 lvl 3,4 cash  11159 maids 3,0 wages   83 seats  4,0 chips 1082 taps   66
+
+Compilação com êxito.
+    0 Aviso(s)
+    0 Erro(s)
+
+Tempo Decorrido 00:00:01.58
+[cap=plus1]
+== style=idle invest=True seeds=40 bankrupt=40
+day  1: alive  40/40  rev   128 profit   -94 lvl 1,0 cash    506 maids 4,0 wages   79 seats  4,0 chips    8 taps    0
+day  2: alive  40/40  rev   116 profit  -128 lvl 1,0 cash    378 maids 4,0 wages   81 seats  4,0 chips    9 taps    0
+day  3: alive  40/40  rev   116 profit  -126 lvl 1,0 cash    252 maids 4,0 wages   81 seats  4,0 chips    9 taps    0
+day  5: alive  24/40  rev   142 profit  -105 lvl 1,0 cash     51 maids 4,0 wages   82 seats  4,0 chips   12 taps    0
+day  7: alive   2/40  rev   142 profit  -108 lvl 1,0 cash    -10 maids 4,0 wages   79 seats  4,0 chips   25 taps    0
+day 10: alive   1/40  rev   198 profit   -45 lvl 1,0 cash    117 maids 4,0 wages   81 seats  4,0 chips   33 taps    0
+day 15: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+day 20: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+day 30: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+day 40: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+[cap=plus1]
+== style=idle invest=False seeds=40 bankrupt=40
+day  1: alive  40/40  rev   130 profit   -68 lvl 1,0 cash    532 maids 3,0 wages   54 seats  4,0 chips   47 taps    0
+day  2: alive  40/40  rev   124 profit   -96 lvl 1,0 cash    436 maids 3,0 wages   56 seats  4,0 chips   48 taps    0
+day  3: alive  40/40  rev   129 profit   -92 lvl 1,0 cash    343 maids 3,0 wages   56 seats  4,0 chips   49 taps    0
+day  5: alive  39/40  rev   138 profit   -86 lvl 1,0 cash    173 maids 3,0 wages   59 seats  4,0 chips   51 taps    0
+day  7: alive  18/40  rev   136 profit   -94 lvl 1,0 cash     68 maids 3,0 wages   61 seats  4,0 chips   56 taps    0
+day 10: alive   3/40  rev   157 profit   -63 lvl 1,2 cash      1 maids 3,0 wages   63 seats  4,0 chips   78 taps    0
+day 15: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+day 20: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+day 30: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+day 40: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+[cap=plus1]
+== style=lazy invest=True seeds=40 bankrupt=40
+day  1: alive  40/40  rev   144 profit   -76 lvl 1,0 cash    524 maids 4,0 wages   79 seats  4,0 chips   11 taps   10
+day  2: alive  40/40  rev   179 profit   -78 lvl 1,0 cash    445 maids 4,0 wages   80 seats  4,0 chips   15 taps   17
+day  3: alive  40/40  rev   192 profit   -67 lvl 1,0 cash    378 maids 4,0 wages   81 seats  4,0 chips   18 taps   17
+day  5: alive  39/40  rev   224 profit   -47 lvl 1,0 cash    271 maids 4,0 wages   84 seats  4,0 chips   26 taps   19
+day  7: alive  30/40  rev   208 profit   -68 lvl 1,1 cash    187 maids 4,0 wages   86 seats  4,0 chips   29 taps   18
+day 10: alive  16/40  rev   243 profit   -45 lvl 1,3 cash    144 maids 4,1 wages   85 seats  4,0 chips   31 taps   19
+day 15: alive   5/40  rev   314 profit   -21 lvl 1,8 cash    348 maids 4,8 wages  104 seats  4,0 chips   22 taps   23
+day 20: alive   4/40  rev   375 profit    18 lvl 2,2 cash    323 maids 5,2 wages  116 seats  4,0 chips   23 taps   24
+day 30: alive   1/40  rev   605 profit   134 lvl 3,0 cash    141 maids 6,0 wages  160 seats  4,0 chips   49 taps   25
+day 40: alive   0/40  rev     0 profit     0 lvl 0,0 cash      0 maids 0,0 wages    0 seats  0,0 chips    0 taps    0
+[cap=plus1]
+== style=lazy invest=False seeds=40 bankrupt=33
+day  1: alive  40/40  rev   154 profit   -44 lvl 1,0 cash    556 maids 3,0 wages   54 seats  4,0 chips   50 taps   10
+day  2: alive  40/40  rev   172 profit   -62 lvl 1,0 cash    494 maids 3,0 wages   55 seats  4,0 chips   53 taps   17
+day  3: alive  40/40  rev   203 profit   -37 lvl 1,0 cash    457 maids 3,0 wages   56 seats  4,0 chips   59 taps   18
+day  5: alive  40/40  rev   202 profit   -39 lvl 1,0 cash    379 maids 3,0 wages   59 seats  4,0 chips   70 taps   18
+day  7: alive  36/40  rev   219 profit   -31 lvl 1,1 cash    310 maids 3,0 wages   61 seats  4,0 chips   82 taps   18
+day 10: alive  30/40  rev   254 profit   -10 lvl 1,3 cash    311 maids 3,0 wages   63 seats  4,0 chips  104 taps   19
+day 15: alive  21/40  rev   272 profit   -23 lvl 1,7 cash    339 maids 3,0 wages   67 seats  4,0 chips  141 taps   20
+day 20: alive  16/40  rev   310 profit    -1 lvl 1,9 cash    474 maids 3,0 wages   69 seats  4,0 chips  174 taps   21
+day 30: alive  13/40  rev   324 profit   -10 lvl 2,1 cash    385 maids 3,0 wages   76 seats  4,0 chips  230 taps   22
+day 40: alive   7/40  rev   291 profit   -32 lvl 2,1 cash    768 maids 3,0 wages   81 seats  4,0 chips  285 taps   21
+[cap=plus1]
+== style=casual invest=True seeds=40 bankrupt=24
+day  1: alive  40/40  rev   169 profit   -55 lvl 1,0 cash    545 maids 4,0 wages   79 seats  4,0 chips   11 taps   16
+day  2: alive  40/40  rev   244 profit   -30 lvl 1,0 cash    506 maids 4,0 wages   80 seats  4,0 chips   23 taps   31
+day  3: alive  40/40  rev   264 profit    -8 lvl 1,0 cash    489 maids 4,0 wages   81 seats  4,0 chips   30 taps   29
+day  5: alive  40/40  rev   283 profit     4 lvl 1,0 cash    464 maids 4,0 wages   83 seats  4,0 chips   37 taps   30
+day  7: alive  38/40  rev   286 profit   -15 lvl 1,3 cash    446 maids 4,1 wages   87 seats  4,1 chips   32 taps   31
+day 10: alive  36/40  rev   342 profit    12 lvl 1,6 cash    481 maids 4,4 wages   97 seats  4,2 chips   32 taps   34
+day 15: alive  31/40  rev   365 profit    -2 lvl 1,9 cash    539 maids 4,9 wages  109 seats  5,0 chips   37 taps   37
+day 20: alive  28/40  rev   425 profit    23 lvl 2,3 cash    640 maids 5,2 wages  119 seats  5,6 chips   37 taps   40
+day 30: alive  24/40  rev   478 profit    11 lvl 2,7 cash    607 maids 5,7 wages  139 seats  7,2 chips   35 taps   44
+day 40: alive  16/40  rev   526 profit    45 lvl 2,9 cash   1015 maids 5,9 wages  150 seats  9,1 chips   38 taps   47
+[cap=plus1]
+== style=casual invest=False seeds=40 bankrupt=3
+day  1: alive  40/40  rev   171 profit   -23 lvl 1,0 cash    577 maids 3,0 wages   54 seats  4,0 chips   54 taps   15
+day  2: alive  40/40  rev   246 profit    -3 lvl 1,0 cash    573 maids 3,0 wages   55 seats  4,0 chips   64 taps   30
+day  3: alive  40/40  rev   246 profit    -6 lvl 1,0 cash    567 maids 3,0 wages   56 seats  4,0 chips   75 taps   30
+day  5: alive  40/40  rev   261 profit     7 lvl 1,1 cash    584 maids 3,0 wages   58 seats  4,0 chips   98 taps   30
+day  7: alive  40/40  rev   282 profit    10 lvl 1,3 cash    604 maids 3,0 wages   61 seats  4,0 chips  119 taps   31
+day 10: alive  39/40  rev   294 profit    13 lvl 1,6 cash    658 maids 3,0 wages   63 seats  4,0 chips  151 taps   32
+day 15: alive  39/40  rev   373 profit    57 lvl 1,9 cash    942 maids 3,0 wages   66 seats  4,0 chips  213 taps   36
+day 20: alive  37/40  rev   372 profit    41 lvl 2,1 cash   1193 maids 3,0 wages   70 seats  4,0 chips  270 taps   35
+day 30: alive  37/40  rev   432 profit    80 lvl 2,4 cash   1924 maids 3,0 wages   76 seats  4,0 chips  382 taps   36
+day 40: alive  37/40  rev   460 profit    83 lvl 2,7 cash   2897 maids 3,0 wages   82 seats  4,0 chips  500 taps   38
+[cap=plus1]
+== style=pro invest=True seeds=40 bankrupt=5
+day  1: alive  40/40  rev   192 profit   -22 lvl 1,0 cash    578 maids 4,0 wages   79 seats  4,0 chips   20 taps   19
+day  2: alive  40/40  rev   385 profit   102 lvl 1,0 cash    653 maids 4,0 wages   80 seats  4,0 chips   45 taps   46
+day  3: alive  40/40  rev   414 profit   121 lvl 1,0 cash    693 maids 4,0 wages   81 seats  4,0 chips   51 taps   48
+day  5: alive  40/40  rev   461 profit   125 lvl 1,4 cash    779 maids 4,3 wages   91 seats  4,9 chips   43 taps   53
+day  7: alive  40/40  rev   553 profit   174 lvl 1,7 cash    926 maids 4,6 wages  104 seats  6,1 chips   47 taps   60
+day 10: alive  40/40  rev   562 profit   147 lvl 1,9 cash   1190 maids 4,8 wages  112 seats  7,3 chips   53 taps   64
+day 15: alive  40/40  rev   639 profit   168 lvl 2,4 cash   1778 maids 5,3 wages  126 seats 10,1 chips   50 taps   72
+day 20: alive  39/40  rev   596 profit   124 lvl 2,7 cash   2347 maids 5,7 wages  140 seats 12,7 chips   49 taps   74
+day 30: alive  36/40  rev   516 profit    39 lvl 2,8 cash   3412 maids 5,8 wages  155 seats 13,8 chips   45 taps   76
+day 40: alive  35/40  rev   552 profit    66 lvl 2,8 cash   4461 maids 5,8 wages  164 seats 14,2 chips   46 taps   76
+[cap=plus1]
+== style=pro invest=False seeds=40 bankrupt=0
+day  1: alive  40/40  rev   206 profit    19 lvl 1,0 cash    619 maids 3,0 wages   54 seats  4,0 chips   62 taps   19
+day  2: alive  40/40  rev   364 profit   106 lvl 1,0 cash    725 maids 3,0 wages   55 seats  4,0 chips   84 taps   46
+day  3: alive  40/40  rev   382 profit   120 lvl 1,0 cash    845 maids 3,0 wages   56 seats  4,0 chips  109 taps   46
+day  5: alive  40/40  rev   417 profit   141 lvl 1,4 cash   1105 maids 3,0 wages   58 seats  4,0 chips  157 taps   47
+day  7: alive  40/40  rev   485 profit   179 lvl 1,7 cash   1461 maids 3,0 wages   61 seats  4,0 chips  207 taps   50
+day 10: alive  40/40  rev   573 profit   237 lvl 2,0 cash   2090 maids 3,0 wages   63 seats  4,0 chips  285 taps   52
+day 15: alive  40/40  rev   626 profit   260 lvl 2,5 cash   3357 maids 3,0 wages   67 seats  4,0 chips  411 taps   56
+day 20: alive  40/40  rev   640 profit   261 lvl 2,7 cash   4638 maids 3,0 wages   70 seats  4,0 chips  537 taps   58
+day 30: alive  40/40  rev   771 profit   361 lvl 3,1 cash   7783 maids 3,0 wages   78 seats  4,0 chips  800 taps   63
+day 40: alive  40/40  rev   774 profit   340 lvl 3,4 cash  11159 maids 3,0 wages   83 seats  4,0 chips 1082 taps   66
