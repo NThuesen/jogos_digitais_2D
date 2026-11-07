@@ -89,6 +89,8 @@ namespace Neko.Game.Ui
                 { "assist.early", "cedo!" },
                 { "day.combo", "Combo" },
                 { "day.tips", "gorjeta" },
+                { "day.combo.max", "MÁX" },
+                { "assist.late", "tarde!" },
                 { "hint.stove", "Fogão no ponto dourado: toque agora!" },
                 { "hint.order", "Mesa com a mão levantada: toque para anotar o pedido." },
                 { "hint.greet", "Cliente na porta: toque nela para sentar." },

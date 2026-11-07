@@ -13,7 +13,7 @@ namespace Neko.Game.View
     public sealed partial class RoomView
     {
         private const float WallHeight = 4.2f;
-        private const float Reach = 16f;
+        private const float Reach = 12f;
 
         private static readonly Color Paper = Palette.Hex("#F3DCD2");
         private static readonly Color PaperStripe = Palette.Hex("#EBCDC4");
@@ -52,9 +52,9 @@ namespace Neko.Game.View
 
             // The wall, in two tones: papered above, panelled below.
             Block("Wall", middle, wallMid, span, WallHeight, Paper, Layers.Floor, 39f);
-            for (var x = -(int)Reach; x < grid.Width + Reach; x += 1)
+            for (var x = -(int)Reach; x < grid.Width + Reach; x += 2)
             {
-                Block("Stripe", x + 0.5f, wallMid + 0.55f, 0.5f, WallHeight - 1.1f, PaperStripe,
+                Block("Stripe", x + 0.5f, wallMid + 0.55f, 1f, WallHeight - 1.1f, PaperStripe,
                     Layers.Floor, 38.5f);
             }
 
@@ -66,12 +66,12 @@ namespace Neko.Game.View
             Block("Shade", middle, wallBottom - 0.06f, grid.Width + 0.6f, 0.24f,
                 Palette.WithAlpha(Palette.Ink, 0.22f), Layers.Rug, grid.Height + 0.5f);
 
-            var panels = Mathf.CeilToInt(span / 1.9f);
+            var panels = Mathf.CeilToInt(span / 2.6f);
             for (var i = 0; i < panels; i++)
             {
-                Piece("Panel", new Vector3(-Reach + 0.6f + i * 1.9f, wallBottom + 0.32f, 0f),
+                Piece("Panel", new Vector3(-Reach + 0.6f + i * 2.6f, wallBottom + 0.32f, 0f),
                     new ShapeSpec(ShapeId.RoundedRect, Palette.Lighten(Wainscot, 0.08f),
-                        Palette.Darken(Wainscot, 0.2f), 0.06f, 0.2f), new Vector2(1.5f, 0.4f),
+                        Palette.Darken(Wainscot, 0.2f), 0.06f, 0.2f), new Vector2(2.1f, 0.4f),
                     Layers.Floor, 37.9f);
             }
 

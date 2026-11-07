@@ -312,6 +312,9 @@ namespace Neko.Game.View
                 case AssistResult.Cooldown:
                     _effects.Number(origin, Ui.Strings.Get("assist.busy"), Palette.TextDim);
                     break;
+                case AssistResult.TooLate:
+                    _effects.Number(origin, Ui.Strings.Get("assist.late"), Palette.TextDim);
+                    break;
                 case AssistResult.NoSeat:
                     _effects.Number(origin, Ui.Strings.Get("assist.noseat"), Palette.Alarm);
                     break;

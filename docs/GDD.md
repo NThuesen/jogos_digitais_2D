@@ -55,9 +55,9 @@ só somam.
 - **Mão levantada** (anel dourado): toque para anotar o pedido.
 - **Prato sujo** sobre a mesa: toque para limpar e liberar o lugar.
 - **Fogão**: um medidor mostra o cozimento; tocar na faixa dourada (72–95%) entrega o prato
-  na hora, sem queimar, e o cliente gasta 10% a mais. Tocar cedo atrasa o prato e quebra o combo.
+  na hora, sem queimar, e o cliente gasta 10% a mais. Tocar cedo atrasa o prato e quebra o combo; tocar depois de 95% não rende bônus (o prato sai sozinho, sem custo).
 - **Cliente impaciente**: toque para acalmar (+20% de paciência, recarga de 10 s).
-- **Combo**: toques úteis em sequência (janela de 6 s, máximo 10) somam +1% de gorjeta cada.
+- **Combo**: toques úteis em sequência (janela de 6 s; o contador para em 10, que é o que a tela mostra) somam +1% de gorjeta cada.
 - Cada ajuda ocupa as mãos do dono por 2 s (exceto o prato no ponto), para que um jogador
   muito rápido não substitua a equipe inteira.
 
@@ -319,6 +319,12 @@ reputação por cliente feliz ×3 (nível 2 em ~10 dias de jogo casual); velocid
 base `0,8 +` cozinha (era `0,6 +`); Kuudere ganha cozinha ×1,2 (era o pior cozinheiro sem
 compensação). Fichas: +1 por prato na faixa dourada e um bônus de combo (a partir de 5 passos).
 Deixar o café sozinho continua possível, mas é uma sangria lenta — não uma sentença de dia 4.
+
+**Limite conhecido (ver [ECON-02](economy/econ-02/README.md)):** a tabela acima é sem compras. Com
+um jogador que investe (caixas, contratação, móveis) a expansão hoje não se paga — no nível 1,
+cada mesa extra *reduz* a receita porque a demanda cresce com os lugares e o time é o mesmo — e
+quebra mais que jogar sem comprar nada. Corrigir isso é decisão de design (ECON-02b), não foi
+resolvido aqui.
 
 Dos três cozinheiros, nenhum rende mais de 1,35× do outro no mesmo dia (teste
 `NoKitchenArchetypeIsAnOutlier`). Elencos com Ojou-sama na recepção ainda são os mais difíceis
