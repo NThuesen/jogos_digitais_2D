@@ -20,13 +20,22 @@ namespace Neko.Sim.Economy
         /// How fast people come in.
         /// </summary>
         /// <remarks>
-        /// Driven by how many seats there are, not by the day. Arrivals beyond what a room can
-        /// hold are pure downside — they earn nothing and cost goodwill — so a curve that
-        /// raised them while the room stayed the same size made every later day strictly worse
-        /// with nothing to show for it.
+        /// Demand is a property of the street, not of the furniture (ECON-02b). It used to be
+        /// <c>0,055 × seats</c>, so every table bought also summoned its own crowd: with the
+        /// same waiters, more seated parties meant slower service, abandoned dishes and
+        /// goodwill lost, and a bigger room earned less than a small one even for an epic
+        /// team. Now the rate is fixed and the room is only capacity: a table pays when the
+        /// team and the kitchen can turn it, and costs when they cannot. The day grows
+        /// through the shift length and the menu, which both come with the café level.
         /// </remarks>
         public static float ArrivalsPerSecondFor(int day, int cafeLevel, int seats) =>
-            Curves.Clamp(0.055f * Math.Max(1, seats) + 0.008f * (day - 1), 0.12f, 1.1f);
+            BaseArrivalsPerSecond;
+
+        /// <summary>Parties arriving per second, whatever the size of the room.</summary>
+        public const float BaseArrivalsPerSecond = 0.236f;
+
+        /// <summary>Reputation for every party that left happy.</summary>
+        public const float ReputationPerHappyParty = 4f;
 
         /// <summary>Everybody gets a little more impatient, down to a floor of 75%.</summary>
         public static float PatienceScaleFor(int day) =>
@@ -49,7 +58,7 @@ namespace Neko.Sim.Economy
         {
             if (result == null || result.Impossible) return 0;
 
-            var earned = (int)Math.Round(result.Served * result.Satisfaction * 3f);
+            var earned = (int)Math.Round(result.Served * result.Satisfaction * ReputationPerHappyParty);
             return Math.Max(0, earned - result.LeftAngry);
         }
 

@@ -1,0 +1,36 @@
+idle    none          surv 0/100    dday 7   mean$ 0      | 
+idle    conservative  surv 0/100    dday 7   mean$ 0      | 
+idle    balanced      surv 0/100    dday 6   mean$ 0      | 
+idle    full          surv 0/100    dday 6   mean$ 0      | 
+idle    hire          surv 0/100    dday 7   mean$ 0      | 
+idle    hire-excess   surv 0/100    dday 7   mean$ 0      | 
+idle    tables-only   surv 0/100    dday 4   mean$ 0      | 
+idle    overexpand    surv 0/100    dday 4   mean$ 0      | 
+idle    legacy        surv 0/100    dday 6   mean$ 0      | 
+lazy    none          surv 23/100   dday 12  mean$ 277    | cash 1204 (p10 375, p90 2152)  profit -4  lvl 3,0  maids 3,0  rev/served 50
+lazy    conservative  surv 19/100   dday 12  mean$ 163    | cash 857 (p10 154, p90 1754)  profit -5  lvl 3,1  maids 4,1  rev/served 49
+lazy    balanced      surv 19/100   dday 13  mean$ 251    | cash 1321 (p10 216, p90 2667)  profit 80  lvl 3,4  maids 4,3  rev/served 58
+lazy    full          surv 19/100   dday 13  mean$ 251    | cash 1321 (p10 216, p90 2667)  profit 80  lvl 3,4  maids 4,3  rev/served 58
+lazy    hire          surv 20/100   dday 12  mean$ 172    | cash 860 (p10 166, p90 1844)  profit -18  lvl 3,1  maids 4,2  rev/served 51
+lazy    hire-excess   surv 14/100   dday 13  mean$ 149    | cash 1063 (p10 179, p90 2204)  profit -44  lvl 3,2  maids 4,2  rev/served 48
+lazy    tables-only   surv 0/100    dday 6   mean$ 0      | 
+lazy    overexpand    surv 0/100    dday 5   mean$ 0      | 
+lazy    legacy        surv 16/100   dday 13  mean$ 184    | cash 1150 (p10 216, p90 2828)  profit 41  lvl 3,4  maids 4,4  rev/served 61
+casual  none          surv 98/100   dday 12  mean$ 3695   | cash 3770 (p10 2030, p90 5850)  profit 127  lvl 3,5  maids 3,0  rev/served 59
+casual  conservative  surv 94/100   dday 30  mean$ 3307   | cash 3518 (p10 1098, p90 6767)  profit 122  lvl 3,6  maids 4,6  rev/served 63
+casual  balanced      surv 87/100   dday 32  mean$ 2595   | cash 2982 (p10 482, p90 6446)  profit 106  lvl 3,4  maids 4,4  rev/served 61
+casual  full          surv 84/100   dday 32  mean$ 2736   | cash 3257 (p10 555, p90 7132)  profit 147  lvl 3,5  maids 4,5  rev/served 63
+casual  hire          surv 94/100   dday 30  mean$ 3031   | cash 3225 (p10 998, p90 6235)  profit 74  lvl 3,6  maids 4,6  rev/served 59
+casual  hire-excess   surv 91/100   dday 23  mean$ 2515   | cash 2763 (p10 853, p90 5470)  profit 82  lvl 3,5  maids 4,5  rev/served 60
+casual  tables-only   surv 14/100   dday 9   mean$ 91     | cash 647 (p10 80, p90 1402)  profit 30  lvl 2,4  maids 3,4  rev/served 57
+casual  overexpand    surv 0/100    dday 7   mean$ 0      | 
+casual  legacy        surv 80/100   dday 29  mean$ 3436   | cash 4294 (p10 423, p90 10964)  profit 315  lvl 3,8  maids 4,7  rev/served 69
+pro     none          surv 100/100  dday -   mean$ 13215  | cash 13215 (p10 7881, p90 19420)  profit 386  lvl 4,4  maids 3,0  rev/served 74
+pro     conservative  surv 100/100  dday -   mean$ 16098  | cash 16098 (p10 6453, p90 27755)  profit 661  lvl 4,8  maids 5,5  rev/served 91
+pro     balanced      surv 100/100  dday -   mean$ 17664  | cash 17664 (p10 4114, p90 41131)  profit 870  lvl 4,8  maids 5,5  rev/served 99
+pro     full          surv 100/100  dday -   mean$ 18102  | cash 18102 (p10 4379, p90 41131)  profit 878  lvl 4,9  maids 5,5  rev/served 100
+pro     hire          surv 100/100  dday -   mean$ 12700  | cash 12700 (p10 6359, p90 20320)  profit 436  lvl 4,4  maids 5,4  rev/served 80
+pro     hire-excess   surv 100/100  dday -   mean$ 12237  | cash 12237 (p10 6359, p90 19583)  profit 424  lvl 4,4  maids 5,3  rev/served 80
+pro     tables-only   surv 98/100   dday 14  mean$ 6490   | cash 6622 (p10 1449, p90 14965)  profit 281  lvl 3,1  maids 4,1  rev/served 74
+pro     overexpand    surv 88/100   dday 9   mean$ 5818   | cash 6611 (p10 1390, p90 14639)  profit 286  lvl 3,1  maids 4,1  rev/served 77
+pro     legacy        surv 100/100  dday -   mean$ 29304  | cash 29304 (p10 4804, p90 60136)  profit 1650  lvl 5,5  maids 5,8  rev/served 126

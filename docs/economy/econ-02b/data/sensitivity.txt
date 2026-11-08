@@ -1,0 +1,24 @@
+### sensitivity to the arrival rate (base cap, 100 seeds, 40 days)
+-- lambda 0.22
+casual  none          surv 100/100  dday -   mean$ 4063   | cash 4063 (p10 2349, p90 6060)  profit 118  lvl 3,6  maids 3,0  rev/served 58
+casual  full          surv 89/100   dday 35  mean$ 3904   | cash 4387 (p10 464, p90 11192)  profit 247  lvl 3,8  maids 4,7  rev/served 71
+casual  overexpand    surv 6/100    dday 8   mean$ 61     | cash 1013 (p10 264, p90 2370)  profit -31  lvl 2,5  maids 3,5  rev/served 68
+pro     none          surv 100/100  dday -   mean$ 14152  | cash 14152 (p10 8015, p90 21394)  profit 429  lvl 4,5  maids 3,0  rev/served 76
+pro     full          surv 100/100  dday -   mean$ 20714  | cash 20714 (p10 5409, p90 49606)  profit 1000  lvl 5,1  maids 5,6  rev/served 102
+pro     overexpand    surv 93/100   dday 9   mean$ 7573   | cash 8143 (p10 2453, p90 16207)  profit 365  lvl 3,5  maids 4,5  rev/served 81
+-- lambda 0.236
+casual  none          surv 98/100   dday 12  mean$ 3695   | cash 3770 (p10 2030, p90 5850)  profit 127  lvl 3,5  maids 3,0  rev/served 59
+casual  full          surv 84/100   dday 32  mean$ 2736   | cash 3257 (p10 555, p90 7132)  profit 147  lvl 3,5  maids 4,5  rev/served 63
+casual  overexpand    surv 0/100    dday 7   mean$ 0      | 
+pro     none          surv 100/100  dday -   mean$ 13215  | cash 13215 (p10 7881, p90 19420)  profit 386  lvl 4,4  maids 3,0  rev/served 74
+pro     full          surv 100/100  dday -   mean$ 18102  | cash 18102 (p10 4379, p90 41131)  profit 878  lvl 4,9  maids 5,5  rev/served 100
+pro     overexpand    surv 88/100   dday 9   mean$ 5818   | cash 6611 (p10 1390, p90 14639)  profit 286  lvl 3,1  maids 4,1  rev/served 77
+-- lambda 0.26
+casual  none          surv 97/100   dday 12  mean$ 3342   | cash 3445 (p10 1920, p90 5171)  profit 82  lvl 3,4  maids 3,0  rev/served 56
+casual  full          surv 75/100   dday 33  mean$ 2046   | cash 2728 (p10 528, p90 5719)  profit 123  lvl 3,3  maids 4,3  rev/served 65
+casual  overexpand    surv 0/100    dday 6   mean$ 0      | 
+pro     none          surv 100/100  dday -   mean$ 12244  | cash 12244 (p10 7345, p90 18475)  profit 353  lvl 4,3  maids 3,0  rev/served 71
+pro     full          surv 100/100  dday -   mean$ 14978  | cash 14978 (p10 4162, p90 32174)  profit 782  lvl 4,5  maids 5,3  rev/served 90
+pro     overexpand    surv 85/100   dday 11  mean$ 4063   | cash 4780 (p10 1075, p90 9745)  profit 200  lvl 2,5  maids 3,6  rev/served 70
+### determinism: same command twice
+IDENTICAL

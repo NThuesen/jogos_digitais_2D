@@ -320,11 +320,14 @@ base `0,8 +` cozinha (era `0,6 +`); Kuudere ganha cozinha ×1,2 (era o pior cozi
 compensação). Fichas: +1 por prato na faixa dourada e um bônus de combo (a partir de 5 passos).
 Deixar o café sozinho continua possível, mas é uma sangria lenta — não uma sentença de dia 4.
 
-**Limite conhecido (ver [ECON-02](economy/econ-02/README.md)):** a tabela acima é sem compras. Com
-um jogador que investe (caixas, contratação, móveis) a expansão hoje não se paga — no nível 1,
-cada mesa extra *reduz* a receita porque a demanda cresce com os lugares e o time é o mesmo — e
-quebra mais que jogar sem comprar nada. Corrigir isso é decisão de design (ECON-02b), não foi
-resolvido aqui.
+### 10.2 A sala é capacidade (ECON-02b)
+
+A demanda deixou de depender dos lugares: **0,236 grupos por segundo, fixos**, todo dia. O dia cresce pela duração do turno e pelo
+cardápio, que vêm com o nível. Antes (`0,055 × lugares`) cada mesa comprada trazia a própria multidão e a expansão nunca se pagava.
+Agora: fogão e vaga aberta pagam em ~4–9 dias; mesas pagam com equipe forte e cozinha suficiente (fogão + 2 mesas numa equipe épica: +293/dia);
+mesas sem cozinha, ou numa equipe comum, continuam sendo um erro; excesso de mesas quebra quem toca pouco. Reputação por cliente feliz: **×4**
+(nível 3 no dia ~19 e nível 4 no ~38 jogando casual). Evidência, ROI por item e limites:
+[ECON-02b](economy/econ-02b/README.md). Ainda em aberto: jogo muito passivo (~20 toques/dia) sobrevive só ~23% e precisa de playtest humano.
 
 Dos três cozinheiros, nenhum rende mais de 1,35× do outro no mesmo dia (teste
 `NoKitchenArchetypeIsAnOutlier`). Elencos com Ojou-sama na recepção ainda são os mais difíceis
