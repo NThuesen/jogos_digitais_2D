@@ -4,20 +4,22 @@
 
 **Anexos:** **A (obrigatório, ESTILO)** = `art_working/ui_modular/raw_gpt/UI-011_icon_cup_v01.png` (ou outro ícone `UI-011_*` aprovado) para espessura de contorno e acabamento. B opcional = `UI-011_icon_coin_v01.png`.
 
-**Saída:** um PNG por receita, transparente, 512×512 (será derivado para 128×128 na integração; o balão é pequeno), em `art_working/ui_modular/raw_gpt/` como `UI-027_dish_<id>_v01.png` (ids na tabela). Sem texto nem preço no desenho.
+**Saída:** um PNG por receita, transparente, 512×512 (derivado 128×128 somente após aprovação do master; o balão é pequeno), em `art_working/ui_modular/raw_gpt/` como `UI-027_dish_<id>_v01.png` (ids na tabela). Sem texto nem preço no desenho.
 
 ## Prompt-base (copie UM bloco inteiro, trocando `[PRATO]`)
 
 ```text
 NEKO MAID INC. — DISH ICON — [PRATO] — V01
 
+Use a consistent warm-brown outline on pale milk and cake edges. Simplify tiny details for 16–25 px. Keep deluxe omurice crowned with demi-glace and flag, royal parfait taller with crown; matcha glass cup, bubble tea tall straw cup, royal tea porcelain cup and saucer.
+
 Create exactly ONE isolated 2D illustrated icon of the food or drink described below, in the same finish as the attached IMAGE A (style reference only: clean warm-brown coloured outline, soft cel-shading, small specular highlights, cozy anime café feel; do not copy IMAGE A's subject).
 
-SUBJECT: [PRATO: description below]. Shown as served: on a small plate or in a cup/glass as appropriate, three-quarter top-down view, centred, slightly cute and appetising, simplified for gameplay readability at 40–56 screen pixels.
+SUBJECT: [PRATO: description below]. Shown as served: on a small plate or in a cup/glass as appropriate, three-quarter top-down view, centred, slightly cute and appetising, simplified for gameplay readability at 20–25 screen pixels, also checked at 16 pixels.
 
 STYLE: premium illustrated anime 2D, NOT pixel art, NOT 3D, NOT photographic. Warm cream and café palette; the dish's dominant colour (given) must dominate the silhouette. No steam smoke clutter, no hands, no characters, no text, no numbers, no UI frame, no price.
 
-FRAMING: square 1:1 canvas, subject fills about 78 % with 8 % transparent margin on every side. Genuine transparent alpha. NO table, shadow plate beyond the dish itself, background or watermark.
+FRAMING: square 1:1 canvas, subject fills about 78 % with at least 8 % transparent margin on every side. Genuine transparent alpha. NO table, shadow plate beyond the dish itself, background or watermark.
 
 Output exactly ONE PNG.
 ```
@@ -44,3 +46,25 @@ Output exactly ONE PNG.
 ## Balão de pedido (opcional, 1 prompt)
 
 Se quiser substituir também o balão procedural: use o prompt de `19_DIALOG_BALLOON.md` (já existe) e mantenha estes ícones como conteúdo separado, escalados pela Unity.
+
+## Revisão documental V02 — ART-PROD-01
+
+A revisão do prompt preserva todos os 14 IDs, descrições, cores e nomes `_v01`.
+Aprovar primeiro D0: milk, omurice e parfait. Depois D1: curry, ramen,
+omurice_deluxe, catbun, cake; D2: matcha, bubble_tea, royal_tea;
+D3: pancake, sundae, parfait_royal. Uso confirmado: balão de pedido.
+
+Adicionar ao prompt antes de gerar:
+
+```text
+Use a consistent warm-brown outline, including pale milk and cake edges.
+Simplify tiny decoration that disappears at 20–25 px; inspect at 16 px too.
+Keep classic omurice low and simple; deluxe has a clear demi-glace crown and flag.
+Keep parfait's wafer silhouette distinct from royal parfait's taller crown silhouette.
+Matcha uses a glass cup, bubble tea a tall cup with wide straw, royal tea a porcelain
+cup and saucer. Preserve the specified ingredients and dominant colours.
+No white fringe, fake checkerboard, embedded labels, frames or prices.
+```
+
+Master: 512×512, alpha real. Derivado: 128×128 após ART_APPROVED.
+Pacote futuro único por recipeId com fallback procedural, sem alterar RecipeBook.
