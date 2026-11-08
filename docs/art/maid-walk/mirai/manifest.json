@@ -1,0 +1,105 @@
+{
+ "id": "mirai",
+ "name": "Mirai",
+ "frames_found": 25,
+ "folder": "25_mirai/step4_blender/walk_x/frames",
+ "numbering": [
+  60,
+  84
+ ],
+ "gaps": [],
+ "size": [
+  1920,
+  1080
+ ],
+ "real_alpha_levels": 256,
+ "specks": 25,
+ "matte_px": 384194,
+ "chroma_px": 0,
+ "height_mean": 975.7,
+ "height_range": [
+  970,
+  982
+ ],
+ "cx_std": 7.1,
+ "drift_x": 22.0,
+ "drift_y": 8,
+ "step_diff_mean": 0.0705,
+ "wrap_diff": 0.143,
+ "loop_ratio": 1.93,
+ "duplicate_pairs": 0,
+ "max_step_diff": 0.0936,
+ "loop_trim": [
+  0,
+  24
+ ],
+ "loop_ratio_before_trim": 2.03,
+ "source_frame_numbers": [
+  60,
+  84
+ ],
+ "units_per_cycle": 1.83,
+ "slide_factor": 3.3,
+ "cell": [
+  152,
+  252
+ ],
+ "scale": 0.24597,
+ "frames": 25,
+ "columns": 6,
+ "rows": 5,
+ "idle_frame": 15,
+ "rest_frames": [
+  5,
+  6,
+  7,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20
+ ],
+ "foot_speed_px_per_frame": 2.08,
+ "max_foot_separation_px": 33.1,
+ "noslide_units_per_cycle": 0.562,
+ "status": "NEEDS_PROCESSING",
+ "note": "faint matte removed; 25 specks removed",
+ "resource": "Maids/mirai_walk",
+ "sheet_sha256": "a189f2c3c9af8a18dac6a68c2f92f2b5674a8b7615bdd84aedcde8d493188300",
+ "source_sha256": {
+  "0060.png": "2606ae9f87b98cfa198e6977ccac15683087a0169e0974ec964bdc8d35d219a3",
+  "0061.png": "3def3edbe5d4d6264c54fbc586f3b5833c2f126955bf363902d6de39886dc6e5",
+  "0062.png": "2aff9f130686287315f8694c3851b724c81b22e7ee47b35277c592ec3dd3fd7b",
+  "0063.png": "88a00af48ea739764a9deeb9ca3f4b6a62d6f3f77ceb6e8f257fce459cea1df7",
+  "0064.png": "d7890223132d8d1032def527309803d9ac88865206ef7e263f6bef40f1cc7e3e",
+  "0065.png": "2a817965edf3b8e90679c4ac275c30bfe78bafda07e61ca9c4da7b74835c94e5",
+  "0066.png": "b27ea335699ffe6145a3509fe2bd3a5c4f21f8c4694298de752aa62efe733f46",
+  "0067.png": "31abbdc61d7114906c70095695b1822bcf3e7eb2c74d358b8160b84437a3ce8a",
+  "0068.png": "d403ad59164952907f94cc626fe48e612863202da1faedfc7516a386e1468161",
+  "0069.png": "59bffb36408a467f3c97de484ac79ece2bdaf8227bbadfe8e77426aad7566e17",
+  "0070.png": "352373d1cd0b93815ae53621320f80e71d82fc6f9a0427ad222647b9af91f5e3",
+  "0071.png": "b4bcb823fab0625f453863553ca0ef16469558bc5e68a8687365dc63df62a738",
+  "0072.png": "5dea65f2de10ba168c2fb1e1d759c90dea179a0e2c793580ecd02f2905eae5c1",
+  "0073.png": "cbaf205447e645af90b602d7676f1713e3fb74db984b961ed6ffa868038737c9",
+  "0074.png": "abbed49e5a6e6aa29024a73cd19788404cb19dccc9771e33ad0996a70c8d5dcc",
+  "0075.png": "c26863f489f8169f89018fef87306c40b0e89da54c65e9e4a8427b0495ff823f",
+  "0076.png": "2309ccee25644a640bc18622681491d2a01b05311fb3ed0ec10b268a8927c79b",
+  "0077.png": "3534805cab9fc18606fc5f47ac0c471201edaf8a20a39962d4a0191c97f91005",
+  "0078.png": "277354961cf33cba149a55cd6f6b0eb6ff35b1737ce57dba1d944600f08a5a9f",
+  "0079.png": "a47bf03f0acec802eb59d0b0901d7deb3d6d7003fae7c49de638f509bd5f2eea",
+  "0080.png": "5940011f83a504fd5e37031783c60bc2fa88f58b0b0cd0d76ac0ab6b30430f0e",
+  "0081.png": "7fe6376b3a33b734a1f6558753831db4ea8dcc171f06e6b048acd44c042ef9a5",
+  "0082.png": "5817176e9a12a164adf300c58ee1af52edbe5ab8f49270990fd64399822b6316",
+  "0083.png": "96c3fd96389c1945e33c2d0d46be4fbbb950f608c1cac49ccc964a1ffc01a26b",
+  "0084.png": "cceba0e57ec693f86c42893cd0f592e7757fe4085f16f5f9c0f8fedf67c51ac2"
+ },
+ "parameters": {
+  "height_px": 240,
+  "colors": 0,
+  "style": "illustrated",
+  "pad_px": 8,
+  "pixels_per_unit": 184.615,
+  "world_height": 1.3
+ }
+}

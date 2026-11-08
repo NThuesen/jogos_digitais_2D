@@ -44,8 +44,8 @@ namespace Neko.Sim.Maids
     /// <remarks>
     /// Releasing a planned maid is a one-word change here, and only once her portrait and walk
     /// cycle exist (a test in the game assembly fails for a released identity without them).
-    /// Today 23 are released; Tsubaki, Mirai, Kinako and Mayu stay planned until their walk
-    /// frames are exported and processed.
+    /// All 27 are released. <see cref="IdentityStatus.Planned"/> stays in the model for any
+    /// future addition (a reserved identity without portrait and walk cycle is never drawn).
     /// Nothing outside this class invents a name or pairs one with an archetype.
     /// </remarks>
     public static class MaidCatalog
@@ -80,19 +80,19 @@ namespace Neko.Sim.Maids
 
             Out("kaede", "Kaede", Archetype.Oneesan),
             Out("mizuki", "Mizuki", Archetype.Oneesan),
-            Planned("tsubaki", "Tsubaki", Archetype.Oneesan),
+            Out("tsubaki", "Tsubaki", Archetype.Oneesan),
 
             Out("nene", "Nene", Archetype.Idol),
             Out("himari", "Himari", Archetype.Idol),
-            Planned("mirai", "Mirai", Archetype.Idol),
+            Out("mirai", "Mirai", Archetype.Idol),
 
             Out("ichika", "Ichika", Archetype.Gourmand),
             Out("anzu", "Anzu", Archetype.Gourmand),
-            Planned("kinako", "Kinako", Archetype.Gourmand),
+            Out("kinako", "Kinako", Archetype.Gourmand),
 
             Out("yoru", "Yoru", Archetype.Mukuchi),
             Out("kasumi", "Kasumi", Archetype.Mukuchi),
-            Planned("mayu", "Mayu", Archetype.Mukuchi),
+            Out("mayu", "Mayu", Archetype.Mukuchi),
         };
 
         private static readonly MaidIdentity[] ReleasedEntries = Filter();
