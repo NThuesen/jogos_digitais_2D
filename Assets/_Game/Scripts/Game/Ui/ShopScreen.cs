@@ -31,6 +31,18 @@ namespace Neko.Game.Ui
 
         protected override void Build()
         {
+            if (!ForcePlain && KitArt.Has(KitSprites))
+            {
+                _kit = true;
+                BuildKit();
+                return;
+            }
+
+            BuildPlain();
+        }
+
+        private void BuildPlain()
+        {
             Scenery.Build(transform, withFloor: false);
 
             var title = UiKit.TrackedLabel(transform, "LOJA", Typeface.Heading, Palette.Cream, 6f);
@@ -80,6 +92,17 @@ namespace Neko.Game.Ui
         {
             if (Session == null) return;
 
+            if (_kit)
+            {
+                RefreshKit();
+                return;
+            }
+
+            RefreshPlain();
+        }
+
+        private void RefreshPlain()
+        {
             for (var i = 0; i < _rows.Count; i++)
             {
                 if (_rows[i] != null) Destroy(_rows[i]);
@@ -243,6 +266,270 @@ namespace Neko.Game.Ui
 
             Session.Touch();
             Refresh();
+        }
+
+        // ========================================================================================
+        // The illustrated screen (UI-INT-03B)
+        // ========================================================================================
+        // One layout for Móveis, Roupas and Presentes: only the list, its names, descriptions, prices
+        // and icons change. Placed on a 1280x720 stage in pixels of the approved mockup (KitStage).
+        // Every word and number is Unity Text over a blank plate. The row is only a skin: the buy
+        // button is its own Button wired straight to Buy(item), never behind a selection.
+
+        private const float S = KitStage.S;
+
+        private static readonly string[] KitSprites =
+        {
+            "shop_background", "shop_title_empty", "shop_money_panel_empty", "shop_tab_normal_empty",
+            "shop_tab_selected_empty", "shop_tab_underline", "shop_main_panel_empty", "shop_panel_top_bow",
+            "shop_bottom_paw_ornament", "shop_product_row_normal", "shop_product_row_highlight", "shop_buy_empty",
+            "back_blank", "bow_gold",
+        };
+
+        private static readonly float[] TabX = { 357f, 685f, 1014f };
+        private static readonly Color Gold = Palette.Hex("#A8700A");
+
+        private const float RowPitch = 119f;
+
+        private bool _kit;
+
+        /// <summary>Asks for the earlier procedural layout even when the kit is present (tests, tools).</summary>
+        public bool ForcePlain;
+
+        private RectTransform _tabsLayer;
+        private RectTransform _content;
+        private RectTransform _viewport;
+        private Text _empty;
+        private ShopItemKind _shownTab = ShopItemKind.Placeable;
+
+        /// <summary>The category on show, for tests.</summary>
+        public ShopItemKind Category => _tab;
+
+        private void BuildKit()
+        {
+            KitArt.Backdrop(transform, "shop_background");
+            var stage = KitStage.Make(transform);
+
+            if (UiArt.Has("ui020_logo_wordmark"))
+            {
+                var logo = UiArt.Picture(stage, "ui020_logo_wordmark", new Vector2(176f, 86f));
+                UiKit.Anchor(logo.rectTransform, new Vector2(0f, 1f), new Vector2(12f, -9f));
+            }
+
+            var title = KitStage.At(stage, "shop_title_empty", 576, 56, 1090, 155, "TitlePlate");
+            KitArt.Fitted(title.transform, Strings.Get("shop.screen"), 38, 18, KitArt.Brown,
+                KitStage.Region(576, 56, 1090, 155, 716, 72, 950, 140));
+            var bow = KitArt.Picture(stage, "bow_gold", 118f);
+            bow.gameObject.name = "Bow";
+            UiKit.Anchor(bow.rectTransform, new Vector2(0.5f, 1f), new Vector2((833f - 836f) * S, -22f));
+
+            // The money in the till: ¥, never fichas.
+            KitStage.At(stage, "shop_money_panel_empty", 1202, 64, 1427, 133, "MoneyPlate");
+            if (UiArt.Has("icon_coin"))
+            {
+                var coin = UiArt.Picture(stage, "icon_coin", new Vector2(36f, 36f));
+                coin.gameObject.name = "Coin";
+                UiKit.Anchor(coin.rectTransform, new Vector2(0f, 1f), new Vector2(1222f * S, -81f * S));
+            }
+
+            _money = KitArt.Fitted(KitStage.Slot(stage, "Money", 1262, 76, 1412, 122), "", 30, 12, Gold,
+                Vector4.zero, TextAnchor.MiddleRight);
+
+            var back = KitArt.Button(stage, "back_blank", Strings.Get("dialog.back"), new Vector2(150f, 64f),
+                () => OnBack?.Invoke(), 22, 12, KitArt.Brown, KitArt.Margins("back_blank", 86, 27, 90, 35));
+            back.name = "Back";
+            UiKit.Anchor(back.GetComponent<RectTransform>(), new Vector2(1f, 1f), new Vector2(-16f, -14f));
+
+            _tabsLayer = KitStage.Layer(stage, "Tabs");
+
+            KitStage.At(stage, "shop_main_panel_empty", 236, 268, 1437, 907, "ListPlate");
+            KitStage.At(stage, "shop_panel_top_bow", 718, 271, 953, 336, "TopBow");
+
+            _viewport = KitStage.Slot(stage, "Viewport", 282, 350, 1391, 825);
+            _viewport.gameObject.AddComponent<RectMask2D>();
+            var catcher = _viewport.gameObject.AddComponent<Image>();
+            catcher.color = new Color(1f, 1f, 1f, 0f);
+            catcher.raycastTarget = true;
+
+            _content = new GameObject("Content", typeof(RectTransform)).GetComponent<RectTransform>();
+            _content.SetParent(_viewport, false);
+            _content.anchorMin = new Vector2(0f, 1f);
+            _content.anchorMax = new Vector2(1f, 1f);
+            _content.pivot = new Vector2(0.5f, 1f);
+            _content.anchoredPosition = Vector2.zero;
+            _content.sizeDelta = new Vector2(0f, 0f);
+
+            var scroll = _viewport.gameObject.AddComponent<ScrollRect>();
+            scroll.content = _content;
+            scroll.viewport = _viewport;
+            scroll.horizontal = false;
+            scroll.vertical = true;
+            scroll.movementType = ScrollRect.MovementType.Clamped;
+            scroll.scrollSensitivity = 30f;
+
+            KitStage.At(stage, "shop_bottom_paw_ornament", 715, 840, 959, 906, "BottomOrnament");
+
+            _empty = KitArt.Fitted(KitStage.Slot(stage, "ListEmpty", 400, 560, 1270, 640), "", 24, 12, KitArt.Brown,
+                Vector4.zero);
+            _empty.gameObject.SetActive(false);
+        }
+
+        private void RefreshKit()
+        {
+            _money.text = Strings.Money(Session.Profile.Wallet.Money);
+
+            BuildTabsKit();
+
+            var keep = _shownTab == _tab ? _content.anchoredPosition.y : 0f;
+            _shownTab = _tab;
+
+            KitStage.Discard(_content);
+
+            var index = 0;
+            foreach (var item in Shop.StockFor(Session.Profile.CafeLevel))
+            {
+                if (item.Kind != _tab) continue;
+                BuildRowKit(item, index++);
+            }
+
+            _empty.gameObject.SetActive(index == 0);
+            if (index == 0) _empty.text = Strings.Get("lineup.empty");
+
+            var contentHeight = index * RowPitch * S + 4f;
+            _content.sizeDelta = new Vector2(0f, contentHeight);
+            var overflow = Mathf.Max(0f, contentHeight - _viewport.rect.height);
+            _content.anchoredPosition = new Vector2(0f, Mathf.Clamp(keep, 0f, overflow));
+        }
+
+        private void BuildTabsKit()
+        {
+            KitStage.Discard(_tabsLayer);
+
+            var kinds = new[] { ShopItemKind.Placeable, ShopItemKind.Equipment, ShopItemKind.Gift };
+            var keys = new[] { "shop.furniture", "shop.clothes", "shop.gifts" };
+            var names = new[] { "Furniture", "Clothes", "Gifts" };
+
+            for (var i = 0; i < kinds.Length; i++)
+            {
+                var kind = kinds[i];
+                var selected = kind == _tab;
+                var x = TabX[i];
+                var width = selected ? 304f : 300f;
+
+                var button = KitStage.PlateButton(_tabsLayer, selected ? "shop_tab_selected_empty" : "shop_tab_normal_empty",
+                    "Tab_" + names[i], x, 166, x + width, 255, () =>
+                    {
+                        _tab = kind;
+                        RefreshKit();
+                    });
+                var label = KitArt.Fitted(button.transform, Strings.Get(keys[i]), 32, 14, KitArt.Brown,
+                    new Vector4(0.12f, 0.24f, 0.12f, 0.22f));
+                label.gameObject.name = "Label";
+
+                if (selected)
+                {
+                    KitStage.At(_tabsLayer, "shop_tab_underline", x + 72f, 252, x + 72f + 161f, 267, "TabUnderline");
+                }
+            }
+        }
+
+        private void BuildRowKit(ShopItem item, int index)
+        {
+            var affordable = Session.Profile.Wallet.CanAfford(item.Price);
+
+            var row = new GameObject("Row_" + item.Id, typeof(RectTransform)).GetComponent<RectTransform>();
+            row.SetParent(_content, false);
+            UiKit.Anchor(row, new Vector2(0f, 1f), new Vector2(7f * S, -(2f + index * RowPitch) * S));
+            row.sizeDelta = new Vector2(1094f * S, 107f * S);
+
+            var normal = KitArt.Plate(row, "shop_product_row_normal", new Vector2((1094f + 16f) * S, (107f + 16f) * S));
+            normal.gameObject.name = "RowSkin";
+            UiKit.Anchor(normal.rectTransform, new Vector2(0f, 1f), new Vector2(-8f * S, 8f * S));
+            normal.color = affordable ? Color.white : new Color(0.84f, 0.8f, 0.78f, 1f);
+
+            // The golden row is the hover: it grows a few pixels past the logical row, so nothing moves.
+            var highlight = KitArt.Plate(row, "shop_product_row_highlight",
+                new Vector2((1094f + 5f + 7f + 16f) * S, (107f + 4f + 1f + 16f) * S));
+            highlight.gameObject.name = "RowHighlight";
+            UiKit.Anchor(highlight.rectTransform, new Vector2(0f, 1f), new Vector2((-5f - 8f) * S, (4f + 8f) * S));
+            highlight.gameObject.SetActive(false);
+
+            var hit = row.gameObject.AddComponent<Image>();
+            hit.color = new Color(1f, 1f, 1f, 0f);
+            hit.raycastTarget = true;
+            row.gameObject.AddComponent<RowHover>().Highlight = highlight.gameObject;
+
+            // The icon: the furniture itself, or the existing badge. Never a recut of the mockup.
+            var window = KitStage.Slot(row, "IconWindow", 64, 14, 184, 93);
+            if (item.Kind == ShopItemKind.Placeable)
+            {
+                var def = PlaceableCatalog.ById(item.Id);
+                var icon = new GameObject("Icon", typeof(RectTransform)).AddComponent<Image>();
+                icon.transform.SetParent(window, false);
+                UiKit.Stretch(icon.rectTransform);
+                icon.raycastTarget = false;
+                icon.sprite = UiKit.Sprites.Furniture(def, def.Width, def.Height);
+                icon.preserveAspect = true;
+            }
+            else
+            {
+                var badge = item.Kind == ShopItemKind.Gift ? "icon_gift" : "icon_cat_paw";
+                if (UiArt.Has(badge))
+                {
+                    var size = Mathf.Min(window.sizeDelta.x, window.sizeDelta.y);
+                    var icon = UiArt.Picture(window, badge, new Vector2(size, size));
+                    icon.gameObject.name = "Icon";
+                    UiKit.Anchor(icon.rectTransform, new Vector2(0.5f, 0.5f), Vector2.zero);
+                    icon.raycastTarget = false;
+                }
+            }
+
+            var owned = Owned(item);
+            var nameRight = owned > 0 ? 640f : 835f;
+            var nameText = KitArt.Fitted(KitStage.Slot(row, "Name", 204, 12, nameRight, 52), item.DisplayName, 30, 12,
+                KitArt.Brown, Vector4.zero, TextAnchor.MiddleLeft);
+            nameText.horizontalOverflow = HorizontalWrapMode.Wrap;
+
+            if (owned > 0)
+            {
+                KitArt.Fitted(KitStage.Slot(row, "Owned", 645, 12, 835, 52), Strings.Get("shop.owned") + ": " + owned,
+                    19, 9, Gold, Vector4.zero, TextAnchor.MiddleRight);
+            }
+
+            KitArt.Fitted(KitStage.Slot(row, "Description", 204, 56, 835, 101), item.Description, 20, 9,
+                SoftBrown, Vector4.zero, TextAnchor.UpperLeft);
+
+            var buy = KitStage.PlateButton(row, "shop_buy_empty", "Buy", 857f + 0f, 19f, 857f + 212f, 19f + 70f,
+                () => Buy(item));
+            var label = KitArt.Fitted(buy.transform, Strings.Money(item.Price), 30, 12, KitArt.Brown,
+                KitStage.Region(1146, 371, 1358, 441, 1166, 380, 1340, 432));
+            label.gameObject.name = "Label";
+            buy.interactable = affordable;
+            label.color = affordable ? KitArt.Brown : new Color(0.42f, 0.38f, 0.36f, 0.75f);
+        }
+
+        private static readonly Color SoftBrown = new Color(0.43f, 0.3f, 0.2f);
+
+        /// <summary>Lights the golden row while the pointer is over a row.</summary>
+        public sealed class RowHover : MonoBehaviour, UnityEngine.EventSystems.IPointerEnterHandler,
+            UnityEngine.EventSystems.IPointerExitHandler
+        {
+            public GameObject Highlight;
+
+            public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData eventData)
+            {
+                if (Highlight != null) Highlight.SetActive(true);
+            }
+
+            public void OnPointerExit(UnityEngine.EventSystems.PointerEventData eventData)
+            {
+                if (Highlight != null) Highlight.SetActive(false);
+            }
+
+            private void OnDisable()
+            {
+                if (Highlight != null) Highlight.SetActive(false);
+            }
         }
     }
 }
