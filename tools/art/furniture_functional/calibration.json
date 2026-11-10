@@ -1,0 +1,77 @@
+{
+ "table_2": {
+  "source": "table_2_v02",
+  "width": 2.0,
+  "front": {
+   "above_y": 0.378
+  }
+ },
+ "table_2_rotated": {
+  "source": "table_2_rotated_v02",
+  "width": 1.5
+ },
+ "table_4": {
+  "source": "table_4_v03",
+  "width": 2.0,
+  "front": {
+   "remove_polygons": [
+    [
+     [
+      0.03,
+      0.0
+     ],
+     [
+      0.47,
+      0.0
+     ],
+     [
+      0.47,
+      0.1
+     ],
+     [
+      0.03,
+      0.305
+     ]
+    ],
+    [
+     [
+      0.53,
+      0.0
+     ],
+     [
+      0.97,
+      0.0
+     ],
+     [
+      0.97,
+      0.305
+     ],
+     [
+      0.53,
+      0.1
+     ]
+    ]
+   ]
+  }
+ },
+ "stool": {
+  "source": "stool_v01",
+  "width": 0.6
+ },
+ "stove": {
+  "source": "stove_v01",
+  "width": 0.9
+ },
+ "teabar": {
+  "source": "teabar_v01",
+  "width": 2.0
+ },
+ "dessert": {
+  "source": "dessert_v01",
+  "width": 0.95
+ },
+ "bakery": {
+  "source": "bakery_v01",
+  "width": 0.95
+ }
+}

@@ -1,4 +1,5 @@
 using Neko.Sim.Cafe;
+using UnityEngine;
 
 namespace Neko.Game.Art
 {
@@ -61,6 +62,49 @@ namespace Neko.Game.Art
         /// <summary>How far above the footprint's front edge the bottom of the art sits.</summary>
         public float BottomLift { get; }
 
+        /// <summary>
+        /// Optional picture of what stands in front of a seated customer: same size, same pivot
+        /// as <see cref="Resource"/>, everything else transparent (a table's top and legs, a
+        /// four-seater's top and near chairs). The whole picture is then drawn behind the seated
+        /// customers and this one over them.
+        /// </summary>
+        public string FrontResource { get; private set; }
+
+        /// <summary>
+        /// Rows of seats, counted from the front edge, whose customers sit in front of
+        /// <see cref="FrontResource"/> (the near chairs of a four-seater). The rest sit behind it.
+        /// </summary>
+        public int FrontRows { get; private set; }
+
+        public bool HasFrontLayer => !string.IsNullOrEmpty(FrontResource);
+
+        private Vector2[] _seatOffsets;
+
+        /// <summary>
+        /// Where the art's chairs are relative to the logical seat cell, in tiles. A seated
+        /// customer is drawn this far from the cell's centre; the cell itself, and so the
+        /// simulation, never moves. Indexed by the seat's row-major cell in the footprint.
+        /// </summary>
+        public Vector2 SeatOffset(int column, int row)
+        {
+            if (_seatOffsets == null) return Vector2.zero;
+            var index = row * FootprintWidth + column;
+            return index >= 0 && index < _seatOffsets.Length ? _seatOffsets[index] : Vector2.zero;
+        }
+
+        private IllustratedFurniture WithFront(string resource, int frontRows)
+        {
+            FrontResource = resource;
+            FrontRows = frontRows;
+            return this;
+        }
+
+        private IllustratedFurniture WithSeats(params Vector2[] offsets)
+        {
+            _seatOffsets = offsets;
+            return this;
+        }
+
         public float PixelsPerUnit => PixelWidth / WidthUnits;
 
         public bool HasRaisedLayer => !string.IsNullOrEmpty(RaisedResource);
@@ -78,6 +122,27 @@ namespace Neko.Game.Art
             // A free-standing frame on feet. The feet touch the floor a little inside the cell.
             new IllustratedFurniture("window", 1, 1, "Furniture/window", null, 236, 412, 0.92f,
                 0.06f),
+
+            // ART-INT-02, the functional pieces. Each is keyed by the footprint it was drawn for,
+            // so a rotated piece with no entry of its own (a teabar on end) stays procedural.
+            // Tables: the chairs are in the picture, so a seated customer is drawn at the chair
+            // (SeatOffset) between the whole picture and its front layer.
+            new IllustratedFurniture("table_2", 2, 1, "Furniture/table_2", null, 512, 435, 2.0f, 0.05f)
+                .WithFront("Furniture/table_2_front", 0)
+                .WithSeats(new Vector2(0f, 0.42f), new Vector2(0f, 0.42f)),
+            new IllustratedFurniture("table_2", 1, 2, "Furniture/table_2_rotated", null, 384, 424, 1.5f, 0.05f)
+                .WithSeats(new Vector2(-0.36f, 0f), new Vector2(-0.36f, -0.3f)),
+            new IllustratedFurniture("table_4", 2, 2, "Furniture/table_4", null, 512, 552, 2.0f, 0.05f)
+                .WithFront("Furniture/table_4_front", 1)
+                .WithSeats(new Vector2(0f, -0.15f), new Vector2(0f, -0.15f), new Vector2(0f, 0.08f),
+                    new Vector2(0f, 0.08f)),
+            new IllustratedFurniture("stool", 1, 1, "Furniture/stool", null, 154, 243, 0.6f, 0.04f),
+
+            // Stations.
+            new IllustratedFurniture("stove", 1, 1, "Furniture/stove", null, 230, 298, 0.9f, 0.04f),
+            new IllustratedFurniture("teabar", 2, 1, "Furniture/teabar", null, 512, 352, 2.0f, 0.04f),
+            new IllustratedFurniture("dessert", 1, 1, "Furniture/dessert", null, 243, 336, 0.95f, 0.04f),
+            new IllustratedFurniture("bakery", 1, 2, "Furniture/bakery", null, 243, 498, 0.95f, 0.04f),
         };
 
         /// <summary>

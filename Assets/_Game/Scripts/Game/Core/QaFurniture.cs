@@ -11,8 +11,8 @@ using UnityEngine;
 namespace Neko.Game.Core
 {
     /// <summary>
-    /// QA-only: starts a new company in a 13x9 café that already holds the pilot illustrated
-    /// pieces (stage, koi_pond, window) plus tables and stations, so a browser build shows them
+    /// QA-only: starts a new company in a 13x9 café that already holds the eight functional pieces
+    /// (ART-INT-02) plus the pilot stage and window, so a browser build shows them
     /// without buying them. Compiled ONLY when the scripting define NEKO_QA_FURNITURE is set, which
     /// only <c>WebGLBuilder.BuildQaFurniture</c> does (into Build/WebGL_QA_FURNITURE); the itch.io
     /// build never contains it. It replaces the new company's room layout in memory and changes no
@@ -45,15 +45,17 @@ namespace Neko.Game.Core
             void Put(string id, int x, int y, bool rotated = false) =>
                 grid.Place(PlaceableCatalog.ById(id), x, y, rotated);
 
-            Put("stove", 3, 7);
-            Put("teabar", 5, 7);
+            Put("stove", 2, 7);
+            Put("teabar", 4, 7);
+            Put("dessert", 7, 7);
+            Put("bakery", 11, 7);
             Put("table_2", 3, 3);
             Put("table_2", 3, 1, true);
             Put("table_4", 7, 3);
-            Put("stage", 9, 6);
-            Put("koi_pond", 10, 1);
+            Put("stool", 11, 3);
+            Put("stool", 11, 4);
+            Put("stage", 9, 0);
             Put("window", 1, 2, true);
-            Put("cat_tower", 11, 4, true);
             Put("plant", 1, 6);
 
             root.Session.Profile.Grid = grid;
@@ -66,12 +68,12 @@ namespace Neko.Game.Core
 
             var spots = new[]
             {
-                new Vector2(9.5f, 4.9f),   // in front of the stage
-                new Vector2(10.0f, 6.4f),  // on the stage
-                new Vector2(10.5f, 0.1f),  // in front of the pond
-                new Vector2(10.6f, 1.7f),  // on the pond
+                new Vector2(3.5f, 2.55f),  // in front of the upright two-seater
+                new Vector2(3.5f, 4.45f),  // behind it
+                new Vector2(7.5f, 2.45f),  // in front of the four-seater
+                new Vector2(7.5f, 5.45f),  // behind it
+                new Vector2(9.5f, 0.1f),   // in front of the stage
                 new Vector2(1.0f, 0.7f),   // in front of the window
-                new Vector2(1.0f, 2.9f),   // behind the window
             };
             var ids = new[] { "suzu", "hina", "akari", "momo", "reina", "kaede" };
             var shownGrid = root.Presenter.Shift.Grid;
@@ -88,8 +90,37 @@ namespace Neko.Game.Core
                 views.Add(view);
             }
 
+            // ART-INT-02: one view-only customer on every seat (never in the shift), drawn exactly as
+            // ShiftPresenter draws a seated one, so every table and stool shows its sitters.
+            var seatViews = new List<CustomerView>();
+            var kinds = new[] { Neko.Sim.Service.CustomerType.Regular, Neko.Sim.Service.CustomerType.Student,
+                Neko.Sim.Service.CustomerType.Salaryman, Neko.Sim.Service.CustomerType.Otaku };
+            var n = 0;
+            foreach (var cell in shownGrid.SeatPositions())
+            {
+                var item = shownGrid.ItemAt(cell.X, cell.Y);
+                var entry = Art.IllustratedFurniture.For(item.Def, item.Width, item.Height);
+                var offset = entry != null ? entry.SeatOffset(cell.X - item.X, cell.Y - item.Y) : Vector2.zero;
+                var customer = new Neko.Sim.Service.Customer
+                {
+                    Id = 900 + n, Kind = kinds[n % kinds.Length], State = Neko.Sim.Service.CustomerState.Eating,
+                };
+                n++;
+                var seated = CustomerView.Create(root.Presenter.transform, root.Sprites, customer);
+                seated.Grid = shownGrid;
+                seated.SeatCell = cell;
+                seated.Place(new Vector3(cell.X + offset.x, cell.Y + 0.42f + offset.y, 0f));
+                seatViews.Add(seated);
+            }
+
             while (true)
             {
+                foreach (var seated in seatViews)
+                {
+                    seated.transform.localScale = Vector3.one * CustomerView.CustomerScale;
+                    seated.Sync();
+                }
+
                 foreach (var view in views)
                 {
                     view.transform.localScale = Vector3.one;

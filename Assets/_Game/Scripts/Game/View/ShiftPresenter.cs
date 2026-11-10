@@ -135,6 +135,7 @@ namespace Neko.Game.View
                     _customers[customer.Id] = view;
                 }
 
+                view.SeatCell = SeatCellOf(customer);
                 view.Place(PositionOf(customer));
                 view.Sync();
             }
@@ -162,12 +163,28 @@ namespace Neko.Game.View
         /// at a door capacity of five drew five customers on top of each other and off the
         /// edge of the floor — the capture made it obvious and nothing else would have.
         /// </remarks>
+        private Cell? SeatCellOf(Customer customer) =>
+            customer.SeatIndex >= 0 && customer.SeatIndex < Shift.Seats.Count
+                ? Shift.Seats[customer.SeatIndex].Cell
+                : (Cell?)null;
+
+        private Vector2 SeatOffsetAt(Cell cell)
+        {
+            var item = Shift.Grid.ItemAt(cell.X, cell.Y);
+            var entry = item != null ? IllustratedFurniture.For(item.Def, item.Width, item.Height) : null;
+            return _sprites.DrawsIllustrated(entry) ? entry.SeatOffset(cell.X - item.X, cell.Y - item.Y) : Vector2.zero;
+        }
+
         private Vector3 PositionOf(Customer customer)
         {
             if (customer.SeatIndex >= 0 && customer.SeatIndex < Shift.Seats.Count)
             {
                 var cell = Shift.Seats[customer.SeatIndex].Cell;
-                return new Vector3(cell.X, cell.Y + 0.42f, 0f);
+
+                // Drawn at the art's chair when the piece has illustrated chairs; the cell is
+                // where the simulation seats them and does not move.
+                var offset = SeatOffsetAt(cell);
+                return new Vector3(cell.X + offset.x, cell.Y + 0.42f + offset.y, 0f);
             }
 
             var place = 0;

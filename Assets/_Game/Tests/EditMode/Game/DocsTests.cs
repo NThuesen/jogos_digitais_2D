@@ -281,6 +281,16 @@ namespace Neko.Tests.Game
                 "Assets/_Game/Resources/UiKit/odds_panel_empty.png",
                 "Assets/_Game/Resources/UiKit/hub_background.png",
                 "Assets/_Game/Resources/UiKit/caixinhas_background.png",
+                "Assets/_Game/Resources/Furniture/table_2.png",
+                "Assets/_Game/Resources/Furniture/table_2_front.png",
+                "Assets/_Game/Resources/Furniture/table_2_rotated.png",
+                "Assets/_Game/Resources/Furniture/table_4.png",
+                "Assets/_Game/Resources/Furniture/table_4_front.png",
+                "Assets/_Game/Resources/Furniture/stool.png",
+                "Assets/_Game/Resources/Furniture/stove.png",
+                "Assets/_Game/Resources/Furniture/teabar.png",
+                "Assets/_Game/Resources/Furniture/dessert.png",
+                "Assets/_Game/Resources/Furniture/bakery.png",
             },
                 expected.Keys);
 

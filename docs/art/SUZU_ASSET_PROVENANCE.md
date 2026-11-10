@@ -164,6 +164,16 @@ da547dc3938d2b9697618b7e8beed9c262c2d527ab0eb6fd6ab8946a6a16be24  Assets/_Game/R
 010ad078ba5a2955c382a74ccceab894f7827aec96669e93bd6cb6897d6c7fb5  Assets/_Game/Resources/Furniture/koi_pond_raised.png
 3ba23f7ff1ffc26f0712829dc1381edccc49eed29ebb68d2072f513b5330407b  Assets/_Game/Resources/Furniture/stage.png
 1821aa44e65f326d6f81541f4408cd845680be47834f1612e6a9dabe6e40665d  Assets/_Game/Resources/Furniture/window.png
+f705ce15120717a2ad5c21a7125ee6c76bb173853ea90d92841269f7a15d6508  Assets/_Game/Resources/Furniture/table_2.png
+702c87197a6bc3386bc721e90c6d037050881b3223c2fc5d3e2cffb109a6256e  Assets/_Game/Resources/Furniture/table_2_front.png
+18f90f9f137d9a953baa0a3178ea1499ec796cbef6706c1a2618ea369c3c29b8  Assets/_Game/Resources/Furniture/table_2_rotated.png
+62b1a085d956eeefa843bbf737b5f378479775cd016387ac7621509dedaa68e1  Assets/_Game/Resources/Furniture/table_4.png
+668f6239875569a4f0b852ccb4f741fc17e12ffaebebd1c497cf28a99356f5db  Assets/_Game/Resources/Furniture/table_4_front.png
+dcf6b400ea299d6f41083b2876411eb9f6a18924a973f11a97e4bf4320a65944  Assets/_Game/Resources/Furniture/stool.png
+355ad76b219a51298bfd82ebceae2ac4dc54a461e20f69f1a260b9b88f8d5117  Assets/_Game/Resources/Furniture/stove.png
+c9f025cf7bacf7bcdf7f97218add106847c22c73f7d64c7a270a65b2fc752e1f  Assets/_Game/Resources/Furniture/teabar.png
+5689be2f61c4f1da4f6fb25eb20d1d768f7dc992d68645b902cf83a72ab55531  Assets/_Game/Resources/Furniture/dessert.png
+76e0ef3a15f6e35d2d63b00377cd136697a8a4b1ccbbfedd7f44349a0d1764d2  Assets/_Game/Resources/Furniture/bakery.png
 ```
 
 ## ART-INT-01 pilot furniture (stage, koi_pond, window)
@@ -220,3 +230,27 @@ f3d6c13a6d07f4a9c3cb25fcf3a63d9454f053ea115125da6a4cba82e2f81add  Assets/_Game/R
 0e82358104a790b42ce279541e90ae21a2d4f4e2a8b3c29b3d303c5a52c680a7  Assets/_Game/Resources/UiKit/odds_panel_empty.png
 795d5e0c2399f4317dfb7f61ca7ecd56e2bdd5bba4cf95baa03fce4898e80c40  Assets/_Game/Resources/UiKit/hub_background.png
 657f21d15c928652391cbe6292acac788fb631e8d5d0d8600854aacc4cfa987f  Assets/_Game/Resources/UiKit/caixinhas_background.png
+
+## ART-INT-02 functional furniture (table_2, table_2_rotated, table_4, stool, stove, teabar, dessert, bakery)
+
+Derived, not redrawn, from the ART-PROD-02C CLEAN exports `UI-024_placeable_<id>_clean_c01.png`
+(delivery `art-prod-02c-delivery/`, branch `task/art-prod-02`, read-only; every source SHA-256
+checked against its `INVENTORY.json` before use): cropped to the illustrated area and resampled with
+premultiplied alpha to 256 px per tile by `tools/art/furniture_functional/make_functional_assets.py`
+(calibration in `calibration.json`, matching `IllustratedFurniture.cs`). `table_2_front.png` and
+`table_4_front.png` are the same pictures with the parts that sit behind a seated customer made
+transparent (chairs behind the top), so they align pixel for pixel. Art status: ART_ACCEPTED by the owner;
+no TECH_PASS is claimed.
+
+Source SHA-256 (source file, hash):
+
+| Source | SHA-256 |
+|---|---|
+| `UI-024_placeable_table_2_v02_clean_c01.png` | `689f266fe395ec0c387374ef3e95dafedf8b4f2693d38eaa64603f66283eba03` |
+| `UI-024_placeable_table_2_rotated_v02_clean_c01.png` | `f507ae0ddf4a2b7ee1b340b2d5e9cbc3ff8aa7efc6bc6f94986166a1169d3c6f` |
+| `UI-024_placeable_table_4_v03_clean_c01.png` | `aa715267980d9b9874353e6699cae7a94bef58061a6dea2ae928b32f7ce0d5df` |
+| `UI-024_placeable_stool_v01_clean_c01.png` | `e72bcffde34dfcbac5314af1fc606c0362f9a0ef803eed1583baf7986aeaac70` |
+| `UI-024_placeable_stove_v01_clean_c01.png` | `4b86ad6b146ae34ddd982fd14c0cb834b269d845a3cf8101089ff7bcdb0110bb` |
+| `UI-024_placeable_teabar_v01_clean_c01.png` | `ac024b9365d6f2c1698a46ed46abfdfd2737f4609cfae16802d15bfd8c2a580f` |
+| `UI-024_placeable_dessert_v01_clean_c01.png` | `c73774f918faad121d6c9c598c347300c18d395a3ad5dfa47ef8b43f9f018603` |
+| `UI-024_placeable_bakery_v01_clean_c01.png` | `80cef4abf11bba490d805a08df2d74da761f853e3ecd7887b23123b7a13005ee` |
