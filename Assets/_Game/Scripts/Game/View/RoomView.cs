@@ -112,21 +112,25 @@ namespace Neko.Game.View
         /// One piece, painted for its footprint and pivoted on the footprint's centre.
         /// </summary>
         /// <remarks>
-        /// Anything tall rises above its own cells, so everything that stands goes on the
-        /// furniture layer and sorts by its front row: a fern in front of a table then covers
-        /// the table's legs instead of vanishing under them. Only what lies flat — rugs, the
-        /// pond — stays underneath. No scaling: the art is painted at one tile per unit.
+        /// Anything solid joins the characters' sorting band, keyed by the front edge of its
+        /// footprint (see <see cref="DepthSort"/>): a fern in front of a table covers the table's
+        /// legs, and a maid behind the fern is covered by it. Only what lies flat — rugs, the
+        /// pond's water — stays underneath everybody. Procedural art is painted at one tile per
+        /// unit and is never scaled; illustrated art is placed by its own calibration.
         /// </remarks>
         private void BuildItem(PlacedItem item)
         {
             var def = item.Def;
-            var sprite = _sprites.Furniture(def, item.Width, item.Height);
-
             var centre = new Vector3(item.X + (item.Width - 1) * 0.5f,
                 item.Y + (item.Height - 1) * 0.5f, 0f);
 
-            Make(def.Id, centre, sprite,
-                FurnitureArt.LiesFlat(def.Id) ? Layers.Rug : Layers.Furniture, item.Y);
+            if (!BuildIllustrated(item, centre))
+            {
+                var sprite = _sprites.Furniture(def, item.Width, item.Height);
+                var flat = FurnitureArt.LiesFlat(def.Id);
+                var piece = Make(def.Id, centre, sprite, flat ? Layers.Rug : Layers.Furniture, item.Y);
+                if (!flat) SortAsSolid(piece, item);
+            }
 
             if (def.Kind != PlaceableKind.Station) return;
 
@@ -135,6 +139,50 @@ namespace Neko.Game.View
                 _sprites.Get(new ShapeSpec(ShapeId.Circle,
                     Palette.WithAlpha(Palette.Focus, 0.22f))), Layers.Rug, item.Y);
             glow.transform.localScale = Vector3.one * (1.2f + item.Width * 0.2f);
+        }
+
+        /// <summary>
+        /// Draws the piece from its illustrated PNG when it has one for this footprint.
+        /// </summary>
+        /// <remarks>
+        /// The art's pivot is its bottom centre and it sits on the footprint's front edge. A piece
+        /// with a raised layer draws the whole picture flat underneath everyone and the standing
+        /// parts again, same size and same pivot, among the solids.
+        /// </remarks>
+        private bool BuildIllustrated(PlacedItem item, Vector3 centre)
+        {
+            var entry = IllustratedFurniture.For(item.Def, item.Width, item.Height);
+            if (entry == null) return false;
+
+            var whole = _sprites.Illustrated(entry, false);
+            if (whole == null) return false;
+
+            Sprite raised = null;
+            if (entry.HasRaisedLayer)
+            {
+                raised = _sprites.Illustrated(entry, true);
+                if (raised == null) return false;
+            }
+
+            var foot = new Vector3(centre.x, DepthSort.FrontEdge(item) + entry.BottomLift, 0f);
+
+            if (raised == null)
+            {
+                SortAsSolid(Make(item.Def.Id, foot, whole, Layers.Furniture, item.Y), item);
+                return true;
+            }
+
+            Make(item.Def.Id + "Base", foot, whole, Layers.Rug, item.Y);
+            // The pond is "flat" as a whole, so its standing part is keyed here, not by IsSolid.
+            var standing = Make(item.Def.Id + "Raised", foot, raised, Layers.Furniture, item.Y);
+            Layers.ApplyActor(standing.GetComponent<SpriteRenderer>(), DepthSort.SolidKey(item));
+            return true;
+        }
+
+        private static void SortAsSolid(GameObject piece, PlacedItem item)
+        {
+            if (!DepthSort.IsSolid(item.Def)) return;
+            Layers.ApplyActor(piece.GetComponent<SpriteRenderer>(), DepthSort.SolidKey(item));
         }
 
         private GameObject Make(string name, Vector3 position, Sprite sprite, int layer, float y)

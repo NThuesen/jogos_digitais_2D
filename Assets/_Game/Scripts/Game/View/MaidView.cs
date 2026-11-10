@@ -1,6 +1,7 @@
 using Neko.Game.Art;
 using Neko.Game.Core;
 using Neko.Game.Feel;
+using Neko.Sim.Cafe;
 using Neko.Sim.Maids;
 using Neko.Sim.Shift;
 using UnityEngine;
@@ -85,6 +86,27 @@ namespace Neko.Game.View
             return view;
         }
 
+        /// <summary>The room she walks in, for depth against its furniture. Optional.</summary>
+        public CafeGrid Grid { get; set; }
+
+        /// <summary>
+        /// Where her sole is drawn, which is not where her root is: an authored body hangs about
+        /// 0.58 of a tile below it. Depth is decided here so a maid crossing the back edge of a
+        /// piece is hidden or shown by what the player sees, not by the logical position. The
+        /// procedural walk bob is left out, or the key would flicker with every step.
+        /// </summary>
+        public Vector3 Feet
+        {
+            get
+            {
+                var body = _body.transform;
+                var sprite = _body.sprite;
+                var sole = sprite != null ? sprite.bounds.min.y * body.lossyScale.y : 0f;
+                var bob = _authored == null ? body.localPosition.y : 0f;
+                return new Vector3(body.position.x, body.position.y - bob + sole, 0f);
+            }
+        }
+
         public void Bind(Worker worker)
         {
             Worker = worker;
@@ -143,8 +165,11 @@ namespace Neko.Game.View
             if (target.x - transform.position.x > 0.02f) _body.flipX = false;
             else if (target.x - transform.position.x < -0.02f) _body.flipX = true;
 
-            Layers.Apply(_body, Layers.Characters, transform.position.y);
-            Layers.Apply(_carried, Layers.Items, transform.position.y - 0.01f);
+            // Sorted with the furniture, by where the feet are. The plate is one slot above her
+            // body rather than in the items layer, which would draw it over a table she is behind.
+            var depth = DepthSort.ActorKey(Grid, Feet);
+            Layers.ApplyActor(_body, depth);
+            Layers.ApplyActor(_carried, depth, 1);
             Layers.Apply(_mood, Layers.Fx, transform.position.y);
 
             _carried.enabled = Worker.Carrying;

@@ -160,4 +160,23 @@ b06a35e7ba8ffb9dcbdd70959bcc0fbea3658538908705a8cf92e1411b0b0589  Assets/_Game/R
 4ea0945280746e99b112b7aeaee6d47aead47e8fc9fe5a56031cee4788e88eb8  Assets/_Game/Resources/Maids/shiori_walk.png
 19511f487448d37f9664cffc40320ce89d4f20d05ace472d866df35ba5660984  Assets/_Game/Resources/MaidPortraits/shiori_head.png
 5bc91db7a21b84cccceb5f6df9a6838555ae6f8aede969893b9131d33f83afc5  Assets/_Game/Resources/MaidPortraits/shiori_detail.png
+da547dc3938d2b9697618b7e8beed9c262c2d527ab0eb6fd6ab8946a6a16be24  Assets/_Game/Resources/Furniture/koi_pond.png
+010ad078ba5a2955c382a74ccceab894f7827aec96669e93bd6cb6897d6c7fb5  Assets/_Game/Resources/Furniture/koi_pond_raised.png
+3ba23f7ff1ffc26f0712829dc1381edccc49eed29ebb68d2072f513b5330407b  Assets/_Game/Resources/Furniture/stage.png
+1821aa44e65f326d6f81541f4408cd845680be47834f1612e6a9dabe6e40665d  Assets/_Game/Resources/Furniture/window.png
 ```
+
+## ART-INT-01 pilot furniture (stage, koi_pond, window)
+
+Derived, not redrawn, from the Codex raw PNGs `UI-024_placeable_{stage,koi_pond,window}_v01.png`
+(branch `task/art-asset-production`, read-only): haze removed, cropped to the illustrated area and
+resampled to 256 px per tile by `tools/art/furniture_pilot/make_pilot_assets.py`.
+`koi_pond.png` is the full picture (flat base); `koi_pond_raised.png` is the same picture with the
+water cut out, so it aligns pixel for pixel. Calibration lives in `IllustratedFurniture.cs`.
+
+Source files as read (read-only, `neko-art-assets/art_working/ui_modular/raw_gpt/`; SHA-256 written
+`file: hash` so the allowlist parser above does not treat them as imported files):
+
+- `UI-024_placeable_stage_v01.png`: ae502d78df3e711701b3e2c107cdb4941e0e135ede95491a3be026cd78b33a57
+- `UI-024_placeable_koi_pond_v01.png`: 1e6d641d1d740d52f23d7888d057cde510380b1df32e5bca074bd8a8f1e0726b
+- `UI-024_placeable_window_v01.png`: bd3f08b450800839f96c217b14eaf0adabbb9fa09b101c94af917a9f84832a95

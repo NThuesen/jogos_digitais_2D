@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Neko.Game.Art;
 using Neko.Game.Core;
 using Neko.Game.Feel;
+using Neko.Sim.Cafe;
 using Neko.Sim.Service;
 using UnityEngine;
 
@@ -39,6 +40,23 @@ namespace Neko.Game.View
         private CustomerState _lastState = CustomerState.Queueing;
 
         public Customer Customer { get; private set; }
+
+        /// <summary>The room they sit in, for depth against its furniture. Optional.</summary>
+        public CafeGrid Grid { get; set; }
+
+        /// <summary>
+        /// Where the sole is drawn. The body sprite is centred on the root, so its feet are well
+        /// below it and, for a customer seated on a table's cell, inside that table's footprint.
+        /// </summary>
+        public Vector3 Feet
+        {
+            get
+            {
+                var sprite = _body.sprite;
+                var sole = sprite != null ? sprite.bounds.min.y * transform.lossyScale.y : 0f;
+                return new Vector3(transform.position.x, transform.position.y + sole, 0f);
+            }
+        }
 
         public static CustomerView Create(Transform parent, SpriteFactory sprites, Customer customer)
         {
@@ -117,7 +135,7 @@ namespace Neko.Game.View
                 : Color.Lerp(Color.white, Palette.ForPatience(patience), 1f - patience);
             _body.color = tint;
 
-            Core.Layers.Apply(_body, Core.Layers.Characters, transform.position.y);
+            Core.Layers.ApplyActor(_body, DepthSort.ActorKey(Grid, Feet));
             Core.Layers.Apply(_bubble, Core.Layers.Fx, transform.position.y);
 
             // Explicitly one in front of its own bubble. Nudging the y by a hundredth rounded

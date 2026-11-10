@@ -178,6 +178,41 @@ namespace Neko.Game.Art
             return frames;
         }
 
+        /// <summary>
+        /// One illustrated piece, or null when its PNG is missing or smaller than catalogued so
+        /// the caller falls back to the procedural drawing.
+        /// </summary>
+        /// <remarks>
+        /// The pivot is the bottom centre of the art. The rect is the catalogued size rather than
+        /// the texture's, so a platform that pads the texture cannot move the pivot or the scale.
+        /// Kept with the sheets because, like them, the texture belongs to the importer and must
+        /// outlive <see cref="Clear"/>.
+        /// </remarks>
+        public Sprite Illustrated(IllustratedFurniture entry, bool raised)
+        {
+            var resource = raised ? entry.RaisedResource : entry.Resource;
+            if (string.IsNullOrEmpty(resource)) return null;
+
+            if (_sheets.TryGetValue(resource, out var cached))
+            {
+                return cached != null && cached.Length > 0 ? cached[0] : null;
+            }
+
+            var texture = Resources.Load<Texture2D>(resource);
+            if (texture == null || texture.width < entry.PixelWidth || texture.height < entry.PixelHeight)
+            {
+                _sheets[resource] = null;
+                return null;
+            }
+
+            var sprite = Sprite.Create(texture, new Rect(0, 0, entry.PixelWidth, entry.PixelHeight),
+                new Vector2(0.5f, 0f), entry.PixelsPerUnit, 0, SpriteMeshType.FullRect);
+            sprite.name = resource;
+            sprite.hideFlags = HideFlags.HideAndDontSave;
+            _sheets[resource] = new[] { sprite };
+            return sprite;
+        }
+
         // WebGL builds pad the top/right with transparent pixels for DXT mip chains.
         // The catalog still describes the original frame grid; no frame is rescaled.
         private static bool SheetDimensionMatches(int actual, int expected) =>

@@ -37,5 +37,33 @@ namespace Neko.Game.Core
         {
             if (renderer != null) renderer.sortingOrder = Order(layer, y);
         }
+
+        /// <summary>Order slots per tile in the actor band: finer than <see cref="Order"/>'s ten.</summary>
+        public const int ActorSlotsPerUnit = 40;
+
+        /// <summary>
+        /// Beyond this the actor order saturates, which keeps the whole band (±480) clear of the
+        /// furniture band below it and the carried-item band above it.
+        /// </summary>
+        public const float ActorReach = 12f;
+
+        /// <summary>
+        /// The order of anything that stands on the floor: characters and every solid piece.
+        /// </summary>
+        /// <remarks>
+        /// Characters and furniture share this one band, keyed by where each touches the floor,
+        /// so a maid behind a table is covered by it and a maid in front covers it. Before this
+        /// they lived in separate layers and a character was on top whatever its y.
+        /// <paramref name="slot"/> puts a part of the same body (a carried plate) one step above
+        /// it without leaving the band.
+        /// </remarks>
+        public static int ActorOrder(float floorY, int slot = 0) =>
+            Characters * 1000 - Mathf.RoundToInt(Mathf.Clamp(floorY, -ActorReach, ActorReach) *
+                                                 ActorSlotsPerUnit) + slot;
+
+        public static void ApplyActor(SpriteRenderer renderer, float floorY, int slot = 0)
+        {
+            if (renderer != null) renderer.sortingOrder = ActorOrder(floorY, slot);
+        }
     }
 }
