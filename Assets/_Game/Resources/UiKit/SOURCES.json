@@ -348,5 +348,275 @@
    0,
    0
   ]
+ },
+ "maids_background.png": {
+  "source": "neko-ui-maids-kit-delivery/backgrounds/maids_background_v01.png",
+  "sha256": "f7855dc43639a5f82b7572ca41d704c5452cf43f5e0d841211198b0db2d6febe",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "maids_title_plate_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/panels/maids_title_plate_empty_v01.png",
+  "sha256": "479f61e087b25c5bb45cb2fbd5eb339415aa87afbf9d346534cfd1230fca04b5",
+  "border_LBRT": [
+   112,
+   22,
+   112,
+   22
+  ]
+ },
+ "maids_token_counter_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/panels/token_counter_empty_v01.png",
+  "sha256": "558f336aa567ba1d4378ff6b6246df6e2249b05cd9094e614d5ec627c1cee9f5",
+  "border_LBRT": [
+   66,
+   21,
+   52,
+   21
+  ]
+ },
+ "maids_filters_container_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/filters/filters_container_empty_v01.png",
+  "sha256": "f3f5257f58369d79bd0882e5059cf5a4292197068310ed7afd4aee0f6d6b63c7",
+  "border_LBRT": [
+   42,
+   42,
+   42,
+   42
+  ]
+ },
+ "maids_filter_row_divider.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/filters/filter_row_divider_v01.png",
+  "sha256": "ccfa4c614278069c00504223873ff90fc639d0010cd312c196fa9621eb67b8bd",
+  "border_LBRT": [
+   10,
+   9,
+   10,
+   9
+  ]
+ },
+ "maids_filter_selected_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/filters/filter_selected_empty_v01.png",
+  "sha256": "a4e621ed3ede230f34d65c5ee288a204049ffe32ec6cf25f50fbeaae24546d36",
+  "border_LBRT": [
+   66,
+   19,
+   32,
+   19
+  ]
+ },
+ "maids_filter_selected_surface.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/filters/filter_selected_surface_v01.png",
+  "sha256": "06bbc1797b19a2d6edf19b6ef83ac651aa1eceb5739d3fa3e79f1d2ecd44f254",
+  "border_LBRT": [
+   36,
+   19,
+   36,
+   19
+  ]
+ },
+ "maids_filter_rarity_normal_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/filters/filter_rarity_normal_empty_v01.png",
+  "sha256": "752e37ac8e1f94ea260c5106415145bc644c5d8e74a18aa8ffcdd2006641a45f",
+  "border_LBRT": [
+   66,
+   19,
+   32,
+   19
+  ]
+ },
+ "maids_filter_position_normal_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/filters/filter_position_normal_empty_v01.png",
+  "sha256": "34a37b7639f227e2d783911c79437c74c67f6c2f7031a63c73c854ce5e884bdd",
+  "border_LBRT": [
+   36,
+   19,
+   36,
+   19
+  ]
+ },
+ "maids_filter_paw_brown.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/decorations/filter_paw_brown_v01.png",
+  "sha256": "3d36466fadc6d2267817b98b2b2f8b800d62e66c0af668a46b86b66d653af1e0",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "maids_icon_reception.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/decorations/icon_reception_v01.png",
+  "sha256": "ae4308b5d1931e71cfacd61129299b4649ed0794487e084822ad70109fef6d71",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "maids_icon_hall.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/decorations/icon_hall_v01.png",
+  "sha256": "35883ad2cd1b0face28ca688a04bd48f5459877ac0b390a02661f7e9d3023851",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "maids_icon_kitchen.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/decorations/icon_kitchen_v01.png",
+  "sha256": "9cedeac88b55d0527d3490fa4c0b6d93d728013fa6ce4592954710e2c84a71c7",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "maids_sort_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/buttons/sort_empty_v01.png",
+  "sha256": "81440f372bc867295543e867cc302a4bbb463ddc1714c8a32e6491ffd65dde72",
+  "border_LBRT": [
+   36,
+   20,
+   65,
+   20
+  ]
+ },
+ "maids_sort_divider.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/filters/sort_divider_v01.png",
+  "sha256": "58e634e50336da30d5dec243ee4bb98516a9edd0e236a1dcb6181270cdeeec47",
+  "border_LBRT": [
+   9,
+   12,
+   9,
+   12
+  ]
+ },
+ "maids_collection_panel_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/panels/collection_panel_empty_v01.png",
+  "sha256": "1d9e68db3a46c9abaf805f5b5f13e93733835d673230cfd4c7f3682b74d7380c",
+  "border_LBRT": [
+   49,
+   49,
+   49,
+   49
+  ]
+ },
+ "maids_selected_card_highlight.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/decorations/selected_card_highlight_v01.png",
+  "sha256": "2e539749625f8e4e50f3239939bac664f1f8ecbed6b2981345ed6a1154e215ae",
+  "border_LBRT": [
+   38,
+   38,
+   38,
+   38
+  ]
+ },
+ "maids_page_left.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/buttons/page_left_v01.png",
+  "sha256": "2de4e80f4181c4aa66d2327aa4c58a5bfd4c8f7f667be301ca33c40644b38345",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "maids_page_right.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/buttons/page_right_v01.png",
+  "sha256": "f59f6b489ae2d25fbb99f2f34fffeffc24a34d3ff6c42b97edc0753d2b55dea8",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "maids_page_plate_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/buttons/page_plate_empty_v01.png",
+  "sha256": "db9ccab8f1c8e9497757f41aa231f70aa5136b62b33363e8a7e19bff719c5bbe",
+  "border_LBRT": [
+   29,
+   18,
+   29,
+   18
+  ]
+ },
+ "maids_detail_panel_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/panels/detail_panel_empty_v01.png",
+  "sha256": "9dc744c44463b57afbb1565b177d7ea1d0fc3c0e1ace4f449936a2d956113618",
+  "border_LBRT": [
+   42,
+   42,
+   42,
+   42
+  ]
+ },
+ "maids_portrait_frame_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/details/portrait_frame_empty_v01.png",
+  "sha256": "9038f71976ca82063689caf0e0efc7f0c37b60f1547d6ddc92a4a59f78266578",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "maids_rarity_badge_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/details/rarity_badge_empty_v01.png",
+  "sha256": "1098d569c59919819b65ee327d0169eac1a8d3a3939d9900a7d8d642967d9368",
+  "border_LBRT": [
+   28,
+   16,
+   28,
+   16
+  ]
+ },
+ "maids_attribute_track_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/details/attribute_track_empty_v01.png",
+  "sha256": "c29fbdbff037ebf955b1f366f113e7d546030518be5b2ca8dffd153c72b84c94",
+  "border_LBRT": [
+   22,
+   14,
+   22,
+   14
+  ]
+ },
+ "maids_attribute_fill_gold.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/details/attribute_fill_gold_v01.png",
+  "sha256": "ade8acde7a000a6fe6037425d342f2e3837d775ff7985c02e120a3fd165d4389",
+  "border_LBRT": [
+   17,
+   13,
+   17,
+   13
+  ]
+ },
+ "maids_traits_frame_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/details/traits_frame_empty_v01.png",
+  "sha256": "90d68362cb3055a8468bd65a2b73b91b554e1b4d5a66fd2b56bafa9be1f4e847",
+  "border_LBRT": [
+   31,
+   31,
+   31,
+   31
+  ]
+ },
+ "maids_dismiss_empty.png": {
+  "source": "neko-ui-maids-kit-delivery/sprites/buttons/dismiss_empty_v01.png",
+  "sha256": "e506d5189137c91cd69ee762b47680a6218633f4bd43a27529838d68ffc7962a",
+  "border_LBRT": [
+   45,
+   25,
+   45,
+   25
+  ]
  }
 }
