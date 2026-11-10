@@ -86,7 +86,7 @@ namespace Neko.Tests.PlayMode
                 {
                     var body = maid.transform.Find("Body").GetComponent<SpriteRenderer>();
                     var carried = maid.transform.Find("Carried").GetComponent<SpriteRenderer>();
-                    var key = DepthSort.ActorKey(grid, maid.transform.position);
+                    var key = DepthSort.ActorKey(grid, maid.Feet);
 
                     Assert.AreEqual(Layers.ActorOrder(key), body.sortingOrder, "a maid is not sorted by her feet");
                     Assert.AreEqual(body.sortingOrder + 1, carried.sortingOrder, "her plate left her");
@@ -96,7 +96,7 @@ namespace Neko.Tests.PlayMode
                 foreach (var customer in Object.FindObjectsByType<CustomerView>(FindObjectsSortMode.None))
                 {
                     var body = customer.GetComponent<SpriteRenderer>();
-                    Assert.AreEqual(Layers.ActorOrder(DepthSort.ActorKey(grid, customer.transform.position)),
+                    Assert.AreEqual(Layers.ActorOrder(DepthSort.ActorKey(grid, customer.Feet)),
                         body.sortingOrder, "a customer is not sorted by their feet");
                 }
 

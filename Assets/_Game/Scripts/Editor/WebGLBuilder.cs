@@ -55,6 +55,31 @@ namespace Neko.Game.Editor
             EditorApplication.Exit(report.summary.result == BuildResult.Succeeded ? 0 : 1);
         }
 
+        /// <summary>
+        /// QA build with the NEKO_QA_FURNITURE fixture (a new company in a café that already holds
+        /// the pilot illustrated pieces), written to Build/WebGL_QA_FURNITURE. The define is added
+        /// only for this build and removed afterwards.
+        /// </summary>
+        public static void BuildQaFurniture()
+        {
+            const string define = "NEKO_QA_FURNITURE";
+            var target = NamedBuildTarget.WebGL;
+            var before = PlayerSettings.GetScriptingDefineSymbols(target);
+            BuildReport report;
+            try
+            {
+                PlayerSettings.SetScriptingDefineSymbols(target, string.IsNullOrEmpty(before) ? define : before + ";" + define);
+                report = Run("Build/WebGL_QA_FURNITURE");
+            }
+            finally
+            {
+                PlayerSettings.SetScriptingDefineSymbols(target, before);
+            }
+
+            Debug.Log("QA furniture build " + report.summary.result + " · " + report.summary.totalSize + " bytes");
+            EditorApplication.Exit(report.summary.result == BuildResult.Succeeded ? 0 : 1);
+        }
+
         public static BuildReport Run() => Run(Output);
 
         public static BuildReport Run(string output) => Run(output, true);
