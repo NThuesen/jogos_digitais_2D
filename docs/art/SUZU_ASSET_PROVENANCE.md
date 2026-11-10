@@ -325,3 +325,40 @@ d6d22a234631419165e13374e6f1a4a9e2cc7d22985051cbcdaa496190978344  Assets/_Game/R
 d68de6f7785bffe4f3927a8d3ecc5f5393c169079e7482db41fd5cfef81e3fca  Assets/_Game/Resources/UiKit/shop_product_row_highlight.png
 08111ca4afc11841c8735173381240bf7bc87ace8f17ce6ff7eda1f3dd6b5307  Assets/_Game/Resources/UiKit/shop_main_panel_empty.png
 263d146ba3d64d9b7820d2380d571259cbcf2e4e9e872761c01567746be3f1ea  Assets/_Game/Resources/UiKit/shop_background.png
+
+## UI-INT-05/06 kits (Salão / Expediente / Resultado)
+
+Copied byte for byte (no resampling) from the deliveries `neko-ui-hall-kit-delivery/` (UI-VISUAL-05) and `neko-ui-shift-results-kit-delivery/` (UI-VISUAL-06) by `tools/art/ui_kit/import_hall_shift_results_kits.py`, prefixed `hall_` / `shift_` / `results_`; 9-slice borders come from each kit manifest and are in each .meta and in `Resources/UiKit/SOURCES.json`. All are RGBA and none carries gameplay text, values or a screenshot of the room. Resources the kits reuse (`back_blank`, `bow_gold`, `paw_cream`) are the files already in the project. Not imported: the tray frame/surface and chip frame/surface alternates, the report frame/surface alternates, the neutral (non-open) shift background, the neutral viewport support (the camera clears to the board's paper colour instead), the loose room corners, the portrait ring (the chip shows name, position, state and mood, no portrait), the unselected speed plate (the empty top HUD already carries it), and `hall_shop_access_empty` (the Hall has no Loja callback, so no button is faked).
+5b8775eb0b22b0970bbbe7df9bb65defc2bd9ca9d28c8aa71fab554b94bdd323  Assets/_Game/Resources/UiKit/hall_office_background.png
+552a54bebe29a8f88b5af26a44081d4ee8a15a1e8c081b64c642027fcc35ff47  Assets/_Game/Resources/UiKit/hall_board_frame.png
+541d0bac57e5e7cad5607561d5db6eae7146b28ba7fcff4d17043511a9ab0783  Assets/_Game/Resources/UiKit/hall_title_empty.png
+0b8bf8a0d494d95767886309a3b97cc4e9aaf1dddd8e498baded602c2541045c  Assets/_Game/Resources/UiKit/hall_metrics_plate_empty.png
+172bbdb31de06af5b153ec90ac2c06322758a40c3f1c0ec358868cb012a51154  Assets/_Game/Resources/UiKit/hall_metrics_divider.png
+9ff41ce38443ed1b6cc63dae8a64b7e116d3dc1a8d0056c1d1139554b79f0f17  Assets/_Game/Resources/UiKit/hall_icon_seat.png
+7472eb05af73e7784e4d9f3484ff02e12b2ac1235622fb1216859e823b2cb98d  Assets/_Game/Resources/UiKit/hall_icon_ambience.png
+6dee50ffdbfb1b26d39c8000ef4f4bb42be2e306e61f28e99ed5e621c6a086c4  Assets/_Game/Resources/UiKit/hall_icon_flow.png
+75e5a3ad53540276f3b0d5b330ed6bb864c5e6de80f48ecdaa227c47545bb007  Assets/_Game/Resources/UiKit/hall_icon_theme.png
+900bd65ee9b50f5cc942b801229f289736aa3ffd67f95e9321c2a612e1d1e812  Assets/_Game/Resources/UiKit/hall_instruction_strip_empty.png
+ac316ffa89438bca80d31cfad6daf4aea6efd84d3981200a0b525db113a3d2a8  Assets/_Game/Resources/UiKit/hall_inventory_tray_empty.png
+1feec55e3e1f17e1f0df70e102b30f37ebba8b9829cdf37c9d94e75c195a0e96  Assets/_Game/Resources/UiKit/hall_inventory_cell_empty.png
+c71480b1eec1064332706de8b2dab6172ab9cf282fdaf738af80a2cb862e258b  Assets/_Game/Resources/UiKit/hall_inventory_cell_selected.png
+4de9829a284ba004a3329d8ae90c6bfb18c2b87a361b11359c63f499500b1eab  Assets/_Game/Resources/UiKit/hall_inventory_paw.png
+0e84e57df376b18da3461b28c557bb15f21bd6a504b1d4ec373c7b4197cdbb56  Assets/_Game/Resources/UiKit/hall_stock_label_empty.png
+d65aaa71d123d14dba63929a8839cb2219ff3c4de31a204b1b618e947a121399  Assets/_Game/Resources/UiKit/shift_restaurant_background_open.png
+5db4ecf4c1cdabeeaad48a4c274fb15dc40c3e88f418a927123d4c8225603dd2  Assets/_Game/Resources/UiKit/shift_room_frame.png
+e1bbe6bd29616b00a32c0cd5bec92933c7cba6338a6bf6d462c546a02597be5d  Assets/_Game/Resources/UiKit/shift_top_hud_empty.png
+371d312e34303069af197739390142025dd0ea2e4d8acabed61d9ef31fe52507  Assets/_Game/Resources/UiKit/shift_maid_chip_empty.png
+79f01eb39ed8e85975b73fe9ba56040ee92a51a679260f0f38d742078216a759  Assets/_Game/Resources/UiKit/shift_mood_track.png
+2aaf0358117dcaeab27e56e3e761d10c5902115d294aaea728d0f01803668806  Assets/_Game/Resources/UiKit/shift_mood_fill.png
+10ccd9cf31a545353affa2347f980b60c653a1393cedfcfde3f74545cc5c9163  Assets/_Game/Resources/UiKit/shift_speed_selected.png
+f1c1ada3f9b4fd2bcc930c180fdde8c76196a994e7e078256bea8e5e4b19da85  Assets/_Game/Resources/UiKit/shift_instruction_empty.png
+b7c19d292ba69f678817d3d705a0eda2b2aecdb757ed6848f6260d0cfcc7f2d3  Assets/_Game/Resources/UiKit/results_restaurant_background.png
+48485049f990127a895e81043693d764908a0514a524c8f2955d0ffb8f656aca  Assets/_Game/Resources/UiKit/results_report_empty.png
+31164c09440a8d8aa9bdacd33116a4270b581ca6f82dfc43dc3db62c8d035010  Assets/_Game/Resources/UiKit/results_column_empty.png
+bdba81b1798b0b4c273974f53238a513fac1887825101783e4067450505da261  Assets/_Game/Resources/UiKit/results_header_empty.png
+84ed884fcf013bbbc2ff4cf568300fdb2bf62adf5b4ac921d74c19a9e31a9776  Assets/_Game/Resources/UiKit/results_total_empty.png
+e0bc5e71fc85c582a6a3c894629dbeeff7870bee60e604e981a59818c8529bfb  Assets/_Game/Resources/UiKit/results_tally_empty.png
+18be9be0b66844a075250eaf3b7cb2be268cf324d215fdd2dd5cf63aaf3435d9  Assets/_Game/Resources/UiKit/results_financial_highlight_empty.png
+e989c6763bc845907666a39b996d74d5d4e8491312a1c41fb5a15edc27105ecc  Assets/_Game/Resources/UiKit/results_continue_empty.png
+a76aa079a44faa4029a486620fc8d19e64b113994a77bb2d5c84cd0ea1a4c6c8  Assets/_Game/Resources/UiKit/results_row_empty.png
+378974a38a0ff6f952c313fde2908af30256eda6995a7aee2e99e173baf035f4  Assets/_Game/Resources/UiKit/results_separator.png

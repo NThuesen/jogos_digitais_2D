@@ -53,7 +53,22 @@ namespace Neko.Tests.PlayMode
             var heightFit = (top - bottom) / (2f * (high - low));
             var camera = root.Camera.Camera;
 
-            Assert.LessOrEqual(camera.orthographicSize, Mathf.Max(heightFit, (grid.Width + CameraRig.Margin * 2f) * 0.5f / CameraRig.NarrowestAspect) + 0.01f,
+            var allowed = Mathf.Max(heightFit, (grid.Width + CameraRig.Margin * 2f) * 0.5f / CameraRig.NarrowestAspect) + 0.01f;
+
+            // UI-INT-06: the day is drawn in the café's illustrated opening, a window smaller than the band
+            // between the old HUD bars. The same rule applies to that window: the camera is no further away
+            // than the closest framing that still fits the room (and the head room) inside it.
+            var hud = root.Ui.Get<DayHud>();
+            if (hud != null && hud.IsKit && hud.Window != null && hud.Window.TryPixels(out var window))
+            {
+                var aspect = (float)camera.pixelWidth / camera.pixelHeight;
+                var fw = window.width / camera.pixelWidth;
+                var fh = window.height / camera.pixelHeight;
+                allowed = Mathf.Max((top - bottom) / (2f * fh),
+                    (grid.Width + 2f * CameraRig.SideRoom) / (2f * aspect * fw)) * 1.01f + 0.01f;
+            }
+
+            Assert.LessOrEqual(camera.orthographicSize, allowed,
                 "the camera is further away than it was before the wall");
         }
     }
