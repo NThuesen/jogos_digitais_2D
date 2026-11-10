@@ -346,25 +346,61 @@ namespace Neko.Tests.EditMode.Sim
         }
 
         [Test]
-        public void AFullRosterConvertsACardOfAFreeIdentityAndDoesNotAddHer()
+        public void TheRosterHasNoSizeCapTiedToTheCafeLevel()
         {
-            var profile = Rich(5u);
-            var cap = profile.Unlocks.RosterCap;
-            foreach (var identity in MaidCatalog.FreeReleased(profile.Maids).Take(cap - profile.Maids.Count))
+            // ROSTER-UNCAP-01: at level 1 the old cap was 2 maids; the roster now grows to every
+            // released identity, whatever the level.
+            var profile = Rich(5u, cafeLevel: 1);
+            Assert.AreEqual(1, profile.CafeLevel);
+            foreach (var identity in MaidCatalog.FreeReleased(profile.Maids).ToList())
             {
                 profile.Add(Maid.Create(profile.NextMaidId++, identity));
             }
 
-            Assert.AreEqual(cap, profile.Maids.Count);
-            Assert.Greater(MaidCatalog.FreeReleased(profile.Maids).Count, 0, "someone is still free, only the roster is full");
+            Assert.AreEqual(MaidCatalog.Released.Count, profile.Maids.Count);
+            Assert.Greater(profile.Maids.Count, 8, "past the old top cap of 8");
+        }
+
+        [Test]
+        public void ABoxAddsACardOfAFreeIdentityEvenPastTheOldCap()
+        {
+            var profile = Rich(5u, cafeLevel: 1);
+            foreach (var identity in MaidCatalog.FreeReleased(profile.Maids).Take(8 - profile.Maids.Count))
+            {
+                profile.Add(Maid.Create(profile.NextMaidId++, identity));
+            }
+
+            Assert.AreEqual(8, profile.Maids.Count);
+            var before = profile.Maids.Count;
             var open = Lootbox.Open(profile, "box_gold", new Rng(8u));
 
-            Assert.AreEqual(cap, profile.Maids.Count);
-            foreach (var card in open.Cards)
+            var added = open.Cards.Count(c => !c.Duplicate);
+            Assert.Greater(added, 0, "someone was still free, so at least one card joins");
+            Assert.AreEqual(before + added, profile.Maids.Count);
+            foreach (var card in open.Cards.Where(c => c.Duplicate))
             {
-                Assert.IsTrue(card.Duplicate);
+                Assert.IsTrue(profile.HasIdentity(card.Maid.IdentityId), "only a repeat is converted");
                 Assert.AreEqual(card.Maid.Severance, card.PointsBack);
             }
+        }
+
+        [Test]
+        public void HiringWorksPastTheOldCapAndStillRefusesWhenBroke()
+        {
+            var profile = Rich(11u, cafeLevel: 1);
+            profile.Wallet.Earn(1000000);
+            foreach (var identity in MaidCatalog.FreeReleased(profile.Maids).Take(8 - profile.Maids.Count))
+            {
+                profile.Add(Maid.Create(profile.NextMaidId++, identity));
+            }
+
+            var board = new ApplicantBoard();
+            board.Refresh(new Rng(3u), 1, profile.NextMaidId, profile.Maids);
+            Assert.Greater(board.Candidates.Count, 0);
+
+            var result = board.Hire(profile, 0);
+            Assert.IsTrue(result.Ok, result.Refusal);
+            Assert.AreEqual(9, profile.Maids.Count);
         }
 
         [Test]

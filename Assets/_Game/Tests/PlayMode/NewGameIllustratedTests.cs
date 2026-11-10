@@ -74,7 +74,7 @@ namespace Neko.Tests.PlayMode
             var profile = builder.Profile;
             profile.Wallet.AddPoints(2000);
             var rng = new Rng(21u);
-            for (var i = 0; i < 6 && profile.Maids.Count < profile.Unlocks.RosterCap; i++)
+            for (var i = 0; i < 6; i++)
             {
                 Lootbox.Open(profile, "box_silver", rng);
             }

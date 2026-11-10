@@ -65,7 +65,7 @@ namespace Neko.Game.Ui
             Clear();
 
             var profile = Session.Profile;
-            _header.text = profile.Maids.Count + " / " + profile.Unlocks.RosterCap + "   ·   " +
+            _header.text = Strings.Get("roster.count") + " " + profile.Maids.Count + "   ·   " +
                            Strings.Get("hub.fixedcosts") + " " +
                            Strings.Money(Books.FixedCostsFor(profile));
 

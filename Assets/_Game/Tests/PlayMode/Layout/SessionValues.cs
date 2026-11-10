@@ -118,11 +118,11 @@ namespace Neko.Tests.PlayMode.Layout
             public static string HubFixedCost(int fixedCost) => Strings.Money(fixedCost);
 
             /// <summary>
-            /// The Elenco header, as <c>RosterScreen</c> composes it: "8 / 8   ·   Custo fixo por dia
+            /// The Elenco header, as <c>RosterScreen</c> composes it: "Maids 8   ·   Custo fixo por dia
             /// 1.234 ¥".
             /// </summary>
-            public static string RosterHeader(int maids, int rosterCap, int fixedCost) =>
-                maids + " / " + rosterCap + "   ·   " + Strings.Get("hub.fixedcosts") + " " + Strings.Money(fixedCost);
+            public static string RosterHeader(int maids, int fixedCost) =>
+                Strings.Get("roster.count") + " " + maids + "   ·   " + Strings.Get("hub.fixedcosts") + " " + Strings.Money(fixedCost);
 
             /// <summary>The Elenco "Dispensar" plank label, as <c>RosterScreen</c> composes it: "Dispensar (+120)".</summary>
             public static string DismissPlank(int severance) => Strings.Get("roster.dismiss") + " (+" + severance + ")";

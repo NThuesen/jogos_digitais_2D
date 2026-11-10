@@ -12,7 +12,7 @@ if (args.Length != 1) throw new ArgumentException("Usage: EconBaseline OUTPUT_DI
 Directory.CreateDirectory(args[0]);
 using var output = new StreamWriter(Path.Combine(args[0], "days.csv"), false, new System.Text.UTF8Encoding(false));
 output.NewLine = "\n";
-output.WriteLine("scenario,seed,day,shift_seed,level_start,level_end,roster,cap,slots,boxes,duplicates,dismissals,purchases,revenue,wages,rent,ingredients,profit,cash_start,cash_end,satisfaction,reputation_delta,reputation,points_earned,points,served,angry,turned_away,bankrupt,opener");
+output.WriteLine("scenario,seed,day,shift_seed,level_start,level_end,roster,slots,boxes,duplicates,dismissals,purchases,revenue,wages,rent,ingredients,profit,cash_start,cash_end,satisfaction,reputation_delta,reputation,points_earned,points,served,angry,turned_away,bankrupt,opener");
 foreach (var policy in new[] { "competent", "learner", "passive", "box_addict", "wrong" })
     for (uint seed = 1; seed <= 60; seed++) Run(policy, seed, 50, Array.Empty<string>());
 foreach (var policy in new[] { "competent", "learner", "passive", "box_addict", "wrong" })
@@ -82,7 +82,7 @@ void Run(string policy, uint seed, int maxDays, string[] purchases)
         foreach (var role in new[] { Role.Reception, Role.Floor, Role.Kitchen })
             if (p.Lineup.MaidIdsIn(role).Count == 0) throw new Exception("GameSession readiness would refuse " + policy);
         int level = p.CafeLevel, rep = p.Wallet.Reputation, roster = p.Maids.Count;
-        int cap = p.Unlocks.RosterCap, slots = p.Lineup.All.Count;
+        int slots = p.Lineup.All.Count;
         uint shiftSeed = rng.NextUInt();
         var shift = new Shift(DayPlan.Build(p, shiftSeed));
         int ticks = 0;
@@ -93,7 +93,7 @@ void Run(string policy, uint seed, int maxDays, string[] purchases)
         var ledger = Books.Close(p, result);
         if (ledger.BalanceAfter != ledger.BalanceBefore + ledger.Profit) throw new Exception("Ledger mismatch");
         losses = ledger.Profit < 0 ? losses + 1 : 0;
-        output.WriteLine(string.Join(",", scenario, seed, day, shiftSeed, level, p.CafeLevel, roster, cap, slots,
+        output.WriteLine(string.Join(",", scenario, seed, day, shiftSeed, level, p.CafeLevel, roster, slots,
             boxes, duplicates, dismissals, spent, ledger.Revenue, ledger.Wages, ledger.Rent, ledger.Ingredients,
             ledger.Profit, ledger.BalanceBefore, ledger.BalanceAfter, ledger.Satisfaction.ToString("R"),
             p.Wallet.Reputation - rep, p.Wallet.Reputation, ledger.PointsEarned, p.Wallet.Points,

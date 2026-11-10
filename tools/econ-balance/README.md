@@ -10,6 +10,6 @@ dotnet run --project tools/econ-balance/EconBalance.csproj -- 40 40 casual yes  
 Imprime sobrevivência, receita, lucro, nível, caixa, elenco, folha, lugares, fichas e toques por dia.
 Resultados e decisões: seção 10 do [GDD](../../docs/GDD.md).
 
-## v2 — carreiras completas e cap alternativo
+## v2 — carreiras completas
 
-`dotnet run --project tools/econ-balance/EconBalance.csproj -- <seeds> <dias> <idle|lazy|casual|pro> <yes|no> [v]` (último argumento `yes/no` = investir: caixas, contratação, móveis). `-p:CapMode=plus1` troca `CafeLevelTable` pela versão da PR #20. `run-all.sh` roda tudo. Relatório: [ECON-02](../../docs/economy/econ-02/README.md).
+`dotnet run --project tools/econ-balance/EconBalance.csproj -- <seeds> <dias> <idle|lazy|casual|pro> <yes|no> [v]` (último argumento `yes/no` = investir: caixas, contratação, móveis). `run-all.sh` roda tudo. Relatório: [ECON-02](../../docs/economy/econ-02/README.md).

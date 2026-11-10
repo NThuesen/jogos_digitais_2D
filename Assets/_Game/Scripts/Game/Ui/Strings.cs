@@ -150,7 +150,8 @@ namespace Neko.Game.Ui
                 { "roster.setbonus", "Conjunto completo" },
                 { "roster.signature", "Marca registrada" },
                 { "roster.skills", "Habilidades" },
-                { "roster.full", "O elenco está no limite deste nível." },
+                { "roster.full", "Todas as vagas da escalação estão ocupadas." },
+                { "roster.count", "Maids" },
 
                 // Shop
                 { "shop.title", "Loja" },

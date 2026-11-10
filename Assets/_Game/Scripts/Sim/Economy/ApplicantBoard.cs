@@ -89,12 +89,6 @@ namespace Neko.Sim.Economy
                 return HireResult.No(applicant.Maid.Name + " já está no elenco.");
             }
 
-            if (profile.Maids.Count >= profile.Unlocks.RosterCap)
-            {
-                return HireResult.No("O café só comporta " + profile.Unlocks.RosterCap +
-                                     " maids por enquanto.");
-            }
-
             if (!profile.Wallet.CanAfford(applicant.Price))
             {
                 return HireResult.No("Faltam " + (applicant.Price - profile.Wallet.Money) +

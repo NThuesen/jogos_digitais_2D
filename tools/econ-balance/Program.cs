@@ -81,9 +81,8 @@ void Morning(Profile p, Rng rng, ApplicantBoard board, Queue<string> wanted)
         if (id == null) break;
         if (!Lootbox.Open(p, id, rng).Ok) break;
     }
-    // 2. hire when there is room and a comfortable reserve afterwards.
+    // 2. hire when there is a comfortable reserve afterwards (the roster has no level cap).
     board.Refresh(rng, p.CafeLevel, p.NextMaidId, p.Maids);
-    if (p.Maids.Count < p.Unlocks.RosterCap)
     {
         var best = -1; double bestScore = 0;
         for (int i = 0; i < board.Candidates.Count; i++)

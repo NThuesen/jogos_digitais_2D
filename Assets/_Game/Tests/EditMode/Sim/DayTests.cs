@@ -735,17 +735,24 @@ namespace Neko.Tests.Sim
         }
 
         [Test]
-        public void AFullRosterTurnsACardIntoFichasRatherThanLosingIt()
+        public void ARepeatedCardTurnsIntoFichasRatherThanLosingIt()
         {
             var profile = Profile.NewGame(3u);
             profile.Wallet.AddPoints(100000);
 
-            // Café level one holds two maids and a new business already has three, so the
-            // very next card has nowhere to stand.
+            // Everyone released is already on the books (a roster past any old level cap), so the
+            // very next card can only be a repeat.
+            foreach (var identity in MaidCatalog.FreeReleased(profile.Maids).ToList())
+            {
+                profile.Add(Maid.Create(profile.NextMaidId++, identity));
+            }
+
+            var count = profile.Maids.Count;
             var before = profile.Wallet.Points;
             var result = Lootbox.Open(profile, "box_simple", new Rng(4));
 
             Assert.IsTrue(result.Ok);
+            Assert.AreEqual(count, profile.Maids.Count);
             Assert.IsTrue(result.Cards[0].Duplicate);
             Assert.Greater(result.Cards[0].PointsBack, 0);
             Assert.Greater(profile.Wallet.Points,

@@ -182,8 +182,8 @@ Três caixas, compradas só com fichas, com as chances **impressas na tela de co
 | **Prata** | 180 | 3 | rara | — · 62% · 32% · 6% |
 | **Dourada** | 520 | 3 | épica | — · — · 78% · 22% |
 
-Cada caixa tem um **piso de raridade**: a pior carta da Dourada é épica. Carta repetida com
-o elenco cheio volta como fichas, então uma caixa nunca é prejuízo total. Os pisos são
+Cada caixa tem um **piso de raridade**: a pior carta da Dourada é épica. Carta repetida
+(maid que já está no elenco) volta como fichas, então uma caixa nunca é prejuízo total. Os pisos são
 monotônicos — a caixa mais cara é sempre a melhor — e isso é um teste, não uma intenção.
 
 Não existe comprar fichas, e não existe converter ficha em dinheiro. As duas moedas não se
@@ -242,9 +242,16 @@ não por volume. Um dia que fatura muito atropelando todo mundo rende poucas fic
 Não há fases. A progressão é o **nível do café** (1 a 10), ganho com reputação, que por sua
 vez vem de clientes bem atendidos — nunca de faturamento.
 
-Cada nível entrega pelo menos uma coisa: salão maior, mais uma vaga de elenco, mais uma vaga
-numa posição, ou receitas, móveis e roupas novas. Um teste percorre os dez níveis e falha se
+Cada nível entrega pelo menos uma coisa: salão maior, mais uma vaga
+na escalação, ou receitas, móveis e roupas novas. Um teste percorre os dez níveis e falha se
 algum não trouxer nada.
+
+**O elenco não tem teto por nível** (ROSTER-UNCAP-01). Qualquer quantidade de maids pode ser
+contratada ou sorteada em qualquer nível; o limite é o catálogo (uma maid por identidade, 27
+no total, 23 liberadas hoje) e o que contém o tamanho do elenco é a folha de pagamento — cada
+maid custa salário fixo por dia, e dispensar sempre corta a despesa. A escalação continua
+limitada pelas vagas do nível (`Lineup.SlotsFor`), então maids além das vagas ficam no banco.
+Saves antigos carregam sem alteração: o teto antigo simplesmente deixa de ser aplicado.
 
 **A curva foi medida, não escolhida.** Uma versão anterior tinha meta diária com expoente
 1,35 sobre o dia; a medição mostrou que o faturamento de um café não muda com o dia, muda
@@ -343,7 +350,7 @@ de sustentar (atraem VIP de 22 s num salão de 4 mesas): é uma escolha, não um
   em invariante.
 - **Sem becos sem saída.** O dia não abre se faltar recepção, salão, cozinha, mesa ou
   estação — e a mensagem diz qual tela resolve. Clientes nunca pedem prato que a cozinha não
-  possa fazer. Dispensar uma maid sempre corta a despesa. Uma carta que não cabe no elenco
+  possa fazer. Dispensar uma maid sempre corta a despesa. Uma carta repetida
   vira fichas em vez de sumir.
 - **A falência é avisada com um dia de antecedência**, em vermelho, antes de abrir o dia
   seguinte.

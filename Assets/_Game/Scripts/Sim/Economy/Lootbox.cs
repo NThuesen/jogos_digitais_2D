@@ -139,10 +139,10 @@ namespace Neko.Sim.Economy
                 var card = Mint(profile, rarity, rng);
                 var alreadyHers = profile.HasIdentity(card.IdentityId);
 
-                // Over the roster cap she is converted on the spot rather than lost. A box
-                // that silently ate a Legendary because the squad was full would be the
-                // single worst thing this system could do to somebody.
-                if (alreadyHers || profile.Maids.Count >= profile.Unlocks.RosterCap)
+                // A card of someone already on the books is converted on the spot rather than
+                // lost. The roster has no size cap (ROSTER-UNCAP-01); only the released
+                // catalogue bounds it, one maid per identity.
+                if (alreadyHers)
                 {
                     var back = RarityTable.For(rarity).SeverancePoints;
                     profile.Wallet.AddPoints(back);
@@ -170,7 +170,7 @@ namespace Neko.Sim.Economy
         /// </remarks>
         /// <summary>
         /// A released identity she does not have yet; when she has them all, any released one, which
-        /// makes the card a duplicate (converted exactly as a card over the roster cap is).
+        /// makes the card a duplicate (converted exactly as any repeated card is).
         /// </summary>
         private static MaidIdentity PickIdentity(Profile profile, Rng rng)
         {

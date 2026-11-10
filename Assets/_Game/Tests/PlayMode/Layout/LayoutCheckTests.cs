@@ -747,7 +747,7 @@ namespace Neko.Tests.PlayMode.Layout
                       SessionFactory.LargeValues.BalanceText + ", day amount " + SessionFactory.LargeValues.DayAmountText +
                       ", profit " + SessionFactory.LargeValues.ProfitText + ", loss " + SessionFactory.LargeValues.LossText +
                       ", salary " + SessionFactory.LargeValues.SalaryText + ", Elenco header " +
-                      SessionFactory.LargeValues.RosterHeader(8, 8, SessionFactory.LargeValues.DayAmount) + ", dismiss plank " +
+                      SessionFactory.LargeValues.RosterHeader(8, SessionFactory.LargeValues.DayAmount) + ", dismiss plank " +
                       SessionFactory.LargeValues.DismissPlank(SessionFactory.LargeValues.Severance));
 
             if (!System.Linq.Enumerable.Any(Neko.Sim.Maids.MaidCatalog.All, identity => identity.Name == maidName.Text))
