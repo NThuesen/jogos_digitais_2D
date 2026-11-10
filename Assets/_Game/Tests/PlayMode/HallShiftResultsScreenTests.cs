@@ -46,6 +46,12 @@ namespace Neko.Tests.PlayMode
             File.WriteAllBytes(Path.Combine(Dir, name + "_" + window.x + "x" + window.y + ".png"), ResolutionRig.Capture());
         }
 
+        private static readonly string[] LongNames =
+        {
+            "Wilhelmina-Alexandrina", "Bartholomea", "Maria-Fernanda-Luiza", "Isabela Cristina", "Anastacia",
+            "Konstantina-Rose", "Guinevere-Marie", "Hortensia Bela", "Ilumina", "Jun"
+        };
+
         private static readonly string[] Names = { "Aoi", "Beni", "Chie", "Daisy", "Emi", "Fuyu", "Gin", "Hana", "Iku", "Jun" };
 
         private static ProfileBuilder Cafe(int level, int maids, bool fill)
@@ -527,12 +533,12 @@ namespace Neko.Tests.PlayMode
         // The report
         // -------------------------------------------------------------------------------------
 
-        private enum Day { Profit, Loss, Zero, Huge, LevelUps }
+        private enum Day { Profit, Loss, Zero, Huge, LevelUps, LongLevelUps }
 
         private static IEnumerator OpenBooks(Day day)
         {
             var builder = SessionFactory.NewProfile(7u, 10).WithDay(1).WithMoney(day == Day.Loss ? 40 : day == Day.Huge ? SessionFactory.LargeValues.Balance : 1800).EmptyRoom();
-            foreach (var n in Names) builder.WithMaid(n, Rarity.Common, 1, 0);
+            foreach (var n in day == Day.LongLevelUps ? LongNames : Names) builder.WithMaid(n, Rarity.Common, 1, 0);
             yield return SessionFactory.Boot(builder.Build());
             yield return SessionFactory.ToHub();
 
@@ -549,6 +555,10 @@ namespace Neko.Tests.PlayMode
                     result.DishRevenue = SessionFactory.LargeValues.DayAmount; result.Tips = SessionFactory.LargeValues.DayAmount;
                     result.Served = SessionFactory.LargeValues.Tally; result.DishesCooked = SessionFactory.LargeValues.Tally;
                     result.WrongOrders = result.Burnt = result.LeftAngry = result.TurnedAway = SessionFactory.LargeValues.Tally;
+                    break;
+                case Day.LongLevelUps:
+                    result.DishRevenue = 4200; result.Served = 30; result.DishesCooked = 32;
+                    foreach (var maid in Root.Session.Profile.Maids) result.XpByMaid[maid.Id] = 99999;
                     break;
                 case Day.LevelUps:
                     result.DishRevenue = 4200; result.Served = 30; result.DishesCooked = 32;
@@ -631,6 +641,41 @@ namespace Neko.Tests.PlayMode
             Assert.AreEqual(expected, tallies, "five indicators plus one chip per level-up");
             StringAssert.Contains(Strings.Get("books.levelup"), AllText());
             yield return AtEachWindow("results_levelups", () => AssertLegible("levelups"));
+        }
+
+        [UnityTest]
+        public IEnumerator EveryLevelUpChipShowsItsWholeCaption()
+        {
+            yield return OpenBooks(Day.LongLevelUps);
+            var ledger = Root.Session.LastLedger;
+            Assert.GreaterOrEqual(ledger.LevelUps.Count, 7, "seven or more level-ups in one day");
+            var expected = 5 + ledger.LevelUps.Count(p => Root.Session.Profile.MaidById(p.Key) != null);
+            Assert.AreEqual(expected, Books.GetComponentsInChildren<Image>(false).Count(i => i.name == "Tally"),
+                "no indicator is dropped to make room");
+            yield return AtEachWindow("results_levelups_long", () =>
+            {
+                AssertLegible("long level-ups");
+                var words = Strings.Get("books.levelup");
+                var chips = Books.GetComponentsInChildren<Text>(false)
+                    .Where(t => t.name == "Caption" && t.text.Contains(words)).ToList();
+                Assert.AreEqual(ledger.LevelUps.Count, chips.Count, "one caption per level-up");
+                foreach (var caption in chips)
+                {
+                    var generator = caption.cachedTextGenerator;
+                    var wanted = caption.text.Count(c => c != '\n');
+                    Assert.GreaterOrEqual(generator.characterCountVisible, wanted,
+                        "'" + caption.text + "' is clipped: " + generator.characterCountVisible + " of " + wanted + " characters show");
+                    StringAssert.EndsWith(words, caption.text.Replace('\n', ' ').Trim());
+                }
+            });
+        }
+
+        [UnityTest]
+        public IEnumerator TurnedAwayCustomersAreSaidInWordsAndNeverAsAMissingKey()
+        {
+            Assert.AreEqual("Casa cheia", Strings.Get("shift.full"));
+            Assert.IsFalse(Strings.Get("shift.full").Contains("[shift.full]"));
+            yield return null;
         }
 
         [UnityTest]

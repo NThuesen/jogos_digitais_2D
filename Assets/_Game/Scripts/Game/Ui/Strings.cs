@@ -93,6 +93,7 @@ namespace Neko.Game.Ui
                 { "day.watching", "Toque: porta e mesas com mão levantada, mesa suja, fogão no ponto dourado." },
                 { "assist.busy", "mãos ocupadas" },
                 { "assist.noseat", "sem mesa livre" },
+                { "shift.full", "Casa cheia" },
                 { "assist.pampered", "obrigada!" },
                 { "assist.perfect", "perfeito!" },
                 { "assist.early", "cedo!" },

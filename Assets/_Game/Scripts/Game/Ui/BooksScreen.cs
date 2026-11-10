@@ -348,7 +348,7 @@ namespace Neko.Game.Ui
                 if (maid == null) continue;
 
                 var accent = Color.Lerp(Palette.ForArchetype(maid.Archetype), Color.black, 0.45f);
-                tallies.Add(new TallyChip(maid.Name + " " + Strings.Get("books.levelup"), pair.Value, false, accent));
+                tallies.Add(new TallyChip(ShortName(maid.Name) + "\n" + Strings.Get("books.levelup"), pair.Value, false, accent));
             }
 
             Tallies(tallies);
@@ -432,13 +432,21 @@ namespace Neko.Game.Ui
         /// Indicator chips in the band under the columns: one row at the kit's size, two rows (seven across)
         /// when there are more than five, and a vertical scroll past that.
         /// </summary>
+        /// <summary>A name that fits one line of a chip, whatever its length.</summary>
+        private static string ShortName(string name)
+        {
+            const int most = 12;
+            return string.IsNullOrEmpty(name) || name.Length <= most ? name : name.Substring(0, most - 1) + "…";
+        }
+
         private void Tallies(List<TallyChip> tallies)
         {
             var view = _tallyView.rect.size;
             const float gap = 8f;
             var count = tallies.Count;
 
-            var columns = count <= 5 ? Mathf.Max(1, count) : 7;
+            // Up to sixteen chips stay in two rows (eight across); only beyond that does the strip scroll.
+            var columns = count <= 5 ? Mathf.Max(1, count) : count <= 14 ? 7 : 8;
             var rows = Mathf.CeilToInt(count / (float)columns);
             var visible = Mathf.Min(rows, 2);
 
@@ -484,14 +492,17 @@ namespace Neko.Game.Ui
                     new Vector2(left + inRow * (width + gap), -(i / columns) * (height + gap)));
 
                 var tight = height < 70f;
+                // A two-line caption (a level-up: the name, then the words) needs more of the chip.
+                var twoLines = tally.Caption.IndexOf('\n') >= 0;
+                var split = twoLines ? 0.56f : tight ? 0.42f : 0.46f;
                 var number = KitArt.Fitted(chip.transform, tally.Value.ToString(), tight ? 24 : 34, 12,
                     tally.Tint ?? (tally.Bad ? Loss : KitArt.Brown),
-                    new Vector4(0.08f, tight ? 0.42f : 0.46f, 0.08f, 0.1f));
+                    new Vector4(0.08f, split, 0.08f, 0.05f));
                 number.gameObject.name = "Number";
                 number.horizontalOverflow = HorizontalWrapMode.Overflow;
 
-                var caption = KitArt.Fitted(chip.transform, tally.Caption, tight ? 12 : 17, 9, KitArt.Brown,
-                    new Vector4(0.08f, 0.1f, 0.08f, tight ? 0.6f : 0.56f));
+                var caption = KitArt.Fitted(chip.transform, tally.Caption, twoLines ? 14 : tight ? 12 : 17, twoLines ? 8 : 9, KitArt.Brown,
+                    new Vector4(0.08f, 0.06f, 0.08f, twoLines ? 1f - split + 0.02f : tight ? 0.6f : 0.56f));
                 caption.gameObject.name = "Caption";
                 caption.fontStyle = FontStyle.Normal;
             }

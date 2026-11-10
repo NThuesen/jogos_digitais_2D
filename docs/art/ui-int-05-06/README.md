@@ -37,7 +37,11 @@ Ver o corpo da PR para as contagens finais. Testes novos em `HallShiftResultsScr
 - Fonte legada do Unity (decisão do dono). Em 960×600 os textos pequenos das fichas e das células de estoque ficam entre 9 e 11 px efetivos.
 - A velocidade escolhida é marcada por um estado de apresentação do HUD (a simulação só recebe a escala, como antes).
 
-## Limitações conhecidas (observadas na validação no Chrome)
-- O texto flutuante "[shift.full]" no salão durante o dia vem de uma chave ausente em `Strings` (`ShiftPresenter`, anterior a esta tarefa); não foi alterada aqui.
-- Na tela de resultado, chips de level-up muito longos ("<nome> Subiu de nível!") podem ser cortados nos chips pequenos quando há 7+ itens.
-- Colocar móvel na Chrome não foi exercitado (estoque 0 nessa sessão); colocar/girar/remover estão cobertos pelos testes PlayMode com cliques reais.
+## Correções de finalização (UI-INT-05/06B)
+- `shift.full` ("Casa cheia") adicionada a `Strings`; teste garante que `[shift.full]` não aparece.
+- Chips de level-up: legenda em duas linhas ("Nome" / "Subiu de nível!"), nome encurtado com reticências acima de 12 caracteres, até 16 chips em duas fileiras (8 por fileira); só acima disso a faixa rola. Nenhum indicador removido. Teste com 10 level-ups e nomes longos nos dois tamanhos (`EveryLevelUpChipShowsItsWholeCaption`).
+- Smoke test real no Chrome com estoque (`evidence/chrome-smoke/`): comprar na Lojinha → Arrumar o salão → selecionar → posicionar → girar (R) → remover (botão direito, estoque volta) → cliques fora da abertura não alteram o salão nem o estoque.
+
+## Limitações conhecidas
+- Em listas com mais de 16 chips a faixa de indicadores rola.
+- O botão direito remove e R gira a peça segurada (comportamento preexistente, não mudou).
