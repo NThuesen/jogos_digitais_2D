@@ -23,3 +23,5 @@ Mesma infraestrutura serve `cat_tower`, `sakura_tree`, `lantern_sakura`, `gothic
 - **Correção P2 (Codex):** o sorting passou a usar o pé desenhado (`MaidView.Feet`/`CustomerView.Feet`), não a raiz. `RenderedOcclusionTests` renderiza o frame com/sem uma `MaidView` real e compara pixels; falhou antes da correção e passa depois, estável em 2 execuções completas seguidas.
 - **Proveniência:** SHA-256 dos 4 PNGs conferido (arquivo de trabalho = commit = `SUZU_ASSET_PROVENANCE.md`); hashes dos 3 brutos de origem registrados lá.
 - **Não executado:** compra/colocação das peças pela UI da loja no WebGL (a fixture a substitui); Android (fora de escopo).
+
+**Expansão feita:** os oito móveis funcionais (mesas, banqueta, estações) entraram em [ART-INT-02](../art-int-02/README.md), incluindo a camada da frente para clientes sentados.

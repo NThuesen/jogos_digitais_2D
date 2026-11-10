@@ -126,7 +126,9 @@ namespace Neko.Tests.Game
             Assert.IsNotNull(IllustratedFurniture.For(PlaceableCatalog.ById("stage"), 2, 2));
             Assert.IsNotNull(IllustratedFurniture.For(PlaceableCatalog.ById("window"), 1, 1));
             Assert.IsNull(IllustratedFurniture.For(PlaceableCatalog.ById("window"), 1, 2));
-            Assert.IsNull(IllustratedFurniture.For(PlaceableCatalog.ById("table_2"), 2, 1));
+            // ART-INT-02 gave table_2 pictures at 2x1 and 1x2; a footprint it has no picture for stays procedural.
+            Assert.IsNull(IllustratedFurniture.For(PlaceableCatalog.ById("table_2"), 3, 1));
+            Assert.IsNull(IllustratedFurniture.For(PlaceableCatalog.ById("plant"), 1, 1));
 
             var pond = IllustratedFurniture.For(PlaceableCatalog.ById("koi_pond"), 2, 2);
             Assert.IsTrue(pond.HasRaisedLayer);

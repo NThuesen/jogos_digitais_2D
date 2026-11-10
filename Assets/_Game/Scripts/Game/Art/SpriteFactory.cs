@@ -28,6 +28,15 @@ namespace Neko.Game.Art
 
         private readonly Dictionary<string, Sprite[]> _sheets = new Dictionary<string, Sprite[]>();
 
+        /// <summary>
+        /// Where textures come from; <c>Resources.Load</c> unless replaced. Per factory, so a test can
+        /// make one picture "missing" for one room without touching the assets or any global.
+        /// </summary>
+        public System.Func<string, Texture2D> TextureLoader { get; set; }
+
+        private Texture2D LoadTexture(string resource) =>
+            TextureLoader != null ? TextureLoader(resource) : Resources.Load<Texture2D>(resource);
+
         public int CachedCount => _cache.Count;
 
         public Sprite Get(ShapeSpec spec, int size = DefaultSize)
@@ -155,7 +164,7 @@ namespace Neko.Game.Art
                 return cached;
             }
 
-            var texture = Resources.Load<Texture2D>(resource);
+            var texture = LoadTexture(resource);
             if (texture == null || !SheetDimensionMatches(texture.width, columns * cellWidth) ||
                 !SheetDimensionMatches(texture.height, rows * cellHeight))
             {
@@ -188,9 +197,32 @@ namespace Neko.Game.Art
         /// Kept with the sheets because, like them, the texture belongs to the importer and must
         /// outlive <see cref="Clear"/>.
         /// </remarks>
-        public Sprite Illustrated(IllustratedFurniture entry, bool raised)
+        public Sprite Illustrated(IllustratedFurniture entry, bool raised) =>
+            IllustratedResource(entry, raised ? entry.RaisedResource : entry.Resource);
+
+        /// <summary>
+        /// Whether this piece is drawn from its illustrated picture by this factory: its whole picture
+        /// (and its raised one, when it has one) actually loaded. The one question
+        /// <c>RoomView</c> and the seated-customer placement and ordering both ask, so they cannot
+        /// disagree about a piece that fell back to procedural art.
+        /// </summary>
+        public bool DrawsIllustrated(IllustratedFurniture entry) =>
+            entry != null && Illustrated(entry, false) != null &&
+            (!entry.HasRaisedLayer || Illustrated(entry, true) != null);
+
+        /// <summary>
+        /// Whether this piece is drawn in two layers (whole picture behind, front layer over seated
+        /// customers): it is illustrated and its front layer actually loaded.
+        /// </summary>
+        public bool DrawsFrontLayer(IllustratedFurniture entry) =>
+            entry != null && entry.HasFrontLayer && DrawsIllustrated(entry) && IllustratedFront(entry) != null;
+
+        /// <summary>The front layer of a piece that has one, or null (see <see cref="IllustratedFurniture.FrontResource"/>).</summary>
+        public Sprite IllustratedFront(IllustratedFurniture entry) =>
+            IllustratedResource(entry, entry.FrontResource);
+
+        private Sprite IllustratedResource(IllustratedFurniture entry, string resource)
         {
-            var resource = raised ? entry.RaisedResource : entry.Resource;
             if (string.IsNullOrEmpty(resource)) return null;
 
             if (_sheets.TryGetValue(resource, out var cached))
@@ -198,7 +230,7 @@ namespace Neko.Game.Art
                 return cached != null && cached.Length > 0 ? cached[0] : null;
             }
 
-            var texture = Resources.Load<Texture2D>(resource);
+            var texture = LoadTexture(resource);
             if (texture == null || texture.width < entry.PixelWidth || texture.height < entry.PixelHeight)
             {
                 _sheets[resource] = null;
