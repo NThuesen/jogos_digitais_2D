@@ -173,3 +173,10 @@ Derived, not redrawn, from the Codex raw PNGs `UI-024_placeable_{stage,koi_pond,
 resampled to 256 px per tile by `tools/art/furniture_pilot/make_pilot_assets.py`.
 `koi_pond.png` is the full picture (flat base); `koi_pond_raised.png` is the same picture with the
 water cut out, so it aligns pixel for pixel. Calibration lives in `IllustratedFurniture.cs`.
+
+Source files as read (read-only, `neko-art-assets/art_working/ui_modular/raw_gpt/`; SHA-256 written
+`file: hash` so the allowlist parser above does not treat them as imported files):
+
+- `UI-024_placeable_stage_v01.png`: ae502d78df3e711701b3e2c107cdb4941e0e135ede95491a3be026cd78b33a57
+- `UI-024_placeable_koi_pond_v01.png`: 1e6d641d1d740d52f23d7888d057cde510380b1df32e5bca074bd8a8f1e0726b
+- `UI-024_placeable_window_v01.png`: bd3f08b450800839f96c217b14eaf0adabbb9fa09b101c94af917a9f84832a95
