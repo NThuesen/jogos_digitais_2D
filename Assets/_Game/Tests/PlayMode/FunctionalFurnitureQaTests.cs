@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Neko.Game.Art;
+using Neko.Game.Core;
 using Neko.Game.View;
 using Neko.Sim.Cafe;
 using Neko.Sim.Maids;
@@ -57,7 +59,7 @@ namespace Neko.Tests.PlayMode
             _actors.Clear();
         }
 
-        private void BuildRoom(bool illustrated)
+        private void BuildRoom(bool illustrated, System.Func<string, Texture2D> loader = null)
         {
             Clean();
             IllustratedFurniture.Enabled = illustrated;
@@ -68,7 +70,7 @@ namespace Neko.Tests.PlayMode
                     p.id + " does not fit the fixture");
             }
 
-            _sprites = new SpriteFactory();
+            _sprites = new SpriteFactory { TextureLoader = loader };
             _room = new GameObject("QA Room");
             var room = _room.AddComponent<RoomView>();
             room.Bind(_sprites);
@@ -107,7 +109,7 @@ namespace Neko.Tests.PlayMode
             // The same placement ShiftPresenter gives a seated customer.
             var item = _grid.ItemAt(cell.X, cell.Y);
             var entry = IllustratedFurniture.For(item.Def, item.Width, item.Height);
-            var offset = entry != null ? entry.SeatOffset(cell.X - item.X, cell.Y - item.Y) : Vector2.zero;
+            var offset = _sprites.DrawsIllustrated(entry) ? entry.SeatOffset(cell.X - item.X, cell.Y - item.Y) : Vector2.zero;
             view.SeatCell = cell;
             view.Place(new Vector3(cell.X + offset.x, cell.Y + 0.42f + offset.y, 0f));
             view.transform.localScale = Vector3.one * CustomerView.CustomerScale;
@@ -449,6 +451,105 @@ namespace Neko.Tests.PlayMode
             var front = Pixels();
             Assert.Greater(Changed(without, front, 0.85f, 1.15f, 5.3f, 5.7f), 0.4f,
                 "she stands in front of the legs and covers them");
+        }
+
+        // ---- a picture that does not load: the fallback is per room, and so is the ordering -------------
+
+        private static System.Func<string, Texture2D> Missing(params string[] resources) =>
+            resource => System.Array.IndexOf(resources, resource) >= 0 ? null : Resources.Load<Texture2D>(resource);
+
+        private PlacedItem TwoSeater() => _grid.ItemAt(1, 6);
+
+        private List<Transform> Named(string name) =>
+            _room.transform.Cast<Transform>().Where(t => t.name == name).ToList();
+
+        [UnityTest]
+        public IEnumerator AMissingFrontLayerLeavesTheWholePictureAndTheOrdinaryOrder()
+        {
+            BuildRoom(true, Missing("Furniture/table_2_front"));
+            yield return null;
+            var without = Pixels();
+
+            Assert.IsFalse(_sprites.DrawsFrontLayer(IllustratedFurniture.For(TwoSeater().Def, 2, 1)));
+            Assert.AreEqual(0, Named("table_2Back").Count, "no layered pieces without the front layer");
+            var drawn = Named("table_2").Select(t => t.GetComponent<SpriteRenderer>().sprite.name).ToList();
+            CollectionAssert.Contains(drawn, "Furniture/table_2", "the whole picture is still drawn");
+
+            var view = SeatAt(new Cell(1, 6), 1);
+            yield return Pop();
+            var with = Pixels();
+
+            Assert.Greater(view.GetComponent<SpriteRenderer>().sortingOrder, Layers.ActorOrder(DepthSort.SolidKey(TwoSeater())),
+                "without a front layer she sits in front of the whole picture, as the ordinary rule says");
+            var b = BodyBounds(view);
+            Assert.Greater(Changed(without, with, b.center.x - 0.1f, b.center.x + 0.1f, b.min.y + 0.05f, b.min.y + 0.22f), 0.3f,
+                "and so she is drawn over the table, not hidden by a layer that is not there");
+        }
+
+        [UnityTest]
+        public IEnumerator AMissingMainPictureFallsBackToProceduralWithNoSeatOffsetAndTheOrdinaryOrder()
+        {
+            BuildRoom(true, Missing("Furniture/table_2"));
+            yield return null;
+
+            var entry = IllustratedFurniture.For(TwoSeater().Def, 2, 1);
+            Assert.IsFalse(_sprites.DrawsIllustrated(entry));
+            Assert.IsFalse(_sprites.DrawsFrontLayer(entry), "a front layer of a picture that is not drawn is not drawn");
+            Assert.AreEqual(0, Named("table_2Back").Count);
+            var drawn = Named("table_2").Where(t => Mathf.Abs(t.position.x - 1.5f) < 0.01f).Select(t => t.GetComponent<SpriteRenderer>().sprite.name).ToList();
+            Assert.AreEqual(1, drawn.Count);
+            StringAssert.DoesNotContain("Furniture/", drawn[0], "the procedural drawing is on screen");
+
+            var view = SeatAt(new Cell(1, 6), 1);
+            yield return Pop();
+            Assert.AreEqual(6.42f, view.transform.position.y, 0.001f, "no seat offset on a procedural table");
+            Assert.AreEqual(1f, view.transform.position.x, 0.001f);
+            Assert.AreEqual(Layers.ActorOrder(DepthSort.ActorKey(_grid, view.Feet)), view.GetComponent<SpriteRenderer>().sortingOrder,
+                "ordered exactly like any actor standing on the piece");
+        }
+
+        [UnityTest]
+        public IEnumerator AFourSeaterWithoutItsFrontLayerOrdersEveryoneTheOrdinaryWay()
+        {
+            BuildRoom(true, Missing("Furniture/table_4_front"));
+            yield return null;
+            var table = _grid.ItemAt(8, 5);
+
+            foreach (var cell in new[] { new Cell(8, 5), new Cell(8, 6) })
+            {
+                var view = SeatAt(cell, cell.Y);
+                yield return Pop();
+                Assert.Greater(view.GetComponent<SpriteRenderer>().sortingOrder, Layers.ActorOrder(DepthSort.SolidKey(table)),
+                    "seat " + cell.X + "," + cell.Y + " is in front of the picture, as drawn");
+            }
+        }
+
+        [UnityTest]
+        public IEnumerator TheLayeredOrderComesBackWhenTheRoomIsRebuiltWithTheFileThere()
+        {
+            // Same room, rebuilt: first without the front layer, then with everything loadable.
+            BuildRoom(true, Missing("Furniture/table_2_front"));
+            yield return null;
+            Assert.IsFalse(_sprites.DrawsFrontLayer(IllustratedFurniture.For(TwoSeater().Def, 2, 1)));
+
+            BuildRoom(true);
+            yield return null;
+            var table = TwoSeater();
+            Assert.IsTrue(_sprites.DrawsFrontLayer(IllustratedFurniture.For(table.Def, 2, 1)));
+            var view = SeatAt(new Cell(1, 6), 1);
+            yield return Pop();
+            Assert.Less(view.GetComponent<SpriteRenderer>().sortingOrder, Layers.ActorOrder(DepthSort.SolidKey(table)),
+                "layered again: behind the front layer");
+            Assert.Greater(view.GetComponent<SpriteRenderer>().sortingOrder, Layers.ActorOrder(DepthSort.BackKey(table)),
+                "and in front of the whole picture");
+
+            // And the same factory, after its cache is cleared and the loader is back to normal.
+            _sprites.Clear();
+            _sprites.TextureLoader = Missing("Furniture/table_2");
+            Assert.IsFalse(_sprites.DrawsIllustrated(IllustratedFurniture.For(table.Def, 2, 1)));
+            _sprites.Clear();
+            _sprites.TextureLoader = null;
+            Assert.IsTrue(_sprites.DrawsFrontLayer(IllustratedFurniture.For(table.Def, 2, 1)), "nothing is remembered between rooms");
         }
 
         // ---- frames -----------------------------------------------------------------------------

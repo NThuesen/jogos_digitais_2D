@@ -25,7 +25,8 @@ Solução, só de apresentação (a lógica do jogo não muda):
 1. **Camada da frente** opcional (`IllustratedFurniture.FrontResource`): o PNG com só o que fica à frente de quem está sentado (tampo + pernas; na mesa de 4 também as cadeiras da frente). A imagem inteira vai atrás (`BackKey = borda frontal + 0,6`), a camada da frente na chave sólida de sempre (`SolidKey`).
 2. **`DepthSort.SeatedKey`**: cliente sentado é chaveado pela **célula** do assento (nunca por onde é desenhado): atrás da camada da frente e à frente da imagem inteira; as fileiras `FrontRows` (cadeiras da frente da mesa de 4) ficam à frente. Sem entrada ou sem camada da frente: regra antiga, idêntica.
 3. **`SeatOffset`** por assento: o cliente é *desenhado* na cadeira da arte (a célula do sim não muda). `ShiftPresenter.PositionOf` aplica; `CustomerView.SeatCell` leva a célula até o sorting.
-4. Maids e qualquer um fora de um assento: regra anterior, inalterada (maid em estação/atravessando mesa continua desenhada à frente da peça).
+4. **Fallback por instância (correção do P2 da revisão):** a ordem de assento e o `SeatOffset` só valem quando a `SpriteFactory` que desenhou a sala realmente carregou as imagens (`DrawsIllustrated` / `DrawsFrontLayer`; mesma pergunta que o `RoomView` faz). PNG principal ausente → desenho procedural, sem offset e com a regra comum; camada da frente ausente → imagem inteira desenhada e ordem comum. Nenhum estado global novo: o carregamento é por fábrica (`TextureLoader` por instância, usado pelos testes para simular PNG ausente) e é refeito ao reconstruir a sala.
+5. Maids e qualquer um fora de um assento: regra anterior, inalterada (maid em estação/atravessando mesa continua desenhada à frente da peça).
 
 Pixels das camadas da frente: nada é desenhado, só tornado transparente (`above_y` para a mesa de 2; dois polígonos sobre as cadeiras de trás da mesa de 4 — conferido por pré-visualização).
 

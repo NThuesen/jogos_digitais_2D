@@ -50,21 +50,24 @@ namespace Neko.Game.View
         /// comes from the seat's cell, never from where she is drawn.
         /// </summary>
         /// <remarks>
-        /// Seats on a piece with a front layer are keyed behind it (its tabletop covers her lap)
-        /// and in front of its whole picture (her head is over the chair back), except the rows
-        /// the art says sit in front of it. Every other piece keeps the ordinary rule.
+        /// <paramref name="sprites"/> is the factory that drew the room: the layered order applies only
+        /// when that factory really loaded the piece's pictures (<see cref="Art.SpriteFactory.DrawsFrontLayer"/>).
+        /// A piece that fell back to procedural art, or lost its front layer, is ordered the ordinary
+        /// way, exactly as it is drawn. Seats on a layered piece are keyed behind its front layer (its
+        /// tabletop covers her lap) and in front of its whole picture (her head is over the chair
+        /// back), except the rows the art says sit in front of it.
         /// </remarks>
-        public static float SeatedKey(CafeGrid grid, Cell seat, Vector3 feet)
+        public static float SeatedKey(CafeGrid grid, Cell seat, Vector3 feet, Art.SpriteFactory sprites)
         {
             var item = grid?.ItemAt(seat.X, seat.Y);
-            if (item == null || !StandsOn(item.Def)) return ActorKey(grid, feet);
+            if (item == null || !StandsOn(item.Def) || sprites == null) return ActorKey(grid, feet);
 
             var entry = Art.IllustratedFurniture.For(item.Def, item.Width, item.Height);
-            if (entry == null) return ActorKey(grid, feet);
+            if (!sprites.DrawsIllustrated(entry)) return ActorKey(grid, feet);
 
             var front = FrontEdge(item);
             var row = seat.Y - item.Y;
-            if (entry.HasFrontLayer && row >= entry.FrontRows)
+            if (sprites.DrawsFrontLayer(entry) && row >= entry.FrontRows)
             {
                 return front + SeatedBehindFront + (row - entry.FrontRows) * 0.05f;
             }

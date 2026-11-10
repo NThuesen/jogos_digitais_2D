@@ -136,9 +136,9 @@ namespace Neko.Tests.PlayMode
 
                     var body = customer.GetComponent<SpriteRenderer>();
                     var entry = IllustratedFurniture.For(table.Def, table.Width, table.Height);
-                    Assert.AreEqual(Layers.ActorOrder(DepthSort.SeatedKey(grid, seat, customer.Feet)), body.sortingOrder,
+                    Assert.AreEqual(Layers.ActorOrder(DepthSort.SeatedKey(grid, seat, customer.Feet, customer.Sprites)), body.sortingOrder,
                         "a seated customer is not keyed by her seat");
-                    if (entry != null && entry.HasFrontLayer && seat.Y - table.Y >= entry.FrontRows)
+                    if (customer.Sprites.DrawsFrontLayer(entry) && seat.Y - table.Y >= entry.FrontRows)
                     {
                         Assert.Less(body.sortingOrder, Layers.ActorOrder(DepthSort.SolidKey(table)), key + ": in front of the top");
                         Assert.Greater(body.sortingOrder, Layers.ActorOrder(DepthSort.BackKey(table)), key + ": behind the chairs");

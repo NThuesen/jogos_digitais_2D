@@ -99,7 +99,7 @@ namespace Neko.Tests.PlayMode
                     var body = customer.GetComponent<SpriteRenderer>();
                     // Somebody seated is keyed by the seat's cell (ART-INT-02); anyone else by their feet.
                     var customerKey = customer.SeatCell.HasValue
-                        ? DepthSort.SeatedKey(grid, customer.SeatCell.Value, customer.Feet)
+                        ? DepthSort.SeatedKey(grid, customer.SeatCell.Value, customer.Feet, customer.Sprites)
                         : DepthSort.ActorKey(grid, customer.Feet);
                     Assert.AreEqual(Layers.ActorOrder(customerKey),
                         body.sortingOrder, "a customer is not sorted by their feet");
@@ -110,7 +110,7 @@ namespace Neko.Tests.PlayMode
                         var seat = customer.SeatCell.Value;
                         var table = grid.ItemAt(seat.X, seat.Y);
                         var entry = table != null ? IllustratedFurniture.For(table.Def, table.Width, table.Height) : null;
-                        if (entry != null && entry.HasFrontLayer && seat.Y - table.Y >= entry.FrontRows)
+                        if (customer.Sprites.DrawsFrontLayer(entry) && seat.Y - table.Y >= entry.FrontRows)
                         {
                             Assert.Less(body.sortingOrder, Layers.ActorOrder(DepthSort.SolidKey(table)),
                                 "a seated customer is in front of the table top");

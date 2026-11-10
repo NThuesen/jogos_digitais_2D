@@ -44,6 +44,9 @@ namespace Neko.Game.View
         /// <summary>The seat cell they are on, when seated; keys them by the seat, not by where they are drawn.</summary>
         public Cell? SeatCell { get; set; }
 
+        /// <summary>The factory this view was drawn with (what the room was drawn with, too).</summary>
+        public SpriteFactory Sprites => _sprites;
+
         /// <summary>The room they sit in, for depth against its furniture. Optional.</summary>
         public CafeGrid Grid { get; set; }
 
@@ -139,7 +142,7 @@ namespace Neko.Game.View
             _body.color = tint;
 
             Core.Layers.ApplyActor(_body, SeatCell.HasValue
-                ? DepthSort.SeatedKey(Grid, SeatCell.Value, Feet)
+                ? DepthSort.SeatedKey(Grid, SeatCell.Value, Feet, _sprites)
                 : DepthSort.ActorKey(Grid, Feet));
             Core.Layers.Apply(_bubble, Core.Layers.Fx, transform.position.y);
 

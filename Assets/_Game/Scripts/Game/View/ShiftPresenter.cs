@@ -172,7 +172,7 @@ namespace Neko.Game.View
         {
             var item = Shift.Grid.ItemAt(cell.X, cell.Y);
             var entry = item != null ? IllustratedFurniture.For(item.Def, item.Width, item.Height) : null;
-            return entry != null ? entry.SeatOffset(cell.X - item.X, cell.Y - item.Y) : Vector2.zero;
+            return _sprites.DrawsIllustrated(entry) ? entry.SeatOffset(cell.X - item.X, cell.Y - item.Y) : Vector2.zero;
         }
 
         private Vector3 PositionOf(Customer customer)

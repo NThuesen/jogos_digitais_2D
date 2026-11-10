@@ -154,15 +154,11 @@ namespace Neko.Game.View
             var entry = IllustratedFurniture.For(item.Def, item.Width, item.Height);
             if (entry == null) return false;
 
-            var whole = _sprites.Illustrated(entry, false);
-            if (whole == null) return false;
+            // The same question the seated-customer placement and ordering ask the factory.
+            if (!_sprites.DrawsIllustrated(entry)) return false;
 
-            Sprite raised = null;
-            if (entry.HasRaisedLayer)
-            {
-                raised = _sprites.Illustrated(entry, true);
-                if (raised == null) return false;
-            }
+            var whole = _sprites.Illustrated(entry, false);
+            var raised = entry.HasRaisedLayer ? _sprites.Illustrated(entry, true) : null;
 
             var foot = new Vector3(centre.x, DepthSort.FrontEdge(item) + entry.BottomLift, 0f);
 
@@ -171,7 +167,7 @@ namespace Neko.Game.View
                 // The front layer is the piece, keyed by its front edge like any solid; the whole picture
                 // goes behind it, and seated customers are keyed between the two (DepthSort.SeatedKey). A front
                 // layer that does not load leaves the whole picture, drawn the ordinary way.
-                var front = _sprites.IllustratedFront(entry);
+                var front = _sprites.DrawsFrontLayer(entry) ? _sprites.IllustratedFront(entry) : null;
                 if (front != null)
                 {
                     Layers.ApplyActor(Make(item.Def.Id + "Back", foot, whole, Layers.Furniture, item.Y)
