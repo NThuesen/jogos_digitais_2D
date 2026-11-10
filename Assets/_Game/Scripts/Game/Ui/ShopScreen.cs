@@ -287,7 +287,8 @@ namespace Neko.Game.Ui
         };
 
         private static readonly float[] TabX = { 357f, 685f, 1014f };
-        private static readonly Color Gold = Palette.Hex("#A8700A");
+        private static readonly Color Gold = Palette.Hex("#F6C85A");
+        private static readonly Color OwnedGold = Palette.Hex("#8A5A06");
 
         private const float RowPitch = 119f;
 
@@ -493,7 +494,7 @@ namespace Neko.Game.Ui
             if (owned > 0)
             {
                 KitArt.Fitted(KitStage.Slot(row, "Owned", 645, 12, 835, 52), Strings.Get("shop.owned") + ": " + owned,
-                    19, 9, Gold, Vector4.zero, TextAnchor.MiddleRight);
+                    19, 9, OwnedGold, Vector4.zero, TextAnchor.MiddleRight);
             }
 
             KitArt.Fitted(KitStage.Slot(row, "Description", 204, 56, 835, 101), item.Description, 20, 9,
