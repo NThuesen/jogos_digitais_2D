@@ -21,9 +21,9 @@ Cenário aberto + moldura; HUD superior com relógio, caixa, atendidos/erros/sa�
 ## Resultado do expediente
 Fundo, relatório, colunas Entrou/Saiu (linhas de `Incoming()`/`Outgoing()`, Receita/Despesa), química e satisfação (ou `FailureReason`), indicadores adaptativos (5 + um por level-up; uma linha, duas linhas de sete, rolagem a partir da terceira), faixa do resultado financeiro (`Strings.Signed(Profit)`, "Caixa depois" e aviso), "Voltar à empresa" → `OnContinue`. Linhas além do espaço apertam e depois rolam; o total nunca se move; valores monetários encolhem (best fit) mas nunca são cortados.
 
-## Assets importados (34 PNGs, `Resources/UiKit/`)
+## Assets importados (33 PNGs, `Resources/UiKit/`)
 - **Salão (15, `hall_`):** office_background, board_frame, title_empty, metrics_plate_empty, metrics_divider, icon_seat/ambience/flow/theme, instruction_strip_empty, inventory_tray_empty, inventory_cell_empty, inventory_cell_selected, inventory_paw, stock_label_empty.
-- **Expediente (9, `shift_`):** restaurant_background_open, room_frame, top_hud_empty, maid_chip_empty, mood_track, mood_fill, speed_selected, instruction_empty.
+- **Expediente (8, `shift_`):** restaurant_background_open, room_frame, top_hud_empty, maid_chip_empty, mood_track, mood_fill, speed_selected, instruction_empty.
 - **Resultado (10, `results_`):** restaurant_background, report_empty, column_empty, header_empty, total_empty, tally_empty, financial_highlight_empty, continue_empty, row_empty, separator.
 - Reaproveitados: `back_blank`. Não importados: alternativas frame/surface, fundo neutro do expediente, cantos soltos, suporte neutro do viewport (a câmera limpa para a cor do papel), anel de retrato (a ficha não tem retrato), placa de velocidade normal (já vem na placa do HUD), `hall_shop_access_empty` (sem callback).
 - `tools/art/ui_kit/import_hall_shift_results_kits.py` confere o sha256 com o manifesto, copia byte a byte e grava as bordas 9-slice; hashes em `SOURCES.json` e `docs/art/SUZU_ASSET_PROVENANCE.md`.
