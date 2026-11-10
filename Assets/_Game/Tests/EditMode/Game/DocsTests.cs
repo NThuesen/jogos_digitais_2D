@@ -246,6 +246,16 @@ namespace Neko.Tests.Game
                 "Assets/_Game/Resources/Furniture/koi_pond_raised.png",
                 "Assets/_Game/Resources/Furniture/stage.png",
                 "Assets/_Game/Resources/Furniture/window.png",
+                "Assets/_Game/Resources/Furniture/table_2.png",
+                "Assets/_Game/Resources/Furniture/table_2_front.png",
+                "Assets/_Game/Resources/Furniture/table_2_rotated.png",
+                "Assets/_Game/Resources/Furniture/table_4.png",
+                "Assets/_Game/Resources/Furniture/table_4_front.png",
+                "Assets/_Game/Resources/Furniture/stool.png",
+                "Assets/_Game/Resources/Furniture/stove.png",
+                "Assets/_Game/Resources/Furniture/teabar.png",
+                "Assets/_Game/Resources/Furniture/dessert.png",
+                "Assets/_Game/Resources/Furniture/bakery.png",
             },
                 expected.Keys);
 

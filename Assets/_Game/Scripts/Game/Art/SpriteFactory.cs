@@ -188,9 +188,15 @@ namespace Neko.Game.Art
         /// Kept with the sheets because, like them, the texture belongs to the importer and must
         /// outlive <see cref="Clear"/>.
         /// </remarks>
-        public Sprite Illustrated(IllustratedFurniture entry, bool raised)
+        public Sprite Illustrated(IllustratedFurniture entry, bool raised) =>
+            IllustratedResource(entry, raised ? entry.RaisedResource : entry.Resource);
+
+        /// <summary>The front layer of a piece that has one, or null (see <see cref="IllustratedFurniture.FrontResource"/>).</summary>
+        public Sprite IllustratedFront(IllustratedFurniture entry) =>
+            IllustratedResource(entry, entry.FrontResource);
+
+        private Sprite IllustratedResource(IllustratedFurniture entry, string resource)
         {
-            var resource = raised ? entry.RaisedResource : entry.Resource;
             if (string.IsNullOrEmpty(resource)) return null;
 
             if (_sheets.TryGetValue(resource, out var cached))

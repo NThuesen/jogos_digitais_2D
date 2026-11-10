@@ -41,6 +41,9 @@ namespace Neko.Game.View
 
         public Customer Customer { get; private set; }
 
+        /// <summary>The seat cell they are on, when seated; keys them by the seat, not by where they are drawn.</summary>
+        public Cell? SeatCell { get; set; }
+
         /// <summary>The room they sit in, for depth against its furniture. Optional.</summary>
         public CafeGrid Grid { get; set; }
 
@@ -135,7 +138,9 @@ namespace Neko.Game.View
                 : Color.Lerp(Color.white, Palette.ForPatience(patience), 1f - patience);
             _body.color = tint;
 
-            Core.Layers.ApplyActor(_body, DepthSort.ActorKey(Grid, Feet));
+            Core.Layers.ApplyActor(_body, SeatCell.HasValue
+                ? DepthSort.SeatedKey(Grid, SeatCell.Value, Feet)
+                : DepthSort.ActorKey(Grid, Feet));
             Core.Layers.Apply(_bubble, Core.Layers.Fx, transform.position.y);
 
             // Explicitly one in front of its own bubble. Nudging the y by a hundredth rounded

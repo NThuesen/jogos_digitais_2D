@@ -166,6 +166,22 @@ namespace Neko.Game.View
 
             var foot = new Vector3(centre.x, DepthSort.FrontEdge(item) + entry.BottomLift, 0f);
 
+            if (entry.HasFrontLayer)
+            {
+                // The front layer is the piece, keyed by its front edge like any solid; the whole picture
+                // goes behind it, and seated customers are keyed between the two (DepthSort.SeatedKey). A front
+                // layer that does not load leaves the whole picture, drawn the ordinary way.
+                var front = _sprites.IllustratedFront(entry);
+                if (front != null)
+                {
+                    Layers.ApplyActor(Make(item.Def.Id + "Back", foot, whole, Layers.Furniture, item.Y)
+                        .GetComponent<SpriteRenderer>(), DepthSort.BackKey(item));
+                    Layers.ApplyActor(Make(item.Def.Id, foot, front, Layers.Furniture, item.Y)
+                        .GetComponent<SpriteRenderer>(), DepthSort.SolidKey(item));
+                    return true;
+                }
+            }
+
             if (raised == null)
             {
                 SortAsSolid(Make(item.Def.Id, foot, whole, Layers.Furniture, item.Y), item);

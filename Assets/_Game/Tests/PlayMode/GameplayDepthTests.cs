@@ -1,6 +1,7 @@
 using System.Collections;
 using System.IO;
 using System.Linq;
+using Neko.Game.Art;
 using Neko.Game.Core;
 using Neko.Game.Ui;
 using Neko.Game.View;
@@ -96,8 +97,27 @@ namespace Neko.Tests.PlayMode
                 foreach (var customer in Object.FindObjectsByType<CustomerView>(FindObjectsSortMode.None))
                 {
                     var body = customer.GetComponent<SpriteRenderer>();
-                    Assert.AreEqual(Layers.ActorOrder(DepthSort.ActorKey(grid, customer.Feet)),
+                    // Somebody seated is keyed by the seat's cell (ART-INT-02); anyone else by their feet.
+                    var customerKey = customer.SeatCell.HasValue
+                        ? DepthSort.SeatedKey(grid, customer.SeatCell.Value, customer.Feet)
+                        : DepthSort.ActorKey(grid, customer.Feet);
+                    Assert.AreEqual(Layers.ActorOrder(customerKey),
                         body.sortingOrder, "a customer is not sorted by their feet");
+
+                    // Seated behind a table's front layer: over its whole picture, under its top.
+                    if (customer.SeatCell.HasValue)
+                    {
+                        var seat = customer.SeatCell.Value;
+                        var table = grid.ItemAt(seat.X, seat.Y);
+                        var entry = table != null ? IllustratedFurniture.For(table.Def, table.Width, table.Height) : null;
+                        if (entry != null && entry.HasFrontLayer && seat.Y - table.Y >= entry.FrontRows)
+                        {
+                            Assert.Less(body.sortingOrder, Layers.ActorOrder(DepthSort.SolidKey(table)),
+                                "a seated customer is in front of the table top");
+                            Assert.Greater(body.sortingOrder, Layers.ActorOrder(DepthSort.BackKey(table)),
+                                "a seated customer is behind the chairs");
+                        }
+                    }
                 }
 
                 // A tap on a waiting party is still answered through the unchanged hit test.

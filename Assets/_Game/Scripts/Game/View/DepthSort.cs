@@ -36,6 +36,43 @@ namespace Neko.Game.View
         public static float SolidKey(PlacedItem item) => FrontEdge(item);
 
         /// <summary>
+        /// Where a piece with a front layer draws its whole picture: behind everyone seated at it
+        /// and in front of anyone who stands behind it.
+        /// </summary>
+        public static float BackKey(PlacedItem item) => FrontEdge(item) + BackBehindFront;
+
+        private const float BackBehindFront = 0.6f;
+        private const float SeatedBehindFront = 0.15f;
+
+        /// <summary>
+        /// The key for a customer seated on <paramref name="seat"/>. Her drawn position may be
+        /// moved to the art's chair (<see cref="Art.IllustratedFurniture.SeatOffset"/>), so the key
+        /// comes from the seat's cell, never from where she is drawn.
+        /// </summary>
+        /// <remarks>
+        /// Seats on a piece with a front layer are keyed behind it (its tabletop covers her lap)
+        /// and in front of its whole picture (her head is over the chair back), except the rows
+        /// the art says sit in front of it. Every other piece keeps the ordinary rule.
+        /// </remarks>
+        public static float SeatedKey(CafeGrid grid, Cell seat, Vector3 feet)
+        {
+            var item = grid?.ItemAt(seat.X, seat.Y);
+            if (item == null || !StandsOn(item.Def)) return ActorKey(grid, feet);
+
+            var entry = Art.IllustratedFurniture.For(item.Def, item.Width, item.Height);
+            if (entry == null) return ActorKey(grid, feet);
+
+            var front = FrontEdge(item);
+            var row = seat.Y - item.Y;
+            if (entry.HasFrontLayer && row >= entry.FrontRows)
+            {
+                return front + SeatedBehindFront + (row - entry.FrontRows) * 0.05f;
+            }
+
+            return front - 0.2f + Mathf.Clamp(row + 0.5f, 0f, 2f) * 0.08f;
+        }
+
+        /// <summary>
         /// The key for a character whose feet are at <paramref name="feet"/>.
         /// </summary>
         public static float ActorKey(CafeGrid grid, Vector3 feet)
