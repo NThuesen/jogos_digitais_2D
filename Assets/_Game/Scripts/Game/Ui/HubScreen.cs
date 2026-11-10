@@ -86,6 +86,7 @@ namespace Neko.Game.Ui
             var back = KitArt.Button(transform, "back_blank", Strings.Get("dialog.back"),
                 new Vector2(150f, 64f), () => OnMenu?.Invoke(), 22, 12, KitArt.Brown,
                 KitArt.Margins("back_blank", 86, 27, 90, 35));
+            back.name = "Back";
             UiKit.Anchor(back.GetComponent<RectTransform>(), new Vector2(1f, 1f), new Vector2(-16f, -14f));
 
             KitLedger();
@@ -153,9 +154,6 @@ namespace Neko.Game.Ui
             _chemistry = UiKit.Label(transform, "", 21, Sand, bold: true);
             UiKit.Anchor(_chemistry.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -302f));
             _chemistry.rectTransform.sizeDelta = new Vector2(760f, 30f);
-            var drop = _chemistry.gameObject.AddComponent<Shadow>();
-            drop.effectColor = new Color(0f, 0f, 0f, 0.5f);
-            drop.effectDistance = new Vector2(1.5f, -2f);
 
             _today = UiKit.Row(transform, 14f);
             UiKit.Anchor(_today, new Vector2(0.5f, 1f), new Vector2(0f, -338f));

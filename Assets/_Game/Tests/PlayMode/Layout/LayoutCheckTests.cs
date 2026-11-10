@@ -66,24 +66,28 @@ namespace Neko.Tests.PlayMode.Layout
         /// </remarks>
         private const int GlyphInkTolerancePx = 2;
 
-        /// <summary>The name of the stats plaque, the Plaque directly on HubScreen.</summary>
-        private const string StatsPlaqueName = "Plaque";
-
-        /// <summary>The name of the wordmark, the TrackedLabel directly on HubScreen.</summary>
-        private const string WordmarkName = "Tracked";
-
-        /// <summary>What the Empresa wordmark reads.</summary>
-        private const string WordmarkText = "NEKO MAID INC.";
-
-        /// <summary>The planks on Empresa: back, the five places to spend, and open the day.</summary>
-        private const int EmpresaPlanks = 7;
-
         /// <summary>
-        /// How far inside its rect the stats plaque's drawn bounds must lie: 1 unit, plus the one
-        /// <see cref="VisibleShape.SampleStep"/> by which <see cref="VisibleShape.DrawnBounds"/> can
-        /// fall short of the true drawn edge, so the true edge lies more than 1 unit inside.
+        /// The Interactive_Controls of the illustrated Empresa (UI-INT-01), by object name: back, the
+        /// five places to spend, and open the day. The label of each is its child <c>Label</c>.
         /// </summary>
-        private const float PlaqueInset = 1f + VisibleShape.SampleStep;
+        private static readonly string[] EmpresaControlNames =
+            { "Back", "Nav_Lineup", "Nav_Roster", "Nav_Boxes", "Nav_Shop", "Nav_Hall", "Cta_OpenDay" };
+
+        /// <summary>What each of <see cref="EmpresaControlNames"/> reads.</summary>
+        private static string[] EmpresaControlLabels() => new[]
+        {
+            Strings.Get("dialog.back"), "Equipe do Dia", "Maids", "Caixinhas", "Lojinha", "Café",
+            "Começar Expediente",
+        };
+
+        /// <summary>The economy panel, the Image directly on HubScreen that holds the four figures.</summary>
+        private const string EconomyPanelName = "EconomyPanel";
+
+        /// <summary>The name of the wordmark, the aspect-preserving picture directly on HubScreen.</summary>
+        private const string WordmarkName = "ui020_logo_wordmark";
+
+        /// <summary>The captions and values of the economy panel: four columns of two labels.</summary>
+        private const int EconomyLabels = 8;
 
         /// <summary>
         /// The measurement steps of a view whose frames the audit loop captures: 960×600 and
@@ -287,11 +291,11 @@ namespace Neko.Tests.PlayMode.Layout
         /// renderer's alpha, which leaves layout alone, renders again and bounds the pixels that
         /// changed.
         /// <list type="bullet">
-        /// <item>Images: the face of the Elenco plank (Simple), the monogram ring
-        /// (aspect-preserving), and two test-local images, because Empresa has no sliced image
-        /// and its aspect-preserving images are square sprites in square rects, which draw as
-        /// Simple ones do. A factory sprite leaves a transparent margin inside its rect (design
-        /// cause C1), so the raw quad is larger than what is drawn. The model therefore samples
+        /// <item>Images: the Hub backdrop (Simple), the face of the Maids button (the kit's
+        /// sliced nav plate), the economy panel and the start-of-day button (the kit's
+        /// aspect-preserving plates), and two test-local images that cover the letterbox and
+        /// sliced-with-clear-border cases. A sprite leaves a transparent margin inside its rect
+        /// (design cause C1), so the raw quad is larger than what is drawn. The model therefore samples
         /// the sprite's alpha at each pixel centre's interpolated UV: the changed pixels must lie
         /// inside the pixels where the mesh samples any alpha, and cover the pixels where it
         /// samples at least half.</item>
@@ -328,9 +332,12 @@ namespace Neko.Tests.PlayMode.Layout
             {
                 var probes = new[]
                 {
-                    new Probe("simple", "Simple image, the face of the Elenco plank",
-                        PlankFace(hub, Strings.Get("hub.roster"))),
-                    new Probe("aspect", "aspect-preserving image, the monogram ring", MonogramRing(hub)),
+                    new Probe("simple", "Simple image, the Hub backdrop", BackdropImage(hub)),
+                    new Probe("sliced-kit", "sliced image, the face of the Maids button (nav_pink_surface)",
+                        KitFace(hub, "Nav_Roster", Image.Type.Sliced)),
+                    new Probe("aspect", "aspect-preserving image, the economy panel", EconomyPanelImage(hub)),
+                    new Probe("aspect-cta", "aspect-preserving image, the start-of-day button",
+                        KitFace(hub, "Cta_OpenDay", Image.Type.Simple)),
                     new Probe("letterbox", "test-local aspect-preserving image, a 2:1 sprite in a square rect",
                         local.Letterbox),
                     new Probe("sliced", "test-local sliced image, 8-texel borders whose outer 2 texels are clear",
@@ -433,11 +440,13 @@ namespace Neko.Tests.PlayMode.Layout
         /// The first test of <see cref="LayoutModel.Measure"/>. It reaches Empresa as
         /// <see cref="ProbesAgreeWithTheRenderedFrame"/> does, measures it at 960×600 and at
         /// 1280×720, and checks that the Active_Layer is HubScreen; that the Interactive_Controls
-        /// are the 7 planks and each plank label's Container is the plank's face; that the
-        /// wordmark is one TrackedLabel element; that the stats Plaque is one Composite_Element
-        /// whose drawn bounds lie more than 1 unit inside its rect (design cause C1); and that the
-        /// chemistry line's Container is the Viewport. It also compares the alpha cache with
-        /// <see cref="LayoutModel.SampleAlpha"/> on the plaque's texture. With NEKO_LAYOUT_DUMP set,
+        /// are the 7 buttons, each reading its label; that the
+        /// wordmark is one aspect-preserving Image element; that the economy panel is one Image
+        /// element with its eight labels; that every label of the screen lies inside the Viewport and
+        /// inside the drawn bounds of the plate it sits on, with no Image drawn over it
+        /// (<see cref="KitLegibility"/>); and that the chemistry line's Container is the Viewport.
+        /// It also compares the alpha cache with <see cref="LayoutModel.SampleAlpha"/> on the
+        /// economy panel's texture. With NEKO_LAYOUT_DUMP set,
         /// <see cref="LayoutModel.Dump"/> writes each measurement and the file must exist. Every
         /// finding is logged before the test fails.
         /// </remarks>
@@ -463,9 +472,9 @@ namespace Neko.Tests.PlayMode.Layout
             var dumping = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable(LayoutModel.DumpVariable));
             var failures = new List<string>();
 
-            var plaqueRoot = hub.transform.Find(StatsPlaqueName);
-            Assert.IsTrue(plaqueRoot != null, "Empresa has no stats plaque at HubScreen/" + StatsPlaqueName);
-            AlphaCacheAgrees(plaqueRoot.GetComponent<Image>(), failures);
+            var economyRoot = hub.transform.Find(EconomyPanelName);
+            Assert.IsTrue(economyRoot != null, "Empresa has no economy panel at HubScreen/" + EconomyPanelName);
+            AlphaCacheAgrees(economyRoot.GetComponent<Image>(), failures);
 
             foreach (var window in ProbeWindows)
             {
@@ -507,9 +516,9 @@ namespace Neko.Tests.PlayMode.Layout
         }
 
         /// <summary>
-        /// The click helpers inspect Empresa's controls at both resolutions. At 960×600 they
-        /// diagnose whether "Voltar" is blocked (D-EM-5) without requiring the Baseline defect
-        /// to persist; at 1280×720 a click on the Loja plank must open the Loja.
+        /// The click helpers inspect Empresa's seven controls at both resolutions: a real
+        /// EventSystem click at the centre of each reaches that control and fires its own callback
+        /// only; at 1280×720 a click on the Lojinha button must open the Loja.
         /// </summary>
         /// <remarks>
         /// Reaches Empresa as <see cref="ProbesAgreeWithTheRenderedFrame"/> does. A plank's centre is
@@ -540,68 +549,107 @@ namespace Neko.Tests.PlayMode.Layout
 
             var failures = new List<string>();
 
-            // 960×600: diagnose whether the stats plaque blocks "Voltar" (D-EM-5).
-            yield return ResolutionRig.Apply(960, 600);
-            yield return Settle();
+            // The seven callbacks are replaced by recorders for the real clicks below, and put back.
+            var fired = new List<string>();
+            var original = new Action[]
+                { hub.OnMenu, hub.OnLineup, hub.OnRoster, hub.OnBoxes, hub.OnShop, hub.OnHall, hub.OnOpenDay };
+            hub.OnMenu = () => fired.Add("Back");
+            hub.OnLineup = () => fired.Add("Nav_Lineup");
+            hub.OnRoster = () => fired.Add("Nav_Roster");
+            hub.OnBoxes = () => fired.Add("Nav_Boxes");
+            hub.OnShop = () => fired.Add("Nav_Shop");
+            hub.OnHall = () => fired.Add("Nav_Hall");
+            hub.OnOpenDay = () => fired.Add("Cta_OpenDay");
 
-            var size = ResolutionRig.Size(960, 600);
-            var clicks = new Clicks(LayoutModel.Measure(root.Ui));
-            var back = PlankControl(clicks.Measurement, Strings.Get("dialog.back"));
-            var backPoints = clicks.SamplePoints(back);
-            Assert.IsTrue(backPoints.Count > 0, size + ": the \"Voltar\" plank draws nothing, so it has no centre");
-
-            var backCentre = backPoints[0];
-            var blocker = TargetPath(clicks.Measurement, clicks.TopTarget(backCentre));
-            var backHandler = clicks.TopHandler(backCentre);
-            var backArea = clicks.HitAreaOf(back);
-            Debug.Log("Layout_Check clicks, Empresa, " + size + ": " + clicks.Targets.Count + " raycast targets; " +
-                      "\"Voltar\" " + back.Path + ", rect " + LayoutModel.Describe(back.OwnRect) + ", Hit_Area " +
-                      backArea + ", " + backPoints.Count + " sample points; at its centre " +
-                      LayoutReport.Point(backCentre) + " the topmost raycast target is " + blocker +
-                      " and the click reaches " + TargetPath(clicks.Measurement, backHandler) +
-                      "; D-EM-5 " + (backHandler == back.Component.gameObject
-                          ? "not reproduced (Voltar is reachable)"
-                          : "observed (Voltar is blocked; diagnostic only)"));
-
-            if (backArea.Targets.Count == 0 || !backArea.Bounds.HasValue)
+            // At both windows, a click at the centre of each of the seven controls must travel the
+            // EventSystem (RaycastAll, then the pointer-click handler) to that control, fire its own
+            // callback once and no other, and the control must have a raycast Hit_Area.
+            foreach (var window in ProbeWindows)
             {
-                failures.Add(size + ": the \"Voltar\" plank has no raycast Hit_Area: " + backArea);
+                yield return ResolutionRig.Apply(window.x, window.y);
+                yield return Settle();
+
+                var windowSize = ResolutionRig.Size(window.x, window.y);
+                var clicks = new Clicks(LayoutModel.Measure(root.Ui));
+
+                foreach (var name in EmpresaControlNames)
+                {
+                    var control = KitControl(clicks.Measurement, name);
+                    var points = clicks.SamplePoints(control);
+                    Assert.IsTrue(points.Count > 0, windowSize + ": \"" + name + "\" draws nothing, so it has no centre");
+
+                    var centre = points[0];
+                    var area = clicks.HitAreaOf(control);
+                    var top = TargetPath(clicks.Measurement, clicks.TopTarget(centre));
+                    var handlerAt = clicks.TopHandler(centre);
+                    Debug.Log("Layout_Check clicks, Empresa, " + windowSize + ": " + name + " " + control.Path + ", rect " +
+                              LayoutModel.Describe(control.OwnRect) + ", Hit_Area " + area + ", centre " +
+                              LayoutReport.Point(centre) + ", topmost raycast target " + top + ", " +
+                              (handlerAt == control.Component.gameObject ? "reachable" : "BLOCKED"));
+
+                    if (area.Targets.Count == 0 || !area.Bounds.HasValue)
+                    {
+                        failures.Add(windowSize + ": \"" + name + "\" has no raycast Hit_Area: " + area);
+                    }
+
+                    fired.Clear();
+                    var received = clicks.Click(centre);
+                    if (received != control.Component.gameObject)
+                    {
+                        failures.Add(windowSize + ": a click at the centre of \"" + name + "\" " + LayoutReport.Point(centre) +
+                                     " reached " + TargetPath(clicks.Measurement, received) + " through " + top +
+                                     ", not the control " + control.Path);
+                    }
+
+                    if (fired.Count != 1 || fired[0] != name)
+                    {
+                        failures.Add(windowSize + ": a click on \"" + name + "\" fired [" + string.Join(", ", fired) + "]");
+                    }
+                }
             }
 
-            // 1280×720: a click at the centre of the Loja plank, last because it changes the Screen.
+            hub.OnMenu = original[0];
+            hub.OnLineup = original[1];
+            hub.OnRoster = original[2];
+            hub.OnBoxes = original[3];
+            hub.OnShop = original[4];
+            hub.OnHall = original[5];
+            hub.OnOpenDay = original[6];
+
+            // 1280×720: a click at the centre of the Lojinha button, last because it changes the Screen.
             yield return ResolutionRig.Apply(1280, 720);
             yield return Settle();
 
-            size = ResolutionRig.Size(1280, 720);
-            clicks = new Clicks(LayoutModel.Measure(root.Ui));
-            var shop = PlankControl(clicks.Measurement, Strings.Get("hub.shop"));
-            var shopPoints = clicks.SamplePoints(shop);
-            Assert.IsTrue(shopPoints.Count > 0, size + ": the Loja plank draws nothing, so it has no centre");
+            var size = ResolutionRig.Size(1280, 720);
+            var shopClicks = new Clicks(LayoutModel.Measure(root.Ui));
+            var shop = KitControl(shopClicks.Measurement, "Nav_Shop");
+            var shopPoints = shopClicks.SamplePoints(shop);
+            Assert.IsTrue(shopPoints.Count > 0, size + ": the Lojinha button draws nothing, so it has no centre");
 
             var shopCentre = shopPoints[0];
-            var shopArea = clicks.HitAreaOf(shop);
-            var shopTarget = TargetPath(clicks.Measurement, clicks.TopTarget(shopCentre));
-            var received = clicks.Click(shopCentre);
+            var shopArea = shopClicks.HitAreaOf(shop);
+            var shopTarget = TargetPath(shopClicks.Measurement, shopClicks.TopTarget(shopCentre));
+            var navigated = shopClicks.Click(shopCentre);
             yield return Settle();
 
-            var receivedPath = TargetPath(clicks.Measurement, received);
+            var receivedPath = TargetPath(shopClicks.Measurement, navigated);
             var current = root.Ui.Current;
             var currentName = current != null ? current.GetType().Name : "none";
-            Debug.Log("Layout_Check clicks, Empresa, " + size + ": " + clicks.Targets.Count + " raycast targets; " +
-                      "Loja " + shop.Path + ", rect " + LayoutModel.Describe(shop.OwnRect) + ", Hit_Area " + shopArea +
+            Debug.Log("Layout_Check clicks, Empresa, " + size + ": " + shopClicks.Targets.Count + " raycast targets; " +
+                      "Lojinha " + shop.Path + ", rect " + LayoutModel.Describe(shop.OwnRect) + ", Hit_Area " + shopArea +
                       ", " + shopPoints.Count + " sample points; at its centre " + LayoutReport.Point(shopCentre) +
                       " the topmost raycast target is " + shopTarget + ", the click reached " + receivedPath +
                       ", and the current Screen is now " + currentName);
 
-            if (received != shop.Component.gameObject)
+            if (navigated != shop.Component.gameObject)
             {
-                failures.Add(size + ": a click at the centre of the Loja plank " + LayoutReport.Point(shopCentre) +
-                             " reached " + receivedPath + " through " + shopTarget + ", not the plank " + shop.Path);
+                failures.Add(size + ": a click at the centre of the Lojinha button " + LayoutReport.Point(shopCentre) +
+                             " reached " + receivedPath + " through " + shopTarget + ", not the button " + shop.Path);
             }
 
             if (!(current is ShopScreen))
             {
-                failures.Add(size + ": after the click on the Loja plank the current Screen is " + currentName +
+                failures.Add(size + ": after the click on the Lojinha button the current Screen is " + currentName +
                              ", not ShopScreen");
             }
 
@@ -843,118 +891,91 @@ namespace Neko.Tests.PlayMode.Layout
                 found.Add("the Active_Layer is " + measurement.LayerPath + ", not " + LayoutModel.PathOf(hub.transform));
             }
 
-            // The planks: the Interactive_Controls, each with its label on its face.
-            var planks = new List<CompositeElement>();
-            foreach (var composite in measurement.Composites)
+            // The seven Interactive_Controls, each reading its label.
+            var labels = EmpresaControlLabels();
+            if (measurement.Controls.Count != EmpresaControlNames.Length)
             {
-                if (composite.Kind == CompositeKind.Plank) planks.Add(composite);
+                found.Add("Empresa has " + measurement.Controls.Count + " Interactive_Controls, not " +
+                          EmpresaControlNames.Length + ": " + string.Join(", ", measurement.Controls));
             }
 
-            if (planks.Count != EmpresaPlanks)
+            for (var i = 0; i < EmpresaControlNames.Length; i++)
             {
-                found.Add("Empresa has " + planks.Count + " Plank composites, not " + EmpresaPlanks + ": " +
-                          string.Join(", ", planks));
-            }
-
-            var controls = new HashSet<Transform>();
-            foreach (var control in measurement.Controls)
-            {
-                if (control.Kind == ControlKind.Selectable) controls.Add(control.Component.transform);
-            }
-
-            if (measurement.Controls.Count != planks.Count)
-            {
-                found.Add("the Interactive_Controls are not the " + planks.Count + " planks: " +
-                          string.Join(", ", measurement.Controls));
-            }
-
-            foreach (var plank in planks)
-            {
-                if (!controls.Contains(plank.Root)) found.Add("the plank " + plank.Path + " is not an Interactive_Control");
-
-                Text label = null;
-                for (var i = 0; i < plank.Root.childCount; i++)
+                InteractiveControl control = null;
+                foreach (var candidate in measurement.Controls)
                 {
-                    var text = plank.Root.GetChild(i).GetComponent<Text>();
-                    if (text != null) label = text;
+                    if (candidate.Component.name == EmpresaControlNames[i]) control = candidate;
                 }
 
-                var labelElement = label != null ? measurement.ElementOf(label.transform) : null;
-                var face = measurement.ElementOf(plank.Root.childCount > 0 ? plank.Root.GetChild(0) : null);
-                if (labelElement == null)
+                if (control == null)
                 {
-                    found.Add("the plank " + plank.Path + " has no label element");
+                    found.Add("Empresa has no Interactive_Control named " + EmpresaControlNames[i]);
+                    continue;
                 }
-                else if (face == null || labelElement.Container != face)
+
+                if (control.Kind != ControlKind.Selectable) found.Add(control.Path + " is not a Selectable");
+
+                var label = control.RectTransform.Find("Label");
+                var text = label != null ? label.GetComponent<Text>() : null;
+                if (text == null || text.text != labels[i])
                 {
-                    found.Add("the label \"" + label.text + "\" of " + plank.Path + " has the Container " +
-                              ContainerName(labelElement.Container) + ", not the plank's face " +
-                              (face != null ? face.Path : "(no element)"));
+                    found.Add(control.Path + " reads \"" + (text != null ? text.text : "(no label)") +
+                              "\", not \"" + labels[i] + "\"");
+                }
+                else if (measurement.ElementOf(label) == null)
+                {
+                    found.Add("the label \"" + text.text + "\" of " + control.Path + " is not an element");
                 }
             }
 
-            // The wordmark: one element for the row and every letter in it.
-            var wordmark = hub.transform.Find(WordmarkName);
-            var mark = measurement.ElementOf(wordmark);
-            if (wordmark == null)
+            // Every label of the screen can be read: in the Viewport, inside its plate's drawn bounds,
+            // under no later Image.
+            var legible = KitLegibility.Check(measurement, hub.transform, "Empresa", found);
+
+            // The wordmark: one aspect-preserving picture.
+            var logo = hub.transform.Find(WordmarkName);
+            var mark = measurement.ElementOf(logo);
+            if (logo == null || mark == null || mark.Kind != ElementKind.Image ||
+                !(mark.Graphic is Image) || !((Image)mark.Graphic).preserveAspect)
             {
-                found.Add("Empresa has no TrackedLabel at HubScreen/" + WordmarkName);
+                found.Add("Empresa has no aspect-preserving wordmark Image at HubScreen/" + WordmarkName +
+                          (mark != null ? " (it is " + mark + ")" : ""));
             }
-            else if (mark == null || mark.Kind != ElementKind.TrackedText || mark.Transform != wordmark)
+
+            // The economy panel: one Image element, drawn inside the Viewport, with its eight labels.
+            var panelRoot = hub.transform.Find(EconomyPanelName);
+            var panel = measurement.ElementOf(panelRoot);
+            var panelSummary = "no economy panel";
+            if (panelRoot == null || panel == null || panel.Kind != ElementKind.Image)
             {
-                found.Add("the wordmark " + LayoutModel.PathOf(wordmark) + " is not one TrackedLabel element but " +
-                          (mark != null ? mark.ToString() : "no element"));
+                found.Add("the economy panel HubScreen/" + EconomyPanelName + " is not one Image element");
             }
             else
             {
-                var letters = 0;
-                for (var i = 0; i < wordmark.childCount; i++)
+                var drawn = panel.Shape.DrawnBounds;
+                if (!drawn.HasValue)
                 {
-                    var letter = wordmark.GetChild(i);
-                    if (letter.GetComponent<Text>() == null) continue;
-
-                    letters++;
-                    if (measurement.ElementOf(letter) != mark)
-                    {
-                        found.Add("the wordmark letter " + LayoutModel.PathOf(letter) + " is not part of the wordmark element");
-                    }
+                    found.Add("the economy panel draws no point");
+                }
+                else if (!measurement.Viewport.Contains(drawn.Value.min) || !measurement.Viewport.Contains(drawn.Value.max))
+                {
+                    found.Add("the economy panel's drawn bounds " + LayoutModel.Describe(drawn.Value) +
+                              " are not inside the Viewport " + LayoutModel.Describe(measurement.Viewport));
                 }
 
+                var inside = 0;
                 foreach (var element in measurement.Elements)
                 {
-                    if (element != mark && element.Transform.IsChildOf(wordmark))
-                    {
-                        found.Add("the wordmark letter " + element.Path + " is an element of its own");
-                    }
+                    if (element.IsText && element.Transform.IsChildOf(panelRoot)) inside++;
                 }
 
-                if (mark.Content != WordmarkText || mark.Graphics.Count != letters)
+                if (inside != EconomyLabels)
                 {
-                    found.Add("the wordmark element reads \"" + mark.Content + "\" from " + mark.Graphics.Count +
-                              " letters; the row reads \"" + WordmarkText + "\" from " + letters);
+                    found.Add("the economy panel holds " + inside + " label elements, not " + EconomyLabels);
                 }
-            }
 
-            // The stats plaque: one composite of its three plates, drawn inside its rect.
-            var plaqueRoot = hub.transform.Find(StatsPlaqueName);
-            CompositeElement plaque = null;
-            var plaques = 0;
-            foreach (var composite in measurement.Composites)
-            {
-                if (composite.Root != plaqueRoot) continue;
-                plaque = composite;
-                plaques++;
-            }
-
-            var plaqueSummary = "no stats plaque";
-            if (plaqueRoot == null || plaques != 1 || plaque.Kind != CompositeKind.Plaque)
-            {
-                found.Add("the stats plaque HubScreen/" + StatsPlaqueName + " is " + plaques +
-                          " Composite_Elements, not one Plaque");
-            }
-            else
-            {
-                plaqueSummary = DescribePlaque(measurement, plaque, found);
+                panelSummary = "economy panel rect " + LayoutModel.Describe(panel.OwnRect) + ", drawn bounds " +
+                               (drawn.HasValue ? LayoutModel.Describe(drawn.Value) : "none") + ", " + inside + " labels";
             }
 
             // The chemistry line: on the Screen root, framed by nothing but the Viewport.
@@ -966,69 +987,11 @@ namespace Neko.Tests.PlayMode.Layout
             }
 
             return "layer " + measurement.LayerPath + ", scale factor " + Number(measurement.ScaleFactor) + "; " +
-                   measurement.Elements.Count + " elements, " + measurement.Composites.Count + " composites (" +
-                   planks.Count + " planks), " + measurement.Controls.Count + " Interactive_Controls; wordmark " +
-                   (mark != null ? mark.ToString() + " \"" + mark.Content + "\"" : "none") + "; " + plaqueSummary +
+                   measurement.Elements.Count + " elements, " + measurement.Controls.Count +
+                   " Interactive_Controls, " + legible + " legible labels; wordmark " +
+                   (mark != null ? mark.ToString() : "none") + "; " + panelSummary +
                    "; chemistry line container " +
                    (chemistry != null ? ContainerName(chemistry.Container) : "(no element)");
-        }
-
-        /// <summary>Checks the stats plaque's pieces and its drawn bounds; returns a summary for the log.</summary>
-        private static string DescribePlaque(Measurement measurement, CompositeElement plaque, List<string> found)
-        {
-            var root = plaque.Root;
-            var expected = new List<Transform> { root };
-            for (var i = 0; i < root.childCount && i < 2; i++) expected.Add(root.GetChild(i));
-
-            var pieces = new List<Transform>();
-            foreach (var piece in plaque.BackgroundPieces) pieces.Add(piece.Transform);
-            if (pieces.Count != expected.Count || !pieces.TrueForAll(expected.Contains))
-            {
-                found.Add("the stats plaque's background pieces are " + string.Join(", ", plaque.BackgroundPieces) +
-                          ", not its root, edge and inner panel");
-            }
-
-            foreach (var element in measurement.Elements)
-            {
-                if (!element.Transform.IsChildOf(root)) continue;
-
-                var owner = element.Composite;
-                if (owner == plaque || (owner != null && owner.Root.IsChildOf(root))) continue;
-                found.Add("the stats plaque's element " + element.Path + " belongs to " +
-                          (owner != null ? owner.ToString() : "no composite"));
-            }
-
-            var rootElement = measurement.ElementOf(root);
-            if (rootElement == null)
-            {
-                found.Add("the stats plaque's root " + plaque.Path + " is not an element");
-                return "stats plaque " + plaque + " without a root element";
-            }
-
-            var rect = rootElement.OwnRect;
-            var drawn = plaque.Shape.DrawnBounds;
-            if (!drawn.HasValue)
-            {
-                found.Add("the stats plaque draws no point");
-                return "stats plaque rect " + LayoutModel.Describe(rect) + ", draws nothing";
-            }
-
-            var d = drawn.Value;
-            var left = d.xMin - rect.xMin;
-            var right = rect.xMax - d.xMax;
-            var bottom = d.yMin - rect.yMin;
-            var top = rect.yMax - d.yMax;
-            var margins = "left " + Number(left) + ", right " + Number(right) + ", bottom " + Number(bottom) +
-                          ", top " + Number(top);
-            if (Mathf.Min(Mathf.Min(left, right), Mathf.Min(bottom, top)) <= PlaqueInset)
-            {
-                found.Add("the stats plaque's drawn bounds " + LayoutModel.Describe(d) + " do not lie more than " +
-                          Number(PlaqueInset) + " units inside its rect " + LayoutModel.Describe(rect) + ": " + margins);
-            }
-
-            return "stats plaque " + plaque + " of " + plaque.BackgroundPieces.Count + " pieces, rect " +
-                   LayoutModel.Describe(rect) + ", shape bounds " + LayoutModel.Describe(plaque.Shape.Bounds) +
-                   ", drawn bounds " + LayoutModel.Describe(d) + " (" + margins + " units inside)";
         }
 
         /// <summary>
@@ -1047,9 +1010,9 @@ namespace Neko.Tests.PlayMode.Layout
             var sprite = image != null ? image.overrideSprite : null;
             var texture = sprite != null ? sprite.texture : null;
             Assert.IsTrue(texture != null && texture.isReadable,
-                "the stats plaque's texture cannot be read on the CPU, so the alpha cache cannot be compared");
+                "the economy panel's texture cannot be read on the CPU, so the alpha cache cannot be compared");
             Assert.IsTrue(texture.wrapModeU == TextureWrapMode.Clamp && texture.wrapModeV == TextureWrapMode.Clamp,
-                "the stats plaque's texture does not clamp, so the alpha cache would sample through SampleAlpha " +
+                "the economy panel's texture does not clamp, so the alpha cache would sample through SampleAlpha " +
                 "and the comparison would compare it with itself");
 
             const float stepTexels = 0.37f;
@@ -1102,32 +1065,44 @@ namespace Neko.Tests.PlayMode.Layout
         /// </summary>
         private static IEnumerator Settle() => SessionFactory.Settle();
 
-        private static Image PlankFace(HubScreen hub, string label)
+        /// <summary>The Hub backdrop: the Simple (not aspect-preserving, not sliced) image named Scenery.</summary>
+        private static Image BackdropImage(HubScreen hub)
         {
-            Text found = null;
-            foreach (var text in hub.GetComponentsInChildren<Text>())
-            {
-                var parent = text.transform.parent;
-                if (text.text != label || parent == null || parent.name != "Plank") continue;
+            var scenery = hub.transform.Find("Scenery");
+            var image = scenery != null ? scenery.GetComponent<Image>() : null;
+            Assert.IsTrue(image != null && image.type == Image.Type.Simple && !image.preserveAspect,
+                "Empresa has no Simple backdrop Image at HubScreen/Scenery");
+            Assert.IsTrue(image.sprite != null && image.sprite.texture.isReadable,
+                "the backdrop's texture cannot be read on the CPU");
+            return image;
+        }
 
-                Assert.IsTrue(found == null, "Empresa has more than one plank labelled \"" + label + "\"");
-                found = text;
+        /// <summary>The face (the control's own Image) of the button named <paramref name="name"/>.</summary>
+        private static Image KitFace(HubScreen hub, string name, Image.Type type)
+        {
+            var node = hub.transform.Find("Row[1]/" + name) ?? hub.transform.Find(name);
+            if (node == null)
+            {
+                foreach (var button in hub.GetComponentsInChildren<Button>(true))
+                {
+                    if (button.name == name) node = button.transform;
+                }
             }
 
-            Assert.IsTrue(found != null, "Empresa has no plank labelled \"" + label + "\"");
-
-            var face = found.transform.parent.GetChild(0).GetComponent<Image>();
-            Assert.IsTrue(face != null && face.type == Image.Type.Simple && !face.preserveAspect,
-                "the face of the \"" + label + "\" plank is not a Simple image");
+            var face = node != null ? node.GetComponent<Image>() : null;
+            Assert.IsTrue(face != null, "Empresa has no button named \"" + name + "\"");
+            Assert.AreEqual(type, face.type, "the face of \"" + name + "\" is not a " + type + " image");
+            Assert.IsTrue(face.sprite != null && face.sprite.texture.isReadable,
+                "the texture of \"" + name + "\" cannot be read on the CPU, so its drawn pixels cannot be predicted");
             return face;
         }
 
-        private static Image MonogramRing(HubScreen hub)
+        private static Image EconomyPanelImage(HubScreen hub)
         {
-            var ring = hub.transform.Find("Monogram/Circle");
-            var image = ring != null ? ring.GetComponent<Image>() : null;
+            var panel = hub.transform.Find(EconomyPanelName);
+            var image = panel != null ? panel.GetComponent<Image>() : null;
             Assert.IsTrue(image != null && image.preserveAspect,
-                "Empresa has no aspect-preserving image at Monogram/Circle");
+                "Empresa has no aspect-preserving image at HubScreen/" + EconomyPanelName);
             return image;
         }
 
@@ -1149,29 +1124,19 @@ namespace Neko.Tests.PlayMode.Layout
             return found;
         }
 
-        /// <summary>The Interactive_Control of the plank labelled <paramref name="label"/>.</summary>
-        private static InteractiveControl PlankControl(Measurement measurement, string label)
+        /// <summary>The Interactive_Control named <paramref name="name"/>.</summary>
+        private static InteractiveControl KitControl(Measurement measurement, string name)
         {
             InteractiveControl found = null;
             foreach (var control in measurement.Controls)
             {
-                var plank = control.Component.transform;
-                if (control.Kind != ControlKind.Selectable || plank.name != "Plank") continue;
+                if (control.Kind != ControlKind.Selectable || control.Component.name != name) continue;
 
-                var labelled = false;
-                for (var i = 0; i < plank.childCount; i++)
-                {
-                    var text = plank.GetChild(i).GetComponent<Text>();
-                    if (text != null && text.text == label) labelled = true;
-                }
-
-                if (!labelled) continue;
-
-                Assert.IsTrue(found == null, "Empresa has more than one plank labelled \"" + label + "\"");
+                Assert.IsTrue(found == null, "Empresa has more than one control named \"" + name + "\"");
                 found = control;
             }
 
-            Assert.IsTrue(found != null, "Empresa has no plank control labelled \"" + label + "\" among " +
+            Assert.IsTrue(found != null, "Empresa has no control named \"" + name + "\" among " +
                                          string.Join(", ", measurement.Controls));
             return found;
         }

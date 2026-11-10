@@ -78,6 +78,7 @@ namespace Neko.Game.Ui
             var back = KitArt.Button(transform, "back_blank", Strings.Get("dialog.back"),
                 new Vector2(150f, 64f), () => OnBack?.Invoke(), 22, 12, KitArt.Brown,
                 KitArt.Margins("back_blank", 86, 27, 90, 35));
+            back.name = "Back";
             UiKit.Anchor(back.GetComponent<RectTransform>(), new Vector2(1f, 1f), new Vector2(-16f, -14f));
 
             // The token counter: a plate, a coin made of a purple disc and a cream paw, and the number.

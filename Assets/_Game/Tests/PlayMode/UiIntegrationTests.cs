@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Neko.Game.Core;
@@ -48,17 +49,27 @@ namespace Neko.Tests.PlayMode
         private static Button Named(Transform root, string name) =>
             root.GetComponentsInChildren<Button>(true).First(b => b.name == name);
 
-        private static IEnumerable Texts(Transform root) => root.GetComponentsInChildren<Text>(false);
-
-        /// <summary>Every visible text must lie inside the window and not be clipped by its own rect.</summary>
-        private static void AssertTextsFit(Transform root, string where)
+        /// <summary>
+        /// Every visible label of <paramref name="screen"/> is inside the Viewport and inside the drawn
+        /// bounds of its plate, and no Image drawn later covers it: measured from the rendered meshes
+        /// (<see cref="KitLegibility"/>), at the window the rig has applied.
+        /// </summary>
+        private static void AssertLegible(Transform screen, string where)
         {
-            foreach (Text text in Texts(root))
-            {
-                if (string.IsNullOrEmpty(text.text) || !text.isActiveAndEnabled) continue;
-                Assert.LessOrEqual(text.cachedTextGenerator.lineCount, text.resizeTextForBestFit ? 2 : 4,
-                    where + ": '" + text.text + "' wraps into too many lines for its plate");
-            }
+            var found = new List<string>();
+            var measured = KitLegibility.Check(LayoutModel.Measure(GameRoot.Instance.Ui), screen, where, found);
+            Assert.Greater(measured, 5, where + ": almost no label was measured, so nothing was checked");
+            Assert.IsEmpty(found, string.Join("\n", found));
+        }
+
+        /// <summary>A real click at the centre of a control, through the EventSystem; the handler that got it.</summary>
+        private static GameObject ClickCentre(string name, out Clicks clicks)
+        {
+            clicks = new Clicks(LayoutModel.Measure(GameRoot.Instance.Ui));
+            var control = clicks.Measurement.Controls.First(c => c.Component.name == name);
+            var points = clicks.SamplePoints(control);
+            Assert.IsTrue(points.Count > 0, name + " draws nothing, so it has no centre");
+            return clicks.Click(points[0]);
         }
 
         [UnityTest]
@@ -81,7 +92,7 @@ namespace Neko.Tests.PlayMode
 
                     var cards = hub.transform.GetComponentsInChildren<Image>().Count(i => i.name == "Card");
                     Debug.Log("UI-INT-01 hub level " + level + " maids " + maids + " filled " + filled + " at " + window);
-                    AssertTextsFit(hub.transform, "hub L" + level + " " + window);
+                    AssertLegible(hub.transform, "hub L" + level + " " + window);
                     Save("hub_L" + level + "_m" + filled, window);
                 }
 
@@ -104,7 +115,7 @@ namespace Neko.Tests.PlayMode
             {
                 yield return ResolutionRig.Apply(window.x, window.y);
                 yield return SessionFactory.Settle();
-                AssertTextsFit(hub.transform, "hub alert " + window);
+                AssertLegible(hub.transform, "hub alert " + window);
                 Save("hub_alert", window);
             }
 
@@ -114,29 +125,124 @@ namespace Neko.Tests.PlayMode
         [UnityTest]
         public IEnumerator TheFiveNavigationButtonsBackAndTheCtaStillFire()
         {
-            var profile = Squad(2, 3, 5000, 50);
-            yield return SessionFactory.Boot(profile);
+            yield return SessionFactory.Boot(Squad(2, 3, 5000, 50));
             yield return SessionFactory.ToHub();
             var hub = GameRoot.Instance.Ui.Get<HubScreen>();
 
-            var fired = new System.Collections.Generic.List<string>();
-            hub.OnLineup = () => fired.Add("lineup");
-            hub.OnRoster = () => fired.Add("roster");
-            hub.OnBoxes = () => fired.Add("boxes");
-            hub.OnShop = () => fired.Add("shop");
-            hub.OnHall = () => fired.Add("hall");
-            hub.OnMenu = () => fired.Add("menu");
-            hub.OnOpenDay = () => fired.Add("open");
+            var fired = new List<string>();
+            hub.OnLineup = () => fired.Add("Nav_Lineup");
+            hub.OnRoster = () => fired.Add("Nav_Roster");
+            hub.OnBoxes = () => fired.Add("Nav_Boxes");
+            hub.OnShop = () => fired.Add("Nav_Shop");
+            hub.OnHall = () => fired.Add("Nav_Hall");
+            hub.OnMenu = () => fired.Add("Back");
+            hub.OnOpenDay = () => fired.Add("Cta_OpenDay");
 
-            foreach (var name in new[] { "Nav_Lineup", "Nav_Roster", "Nav_Boxes", "Nav_Shop", "Nav_Hall", "Cta_OpenDay" })
+            foreach (var window in Windows)
             {
-                var button = Named(hub.transform, name);
-                Assert.IsTrue(button.interactable, name);
-                button.onClick.Invoke();
+                yield return ResolutionRig.Apply(window.x, window.y);
+                yield return SessionFactory.Settle();
+
+                foreach (var name in new[] { "Nav_Lineup", "Nav_Roster", "Nav_Boxes", "Nav_Shop", "Nav_Hall", "Back", "Cta_OpenDay" })
+                {
+                    fired.Clear();
+                    var handler = ClickCentre(name, out _);
+                    Assert.IsTrue(handler != null && handler.name == name, window + ": the click on " + name + " reached " +
+                                                                           (handler != null ? handler.name : "nothing"));
+                    CollectionAssert.AreEqual(new[] { name }, fired, window + ": the click on " + name);
+                }
+            }
+        }
+
+        [UnityTest]
+        public IEnumerator TheHubKeepsItsLabelsReadableWithHugeFigures()
+        {
+            // The widest figures the wallet can print: cash at the int limit, the most fichas, a full lineup.
+            yield return SessionFactory.Boot(Squad(8, 5, int.MaxValue / 2, 99999));
+            yield return SessionFactory.ToHub();
+            var hub = GameRoot.Instance.Ui.Get<HubScreen>();
+
+            foreach (var window in Windows)
+            {
+                yield return ResolutionRig.Apply(window.x, window.y);
+                yield return SessionFactory.Settle();
+                AssertLegible(hub.transform, "hub huge figures " + window);
+                Save("hub_huge", window);
             }
 
-            hub.transform.GetComponentsInChildren<Button>().First(b => b.name == "KitButton").onClick.Invoke();
-            CollectionAssert.AreEqual(new[] { "lineup", "roster", "boxes", "shop", "hall", "open", "menu" }, fired);
+            Assert.IsTrue(hub.transform.GetComponentsInChildren<Text>().Any(t => t.text == "99999"),
+                "the fichas are the wallet's");
+        }
+
+        [UnityTest]
+        public IEnumerator ADisabledCtaLooksDisabledAndDoesNotFire()
+        {
+            // One maid only, so the day cannot open and the alert says why.
+            yield return SessionFactory.Boot(Squad(1, 1, 435, 43));
+            yield return SessionFactory.ToHub();
+            var hub = GameRoot.Instance.Ui.Get<HubScreen>();
+            var opened = 0;
+            hub.OnOpenDay = () => opened++;
+
+            Assert.IsNotNull(hub.Session.WhyNotReady(), "the fixture was meant to be unable to open");
+            var cta = Named(hub.transform, "Cta_OpenDay");
+            Assert.IsFalse(cta.interactable, "the CTA is disabled");
+
+            foreach (var window in Windows)
+            {
+                yield return ResolutionRig.Apply(window.x, window.y);
+                yield return SessionFactory.Settle();
+                AssertLegible(hub.transform, "hub disabled CTA " + window);
+                Save("hub_cta_disabled", window);
+
+                var handler = ClickCentre("Cta_OpenDay", out _);
+                Assert.AreEqual(0, opened, window + ": a disabled CTA fired, through " + (handler != null ? handler.name : "nothing"));
+                Assert.IsTrue(hub.transform.Find("WarningPlate").gameObject.activeSelf, "the alert says why");
+            }
+
+            Assert.Less(cta.targetGraphic.canvasRenderer.GetColor().grayscale, 0.9f, "a disabled CTA is tinted down");
+        }
+
+        [UnityTest]
+        public IEnumerator ClickingABoxTheFichasCannotPayForBuysNothing()
+        {
+            yield return SessionFactory.Boot(Squad(2, 2, 500, 43));
+            var profile = GameRoot.Instance.Session.Profile;
+            yield return SessionFactory.ToHub();
+            yield return SessionFactory.ToBoxes();
+            var screen = GameRoot.Instance.Ui.Get<BoxScreen>();
+
+            foreach (var window in Windows)
+            {
+                yield return ResolutionRig.Apply(window.x, window.y);
+                yield return SessionFactory.Settle();
+
+                ClickCentre("Open_box_gold", out _);
+                ClickCentre("Open_box_silver", out _);
+                Assert.AreEqual(43, profile.Wallet.Points, window + ": a box the player cannot pay for took fichas");
+                Assert.IsFalse(screen.transform.Find("Reveal").gameObject.activeSelf, "no reveal for a refused box");
+            }
+        }
+
+        [UnityTest]
+        public IEnumerator TheBoxesBackButtonReachesItsCallback()
+        {
+            yield return SessionFactory.Boot(Squad(2, 2, 500, 43));
+            yield return SessionFactory.ToHub();
+            yield return SessionFactory.ToBoxes();
+            var screen = GameRoot.Instance.Ui.Get<BoxScreen>();
+            var backs = 0;
+            screen.OnBack = () => backs++;
+
+            foreach (var window in Windows)
+            {
+                yield return ResolutionRig.Apply(window.x, window.y);
+                yield return SessionFactory.Settle();
+                var handler = ClickCentre("Back", out _);
+                Assert.IsTrue(handler != null && handler.name == "Back", window + ": the click did not reach Voltar");
+            }
+
+            Assert.AreEqual(Windows.Length, backs);
         }
 
         [UnityTest]
@@ -152,7 +258,7 @@ namespace Neko.Tests.PlayMode
             {
                 yield return ResolutionRig.Apply(window.x, window.y);
                 yield return SessionFactory.Settle();
-                AssertTextsFit(screen.transform, "boxes " + window);
+                AssertLegible(screen.transform, "boxes " + window);
                 Save("boxes_43", window);
             }
 
@@ -193,7 +299,8 @@ namespace Neko.Tests.PlayMode
             Assert.IsTrue(Named(screen.transform, "Open_box_silver").interactable);
             var before = profile.Wallet.Points;
             var maidsBefore = profile.Maids.Count;
-            Named(screen.transform, "Open_box_silver").onClick.Invoke();
+            var bought = ClickCentre("Open_box_silver", out _);
+            Assert.IsTrue(bought != null && bought.name == "Open_box_silver", "the click reached the Prata button");
 
             // Duplicates give fichas back, so the balance is between "price spent" and "nothing refunded beyond it".
             Assert.Less(profile.Wallet.Points, before, "the price was spent");
