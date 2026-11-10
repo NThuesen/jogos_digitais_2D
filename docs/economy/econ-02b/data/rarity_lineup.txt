@@ -1,0 +1,16 @@
+### rarity of the opening team (start=), candidate, policy none
+casual/common  98/100 SURVIVOR@40: cash 3770 (p10 2030, p90 5850)  profit 127  lvl 3,5  maids 3,0  rev/served 59
+casual/rare  95/100 SURVIVOR@40: cash 6296 (p10 2739, p90 10956)  profit 143  lvl 4,2  maids 3,0  rev/served 67
+casual/epic  89/100 SURVIVOR@40: cash 10258 (p10 2481, p90 18587)  profit 242  lvl 5,2  maids 3,0  rev/served 84
+casual/legendary  18/100 SURVIVOR@40: cash 14754 (p10 5746, p90 26259)  profit 342  lvl 5,8  maids 3,0  rev/served 133
+pro/common  100/100 SURVIVOR@40: cash 13215 (p10 7881, p90 19420)  profit 386  lvl 4,4  maids 3,0  rev/served 74
+pro/rare  100/100 SURVIVOR@40: cash 20058 (p10 10655, p90 31531)  profit 618  lvl 5,0  maids 3,0  rev/served 94
+pro/epic  100/100 SURVIVOR@40: cash 33661 (p10 15423, p90 56717)  profit 993  lvl 6,0  maids 3,0  rev/served 124
+pro/legendary  88/100 SURVIVOR@40: cash 41917 (p10 17969, p90 67311)  profit 1168  lvl 6,6  maids 3,0  rev/served 154
+### lineup quality (auto = natural role first; greedy = best raw stat; random), candidate
+casual/lineup=auto  98/100 SURVIVOR@40: cash 3770 (p10 2030, p90 5850)  profit 127  lvl 3,5  maids 3,0  rev/served 59 MEAN-FINAL-CASH(all seeds, dead=0) 3695 
+pro/lineup=auto  100/100 SURVIVOR@40: cash 13215 (p10 7881, p90 19420)  profit 386  lvl 4,4  maids 3,0  rev/served 74 MEAN-FINAL-CASH(all seeds, dead=0) 13215 
+casual/lineup=smart  0/100 MEAN-FINAL-CASH(all seeds, dead=0) 0 
+pro/lineup=smart  1/100 SURVIVOR@40: cash 295 (p10 295, p90 295)  profit -176  lvl 3,0  maids 3,0  rev/served 0 MEAN-FINAL-CASH(all seeds, dead=0) 3 
+casual/lineup=random  0/100 MEAN-FINAL-CASH(all seeds, dead=0) 0 
+pro/lineup=random  0/100 MEAN-FINAL-CASH(all seeds, dead=0) 0 

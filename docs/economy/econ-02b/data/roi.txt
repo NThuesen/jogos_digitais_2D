@@ -1,0 +1,120 @@
+=== ROI L1 commons, pro, BASELINE (econ02) (days 2-15, 100 paired seeds)
+t2:4                       -15.1    -200.8     231     5.3    11.8     0
+t2:2                        33.1    -152.5     306     7.1     7.1     0
+stove:2+t2:4                86.4     -99.3     389     8.5     9.9     0
+stove:1+t2:2               117.2     -68.5     426     9.0     6.2     0
+stove:1+t2:2+maids:1       122.4     -63.3     451     9.2     5.9     0
+control                    185.7       0.0     495     8.8     2.4     0
+setup                   profit/d    gain/d   rev/d  served   angry  dead
+tea:1                      191.4       5.7     509     9.2     2.3     0
+stove:1                    226.8      41.1     555     9.5     2.5     0
+maids:1                    226.9      41.2     563     9.1     1.9     0
+stove:2                    238.4      52.7     570     9.6     2.4     0
+=== ROI L1 EPIC team, pro, BASELINE (econ02)
+t2:2                       246.2    -259.3     836    12.3     3.7     0
+stove:2+t2:4               405.1    -100.5    1086    14.8     6.4     0
+stove:1+t2:2               483.6     -22.0    1168    15.0     3.7     0
+control                    505.6       0.0    1156    13.0     1.2     0
+setup                   profit/d    gain/d   rev/d  served   angry  dead
+stove:1                    581.6      76.0    1251    13.8     1.3     0
+=== ROI L3 (rep 200), pro, BASELINE (econ02)
+stove:2+t2:4+maids:2        31.8    -223.5     374     5.1    11.4     0
+t2:2                        97.0    -158.2     462     7.5     9.4     0
+stove:1+t2:2               102.3    -152.9     444     6.7    10.0     0
+stove:1+t2:2+maids:1       214.1     -41.1     599     8.0     7.4     0
+control                    255.2       0.0     628     9.3     3.9     0
+setup                   profit/d    gain/d   rev/d  served   angry  dead
+tea:1                      264.4       9.2     653     9.9     4.0     0
+stove:1                    275.9      20.7     655     9.5     4.1     0
+maids:2                    291.6      36.4     712     9.6     3.1     0
+maids:1                    344.5      89.3     751     9.9     3.1     0
+=== ROI L1 commons, casual, BASELINE (econ02) (days 2-15, 100 paired seeds)
+t2:4                       -44.7     -67.6      81     2.2     6.8     0
+t2:2                       -42.5     -65.4     139     3.8     5.8     0
+stove:2+t2:4               -35.8     -58.7     184     4.7     9.5     0
+stove:1+t2:2+maids:1       -35.5     -58.4     190     5.0     5.7     0
+stove:1+t2:2               -24.2     -47.1     227     5.9     6.8     0
+control                     22.9       0.0     298     7.0     2.7     0
+setup                   profit/d    gain/d   rev/d  served   angry  dead
+tea:1                       24.1       1.2     303     7.1     2.6     0
+maids:1                     28.6       5.7     321     7.0     2.2     0
+stove:2                     51.4      28.6     345     7.5     2.8     0
+stove:1                     54.2      31.3     347     7.5     2.7     0
+=== ROI L1 EPIC team, casual, BASELINE (econ02)
+t2:2                       -21.6    -150.0     191     3.7     1.9     0
+stove:2+t2:4                 7.6    -120.8     326     5.8     4.3     0
+stove:1+t2:2                63.0     -65.3     501     8.3     3.1     0
+control                    128.4       0.0     697    10.0     1.5     0
+setup                   profit/d    gain/d   rev/d  served   angry  dead
+stove:1                    173.8      45.4     771    10.7     1.6     0
+=== ROI L3 (rep 200), casual, BASELINE (econ02)
+stove:2+t2:4+maids:2       -42.8    -109.8     150     2.4     6.9     0
+t2:2                       -35.6    -102.6     212     4.0     7.9     0
+stove:1+t2:2               -33.0    -100.0     206     3.6     8.5     0
+stove:1+t2:2+maids:1        21.3     -45.8     356     5.5     8.1     0
+maids:2                     64.3      -2.7     446     7.3     3.7     0
+tea:1                       66.9      -0.2     424     7.8     4.5     0
+control                     67.0       0.0     412     7.4     4.5     0
+setup                   profit/d    gain/d   rev/d  served   angry  dead
+stove:1                     75.4       8.4     421     7.4     4.5     0
+maids:1                    126.1      59.1     499     7.9     3.5     0
+=== ROI L1 commons, pro, CANDIDATE (econ02b) (days 2-15, 100 paired seeds)
+t2:4                       111.7    -109.1     413     8.0     6.1     0
+t2:2                       149.4     -71.4     471     8.7     4.2     0
+control                    220.8       0.0     547     9.1     2.3     0
+setup                   profit/d    gain/d   rev/d  served   angry  dead
+tea:1                      224.6       3.7     559     9.4     2.3     0
+stove:1                    266.3      45.5     608     9.6     2.4     0
+stove:2                    268.9      48.1     612     9.6     2.4     0
+maids:1                    274.9      54.1     628     9.4     1.8     0
+stove:1+t2:2               275.5      54.6     638    10.1     4.0     0
+stove:2+t2:4               291.5      70.7     655    10.1     5.1     0
+stove:1+t2:2+maids:1       338.5     117.7     729    10.5     3.3     0
+=== ROI L1 EPIC team, pro, CANDIDATE (econ02b)
+control                    594.9       0.0    1269    13.5     1.2     0
+setup                   profit/d    gain/d   rev/d  served   angry  dead
+t2:2                       621.6      26.7    1335    14.9     2.2     0
+stove:1                    672.9      78.0    1367    14.2     1.2     0
+stove:1+t2:2               887.7     292.8    1655    16.9     1.9     0
+stove:2+t2:4               968.9     373.9    1753    17.1     2.5     0
+=== ROI L3 (rep 200), pro, CANDIDATE (econ02b)
+t2:2                       201.1     -67.5     585     8.5     6.4     0
+stove:2+t2:4+maids:2       241.8     -26.8     652     7.9     7.3     0
+stove:1+t2:2               255.5     -13.1     644     8.7     6.4     0
+control                    268.6       0.0     650     9.4     3.7     0
+setup                   profit/d    gain/d   rev/d  served   angry  dead
+tea:1                      281.8      13.2     679    10.0     3.8     0
+stove:1                    289.5      20.9     676     9.6     4.0     0
+maids:2                    333.7      65.1     764     9.9     3.0     0
+stove:1+t2:2+maids:1       342.5      73.9     760     9.2     5.1     0
+maids:1                    364.7      96.1     779    10.0     3.0     0
+=== ROI L1 commons, casual, CANDIDATE (econ02b) (days 2-15, 100 paired seeds)
+t2:4                       -30.5     -65.7     195     5.0     7.1     0
+t2:2                       -22.2     -57.3     223     5.7     4.9     0
+control                     35.1       0.0     322     7.0     2.6     0
+setup                   profit/d    gain/d   rev/d  served   angry  dead
+tea:1                       38.6       3.5     331     7.2     2.6     0
+stove:1+t2:2                41.2       6.1     343     7.4     4.9     0
+stove:2+t2:4                48.0      12.9     348     7.4     6.4     0
+stove:1+t2:2+maids:1        56.2      21.0     374     7.5     4.3     0
+maids:1                     57.5      22.4     362     7.1     2.1     0
+stove:1                     60.8      25.7     362     7.4     2.7     0
+stove:2                     63.5      28.4     367     7.5     2.7     0
+=== ROI L1 EPIC team, casual, CANDIDATE (econ02b)
+t2:2                       129.3     -37.7     663     9.5     2.4     0
+control                    167.0       0.0     754    10.2     1.4     0
+setup                   profit/d    gain/d   rev/d  served   angry  dead
+stove:1                    221.3      54.3     842    11.0     1.6     0
+stove:1+t2:2               271.6     104.6     919    12.0     2.7     0
+stove:2+t2:4               294.1     127.1     958    12.1     3.7     0
+=== ROI L3 (rep 200), casual, CANDIDATE (econ02b)
+t2:2                        -0.1     -71.2     313     5.5     7.2     0
+stove:2+t2:4+maids:2        12.5     -58.5     350     5.2     7.6     0
+stove:1+t2:2                48.9     -22.1     381     6.1     7.4     0
+tea:1                       68.2      -2.8     424     7.7     4.3     0
+control                     71.1       0.0     416     7.3     4.4     0
+setup                   profit/d    gain/d   rev/d  served   angry  dead
+stove:1                     78.1       7.1     427     7.4     4.5     0
+maids:2                     80.0       9.0     472     7.6     3.5     0
+stove:1+t2:2+maids:1       100.0      29.0     475     6.9     6.0     0
+maids:1                    126.4      55.4     505     7.9     3.5     0

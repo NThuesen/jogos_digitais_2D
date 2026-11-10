@@ -11,5 +11,8 @@
     <!-- -p:CapMode=plus1 swaps in the roster cap proposed by ECON-01B (PR #20), without touching it. -->
     <Compile Remove="../../Assets/_Game/Scripts/Sim/Economy/CafeLevelTable.cs" Condition="'$(CapMode)'=='plus1'" />
     <Compile Include="alt/CafeLevelTable.plus1.cs" Condition="'$(CapMode)'=='plus1'" />
+    <!-- -p:Economy=econ02 swaps in the demand/reputation rules of PR #72 (the ECON-02b baseline). -->
+    <Compile Remove="../../Assets/_Game/Scripts/Sim/Economy/DayPlan.cs" Condition="'$(Economy)'=='econ02'" />
+    <Compile Include="alt/DayPlan.econ02.cs" Condition="'$(Economy)'=='econ02'" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,36 @@
+idle    none          surv 0/100    dday 7   mean$ 0      | 
+idle    conservative  surv 0/100    dday 7   mean$ 0      | 
+idle    balanced      surv 0/100    dday 7   mean$ 0      | 
+idle    full          surv 0/100    dday 7   mean$ 0      | 
+idle    hire          surv 0/100    dday 7   mean$ 0      | 
+idle    hire-excess   surv 0/100    dday 7   mean$ 0      | 
+idle    tables-only   surv 0/100    dday 4   mean$ 0      | 
+idle    overexpand    surv 0/100    dday 4   mean$ 0      | 
+idle    legacy        surv 0/100    dday 7   mean$ 0      | 
+lazy    none          surv 23/100   dday 12  mean$ 277    | cash 1204 (p10 375, p90 2152)  profit -4  lvl 3,0  maids 3,0  rev/served 50
+lazy    conservative  surv 11/100   dday 12  mean$ 137    | cash 1245 (p10 551, p90 2037)  profit -6  lvl 3,5  maids 5,6  rev/served 60
+lazy    balanced      surv 11/100   dday 12  mean$ 128    | cash 1163 (p10 461, p90 2162)  profit 78  lvl 3,4  maids 5,4  rev/served 58
+lazy    full          surv 11/100   dday 12  mean$ 128    | cash 1163 (p10 461, p90 2162)  profit 78  lvl 3,4  maids 5,4  rev/served 58
+lazy    hire          surv 11/100   dday 12  mean$ 139    | cash 1265 (p10 551, p90 2131)  profit 26  lvl 3,6  maids 5,7  rev/served 63
+lazy    hire-excess   surv 4/100    dday 12  mean$ 25     | cash 615 (p10 394, p90 755)  profit 104  lvl 3,5  maids 5,2  rev/served 59
+lazy    tables-only   surv 0/100    dday 6   mean$ 0      | 
+lazy    overexpand    surv 0/100    dday 5   mean$ 0      | 
+lazy    legacy        surv 11/100   dday 12  mean$ 97     | cash 885 (p10 483, p90 1239)  profit 50  lvl 3,4  maids 5,4  rev/served 64
+casual  none          surv 98/100   dday 12  mean$ 3695   | cash 3770 (p10 2030, p90 5850)  profit 127  lvl 3,5  maids 3,0  rev/served 59
+casual  conservative  surv 89/100   dday 25  mean$ 5457   | cash 6132 (p10 1999, p90 11421)  profit 344  lvl 4,3  maids 7,2  rev/served 78
+casual  balanced      surv 87/100   dday 21  mean$ 6304   | cash 7245 (p10 1353, p90 17148)  profit 572  lvl 4,2  maids 7,0  rev/served 91
+casual  full          surv 87/100   dday 21  mean$ 6444   | cash 7407 (p10 1397, p90 16930)  profit 553  lvl 4,2  maids 7,1  rev/served 90
+casual  hire          surv 89/100   dday 25  mean$ 3483   | cash 3914 (p10 1993, p90 6179)  profit 136  lvl 4,1  maids 7,0  rev/served 68
+casual  hire-excess   surv 71/100   dday 11  mean$ 1690   | cash 2381 (p10 600, p90 5334)  profit 223  lvl 4,1  maids 6,6  rev/served 70
+casual  tables-only   surv 14/100   dday 9   mean$ 197    | cash 1409 (p10 439, p90 3412)  profit 130  lvl 2,9  maids 5,1  rev/served 73
+casual  overexpand    surv 0/100    dday 7   mean$ 0      | 
+casual  legacy        surv 89/100   dday 19  mean$ 10249  | cash 11515 (p10 986, p90 25689)  profit 1011  lvl 4,8  maids 7,6  rev/served 102
+pro     none          surv 100/100  dday -   mean$ 13215  | cash 13215 (p10 7881, p90 19420)  profit 386  lvl 4,4  maids 3,0  rev/served 74
+pro     conservative  surv 100/100  dday -   mean$ 22295  | cash 22295 (p10 8198, p90 41283)  profit 1131  lvl 5,4  maids 8,4  rev/served 119
+pro     balanced      surv 100/100  dday -   mean$ 29578  | cash 29578 (p10 5788, p90 54909)  profit 1701  lvl 5,7  maids 8,7  rev/served 125
+pro     full          surv 100/100  dday -   mean$ 29301  | cash 29301 (p10 5788, p90 54909)  profit 1647  lvl 5,7  maids 8,6  rev/served 124
+pro     hire          surv 100/100  dday -   mean$ 14895  | cash 14895 (p10 6635, p90 26053)  profit 625  lvl 4,9  maids 7,9  rev/served 98
+pro     hire-excess   surv 100/100  dday -   mean$ 15769  | cash 15769 (p10 6888, p90 26398)  profit 690  lvl 5,0  maids 8,0  rev/served 101
+pro     tables-only   surv 96/100   dday 18  mean$ 7827   | cash 8154 (p10 1365, p90 17660)  profit 386  lvl 3,5  maids 6,4  rev/served 86
+pro     overexpand    surv 86/100   dday 10  mean$ 7347   | cash 8543 (p10 1435, p90 18546)  profit 432  lvl 3,6  maids 6,5  rev/served 88
+pro     legacy        surv 100/100  dday -   mean$ 59321  | cash 59321 (p10 24020, p90 105056)  profit 3540  lvl 7,0  maids 9,9  rev/served 170

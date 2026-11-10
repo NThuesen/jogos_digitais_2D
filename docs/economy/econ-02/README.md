@@ -36,7 +36,7 @@ Com **investimento** ("invest"), toda manhã: abre a melhor caixa que as fichas 
 
 Sem investimento o cap não muda nada (ninguém contrata). Com investimento o cap +1 **deixa contratar e abrir caixas que viram maids** (hoje, no nível 1, o cap é 2 com 3 maids, então toda caixa vira fichas): a receita sobe ~60% no dia 40, mas a folha também (95 → 150), e o jogador mais passivo quebra mais. Conclusão: a PR #20 não conflita com #72 (arquivos diferentes: ela só toca `CafeLevelTable`), melhora o teto, e torna o investimento relevante; ela aumenta o risco para quem joga pouco. Não alterei a #20.
 
-## Pendência: ECON-02b (prioridade ALTA, aberta)
+## Pendência: ECON-02b — resolvida em [econ-02b](../econ-02b/README.md)
 
 A expansão (mesas, contratação além do básico) não se paga hoje; ver conclusão 3. Esta PR é só a correção intermediária da economia-base e **não** resolve isso. ECON-02b deve decidir demanda por lugar vs. capacidade do time antes de se considerar a economia pronta.
 
