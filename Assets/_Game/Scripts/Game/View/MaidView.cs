@@ -1,6 +1,7 @@
 using Neko.Game.Art;
 using Neko.Game.Core;
 using Neko.Game.Feel;
+using Neko.Sim.Cafe;
 using Neko.Sim.Maids;
 using Neko.Sim.Shift;
 using UnityEngine;
@@ -85,6 +86,9 @@ namespace Neko.Game.View
             return view;
         }
 
+        /// <summary>The room she walks in, for depth against its furniture. Optional.</summary>
+        public CafeGrid Grid { get; set; }
+
         public void Bind(Worker worker)
         {
             Worker = worker;
@@ -143,8 +147,11 @@ namespace Neko.Game.View
             if (target.x - transform.position.x > 0.02f) _body.flipX = false;
             else if (target.x - transform.position.x < -0.02f) _body.flipX = true;
 
-            Layers.Apply(_body, Layers.Characters, transform.position.y);
-            Layers.Apply(_carried, Layers.Items, transform.position.y - 0.01f);
+            // Sorted with the furniture, by where the feet are. The plate is one slot above her
+            // body rather than in the items layer, which would draw it over a table she is behind.
+            var depth = DepthSort.ActorKey(Grid, transform.position);
+            Layers.ApplyActor(_body, depth);
+            Layers.ApplyActor(_carried, depth, 1);
             Layers.Apply(_mood, Layers.Fx, transform.position.y);
 
             _carried.enabled = Worker.Carrying;

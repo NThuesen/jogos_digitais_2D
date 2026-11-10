@@ -242,6 +242,10 @@ namespace Neko.Tests.Game
                 "Assets/_Game/Resources/Maids/shiori_walk.png",
                 "Assets/_Game/Resources/MaidPortraits/shiori_head.png",
                 "Assets/_Game/Resources/MaidPortraits/shiori_detail.png",
+                "Assets/_Game/Resources/Furniture/koi_pond.png",
+                "Assets/_Game/Resources/Furniture/koi_pond_raised.png",
+                "Assets/_Game/Resources/Furniture/stage.png",
+                "Assets/_Game/Resources/Furniture/window.png",
             },
                 expected.Keys);
 

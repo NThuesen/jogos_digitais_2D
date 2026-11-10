@@ -70,7 +70,9 @@ namespace Neko.Game.View
 
             foreach (var worker in shift.Workers)
             {
-                _workers[worker.Id] = MaidView.Create(transform, _sprites, worker);
+                var maid = MaidView.Create(transform, _sprites, worker);
+                maid.Grid = shift.Grid;
+                _workers[worker.Id] = maid;
             }
 
             // A shift that could not start at all still has to report, or the player is left
@@ -129,6 +131,7 @@ namespace Neko.Game.View
                 if (!_customers.TryGetValue(customer.Id, out var view))
                 {
                     view = CustomerView.Create(transform, _sprites, customer);
+                    view.Grid = Shift.Grid;
                     _customers[customer.Id] = view;
                 }
 
