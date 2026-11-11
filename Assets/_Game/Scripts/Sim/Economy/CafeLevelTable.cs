@@ -12,15 +12,13 @@ namespace Neko.Sim.Economy
         public readonly int Level;
         public readonly int GridWidth;
         public readonly int GridHeight;
-        public readonly int RosterCap;
         public readonly int ShiftSlots;
 
-        public CafeUnlocks(int level, int gridWidth, int gridHeight, int rosterCap, int shiftSlots)
+        public CafeUnlocks(int level, int gridWidth, int gridHeight, int shiftSlots)
         {
             Level = level;
             GridWidth = gridWidth;
             GridHeight = gridHeight;
-            RosterCap = rosterCap;
             ShiftSlots = shiftSlots;
         }
 
@@ -70,16 +68,16 @@ namespace Neko.Sim.Economy
         private static readonly CafeUnlocks[] Levels =
         {
             default,
-            new CafeUnlocks(1, 7, 5, 2, 2),
-            new CafeUnlocks(2, 8, 6, 3, 3),
-            new CafeUnlocks(3, 9, 6, 4, 3),
-            new CafeUnlocks(4, 10, 7, 5, 4),
-            new CafeUnlocks(5, 11, 7, 6, 4),
-            new CafeUnlocks(6, 11, 8, 6, 5),
-            new CafeUnlocks(7, 12, 8, 7, 5),
-            new CafeUnlocks(8, 12, 9, 7, 6),
-            new CafeUnlocks(9, 13, 9, 8, 6),
-            new CafeUnlocks(10, 13, 9, 8, 6),
+            new CafeUnlocks(1, 7, 5, 2),
+            new CafeUnlocks(2, 8, 6, 3),
+            new CafeUnlocks(3, 9, 6, 3),
+            new CafeUnlocks(4, 10, 7, 4),
+            new CafeUnlocks(5, 11, 7, 4),
+            new CafeUnlocks(6, 11, 8, 5),
+            new CafeUnlocks(7, 12, 8, 5),
+            new CafeUnlocks(8, 12, 9, 6),
+            new CafeUnlocks(9, 13, 9, 6),
+            new CafeUnlocks(10, 13, 9, 6),
         };
 
         public static int LevelFor(int reputation)
