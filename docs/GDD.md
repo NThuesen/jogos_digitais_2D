@@ -6,6 +6,12 @@ Unity 6000.5.9f1 · 2D URP · build WebGL · entrega no itch.io
 > Documento vivo e fonte de verdade para a versão atual do jogo: regras, economia,
 > progressão e experiência do jogador. A versão no Milanote deve refletir este arquivo.
 > Para a organização técnica, consulte `docs/ARCHITECTURE.md`.
+>
+> **Apresentação acadêmica em DDE:** veja [`DDE.md`](DDE.md), organizada segundo o
+> material da disciplina em Design (Blueprint, Mechanics, Interface), Dynamics
+> (Player–Player, Player–Game, Game–Game) e Experience (Sentidos, Emocional,
+> Intelectual, Percepção). Este GDD mantém as rubricas e as tabelas de regras
+> que são verificadas pelos testes de documentação.
 
 ---
 
@@ -404,9 +410,10 @@ Este GDD descreve exclusivamente a versão vigente. Mudanças de mecânicas, eco
 progressão ou UX devem ser documentadas aqui no mesmo Pull Request da implementação.
 As fronteiras técnicas estão em `docs/ARCHITECTURE.md`.
 
-**Verificação:** 257 testes de simulação (`tools/simtest.sh`, menos de um segundo), 292 de
-EditMode e 17 de PlayMode dentro do editor. Sete deles leem este documento: se um arquétipo,
-um tipo de cliente, uma posição, uma raridade ou uma caixa entrar no jogo e não entrar aqui,
-a suíte falha com o nome que está faltando. Onze quadros do jogo rodando ficam em
+**Verificação** (branch ECON-03, 10/11/2026): 315 testes de simulação (`tools/simtest.sh`, cerca
+de 2 s), 409 de EditMode e 206 de PlayMode dentro do editor, todos passando. Quatro testes de
+`DocsTests` leem este documento (os doze títulos da rubrica, arquétipos, tipos de cliente, posições
+e raridades) e um quinto confere as caixas na página do itch.io: se algum desses entrar no jogo e
+não entrar na documentação, a suíte falha com o nome que está faltando. Onze quadros do jogo rodando ficam em
 `../visual_assets/frames/2026-10-22_neko_maid_inc/`, com o registro dos oito erros visuais
 que as capturas encontraram.
