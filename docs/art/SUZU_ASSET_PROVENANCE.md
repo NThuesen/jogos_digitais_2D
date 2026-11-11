@@ -254,3 +254,35 @@ Source SHA-256 (source file, hash):
 | `UI-024_placeable_teabar_v01_clean_c01.png` | `ac024b9365d6f2c1698a46ed46abfdfd2737f4609cfae16802d15bfd8c2a580f` |
 | `UI-024_placeable_dessert_v01_clean_c01.png` | `c73774f918faad121d6c9c598c347300c18d395a3ad5dfa47ef8b43f9f018603` |
 | `UI-024_placeable_bakery_v01_clean_c01.png` | `80cef4abf11bba490d805a08df2d74da761f853e3ecd7887b23123b7a13005ee` |
+
+## UI-INT-02A kit (Maids / Elenco)
+
+Copied byte for byte (no resampling) from the delivery `neko-ui-maids-kit-delivery/` (`sprites/*_v01.png`, `backgrounds/maids_background_v01.png`) by `tools/art/ui_kit/import_maids_kit.py`, prefixed `maids_`; 9-slice borders come from the kit manifest and are in each .meta and in `Resources/UiKit/SOURCES.json`. All are RGBA with real transparency and none carries gameplay text. The four resources the kit reuses from UI-VISUAL-01 (`back_blank`, `bow_gold`, `paw_gold`, `paw_cream`) are the files already in UiKit. Not imported: the equip and level-up plates (no such action exists), the `*_frame` alternates and the brown surfaces (the panels are used whole).
+
+f7855dc43639a5f82b7572ca41d704c5452cf43f5e0d841211198b0db2d6febe  Assets/_Game/Resources/UiKit/maids_background.png
+479f61e087b25c5bb45cb2fbd5eb339415aa87afbf9d346534cfd1230fca04b5  Assets/_Game/Resources/UiKit/maids_title_plate_empty.png
+558f336aa567ba1d4378ff6b6246df6e2249b05cd9094e614d5ec627c1cee9f5  Assets/_Game/Resources/UiKit/maids_token_counter_empty.png
+f3f5257f58369d79bd0882e5059cf5a4292197068310ed7afd4aee0f6d6b63c7  Assets/_Game/Resources/UiKit/maids_filters_container_empty.png
+ccfa4c614278069c00504223873ff90fc639d0010cd312c196fa9621eb67b8bd  Assets/_Game/Resources/UiKit/maids_filter_row_divider.png
+a4e621ed3ede230f34d65c5ee288a204049ffe32ec6cf25f50fbeaae24546d36  Assets/_Game/Resources/UiKit/maids_filter_selected_empty.png
+06bbc1797b19a2d6edf19b6ef83ac651aa1eceb5739d3fa3e79f1d2ecd44f254  Assets/_Game/Resources/UiKit/maids_filter_selected_surface.png
+752e37ac8e1f94ea260c5106415145bc644c5d8e74a18aa8ffcdd2006641a45f  Assets/_Game/Resources/UiKit/maids_filter_rarity_normal_empty.png
+34a37b7639f227e2d783911c79437c74c67f6c2f7031a63c73c854ce5e884bdd  Assets/_Game/Resources/UiKit/maids_filter_position_normal_empty.png
+3d36466fadc6d2267817b98b2b2f8b800d62e66c0af668a46b86b66d653af1e0  Assets/_Game/Resources/UiKit/maids_filter_paw_brown.png
+ae4308b5d1931e71cfacd61129299b4649ed0794487e084822ad70109fef6d71  Assets/_Game/Resources/UiKit/maids_icon_reception.png
+35883ad2cd1b0face28ca688a04bd48f5459877ac0b390a02661f7e9d3023851  Assets/_Game/Resources/UiKit/maids_icon_hall.png
+9cedeac88b55d0527d3490fa4c0b6d93d728013fa6ce4592954710e2c84a71c7  Assets/_Game/Resources/UiKit/maids_icon_kitchen.png
+81440f372bc867295543e867cc302a4bbb463ddc1714c8a32e6491ffd65dde72  Assets/_Game/Resources/UiKit/maids_sort_empty.png
+58e634e50336da30d5dec243ee4bb98516a9edd0e236a1dcb6181270cdeeec47  Assets/_Game/Resources/UiKit/maids_sort_divider.png
+1d9e68db3a46c9abaf805f5b5f13e93733835d673230cfd4c7f3682b74d7380c  Assets/_Game/Resources/UiKit/maids_collection_panel_empty.png
+2e539749625f8e4e50f3239939bac664f1f8ecbed6b2981345ed6a1154e215ae  Assets/_Game/Resources/UiKit/maids_selected_card_highlight.png
+2de4e80f4181c4aa66d2327aa4c58a5bfd4c8f7f667be301ca33c40644b38345  Assets/_Game/Resources/UiKit/maids_page_left.png
+f59f6b489ae2d25fbb99f2f34fffeffc24a34d3ff6c42b97edc0753d2b55dea8  Assets/_Game/Resources/UiKit/maids_page_right.png
+db9ccab8f1c8e9497757f41aa231f70aa5136b62b33363e8a7e19bff719c5bbe  Assets/_Game/Resources/UiKit/maids_page_plate_empty.png
+9dc744c44463b57afbb1565b177d7ea1d0fc3c0e1ace4f449936a2d956113618  Assets/_Game/Resources/UiKit/maids_detail_panel_empty.png
+9038f71976ca82063689caf0e0efc7f0c37b60f1547d6ddc92a4a59f78266578  Assets/_Game/Resources/UiKit/maids_portrait_frame_empty.png
+1098d569c59919819b65ee327d0169eac1a8d3a3939d9900a7d8d642967d9368  Assets/_Game/Resources/UiKit/maids_rarity_badge_empty.png
+c29fbdbff037ebf955b1f366f113e7d546030518be5b2ca8dffd153c72b84c94  Assets/_Game/Resources/UiKit/maids_attribute_track_empty.png
+ade8acde7a000a6fe6037425d342f2e3837d775ff7985c02e120a3fd165d4389  Assets/_Game/Resources/UiKit/maids_attribute_fill_gold.png
+90d68362cb3055a8468bd65a2b73b91b554e1b4d5a66fd2b56bafa9be1f4e847  Assets/_Game/Resources/UiKit/maids_traits_frame_empty.png
+e506d5189137c91cd69ee762b47680a6218633f4bd43a27529838d68ffc7962a  Assets/_Game/Resources/UiKit/maids_dismiss_empty.png
