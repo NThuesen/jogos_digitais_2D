@@ -63,6 +63,11 @@ namespace Neko.Game.Ui
                 { "lineup.theme", "Combina com o salão" },
                 { "lineup.needall", "Recepção, salão e cozinha precisam de alguém." },
                 { "lineup.ready", "Pronto para abrir" },
+                { "lineup.screen", "Equipe do Dia" },
+                { "lineup.team", "Equipe escalada" },
+                { "lineup.chemteam", "Química da equipe" },
+                { "lineup.benchtitle", "Banco de maids" },
+                { "shop.screen", "Lojinha" },
 
                 // Positions
                 { "role.reception", "Recepção" },

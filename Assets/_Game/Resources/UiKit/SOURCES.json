@@ -618,5 +618,345 @@
    45,
    25
   ]
+ },
+ "lineup_role_plate_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/details/role_plate_empty_v01.png",
+  "sha256": "643b0f35ac07d08e46e9f7a20ec21d6d0c182e807fa9fd7dbc8edb8a76d740a7",
+  "border_LBRT": [
+   26,
+   20,
+   26,
+   20
+  ]
+ },
+ "lineup_vacant_slot_frame.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/details/vacant_slot_frame_v01.png",
+  "sha256": "36a6f517697231ed7c3010fde69ae1c37e8ce413d685e36b7fcc2157f5363035",
+  "border_LBRT": [
+   37,
+   37,
+   37,
+   37
+  ]
+ },
+ "lineup_vacant_paw_plus.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/decorations/vacant_paw_plus_v01.png",
+  "sha256": "d92b98477316daa2487ca2398286c2e55a0ac0c369e59af2b07a52ef0e1ea39f",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "lineup_chemistry_value_panel_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/panels/chemistry_value_panel_empty_v01.png",
+  "sha256": "e16e8b366df887adc69027c361854ce845a36ca69b81425c9edad157842752e9",
+  "border_LBRT": [
+   29,
+   28,
+   29,
+   28
+  ]
+ },
+ "lineup_daily_cost_panel_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/panels/daily_cost_panel_empty_v01.png",
+  "sha256": "2056e063fbeab951de4ed1e56822c18482c7b5ac32291bcfba937969fd9b4d37",
+  "border_LBRT": [
+   103,
+   31,
+   36,
+   31
+  ]
+ },
+ "lineup_chemistry_header_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/details/chemistry_header_empty_v01.png",
+  "sha256": "802fcc2e09870d76d56109b3deaa941b63f4d48bdcedf4e5d10d901383f31042",
+  "border_LBRT": [
+   68,
+   26,
+   68,
+   26
+  ]
+ },
+ "lineup_chemistry_track_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/details/chemistry_track_empty_v01.png",
+  "sha256": "d1cb7afa635394d0974ca75a9c9d0ef5602b8952b8df71d40c1ac2c45e2d591b",
+  "border_LBRT": [
+   22,
+   16,
+   22,
+   16
+  ]
+ },
+ "lineup_chemistry_fill_pink.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/details/chemistry_fill_pink_v01.png",
+  "sha256": "fc9b851279ceb729042b3e8de5eb8ef64eff9c12522dd26ef1e67d0ee6063a3c",
+  "border_LBRT": [
+   20,
+   13,
+   20,
+   13
+  ]
+ },
+ "lineup_title_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/details/lineup_title_empty_v01.png",
+  "sha256": "cb0aee000d27194c8167c2657c253812047dae90d018d360b5dfb8d9fb286a84",
+  "border_LBRT": [
+   113,
+   38,
+   113,
+   38
+  ]
+ },
+ "lineup_team_banner_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/details/team_banner_empty_v01.png",
+  "sha256": "cec05d38cd0a1d2562201884a60f4141b053991e1210b5d21b9aa1fbb456459b",
+  "border_LBRT": [
+   88,
+   28,
+   68,
+   28
+  ]
+ },
+ "lineup_bank_banner_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/details/bank_banner_empty_v01.png",
+  "sha256": "d23623fa216939ebbcf4dda84d8be87518ae1ccd849c36ed52b801569cacf414",
+  "border_LBRT": [
+   91,
+   28,
+   37,
+   28
+  ]
+ },
+ "lineup_bank_filter_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/buttons/bank_filter_empty_v01.png",
+  "sha256": "0ab10a2a1d23e4f02ae08d0c71ee6a7fb7f68ef1fdef1cac9fcb6cdccf342fd7",
+  "border_LBRT": [
+   71,
+   28,
+   69,
+   28
+  ]
+ },
+ "lineup_bank_sort_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/buttons/bank_sort_empty_v01.png",
+  "sha256": "5364cfbd4f1763086615f0bd8f97f0b3d045cd90e591e3042f9ae4048f9b831a",
+  "border_LBRT": [
+   46,
+   28,
+   68,
+   28
+  ]
+ },
+ "lineup_bank_page_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/buttons/bank_page_empty_v01.png",
+  "sha256": "c9de57f7ca997437d765f3edce09be368d86c1e9dd4c338f5ff1c0a80aaab31d",
+  "border_LBRT": [
+   31,
+   28,
+   31,
+   28
+  ]
+ },
+ "lineup_bank_left.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/buttons/bank_left_v01.png",
+  "sha256": "31e381ddf9f8030eab37b3f6a15023733b75c317609567feb9eebae73c233ef0",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "lineup_bank_right.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/buttons/bank_right_v01.png",
+  "sha256": "5e9515c46a868a55037e24f3c9b507cdb8215f2f8d4a3f346ed97fc6087e01ee",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "lineup_team_panel_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/panels/team_panel_empty_v01.png",
+  "sha256": "ed0aec13cba8cdd5c9bccf2b602c59d5ac71dc07317432e4900b01b71085aa97",
+  "border_LBRT": [
+   53,
+   50,
+   53,
+   50
+  ]
+ },
+ "lineup_bank_panel_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/panels/bank_panel_empty_v01.png",
+  "sha256": "d9df8d77938a57f1542cb6a3d54a82147e9d5886fd98785b06801cd8b18726ac",
+  "border_LBRT": [
+   53,
+   50,
+   53,
+   50
+  ]
+ },
+ "lineup_chemistry_panel_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/panels/chemistry_panel_empty_v01.png",
+  "sha256": "1931aebab5cddf70a90997c7ca3c0f525a1bdd917590c8dd394585eba95cbe96",
+  "border_LBRT": [
+   45,
+   45,
+   45,
+   45
+  ]
+ },
+ "lineup_button_auto_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/buttons/button_auto_empty_v01.png",
+  "sha256": "d7dbd499505cedde30868626df4d96870f1f15da3616896a9f36b09da1ce7ab0",
+  "border_LBRT": [
+   94,
+   32,
+   42,
+   32
+  ]
+ },
+ "lineup_button_clear_empty.png": {
+  "source": "neko-ui-lineup-kit-delivery/sprites/buttons/button_clear_empty_v01.png",
+  "sha256": "d9ff9638ffeb1a9b5fc650157737d9393430ab57e77f234b2aebce6ceb5ca813",
+  "border_LBRT": [
+   95,
+   32,
+   39,
+   32
+  ]
+ },
+ "lineup_background.png": {
+  "source": "neko-ui-lineup-kit-delivery/backgrounds/lineup_background_v01.png",
+  "sha256": "c80e89c3e98c70437816329d1dfd4f68263979aebeb5374e18f373561252876b",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "shop_tab_normal_empty.png": {
+  "source": "neko-ui-shop-kit-delivery/sprites/tabs/shop_tab_normal_empty_v01.png",
+  "sha256": "223ee5d4b0f968749cb44e7ce39eeca3b0fb3c5bb98ba477aa3fa70c2b3482f3",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "shop_tab_selected_empty.png": {
+  "source": "neko-ui-shop-kit-delivery/sprites/tabs/shop_tab_selected_empty_v01.png",
+  "sha256": "cdbf93bd98ae974fcd849cb1b19763a4c2a2691865a69f1ec7a6e99927fc8aa8",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "shop_tab_underline.png": {
+  "source": "neko-ui-shop-kit-delivery/sprites/tabs/shop_tab_underline_v01.png",
+  "sha256": "6e86f4ae6b939d65aa8d8d33d606e71e474510dfe77d92a6682cc95f56589e56",
+  "border_LBRT": [
+   16,
+   12,
+   16,
+   12
+  ]
+ },
+ "shop_buy_empty.png": {
+  "source": "neko-ui-shop-kit-delivery/sprites/buttons/shop_buy_empty_v01.png",
+  "sha256": "0847c72d06d81b6ad00ebde51c28565603e03b88afd29924a1bb7e6e26e86470",
+  "border_LBRT": [
+   35,
+   30,
+   35,
+   30
+  ]
+ },
+ "shop_money_panel_empty.png": {
+  "source": "neko-ui-shop-kit-delivery/sprites/panels/shop_money_panel_empty_v01.png",
+  "sha256": "36ff90b9a823290cc254756c64e03a1cddcf7d67dbc27e7096223b78bec94f04",
+  "border_LBRT": [
+   41,
+   32,
+   41,
+   32
+  ]
+ },
+ "shop_title_empty.png": {
+  "source": "neko-ui-shop-kit-delivery/sprites/panels/shop_title_empty_v01.png",
+  "sha256": "dd7b1ad5525423023b197fe0c7c824a68e5c8bf0a183d927b28d769dd6be528a",
+  "border_LBRT": [
+   138,
+   40,
+   138,
+   40
+  ]
+ },
+ "shop_bottom_paw_ornament.png": {
+  "source": "neko-ui-shop-kit-delivery/sprites/decorations/shop_bottom_paw_ornament_v01.png",
+  "sha256": "cb4bd1312879cc256a27bc6004c1d00e4085dc9fcc9d65ce5625b0f6be97f824",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "shop_panel_top_bow.png": {
+  "source": "neko-ui-shop-kit-delivery/sprites/decorations/shop_panel_top_bow_v01.png",
+  "sha256": "287dadc2310d302337856dd26c7c441d6dc43439a1c2aef950a70ae4c7ca3fde",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "shop_product_row_normal.png": {
+  "source": "neko-ui-shop-kit-delivery/sprites/rows/shop_product_row_normal_v01.png",
+  "sha256": "d6d22a234631419165e13374e6f1a4a9e2cc7d22985051cbcdaa496190978344",
+  "border_LBRT": [
+   202,
+   33,
+   294,
+   33
+  ]
+ },
+ "shop_product_row_highlight.png": {
+  "source": "neko-ui-shop-kit-delivery/sprites/rows/shop_product_row_highlight_v01.png",
+  "sha256": "d68de6f7785bffe4f3927a8d3ecc5f5393c169079e7482db41fd5cfef81e3fca",
+  "border_LBRT": [
+   202,
+   33,
+   294,
+   33
+  ]
+ },
+ "shop_main_panel_empty.png": {
+  "source": "neko-ui-shop-kit-delivery/sprites/panels/shop_main_panel_empty_v01.png",
+  "sha256": "08111ca4afc11841c8735173381240bf7bc87ace8f17ce6ff7eda1f3dd6b5307",
+  "border_LBRT": [
+   126,
+   86,
+   126,
+   86
+  ]
+ },
+ "shop_background.png": {
+  "source": "neko-ui-shop-kit-delivery/backgrounds/shop_background_v01.png",
+  "sha256": "263d146ba3d64d9b7820d2380d571259cbcf2e4e9e872761c01567746be3f1ea",
+  "border_LBRT": [
+   0,
+   0,
+   0,
+   0
+  ]
  }
 }

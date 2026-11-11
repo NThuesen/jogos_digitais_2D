@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Neko.Game.Core;
 using Neko.Game.Ui;
 using Neko.Sim.Team;
@@ -74,39 +75,39 @@ namespace Neko.Tests.PlayMode
             var backPressed = false;
             shop.OnBack = () => backPressed = true;
 
-            // Tabs: exactly one selected mark, and it follows the selection.
-            var tabs = shop.GetComponentsInChildren<Button>(true).ToList("ArtTab");
-            Assert.AreEqual(3, tabs.Count, "three art tabs");
-            Assert.AreEqual(1, ActiveMarks(tabs));
-            Assert.IsTrue(MarkOn(tabs[0]), "Móveis is the starting tab");
+            // UI-INT-03B: the Shop is drawn from the Lojinha kit. The same behaviours are checked on its
+            // controls: the tabs are named Tab_*, the buy buttons "Buy" and the back control "Back".
+            Button Named(string name) => shop.GetComponentsInChildren<Button>(false).First(b => b.name == name);
+            bool Selected(string name) =>
+                ((Image)Named(name).targetGraphic).sprite == KitArt.Get("shop_tab_selected_empty");
 
-            tabs[2].onClick.Invoke();
+            // Tabs: exactly one is the selected plate, and it follows the selection.
+            Assert.AreEqual(3, shop.GetComponentsInChildren<Button>(false).Count(b => b.name.StartsWith("Tab_")), "three tabs");
+            Assert.IsTrue(Selected("Tab_Furniture"), "Móveis is the starting tab");
+            Assert.IsFalse(Selected("Tab_Gifts"));
+
+            Named("Tab_Gifts").onClick.Invoke();
             yield return SessionFactory.Settle();
-            Assert.IsTrue(MarkOn(tabs[2]) && !MarkOn(tabs[0]), "the mark moves to Presentes");
-            Assert.AreEqual(UiArt.Get("tab_active"), ((Image)tabs[2].targetGraphic).sprite);
-            Assert.AreEqual(UiArt.Get("tab_inactive"), ((Image)tabs[0].targetGraphic).sprite);
+            Assert.IsTrue(Selected("Tab_Gifts") && !Selected("Tab_Furniture"), "the mark moves to Presentes");
+            Assert.AreEqual(KitArt.Get("shop_tab_normal_empty"), ((Image)Named("Tab_Furniture").targetGraphic).sprite);
 
-            tabs[0].onClick.Invoke();
+            Named("Tab_Furniture").onClick.Invoke();
             yield return SessionFactory.Settle();
 
             // Rows: affordable buy buttons are live, unaffordable ones are disabled in Unity too.
-            var buys = shop.GetComponentsInChildren<Button>(false).ToList("ArtButton");
-            var live = buys.Find(b => b.interactable && b.GetComponentInChildren<Text>().text != "Voltar");
+            var buys = shop.GetComponentsInChildren<Button>(false).Where(b => b.name == "Buy").ToList();
+            var live = buys.Find(b => b.interactable);
             var dead = buys.Find(b => !b.interactable);
             Assert.IsNotNull(live, "an item the player can afford");
             Assert.IsNotNull(dead, "an item the player cannot afford");
             Assert.Less(dead.GetComponentInChildren<Text>().color.a, 1f, "disabled text is dimmed in Unity");
 
-            // SpriteSwap follows the pointer.
+            // The kit ships one image per button, so hover / pressed / disabled are tints of it.
             var pointer = new PointerEventData(EventSystem.current);
-            ExecuteEvents.Execute(live.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
-            yield return null;
-            Assert.AreEqual(UiArt.Get("btn1_hover"), ((Image)live.targetGraphic).overrideSprite);
-            ExecuteEvents.Execute(live.gameObject, pointer, ExecuteEvents.pointerDownHandler);
-            yield return null;
-            Assert.AreEqual(UiArt.Get("btn1_pressed"), ((Image)live.targetGraphic).overrideSprite);
-            ExecuteEvents.Execute(live.gameObject, pointer, ExecuteEvents.pointerUpHandler);
-            ExecuteEvents.Execute(live.gameObject, pointer, ExecuteEvents.pointerExitHandler);
+            Assert.AreEqual(Selectable.Transition.ColorTint, live.transition);
+            Assert.AreNotEqual(live.colors.normalColor, live.colors.highlightedColor, "hover tints the plate");
+            Assert.AreNotEqual(live.colors.normalColor, live.colors.pressedColor, "pressed tints the plate");
+            Assert.AreNotEqual(live.colors.normalColor, live.colors.disabledColor, "disabled tints the plate");
 
             // Buying still spends the money and changes the stock; a disabled button does nothing.
             var before = root.Session.Profile.Wallet.Money;
@@ -120,9 +121,8 @@ namespace Neko.Tests.PlayMode
             Assert.AreEqual(owned + 1, root.Session.Profile.OwnedPlaceables.Count, "and gives the item");
 
             // The back control is the art button and still calls OnBack.
-            var back = shop.GetComponentsInChildren<Button>(false).ToList("ArtButton")
-                .Find(b => b.GetComponentInChildren<Text>().text == Neko.Game.Ui.Strings.Get("dialog.back"));
-            Assert.IsNotNull(back);
+            var back = Named("Back");
+            Assert.AreEqual(Neko.Game.Ui.Strings.Get("dialog.back"), back.GetComponentInChildren<Text>().text);
             back.onClick.Invoke();
             Assert.IsTrue(backPressed);
         }
