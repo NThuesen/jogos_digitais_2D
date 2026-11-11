@@ -167,6 +167,7 @@ namespace Neko.Game.Core
             hall.OnBack = () => ErrorBoundary.Guard("voltar", LeaveHall);
 
             var day = Ui.Add<DayHud>();
+            day.Camera = Camera;
             day.OnSpeed = speed => Clocks.Scale = speed;
             day.OnSkip = () => ErrorBoundary.Guard("pular o dia", SkipDay);
 
@@ -380,6 +381,10 @@ namespace Neko.Game.Core
         private void OnClick(Vector2 screen)
         {
             // The owner's hands on the floor while a day runs.
+            // A click on scenery or on a picture frame is not a click on the room: only the window that
+            // shows the room counts (the whole screen, where a screen shows it unframed).
+            if (!RoomWindow.Contains(screen)) return;
+
             if (State.Current == AppState.Shift)
             {
                 Presenter.HandleClick(Camera.ScreenToWorld(screen));
@@ -395,6 +400,7 @@ namespace Neko.Game.Core
         private void OnRightClick(Vector2 screen)
         {
             if (!(Ui.Current is HallScreen hall)) return;
+            if (!RoomWindow.Contains(screen)) return;
 
             var world = Camera.ScreenToWorld(screen);
             hall.RemoveAt(Mathf.RoundToInt(world.x), Mathf.RoundToInt(world.y));

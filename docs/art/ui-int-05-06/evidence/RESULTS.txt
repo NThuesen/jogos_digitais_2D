@@ -1,0 +1,5 @@
+EditMode: 390 passed / 0 failed
+PlayMode full: 200 passed / 0 failed
+Targeted HallShiftResultsScreenTests: 24 passed
+WebGL build: OK (Build/WebGL, not committed)
+Chrome smoke (stock): chrome-smoke/

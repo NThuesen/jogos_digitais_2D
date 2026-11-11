@@ -107,6 +107,46 @@ namespace Neko.Game.Core
             transform.position = _home;
         }
 
+        /// <summary>Tiles of air at the left and right of the room when it is fitted into a window.</summary>
+        public const float SideRoom = 0.3f;
+
+        /// <summary>
+        /// Frames the room so that all of it, and the head of a maid on the top row, fits inside a
+        /// rectangle of the screen (<paramref name="window"/>, in this camera's pixels): the opening of an
+        /// illustrated frame. A pure presentation framing: uniform scale, so tiles stay square and the art
+        /// is never stretched, and the room is centred in the window. Never touches the simulation.
+        /// </summary>
+        public void FrameRoomInWindow(int width, int height, Rect window)
+        {
+            var pw = (float)Camera.pixelWidth;
+            var ph = (float)Camera.pixelHeight;
+            if (pw <= 0f || ph <= 0f || window.width <= 1f || window.height <= 1f)
+            {
+                FrameRoomBetweenHud(width, height);
+                return;
+            }
+
+            var aspect = pw / ph;
+            var fw = window.width / pw;
+            var fh = window.height / ph;
+
+            var left = -0.5f - SideRoom;
+            var right = width - 0.5f + SideRoom;
+            var bottom = -0.5f - FootRoom;
+            var top = height - 0.5f + HeadRoom;
+
+            var size = Mathf.Max((top - bottom) / (2f * fh), (right - left) / (2f * aspect * fw));
+            Camera.orthographicSize = size;
+
+            var centreX = (left + right) * 0.5f;
+            var centreY = (top + bottom) * 0.5f;
+            var windowX = window.center.x / pw - 0.5f;
+            var windowY = window.center.y / ph - 0.5f;
+
+            _home = new Vector3(centreX - windowX * 2f * size * aspect, centreY - windowY * 2f * size, -10f);
+            transform.position = _home;
+        }
+
         public void Shake(float amplitude, float seconds)
         {
             _shakeAmplitude = Mathf.Max(_shakeAmplitude, amplitude);
