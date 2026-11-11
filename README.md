@@ -1,7 +1,7 @@
 # Neko Maid Inc.
 
-Um café de maids-gato administrado como uma empresa. Você não atende ninguém — você escala
-quem atende, e depois assiste.
+Um café de maids-gato administrado como uma empresa. Você escala a equipe,
+acompanha o atendimento e pode intervir em oportunidades pontuais durante o expediente.
 
 **Jogos Digitais 2026.1 · Insper · Projeto 2D**
 Unity 6000.5.9f1 · 2D URP · WebGL
@@ -10,13 +10,14 @@ Unity 6000.5.9f1 · 2D URP · WebGL
 
 ## O jogo
 
-**Kit de produção de arte modular:** [prompts detalhados, tutorial, referências e pastas](docs/art/ui-modular/README.md). Imagens de UI geradas com GPT são peças; interações e textos dinâmicos ficam na Unity. **Ainda não há novos assets aprovados neste kit.**
+**Kit de produção de arte modular:** [prompts detalhados, tutorial, referências e pastas](docs/art/ui-modular/README.md). Imagens de UI geradas com GPT são peças; interações e textos dinâmicos ficam na Unity. Há integrações de interface em PRs independentes; confirmar o estado da `main` antes de declarar uma tela concluída.
 
-**Arte vigente:** nove maids caminham em **anime 2D ilustrado/chibi** (PRs #29/#30); o café e os menus atuais ainda são provisórios. [Direção visual aprovada](docs/art/CURRENT_VISUAL_DIRECTION.md) · [Roadmap estratégia B](docs/ROADMAP.md).
+**Direção artística:** **anime 2D ilustrado/chibi**, com apresentação cozy cat-café e migração progressiva de cenas e menus. [Direção visual aprovada](docs/art/CURRENT_VISUAL_DIRECTION.md) · [Roadmap](docs/ROADMAP.md).
 
 Cada dia tem quatro passos: montar a escalação, abrir as portas, assistir, e ler o balanço.
-Durante o dia não há nada para clicar — a única coisa que decide o resultado é quem você pôs
-em cada posição.
+Durante o dia, a equipe atende automaticamente, mas o jogador pode ajudar a acomodar
+clientes, registrar pedidos, limpar mesas, controlar o ponto do fogão e acalmar pessoas
+impacientes. O desempenho também depende da escalação e dos recursos do café.
 
 - **Cinco posições**: recepção, salão, cozinha, palco e gerência. Cada maid tem uma posição
   natural; fora dela perde um terço da eficiência e erra quase o dobro.
@@ -48,7 +49,8 @@ tools/clean.sh                   # quebra o loop de crash e limpa 1,5 GB de cach
 | `Assets/_Game/Scripts/Game` | a camada Unity: arte, cena, telas, áudio, entrada |
 | `Assets/_Game/Tests` | EditMode e PlayMode |
 | `Assets/_Game/Resources/Audio` | os 26 `.wav` sintetizados |
-| `docs/GDD.md` | o documento de design, por rubrica |
+| `docs/GDD.md` | referência técnica de regras e rubricas, mantida pelos testes |
+| [`docs/DDE.md`](docs/DDE.md) | documento acadêmico DDE: Design, Dynamics e Experience |
 | `docs/ARCHITECTURE.md` | os limites técnicos e a organização real do jogo |
 | `docs/ITCH_PAGE.md` | texto e instruções para publicar a build |
 | `docs/art/prompt-pipeline/README.md` | prompts completos de 9 maids, tutoriais de anexos e pipeline ChatGPT → Tencent (candidatos) |
@@ -66,7 +68,8 @@ consultadas sob demanda:
 - [Testes e evidências](docs/agent/VALIDATION.md)
 - [Roadmap visual ativo](docs/ROADMAP.md) — ler apenas a tarefa atribuída, não todas as notas
 
-Mudanças nas regras do jogo consultam [GDD](docs/GDD.md); mudanças arquiteturais
+A apresentação acadêmica está no [DDE](docs/DDE.md). Mudanças nas regras do jogo
+consultam [GDD](docs/GDD.md); mudanças arquiteturais
 consultam [ARCHITECTURE](docs/ARCHITECTURE.md). Não é necessário ler ambos para
 uma pequena alteração visual. GitHub Actions valida a simulação e os controles
 automatizados; Unity/PlayMode/WebGL exigem execução real para serem considerados

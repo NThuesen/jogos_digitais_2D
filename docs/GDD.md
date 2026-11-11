@@ -6,6 +6,12 @@ Unity 6000.5.9f1 · 2D URP · build WebGL · entrega no itch.io
 > Documento vivo e fonte de verdade para a versão atual do jogo: regras, economia,
 > progressão e experiência do jogador. A versão no Milanote deve refletir este arquivo.
 > Para a organização técnica, consulte `docs/ARCHITECTURE.md`.
+>
+> **Apresentação acadêmica em DDE:** veja [`DDE.md`](DDE.md), organizada segundo o
+> material da disciplina em Design (Blueprint, Mechanics, Interface), Dynamics
+> (Player–Player, Player–Game, Game–Game) e Experience (Sentidos, Emocional,
+> Intelectual, Percepção). Este GDD mantém as rubricas e as tabelas de regras
+> que são verificadas pelos testes de documentação.
 
 ---
 
