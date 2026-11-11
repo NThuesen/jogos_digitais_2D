@@ -84,8 +84,7 @@ nenhum foi enfraquecido, apenas atualizado para a regra nova.
 
 `LettingSomebodyGoPaysSomethingBackAndCutsTheWageBill` ficou **inalterado** (continua válido).
 
-Resultado da suíte completa no commit final: ver o relatório da PR (rodando no momento em que este
-documento foi escrito; última rodada EditMode completa: 409/409 antes das últimas edições de teste).
+Resultado da suíte completa no código final do branch: **EditMode 409/409** e **PlayMode 206/206** (0 falhas, 0 ignorados).
 
 ## 5. O que precisa de atualização
 
