@@ -177,8 +177,16 @@ cartas.
 | **Épica** | 95 | 70 fichas | violeta |
 | **Lendária** | 210 | 220 fichas | dourado |
 
-Uma lendária custa doze comuns por dia. Tirá-la de uma caixa é o começo do problema: ou o
-café cresce para sustentá-la, ou ela afunda o caixa enquanto a química fica igual.
+Uma lendária custa doze comuns por dia **enquanto estiver escalada**. Tirá-la de uma caixa é o
+começo do problema: ou o café cresce para sustentá-la, ou ela afunda o caixa enquanto a
+química fica igual.
+
+**Coleção e equipe de trabalho são coisas diferentes (ECON-03).** Não há limite de maids
+possuídas: a coleção cresce até todas as identidades lançadas, uma cópia por identidade.
+Só quem ocupa uma vaga da escalação do dia recebe salário; quem está guardada não custa
+nada. O custo fixo é o salário das escaladas mais o aluguel, e é o mesmo número mostrado
+antes do expediente e descontado no balanço. O que limita a equipe são as **vagas da
+escalação**, que crescem com o nível do café.
 
 Três caixas, compradas só com fichas, com as chances **impressas na tela de compra**:
 
@@ -188,8 +196,8 @@ Três caixas, compradas só com fichas, com as chances **impressas na tela de co
 | **Prata** | 180 | 3 | rara | — · 62% · 32% · 6% |
 | **Dourada** | 520 | 3 | épica | — · — · 78% · 22% |
 
-Cada caixa tem um **piso de raridade**: a pior carta da Dourada é épica. Carta repetida com
-o elenco cheio volta como fichas, então uma caixa nunca é prejuízo total. Os pisos são
+Cada caixa tem um **piso de raridade**: a pior carta da Dourada é épica. Carta de uma
+identidade que já está na coleção volta como fichas, então uma caixa nunca é prejuízo total. Os pisos são
 monotônicos — a caixa mais cara é sempre a melhor — e isso é um teste, não uma intenção.
 
 Não existe comprar fichas, e não existe converter ficha em dinheiro. As duas moedas não se
@@ -239,8 +247,8 @@ O gancho é o mesmo do Ultimate Team: **a próxima carta**. Fichas vêm de dias 
 caixas vêm de fichas, e uma lendária muda o time de verdade. O ritmo é curto — um dia dura
 de 75 a 180 segundos — e cada dia termina num número que o jogador quer melhorar.
 
-A tensão vem de duas moedas que puxam para lados opostos: **dinheiro** paga salário e
-aluguel e pode falir a empresa; **fichas** só compram caixas e são pagas por *qualidade*,
+A tensão vem de duas moedas que puxam para lados opostos: **dinheiro** paga o salário
+da equipe escalada e o aluguel e pode falir a empresa; **fichas** só compram caixas e são pagas por *qualidade*,
 não por volume. Um dia que fatura muito atropelando todo mundo rende poucas fichas.
 
 ## 6. Level design e progressão
@@ -248,8 +256,8 @@ não por volume. Um dia que fatura muito atropelando todo mundo rende poucas fic
 Não há fases. A progressão é o **nível do café** (1 a 10), ganho com reputação, que por sua
 vez vem de clientes bem atendidos — nunca de faturamento.
 
-Cada nível entrega pelo menos uma coisa: salão maior, mais uma vaga de elenco, mais uma vaga
-numa posição, ou receitas, móveis e roupas novas. Um teste percorre os dez níveis e falha se
+Cada nível entrega pelo menos uma coisa: salão maior, mais uma vaga
+numa posição da escalação, ou receitas, móveis e roupas novas. Um teste percorre os dez níveis e falha se
 algum não trouxer nada.
 
 **A curva foi medida, não escolhida.** Uma versão anterior tinha meta diária com expoente
@@ -307,8 +315,16 @@ inteiro roda em milissegundos num teste e 200 dias semeados cabem numa asserçã
 | Nenhuma caixa rola abaixo do próprio piso | 300 sementes por caixa |
 | Fichas pagam qualidade, não volume | dia corrido rende menos ficha que dia tranquilo |
 | Nenhum nível desbloqueia nada | percorre os dez |
+| Só a escalação paga salário (ECON-03) | `ActiveWagesTests` e `DayTests`: custo fixo = salários de `FieldedMaids()` + aluguel; maid guardada não entra na conta |
+| Coleção sem teto, uma cópia por identidade (ECON-03) | `ActiveWagesTests` e `MaidCatalogTests`: contratar e abrir caixa acima do antigo teto; só carta de identidade já possuída vira ficha |
+| Save com mais de 8 maids grava e lê igual (ECON-03) | `ActiveWagesTests`: salvar e carregar um perfil com coleção grande |
+| A interface mostra o mesmo custo que o balanço cobra | `CollectionEconomyUiTests`: cabeçalho da tela Maids, escalação (limpar/auto) e dispensa de maid guardada |
 
-### 10.1 A curva do dinheiro (ECON-02)
+### 10.1 A curva do dinheiro (ECON-02, sem compras)
+
+> Esta tabela é a medição da ECON-02 e **não foi refeita na ECON-03**. O cenário é "sem compras": o
+> elenco é o inicial e todas as maids estão escaladas, então a regra nova (salário só da escalação)
+> não muda a conta — isso é uma dedução, não uma remedição.
 
 O baseline ECON-01A mostrou que **nenhuma** empresa passava do dia 4: o aluguel (144) era 73%
 do custo fixo e o salão atendia 2 clientes em 17. Medido com `tools/econ-balance` (40 empresas,
@@ -326,15 +342,49 @@ base `0,8 +` cozinha (era `0,6 +`); Kuudere ganha cozinha ×1,2 (era o pior cozi
 compensação). Fichas: +1 por prato na faixa dourada e um bônus de combo (a partir de 5 passos).
 Deixar o café sozinho continua possível, mas é uma sangria lenta — não uma sentença de dia 4.
 
-**Limite conhecido (ver [ECON-02](economy/econ-02/README.md)):** a tabela acima é sem compras. Com
-um jogador que investe (caixas, contratação, móveis) a expansão hoje não se paga — no nível 1,
-cada mesa extra *reduz* a receita porque a demanda cresce com os lugares e o time é o mesmo — e
-quebra mais que jogar sem comprar nada. Corrigir isso é decisão de design (ECON-02b), não foi
-resolvido aqui.
+**Limite conhecido (ver [ECON-02](economy/econ-02/README.md)):** a tabela acima é sem compras. Na
+medição da ECON-02, com um jogador que investe (caixas, contratação, móveis) a expansão não se
+pagava — no nível 1, cada mesa extra *reduzia* a receita porque a demanda cresce com os lugares e o
+time é o mesmo. A ECON-03 (seção 10.2) reduziu as falências de quem investe porque tirou o
+salário das maids guardadas, mas **não mexeu na relação demanda × lugares**; resolvê-la continua
+sendo decisão de design (ECON-02b), não foi remedido aqui.
 
 Dos três cozinheiros, nenhum rende mais de 1,35× do outro no mesmo dia (teste
 `NoKitchenArchetypeIsAnOutlier`). Elencos com Ojou-sama na recepção ainda são os mais difíceis
 de sustentar (atraem VIP de 22 s num salão de 4 mesas): é uma escolha, não um beco sem saída.
+
+### 10.2 Coleção sem teto e salário só da equipe (ECON-03)
+
+**A regra:** possuir é livre (uma cópia por identidade, sem limite além das 23 identidades
+lançadas); só paga salário quem está escalada. O que limita a equipe são as vagas da escalação
+(`Lineup.SlotsFor`): 3 no nível 1, 4, 5, 6, 7, 8, 9 e **10 do nível 8 em diante**. Custo fixo =
+salários das escaladas + aluguel. Nenhum preço, aluguel, salário ou chance de caixa foi alterado
+para compensar a mudança.
+
+**Medição** (`tools/econ-balance`, 60 sementes × 60 dias; valor = empresas falidas em 60; "investe" =
+o robô compra caixas, contrata e compra móveis; "antigos" = robôs com a política de contratação do
+teto legado, "sem teto" = robôs que contratam sem limite — o cenário mais fiel ao jogo novo):
+
+| Perfil | Investe | Antes | Depois (robôs antigos) | Depois (robôs sem teto) |
+| --- | --- | ---: | ---: | ---: |
+| parado | sim | 60 | 60 | 60 |
+| parado | não | 60 | 60 | 60 |
+| lazy | sim | 56 | 46 | 46 |
+| lazy | não | 52 | 52 | 52 |
+| casual | sim | 49 | 22 | 24 |
+| casual | não | 4 | 4 | 4 |
+| pro | sim | 20 | 1 | 2 |
+| pro | não | 0 | 0 | 0 |
+
+No dia 30, o caixa do perfil *pro* que investe foi de **3605** para **5997** (robôs antigos) e
+**4270** (robôs sem teto), com cerca de 21–22 maids na coleção. Quem não faz nada continua
+falindo, e quem não investe não muda: o efeito é concentrado em quem monta uma coleção. Fonte:
+[ECON-03](economy/econ-03/README.md).
+
+**O que isso não prova:** são robôs, não pessoas; não houve playtest humano; e a folga nova pode
+tornar o jogo fácil demais para quem investe — rebalancear (aluguel por nível, preço das caixas,
+salário das raras) é uma tarefa separada, ainda por fazer. Também falta medir se as fichas ficam
+abundantes quando a coleção está quase completa e as caixas passam a render só fichas.
 
 ## 11. Gerenciamento de estados e erros
 
@@ -349,8 +399,8 @@ de sustentar (atraem VIP de 22 s num salão de 4 mesas): é uma escolha, não um
   em invariante.
 - **Sem becos sem saída.** O dia não abre se faltar recepção, salão, cozinha, mesa ou
   estação — e a mensagem diz qual tela resolve. Clientes nunca pedem prato que a cozinha não
-  possa fazer. Dispensar uma maid sempre corta a despesa. Uma carta que não cabe no elenco
-  vira fichas em vez de sumir.
+  possa fazer. Maid guardada não custa salário, e dispensar uma maid vira
+  fichas. Uma carta repetida vira fichas em vez de sumir.
 - **A falência é avisada com um dia de antecedência**, em vermelho, antes de abrir o dia
   seguinte.
 
@@ -360,9 +410,10 @@ Este GDD descreve exclusivamente a versão vigente. Mudanças de mecânicas, eco
 progressão ou UX devem ser documentadas aqui no mesmo Pull Request da implementação.
 As fronteiras técnicas estão em `docs/ARCHITECTURE.md`.
 
-**Verificação:** 257 testes de simulação (`tools/simtest.sh`, menos de um segundo), 292 de
-EditMode e 17 de PlayMode dentro do editor. Sete deles leem este documento: se um arquétipo,
-um tipo de cliente, uma posição, uma raridade ou uma caixa entrar no jogo e não entrar aqui,
-a suíte falha com o nome que está faltando. Onze quadros do jogo rodando ficam em
+**Verificação** (branch ECON-03, 10/11/2026): 315 testes de simulação (`tools/simtest.sh`, cerca
+de 2 s), 409 de EditMode e 206 de PlayMode dentro do editor, todos passando. Quatro testes de
+`DocsTests` leem este documento (os doze títulos da rubrica, arquétipos, tipos de cliente, posições
+e raridades) e um quinto confere as caixas na página do itch.io: se algum desses entrar no jogo e
+não entrar na documentação, a suíte falha com o nome que está faltando. Onze quadros do jogo rodando ficam em
 `../visual_assets/frames/2026-10-22_neko_maid_inc/`, com o registro dos oito erros visuais
 que as capturas encontraram.

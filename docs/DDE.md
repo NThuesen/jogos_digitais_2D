@@ -9,18 +9,20 @@ lang: pt-BR
 **Disciplina:** Jogos Digitais · Insper  
 **Projeto:** jogo original 2D, gestão/estratégia e simulação de cafeteria  
 **Plataforma-alvo:** navegador desktop, WebGL · **Engine:** Unity 6 (2D/URP)  
-**Versão documental:** 1.0 · **Atualização:** 10/11/2026  
+**Versão documental:** 1.1 (regras da ECON-03) · **Atualização:** 10/11/2026  
 **Repositório:** [NThuesen/jogos_digitais_2D](https://github.com/NThuesen/jogos_digitais_2D)
 
 > **Escopo e honestidade documental.** Este documento apresenta a concepção do jogo, as regras descritas no GDD técnico e a análise DDE da experiência pretendida. As descrições da *experiência* são **objetivos de design, não resultados de playtest humano comprovados**. A integração de novas telas ilustradas estava em andamento na data desta revisão; um mockup aprovado, uma PR aberta e uma build final publicada são estados distintos. O documento não certifica a conclusão dessa integração.
+>
+> **Versão 1.1 — ECON-03.** Esta revisão descreve as regras econômicas da tarefa ECON-03 (*coleção ilimitada e salários somente da equipe ativa*), implementadas no branch `task/econ-03-uncapped-collection-active-wages` e **ainda não integradas à `main`** na data desta revisão. Onde este texto fala de coleção, equipe escalada, salário ou cartas repetidas, ele segue o código desse branch e o relatório [`docs/economy/econ-03/README.md`](economy/econ-03/README.md). Os números de balanceamento citados vêm de simulação com robôs, não de partidas humanas.
 
 ## Resumo executivo
 
-*Neko Maid Inc.* é um jogo 2D de administração de um café de maids-gato. A fantasia de dirigir um estabelecimento acolhedor contrasta com decisões empresariais difíceis: contratar personagens com estilos distintos, formar uma equipe com boa química, distribuir funções, equilibrar atendimento e folha de pagamento, decorar o ambiente e sobreviver financeiramente. Durante o expediente, o serviço acontece de forma autônoma, mas o jogador pode intervir em situações pontuais — acomodar clientes, anotar pedidos, limpar mesas, controlar o fogão e acalmar pessoas impacientes — para melhorar o resultado.
+*Neko Maid Inc.* é um jogo 2D de administração de um café de maids-gato. A fantasia de dirigir um estabelecimento acolhedor contrasta com decisões empresariais difíceis: colecionar personagens com estilos distintos, escolher quais delas formam a equipe do dia, com boa química, distribuir funções, equilibrar atendimento e folha de pagamento (paga só a quem trabalha), decorar o ambiente e sobreviver financeiramente. Durante o expediente, o serviço acontece de forma autônoma, mas o jogador pode intervir em situações pontuais — acomodar clientes, anotar pedidos, limpar mesas, controlar o fogão e acalmar pessoas impacientes — para melhorar o resultado.
 
-**Proposta central:** *um café aconchegante em que contratar a maid mais rara nem sempre é a melhor decisão*. O jogo pretende transformar escolhas de composição, operação e investimento em consequências observáveis: filas, espera, satisfação, gorjetas, reputação, custos, lucro e risco de falência.
+**Proposta central:** *um café aconchegante em que escalar a maid mais rara nem sempre é a melhor decisão*. O jogo pretende transformar escolhas de composição, operação e investimento em consequências observáveis: filas, espera, satisfação, gorjetas, reputação, custos, lucro e risco de falência. Desde a ECON-03, **ter uma maid e escalá-la são decisões separadas**: a coleção não tem limite e não custa nada, mas a equipe do dia tem poucas vagas e cada vaga ocupada tem salário.
 
-**Objetivo do jogador:** manter a cafeteria funcionando e ampliar sua capacidade, seu elenco e seu prestígio ao longo de ciclos diários, sem perder a sustentabilidade financeira.
+**Objetivo do jogador:** manter a cafeteria funcionando e ampliar sua capacidade, sua coleção e seu prestígio ao longo de ciclos diários, sem perder a sustentabilidade financeira.
 
 **Gênero:** simulação de gestão com coleção de personagens, otimização de equipes e interação contextual em tempo real. **Modo:** single-player. **Entrada principal:** mouse.
 
@@ -90,7 +92,20 @@ Cada passagem do ciclo fornece informação para a próxima: a escalação defin
 | **Palco** | Sustentar o humor/paciência dos clientes | Tolerância a atrasos e estabilidade do serviço |
 | **Gerência** | Ajudar com gorjetas e fichas | Retorno econômico e recompensa por qualidade |
 
-O jogo começa com uma vaga em cada função operacional essencial (Recepção, Salão, Cozinha); vagas e funções adicionais são liberadas na progressão. **Sem as funções essenciais e recursos mínimos do salão, o dia não começa**: a interface deve indicar o impedimento, não deixar o jogador preso. Escalar alguém fora da posição natural acarreta perda de eficiência documentada no GDD de **35%**, além de penalidades de química e erro.
+O jogo começa com uma vaga em cada função operacional essencial (Recepção, Salão, Cozinha); vagas e funções adicionais são liberadas na progressão. **As vagas da escalação são o único teto da equipe** (a coleção não tem teto, ver 3.7) e crescem com o nível do café, conforme `Lineup.SlotsFor(nível)`:
+
+| Nível do café | Recepção | Salão | Cozinha | Palco | Gerência | **Total de vagas** |
+|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 1 | 1 | 1 | — | — | **3** |
+| 2 | 1 | 1 | 1 | 1 | — | **4** |
+| 3 | 1 | 2 | 1 | 1 | — | **5** |
+| 4 | 1 | 2 | 2 | 1 | — | **6** |
+| 5 | 1 | 2 | 2 | 1 | 1 | **7** |
+| 6 | 2 | 2 | 2 | 1 | 1 | **8** |
+| 7 | 2 | 3 | 2 | 1 | 1 | **9** |
+| 8 a 10 | 2 | 3 | 3 | 1 | 1 | **10** |
+
+(Tabela derivada diretamente de `Lineup.SlotsFor`, no código do branch.) **Sem as funções essenciais e recursos mínimos do salão, o dia não começa**: a interface deve indicar o impedimento, não deixar o jogador preso. Escalar alguém fora da posição natural acarreta perda de eficiência documentada no GDD de **35%**, além de penalidades de química e erro.
 
 ### 3.3 Química: a força do conjunto
 
@@ -136,16 +151,27 @@ O GDD registra **faixa ideal do fogão entre 72% e 95%**, janela de combo de 6 s
 
 ### 3.7 Economia: duas moedas, uma empresa
 
-**Dinheiro (¥)** entra pelo atendimento e sai por aluguel, salários, ingredientes, móveis e outros investimentos aplicáveis. **Fichas** recompensam a qualidade do expediente e são usadas nas caixas de contratação. O projeto documenta que as moedas **não são conversíveis** entre si: conseguir mais fichas não paga a folha e ter caixa abundante não compra diretamente sorte no recrutamento.
+**Coleção × equipe escalada (ECON-03).** São dois conjuntos distintos:
+
+| | Coleção (maids possuídas) | Equipe escalada (`FieldedMaids`) |
+|---|---|---|
+| Limite | **nenhum** — até todas as identidades lançadas (hoje 23) | vagas da escalação do nível (3 a 10, ver 3.2) |
+| Cópias | **uma por identidade** | uma maid por vaga; a mesma maid não ocupa duas vagas |
+| Salário | **não paga** | **paga**, uma vez por maid (a conta ainda desduplica por segurança) |
+| Efeito no serviço | nenhum enquanto estiver guardada | trabalha, entra na química e no balanço |
+
+**Custo fixo diário = soma dos salários das maids escaladas + aluguel.** É o mesmo número mostrado no Hub, na tela Maids ("Custo fixo por dia"), na Equipe do Dia (muda ao limpar, auto-escalar ou trocar uma maid) e descontado no balanço do dia. Maid guardada não custa salário; por isso, guardar uma lendária cara é uma decisão válida, e escalá-la é uma decisão econômica, não uma consequência automática de tê-la. Antes da ECON-03, todo o elenco recebia salário e havia um teto de 2 a 8 maids conforme o nível; esses dois mecanismos foram removidos.
+
+**Dinheiro (¥)** entra pelo atendimento e sai por aluguel, salários da equipe escalada, ingredientes, móveis e outros investimentos aplicáveis. **Fichas** recompensam a qualidade do expediente e são usadas nas caixas de contratação. O projeto documenta que as moedas **não são conversíveis** entre si: conseguir mais fichas não paga a folha e ter caixa abundante não compra diretamente sorte no recrutamento.
 
 | Raridade | Salário diário documentado (¥) | Implicação |
 |---|---:|---|
 | Comum | 18 | Acessível e sustentável no começo |
 | Rara | 44 | Aposta intermediária |
 | Épica | 95 | Exige retorno operacional consistente |
-| Lendária | 210 | Alto potencial, alto custo fixo |
+| Lendária | 210 | Alto potencial, alto custo fixo **enquanto escalada** |
 
-O jogador pode dispensar maids; contratações e cartas competem com outros investimentos. O balanço diário explicita **receitas, despesas, lucro/prejuízo, saldo, satisfação e ocorrências**. O ponto de pressão é o caixa; cair em uma situação de insolvência pode encerrar a empresa, preservando recordes nos termos documentados.
+**Contratação.** O quadro de candidatas oferece até três maids por manhã, sempre de identidades que o jogador ainda não possui; o preço (`180 + 110 × nível + 2 × soma dos atributos`) é pago uma vez, em dinheiro. Desde a ECON-03 a contratação **não é bloqueada por teto de coleção**; só pode falhar por falta de dinheiro, vaga do quadro já preenchida ou identidade já possuída. **Dispensar** uma maid a remove da coleção e devolve fichas (indenização); como maid guardada não recebe salário, dispensar deixou de ser a única forma de cortar custo — basta tirá-la da escalação. Contratações e cartas competem com outros investimentos. O balanço diário explicita **receitas, despesas, lucro/prejuízo, saldo, satisfação e ocorrências**. O ponto de pressão é o caixa; cair em uma situação de insolvência pode encerrar a empresa, preservando recordes nos termos documentados.
 
 ### 3.8 Caixas, probabilidades e colecionabilidade
 
@@ -157,7 +183,7 @@ As três caixas usam **fichas** e apresentam probabilidades na interface, reduzi
 | Prata | 180 | 3 | — | 62% | 32% | 6% |
 | Dourada | 520 | 3 | — | — | 78% | 22% |
 
-A caixa mais cara possui piso de raridade mais alto. A capacidade do elenco limita aquisições: a documentação registra compensação em fichas para cartas que não caibam. As chances mostradas acima são as publicadas no GDD técnico consultado; **na entrega, devem ser conferidas contra o catálogo efetivo de caixas no código**.
+A caixa mais cara possui piso de raridade mais alto. **Cartas repetidas:** como a coleção guarda uma cópia por identidade, se a carta sorteada for de uma identidade que o jogador **já possui**, ela é convertida em fichas ("Repetida — virou ficha") em vez de duplicar a maid. Uma carta de identidade ainda livre **sempre entra na coleção**, mesmo que a coleção já seja grande: o antigo caso "elenco cheio" deixou de existir. Assim a caixa nunca é prejuízo total e, no limite, a coleção completa só recebe fichas. As chances mostradas acima são as publicadas no GDD técnico consultado; **na entrega, devem ser conferidas contra o catálogo efetivo de caixas no código**.
 
 ### 3.9 Salão, inventário e expansão
 
@@ -169,7 +195,7 @@ A progressão usa **nível do café de 1 a 10**, alimentado por reputação asso
 
 **Objetivo de curto prazo:** concluir um expediente com atendimento funcional e balanço compreensível. **Objetivo de médio prazo:** melhorar reputação, montar elenco, ampliar capacidade e manter reservas. **Condição de derrota:** falência conforme as regras econômicas. Não há uma campanha de missão final única; a progressão e a busca por resultados superiores incentivam continuidade e novas tentativas.
 
-O projeto documenta persistência de empresa com **versão e checksum**, proteção a arquivos corrompidos e uma máquina de estados para impedir transições ilegais. As alterações permanentes devem ser salvas, e estados sem equipe/mesa/estação suficiente precisam informar a correção necessária.
+O projeto documenta persistência de empresa com **versão e checksum**, proteção a arquivos corrompidos e uma máquina de estados para impedir transições ilegais. **Compatibilidade de saves (ECON-03):** o formato do save não mudou — a coleção e a escalação já eram gravadas separadamente, e o teto removido nunca foi gravado. Um save antigo carrega sem migração; um save com mais de 8 maids (impossível antes) é gravado e relido sem perda, o que é coberto por teste automatizado. As alterações permanentes devem ser salvas, e estados sem equipe/mesa/estação suficiente precisam informar a correção necessária.
 
 ## 4. Interface: como o jogo comunica e recebe ações
 
@@ -178,9 +204,9 @@ O projeto documenta persistência de empresa com **versão e checksum**, proteç
 | Tela | Informação ou decisão que oferece |
 |---|---|
 | Menu | Identidade do jogo e início/continuação |
-| Empresa (Hub) | Caixa, fichas, custos, nível, equipe, navegação |
-| Equipe do Dia | Cinco funções, vagas, banco, química e escalação |
-| Maids/Elenco | Coleção, filtros, raridade, atributos e dispensa |
+| Empresa (Hub) | Caixa, fichas, **custo fixo por dia (salários das escaladas + aluguel)**, nível, equipe, navegação |
+| Equipe do Dia | Cinco funções, vagas, banco, química, escalação e **custo diário que acompanha a equipe** |
+| Maids/Coleção | Cabeçalho "Maids N · Coleção c/23" e custo fixo por dia (sem "N / teto"); filtros, raridade, atributos; ficha com "Salário (escalada)" ou "Salário se escalada"; dispensa |
 | Caixinhas | Preços, probabilidades, abertura e resultado |
 | Lojinha | Móveis, roupas/equipamentos, presentes e compras |
 | Arrumar o Salão | Planta interativa do café, estoque e posicionamento |
@@ -227,7 +253,19 @@ O jogo não depende apenas de tutoriais: decisões revelam relações. Colocar u
 
 ### 6.5 Gestão emocional e coleção
 
-O retrato de uma personagem rara incentiva recrutamento, mas seu salário cria uma contrapartida. O jogador pode se apegar a uma maid e resistir à dispensa mesmo quando ela é cara ou mal posicionada. Essa tensão entre vínculo afetivo e viabilidade econômica é uma dinâmica desejada; não se afirma que foi observada em playtest sem evidência.
+O retrato de uma personagem rara incentiva recrutamento, mas seu salário cria uma contrapartida **no momento de escalá-la**. Com a ECON-03 o jogador pode se apegar a uma maid e **mantê-la na coleção sem pagar por ela**: o conflito entre vínculo afetivo e viabilidade econômica deixa de ser "dispensar ou sustentar" e passa a ser "quem entra na equipe hoje". Essa tensão é uma dinâmica desejada; não se afirma que foi observada em playtest sem evidência.
+
+### 6.6 Estratégias possíveis com coleção ilimitada e salário só da equipe (ECON-03)
+
+| Estratégia | Como se manifesta | Risco/limite |
+|---|---|---|
+| **Colecionador** | Gasta fichas em caixas para completar as 23 identidades, escalando só as melhores | Fichas só vêm da qualidade do serviço; repetidas viram fichas, então a coleção acaba recebendo só fichas |
+| **Equipe enxuta** | Mantém poucas comuns bem alinhadas e economiza o caixa | Menos química/capacidade, receita menor |
+| **Rodízio** | Troca quem está escalada conforme química, decoração e clientes do dia, sem custo de manter as demais | Exige atenção à escalação a cada dia; maid fora da posição natural perde eficiência |
+| **Aposta numa lendária** | Escala uma lendária (210/dia) só quando o caixa e as vagas aguentam | A decisão volta a ser econômica a cada balanço |
+| **Subir de nível para ganhar vagas** | O nível libera vagas (3 → 10), a única expansão da equipe | Mais vagas = mais salário diário |
+
+Essas estratégias são **possibilidades abertas pelas regras**, não comportamentos observados em jogadores.
 
 ## 7. Game–Game: sistemas que interagem independentemente do jogador
 
@@ -247,7 +285,13 @@ Uma Ojou-sama pode atrair VIPs; VIPs gastam mais, mas esperam menos; se o salão
 
 ### 7.4 Química × salário × longo prazo
 
-A química amplifica atributos coletivos, enquanto a folha salarial retira dinheiro diariamente. Um conjunto de maids comuns bem alinhadas pode, em determinadas configurações, entregar melhor relação custo/resultado do que cartas raras incompatíveis. A interação cria uma decisão estratégica persistente: a equipe ótima é aquela que o café consegue **operar e financiar**, não simplesmente a de maior raridade.
+A química amplifica atributos coletivos, enquanto a folha salarial **da equipe escalada** retira dinheiro diariamente. Um conjunto de maids comuns bem alinhadas pode, em determinadas configurações, entregar melhor relação custo/resultado do que cartas raras incompatíveis. A interação cria uma decisão estratégica persistente: a equipe ótima é aquela que o café consegue **operar e financiar**, não simplesmente a de maior raridade. Como a coleção não tem salário, a folha depende apenas de quem é escalado e do nível do café (que define as vagas).
+
+### 7.6 Coleção × caixas × fichas × folha (ECON-03)
+
+Sem teto de coleção, o sistema de caixas funciona como um ciclo independente da folha: fichas (pagas por qualidade) → caixas → novas identidades (coleção cresce, sem custo diário) ou repetidas (voltam como fichas). O custo diário só reage à **escalação**. Disso decorrem efeitos de sistema: (i) ter muitas maids não pressiona o caixa; (ii) a pressão sobre o caixa migrou para a escolha de quem escalar e de quantas vagas o nível já liberou; (iii) a coleção tende a saturar (23 identidades), momento em que as caixas passam a render apenas fichas; (iv) a listagem de maids cresce, o que exige filtros e paginação (testados com 19 maids).
+
+**Impacto medido nas empresas simuladas** (ver [`docs/economy/econ-03/README.md`](economy/econ-03/README.md); 60 sementes × 60 dias, robôs; empresas falidas em 60): jogador *casual* que investe 49 → 22 (robôs com política antiga de contratação) ou 24 (sem teto); *pro* que investe 20 → 1 ou 2; *lazy* que investe 56 → 46; perfis que não investem ou ficam parados não mudaram (idle 60, lazy sem investir 52, casual sem investir 4, pro sem investir 0). O caixa no dia 30 do *pro* que investe vai de 3605 para 4270–5997. Esses números descrevem **robôs**, não pessoas, e **não houve rebalanceamento** (aluguel, preços e salários não foram alterados para compensar). O efeito é, portanto, uma consequência direta da regra: **a economia ficou mais tolerante a quem investe**.
 
 ### 7.5 Reputação × desbloqueios × pressão de expansão
 
@@ -261,7 +305,9 @@ Bom atendimento melhora reputação; reputação aumenta nível e abre opções;
 
 **Situação C — ajuda no momento certo.** Um cliente está impaciente e a cozinha prepara um prato. O jogador observa o feedback, acalma o cliente e intervém na faixa ideal do fogão. O resultado desejado é satisfação e ganho incremental perceptíveis, sem apagar o papel da maid que cozinhou.
 
-*As três situações são exemplos analíticos de possibilidades decorrentes das regras, não relatos de sessões reais nem garantia de um resultado numérico específico.*
+**Situação D — a lendária no banco (ECON-03).** O jogador tira uma lendária de uma caixa, mas o caixa ainda não sustenta 210 por dia. Em vez de dispensá-la, ela fica na coleção sem custo, enquanto uma comum permanece escalada. Quando o café sobe de nível e o caixa cresce, o jogador testa a lendária na equipe e confere no balanço do dia se o ganho compensou o salário. O desfecho depende da composição; a regra apenas torna a espera possível.
+
+*As quatro situações são exemplos analíticos de possibilidades decorrentes das regras, não relatos de sessões reais nem garantia de um resultado numérico específico.*
 
 # PARTE III — EXPERIENCE
 
@@ -276,6 +322,8 @@ Bom atendimento melhora reputação; reputação aumenta nível e abre opções;
 | Momento | Emoção pretendida | O que no design a provoca |
 |---|---|---|
 | Conhecer/obter maid | Curiosidade, afeição, surpresa | Retrato, arquétipo, raridade, revelação |
+| Completar a coleção / carta repetida | Satisfação de colecionar; leve decepção compensada pela ficha | Coleção "c/23" visível; "Repetida — virou ficha" |
+| Decidir quem escalar | Autoria e cautela | Salário só da equipe; vagas limitadas pelo nível |
 | Montar escalação | Expectativa e senso de autoria | Escolhas de funções, afinidades e custos |
 | Café lotado | Tensão moderada e urgência | Filas, paciência, tempo e sinais de ajuda |
 | Atendimento bem-sucedido | Alívio, satisfação e domínio | Serviço concluído, resposta imediata e ganhos |
@@ -297,7 +345,7 @@ O nível do café oferece uma sequência crescente de escolhas, não apenas de n
 
 O jogador deve compreender quatro mensagens centrais:
 
-1. **Minhas decisões importam.** Uma mudança de escalação e de investimento altera o serviço e o balanço.
+1. **Minhas decisões importam.** Uma mudança de escalação e de investimento altera o serviço e o balanço. Ter uma maid não é o mesmo que escalá-la: só quem trabalha recebe salário.
 2. **O sistema é coerente.** Os resultados vêm de regras visíveis e consequências compreensíveis, mesmo quando há aleatoriedade.
 3. **Personagens têm personalidade funcional.** A identidade de cada maid afeta o trabalho, não apenas a aparência.
 4. **A empresa precisa ser sustentável.** Crescer requer equilibrar capacidade, qualidade e custo; falhar pode ser parte do aprendizado.
@@ -319,7 +367,9 @@ Esta matriz é o núcleo da análise. Cada linha explicita um elemento projetado
 | Ajuda do dono em oportunidades visuais | Alternância entre supervisão e ação pontual | Agência e satisfação imediata | Comparar expediente sem ajuda e com intervenções válidas |
 | Cozinha com faixa ideal e combo | Atenção ao tempo e priorização | Concentração e recompensa por habilidade | Feedback de acerto/erro no fogão e efeito no balanço |
 | Dinheiro e fichas sem conversão | Planejamento separado de caixa e coleção | Responsabilidade e expectativa | Checar compras possíveis, saldo e decisões entre dias |
-| Salários crescentes por raridade | Contratação gera risco financeiro | Ambição com cautela | Balanço após contratação, sem assumir lucro automático |
+| Salários crescentes por raridade, pagos só pela equipe escalada | Escalar uma maid cara gera risco financeiro; mantê-la guardada não gera | Ambição com cautela | Balanço após escalar, sem assumir lucro automático; custo fixo do Hub = salário das escaladas + aluguel |
+| Coleção sem teto, uma cópia por identidade, repetida vira ficha (ECON-03) | Coleção cresce sem pressionar o caixa; caixas passam a render fichas quando a identidade já existe | Prazer de colecionar sem punição financeira | Cabeçalho "Coleção c/23"; mensagem "Repetida — virou ficha"; testes de contratação/caixa acima de 8 maids |
+| Vagas da escalação por nível (3 a 10) | A equipe só cresce com o nível do café | Progresso com significado | Tabela de 3.2 contra `Lineup.SlotsFor`; custo na Equipe do Dia acompanha a equipe |
 | Móveis e capacidade do salão | Espaço interage com fluxo e equipe | Sensação de construir algo próprio | Testar configurações, filas e custo de expansão |
 | Balanço financeiro detalhado | Reinterpretação das decisões do turno | Aprendizado e fechamento do ciclo | Jogador reconhecer receita, custo, erro e consequência |
 | Direção artística cozy e personagens chibi | Atenção aos personagens e ao ambiente | Acolhimento e vínculo | Teste de leitura, consistência e legibilidade em WebGL |
@@ -345,6 +395,7 @@ O DDE deve funcionar como documento vivo. Para evidenciar decisões importantes,
 | Cinco funções, não três | Equipes reduzidas ocultavam possibilidades | Recepção, Salão, Cozinha, Palco e Gerência com papéis distintos |
 | Química e posição natural | Raridade isolada tende a dominar decisões | Sinergia e adequação geram alternativas estratégicas |
 | Duas moedas sem câmbio | Sorte poderia eliminar pressão de caixa | Fichas para caixas; dinheiro para operação e investimentos |
+| Teto de elenco e folha de todo o elenco (versão anterior) | Quem investia quebrava pagando salário de quem não trabalhava; o teto bloqueava caixas e contratação | **ECON-03:** coleção sem teto, salário só da equipe escalada, repetida vira ficha; as vagas da escalação continuam como limite da equipe. Sem compensação de preços/aluguel |
 | Progressão sem fases | Gestão é um espaço persistente | Café sobe de nível e desbloqueia opções |
 | Análise econômica por simulação | Primeiras curvas tinham falha de sobrevivência/pressão | Ajustes medidos, com limites e pendências de expansão registrados |
 | Arte anime 2D ilustrada/cozy | Aparência procedural antiga destoava das personagens | Linguagem ilustrada coesa, sem transformar mockups em interface estática |
@@ -356,20 +407,22 @@ O DDE deve funcionar como documento vivo. Para evidenciar decisões importantes,
 
 **Regras documentadas:** funções, arquétipos, clientes, moedas, preços/probabilidades de caixas, progressão, assistência e indicadores descritos no GDD do repositório. **Evidência técnica parcial:** testes de simulação, EditMode, PlayMode e builds intermediárias reportadas nas PRs e na documentação; as contagens variam conforme o commit e **não certificam a release**. **Direção de arte aprovada:** mockups e pipeline híbrido de imagens modulares + UI funcional; a integração final ainda estava em andamento. **Experiência subjetiva:** hipóteses a verificar com jogadores, não achados experimentais.
 
-A consulta ao GitHub em **10/11/2026** confirmou PRs abertas para Hub/Caixinhas (#79), Elenco (#80) e Equipe/Lojinha (#81), com dependências empilhadas. A correção econômica ECON-02b (#74) também estava aberta. Mudanças posteriores não estão refletidas automaticamente neste documento. Não há prova aqui de publicação final no itch.io nem da integração completa de Salão, Expediente e Resultado.
+A consulta ao GitHub em **10/11/2026** confirmou PRs abertas para Hub/Caixinhas (#79), Elenco (#80) e Equipe/Lojinha (#81), com dependências empilhadas. A correção econômica ECON-02b (#74) também estava aberta. **Atualização posterior no mesmo dia:** as PRs #79, #80, #81 e #83 (Salão, Expediente e Resultado) e #82 (este DDE) foram integradas à `main` (SHA `06bbef9`), e o mantenedor informou ter publicado e testado a build correspondente no itch.io. O estado de #74 não foi reconferido nesta revisão. **ECON-03 (versão 1.1 deste documento) não está na `main`**: existe só no branch `task/econ-03-uncapped-collection-active-wages` e em um pacote WebGL experimental que o mantenedor reportou ter testado no itch.io, sem encontrar problemas — um relato, sem evidência anexada.
+
+**Evidência técnica da ECON-03 (conforme `docs/economy/econ-03/README.md`):** EditMode 409/409 e PlayMode 206/206 no código final do branch; o smoke test no Chrome confirmou o cabeçalho "Maids 3 · Coleção 3/23", custo fixo ¥136 com três maids escaladas e salário "Salário (escalada) 18 ¥", sem erros de console. Cenários com mais de 8 maids, maids no banco e um expediente completo estão cobertos por testes automatizados, **não** por um roteiro manual registrado.
 
 ### 16.1 Riscos prioritários de avaliação
 
 - **Sincronização com o jogo final:** revalidar telas, controles, valores econômicos e estados da última build antes de entregar. Se uma regra mudar, atualizar o texto correspondente.
 - **Clareza de interação real:** testar cliques dentro e fora da planta, scroll, botões, ações do expedente e interferência do HUD.
-- **Balanceamento:** a expansão do salão e a viabilidade de empresas com investimento estavam sob revisão; não declarar equilíbrio definitivo sem validação.
+- **Balanceamento:** a expansão do salão e a viabilidade de empresas com investimento estavam sob revisão; não declarar equilíbrio definitivo sem validação. **ECON-03:** os números de falência/caixa vêm de robôs e não incluem rebalanceamento; a abundância de fichas com a coleção quase completa e o peso da folha nos níveis altos (até 10 vagas escaladas) ainda exigem medição.
 - **Percepção do jogador:** medir se as pessoas compreendem química, duas moedas, risco dos salários e oportunidades de ajuda sem explicação externa.
 - **Áudio e efeitos:** validar no WebGL real; existir arquivo ou código não garante clareza audiovisual.
 - **Documento de apresentação:** não usar screenshots de mockups como provas de gameplay; indicar evidências reais do build final.
 
 ### 16.2 Roteiro curto de playtest para validar o DDE
 
-Aplicar a 2–5 pessoas que ainda não dominem o sistema, idealmente sem instrução oral além de como iniciar o jogo. Após 2–3 expedientes, observar: (1) conseguem escalar as funções essenciais? (2) percebem por que uma maid fora da função tem consequência? (3) identificam uma chance de ajudar no turno? (4) explicam um item do balanço? (5) compreendem por que melhorar cartas pode piorar o caixa? (6) sabem o que tentar no próximo dia? Registrar resultados e não apresentá-los como realizados antes do teste.
+Aplicar a 2–5 pessoas que ainda não dominem o sistema, idealmente sem instrução oral além de como iniciar o jogo. Após 2–3 expedientes, observar: (1) conseguem escalar as funções essenciais? (2) percebem por que uma maid fora da função tem consequência? (3) identificam uma chance de ajudar no turno? (4) explicam um item do balanço? (5) compreendem por que melhorar cartas pode piorar o caixa? (6) sabem o que tentar no próximo dia? (7) entendem que uma maid guardada não custa salário e que só a equipe escalada paga? (8) compreendem o que significa "Repetida — virou ficha"? Registrar resultados e não apresentá-los como realizados antes do teste.
 
 ## 17. Relação com as rubricas da disciplina
 
@@ -386,7 +439,7 @@ A rubrica histórica de Projeto 2D anexada ao projeto avalia 12 frentes e explic
 | 7. Design de som e música | 2.5, 9 |
 | 8. Efeitos visuais e polimento | 2.5, 4.3, 9 |
 | 9. Rejogabilidade | 11, 14 |
-| 10. Balanceamento | 3.7–3.9, 7, 16 |
+| 10. Balanceamento | 3.7–3.9, 6.6, 7 (incl. 7.6), 16 |
 | 11. Estados e erros | 3.10, 13, 16 |
 | 12. GDD utilizando DDE | Estrutura integral; 1, 13–17 |
 
@@ -398,7 +451,7 @@ O objetivo não é declarar nota ou qualidade máxima sem evidência: é disponi
 
 **Rubrica acadêmica histórica:** `Projeto_2D-2025-2.pdf`, pp. 3–9, especialmente item 12 — *GDD utilizando DDE*. A data de entrega **2025** nesse PDF é histórica e não indica prazo da turma de 2026.
 
-**Fonte de produto:** [`docs/GDD.md`](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/GDD.md) — regras e números do jogo. **Arquitetura e implementação:** [`docs/ARCHITECTURE.md`](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/ARCHITECTURE.md), scripts `Neko.Sim` e `Neko.Game`. **Direção visual:** [`docs/art/CURRENT_VISUAL_DIRECTION.md`](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/art/CURRENT_VISUAL_DIRECTION.md) e histórico de integração UI; **informações de PR** consultadas em 10/11/2026.
+**Fonte de produto:** [`docs/GDD.md`](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/GDD.md) — regras e números do jogo; para a ECON-03, [`docs/economy/econ-03/README.md`](economy/econ-03/README.md) (impacto no balanceamento, testes e exceções) e o código `Books`, `Lootbox`, `ApplicantBoard`, `CafeLevelTable`, `Lineup.SlotsFor` e `RosterScreen`. **Arquitetura e implementação:** [`docs/ARCHITECTURE.md`](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/ARCHITECTURE.md), scripts `Neko.Sim` e `Neko.Game`. **Direção visual:** [`docs/art/CURRENT_VISUAL_DIRECTION.md`](https://github.com/NThuesen/jogos_digitais_2D/blob/main/docs/art/CURRENT_VISUAL_DIRECTION.md) e histórico de integração UI; **informações de PR** consultadas em 10/11/2026.
 
 **Como manter vivo:** atualizar a versão e a data deste documento no mesmo ciclo em que se alterar mecânica ou apresentação relevante; sincronizar a versão do Milanote exigida pelo curso; substituir afirmações pendentes por evidência de build; incluir screenshots reais, créditos de assets, link público do itch.io e o SHA final. **Não alterar `docs/GDD.md` removendo seções técnicas antigas sem revisar seus testes de documentação**, que dependem de títulos e termos específicos.
 

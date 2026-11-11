@@ -143,6 +143,9 @@ namespace Neko.Game.Ui
                 { "roster.title", "Elenco" },
                 { "roster.level", "Nível" },
                 { "roster.salary", "Salário" },
+                { "roster.salary.paid", "Salário (escalada)" },
+                { "roster.salary.idle", "Salário se escalada" },
+                { "roster.collection", "Coleção" },
                 { "roster.rarity", "Raridade" },
                 { "roster.traits", "Traços" },
                 { "roster.notraits", "Nenhum traço" },
@@ -175,7 +178,7 @@ namespace Neko.Game.Ui
                 { "roster.shown", "Mostrando" },
                 { "roster.signature", "Marca registrada" },
                 { "roster.skills", "Habilidades" },
-                { "roster.full", "O elenco está no limite deste nível." },
+                { "roster.full", "Todas as vagas da escalação estão ocupadas. Tire alguém da equipe para escalar outra maid." },
 
                 // Shop
                 { "shop.title", "Loja" },
@@ -191,7 +194,7 @@ namespace Neko.Game.Ui
                 { "box.open", "Abrir" },
                 { "box.odds", "Chances" },
                 { "box.got", "Veio na caixa" },
-                { "box.duplicate", "Elenco cheio — virou ficha" },
+                { "box.duplicate", "Repetida — virou ficha" },
                 { "box.again", "Abrir outra" },
                 { "box.done", "Guardar" },
                 { "box.nopoints", "Fichas insuficientes." },

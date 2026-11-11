@@ -171,9 +171,9 @@ namespace Neko.Sim.Save
         /// Lets a maid go, for part of what she is worth in fichas.
         /// </summary>
         /// <remarks>
-        /// The one move that always cuts the wage bill. Without it a player who over-hired
-        /// would be watching a countdown with nothing to do about it, which is a dead end with
-        /// extra steps.
+        /// Only a fielded maid draws a wage (<see cref="Economy.Books.WagesFor"/>), so letting a benched one go
+        /// does not change the bill: it turns a card she does not want into fichas, and is never something the
+        /// economy asks of her.
         /// </remarks>
         public bool Dismiss(int maidId)
         {

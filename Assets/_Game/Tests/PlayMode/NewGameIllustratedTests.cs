@@ -74,7 +74,7 @@ namespace Neko.Tests.PlayMode
             var profile = builder.Profile;
             profile.Wallet.AddPoints(2000);
             var rng = new Rng(21u);
-            for (var i = 0; i < 6 && profile.Maids.Count < profile.Unlocks.RosterCap; i++)
+            for (var i = 0; i < 6; i++)
             {
                 Lootbox.Open(profile, "box_silver", rng);
             }
@@ -106,8 +106,10 @@ namespace Neko.Tests.PlayMode
             yield return SessionFactory.BackToHub();
             yield return SessionFactory.ToRoster();
             yield return SessionFactory.Settle();
-            AssertEveryPortraitIsPremium(GameRoot.Instance.Ui.Get<RosterScreen>().transform, profile.Maids.Count);
-            Assert.IsNotNull(GameObject.Find("Detail Portrait " + profile.Maids[0].Name), "the detail shows her portrait");
+            AssertEveryPortraitIsPremium(GameRoot.Instance.Ui.Get<RosterScreen>().transform, System.Math.Min(8, profile.Maids.Count)); // one page is 4x2
+            // With more maids than a page holds the detail reads the first visible one, not necessarily Maids[0].
+            Assert.IsTrue(GameRoot.Instance.Ui.Get<RosterScreen>().GetComponentsInChildren<Transform>(true)
+                .Any(t => t.name.StartsWith("Detail Portrait ")), "the detail shows a portrait");
             yield return Shots("4_elenco");
 
             ResolutionRig.Restore();

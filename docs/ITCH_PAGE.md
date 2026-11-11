@@ -64,7 +64,7 @@ Dojikko derruba pratos e os clientes acham graça; a Mukuchi não fala com clien
 
 ### Duas moedas, e só uma pode te quebrar
 
-- **Dinheiro** paga salário, aluguel e ingrediente. Se o caixa ficar em zero ou negativo
+- **Dinheiro** paga o salário de quem está escalada, o aluguel e os ingredientes (maid guardada na coleção não custa salário). Se o caixa ficar em zero ou negativo
   após o balanço do dia, a empresa vai à falência: os recordes ficam, a empresa não.
 - **Fichas** só compram caixas, e são pagas por **qualidade de atendimento** — cliente
   satisfeito, pedido certo, mesa girada — nunca por faturamento. Não existe como comprar
@@ -79,10 +79,10 @@ Dojikko derruba pratos e os clientes acham graça; a Mukuchi não fala com clien
 | Dourada | 520 | 3 | nenhuma abaixo de épica — 78% épica · 22% lendária |
 
 As chances estão escritas na tela de compra, não no rodapé de um regulamento. Carta
-repetida com o elenco cheio volta como fichas; uma caixa nunca é prejuízo total.
+repetida (maid que você já tem) volta como fichas; uma caixa nunca é prejuízo total. Não há limite de coleção: junte todas.
 
 E a conta é honesta nos dois sentidos: a lendária custa **210 por dia** de salário contra
-18 da comum. Tirar a carta boa é o começo do problema, não o fim dele.
+18 da comum — mas só nos dias em que está escalada. Tirar a carta boa é o começo do problema, não o fim dele.
 
 ---
 

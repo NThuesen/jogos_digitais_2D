@@ -203,14 +203,39 @@ namespace Neko.Game.Ui
             _detailLayer = Layer(stage, "Detail");
         }
 
+        /// <summary>
+        /// How many she has collected (of the identities actually released: planned ones are not obtainable
+        /// yet) and the daily fixed cost, which is the fielded team's wages plus rent. The collection has no
+        /// cap, and a maid who is not fielded costs nothing to keep.
+        /// </summary>
+        public static string CollectionText(Sim.Save.Profile profile) =>
+            Strings.Get("roster.maids") + " " + profile.Maids.Count + "   ·   " + Strings.Get("roster.collection") + " " +
+            CollectedCount(profile) + "/" + MaidCatalog.Released.Count + "\n" +
+            Strings.Get("hub.fixedcosts") + " " + Strings.Money(Books.FixedCostsFor(profile));
+
+        /// <summary>Released identities she owns.</summary>
+        public static int CollectedCount(Sim.Save.Profile profile)
+        {
+            var owned = 0;
+            foreach (var identity in MaidCatalog.Released)
+            {
+                if (profile.HasIdentity(identity.Id)) owned++;
+            }
+
+            return owned;
+        }
+
+        /// <summary>Her wage is only paid on the days she is fielded; the label says which it is today.</summary>
+        private string SalaryKey(Maid maid) =>
+            Session.Profile.Lineup.Contains(maid.Id) ? "roster.salary.paid" : "roster.salary.idle";
+
         private void RefreshKit()
         {
             var profile = Session.Profile;
             var all = profile.Maids;
 
             _tokens.text = profile.Wallet.Points + " " + Strings.Get("hub.points");
-            _info.text = all.Count + " / " + profile.Unlocks.RosterCap + "   ·   " +
-                         Strings.Get("hub.fixedcosts") + " " + Strings.Money(Books.FixedCostsFor(profile));
+            _info.text = CollectionText(profile);
             _sortLabel.text = Strings.Get("roster.sort") + ": " + SortName(_sort);
 
             var visible = RosterQuery.Visible(all, _rarity, _role, _sort);
@@ -465,7 +490,7 @@ namespace Neko.Game.Ui
 
             // The facts.
             Fact(layer, "lineup.natural", RoleTable.For(maid.NaturalRole).DisplayName, 342, 369, 16, Orange);
-            Fact(layer, "roster.salary", Strings.Money(maid.Salary), 370, 395, 17, Rose);
+            Fact(layer, SalaryKey(maid), Strings.Money(maid.Salary), 370, 395, 17, Rose);
             Fact(layer, "roster.level", maid.Level + " / " + Maid.MaxLevel, 397, 422, 17, KitArt.Brown);
             Fact(layer, "roster.tags", string.Join(" · ", ChemistryTags.Describe(maid)), 424, 478, 15, KitArt.Brown);
             Fact(layer, "roster.gear", WornText(maid), 481, 528, 15, KitArt.Brown);
@@ -771,9 +796,7 @@ namespace Neko.Game.Ui
             Clear();
 
             var profile = Session.Profile;
-            _header.text = profile.Maids.Count + " / " + profile.Unlocks.RosterCap + "   ·   " +
-                           Strings.Get("hub.fixedcosts") + " " +
-                           Strings.Money(Books.FixedCostsFor(profile));
+            _header.text = CollectionText(profile);
 
             if (_selected < 0 && profile.Maids.Count > 0) _selected = profile.Maids[0].Id;
 
@@ -839,7 +862,7 @@ namespace Neko.Game.Ui
 
             PlainFact(facts, "roster.rarity", maid.Card.DisplayName, Palette.Hex(maid.Card.TintHex));
             PlainFact(facts, "lineup.natural", RoleTable.For(maid.NaturalRole).DisplayName, Logo.Brass);
-            PlainFact(facts, "roster.salary", Strings.Money(maid.Salary), Palette.Alarm);
+            PlainFact(facts, SalaryKey(maid), Strings.Money(maid.Salary), Palette.Alarm);
             PlainFact(facts, "roster.level", maid.Level + " / " + Maid.MaxLevel, Palette.Text);
             PlainFact(facts, "roster.tags", string.Join(" · ", ChemistryTags.Describe(maid)),
                 Palette.TextDim, 2);

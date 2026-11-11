@@ -13,6 +13,11 @@ int seeds = int.Parse(args[0]), days = int.Parse(args[1]);
 string style = args.Length > 2 ? args[2] : "casual";
 bool invest = args.Length <= 3 || args[3] == "yes";
 bool verbose = args.Length > 4 && args[4] == "v";
+string botCap = Environment.GetEnvironmentVariable("ECON_BOT_CAP") ?? "none"; // none | old
+// ECON-03: the roster cap no longer exists in the game. The bots keep this table as a play-style knob, so a run can
+// still reproduce the old hiring behaviour (ECON_BOT_CAP=old) and the effect of the wage rule can be measured alone.
+static int LegacyCap(int level) => new[] { 0, 2, 3, 4, 5, 6, 6, 7, 7, 8, 8 }[Math.Clamp(level, 1, 10)];
+
 
 var surv = new int[days + 1]; var rev = new double[days + 1]; var prof = new double[days + 1];
 var n = new int[days + 1]; var lvl = new double[days + 1]; var cash = new double[days + 1];
@@ -81,9 +86,9 @@ void Morning(Profile p, Rng rng, ApplicantBoard board, Queue<string> wanted)
         if (id == null) break;
         if (!Lootbox.Open(p, id, rng).Ok) break;
     }
-    // 2. hire when there is room and a comfortable reserve afterwards.
+    // 2. hire when a comfortable reserve is left afterwards (and, in the "old" bot, when the legacy cap had room).
     board.Refresh(rng, p.CafeLevel, p.NextMaidId, p.Maids);
-    if (p.Maids.Count < p.Unlocks.RosterCap)
+    if (botCap != "old" || p.Maids.Count < LegacyCap(p.CafeLevel))
     {
         var best = -1; double bestScore = 0;
         for (int i = 0; i < board.Candidates.Count; i++)

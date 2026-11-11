@@ -442,15 +442,23 @@ namespace Neko.Tests.Sim
         }
 
         [Test]
-        public void EverybodyOnTheBooksIsPaidWhetherOrNotSheWorked()
+        public void OnlyTheFieldedAreOnTheWageBillWhetherOrNotSheWorked()
         {
+            // ECON-03: the old rule paid everybody on the books; now a maid draws a wage only while she stands
+            // in a slot of the lineup, so a legendary on the bench is free and the same legendary fielded is not.
             var profile = Shop();
             var wagesWithThree = Books.WagesFor(profile);
 
-            profile.Add(Lootbox.Mint(profile, Rarity.Legendary, new Rng(3)));
+            var legendary = Lootbox.Mint(profile, Rarity.Legendary, new Rng(3));
+            profile.Add(legendary);
+            Assert.AreEqual(wagesWithThree, Books.WagesFor(profile),
+                "a legendary on the bench costs nothing");
 
-            Assert.Greater(Books.WagesFor(profile), wagesWithThree,
-                "a legendary on the bench still costs every day");
+            var slot = profile.Lineup.All.First(s => !s.Empty);
+            var leaving = profile.MaidById(slot.MaidId);
+            profile.Lineup.Assign(slot.Role, slot.Index, legendary.Id);
+            Assert.AreEqual(wagesWithThree - leaving.Salary + legendary.Salary, Books.WagesFor(profile),
+                "fielded, she is paid");
         }
 
         [Test]
@@ -735,13 +743,17 @@ namespace Neko.Tests.Sim
         }
 
         [Test]
-        public void AFullRosterTurnsACardIntoFichasRatherThanLosingIt()
+        public void ACardOfAnIdentityAlreadyOwnedTurnsIntoFichasRatherThanLosingIt()
         {
+            // ECON-03: the roster cap is gone, so the case that converts a card is the one that remains true:
+            // one copy per identity. She owns every released identity here, so the very next card is a repeat.
             var profile = Profile.NewGame(3u);
             profile.Wallet.AddPoints(100000);
+            foreach (var identity in MaidCatalog.FreeReleased(profile.Maids))
+            {
+                profile.Add(Maid.Create(profile.NextMaidId++, identity));
+            }
 
-            // Café level one holds two maids and a new business already has three, so the
-            // very next card has nowhere to stand.
             var before = profile.Wallet.Points;
             var result = Lootbox.Open(profile, "box_simple", new Rng(4));
 

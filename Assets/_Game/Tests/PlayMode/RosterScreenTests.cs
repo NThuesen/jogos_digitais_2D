@@ -470,7 +470,7 @@ namespace Neko.Tests.PlayMode
                     Assert.AreEqual(name, Find("Detail/Name").text);
                     Assert.AreEqual(maid.Card.DisplayName, Find("Detail/RarityBadge/Label").text);
                     Assert.AreEqual(RoleTable.For(maid.NaturalRole).DisplayName, Find("Detail/FactValue_lineup.natural").text);
-                    Assert.AreEqual(Strings.Money(maid.Salary), Find("Detail/FactValue_roster.salary").text);
+                    Assert.AreEqual(Strings.Money(maid.Salary), Find("Detail/FactValue_" + (GameRoot.Instance.Session.Profile.Lineup.Contains(maid.Id) ? "roster.salary.paid" : "roster.salary.idle")).text);
                     Assert.AreEqual(maid.Level + " / " + Maid.MaxLevel, Find("Detail/FactValue_roster.level").text);
                     Assert.AreEqual(maid.Total.Serve.ToString(), Find("Detail/StatValue_roster.serve").text);
                     Assert.AreEqual(maid.Total.Cook.ToString(), Find("Detail/StatValue_roster.cook").text);
@@ -571,7 +571,7 @@ namespace Neko.Tests.PlayMode
             yield return AtEachWindow("roster_numbers", () =>
             {
                 Assert.AreEqual("73 " + Strings.Get("hub.points"), Find("TokenPlate/Tokens").text);
-                Assert.AreEqual(SessionFactory.LargeValues.RosterHeader(profile.Maids.Count, profile.Unlocks.RosterCap,
+                Assert.AreEqual(SessionFactory.LargeValues.RosterHeader(profile.Maids.Count, RosterScreen.CollectedCount(profile),
                     Books.FixedCostsFor(profile)), Find("RosterInfo").text, "the roster count and the daily fixed cost");
                 Assert.AreEqual("Mostrando 11 / 11", Find("Shown").text);
             });
@@ -832,7 +832,7 @@ namespace Neko.Tests.PlayMode
 
             Assert.IsNull(plain.transform.Find("Stage"), "no kit stage");
             Assert.AreEqual(5, plain.GetComponentsInChildren<Button>().Count(b => b.name.StartsWith("Card ")), "five clickable cards");
-            Assert.IsTrue(plain.GetComponentsInChildren<Text>().Any(t => t.text.StartsWith("5 / ")), "the roster count");
+            Assert.IsTrue(plain.GetComponentsInChildren<Text>().Any(t => t.text.StartsWith(Strings.Get("roster.maids") + " 5")), "the roster count");
             Assert.IsTrue(plain.GetComponentsInChildren<Text>().Any(t => t.text.StartsWith(Strings.Get("roster.dismiss"))), "the dismiss control");
             Object.Destroy(go);
         }

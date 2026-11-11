@@ -346,23 +346,27 @@ namespace Neko.Tests.EditMode.Sim
         }
 
         [Test]
-        public void AFullRosterConvertsACardOfAFreeIdentityAndDoesNotAddHer()
+        public void ACardOfAFreeIdentityJoinsEvenAFullSizedCollection()
         {
+            // ECON-03: there is no roster cap any more (it used to convert a free identity once the roster was
+            // full). Duplicates of an identity she owns are still converted; see ActiveWagesTests.
             var profile = Rich(5u);
-            var cap = profile.Unlocks.RosterCap;
-            foreach (var identity in MaidCatalog.FreeReleased(profile.Maids).Take(cap - profile.Maids.Count))
+            var oldCap = 8;
+            foreach (var identity in MaidCatalog.FreeReleased(profile.Maids).Take(oldCap - profile.Maids.Count))
             {
                 profile.Add(Maid.Create(profile.NextMaidId++, identity));
             }
 
-            Assert.AreEqual(cap, profile.Maids.Count);
-            Assert.Greater(MaidCatalog.FreeReleased(profile.Maids).Count, 0, "someone is still free, only the roster is full");
+            Assert.AreEqual(oldCap, profile.Maids.Count);
+            Assert.Greater(MaidCatalog.FreeReleased(profile.Maids).Count, 0, "someone is still free");
+            var before = profile.Maids.Count;
             var open = Lootbox.Open(profile, "box_gold", new Rng(8u));
 
-            Assert.AreEqual(cap, profile.Maids.Count);
-            foreach (var card in open.Cards)
+            var added = open.Cards.Count(c => !c.Duplicate);
+            Assert.Greater(added, 0, "a free identity is added even though the old cap was reached");
+            Assert.AreEqual(before + added, profile.Maids.Count);
+            foreach (var card in open.Cards.Where(c => c.Duplicate))
             {
-                Assert.IsTrue(card.Duplicate);
                 Assert.AreEqual(card.Maid.Severance, card.PointsBack);
             }
         }

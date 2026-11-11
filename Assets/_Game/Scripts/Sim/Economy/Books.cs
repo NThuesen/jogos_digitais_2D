@@ -54,18 +54,26 @@ namespace Neko.Sim.Economy
         }
 
         /// <summary>
-        /// Every maid on the books, not only the ones who worked.
+        /// The wages of the maids standing in a slot of today's lineup, and nobody else.
         /// </summary>
         /// <remarks>
-        /// Paying for the bench is what makes a deep squad a decision instead of a hoard, and
-        /// it is the only pressure that ever makes a player let a Legendary go.
+        /// The collection and the working team are different things. A maid who is owned but not
+        /// fielded costs nothing to keep, so a player can collect every identity and swap who is
+        /// on the floor without a wage bill growing behind them. One source of truth:
+        /// <see cref="Profile.FieldedMaids"/>. A slot that names nobody on the books pays nothing,
+        /// and a maid is never paid twice, whatever a hand-edited save says.
         /// </remarks>
         public static int WagesFor(Profile profile)
         {
             if (profile == null) return 0;
 
+            var paid = new System.Collections.Generic.HashSet<int>();
             var total = 0;
-            for (var i = 0; i < profile.Maids.Count; i++) total += profile.Maids[i].Salary;
+            foreach (var maid in profile.FieldedMaids())
+            {
+                if (paid.Add(maid.Id)) total += maid.Salary;
+            }
+
             return total;
         }
 

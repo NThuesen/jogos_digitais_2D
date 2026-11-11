@@ -82,7 +82,7 @@ void Run(string policy, uint seed, int maxDays, string[] purchases)
         foreach (var role in new[] { Role.Reception, Role.Floor, Role.Kitchen })
             if (p.Lineup.MaidIdsIn(role).Count == 0) throw new Exception("GameSession readiness would refuse " + policy);
         int level = p.CafeLevel, rep = p.Wallet.Reputation, roster = p.Maids.Count;
-        int cap = p.Unlocks.RosterCap, slots = p.Lineup.All.Count;
+        int cap = LegacyCap(p.CafeLevel), slots = p.Lineup.All.Count;
         uint shiftSeed = rng.NextUInt();
         var shift = new Shift(DayPlan.Build(p, shiftSeed));
         int ticks = 0;
@@ -133,3 +133,6 @@ void Wrong(Profile p)
     for (int i = 0; i < slots.Length; i++)
         p.Lineup.Assign(slots[(i + 1) % slots.Length].Role, slots[(i + 1) % slots.Length].Index, ids[i]);
 }
+
+// ECON-03: the cap column is kept for comparability with the ECON-01A evidence; the game no longer has a cap.
+static int LegacyCap(int level) => new[] { 0, 2, 3, 4, 5, 6, 6, 7, 7, 8, 8 }[Math.Clamp(level, 1, 10)];
