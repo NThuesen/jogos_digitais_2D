@@ -119,3 +119,26 @@
 | [`25_RARITY_CARD_FRAME_RARE.md`](prompts/variants/25_RARITY_CARD_FRAME_RARE.md) | `UI-025_rarity_card_frame_rare_v01.png` | `art_working/ui_modular/raw_gpt/UI-025_rarity_card_frame_rare_v01.png` | PENDING |
 
 **Referências reais e aprovados futuros são coisas diferentes**: veja [índice de PNGs existentes](references/README.md) e leia a distinção nos prompts antes de anexar.
+
+## ART-PROD-01 — preparação documental
+
+Contrato operacional: [ASSET_PRODUCTION_QA.md](ASSET_PRODUCTION_QA.md).
+As entradas históricas acima não comprovam existência, aprovação ou integração
+atual. Inventário local (inclusive ignorados), hashes e referências estão pendentes.
+Regular A: design aprovado informado pelo responsável; original ainda a confirmar.
+Student: existência/aprovação a verificar, sem autorizar regeneração automática.
+
+| Família | Fonte prevista | Derivado após aprovação | Estado desta revisão |
+|---|---|---|---|
+| Pratos | 14 PNGs UI-027 por recipeId | 14 ícones 128×128 | Prompt V02; G0/G1 pendentes |
+| Regular A | 2 novos PNGs + MP4; reutilizar base | 1 sheet | Original a confirmar |
+| Móveis essenciais | 8 PNGs UI-024; até 3 orientações extras | Sprites | Contrato e prompts revisados |
+| Outros clientes | Até 21 PNGs + 7 MP4s; reutilizar aprovados | Até 7 sheets | Inventário pendente; Cat específico |
+
+Para cada fonte registrar separadamente existência, arte RAW/PENDING/REWORK/APPROVED,
+TECH_PASS, derivados e INTEGRATED com evidência; usar o schema operacional do QA.
+Nenhuma fonte ou derivado novo foi produzido por esta revisão documental.
+
+Inventário executado: [ART_PROD_01_INVENTORY.md](ART_PROD_01_INVENTORY.md).
+Prontidão por prompt e bloqueios: [ART_PROD_01_READINESS.md](ART_PROD_01_READINESS.md).
+Esses registros atualizam as pendências genéricas da preparação acima. G0 não encerrado.

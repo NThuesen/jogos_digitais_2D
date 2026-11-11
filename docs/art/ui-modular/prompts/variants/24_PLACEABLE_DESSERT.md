@@ -29,3 +29,12 @@ Requested filename after I save/rename the generated image: UI-024_placeable_des
 - Depois de aprovado: `art_working/ui_modular/approved/UI-024_placeable_dessert_v01.png`
 
 Nova tentativa: `_v02.png` no lugar de `_v01.png`. Ver [registro](../../ASSET_REGISTRY.md) e [tutorial](../../TUTORIAL.md). Não importar no Unity sem validar sorting, pivô e grid.
+
+## Revisão técnica V02 — ART-PROD-01
+
+Aplicar o [contrato comum](../24_FURNITURE_RENDER_CONTRACT.md): anexar também
+seu bloco obrigatório ao prompt acima. Ele define escala, contato, pivô, oclusão,
+sorting e orientação. A referência pixel art acima vale somente pela atmosfera.
+Substituir screenshots antigos pela captura pós-PR #73 identificada no handoff;
+a seleção dessa referência está pendente. Preservar aparência, ID e nome do master.
+Não gerar antes de concluir G0/G1; não presumir integração ou aprovação artística.

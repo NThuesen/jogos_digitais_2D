@@ -1,6 +1,6 @@
 # 26 — Clientes (7 tipos, 8 designs): chibis ilustrados para substituir o procedural
 
-**Status:** PROMPTS apenas (escopo decidido: **8 clientes**, cada um com base + caminhada + sentado; ver [auditoria](../../CUSTOMERS_DISHES_AUDIT.md)); nenhuma imagem gerada, nada importado. Hoje os clientes são figuras procedurais (`CustomerView` + `SpriteFactory`) ao lado de maids ilustradas, o maior desencontro visual que sobrou no Salão. Os tipos vêm de `CustomerType` (`Sim/Service/CustomerTable.cs`): Regular, Student, Salaryman, Cat, Otaku, Critic, Vip. Os clientes são desenhados a 72 % do tamanho das maids (`CustomerView.CustomerScale`), então precisam ler bem a ~85–95 px de altura.
+**Status:** PROMPTS apenas (escopo decidido: **8 clientes**, cada um com base + caminhada + sentado; ver [auditoria](../../CUSTOMERS_DISHES_AUDIT.md)); inventário de fontes e integração pendente de confirmação; não inferir ausência de arquivos locais. Hoje os clientes são figuras procedurais (`CustomerView` + `SpriteFactory`) ao lado de maids ilustradas, o maior desencontro visual que sobrou no Salão. Os tipos vêm de `CustomerType` (`Sim/Service/CustomerTable.cs`): Regular, Student, Salaryman, Cat, Otaku, Critic, Vip. Os clientes são desenhados a 72 % do tamanho das maids (`CustomerView.CustomerScale`), então precisam ler bem a ~85–95 px de altura.
 
 **Anexos:** **A (obrigatório, ESTILO apenas)** = um quadro individual da caminhada ilustrada atual (ex.: um recorte de `Assets/_Game/Resources/Maids/hina_walk.png`) para escala e acabamento; **nunca** copiar rosto, cabelo ou roupa dela. O retrato/walk de qualquer maid NÃO define identidade de cliente.
 
@@ -31,7 +31,7 @@ Output exactly ONE PNG.
 | Regular (`regular`) | "Everyday regular": young adult in a simple cardigan or jacket, tote bag, relaxed smile. Plain, friendly, the default guest. | `#A89078` |
 | Student (`student`) | "Student": school-style blazer and skirt or trousers, backpack, a book under one arm, slightly sleepy eyes. | `#7FA8C4` |
 | Salaryman (`salaryman`) | "Salaryman on a lunch break": grey-lilac suit, loosened tie, briefcase, glances at a wristwatch (hurried posture). | `#6E6A80` |
-| Cat (`cat`) | "A real cat customer": an adorable chubby domestic cat sitting upright like a patron, cream coat with soft tabby patches, tiny bell collar, content half-closed eyes. A cat, NOT a catgirl; chibi-simplified, 2.0 heads of body ratio is fine. | `#C7B299` |
+| Cat (`cat`) | "A real cat customer": an adorable chubby quadruped domestic cat with natural feline anatomy, cream coat with soft tabby patches, tiny bell collar, content half-closed eyes. A cat, NOT a catgirl; chibi-simplified, 2.0 heads of body ratio is fine. | `#C7B299` |
 | Otaku (`otaku`) | "Devoted fan": enthusiastic young adult in a casual hoodie covered with small idol pins and a lanyard, tote with a charm, glowing eager eyes, a small light-stick in one hand. | `#C47FD1` |
 | Critic (`critic`) | "Food critic": middle-aged person with round glasses, beret, long coat or tweed jacket, small notebook and pencil held ready, thoughtful raised eyebrow. | `#8C7B5A` |
 | Vip (`vip`) | "VIP patron": elegant adult in a rich plum-and-gold coat, fur-trimmed collar, gloves, cane or fan, tasteful jewelry, serene confident posture. Must read as clearly wealthier than the others. | `#D1A54F` |
@@ -51,11 +51,11 @@ Same character as the attached IMAGE A (keep face, hair, outfit, colours and acc
 
 Same illustrated anime-chibi finish, 2.8–3.1 heads tall, transparent background, 3:4 canvas, subject about 80 % of the canvas, 5 % margins. No text, UI, watermark or collage. Exactly ONE PNG.
 ```
-Saída: `UI-026_customer_<tipo>_seated_v01.png`. Para o Cat: pose de gato sentado de frente para a mesa.
+Saída: `UI-026_customer_<tipo>_seated_v01.png`. Para Cat, usar exclusivamente [contrato felino](26_CUSTOMER_CAT_SPECIAL.md).
 
 ## Caminhada (por cliente) — dois prompts: PNG inicial → MP4 no Google Flow
 
-Use **estes dois blocos em sequência**, depois de aprovar o chibi base. Eles se aplicam aos **8 designs visuais** (7 CustomerType + Regular B), sem precisar trocar texto nem preencher placeholders: **a identidade vem sempre da imagem anexada**. O Cat é um gato real e precisa andar em quatro patas.
+Use **estes dois blocos em sequência**, depois de aprovar o chibi base. Eles se aplicam aos **7 designs humanos** (seis tipos humanos, com Regular A/B), sem precisar trocar texto nem preencher placeholders: **a identidade vem sempre da imagem anexada**. O Cat é um gato real e precisa andar em quatro patas.
 
 **Importante:** o STEP 2 gera **PNG 16:9 com fundo CHROMA OPACO**, não PNG com alpha. O STEP 3 recebe **somente** esse PNG no Flow e gera MP4, cujo fundo será removido depois. Evite colocar a imagem chibi 3:4 diretamente no Flow: ela não garante perfil ou margens adequadas. A pose sentada é **outra imagem**, criada separadamente na seção anterior.
 
@@ -74,7 +74,7 @@ Using the single approved full-body illustrated chibi customer in IMAGE A as ABS
 
 IDENTITY LOCK: Retain the exact approved face, eyes, hairstyle and hair accessories, skin or fur, body proportions, outfit, shoes, tote bag/backpack/other accessories, accent colors, clean colored outlines and soft cel-shading. Preserve the original side of every asymmetric detail; never mirror or redesign the customer. If this is the human Regular with a tote bag, keep the same bag attached to the same shoulder; don't make it float. Do not introduce a maid outfit, apron, catgirl ears, new accessories or another character.
 
-PROFILE AND GAIT: Rotate the WHOLE body into a STRICT FULL SIDE PROFILE, facing SCREEN RIGHT, approximately 85–90 degrees away from front view. The face, shoulders, torso, hips, knees and shoes ALL face right, consistently. For a human customer: show a real mid-stride/contact pose, one foot ahead supporting weight and the other slightly trailing, visible separation of the shoes, natural opposing arm swing, free hands, believable body balance. Not a frontal face with sideways legs, not a neutral stand, not a runway pose, dancing or running. If IMAGE A is the REAL CAT customer, preserve realistic feline FOUR-PAW anatomy and create a side-on cat walking contact pose instead, NEVER a bipedal catgirl.
+PROFILE AND GAIT: Rotate the WHOLE body into a STRICT FULL SIDE PROFILE, facing SCREEN RIGHT, approximately 85–90 degrees away from front view. The face, shoulders, torso, hips, knees and shoes ALL face right, consistently. For a human customer: show a real mid-stride/contact pose, one foot ahead supporting weight and the other slightly trailing, visible separation of the shoes, natural opposing arm swing, free hands, believable body balance. Not a frontal face with sideways legs, not a neutral stand, not a runway pose, dancing or running.
 
 WIDE FRAME COMPOSITION IS MANDATORY: Real 16:9 landscape (1920x1080 when possible). Place the customer/root at horizontal center, X=50%. Character height from the highest hair, ear or accessory to the lowest shoe/paw: approximately 70–74% of the TOTAL image height, NEVER above 75%. Leave AT LEAST 13% of TOTAL image height as completely empty background ABOVE the highest pixel AND 13% BELOW the lowest pixel. Leave AT LEAST 18% empty background on EACH SIDE, including the tote, hair and all props. Keep a constant imaginary foot-contact plane inside the safe area. If needed, SCALE DOWN THE ENTIRE CHARACTER uniformly, instead of cropping or stretching any part.
 
@@ -98,7 +98,7 @@ Animate ONLY the customer shown in the supplied approved WALK-START IMAGE into a
 
 ABSOLUTE VISUAL LOCK: The image is the unchangeable reference for this exact customer's face, hair, eyes, clothes, shoes, skin/fur, bag/accessories, color palette, outlines, proportions, silhouette and illustrated 2D cel shading. Preserve every distinctive asymmetrical feature on the same side. The customer MUST stay in strict SIDE PROFILE facing SCREEN RIGHT throughout ALL frames. NEVER turn toward the camera, reverse, flip, re-design, change facial structure, add extra limbs, alter clothes, lose a bag or morph accessories.
 
-REAL WALK CYCLE: Show one complete pair of ALTERNATING left/right steps with natural rhythm, ideally repeated smoothly. Feet visibly alternate between contact, lift and swing; knees and ankles bend correctly. Supporting foot travels smoothly backward relative to the stationary torso while the opposite leg swings forward; steps are long enough to convey real walking. Add modest opposing arm swing, subtle hair and clothing movement, a gently swaying tote bag that remains attached to its original shoulder, and slight natural body bob. No skating, moonwalk, tiny shuffles, feet stuck together, both legs swinging at once, crossing legs, marching, dancing, running, jumping, floating or instantaneous pose changes. If this is the REAL CAT customer, animate a believable FOUR-PAW feline walk, alternating front/hind paws naturally with a small tail sway; NEVER a human walk or catgirl.
+REAL WALK CYCLE: Show one complete pair of ALTERNATING left/right steps with natural rhythm, ideally repeated smoothly. Feet visibly alternate between contact, lift and swing; knees and ankles bend correctly. Supporting foot travels smoothly backward relative to the stationary torso while the opposite leg swings forward; steps are long enough to convey real walking. Add modest opposing arm swing, subtle hair and clothing movement, a gently swaying tote bag that remains attached to its original shoulder, and slight natural body bob. No skating, moonwalk, tiny shuffles, feet stuck together, both legs swinging at once, crossing legs, marching, dancing, running, jumping, floating or instantaneous pose changes.
 
 WALK IN PLACE ONLY: Keep the character's torso/root fixed at SAME horizontal screen X as in the input. Do NOT travel across the picture. Unity will move the character through the room later. Foot contact should look coherent relative to the torso. Keep the entire character at the source image scale, fully inside the safe margins in all frames.
 
@@ -120,3 +120,25 @@ OUTPUT: ONE uninterrupted horizontal 16:9 image-to-video MP4 showing a right-fac
 3. Exportar PNGs numerados preservando FPS/ordem em `art_working/customers/<id>/step4_blender/walk_x/frames/`. **Nunca apagar os arquivos originais.**
 4. Criar pipeline/configuração de **clientes separado de `maids.json`**, visando células de aproximadamente 96 px de altura, e medir memória/qualidade após a otimização WebGL da PR #67. QA visual em 960×600 e 1280×720 antes de integrar ao jogo.
 
+
+## Revisão documental V02 — identidade e gates
+
+Regular A tem design aprovado informado pelo responsável; confirmar o original
+`UI-026_customer_regular_v01.png` por caminho e SHA-256 antes de usar.
+Não regenerar a identidade por causa de margens. Student e outras bases devem ser
+procurados inclusive em arquivos ignorados antes de qualquer nova geração.
+
+Os prompts humanos acima não se aplicam ao Cat: usar
+[26_CUSTOMER_CAT_SPECIAL.md](26_CUSTOMER_CAT_SPECIAL.md).
+Seated usa exclusivamente a base aprovada como identidade, sem cadeira ou mesa,
+mãos visíveis e pernas dobradas, para oclusão pela borda da mesa real.
+Walk-start só segue após aprovação da base; Flow só após aprovação do walk-start.
+O usuário escolhe o primeiro e último frame do ciclo. Remover chroma explicitamente
+antes de exportar RGBA; preservar frames originais numerados e derivar sheet com
+célula-alvo de aproximadamente 96 px. Validar leitura a 85–95 px.
+
+Regular B é variante visual determinística, sem novo tipo ou consumo de RNG.
+Escalar C1–C3 somente após C0 integrado e validado em PlayMode e Chrome WebGL.
+Integração futura depende de autorização e restringe-se à View: resolução por
+identidade, interpolação, seated pelo estado existente e saída sem teleporte.
+Preservar Seating, grupo como figura única ×N, cores e feedback discreto de paciência.

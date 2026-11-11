@@ -31,3 +31,8 @@ Os **23 itens** destes prompts são IDs reais de `PlaceableCatalog.cs` (inclui `
 | 23 | [`24_PLACEABLE_WINDOW.md`](variants/24_PLACEABLE_WINDOW.md) | `UI-024_placeable_window_v01.png` |
 
 Após baixar, **renomeie o PNG** conforme a terceira coluna e salve em `art_working/ui_modular/raw_gpt/`. O nome do download pode ser definido automaticamente pelo ChatGPT. Os arquivos aprovados só existirão depois do gate do responsável. [Tutorial](../TUTORIAL.md) · [Todos os nomes](../OUTPUT_MANIFEST.md).
+
+## ART-PROD-01
+
+Os oito essenciais seguem o [contrato comum](24_FURNITURE_RENDER_CONTRACT.md).
+Os demais itens do índice permanecem fora deste lote.
